@@ -1,0 +1,47 @@
+
+// 这是导出函数的一个示例。
+TESTC_API int __stdcall fntestC(
+BYTE cbHandCardData[], --自己手牌的数据
+BYTE cbHandCardCount, --自己的手牌张数
+BYTE cbTurnCardData[],--上一手出牌的数据
+ BYTE cbTurnCardCount,--上一手出牌的张数
+ BYTE	DiscardCard[], 牌桌上已经出过的所有牌的数据
+BYTE cbDiscardCardCount, 牌桌上已经出过的所有牌的张数
+BYTE cbRangCardCount, 自己让别人多少张，默认为0  （自己出牌，别人只要点了一次过，cbRangCardCount, 这个参数传一个1）
+ BYTE cbOthreRangCardCount,别人让自己多少张，默认为0（庄家首出时有黑桃5时，或者黑桃七时你就传进来，0x35,是黑桃5，0x37是黑桃7）
+
+ BYTE MaxCard[],(数组大小20）    自己出牌时，别人要不起，就记录下这个类型最大的牌值 ，对应的类型就放到数组对应的位置，类型看文档最后
+
+ BYTE &cbCardCount,返回给你的牌数据张数
+ BYTE cbResultCard[] 返回牌的数据(数组大小20）
+)
+TESTC_API int __stdcall countScore(
+BYTE cbHandCardData[], --自己手牌的数据
+BYTE cbHandCardCount, --自己的手牌张数
+int &cbCardScore    --返回的分数
+)
+
+//扑克数据
+const BYTE	CGameLogicNew::m_cbCardData[FULL_COUNT]=
+{
+	1，2，3，4，5，6，7，8，9，10，11，12，13,	//方块 A - K
+	
+};
+
+
+//逻辑类型
+#define CT_ERROR					0									//错误类型
+#define CT_SINGLE					1									//单牌类型
+#define CT_DOUBLE					2									//对牌类型
+#define CT_THREE					3									//三条类型
+#define CT_SINGLE_LINE				4									//单连类型
+#define CT_DOUBLE_LINE				5									//对连类型
+#define CT_THREE_LINE				6									//三连类型
+#define CT_THREE_TAKE_ONE			7									//三带一单
+#define CT_THREE_TAKE_TWO			8									//三带一对
+#define CT_FOUR_TAKE_ONE			9									//四带两单
+#define CT_FOUR_TAKE_TWO			10									//四带两对
+#define CT_FOUR_TAKE_THREE			11									//四带两对
+#define CT_BOMB_CARD				12									//炸弹类型
+#define CT_MISSILE_CARD				13								//火箭类型
+#define CT_TYPE_COUNT				14									//最大类型

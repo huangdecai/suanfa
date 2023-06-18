@@ -1,0 +1,52 @@
+﻿生成启动时间为 2022/11/3 18:21:37。
+     1>项目“D:\pythonTest\c++dll调用\LaiZi_shiSanZhangSuanFa\ShiSanZhang_dll\testC++\testC++.vcxproj”在节点 2 上(Build 个目标)。
+     1>ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /Zi /nologo /W3 /WX- /sdl /O2 /Oi /Oy- /GL /D WIN32 /D NDEBUG /D _WINDOWS /D _USRDLL /D TESTC_EXPORTS /D _CRT_SECURE_NO_DEPRECATE /D _WINDLL /D _UNICODE /D UNICODE /Gm- /EHsc /MD /GS /Gy /fp:precise /Zc:wchar_t /Zc:forScope /Yu"stdafx.h" /Fp"Release\testC++.pch" /Fo"Release\\" /Fd"Release\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt GameLogicNew.cpp
+         GameLogicNew.cpp
+     1>GameLogicNew.cpp(514): warning C4018: “<”: 有符号/无符号不匹配
+     1>GameLogicNew.cpp(1428): warning C4018: “<”: 有符号/无符号不匹配
+     1>GameLogicNew.cpp(1474): warning C4018: “<”: 有符号/无符号不匹配
+     1>GameLogicNew.cpp(1686): warning C4018: “<”: 有符号/无符号不匹配
+     1>GameLogicNew.cpp(2290): warning C4018: “<”: 有符号/无符号不匹配
+     1>GameLogicNew.cpp(2365): warning C4018: “<”: 有符号/无符号不匹配
+     1>GameLogicNew.cpp(2390): warning C4018: “<”: 有符号/无符号不匹配
+     1>GameLogicNew.cpp(2419): warning C4018: “>=”: 有符号/无符号不匹配
+     1>GameLogicNew.cpp(2426): warning C4018: “<”: 有符号/无符号不匹配
+     1>GameLogicNew.cpp(2441): warning C4018: “<”: 有符号/无符号不匹配
+     1>GameLogicNew.cpp(2513): warning C4018: “<”: 有符号/无符号不匹配
+     1>GameLogicNew.cpp(2518): warning C4018: “<”: 有符号/无符号不匹配
+     1>GameLogicNew.cpp(2568): warning C4018: “<”: 有符号/无符号不匹配
+     1>GameLogicNew.cpp(2594): warning C4018: “<”: 有符号/无符号不匹配
+     1>GameLogicNew.cpp(3402): warning C4018: “<”: 有符号/无符号不匹配
+     1>GameLogicNew.cpp(3444): warning C4018: “<”: 有符号/无符号不匹配
+     1>GameLogicNew.cpp(3486): warning C4018: “<”: 有符号/无符号不匹配
+     1>GameLogicNew.cpp(3652): warning C4018: “<”: 有符号/无符号不匹配
+     1>GameLogicNew.cpp(3708): warning C4018: “<”: 有符号/无符号不匹配
+     1>GameLogicNew.cpp(3785): warning C4018: “<”: 有符号/无符号不匹配
+     1>GameLogicNew.cpp(3920): warning C4018: “<”: 有符号/无符号不匹配
+     1>GameLogicNew.cpp(3934): warning C4018: “<”: 有符号/无符号不匹配
+     1>GameLogicNew.cpp(3966): warning C4018: “<”: 有符号/无符号不匹配
+     1>GameLogicNew.cpp(4126): warning C4244: “=”: 从“float”转换到“int”，可能丢失数据
+     1>GameLogicNew.cpp(4129): warning C4244: “return”: 从“float”转换到“int”，可能丢失数据
+     1>GameLogicNew.cpp(4135): warning C4018: “<”: 有符号/无符号不匹配
+     1>GameLogicNew.cpp(4278): warning C4244: “=”: 从“float”转换到“int”，可能丢失数据
+     1>GameLogicNew.cpp(4281): warning C4244: “return”: 从“float”转换到“int”，可能丢失数据
+     1>GameLogicNew.cpp(4333): warning C4018: “<”: 有符号/无符号不匹配
+     1>GameLogicNew.cpp(4598): warning C4018: “<”: 有符号/无符号不匹配
+     1>GameLogicNew.cpp(4661): warning C4018: “<”: 有符号/无符号不匹配
+     1>GameLogicNew.cpp(4742): warning C4018: “>”: 有符号/无符号不匹配
+     1>GameLogicNew.cpp(5970): warning C4018: “<”: 有符号/无符号不匹配
+       Link:
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"D:\pythonTest\c++dll调用\LaiZi_shiSanZhangSuanFa\ShiSanZhang_dll\Release\testC++.dll" /INCREMENTAL:NO /NOLOGO netapi32.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"D:\pythonTest\c++dll调用\LaiZi_shiSanZhangSuanFa\ShiSanZhang_dll\Release\testC++.pdb" /SUBSYSTEM:WINDOWS /OPT:REF /OPT:ICF /LTCG /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"D:\pythonTest\c++dll调用\LaiZi_shiSanZhangSuanFa\ShiSanZhang_dll\Release\testC++.lib" /MACHINE:X86 /SAFESEH /DLL Release\dllmain.obj
+         Release\GameLogicNew.obj
+         Release\stdafx.obj
+         Release\testC++.obj
+            正在创建库 D:\pythonTest\c++dll调用\LaiZi_shiSanZhangSuanFa\ShiSanZhang_dll\Release\testC++.lib 和对象 D:\pythonTest\c++dll调用\LaiZi_shiSanZhangSuanFa\ShiSanZhang_dll\Release\testC++.exp
+         正在生成代码
+         已完成代码的生成
+         testC++.vcxproj -> D:\pythonTest\c++dll调用\LaiZi_shiSanZhangSuanFa\ShiSanZhang_dll\Release\testC++.dll
+     1>已完成生成项目“D:\pythonTest\c++dll调用\LaiZi_shiSanZhangSuanFa\ShiSanZhang_dll\testC++\testC++.vcxproj”(Build 个目标)的操作。
+
+生成成功。
+
+已用时间 00:00:02.63

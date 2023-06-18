@@ -1,0 +1,48 @@
+
+// 这是导出函数的一个示例。
+TESTC_API int __stdcall fntestC(
+BYTE cbHandCardData[], --自己手牌的数据
+BYTE cbHandCardCount, --自己的手牌张数
+BYTE cbTurnCardData[],--0
+ BYTE cbTurnCardCount,--0
+ BYTE	DiscardCard[], 0
+BYTE cbDiscardCardCount, 0
+BYTE cbRangCardCount, 自己让别人多少张，默认为0  
+ BYTE cbOthreRangCardCount,别人让自己多少张，默认为0
+
+ BYTE &cbCardCount,返回给你的牌数据张数
+ BYTE cbResultCard[] 返回牌的数据(数组大小20）
+)
+TESTC_API int __stdcall countScore(
+BYTE cbHandCardData[], --自己手牌的数据
+BYTE cbHandCardCount, --自己的手牌张数
+int &cbCardScore    --返回的分数
+)
+
+//扑克数据
+const BYTE	CGameLogicNew::m_cbCardData[FULL_COUNT]=
+{
+		0x01, 0x02, 0x03,0x04,0x05,0x06,0x07,0x08,0x09,0x0A,0x0B,0x0C,0x0D,	//方块 A - K
+	0x11, 0x12, 0x13, 0x14, 0x15, 0x16, 0x17, 0x18, 0x19, 0x1A, 0x1B, 0x1C, 0x1D,	//梅花 A - K
+	0x21, 0x22, 0x23, 0x24, 0x25, 0x26, 0x27, 0x28, 0x29, 0x2A, 0x2B, 0x2C, 0x2D,	//红桃 A - K
+	0x31, 0x32, 0x33, 0x34, 0x35, 0x36, 0x37, 0x38, 0x39, 0x3A, 0x3B, 0x3C, 0x3D,	//黑桃 A - K
+	0x4E,0x4F//小王，大王
+};
+
+
+//逻辑类型
+#define CT_ERROR					0									//错误类型
+#define CT_SINGLE					1									//单牌类型
+#define CT_DOUBLE					2									//对牌类型
+#define CT_THREE					3									//三条类型
+#define CT_SINGLE_LINE				4									//单连类型
+#define CT_DOUBLE_LINE				5									//对连类型
+#define CT_THREE_LINE				6									//三连类型
+#define CT_THREE_TAKE_ONE			7									//三带一单
+#define CT_THREE_TAKE_TWO			8									//三带一对
+#define CT_FOUR_TAKE_ONE			9									//四带两单
+#define CT_FOUR_TAKE_TWO			10									//四带两对
+#define CT_FOUR_TAKE_THREE			11									//四带两对
+#define CT_BOMB_CARD				12									//炸弹类型
+#define CT_MISSILE_CARD				13								//火箭类型
+#define CT_TYPE_COUNT				14									//最大类型

@@ -1,0 +1,60 @@
+﻿生成启动时间为 2022/3/23 18:37:31。
+     1>项目“D:\pythonTest\c++dll调用\testC++\testC++\testC++.vcxproj”在节点 2 上(Build 个目标)。
+     1>ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\x86_amd64\CL.exe /c /Zi /nologo /W3 /WX- /sdl /O2 /Oi /GL /D WIN32 /D NDEBUG /D _WINDOWS /D _USRDLL /D TESTC_EXPORTS /D _CRT_SECURE_NO_WARNINGS /Gm- /EHsc /MD /GS /Gy /fp:precise /Zc:wchar_t /Zc:forScope /Yc"stdafx.h" /Fp"x64\Release\testC++.pch" /Fo"x64\Release\\" /Fd"x64\Release\vc120.pdb" /Gd /TP /errorReport:prompt stdafx.cpp
+         stdafx.cpp
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\x86_amd64\CL.exe /c /Zi /nologo /W3 /WX- /sdl /O2 /Oi /GL /D WIN32 /D NDEBUG /D _WINDOWS /D _USRDLL /D TESTC_EXPORTS /D _CRT_SECURE_NO_WARNINGS /Gm- /EHsc /MD /GS /Gy /fp:precise /Zc:wchar_t /Zc:forScope /Fo"x64\Release\\" /Fd"x64\Release\vc120.pdb" /Gd /TP /errorReport:prompt dllmain.cpp
+         dllmain.cpp
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\x86_amd64\CL.exe /c /Zi /nologo /W3 /WX- /sdl /O2 /Oi /GL /D WIN32 /D NDEBUG /D _WINDOWS /D _USRDLL /D TESTC_EXPORTS /D _CRT_SECURE_NO_WARNINGS /Gm- /EHsc /MD /GS /Gy /fp:precise /Zc:wchar_t /Zc:forScope /Yu"stdafx.h" /Fp"x64\Release\testC++.pch" /Fo"x64\Release\\" /Fd"x64\Release\vc120.pdb" /Gd /TP /errorReport:prompt GameLogicNew.cpp testC++.cpp
+         GameLogicNew.cpp
+     1>GameLogicNew.cpp(956): warning C4244: “return”: 从“double”转换到“float”，可能丢失数据
+     1>GameLogicNew.cpp(983): warning C4244: “参数”: 从“float”转换到“const int”，可能丢失数据
+     1>GameLogicNew.cpp(987): warning C4244: “=”: 从“double”转换到“float”，可能丢失数据
+     1>GameLogicNew.cpp(1006): warning C4244: “参数”: 从“float”转换到“const int”，可能丢失数据
+     1>GameLogicNew.cpp(1010): warning C4244: “=”: 从“double”转换到“float”，可能丢失数据
+     1>GameLogicNew.cpp(1037): warning C4244: “参数”: 从“float”转换到“const int”，可能丢失数据
+     1>GameLogicNew.cpp(1041): warning C4244: “=”: 从“double”转换到“float”，可能丢失数据
+     1>GameLogicNew.cpp(1054): warning C4244: “参数”: 从“float”转换到“const int”，可能丢失数据
+     1>GameLogicNew.cpp(1058): warning C4244: “=”: 从“double”转换到“float”，可能丢失数据
+     1>GameLogicNew.cpp(1493): warning C4101: “cbAllBomCardData”: 未引用的局部变量
+     1>GameLogicNew.cpp(1951): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
+     1>GameLogicNew.cpp(1979): warning C4267: “=”: 从“size_t”转换到“int”，可能丢失数据
+     1>GameLogicNew.cpp(2204): warning C4267: “=”: 从“size_t”转换到“int”，可能丢失数据
+     1>GameLogicNew.cpp(2214): warning C4267: “=”: 从“size_t”转换到“int”，可能丢失数据
+     1>GameLogicNew.cpp(2267): warning C4244: “初始化”: 从“__int64”转换到“int”，可能丢失数据
+     1>GameLogicNew.cpp(2795): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
+     1>GameLogicNew.cpp(2928): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
+     1>GameLogicNew.cpp(2941): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
+     1>GameLogicNew.cpp(2956): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
+     1>GameLogicNew.cpp(3099): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
+     1>GameLogicNew.cpp(3125): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
+     1>GameLogicNew.cpp(4425): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
+     1>GameLogicNew.cpp(4438): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
+     1>GameLogicNew.cpp(4630): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
+     1>GameLogicNew.cpp(5308): warning C4244: “=”: 从“float”转换到“int”，可能丢失数据
+     1>GameLogicNew.cpp(5311): warning C4244: “return”: 从“float”转换到“int”，可能丢失数据
+     1>GameLogicNew.cpp(5438): warning C4244: “=”: 从“float”转换到“int”，可能丢失数据
+     1>GameLogicNew.cpp(5441): warning C4244: “return”: 从“float”转换到“int”，可能丢失数据
+     1>GameLogicNew.cpp(5553): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
+     1>GameLogicNew.cpp(5566): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
+     1>GameLogicNew.cpp(5897): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
+     1>GameLogicNew.cpp(5908): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
+         testC++.cpp
+     1>testC++.cpp(57): warning C4172: 返回局部变量或临时变量的地址
+     1>testC++.cpp(17): warning C4101: “OutCardResult”: 未引用的局部变量
+     1>testC++.cpp(64): warning C4244: “初始化”: 从“int”转换到“float”，可能丢失数据
+     1>testC++.cpp(71): warning C4244: “return”: 从“float”转换到“int”，可能丢失数据
+       Link:
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\x86_amd64\link.exe /ERRORREPORT:PROMPT /OUT:"D:\pythonTest\c++dll调用\testC++\x64\Release\testC++.dll" /INCREMENTAL:NO /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"D:\pythonTest\c++dll调用\testC++\x64\Release\testC++.pdb" /SUBSYSTEM:WINDOWS /OPT:REF /OPT:ICF /LTCG /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"D:\pythonTest\c++dll调用\testC++\x64\Release\testC++.lib" /MACHINE:X64 /DLL x64\Release\dllmain.obj
+         x64\Release\GameLogicNew.obj
+         x64\Release\stdafx.obj
+         x64\Release\testC++.obj
+            正在创建库 D:\pythonTest\c++dll调用\testC++\x64\Release\testC++.lib 和对象 D:\pythonTest\c++dll调用\testC++\x64\Release\testC++.exp
+         正在生成代码
+         已完成代码的生成
+         testC++.vcxproj -> D:\pythonTest\c++dll调用\testC++\x64\Release\testC++.dll
+     1>已完成生成项目“D:\pythonTest\c++dll调用\testC++\testC++\testC++.vcxproj”(Build 个目标)的操作。
+
+生成成功。
+
+已用时间 00:00:01.82

@@ -1,0 +1,16 @@
+﻿生成启动时间为 2022/9/4 10:36:39。
+     1>项目“D:\pythonTest\c++dll调用\operateFileShiSanZhang\testLogic2\testLogic2.vcxproj”在节点 2 上(Build 个目标)。
+     1>C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\V120\Microsoft.CppBuild.targets(388,5): warning MSB8028: The intermediate directory (Release\) contains files shared from another project (testLogic2.vcxproj).  This can lead to incorrect clean and rebuild behavior.
+     1>Link:
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"D:\pythonTest\c++dll调用\operateFileShiSanZhang\Release\shiSanZhang.exe" /INCREMENTAL:NO /NOLOGO netapi32.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"D:\pythonTest\c++dll调用\operateFileShiSanZhang\Release\shiSanZhang.pdb" /SUBSYSTEM:CONSOLE /OPT:REF /OPT:ICF /LTCG /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"D:\pythonTest\c++dll调用\operateFileShiSanZhang\Release\shiSanZhang.lib" /MACHINE:X86 /SAFESEH Release\GameLogicNew.obj
+         Release\operateFileEx.obj
+         Release\stdafx.obj
+         Release\test.obj
+         正在生成代码
+         已完成代码的生成
+         testLogic2.vcxproj -> D:\pythonTest\c++dll调用\operateFileShiSanZhang\Release\shiSanZhang.exe
+     1>已完成生成项目“D:\pythonTest\c++dll调用\operateFileShiSanZhang\testLogic2\testLogic2.vcxproj”(Build 个目标)的操作。
+
+生成成功。
+
+已用时间 00:00:01.71

@@ -1,0 +1,81 @@
+﻿生成启动时间为 2021/10/26 10:26:19。
+     1>项目“D:\work\newTest\testC++\testC++\testC++.vcxproj”在节点 2 上(Build 个目标)。
+     1>ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /Zi /nologo /W3 /WX- /sdl /O2 /Oi /Oy- /GL /D WIN32 /D NDEBUG /D _WINDOWS /D _USRDLL /D TESTC_EXPORTS /D _CRT_SECURE_NO_DEPRECATE /D _WINDLL /D _UNICODE /D UNICODE /Gm- /EHsc /MD /GS /Gy /fp:precise /Zc:wchar_t /Zc:forScope /Yc"stdafx.h" /Fp"Release\testC++.pch" /Fo"Release\\" /Fd"Release\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt stdafx.cpp
+         stdafx.cpp
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /Zi /nologo /W3 /WX- /sdl /O2 /Oi /Oy- /GL /D WIN32 /D NDEBUG /D _WINDOWS /D _USRDLL /D TESTC_EXPORTS /D _CRT_SECURE_NO_DEPRECATE /D _WINDLL /D _UNICODE /D UNICODE /Gm- /EHsc /MD /GS /Gy /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Release\\" /Fd"Release\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt dllmain.cpp
+         dllmain.cpp
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /Zi /nologo /W3 /WX- /sdl /O2 /Oi /Oy- /GL /D WIN32 /D NDEBUG /D _WINDOWS /D _USRDLL /D TESTC_EXPORTS /D _CRT_SECURE_NO_DEPRECATE /D _WINDLL /D _UNICODE /D UNICODE /Gm- /EHsc /MD /GS /Gy /fp:precise /Zc:wchar_t /Zc:forScope /Yu"stdafx.h" /Fp"Release\testC++.pch" /Fo"Release\\" /Fd"Release\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt GameLogicNew.cpp testC++.cpp
+         GameLogicNew.cpp
+     1>GameLogicNew.cpp(840): warning C4018: “<”: 有符号/无符号不匹配
+     1>GameLogicNew.cpp(882): warning C4244: “return”: 从“double”转换到“float”，可能丢失数据
+     1>GameLogicNew.cpp(913): warning C4244: “参数”: 从“float”转换到“const int”，可能丢失数据
+     1>GameLogicNew.cpp(917): warning C4244: “=”: 从“double”转换到“float”，可能丢失数据
+     1>GameLogicNew.cpp(936): warning C4244: “参数”: 从“float”转换到“const int”，可能丢失数据
+     1>GameLogicNew.cpp(940): warning C4244: “=”: 从“double”转换到“float”，可能丢失数据
+     1>GameLogicNew.cpp(967): warning C4244: “参数”: 从“float”转换到“const int”，可能丢失数据
+     1>GameLogicNew.cpp(971): warning C4244: “=”: 从“double”转换到“float”，可能丢失数据
+     1>GameLogicNew.cpp(984): warning C4244: “参数”: 从“float”转换到“const int”，可能丢失数据
+     1>GameLogicNew.cpp(988): warning C4244: “=”: 从“double”转换到“float”，可能丢失数据
+     1>GameLogicNew.cpp(1398): warning C4101: “cbAllBomCardData”: 未引用的局部变量
+     1>GameLogicNew.cpp(1733): warning C4018: “<”: 有符号/无符号不匹配
+     1>GameLogicNew.cpp(1784): warning C4018: “<”: 有符号/无符号不匹配
+     1>GameLogicNew.cpp(1832): warning C4018: “<”: 有符号/无符号不匹配
+     1>GameLogicNew.cpp(2085): warning C4018: “<”: 有符号/无符号不匹配
+     1>GameLogicNew.cpp(2088): warning C4018: “<”: 有符号/无符号不匹配
+     1>GameLogicNew.cpp(2097): warning C4018: “<=”: 有符号/无符号不匹配
+     1>GameLogicNew.cpp(2173): warning C4018: “<”: 有符号/无符号不匹配
+     1>GameLogicNew.cpp(2646): warning C4018: “<”: 有符号/无符号不匹配
+     1>GameLogicNew.cpp(2714): warning C4018: “<”: 有符号/无符号不匹配
+     1>GameLogicNew.cpp(2739): warning C4018: “<”: 有符号/无符号不匹配
+     1>GameLogicNew.cpp(2768): warning C4018: “>=”: 有符号/无符号不匹配
+     1>GameLogicNew.cpp(2775): warning C4018: “<”: 有符号/无符号不匹配
+     1>GameLogicNew.cpp(2790): warning C4018: “<”: 有符号/无符号不匹配
+     1>GameLogicNew.cpp(2861): warning C4018: “<”: 有符号/无符号不匹配
+     1>GameLogicNew.cpp(2866): warning C4018: “<”: 有符号/无符号不匹配
+     1>GameLogicNew.cpp(2920): warning C4018: “<”: 有符号/无符号不匹配
+     1>GameLogicNew.cpp(2946): warning C4018: “<”: 有符号/无符号不匹配
+     1>GameLogicNew.cpp(2996): warning C4018: “<”: 有符号/无符号不匹配
+     1>GameLogicNew.cpp(3011): warning C4018: “>=”: 有符号/无符号不匹配
+     1>GameLogicNew.cpp(3633): warning C4018: “<”: 有符号/无符号不匹配
+     1>GameLogicNew.cpp(3709): warning C4018: “<”: 有符号/无符号不匹配
+     1>GameLogicNew.cpp(3753): warning C4018: “<”: 有符号/无符号不匹配
+     1>GameLogicNew.cpp(3762): warning C4018: “<”: 有符号/无符号不匹配
+     1>GameLogicNew.cpp(3822): warning C4018: “<”: 有符号/无符号不匹配
+     1>GameLogicNew.cpp(3834): warning C4018: “<”: 有符号/无符号不匹配
+     1>GameLogicNew.cpp(3863): warning C4018: “<”: 有符号/无符号不匹配
+     1>GameLogicNew.cpp(3909): warning C4018: “<”: 有符号/无符号不匹配
+     1>GameLogicNew.cpp(4035): warning C4018: “<”: 有符号/无符号不匹配
+     1>GameLogicNew.cpp(4081): warning C4018: “<”: 有符号/无符号不匹配
+     1>GameLogicNew.cpp(4310): warning C4018: “<”: 有符号/无符号不匹配
+     1>GameLogicNew.cpp(4331): warning C4018: “<”: 有符号/无符号不匹配
+     1>GameLogicNew.cpp(4555): warning C4018: “<”: 有符号/无符号不匹配
+     1>GameLogicNew.cpp(4775): warning C4018: “<”: 有符号/无符号不匹配
+     1>GameLogicNew.cpp(4789): warning C4018: “<”: 有符号/无符号不匹配
+     1>GameLogicNew.cpp(4821): warning C4018: “<”: 有符号/无符号不匹配
+     1>GameLogicNew.cpp(4975): warning C4244: “=”: 从“float”转换到“int”，可能丢失数据
+     1>GameLogicNew.cpp(4978): warning C4244: “return”: 从“float”转换到“int”，可能丢失数据
+     1>GameLogicNew.cpp(4984): warning C4018: “<”: 有符号/无符号不匹配
+     1>GameLogicNew.cpp(5104): warning C4244: “=”: 从“float”转换到“int”，可能丢失数据
+     1>GameLogicNew.cpp(5107): warning C4244: “return”: 从“float”转换到“int”，可能丢失数据
+     1>GameLogicNew.cpp(5316): warning C4018: “<”: 有符号/无符号不匹配
+     1>GameLogicNew.cpp(5354): warning C4018: “<”: 有符号/无符号不匹配
+         testC++.cpp
+     1>testC++.cpp(18): warning C4172: 返回局部变量或临时变量的地址
+     1>testC++.cpp(57): warning C4172: 返回局部变量或临时变量的地址
+     1>testC++.cpp(62): warning C4244: “初始化”: 从“int”转换到“float”，可能丢失数据
+     1>testC++.cpp(69): warning C4244: “return”: 从“float”转换到“int”，可能丢失数据
+       Link:
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"D:\work\newTest\testC++\Release\testC++.dll" /INCREMENTAL:NO /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"D:\work\newTest\testC++\Release\testC++.pdb" /SUBSYSTEM:WINDOWS /OPT:REF /OPT:ICF /LTCG /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"D:\work\newTest\testC++\Release\testC++.lib" /MACHINE:X86 /SAFESEH /DLL Release\dllmain.obj
+         Release\GameLogicNew.obj
+         Release\stdafx.obj
+         Release\testC++.obj
+            正在创建库 D:\work\newTest\testC++\Release\testC++.lib 和对象 D:\work\newTest\testC++\Release\testC++.exp
+         正在生成代码
+         已完成代码的生成
+         testC++.vcxproj -> D:\work\newTest\testC++\Release\testC++.dll
+     1>已完成生成项目“D:\work\newTest\testC++\testC++\testC++.vcxproj”(Build 个目标)的操作。
+
+生成成功。
+
+已用时间 00:00:07.83

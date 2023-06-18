@@ -1,0 +1,48 @@
+﻿生成启动时间为 2022/11/3 18:21:00。
+     1>项目“D:\pythonTest\c++dll调用\LaiZi_shiSanZhangSuanFa\testLogic2\testLogic2.vcxproj”在节点 2 上(Build 个目标)。
+     1>ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _LIB /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Yu"stdafx.h" /Fp"Debug\testLogic2.pch" /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt GameLogicNew.cpp
+         GameLogicNew.cpp
+     1>d:\pythontest\c++dll调用\laizi_shisanzhangsuanfa\testlogic2\gamelogicnew.cpp(514): warning C4018: “<”: 有符号/无符号不匹配
+     1>d:\pythontest\c++dll调用\laizi_shisanzhangsuanfa\testlogic2\gamelogicnew.cpp(1428): warning C4018: “<”: 有符号/无符号不匹配
+     1>d:\pythontest\c++dll调用\laizi_shisanzhangsuanfa\testlogic2\gamelogicnew.cpp(1474): warning C4018: “<”: 有符号/无符号不匹配
+     1>d:\pythontest\c++dll调用\laizi_shisanzhangsuanfa\testlogic2\gamelogicnew.cpp(1686): warning C4018: “<”: 有符号/无符号不匹配
+     1>d:\pythontest\c++dll调用\laizi_shisanzhangsuanfa\testlogic2\gamelogicnew.cpp(2290): warning C4018: “<”: 有符号/无符号不匹配
+     1>d:\pythontest\c++dll调用\laizi_shisanzhangsuanfa\testlogic2\gamelogicnew.cpp(2365): warning C4018: “<”: 有符号/无符号不匹配
+     1>d:\pythontest\c++dll调用\laizi_shisanzhangsuanfa\testlogic2\gamelogicnew.cpp(2390): warning C4018: “<”: 有符号/无符号不匹配
+     1>d:\pythontest\c++dll调用\laizi_shisanzhangsuanfa\testlogic2\gamelogicnew.cpp(2419): warning C4018: “>=”: 有符号/无符号不匹配
+     1>d:\pythontest\c++dll调用\laizi_shisanzhangsuanfa\testlogic2\gamelogicnew.cpp(2426): warning C4018: “<”: 有符号/无符号不匹配
+     1>d:\pythontest\c++dll调用\laizi_shisanzhangsuanfa\testlogic2\gamelogicnew.cpp(2441): warning C4018: “<”: 有符号/无符号不匹配
+     1>d:\pythontest\c++dll调用\laizi_shisanzhangsuanfa\testlogic2\gamelogicnew.cpp(2513): warning C4018: “<”: 有符号/无符号不匹配
+     1>d:\pythontest\c++dll调用\laizi_shisanzhangsuanfa\testlogic2\gamelogicnew.cpp(2518): warning C4018: “<”: 有符号/无符号不匹配
+     1>d:\pythontest\c++dll调用\laizi_shisanzhangsuanfa\testlogic2\gamelogicnew.cpp(2568): warning C4018: “<”: 有符号/无符号不匹配
+     1>d:\pythontest\c++dll调用\laizi_shisanzhangsuanfa\testlogic2\gamelogicnew.cpp(2594): warning C4018: “<”: 有符号/无符号不匹配
+     1>d:\pythontest\c++dll调用\laizi_shisanzhangsuanfa\testlogic2\gamelogicnew.cpp(3402): warning C4018: “<”: 有符号/无符号不匹配
+     1>d:\pythontest\c++dll调用\laizi_shisanzhangsuanfa\testlogic2\gamelogicnew.cpp(3444): warning C4018: “<”: 有符号/无符号不匹配
+     1>d:\pythontest\c++dll调用\laizi_shisanzhangsuanfa\testlogic2\gamelogicnew.cpp(3486): warning C4018: “<”: 有符号/无符号不匹配
+     1>d:\pythontest\c++dll调用\laizi_shisanzhangsuanfa\testlogic2\gamelogicnew.cpp(3652): warning C4018: “<”: 有符号/无符号不匹配
+     1>d:\pythontest\c++dll调用\laizi_shisanzhangsuanfa\testlogic2\gamelogicnew.cpp(3708): warning C4018: “<”: 有符号/无符号不匹配
+     1>d:\pythontest\c++dll调用\laizi_shisanzhangsuanfa\testlogic2\gamelogicnew.cpp(3785): warning C4018: “<”: 有符号/无符号不匹配
+     1>d:\pythontest\c++dll调用\laizi_shisanzhangsuanfa\testlogic2\gamelogicnew.cpp(3920): warning C4018: “<”: 有符号/无符号不匹配
+     1>d:\pythontest\c++dll调用\laizi_shisanzhangsuanfa\testlogic2\gamelogicnew.cpp(3934): warning C4018: “<”: 有符号/无符号不匹配
+     1>d:\pythontest\c++dll调用\laizi_shisanzhangsuanfa\testlogic2\gamelogicnew.cpp(3966): warning C4018: “<”: 有符号/无符号不匹配
+     1>d:\pythontest\c++dll调用\laizi_shisanzhangsuanfa\testlogic2\gamelogicnew.cpp(4126): warning C4244: “=”: 从“float”转换到“int”，可能丢失数据
+     1>d:\pythontest\c++dll调用\laizi_shisanzhangsuanfa\testlogic2\gamelogicnew.cpp(4129): warning C4244: “return”: 从“float”转换到“int”，可能丢失数据
+     1>d:\pythontest\c++dll调用\laizi_shisanzhangsuanfa\testlogic2\gamelogicnew.cpp(4135): warning C4018: “<”: 有符号/无符号不匹配
+     1>d:\pythontest\c++dll调用\laizi_shisanzhangsuanfa\testlogic2\gamelogicnew.cpp(4278): warning C4244: “=”: 从“float”转换到“int”，可能丢失数据
+     1>d:\pythontest\c++dll调用\laizi_shisanzhangsuanfa\testlogic2\gamelogicnew.cpp(4281): warning C4244: “return”: 从“float”转换到“int”，可能丢失数据
+     1>d:\pythontest\c++dll调用\laizi_shisanzhangsuanfa\testlogic2\gamelogicnew.cpp(4333): warning C4018: “<”: 有符号/无符号不匹配
+     1>d:\pythontest\c++dll调用\laizi_shisanzhangsuanfa\testlogic2\gamelogicnew.cpp(4598): warning C4018: “<”: 有符号/无符号不匹配
+     1>d:\pythontest\c++dll调用\laizi_shisanzhangsuanfa\testlogic2\gamelogicnew.cpp(4661): warning C4018: “<”: 有符号/无符号不匹配
+     1>d:\pythontest\c++dll调用\laizi_shisanzhangsuanfa\testlogic2\gamelogicnew.cpp(4742): warning C4018: “>”: 有符号/无符号不匹配
+     1>d:\pythontest\c++dll调用\laizi_shisanzhangsuanfa\testlogic2\gamelogicnew.cpp(5970): warning C4018: “<”: 有符号/无符号不匹配
+       Link:
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"D:\pythonTest\c++dll调用\LaiZi_shiSanZhangSuanFa\Debug\testLogic2.exe" /INCREMENTAL /NOLOGO rpcrt4.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"D:\pythonTest\c++dll调用\LaiZi_shiSanZhangSuanFa\Debug\testLogic2.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"D:\pythonTest\c++dll调用\LaiZi_shiSanZhangSuanFa\Debug\testLogic2.lib" /MACHINE:X86 Debug\GameLogicNew.obj
+         Debug\stdafx.obj
+         Debug\testLogic2.obj
+         testLogic2.vcxproj -> D:\pythonTest\c++dll调用\LaiZi_shiSanZhangSuanFa\Debug\testLogic2.exe
+     1>已完成生成项目“D:\pythonTest\c++dll调用\LaiZi_shiSanZhangSuanFa\testLogic2\testLogic2.vcxproj”(Build 个目标)的操作。
+
+生成成功。
+
+已用时间 00:00:01.70

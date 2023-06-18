@@ -1,0 +1,44 @@
+﻿  stdafx.cpp
+  GameLogicNew.cpp
+GameLogicNew.cpp(512): warning C4018: “<”: 有符号/无符号不匹配
+GameLogicNew.cpp(1406): warning C4018: “<”: 有符号/无符号不匹配
+GameLogicNew.cpp(1464): warning C4018: “<”: 有符号/无符号不匹配
+GameLogicNew.cpp(1676): warning C4018: “<”: 有符号/无符号不匹配
+GameLogicNew.cpp(2263): warning C4018: “<”: 有符号/无符号不匹配
+GameLogicNew.cpp(2338): warning C4018: “<”: 有符号/无符号不匹配
+GameLogicNew.cpp(2363): warning C4018: “<”: 有符号/无符号不匹配
+GameLogicNew.cpp(2392): warning C4018: “>=”: 有符号/无符号不匹配
+GameLogicNew.cpp(2399): warning C4018: “<”: 有符号/无符号不匹配
+GameLogicNew.cpp(2414): warning C4018: “<”: 有符号/无符号不匹配
+GameLogicNew.cpp(2486): warning C4018: “<”: 有符号/无符号不匹配
+GameLogicNew.cpp(2491): warning C4018: “<”: 有符号/无符号不匹配
+GameLogicNew.cpp(2541): warning C4018: “<”: 有符号/无符号不匹配
+GameLogicNew.cpp(2567): warning C4018: “<”: 有符号/无符号不匹配
+GameLogicNew.cpp(3339): warning C4018: “<”: 有符号/无符号不匹配
+GameLogicNew.cpp(3381): warning C4018: “<”: 有符号/无符号不匹配
+GameLogicNew.cpp(3423): warning C4018: “<”: 有符号/无符号不匹配
+GameLogicNew.cpp(3589): warning C4018: “<”: 有符号/无符号不匹配
+GameLogicNew.cpp(3645): warning C4018: “<”: 有符号/无符号不匹配
+GameLogicNew.cpp(3722): warning C4018: “<”: 有符号/无符号不匹配
+GameLogicNew.cpp(3857): warning C4018: “<”: 有符号/无符号不匹配
+GameLogicNew.cpp(3871): warning C4018: “<”: 有符号/无符号不匹配
+GameLogicNew.cpp(3903): warning C4018: “<”: 有符号/无符号不匹配
+GameLogicNew.cpp(4063): warning C4244: “=”: 从“float”转换到“int”，可能丢失数据
+GameLogicNew.cpp(4066): warning C4244: “return”: 从“float”转换到“int”，可能丢失数据
+GameLogicNew.cpp(4072): warning C4018: “<”: 有符号/无符号不匹配
+GameLogicNew.cpp(4208): warning C4244: “=”: 从“float”转换到“int”，可能丢失数据
+GameLogicNew.cpp(4211): warning C4244: “return”: 从“float”转换到“int”，可能丢失数据
+GameLogicNew.cpp(4262): warning C4018: “<”: 有符号/无符号不匹配
+GameLogicNew.cpp(4501): warning C4018: “<”: 有符号/无符号不匹配
+GameLogicNew.cpp(4564): warning C4018: “<”: 有符号/无符号不匹配
+GameLogicNew.cpp(4645): warning C4018: “>”: 有符号/无符号不匹配
+GameLogicNew.cpp(5811): warning C4267: “=”: 从“size_t”转换到“BYTE”，可能丢失数据
+GameLogicNew.cpp(5813): warning C4267: “+=”: 从“size_t”转换到“BYTE”，可能丢失数据
+GameLogicNew.cpp(5853): warning C4018: “<”: 有符号/无符号不匹配
+  testLogic2.cpp
+testLogic2.cpp(23): warning C4244: “参数”: 从“time_t”转换到“unsigned int”，可能丢失数据
+  正在生成代码
+  All 981 functions were compiled because no usable IPDB/IOBJ from previous compilation was found.
+  已完成代码的生成
+  testLogic2.vcxproj -> E:\myWork\LaiZi_shiSanZhangSuanFa\Release\testLogic2.exe
+  testLogic2.vcxproj -> E:\myWork\LaiZi_shiSanZhangSuanFa\Release\testLogic2.pdb (Full PDB)
