@@ -218,12 +218,12 @@ class GameHelper:
         else:
             return None, (0, 0)
 
-    def LocateOnScreen(self, templateName, region, confidence=0.9):
+    def LocateOnScreen(self, templateName, region, confidence=0.8):
         image, _ = self.Screenshot()
         return pyautogui.locate(needleImage=self.Pics[templateName],
                                 haystackImage=image, region=region, confidence=confidence)
 
-    def ClickOnImage(self, templateName, region=None, confidence=0.9):
+    def ClickOnImage(self, templateName, region=None, confidence=0.8):
         image, _ = self.Screenshot()
         result = pyautogui.locate(needleImage=self.Pics[templateName], haystackImage=image, confidence=confidence, region=region)
         if result is not None:
@@ -234,38 +234,49 @@ class GameHelper:
         imgCv = cv2.cvtColor(np.asarray(image), cv2.COLOR_RGB2BGR)
         states = []
         cardStartPos = pyautogui.locate(needleImage=self.Pics["card_edge"], haystackImage=image,
-                                        region=(1, 527, 880, 110), confidence=0.80)
+                                        region=(1, 540, 880, 110), confidence=0.80)
         if cardStartPos is None:
             return []
-        sx = cardStartPos[0] #+ 23
+        sx = cardStartPos[0]+7 #+ 23
         cardSearchFrom = 0
-        sy, sw, sh = 160, 72, 55
-        if handCount==15:
-            sw=77
+        sy, sw, sh = 160, 58, 55
+        if handCount == 17:
+            sw = 69
+            sx = sx + 1
         elif handCount == 14:
-                sw = 81
+            sw = 81
         elif handCount <= 13:
-                sw = 86
+            sw = 86
         spaceX = sw
-        spaceY = 528
+        spaceY = 540
         for i in range(0, MAX_CARD_COUNT):
-            temp_x=sx+6 + spaceX *(i)
+            temp_x=sx+ spaceX *(i)
             if temp_x>=(SCREEN_WIDTH-50) :
                 break
             print("GetCardsState-LocateOnImage:", temp_x, sw)
             checkSelect = 0
             if i==11 :
                 a=4
-            result = LocateOnImage(imgCv, self.PicsCV["card_overlap"], region=(temp_x, spaceY - 35, spaceX, 30),
-                                   confidence=0.80)
-            result2 = LocateOnImage(imgCv, self.PicsCV["card_overlap2"], region=(temp_x, spaceY - 15, spaceX, 40),
-                                    confidence=0.80)
-            # result3 = LocateOnImage(imgCv, self.PicsCV["card_overlap3"], region=(temp_x, spaceY - 10, spaceX, 40),confidence=0.85)
-            if (result) and ((result2 is None)):
+            result = LocateOnImage(imgCv, self.PicsCV["card_overlap"], region=(temp_x + 3, spaceY - 55, spaceX, 40),
+                                   confidence=0.85)
+            result4 =self.Goverlap(imgCv,(temp_x + 3, spaceY - 15, spaceX, 40))
+            result2 = LocateOnImage(imgCv, self.PicsCV["card_overlap2"], region=(temp_x + 3, spaceY - 15, spaceX, 40),
+                                    confidence=0.93)
+            if (result or result4) and ((result2 is None)):
+                checkSelect = 1
                 checkSelect = 1
             states.append(checkSelect)
         print("GetStates Costs ", time.time()-st)
         return states
+
+    def Goverlap(self, imgCv, pos):
+        overlap=["overlapEx0","overlapEx1","overlapEx2","overlapEx3","card_overlap4"]
+        for i in range(0, len(overlap)):
+            result2 = LocateOnImage(imgCv, self.PicsCV[overlap[i]], region=pos,
+                          confidence=0.95)
+            if result2:
+                return  result2
+        return  None
     def GetCards(self, image,handCount):
         st = time.time()
         imgCv = cv2.cvtColor(np.asarray(image), cv2.COLOR_RGB2BGR)
@@ -302,13 +313,14 @@ class GameHelper:
             temp_x = sx+ spaceX *( i)
             if temp_x >= (SCREEN_WIDTH - 50):
                 break
-            checkSelect = 0
-            result = LocateOnImage(imgCv, self.PicsCV["card_overlap"], region=(temp_x+3, spaceY-55, spaceX, 40), confidence=0.93)
-            result4 = LocateOnImage(imgCv, self.PicsCV["card_overlap4"], region=(temp_x+3, spaceY-145, spaceX, 40), confidence=0.93)
+            if i==10:
+                a=4
 
+            checkSelect = 0
+            result = LocateOnImage(imgCv, self.PicsCV["card_overlap"], region=(temp_x+3, spaceY-55, spaceX, 40), confidence=0.85)
+            result4 =result4 =self.Goverlap(imgCv,(temp_x + 3, spaceY - 15, spaceX, 40))# LocateOnImage(imgCv, self.PicsCV["card_overlap4"], region=(temp_x+3, spaceY - 55, spaceX, 40),confidence=0.85)
             result2 = LocateOnImage(imgCv, self.PicsCV["card_overlap2"], region=(temp_x+3, spaceY-15, spaceX, 40), confidence=0.93)
-            #result3 = LocateOnImage(imgCv, self.PicsCV["card_overlap3"], region=(temp_x, spaceY - 10, spaceX, 40),confidence=0.85)
-            if (result ) and ((result2 is None )):
+            if (result or result4 ) and ((result2 is None )):
                 checkSelect = 1
             select_map.append(checkSelect)
             currCard = ""
