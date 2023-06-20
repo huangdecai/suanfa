@@ -254,18 +254,18 @@ TESTC_API int fntestPython2(tagInPyhonNew *pythonIn)
 	{
 		return 0;
 	}
-	log("\ncbHandCardCount:%d\n", pythonIn->cbHandCardCount);
-	log("\ntestCount:%d\n", testCount);
+	log("cbHandCardCount:%d", pythonIn->cbHandCardCount);
+	log("testCount:%d", testCount);
 	log(pythonIn->cbHandCardData, pythonIn->cbHandCardCount);
-	log("\nbTurnCardCount:%d\n", pythonIn->cbTurnCardCount);
+	log("bTurnCardCount:%d", pythonIn->cbTurnCardCount);
 	log(pythonIn->cbTurnCardData, pythonIn->cbTurnCardCount);
-	log("\n cbDiscardCardCount:%d,\n", pythonIn->cbDiscardCardCount);
+	log("cbDiscardCardCount:%d,", pythonIn->cbDiscardCardCount);
 	log(pythonIn->cbDiscardCard, pythonIn->cbDiscardCardCount);
-	log("\n cbOtherDiscardCardCount:%d,\n", pythonIn->cbOtherDiscardCardCount);
+	log("cbOtherDiscardCardCount:%d,", pythonIn->cbOtherDiscardCardCount);
 	log(pythonIn->cbOtherDiscardCard, pythonIn->cbOtherDiscardCardCount);
-	log("\n cbCardDataEx:%d,\n", MAX_COUNT);
+	log("cbCardDataEx:%d,", MAX_COUNT);
 	log(pythonIn->cbCardDataEx, MAX_COUNT);
-	log( "\n cbMaxCard:%d,\n", MAX_COUNT);
+	log( "cbMaxCard:%d,", MAX_COUNT);
 	log(pythonIn->cbMaxCard, MAX_COUNT);
 	tagOutCardResultNew  OutCardResult;
 	CGameLogicNew m_GameLogicNew;
@@ -277,9 +277,9 @@ TESTC_API int fntestPython2(tagInPyhonNew *pythonIn)
 	}
 	pythonIn->cbCardCount = OutCardResult.cbCardCount;
 	CopyMemory(pythonIn->cbResultCard, OutCardResult.cbResultCard, MAX_COUNT);
-	log("cbResultCard:\n");
+	log("cbResultCard:%d",pythonIn->cbCardCount);
 	log(pythonIn->cbResultCard, pythonIn->cbCardCount);
-	log("End\n");
+	log("End");
 	return 1;
 }
 TESTC_API int fntestPythonType(tagInPyhonCardType *pythonIn)
@@ -298,9 +298,9 @@ TESTC_API int fntestPythonType(tagInPyhonCardType *pythonIn)
 	{
 		return 0;
 	}
-	log("\ncbHandCardCount:%d\n", pythonIn->cbHandCardCount);
+	log("cbHandCardCount:%d", pythonIn->cbHandCardCount);
 
-	log( "\ntestCount:%d\n", testCount);
+	log( "testCount:%d", testCount);
 	log(pythonIn->cbHandCardData, pythonIn->cbHandCardCount);
 	CGameLogicNew m_GameLogicNew;
 	pythonIn->cbType=m_GameLogicNew.GetCardType(pythonIn->cbHandCardData, pythonIn->cbHandCardCount);
@@ -309,21 +309,21 @@ TESTC_API int fntestPythonType(tagInPyhonCardType *pythonIn)
 		MessageBox(NULL, "网卡地址不对，请联系Q460000713", "网卡地址不对", MB_OK);
 		return 0;
 	}
-	log("\ntype:,%d\n", pythonIn->cbType);
+	log("type:,%d", pythonIn->cbType);
 	return 1;
 }
 TESTC_API int  PythonCountScore(tagInPyhonCardScore* pythonIn)
 {
 	CGameLogicNew m_GameLogicNew;
-	log("\ncbHandCardCount:%d\n", pythonIn->cbHandCardCount);
+	log("cbHandCardCount:%d", pythonIn->cbHandCardCount);
 
 	log(pythonIn->cbHandCardData, pythonIn->cbHandCardCount);
-	float score = m_GameLogicNew.LandScoreErRen(pythonIn->cbHandCardData, pythonIn->cbHandCardCount, pythonIn->cbCardScore);
+	int score = m_GameLogicNew.LandScoreErRen(pythonIn->cbHandCardData, pythonIn->cbHandCardCount, pythonIn->cbCardScore);
 	if (score < 0)
 	{
 		score = 0;
 	}
-	log("PythonCountScore:%d\n", score);
+	log("PythonCountScore:%d", score);
 
 	return score;
 }

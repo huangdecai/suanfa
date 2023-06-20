@@ -234,19 +234,19 @@ class GameHelper:
         imgCv = cv2.cvtColor(np.asarray(image), cv2.COLOR_RGB2BGR)
         states = []
         cardStartPos = pyautogui.locate(needleImage=self.Pics["card_edge"], haystackImage=image,
-                                        region=(1, 540, 880, 110), confidence=0.80)
+                                        region=(1, 687, 880, 63), confidence=0.80)
         if cardStartPos is None:
             return []
-        sx = cardStartPos[0]+7 #+ 23
+        sx = cardStartPos[0]+0 #+ 23
         cardSearchFrom = 0
         sy, sw, sh = 160, 58, 55
-        if handCount == 17:
+        if handCount <= 17:
             sw = 69
             sx = sx + 1
         elif handCount == 14:
-            sw = 81
+            sw = 69
         elif handCount <= 13:
-            sw = 86
+            sw = 69
         spaceX = sw
         spaceY = 540
         for i in range(0, MAX_CARD_COUNT):
@@ -257,23 +257,23 @@ class GameHelper:
             checkSelect = 0
             if i==11 :
                 a=4
-            result = LocateOnImage(imgCv, self.PicsCV["card_overlap"], region=(temp_x + 3, spaceY - 55, spaceX, 40),
-                                   confidence=0.85)
-            result4 =self.Goverlap(imgCv,(temp_x + 3, spaceY - 15, spaceX, 40))
-            result2 = LocateOnImage(imgCv, self.PicsCV["card_overlap2"], region=(temp_x + 3, spaceY - 15, spaceX, 40),
-                                    confidence=0.93)
-            if (result or result4) and ((result2 is None)):
-                checkSelect = 1
-                checkSelect = 1
+            # result = LocateOnImage(imgCv, self.PicsCV["card_overlap"], region=(temp_x+3, spaceY-55, spaceX, 40), confidence=0.85)
+            result4 = self.Goverlap(image, (temp_x - 3, spaceY - 40, spaceX,
+                                            42))  # LocateOnImage(imgCv, self.PicsCV["card_overlap4"], region=(temp_x+3, spaceY - 55, spaceX, 40),confidence=0.85)
+            # result2 = LocateOnImage(imgCv, self.PicsCV["card_overlap2"], region=(temp_x+3, spaceY-15, spaceX, 40), confidence=0.93)
+            # if (result or result4 ) and ((result2 is None )):
+            if (result4):
+               checkSelect = 1
             states.append(checkSelect)
         print("GetStates Costs ", time.time()-st)
         return states
 
-    def Goverlap(self, imgCv, pos):
-        overlap=["overlapEx0","overlapEx1","overlapEx2","overlapEx3","card_overlap4"]
-        for i in range(0, len(overlap)):
-            result2 = LocateOnImage(imgCv, self.PicsCV[overlap[i]], region=pos,
-                          confidence=0.95)
+    def Goverlap(self, image, pos):
+        imgCv = cv2.cvtColor(np.asarray(image), cv2.COLOR_RGB2BGR)
+        for i in range(0, 22):
+            tmpstr='overlapEx'+str(i)
+            #result2 = pyautogui.locate(needleImage=self.PicsCV[overlap[i]], haystackImage=image,region=pos, confidence=0.85)
+            result2 = LocateOnImage(imgCv, self.PicsCV[tmpstr], region=pos,confidence=0.80)
             if result2:
                 return  result2
         return  None
@@ -282,30 +282,30 @@ class GameHelper:
         imgCv = cv2.cvtColor(np.asarray(image), cv2.COLOR_RGB2BGR)
         tryCount = 10
         cardStartPos = pyautogui.locate(needleImage=self.Pics["card_edge"], haystackImage=image,
-                                        region=(1, 540, 880, 110), confidence=0.80)
+                                        region=(1, 687, 880, 63), confidence=0.85)
         while cardStartPos is None and tryCount > 0:
             cardStartPos = pyautogui.locate(needleImage=self.Pics["card_edge"], haystackImage=image,
-                                            region=(1, 540, 880, 110), confidence=0.80)
+                                            region=(1, 687, 880, 63), confidence=0.85)
             print("找不到手牌起始位置")
             tryCount -= 1
             #time.sleep(150)
         print("start pos", cardStartPos)
         if cardStartPos is None:
             return [],[]
-        sx = cardStartPos[0] +7#+ 23
+        sx = cardStartPos[0] +0#+ 23
         AllCardsNC = ['rD', 'bX', '2', 'A', 'K', 'Q', 'J', 'T', '9', '8', '7', '6', '5', '4', '3']
         #tmpdirct = {'rD':0, 'bX':0, '2':0, 'A':0, 'K':0, 'Q':0, 'J':0, 'T':0, '9':0, '8':0, '7':0, '6':0, '5':0, '4':0, '3':0}
         hand_cards = []
         select_map = []
         cardSearchFrom = 0
         sy, sw, sh = 160, 58, 55
-        if handCount==17:
+        if handCount<=17:
             sw=69
             sx=sx+1
         elif handCount == 14:
-                sw = 81
+                sw = 69
         elif handCount <= 13:
-                sw = 86
+                sw = 69
         spaceX=sw
         spaceY = 540
         for i in range(0, MAX_CARD_COUNT):
@@ -317,10 +317,11 @@ class GameHelper:
                 a=4
 
             checkSelect = 0
-            result = LocateOnImage(imgCv, self.PicsCV["card_overlap"], region=(temp_x+3, spaceY-55, spaceX, 40), confidence=0.85)
-            result4 =result4 =self.Goverlap(imgCv,(temp_x + 3, spaceY - 15, spaceX, 40))# LocateOnImage(imgCv, self.PicsCV["card_overlap4"], region=(temp_x+3, spaceY - 55, spaceX, 40),confidence=0.85)
-            result2 = LocateOnImage(imgCv, self.PicsCV["card_overlap2"], region=(temp_x+3, spaceY-15, spaceX, 40), confidence=0.93)
-            if (result or result4 ) and ((result2 is None )):
+            #result = LocateOnImage(imgCv, self.PicsCV["card_overlap"], region=(temp_x+3, spaceY-55, spaceX, 40), confidence=0.85)
+            result4 =self.Goverlap(image,(temp_x-3, spaceY - 40, spaceX, 42))# LocateOnImage(imgCv, self.PicsCV["card_overlap4"], region=(temp_x+3, spaceY - 55, spaceX, 40),confidence=0.85)
+            #result2 = LocateOnImage(imgCv, self.PicsCV["card_overlap2"], region=(temp_x+3, spaceY-15, spaceX, 40), confidence=0.93)
+            #if (result or result4 ) and ((result2 is None )):
+            if (result4):
                 checkSelect = 1
             select_map.append(checkSelect)
             currCard = ""
@@ -509,7 +510,7 @@ class GameHelper:
                     print("点击", handCardsInfo[i][1])
                     break
 
-            time.sleep(0.2)  #这里不能设置过快，否则会造成上面点击的扑克弹起了，但是下面得到的截图是没弹起的
+            time.sleep(0.3)  #这里不能设置过快，否则会造成上面点击的扑克弹起了，但是下面得到的截图是没弹起的
             if self.Interrupt:
                 break
             if no_check:

@@ -32,13 +32,6 @@ from ctypes import *
 MAX_COUNT=20
 NORMAL_COUNT=17
 FULL_COUNT=54
-EnvCard2RealCard = {3: '3', 4: '4', 5: '5', 6: '6', 7: '7',
-                    8: '8', 9: '9', 10: 'T', 11: 'J', 12: 'Q',
-                    13: 'K', 14: 'A', 17: '2', 20: 'X', 30: 'D'}
-
-RealCard2EnvCard = {'3': 3, '4': 4, '5': 5, '6': 6, '7': 7,
-                    '8': 8, '9': 9, 'T': 10, 'J': 11, 'Q': 12,
-                    'K': 13, 'A': 14, '2': 17, 'X': 20, 'D': 30}
 
 AllEnvCard = [3, 3, 3, 3, 4, 4, 4, 4, 5, 5, 5, 5, 6, 6, 6, 6, 7, 7, 7, 7,
               8, 8, 8, 8, 9, 9, 9, 9, 10, 10, 10, 10, 11, 11, 11, 11, 12,
@@ -92,7 +85,6 @@ class MyPyQT_Form(QtWidgets.QWidget, Ui_Form):
         self.LPlayedCardsPos = (130, 150, 600, 80)  # 左边截图区域
         self.RPlayedCardsPos = (189, 195, 840, 150)  # 右边截图区域
         self.RPlayedPassPos = (905, 118, 200, 80)
-        self.passBtnPos = (188, 320, 200, 80)
         self.otherPassPos = (906, 122, 200, 80)
         self.yaoBuQiBtnPos = (555, 406, 200, 80)
         self.buChuBtnPos = (300, 400, 200, 80)
@@ -106,6 +98,7 @@ class MyPyQT_Form(QtWidgets.QWidget, Ui_Form):
         self.canRecord = threading.Lock()  # 开始记牌
         self.configData=None
         self.readJson()
+        self.yuanShiZhangShu=self.MAX_CARD_COUNT
         #self.init_cards()
     def init_display(self):
         self.WinRate.setText("评分")
@@ -140,13 +133,13 @@ class MyPyQT_Form(QtWidgets.QWidget, Ui_Form):
         self.myHavePassType = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
         self.allDisCardData=''
         self.shengYuCardData=''
-        self.handCardCount=[self.MAX_CARD_COUNT,self.MAX_CARD_COUNT,self.MAX_CARD_COUNT]
+        self.handCardCount=[NORMAL_COUNT,NORMAL_COUNT,NORMAL_COUNT]
         self.bHavePass=False
         #self.detect_start_btn()
         #helper.ClickOnImage("change_player_btn", region=self.changePlayerBtnPos)
         self.env = None
         self.game_over= False
-        helper.bTest = True
+        helper.bTest = False
         # 识别玩家手牌
 
         #tmpHandCard = self.changeDataOut('2AKQQJJT99877753')
@@ -158,8 +151,8 @@ class MyPyQT_Form(QtWidgets.QWidget, Ui_Form):
            result = helper.LocateOnScreen("tip_btn", region=self.tipBtnPos, confidence=0.75)
            self.turnCardReal = self.find_other_cardsEx(self.RPlayedCardsPos)
            c = 0
-        self.handCardCount[0] = NORMAL_COUNT
         #self.play_order = self.find_landlord()
+        self.handCardCount[0]=NORMAL_COUNT
         self.user_hand_cards_real = self.find_my_cards(self.MyHandCardsPos) #'2AKQQJJT99877753'
         while len(self.user_hand_cards_real)<NORMAL_COUNT :
             self.user_hand_cards_real = self.find_my_cards(self.MyHandCardsPos)
@@ -176,14 +169,19 @@ class MyPyQT_Form(QtWidgets.QWidget, Ui_Form):
         self.play_order = self.find_landlord()
         if self.play_order==0:
             self.handCardCount[0] = MAX_COUNT
+            self.yuanShiZhangShu =MAX_COUNT
             self.user_hand_cards_real = self.find_my_cards(self.MyHandCardsPos)  # '2AKQQJJT99877753'
             while len(self.user_hand_cards_real) == self.handCardCount[0]:
                 self.user_hand_cards_real = self.find_my_cards(self.MyHandCardsPos)
                 self.sleep(2000)
                 print("handDataCountShiBieWenTi2", len(self.user_hand_cards_real))
+            self.UserHandCards.setText(self.user_hand_cards_real)
             while self.RunGame and self.have_white(self.RPlayedCardsPos) == 0 :
                 print(self.play_order, "等待出牌按钮")
                 self.sleep(10)
+        else:
+            self.yuanShiZhangShu = NORMAL_COUNT
+            self.handCardCount[1] = MAX_COUNT
 
         self.shengYuCardData=self.shengYuCardData+self.user_hand_cards_real
         self.shengYuPaiShow(self.shengYuCardData)
@@ -213,7 +211,7 @@ class MyPyQT_Form(QtWidgets.QWidget, Ui_Form):
                     break
         return tmpstr
     def isGameOver(self):
-        return self.handCardCount[0]==0 or self.handCardCount[2]==0
+        return self.handCardCount[0]==0 or self.handCardCount[1]==0
     def start(self):
         print("开始出牌\n")
         while not self.game_over:
@@ -235,31 +233,34 @@ class MyPyQT_Form(QtWidgets.QWidget, Ui_Form):
 
                 bPass=False
                 if len(action_message) == 0:
-                    result = helper.LocateOnScreen("pass_btn", region=tempOutCardPos, confidence=0.85)
+                    result = helper.LocateOnScreen("pass_btn", region=self.buChuBtnPos, confidence=0.85)
                     if result:
                         helper.ClickOnImage("pass_btn", region=self.buChuBtnPos)
+                        print(self.play_order, "pass_btn")
                     else:
                         helper.ClickOnImage("yaobuqi", region=self.yaoBuQiBtnPos)
-                    print(self.play_order,"pass_btn")
+                        print(self.play_order, "yaobuqi")
                     bPass=True
                 else:
                     if self.onlyTip :
-                        a=4
+                        print(self.play_order, "提示模式，请手动打牌")
                     else:
                         if len(hand_cards_str) == 0 and len(action_message) == 1:
+                            print("SelectCards1",action_message)
                             helper.SelectCards(action_message,self.handCardCount[0], True)
                         else:
+                            print("SelectCards2", action_message)
                             helper.SelectCards(action_message,self.handCardCount[0])
                         #self.sleep(1000)
                         tryCount = 20
-                        result = helper.LocateOnScreen("go_btn", region=tempOutCardPos, confidence=0.95)
+                        result = helper.LocateOnScreen("go_btn", region=tempOutCardPos, confidence=0.85)
                         while result is None :
                             if not self.RunGame:
                                 break
                             print(self.play_order,"等待出牌按钮",tempOutCardPos[0])
                             self.detect_start_btn()
                             tryCount -= 1
-                            result = helper.LocateOnScreen("go_btn", region=tempOutCardPos, confidence=0.95)
+                            result = helper.LocateOnScreen("go_btn", region=tempOutCardPos, confidence=0.85)
                             self.sleep(50)
                         helper.ClickOnImage("go_btn", region=tempOutCardPos, confidence=0.85)
 
@@ -275,7 +276,7 @@ class MyPyQT_Form(QtWidgets.QWidget, Ui_Form):
                 self.UserHandCards.setText("手牌：" + self.user_hand_cards_real)
                 print(self.play_order,"handcount0：", self.handCardCount[0])
                 print(self.play_order,"handcount1：", self.handCardCount[1])
-                print(self.play_order, "handcount2：", self.handCardCount[2])
+                print(self.play_order, "handcount2：", self.handCardCount[1])
 
                 result = self.getTipBtnrResult()
                 while (result is not None) and bPass==False :
@@ -298,7 +299,7 @@ class MyPyQT_Form(QtWidgets.QWidget, Ui_Form):
                     pass_flag = helper.LocateOnScreen('pass', region=self.otherPassPos,
                                                       confidence=self.PassConfidence)
                     GameOverCheckOut=GameOverCheckOut+1
-                    if GameOverCheckOut%10==0:
+                    if GameOverCheckOut%5==0:
                         result = helper.LocateOnScreen("change_player_btn", region=self.changePlayerBtnPos)
                         if (result is not None) :
                             bGameOver=True
@@ -327,9 +328,10 @@ class MyPyQT_Form(QtWidgets.QWidget, Ui_Form):
                         self.turnCardReal = ""
                         self.bHavePass = True
                         self.yaoBuQi=True
+                        print("下家不要")
 
                     print(self.play_order,"handcount0：", self.handCardCount[0])
-                    print(self.play_order,"handcount2：", self.handCardCount[2])
+                    print(self.play_order,"handcount1：", self.handCardCount[1])
 
                     self.shengYuPaiShow(self.shengYuCardData)
                     self.sleep(800)
@@ -362,7 +364,7 @@ class MyPyQT_Form(QtWidgets.QWidget, Ui_Form):
                 else:
                     helper.ClickOnImage("bujiao", region=self.buJiaoBtnPos)
                     break
-                print("jiaoDiZhuCheck...0")
+                print("jiaoDiZhuCheck...0",score)
             elif resultQ:
                 score = self.getCardScore(self.user_hand_cards_real)
                 if score > 20 and operateCount==0:
@@ -371,7 +373,7 @@ class MyPyQT_Form(QtWidgets.QWidget, Ui_Form):
                 else:
                     helper.ClickOnImage("buqiang", region=self.buJiaoBtnPos)
                     break
-                print("jiaoDiZhuCheck...1")
+                print("jiaoDiZhuCheck...1",score)
             self.sleep(100)
             result = self.getTipBtnrResult()
             if result:
@@ -416,10 +418,10 @@ class MyPyQT_Form(QtWidgets.QWidget, Ui_Form):
         #self.ThreeLandlordCards.resize(300,100)
         AllCard = {'3': 3, '4': 4, '5': 5, '6': 6, '7': 7,
                     '8': 8, '9': 9, 'T': 10, 'J': 11, 'Q': 12,
-                    'K': 13, 'A': 1, '2': 2, 'X': 20, 'D': 30}
+                    'K': 13, 'A': 1, '2': 2, 'X': 14, 'D': 15}
         AllCardCount = {3: 4, 4: 4, 5: 4, 6: 4, 7: 4,
                    8: 4, 9: 4, 10: 4, 11: 4, 12: 4,
-                   13: 4, 1: 4, 2: 4, 16: 0, 17: 0,20: 1,30: 1}
+                   13: 4, 1: 4, 2: 4, 14: 1, 15: 1}
         AllCardStr = '3456789TJQKA2XD'
         tmpCard = [AllCard[c] for c in list(cards)]
         for i in range(0, len(tmpCard)):
@@ -442,6 +444,7 @@ class MyPyQT_Form(QtWidgets.QWidget, Ui_Form):
             if len(cards)>=10:
                 return
             tmtype = self.getCardType(cards)
+            print("FillPassType:",tmtype)
             value=self.GetMaxCount(cards)
             if self.myHavePassType[tmtype] == 0:
                 self.myHavePassType[tmtype] = value
@@ -452,10 +455,10 @@ class MyPyQT_Form(QtWidgets.QWidget, Ui_Form):
             # 转换外面传进来的数据
             AllCard = {'3': 3, '4': 4, '5': 5, '6': 6, '7': 7,
                        '8': 8, '9': 9, 'T': 10, 'J': 11, 'Q': 12,
-                       'K': 13, 'A': 1, '2': 2, 'X': 20, 'D': 30}
+                       'K': 13, 'A': 1, '2': 2, 'X': 14, 'D': 15}
             AllCardCount = {3: 0, 4: 0, 5: 0, 6: 0, 7: 0,
                             8: 0, 9: 0, 10: 0, 11: 0, 12: 0,
-                            13: 0, 1: 0, 2: 0, 16: 0, 17: 0}
+                            13: 0, 1: 0, 2: 0, 14: 0, 15: 0}
             tmpCard = [AllCard[c] for c in list(cards)]
             AllcardData = []
             for i in range(0, len(tmpCard)):
@@ -475,7 +478,7 @@ class MyPyQT_Form(QtWidgets.QWidget, Ui_Form):
                     'K': 13, 'A': 1, '2': 2, 'X': 14, 'D': 15}
         AllCardCount = {3: 0, 4: 0, 5: 0, 6: 0, 7: 0,
                    8: 0, 9: 0, 10: 0, 11: 0, 12: 0,
-                   13: 0, 1: 0, 2: 0, 16: 0, 17: 0}
+                   13: 0, 1: 0, 2: 0, 14: 0, 15: 0}
         tmpCard = [AllCard[c] for c in list(cards)]
         AllcardData=[]
         for i in range(0, len(tmpCard)):
@@ -561,7 +564,7 @@ class MyPyQT_Form(QtWidgets.QWidget, Ui_Form):
         arg1.cbDiscardCardCount = len(tmpDiscard)
         arg1.cbOtherDiscardCount = len(tmpOtherDiscard)
         arg1.cbCardCount=0
-        arg1.cbCardDataEx[2]=self.MAX_CARD_COUNT
+        arg1.cbCardDataEx[2]=self.yuanShiZhangShu
         if bPass :
             arg1.cbCardDataEx[0] = 1
 

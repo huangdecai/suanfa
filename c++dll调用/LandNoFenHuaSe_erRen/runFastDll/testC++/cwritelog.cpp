@@ -28,7 +28,7 @@ void cwritelog::LogV(const char *pszFmt, va_list argp)
 	sprintf(datestr, "%04d-%02d-%02d", now->tm_year + 1900, now->tm_mon + 1, now->tm_mday);
 	sprintf(timestr, "%02d:%02d:%02d", now->tm_hour, now->tm_min, now->tm_sec);
 	sprintf(mss, "%03d:", tb.millitm);
-	printf("%s %s.%s %s", datestr, timestr, mss, logstr);
+	//printf("%s %s.%s %s", datestr, timestr, mss, logstr);
 	FILE *flog = fopen(logfilename1, "a");
 	if (NULL != flog) {
 		fprintf(flog, "%s %s.%s %s\n", datestr, timestr, mss, logstr);

@@ -960,11 +960,30 @@ float CGameLogicNew::GetHandScore(vector<tagOutCardResultNew> &CardTypeResult, i
 			shunIndex = i;
 			vecShunZiCount.push_back(CardTypeResult[i].cbCardCount);
 		}
-		if (CardTypeResult[i].cbCardType == CT_DOUBLE)
+		if (CardTypeResult[i].cbCardType == CT_MISSILE_CARD)
+		{   
+				score += 30;
+		}
+		else if (CardTypeResult[i].cbCardType == CT_DOUBLE)
 		{   //为了解决压对12,12，手上牌1,1,13,13,12，12，8，6，6上对1还是上对13的问题
 			if (GetCardLogicValue(CardTypeResult[i].cbResultCard[0])==14)
 			{
 				score += 5;
+			}
+			else if (GetCardLogicValue(CardTypeResult[i].cbResultCard[0]) == 15)
+			{
+				score += 7;
+			}
+		}
+		else if (CardTypeResult[i].cbCardType == CT_THREE)
+		{   //为了解决压对12,12，手上牌1,1,13,13,12，12，8，6，6上对1还是上对13的问题
+			if (GetCardLogicValue(CardTypeResult[i].cbResultCard[0]) == 14)
+			{
+				score += 7;
+			}
+			else if (GetCardLogicValue(CardTypeResult[i].cbResultCard[0]) == 15)
+			{
+				score += 9;
 			}
 		}
 		else if (m_bTrunMode&& CardTypeResult[i].cbCardType == CT_SINGLE)
@@ -1102,7 +1121,7 @@ float  CGameLogicNew::GetCardTypeScore(tagOutCardResultNew& CardTypeResult)
 	else if (type == CT_DOUBLE)
 	{
 		float score = (float)GetCardLogicValue(cbCardData[0]) / 100;
-		float tempscore = (float)(GetCardLogicValue(cbCardData[0]) - 7);
+		float tempscore = (float)(GetCardLogicValue(cbCardData[0]) - 6);
 		return score+tempscore ;
 	}
 	else if (type == CT_THREE)
@@ -2631,14 +2650,14 @@ BYTE CGameLogicNew::SearchTakeCardType(const BYTE cbHandCardData[], BYTE cbHandC
 							CopyMemory(cbRemainCardData, cbTmpCardData, cbHandCardCount);
 							BYTE cbRemainCardCount = cbHandCardCount - SameCardResult.cbCardCount[i];
 							RemoveCard(SameCardResult.cbResultCard[i], SameCardResult.cbCardCount[i], cbRemainCardData, cbHandCardCount);
-							if (cbSameCount == 4 || (G_THREE_TAKE_TWO_DAN&&cbTakeCardCount == 2 && cbSameCount == 3))
+							if (cbSameCount == 4 || (cbSameCount == 3 && cbTakeCardCount == 1) || (G_THREE_TAKE_TWO_DAN&&cbTakeCardCount == 2 && cbSameCount == 3))
 							{
 								//单牌组合
 								BYTE cbComCard[MAX_COLS];
 								BYTE cbComResCard[MAX_RESULT_COUNT][MAX_COLS];
 								int cbComResLen = 0;
-								BYTE cbSingleCardCount = 2;
-								//cbRemainCardCount = ClearReLogicValue(cbRemainCardData, cbRemainCardCount);
+								BYTE cbSingleCardCount = cbTakeCardCount;
+								cbRemainCardCount = ClearReLogicValue(cbRemainCardData, cbRemainCardCount);
 								Combination(cbComCard, 0, cbComResCard, cbComResLen, cbRemainCardData, cbSingleCardCount, cbRemainCardCount, cbSingleCardCount);
 								for (BYTE m = 0; m < cbComResLen; m++)
 								{
@@ -6177,15 +6196,7 @@ bool CGameLogicNew::SearchOutCardErRen(BYTE cbHandCardData[], BYTE cbHandCardCou
 	CopyMemory(m_cbMaxCard, MaxCard, sizeof(m_cbMaxCard));
 	CopyMemory(m_cbCardDataEx, cbCardDataEx, sizeof(m_cbCardDataEx));
 	m_cbCardTypeCount = m_cbCardDataEx[2];
-	if (m_cbCardTypeCount == 0)
-	{
-		m_cbCardTypeCount = NORMAL_COUNT;
-	}
-	m_cbUserCardCount[1] = (NORMAL_COUNT - cbOtherDiscardCount);
-	if (m_cbCardTypeCount==15)
-	{
-		m_cbUserCardCount[1] -= 1;
-	}
+	m_cbUserCardCount[1] = (m_cbCardTypeCount - cbOtherDiscardCount);
 	m_bHavePass = m_cbCardDataEx[0];
 	m_cbFirstCard = m_cbCardDataEx[1];
 

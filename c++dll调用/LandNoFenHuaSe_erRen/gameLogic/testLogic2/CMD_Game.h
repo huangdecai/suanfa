@@ -24,7 +24,7 @@
 #define MAX_RESULT_COUNT					500									//全牌数目
 #define MAX_COLS 8
 //逻辑数目
-#define NORMAL_COUNT				16									//常规数目
+#define NORMAL_COUNT				17									//常规数目
 #define DISPATCH_COUNT				48									//派发数目
 #define GOOD_CARD_COUTN				38									//好牌数目
 #define MING_PAI                    1                                   //是否明牌,0是不,1是明
