@@ -988,14 +988,14 @@ float CGameLogicNew::GetHandScore(vector<tagOutCardResultNew> &CardTypeResult, i
 		}
 		else if (m_bTrunMode&& CardTypeResult[i].cbCardType == CT_SINGLE)
 		{   //为了解决压对12,12，手上牌1,1,13,13,12，12，8，6，6上对1还是上对13的问题
-			if (GetCardLogicValue(CardTypeResult[i].cbResultCard[0]) == 15)
+			if (GetCardLogicValue(CardTypeResult[i].cbResultCard[0]) == 14)
 			{
 				bHave2 = true;
-				score += 7;
+				score += 3;
 			}
-			else if (bHave2&&GetCardLogicValue(CardTypeResult[i].cbResultCard[0]) == 14)
+			else if (bHave2&&GetCardLogicValue(CardTypeResult[i].cbResultCard[0]) == 15)
 			{
-				score += 11;
+				score += 5;
 			}
 		}
 	}
@@ -3085,7 +3085,7 @@ int CGameLogicNew::YouXianDaNengShouHuiCard(const BYTE cbHandCardData[], BYTE cb
 		{
 			tempAllCount += vecMinTypeCardResult[allMaxCardIndex[i]].cbCardCount;
 		}
-		if ((tempAllCount + NoXiangDuiDaPaiMaxCount) >= cbHandCardCount )
+		if ((tempAllCount + NoXiangDuiDaPaiMaxCount) >= m_cbUserCardCount[0])
 		{
 			bZhiJieChu = true;
 		}
@@ -3402,7 +3402,7 @@ int CGameLogicNew::IsBiShengTurnCard(const BYTE cbHandCardData[], BYTE cbHandCar
 		{
 			tempAllCount += vecMinTypeCardResult[allMaxCardIndex[i]].cbCardCount;
 		}
-		if ((tempAllCount + NoXiangDuiDaPaiMaxCount) >= cbHandCardCount)
+		if ((tempAllCount + NoXiangDuiDaPaiMaxCount) >= m_cbUserCardCount[0])
 		{
 			bZhiJieChu = true;
 		}
@@ -4526,10 +4526,21 @@ bool CGameLogicNew::OutCardShengYuFenCheck(BYTE cbHandCardCount, const BYTE * cb
 	if ((resultIndex != -1) && bExistBiYing==false)
 	{
 		int tempCardType= GetCardType(SearchCardResult.cbResultCard[resultIndex], SearchCardResult.cbCardCount[resultIndex]);
-		float tempCardScore = 20;
-
-		if (false)
+		float tempCardScore = MinTypeScoreVec-tableScore[resultIndex];
+		int vecMinTypeCardResultCount = vecMinTypeCardResult.size();
+		int TempMinTypeCardResultCount = TempMinTypeCardResult[resultIndex].size();
+		if (tempCardScore>20)
 		{
+			if (TempMinTypeCardResultCount - vecMinTypeCardResultCount>=1)
+			{
+				if (m_cbUserCardCount[1]>2)
+				{
+					resultIndex = -1;
+				}
+				else{
+
+				}
+			}
 		}
 		else{
 			if (tempCardType >= CT_BOMB_CARD)
@@ -5784,7 +5795,7 @@ bool CGameLogicNew::FindMaxTypeTakeOneType(const BYTE cbHandCardData[], BYTE cbH
 		{
 			for (int i = 0; i < vecMinTypeCardResult.size(); i++)
 			{
-				if (vecMinTypeCardResult[i].cbCardCount  >= cbHandCardCount)
+				if (vecMinTypeCardResult[i].cbCardCount  >= m_cbUserCardCount[0])
 				{
 					ZeroMemory(&OutCardResult, sizeof(OutCardResult));
 					OutCardResult.cbCardCount = vecMinTypeCardResult[i].cbCardCount;
@@ -5834,7 +5845,7 @@ bool CGameLogicNew::FindMaxTypeTakeOneType(const BYTE cbHandCardData[], BYTE cbH
 	{
 		for (int i = 0; i < vecMinTypeCardResult.size(); i++)
 		{
-			if (vecMinTypeCardResult[i].cbCardCount  >= cbHandCardCount)
+			if (vecMinTypeCardResult[i].cbCardCount >= m_cbUserCardCount[0])
 			{
 				ZeroMemory(&OutCardResult, sizeof(OutCardResult));
 				OutCardResult.cbCardCount = vecMinTypeCardResult[i].cbCardCount;
@@ -6089,7 +6100,7 @@ bool CGameLogicNew::SearchOtherHandCardSame(const BYTE cbHandCardData[], BYTE cb
 					break;
 				}
 			}
-			if (sameCount >= cbHandCardCount)
+			if (sameCount >= m_cbUserCardCount[0])
 			{
 				bExistMax = true;
 				break;
@@ -6196,7 +6207,10 @@ bool CGameLogicNew::SearchOutCardErRen(BYTE cbHandCardData[], BYTE cbHandCardCou
 	CopyMemory(m_cbMaxCard, MaxCard, sizeof(m_cbMaxCard));
 	CopyMemory(m_cbCardDataEx, cbCardDataEx, sizeof(m_cbCardDataEx));
 	m_cbCardTypeCount = m_cbCardDataEx[2];
-	m_cbUserCardCount[1] = (m_cbCardTypeCount - cbOtherDiscardCount);
+	m_cbRangCount = m_cbCardDataEx[0];
+	m_cbBeiRangCount = m_cbCardDataEx[1];
+	m_cbUserCardCount[0] = cbHandCardCount - m_cbBeiRangCount;
+	m_cbUserCardCount[1] = (m_cbCardTypeCount - cbOtherDiscardCount - m_cbRangCount);
 	m_bHavePass = m_cbCardDataEx[0];
 	m_cbFirstCard = m_cbCardDataEx[1];
 
