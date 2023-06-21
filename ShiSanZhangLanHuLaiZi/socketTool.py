@@ -40,6 +40,8 @@ def to_byte(num, bits=None):
         bits = 8 # 给一个默认的的位长
     return num.to_bytes(bits // 8, byteorder='big')
 def sendData(client,wMainCmdID,wSubCmdID,data):
+    if not client:
+        return
     tcp_info = TCP_Head()
     headSize=(sizeof(tcp_info))
     loginSize=(sizeof(data))
@@ -69,6 +71,9 @@ def EncryptBuffer(data,index,bClient):
     return gameData
 def recveData(client):
     header = client.recv(8)
+    if not header:
+        client.close()
+        return None, None
     tmpdata = bytearray() + header
     if len(tmpdata)<8:
         return None,None
