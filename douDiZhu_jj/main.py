@@ -93,12 +93,15 @@ class MyPyQT_Form(QtWidgets.QWidget, Ui_Form):
         self.outCardBtnPos = (830, 400, 200, 150)
         self.changePlayerBtnPos = (728, 617, 250, 80)
         self.tipBtnPos = (616, 406, 200, 100)
+        self.rangCardPos = (616, 406, 200, 100)
         # 信号量
         self.shouldExit = 0  # 通知上一轮记牌结束
         self.canRecord = threading.Lock()  # 开始记牌
         self.configData=None
         self.readJson()
         self.yuanShiZhangShu=self.MAX_CARD_COUNT
+        self.rangCount=0
+        self.beiRangCount=0
         #self.init_cards()
     def init_display(self):
         self.WinRate.setText("评分")
@@ -111,7 +114,25 @@ class MyPyQT_Form(QtWidgets.QWidget, Ui_Form):
         self.rightHaveOutCard = ""
         for player in self.Players:
             player.setStyleSheet('background-color: rgba(255, 0, 0, 0);')
+    def setRangCount(self):
+        tmpStr=["rang0","rang1","rang2","rang3","rang4"]
+        while True:
+            result = helper.LocateOnScreen("beirang", region=self.rangCardPos, confidence=0.75)
+            result2 = helper.LocateOnScreen("beirang2", region=self.rangCardPos, confidence=0.75)
+            if result:
+                for i,in range(0,len(tmpStr)):
+                    resultCount = helper.LocateOnScreen(tmpStr[i], region=self.rangCardPos, confidence=0.75)
+                    if resultCount:
+                        self.rangCount=i+1
+            elif result2:
+                for i,in range(0,len(tmpStr)):
+                    resultCount = helper.LocateOnScreen(tmpStr[i], region=self.rangCardPos, confidence=0.75)
+                    if resultCount:
+                        self.beiRangCount = i + 1
+            self.sleep(100)
 
+
+        return result or result2
     def switch_mode(self):
         self.AutoPlay = not self.AutoPlay
         self.SwitchMode.setText("自动" if self.AutoPlay else "单局")
@@ -202,6 +223,14 @@ class MyPyQT_Form(QtWidgets.QWidget, Ui_Form):
         result = helper.LocateOnScreen("tip_btn", region=self.tipBtnPos, confidence=0.75)
         result2 = helper.LocateOnScreen("tip_btn1", region=self.tipBtnPos, confidence=0.75)
         return  result or result2
+    def DeleteCard(self, src,sub):
+        tmpstr = src
+        for i in range(0, len(sub)):
+            for j in range(0, len(src)):
+                if sub[i] == src[j]:
+                    tmpstr = tmpstr.replace(sub[i], '', 1)
+                    break
+        return tmpstr
     def DeleteCard(self, src,sub):
         tmpstr = src
         for i in range(0, len(sub)):
@@ -564,6 +593,8 @@ class MyPyQT_Form(QtWidgets.QWidget, Ui_Form):
         arg1.cbDiscardCardCount = len(tmpDiscard)
         arg1.cbOtherDiscardCount = len(tmpOtherDiscard)
         arg1.cbCardCount=0
+        arg1.cbCardDataEx[0]=self.rangCount
+        arg1.cbCardDataEx[1] = self.beiRangCount
         arg1.cbCardDataEx[2]=self.yuanShiZhangShu
         if bPass :
             arg1.cbCardDataEx[0] = 1

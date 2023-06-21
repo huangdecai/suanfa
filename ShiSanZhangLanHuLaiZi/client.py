@@ -15,7 +15,8 @@ import struct
 
 MAX_COUNT=20
 class CMD_GR_LogonUserID(Structure):
-    _fields_ = [("dwUserID", c_int64 )
+    _fields_ = [("dwUserID", c_int64 ),
+                ("password", c_int64)
                 ]
 class CMD_GR_LogonSuccess(Structure):
     _fields_ = [("wTableID", c_ulong),
@@ -86,8 +87,8 @@ class Client:
     def userLogin(self):
         loginData = CMD_GR_LogonUserID()
         tmp=sizeof(loginData)
-
         loginData.dwUserID =self.userid
+        loginData.password = self.passWord
         socketTool.sendData(self.client, socketTool.MDM_GR_LOGON, socketTool.SUB_GR_LOGON_MOBILE, loginData)
     def userReady(self):
         loginData = CMD_GR_LogonUserID()
@@ -127,17 +128,24 @@ class Client:
                     self.msgCall(dataBuffer)
         else:
             print("ohter")
-    def accept(self,client,otherData):
+    def accept(self,client,parent):
         rlist = [client]
         wlist = []
         elist = []
-        while True:
+        while rlist:
             rs, ws, es = select.select(rlist, wlist, elist)
             for r in rs:
                 if r is client:
-                    head_info, complete_data = socketTool.recveData(client)
-                    if head_info:
-                        self.recvGameData(head_info, complete_data)
+                    try:
+                        head_info, complete_data = socketTool.recveData(client)
+                        if head_info:
+                            self.recvGameData(head_info, complete_data)
+                    except Exception as e:
+                        print(e.__str__())
+                        rlist.remove(client)
+                        parent.client.close()
+                        parent.client=None
+
 
     def readJson(self):
         with open("data_file.json", "r") as read_file:
@@ -145,6 +153,7 @@ class Client:
         self.userid = self.configData["userid"]
         self.tableid=self.configData["tableid"]
         self.port=self.configData["port"]
+        self.passWord=self.configData["password"]
     def start(self):
         isLogin = self.GetScoketHandle()
         if isLogin[0]:
@@ -153,7 +162,8 @@ class Client:
             # p = Process(target=self.accept, args=(self.client,otherData))
             # p.daemon = True
             # p.run()
-            t = threading.Thread(target=self.accept, args=(self.client,otherData))
+            t = threading.Thread(target=self.accept, args=(self.client,self))
+            t.setDaemon(True)
             t.start()
             testCount=1
             while True:
@@ -162,23 +172,25 @@ class Client:
                     if testCount==1:
                         a=4
                         self.userLogin()
+                        time.sleep(1)
                         self.userSitDown()
+                        time.sleep(1)
                         self.userReady()
                         #tmpHandCard=[0x01,0x02,0x03,0x04,0x05,0x06,0x07,0x08,0x09,0x0A,0x0B,0x0C,0x0D]
                         # tmpHandCard = [0x0D, 0x0D, 0x0D, 0x0D, 0x0D, 0x0D, 0x0D, 0x0D, 0x0D, 0x0D, 0x0D, 0x0D, 0x0D]
                         #ohtherCard=[0x0D, 0x0D, 0x0D]
                         #self.userCardData(tmpHandCard,ohtherCard)
-                    testCount=0
+                    #testCount=0
                     print("在连接")
                     break
-                    #time.sleep(20)
+                    time.sleep(10)
                 except Exception as e:
                     exc_type, exc_obj, exc_tb = sys.exc_info()
                     print(e)
                     traceback.print_tb(exc_tb)
                     # 如果遇到退出/中止信号，发送退出信息，关闭套接字，结束子进程，退出程序
-                    self.client.close()
-                    threading.Thread._Thread__stop(t)
+                    if self.client:
+                        self.client.close()
                     #p.terminate()
                     break
         else:

@@ -34,21 +34,22 @@ void TestGameLogic()
 	//BYTE    tempCard[] = { 0x2B, 0x0B, 0x05, 0x1D, 0x0D, 0x2D, 0x32, 0x33, 0x26, 0x16, 0x34, 0x14, 0x04 };
 	//BYTE    tempCard[] = { 0x3C, 0x32, 0x02, 0x3A, 0x09, 0x04, 0x24, 0x03, 0x1D, 0x1B, 0x1A, 0x17, 0x13 };
 	//BYTE    tempCard[] = { 0x1C, 0x12, 0x02, 0x38, 0x27, 0x05, 0x23, 0x03, 0x19, 0x28, 0x37, 0x26, 0x25 };
-	BYTE    tempCard[] = { 15, 14, 13, 13, 12, 12, 10, 10, 10, 10, 9, 8, 7, 6, 6, 5, 5 };
+	//BYTE    tempCard[] = { 15, 14, 13, 13, 12, 12, 10, 10, 10, 10, 9, 8, 7, 6, 6, 5, 5 };
+	BYTE    tempCard[] = { 15, 14, 13, 1, 12, 11,10,10, 9,9, 8, 7,  6, 5, 5, 5 };
 
 	//BYTE    tempCard[] = { 4, 38, 8, 56, 10, 9, 11, 43, 12, 44, 60, 1, 33 };
 
 	//BYTE    tempCard[] = { 0x09 };
 	//BYTE    tempCard[] = { 0x02 };
 	tagOutCardResultNew  OutCardResult;
-	BYTE cbTurnCardData[] = { 6, 6, 6, 7 };// { S6, 6, 5, 5, 4, 4 };
-	int cbTurnCardCount = 0;  sizeof(cbTurnCardData);
+	BYTE cbTurnCardData[] = { 6, 6 };// { S6, 6, 5, 5, 4, 4 };
+	int cbTurnCardCount =  sizeof(cbTurnCardData);
 	BYTE cbDiscardCard[] = { 9, 13,2 };
 	BYTE cbDiscardCardCount = 0;
-	BYTE cbOtherDisscard[] = { 6, 6, 6, 7 };
+	BYTE cbOtherDisscard[] = { /*12, 11, 10, 10, 9, 9, 8, 7, 12, 8, 7, */7,6, 6 };
 	BYTE cbOtherDisscardCount = sizeof(cbOtherDisscard);
 	BYTE maxCard[MAX_COUNT] = { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
-	BYTE cbCardDataEx[MAX_COUNT] = { 0, 0, 20, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
+	BYTE cbCardDataEx[MAX_COUNT] = { 2, 0, 20, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
 	WORD wBankerUser = 0;
 	WORD wUndersideUser = (wBankerUser + 1) % GAME_PLAYER;
 	WORD wUpsideUser = (wUndersideUser + 1) % GAME_PLAYER;

@@ -109,6 +109,8 @@ public:
 	//µØÖ÷Íæ¼Ò
 	BYTE							m_cbDiscardCard[FULL_COUNT];//·ÏÆúÅÆ
 	BYTE                            m_cbDiscardCardCount = 0;
+	BYTE                            m_cbRangCount = 0;
+	BYTE                            m_cbBeiRangCount = 0;
 	BYTE                            m_cbOtherDiscardCard[MAX_COUNT];
 	BYTE                            m_cbOtherDiscardCount = 0;
 	BYTE                            m_cbFirstCard = 0;
