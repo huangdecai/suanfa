@@ -18,10 +18,10 @@ const BYTE	CGameLogicNew::m_cbCardData[FULL_COUNT]=
 	//0x11,     0x13,0x14,0x15,0x16,0x17,0x18,0x19,0x1A,0x1B,0x1C,0x1D,	//梅花 A - K
 	//0x21,     0x23,0x24,0x25,0x26,0x27,0x28,0x29,0x2A,0x2B,0x2C,0x2D,	//红桃 A - K
 	//     0x32,0x33,0x34,0x35,0x36,0x37,0x38,0x39,0x3A,0x3B,0x3C,0x3D,	//黑桃 A - K
-	0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0x07, 0x08, 0x09, 0x0A, 0x0B, 0x0C, 0x0D,	//方块 A - K
-	0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0x07, 0x08, 0x09, 0x0A, 0x0B, 0x0C, 0x0D,	//梅花 A - K
-	0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0x07, 0x08, 0x09, 0x0A, 0x0B, 0x0C, 0x0D,	//红桃 A - K
-	0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0x07, 0x08, 0x09, 0x0A, 0x0B, 0x0C, 0x0D,	//黑桃 A - K
+	0x01, 0x02, 0x05, 0x06, 0x07, 0x08, 0x09, 0x0A, 0x0B, 0x0C, 0x0D,	//方块 A - K
+	0x01, 0x02, 0x05, 0x06, 0x07, 0x08, 0x09, 0x0A, 0x0B, 0x0C, 0x0D,	//梅花 A - K
+	0x01, 0x02, 0x05, 0x06, 0x07, 0x08, 0x09, 0x0A, 0x0B, 0x0C, 0x0D,	//红桃 A - K
+	0x01, 0x02, 0x05, 0x06, 0x07, 0x08, 0x09, 0x0A, 0x0B, 0x0C, 0x0D,	//黑桃 A - K
 	14, 15
 };
 
@@ -3113,12 +3113,12 @@ int CGameLogicNew::YouXianDaNengShouHuiCard(const BYTE cbHandCardData[], BYTE cb
 		for (int i = 0; i < CT_TYPE_COUNT; i++)
 		{
 			int tempSize = MaxIndexSet[i].size();
-			if (i == CT_DOUBLE&&cbHandCardCount >= m_cbCardTypeCount&&tempSize==2&&(doubleLogic[1]>=11))
+			if (i == CT_DOUBLE&&cbHandCardCount >= m_cbCardTypeCount&&tempSize == 2 && (doubleLogic.size()>1)&&(doubleLogic[1] >= 11))
 			{
 				danShuangNengShouNO = true;
 				continue;
 			}
-			else if (i == CT_SINGLE&&cbHandCardCount >= m_cbCardTypeCount&&tempSize == 2 && (singleLogic[1] >=11))
+			else if (i == CT_SINGLE&&cbHandCardCount >= m_cbCardTypeCount&&tempSize == 2 && (singleLogic.size()>1)&&(singleLogic[1] >= 11))
 			{
 				danShuangNengShouNO = true;
 				continue;
@@ -3679,7 +3679,7 @@ int CGameLogicNew::SearchMutilType(const BYTE cbHandCardData[], BYTE cbHandCardC
 			}
 			if (bExist == false && (tmpType == CT_THREE_TAKE_TWO || tmpType == CT_THREE_TAKE_ONE || tmpType == CT_DOUBLE))
 			{
-				if ((cbHandCardCount -  OutCardResult.cbCardCount) <= 1)
+				if ((m_cbUserCardCount[0] -  OutCardResult.cbCardCount) <= 1)
 				{
 					bExist = true;
 				}
@@ -4482,7 +4482,7 @@ bool CGameLogicNew::OutCardShengYuFenCheck(BYTE cbHandCardCount, const BYTE * cb
 						tempAllCount += TempMinTypeCardResult[i][j].cbCardCount;
 					}
 				}
-				if (cbHandCardCount - SearchCardResult.cbCardCount[i] - tempAllCount  <= 1)
+				if (m_cbUserCardCount[0] - SearchCardResult.cbCardCount[i] - tempAllCount <= 1)
 				{
 					MinTypeScore = tempMinTypeScore;
 					minTypeCount = tempMinTypeCount;
@@ -5332,12 +5332,15 @@ void CGameLogicNew::OutSingleOrDoubleMinCard(const BYTE * cbHandCardData, BYTE c
 	// --防止单牌从三带一中出去
 	if (type == CT_SINGLE)
 	{
-		vector<BYTE>::iterator itor;
-		for (itor = vecResultData.begin(); itor != vecResultData.end(); itor++)
+		vector<BYTE>::iterator itor = vecResultData.begin();
+		while (itor != vecResultData.end())
 		{
 			if (GetACardCount(cbHandCardData, cbHandCardCount, *itor) >= 3)
 			{
 				itor = vecResultData.erase(itor);
+			}
+			else{
+				itor++;
 			}
 		}
 	}
@@ -5411,7 +5414,7 @@ bool CGameLogicNew::WuDiCheck(const BYTE * cbHandCardData, BYTE cbHandCardCount,
 				return true;
 			}
 		}
-		else if (cbHandCardCount - SearchCardResult.cbCardCount[i]<=0){
+		else if (SearchCardResult.cbCardCount[i] >= m_cbUserCardCount[0]){
 			ZeroMemory(&OutCardResult, sizeof(OutCardResult));
 			OutCardResult.cbCardCount = SearchCardResult.cbCardCount[i];
 			CopyMemory(OutCardResult.cbResultCard, SearchCardResult.cbResultCard[i], OutCardResult.cbCardCount);
@@ -5467,7 +5470,7 @@ bool CGameLogicNew::CheckOutOneTypeWillWin(const BYTE * cbHandCardData, BYTE cbH
 		SearchOutCard(cbReserveCardData, cbReserveCardCount, tmpTurnCardData, tmpTurnCardCount, &SearchCardResult);
 		for (int i = 0; i < SearchCardResult.cbSearchCount; i++)
 		{
-			if (SearchCardResult.cbCardCount[i] >= cbReserveCardCount )
+			if (SearchCardResult.cbCardCount[i] >= (cbReserveCardCount-m_cbBeiRangCount ))
 			{
 				OutCardResult.cbCardCount = SearchCardResult.cbCardCount[i];
 				CopyMemory(OutCardResult.cbResultCard, SearchCardResult.cbResultCard[i], OutCardResult.cbCardCount);

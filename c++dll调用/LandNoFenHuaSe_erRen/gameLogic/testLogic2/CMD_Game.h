@@ -20,12 +20,12 @@
 #define CountArray(Array) (sizeof(Array)/sizeof(Array[0]))
 //数目定义
 #define MAX_COUNT					20									//最大数目
-#define FULL_COUNT					54									//全牌数目
+#define FULL_COUNT					46									//全牌数目
 #define MAX_RESULT_COUNT					500									//全牌数目
 #define MAX_COLS 8
 //逻辑数目
 #define NORMAL_COUNT				17									//常规数目
-#define DISPATCH_COUNT				48									//派发数目
+#define DISPATCH_COUNT				46									//派发数目
 #define GOOD_CARD_COUTN				38									//好牌数目
 #define MING_PAI                    1                                   //是否明牌,0是不,1是明
 //数值掩码

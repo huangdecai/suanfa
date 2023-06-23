@@ -178,9 +178,14 @@ class GameHelper:
                 imgCv = cv2.imread("./pics/" + file)
                 self.Pics.update({info[0]: tmpImage})
                 self.PicsCV.update({info[0]: imgCv})
-
+        self.duokaiStr = "雷电模拟器"
+    def setFindStr(self,findStr):
+        if findStr!='0':
+            self.duokaiStr = "雷电模拟器"
+            self.duokaiStr=self.duokaiStr+(findStr)
+            tmp=4
     def Screenshot(self, region=None):  # -> (im, (left, top))
-        self.Handle = win32gui.FindWindow("LDPlayerMainFrame", "雷电模拟器")
+        self.Handle = win32gui.FindWindow("LDPlayerMainFrame", self.duokaiStr)
         hwnd = self.Handle
         if self.bTest==True:
             im = Image.open(r"testRunFast2.png")
@@ -258,7 +263,7 @@ class GameHelper:
             if i==11 :
                 a=4
             # result = LocateOnImage(imgCv, self.PicsCV["card_overlap"], region=(temp_x+3, spaceY-55, spaceX, 40), confidence=0.85)
-            result4 = self.Goverlap(image, (temp_x - 3, spaceY - 40, spaceX,
+            result4 = self.Goverlap(image, (temp_x , spaceY - 40, spaceX,
                                             42))  # LocateOnImage(imgCv, self.PicsCV["card_overlap4"], region=(temp_x+3, spaceY - 55, spaceX, 40),confidence=0.85)
             # result2 = LocateOnImage(imgCv, self.PicsCV["card_overlap2"], region=(temp_x+3, spaceY-15, spaceX, 40), confidence=0.93)
             # if (result or result4 ) and ((result2 is None )):
@@ -318,7 +323,7 @@ class GameHelper:
 
             checkSelect = 0
             #result = LocateOnImage(imgCv, self.PicsCV["card_overlap"], region=(temp_x+3, spaceY-55, spaceX, 40), confidence=0.85)
-            result4 =self.Goverlap(image,(temp_x-3, spaceY - 40, spaceX, 42))# LocateOnImage(imgCv, self.PicsCV["card_overlap4"], region=(temp_x+3, spaceY - 55, spaceX, 40),confidence=0.85)
+            result4 =self.Goverlap(image,(temp_x, spaceY - 40, spaceX, 42))# LocateOnImage(imgCv, self.PicsCV["card_overlap4"], region=(temp_x+3, spaceY - 55, spaceX, 40),confidence=0.85)
             #result2 = LocateOnImage(imgCv, self.PicsCV["card_overlap2"], region=(temp_x+3, spaceY-15, spaceX, 40), confidence=0.93)
             #if (result or result4 ) and ((result2 is None )):
             if (result4):
@@ -402,7 +407,7 @@ class GameHelper:
                 break
             currCard = ""
             forBreak = False
-            ci = i
+            ci = 0
             checkSelect=0
             while ci < len(AllCardsNC):
                 if "r" in AllCardsNC[ci] or "b" in AllCardsNC[ci]:
@@ -488,14 +493,15 @@ class GameHelper:
         cardSelectMap = []
         #for card in handCardsInfo:
         #改成倒序的原因是有的平台点第二张，第三张跟着起来
-        for i in range(len(handCardsInfo),0,-1 ):
-            c = handCardsInfo[i-1][0]
+        #for i in range(len(handCardsInfo),0,-1 ):
+        for i in range(0,len(handCardsInfo)):
+            c = handCardsInfo[i][0]
             if c in tobeSelected:
                 cardSelectMap.append(1)
                 tobeSelected.remove(c)
             else:
                 cardSelectMap.append(0)
-        cardSelectMap=cardSelectMap[::-1]
+        #cardSelectMap=cardSelectMap[::-1]
         clickMap = []
         handcards = [c[0] for c in handCardsInfo]
         for i in range(0, len(cardSelectMap)):
@@ -510,7 +516,7 @@ class GameHelper:
                     print("点击", handCardsInfo[i][1])
                     break
 
-            time.sleep(0.3)  #这里不能设置过快，否则会造成上面点击的扑克弹起了，但是下面得到的截图是没弹起的
+            time.sleep(0.15)  #这里不能设置过快，否则会造成上面点击的扑克弹起了，但是下面得到的截图是没弹起的
             if self.Interrupt:
                 break
             if no_check:

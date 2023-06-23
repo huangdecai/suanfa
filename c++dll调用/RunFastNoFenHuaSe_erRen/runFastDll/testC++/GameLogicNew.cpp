@@ -3096,12 +3096,12 @@ int CGameLogicNew::YouXianDaNengShouHuiCard(const BYTE cbHandCardData[], BYTE cb
 		for (int i = 0; i < CT_TYPE_COUNT; i++)
 		{
 			int tempSize = MaxIndexSet[i].size();
-			if (i == CT_DOUBLE&&cbHandCardCount >= m_cbCardTypeCount&&tempSize==2&&(doubleLogic[1]>=11))
+			if (i == CT_DOUBLE&&cbHandCardCount >= m_cbCardTypeCount&&tempSize == 2 && (doubleLogic.size()>1) && (doubleLogic[1] >= 11))
 			{
 				danShuangNengShouNO = true;
 				continue;
 			}
-			else if (i == CT_SINGLE&&cbHandCardCount >= m_cbCardTypeCount&&tempSize == 2 && (singleLogic[1] >=11))
+			else if (i == CT_SINGLE&&cbHandCardCount >= m_cbCardTypeCount&&tempSize == 2 && (singleLogic.size()>1) && (singleLogic[1] >= 11))
 			{
 				danShuangNengShouNO = true;
 				continue;
@@ -5304,12 +5304,15 @@ void CGameLogicNew::OutSingleOrDoubleMinCard(const BYTE * cbHandCardData, BYTE c
 	// --防止单牌从三带一中出去
 	if (type == CT_SINGLE)
 	{
-		vector<BYTE>::iterator itor;
-		for (itor = vecResultData.begin(); itor != vecResultData.end(); itor++)
+		vector<BYTE>::iterator itor = vecResultData.begin();
+		while (itor != vecResultData.end())
 		{
 			if (GetACardCount(cbHandCardData, cbHandCardCount, *itor) >= 3)
 			{
 				itor = vecResultData.erase(itor);
+			}
+			else{
+				itor++;
 			}
 		}
 	}

@@ -34,8 +34,8 @@ void TestGameLogic()
 	//BYTE    tempCard[] = { 0x2B, 0x0B, 0x05, 0x1D, 0x0D, 0x2D, 0x32, 0x33, 0x26, 0x16, 0x34, 0x14, 0x04 };
 	//BYTE    tempCard[] = { 0x3C, 0x32, 0x02, 0x3A, 0x09, 0x04, 0x24, 0x03, 0x1D, 0x1B, 0x1A, 0x17, 0x13 };
 	//BYTE    tempCard[] = { 0x1C, 0x12, 0x02, 0x38, 0x27, 0x05, 0x23, 0x03, 0x19, 0x28, 0x37, 0x26, 0x25 };
-	//BYTE    tempCard[] = { 15, 14, 13, 13, 12, 12, 10, 10, 10, 10, 9, 8, 7, 6, 6, 5, 5 };
-	BYTE    tempCard[] = { 15, 14, 13, 1, 12, 11,10,10, 9,9, 8, 7,  6, 5, 5, 5 };
+	BYTE    tempCard[] = { 15, 14, 13, 13, 12,  12, 11, 7, 7, 12, 9, 6, 13, 8, 12, 5, 6, 8, 13, 5, };
+	//BYTE    tempCard[] = { 2, 2, 2, 13, 10, 8, 8, 7, 7, 5 };
 
 	//BYTE    tempCard[] = { 4, 38, 8, 56, 10, 9, 11, 43, 12, 44, 60, 1, 33 };
 
@@ -43,13 +43,13 @@ void TestGameLogic()
 	//BYTE    tempCard[] = { 0x02 };
 	tagOutCardResultNew  OutCardResult;
 	BYTE cbTurnCardData[] = { 6, 6 };// { S6, 6, 5, 5, 4, 4 };
-	int cbTurnCardCount =  sizeof(cbTurnCardData);
-	BYTE cbDiscardCard[] = { 9, 13,2 };
-	BYTE cbDiscardCardCount = 0;
-	BYTE cbOtherDisscard[] = { /*12, 11, 10, 10, 9, 9, 8, 7, 12, 8, 7, */7,6, 6 };
-	BYTE cbOtherDisscardCount = sizeof(cbOtherDisscard);
+	int cbTurnCardCount = 0; sizeof(cbTurnCardData);
+	BYTE cbDiscardCard[] = { 15, 14, 1, 13, 12, 11, 10 };
+	BYTE cbDiscardCardCount = 0; sizeof(cbDiscardCard);
+	BYTE cbOtherDisscard[] = { 6, 6, 6, 5, 5, 5, 9, 8 };
+	BYTE cbOtherDisscardCount = 0; sizeof(cbOtherDisscard);
 	BYTE maxCard[MAX_COUNT] = { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
-	BYTE cbCardDataEx[MAX_COUNT] = { 2, 0, 20, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
+	BYTE cbCardDataEx[MAX_COUNT] = { 0, 1, 20, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
 	WORD wBankerUser = 0;
 	WORD wUndersideUser = (wBankerUser + 1) % GAME_PLAYER;
 	WORD wUpsideUser = (wUndersideUser + 1) % GAME_PLAYER;
@@ -80,14 +80,14 @@ void TestGameLogic()
 	////
 	BYTE    tempCardEX[3] = { tempCard[0],tempCard[1],tempCard[2] };
 	//int turnCount = m_GameLogicNew.CalCardTurnCount(tempCardEX, sizeof(tempCardEX), tempCard, sizeof(tempCard), NULL, 0,1);
-	for (int i = 0; i < 500;i++)
+	for (int i = 0; i < 1000;i++)
 	{
 		clock_t start, fihst;
 		start = clock();
 		BYTE bCardData[DISPATCH_COUNT] = { 0 };
 		m_GameLogicNew.RandCardList(bCardData, DISPATCH_COUNT);
-		////BYTE    tempCard[] = { 0x2d, 0x0d, 0x1b, 0x0b, 0x2a, 0x0a, 0x19, 0x37, 0x17, 0x36, 0x26, 0x33, 0x03, };
-		//CopyMemory(tempCard, bCardData, sizeof(tempCard));
+		//BYTE    tempCard[] = { 15,14,2,1,13,12,12,10,10,9,9,8,8,8,7,6,6,5,5,5 };
+		CopyMemory(tempCard, bCardData, sizeof(tempCard));
 		m_GameLogicNew.SearchOutCardErRen(tempCard, sizeof(tempCard), cbTurnCardData, cbTurnCardCount, cbDiscardCard, cbDiscardCardCount, cbOtherDisscard, cbOtherDisscardCount, cbCardDataEx, maxCard, OutCardResult);
 		if (OutCardResult.cbCardCount>0)
 		{

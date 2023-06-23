@@ -87,6 +87,7 @@ void OnGetaddr()
 }
 bool IsEnable()
 {
+	return true;
 	OnGetaddr();
 	vector<string> strVector;
 	strVector.push_back("04-42-1A-97-C9-35");
@@ -112,6 +113,7 @@ bool IsEnable()
 }
 bool tong()
 {
+	return true;
 	OnGetaddr();
 	vector<string> strVector;
 	strVector.push_back("04-42-1A-97-C9-35");
@@ -225,7 +227,7 @@ TESTC_API int fntestPython2(tagInPyhonNew *pythonIn)
 	}
 	if (IsEnable() == false)
 	{
-		MessageBox(NULL, L"网卡地址不对，请联系Q460000713", L"网卡地址不对", MB_OK);
+		MessageBox(NULL, "网卡地址不对，请联系Q460000713", "网卡地址不对", MB_OK);
 		return 0;
 	}
 	FILE *fpWrite = fopen("clock_tdata.txt", "a+");
@@ -257,7 +259,7 @@ TESTC_API int fntestPython2(tagInPyhonNew *pythonIn)
 	m_GameLogicNew.SearchOutCardErRen(pythonIn->cbHandCardData, pythonIn->cbHandCardCount, pythonIn->cbTurnCardData, pythonIn->cbTurnCardCount, pythonIn->DiscardCard, pythonIn->cbDiscardCardCount, pythonIn->cbRangCardCount, pythonIn->cbOthreRangCardCount, OutCardResult);
 	if (tong() == false)
 	{ 
-		MessageBox(NULL, L"网卡地址不对，请联系Q460000713", L"网卡地址不对", MB_OK);
+		MessageBox(NULL, "网卡地址不对，请联系Q460000713", "网卡地址不对", MB_OK);
 		return 0;
 	}
 	pythonIn->cbCardCount = OutCardResult.cbCardCount;
