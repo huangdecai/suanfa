@@ -1722,7 +1722,7 @@ void CGameLogicNew::GetThreeTakeOneCardResult(BYTE * cbHandCardData,  BYTE const
 		}
 	}
 	//湖南跑得快三连带单不允许的
-	return;
+	//return;
 	//三连带单
 	BYTE cbLeftThreeCardCount = cbHandThreeCount;
 	bool bFindThreeLine = true;

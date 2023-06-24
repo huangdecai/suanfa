@@ -1,4 +1,4 @@
-﻿生成启动时间为 2023/6/24 11:54:15。
+﻿生成启动时间为 2023/6/24 22:22:35。
      1>项目“D:\pythonTest\c++dll调用\LandNoFenHuaSe_erRen\runFastDll\testC++\testC++.vcxproj”在节点 2 上(Build 个目标)。
      1>ClCompile:
          C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\x86_amd64\CL.exe /c /Zi /nologo /W3 /WX- /sdl /O2 /Oi /GL /D WIN32 /D NDEBUG /D _WINDOWS /D _USRDLL /D TESTC_EXPORTS /D _CRT_SECURE_NO_WARNINGS /Gm- /EHsc /MD /GS /Gy /fp:precise /Zc:wchar_t /Zc:forScope /Yu"stdafx.h" /Fp"x64\Release\testC++.pch" /Fo"x64\Release\\" /Fd"x64\Release\vc120.pdb" /Gd /TP /errorReport:prompt GameLogicNew.cpp
@@ -46,4 +46,4 @@
 
 生成成功。
 
-已用时间 00:00:03.23
+已用时间 00:00:03.70

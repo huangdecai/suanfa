@@ -57,17 +57,17 @@ void TestGameLogic()
 	
 	BYTE	cbHandCardData[NORMAL_COUNT] = { 0 };	// ÷…œ∆ÀøÀ
 	//BYTE    tempCard[] = { 0x1C, 0x12, 0x02, 0x38, 0x27, 0x05, 0x23, 0x03, 0x19, 0x28, 0x37, 0x26, 0x25 };
-	BYTE    tempCard[] = { 15, 2, 13, 11, 10, 7, 7, 7, 5, 5, 5 };
+	BYTE    tempCard[] = { 14, 2, 1, 12, 11, 11, 11, 10, 10, 10, 8, 8, 7 };
 	//BYTE    tempCard[] = { 2, 2, 2, 13, 10, 8, 8, 7, 7, 5 };
 
 	tagOutCardResultNew  OutCardResult;
 	BYTE cbTurnCardData[] = { 12 };// { S6, 6, 5, 5, 4, 4 };
-	int cbTurnCardCount =  sizeof(cbTurnCardData);
-	BYTE cbDiscardCard[] = { 6, 6, 6, 6, 12, 12 };
+	int cbTurnCardCount = 0;  sizeof(cbTurnCardData);
+	BYTE cbDiscardCard[] = { 9, 9, 9, 9 };
 	BYTE cbDiscardCardCount =  sizeof(cbDiscardCard);
-	BYTE cbOtherDisscard[] = { 10, 10, 10, 9, 9, 9, 11, 5, 1, 1, 1, 1, 8, 8, 13, 13, 12 };
+	BYTE cbOtherDisscard[] = { 7, 7, 7, 6, 6, 6, 8, 8, 5, 5 };
 	BYTE cbOtherDisscardCount = sizeof(cbOtherDisscard);
-	BYTE cbCardDataEx[MAX_COUNT] = { 0, 0, 2, 17, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
+	BYTE cbCardDataEx[MAX_COUNT] = { 1, 0, 3, 17, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
 	BYTE maxCard[MAX_COUNT] = { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
 	WORD wBankerUser = 0;
 	WORD wUndersideUser = (wBankerUser + 1) % GAME_PLAYER;
