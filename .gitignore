@@ -1,5 +1,7 @@
 # Logs
 中间目录
+dist
+build
 GloryProject.pdb
 libqpry_lua.so
 *.o

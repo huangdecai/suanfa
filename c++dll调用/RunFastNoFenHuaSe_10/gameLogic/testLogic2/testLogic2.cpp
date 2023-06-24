@@ -92,9 +92,9 @@ void TestGameLogic()
 
 	int cbCurrentLandScore = 0;
 	int tempScore = m_GameLogicNew.LandScoreErRen(tempCard, sizeof(tempCard), cbCurrentLandScore);
-	/*system("pause");
+	//system("pause");
 	int cbCurrentLandScore2 = 0;
-	int tempScore2 = dynamic_call(tempCard, sizeof(tempCard), cbCurrentLandScore2);*/
+	int tempScore2 = dynamic_call(tempCard, sizeof(tempCard), cbCurrentLandScore2);
 	
 	//int a = 4;
 	////

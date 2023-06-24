@@ -214,7 +214,6 @@ class Ui_Form(object):
         self.Stop.clicked.connect(Form.stop)
         self.SwitchMode.clicked.connect(Form.switch_mode)
         self.AutoStart.clicked.connect(Form.beforeStart)
-        self.startlogin.clicked.connect(Form.startLoginGame)
         QtCore.QMetaObject.connectSlotsByName(Form)
 
     def retranslateUi(self, Form):

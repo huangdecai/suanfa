@@ -245,13 +245,9 @@ class GameHelper:
         sx = cardStartPos[0]+0 #+ 23
         cardSearchFrom = 0
         sy, sw, sh = 160, 58, 55
-        if handCount <= 17:
+        if handCount == 17:
             sw = 69
             sx = sx + 1
-        elif handCount == 14:
-            sw = 69
-        elif handCount <= 13:
-            sw = 69
         spaceX = sw
         spaceY = 540
         for i in range(0, MAX_CARD_COUNT):
@@ -304,13 +300,10 @@ class GameHelper:
         select_map = []
         cardSearchFrom = 0
         sy, sw, sh = 160, 58, 55
-        if handCount<=17:
+        if handCount==17:
             sw=69
             sx=sx+1
-        elif handCount == 14:
-                sw = 69
-        elif handCount <= 13:
-                sw = 69
+
         spaceX=sw
         spaceY = 540
         for i in range(0, MAX_CARD_COUNT):
@@ -413,7 +406,7 @@ class GameHelper:
                 if "r" in AllCardsNC[ci] or "b" in AllCardsNC[ci]:
                     outerBreak = False
                     result = LocateOnImage(imgCv, self.PicsCV["o" + AllCardsNC[ci]],
-                                           region=(sx + spaceX * i, spaceY - checkSelect * 25, sw, 98), confidence=0.85)
+                                           region=(sx + spaceX * i, spaceY - checkSelect * 25, sw, 98), confidence=0.92)
 
                     if result is not None:
                         cardPos = (sx + spaceX * i + sw // 2, spaceY - checkSelect * 25 + sh // 2)

@@ -97,13 +97,8 @@ class MyPyQT_Form(QtWidgets.QWidget, Ui_Form):
         # 信号量
         self.fenFaQi = Client()
         self.fenFaQi.SetMsgCall(self.RecvPlayerMsg)
-        self.shouldExit = 0  # 通知上一轮记牌结束
-        self.canRecord = threading.Lock()  # 开始记牌
         self.configData=None
         self.readJson()
-        self.yuanShiZhangShu=self.MAX_CARD_COUNT
-        self.rangCount=0
-        self.beiRangCount=0
         self.connected=False
         #self.init_cards()
     def RecvPlayerMsg(self, data):
@@ -112,6 +107,9 @@ class MyPyQT_Form(QtWidgets.QWidget, Ui_Form):
     def startLoginGame(self):
         self.fenFaQi.start()
     def init_display(self):
+        self.yuanShiZhangShu = self.MAX_CARD_COUNT
+        self.rangCount = 0
+        self.beiRangCount = 0
         self.WinRate.setText("评分")
         self.InitCard.setText("开始")
         self.UserHandCards.setText("手牌")
@@ -154,7 +152,7 @@ class MyPyQT_Form(QtWidgets.QWidget, Ui_Form):
         helper.setFindStr(self.m_duokai)
         self.MAX_CARD_COUNT=self.configData["zhang"]
         if self.MAX_CARD_COUNT<=0:
-            self.MAX_CARD_COUNT=16
+            self.MAX_CARD_COUNT=NORMAL_COUNT
         a=4
     def init_cards(self):
         self.RunGame = True
@@ -175,16 +173,26 @@ class MyPyQT_Form(QtWidgets.QWidget, Ui_Form):
         self.game_over= False
         helper.bTest = False
         # 识别玩家手牌
-        if self.connected==False:
-            print("你的账号没有登陆，请联系Q：460000713，进行购买")
-            return
+        # if self.connected==False:
+        #     print("你的账号没有登陆，请联系Q：460000713，进行购买")
+        #     return
         #tmpHandCard = self.changeDataOut('2AKQQJJT99877753')
         #tmpHandCardStr = self.changeDataIn(tmpHandCard)
         #
         #result = self.getTipBtnrResult()
-       # helper.SelectCards("77", self.handCardCount[0], True)
+        # self.handCardCount[0]=16
+        # helper.SelectCards("77", self.handCardCount[0], True)
         self.turnCardReal = self.find_other_cardsEx(self.RPlayedCardsPos)
-
+        # self.user_hand_cards_real='DX2AAKKKQJJJTT98765'
+        # self.turnCardReal='8'
+        # self.myHaveOutCard = '6'
+        # self.rightHaveOutCard='8'
+        # self.rangCount=1
+        # self.handCardCount[0] = MAX_COUNT
+        # self.yuanShiZhangShu = MAX_COUNT
+        #
+        # action_message = self.dllCall(self.user_hand_cards_real, self.turnCardReal, self.myHaveOutCard,
+        #                               self.rightHaveOutCard, self.bHavePass, self.myHavePassType)
         if helper.bTest==True:
            result = helper.LocateOnScreen("tip_btn", region=self.tipBtnPos, confidence=0.75)
            self.turnCardReal = self.find_other_cardsEx(self.RPlayedCardsPos)
@@ -292,10 +300,10 @@ class MyPyQT_Form(QtWidgets.QWidget, Ui_Form):
                     else:
                         if len(hand_cards_str) == 0 and len(action_message) == 1:
                             print("SelectCards1",action_message)
-                            helper.SelectCards(action_message,self.handCardCount[0], True)
+                            helper.SelectCards(action_message,self.yuanShiZhangShu, True)
                         else:
                             print("SelectCards2", action_message)
-                            helper.SelectCards(action_message,self.handCardCount[0])
+                            helper.SelectCards(action_message,self.yuanShiZhangShu)
                         #self.sleep(1000)
                         tryCount = 20
                         result = helper.LocateOnScreen("go_btn", region=tempOutCardPos, confidence=0.85)
@@ -617,11 +625,12 @@ class MyPyQT_Form(QtWidgets.QWidget, Ui_Form):
         arg1.cbDiscardCardCount = len(tmpDiscard)
         arg1.cbOtherDiscardCount = len(tmpOtherDiscard)
         arg1.cbCardCount=0
-        arg1.cbCardDataEx[0]=self.rangCount
-        arg1.cbCardDataEx[1] = self.beiRangCount
-        arg1.cbCardDataEx[2]=self.yuanShiZhangShu
         if bPass :
             arg1.cbCardDataEx[0] = 1
+        arg1.cbCardDataEx[1]=self.rangCount
+        arg1.cbCardDataEx[2] = self.beiRangCount
+        arg1.cbCardDataEx[3]=self.yuanShiZhangShu
+
 
         func=pDll.fntestPython2
         func.restype = c_int32
@@ -687,7 +696,7 @@ class MyPyQT_Form(QtWidgets.QWidget, Ui_Form):
     def find_my_cards(self, pos):
         user_hand_cards_real = ""
         img, _ = helper.Screenshot()
-        cards, _ = helper.GetCards(img,self.handCardCount[0])
+        cards, _ = helper.GetCards(img,self.yuanShiZhangShu)
         for c in cards:
             user_hand_cards_real += c[0]
         return user_hand_cards_real

@@ -1,6 +1,7 @@
 #include "StdAfx.h"
 #include "GameLogicNew.h"
 #include <iostream>
+using namespace std;
 #include<thread>
 #include<numeric>
 #include<functional>
@@ -3006,7 +3007,7 @@ int CGameLogicNew::YouXianDaNengShouHuiCard(const BYTE cbHandCardData[], BYTE cb
 				else{
 					bExistDoubleMax = SearchOtherHandCardThan(tmpTurnCard, tmpTurnCardCount, bCheck);
 				}
-				if ((bExistDoubleMax != true) || GetCardLogicValue(tmpTurnCard[0])==13)
+				if ((bExistDoubleMax != true) || GetCardLogicValue(tmpTurnCard[0])==15)
 				{
 					DoubleReMaxCount++;
 					if (SearchOtherHandCardSame(tmpTurnCard, tmpTurnCardCount, type) == false)
@@ -4401,8 +4402,6 @@ bool CGameLogicNew::OutCardShengYuFenCheck(BYTE cbHandCardCount, const BYTE * cb
 		{
 			bombCount++;
 		}
-	
-		std::cout << i << endl;
 		int   tempCardCount = SearchCardResult.cbCardCount[i];
 		bool bExistMax = SearchOtherHandCardThan(SearchCardResult.cbResultCard[i], SearchCardResult.cbCardCount[i], true);
 		bExistMaxIndex[i] = bExistMax;
@@ -6209,15 +6208,42 @@ bool CGameLogicNew::SearchOutCardErRen(BYTE cbHandCardData[], BYTE cbHandCardCou
 	SetUserCard(0, cbHandCardData, cbHandCardCount);
 	CopyMemory(m_cbMaxCard, MaxCard, sizeof(m_cbMaxCard));
 	CopyMemory(m_cbCardDataEx, cbCardDataEx, sizeof(m_cbCardDataEx));
-	m_cbCardTypeCount = m_cbCardDataEx[2];
-	m_cbRangCount = m_cbCardDataEx[0];
-	m_cbBeiRangCount = m_cbCardDataEx[1];
+	m_cbCardTypeCount = m_cbCardDataEx[3];
+	m_cbRangCount = m_cbCardDataEx[1];
+	m_cbBeiRangCount = m_cbCardDataEx[2];
 	m_cbUserCardCount[0] = cbHandCardCount - m_cbBeiRangCount;
-	m_cbUserCardCount[1] = (m_cbCardTypeCount - cbOtherDiscardCount - m_cbRangCount);
+	if (m_cbCardTypeCount == MAX_COUNT)
+	{
+		m_cbUserCardCount[1] = (NORMAL_COUNT - cbOtherDiscardCount - m_cbRangCount);
+	}
+	else{
+		m_cbUserCardCount[1] = (MAX_COUNT - cbOtherDiscardCount - m_cbRangCount);
+	}
 	m_bHavePass = m_cbCardDataEx[0];
 	m_cbFirstCard = m_cbCardDataEx[1];
-
-	
+	cout << m_bHavePass << endl;
+	for (int i = 0; i < cbHandCardCount; i++)
+	{
+		cout << (int)cbHandCardData[i] << ",";
+	}
+	cout << endl;
+	for (int i = 0; i < cbTurnCardCount; i++)
+	{
+		cout << (int)cbTurnCardData[i] << ",";
+	}
+	//cout << endl;
+	//for (int i = 0; i < cbHandCardCount; i++)
+	//{
+	//	cout << cbHandCardData[i] << ",";
+	//}
+	//cout << endl;
+	//for (int i = 0; i < cbHandCardCount; i++)
+	//{
+	//	cout << cbHandCardData[i] << ",";
+	//}
+	cout << endl;
+	cout << m_cbCardTypeCount << "," << m_cbRangCount << "," << m_cbBeiRangCount << endl;
+	cout << m_cbUserCardCount[0] << "," << m_cbUserCardCount[1] << "," << cbTurnCardData[0] << "," << (int)cbTurnCardCount <<endl;
 	//玩家判断
 	WORD wUndersideOfBanker = (m_wBankerUser + 1) % GAME_PLAYER;	//地主下家
 	WORD wUpsideOfBanker = (wUndersideOfBanker + 1) % GAME_PLAYER;	//地主上家
