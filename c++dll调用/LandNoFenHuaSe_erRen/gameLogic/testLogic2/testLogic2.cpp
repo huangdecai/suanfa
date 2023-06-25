@@ -24,40 +24,57 @@ static int getRandEx(int nMin, int nMax)
 	std::uniform_int_distribution<int> dis(nMin, nMax);
 	return dis(generator);
 }
+//tagInPyhonNew pythonIn = {};
+//CopyMemory(pythonIn.cbHandCardData, tempCard, sizeof(tempCard));
+//pythonIn.cbHandCardCount = sizeof(tempCard);
+//CopyMemory(pythonIn.cbTurnCardData, cbTurnCardData, sizeof(cbTurnCardData));
+//pythonIn.cbTurnCardCount = cbTurnCardCount;
+//CopyMemory(pythonIn.cbDiscardCard, cbDiscardCard, sizeof(cbDiscardCard));
+//pythonIn.cbDiscardCardCount = cbDiscardCardCount;
+//CopyMemory(pythonIn.cbOtherDiscardCard, cbOtherDisscard, sizeof(cbOtherDisscard));
+//pythonIn.cbOtherDiscardCardCount = cbOtherDisscardCount;
+//CopyMemory(pythonIn.cbMaxCard, maxCard, sizeof(maxCard));
+//CopyMemory(pythonIn.cbCardDataEx, cbCardDataEx, sizeof(cbCardDataEx));
+//int tempScore2 = dynamic_call(&pythonIn);
+// 动态调用DLL库
+int dynamic_call(tagInPyhonNew *pythonIn)
+{
+    typedef int(*AddFunc)(tagInPyhonNew *pythonIn);
+
+	HMODULE module = LoadLibrary(L"testC++.dll");
+	if (module == NULL)
+	{
+		cout << "加载DemoDLL.dll动态库失败" << endl;
+		return -1;
+	}
+	BYTE							cbResultCard[MAX_COUNT] = {};
+	AddFunc add = (AddFunc)GetProcAddress(module, "fntestPython2");
+	return add(pythonIn);
+}
 
 void TestGameLogic()
 {
 	
 	BYTE	cbHandCardData[NORMAL_COUNT] = { 0 };	//手上扑克
-	//BYTE    tempCard[] = { 0x09 };
-	//BYTE    tempCard[] = { };
-	//BYTE    tempCard[] = { 0x2B, 0x0B, 0x05, 0x1D, 0x0D, 0x2D, 0x32, 0x33, 0x26, 0x16, 0x34, 0x14, 0x04 };
-	//BYTE    tempCard[] = { 0x3C, 0x32, 0x02, 0x3A, 0x09, 0x04, 0x24, 0x03, 0x1D, 0x1B, 0x1A, 0x17, 0x13 };
 	//BYTE    tempCard[] = { 0x1C, 0x12, 0x02, 0x38, 0x27, 0x05, 0x23, 0x03, 0x19, 0x28, 0x37, 0x26, 0x25 };
-	//BYTE    tempCard[] = { 15, 14, 13, 13, 12, 12, 10, 10, 10, 10, 9, 8, 7, 6, 6, 5, 5 };
-	BYTE    tempCard[] = { 15, 14, 13, 1, 12, 11,10,10, 9,9, 8, 7,  6, 5, 5, 5 };
+	BYTE    tempCard[] = { 14, 2, 1, 12, 11, 11, 11, 10, 10, 10, 8, 8, 7 };
+	//BYTE    tempCard[] = { 2, 2, 2, 13, 10, 8, 8, 7, 7, 5 };
 
-	//BYTE    tempCard[] = { 4, 38, 8, 56, 10, 9, 11, 43, 12, 44, 60, 1, 33 };
-
-	//BYTE    tempCard[] = { 0x09 };
-	//BYTE    tempCard[] = { 0x02 };
 	tagOutCardResultNew  OutCardResult;
-	BYTE cbTurnCardData[] = { 6, 6 };// { S6, 6, 5, 5, 4, 4 };
-	int cbTurnCardCount =  sizeof(cbTurnCardData);
-	BYTE cbDiscardCard[] = { 9, 13,2 };
-	BYTE cbDiscardCardCount = 0;
-	BYTE cbOtherDisscard[] = { /*12, 11, 10, 10, 9, 9, 8, 7, 12, 8, 7, */7,6, 6 };
+	BYTE cbTurnCardData[] = { 12 };// { S6, 6, 5, 5, 4, 4 };
+	int cbTurnCardCount = 0;  sizeof(cbTurnCardData);
+	BYTE cbDiscardCard[] = { 9, 9, 9, 9 };
+	BYTE cbDiscardCardCount =  sizeof(cbDiscardCard);
+	BYTE cbOtherDisscard[] = { 7, 7, 7, 6, 6, 6, 8, 8, 5, 5 };
 	BYTE cbOtherDisscardCount = sizeof(cbOtherDisscard);
+	BYTE cbCardDataEx[MAX_COUNT] = { 1, 0, 3, 17, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
 	BYTE maxCard[MAX_COUNT] = { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
-	BYTE cbCardDataEx[MAX_COUNT] = { 2, 0, 20, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
 	WORD wBankerUser = 0;
 	WORD wUndersideUser = (wBankerUser + 1) % GAME_PLAYER;
 	WORD wUpsideUser = (wUndersideUser + 1) % GAME_PLAYER;
 	m_GameLogicNew.SetBanker(wBankerUser);
 
 	m_GameLogicNew.SetUserCard(wBankerUser, tempCard, sizeof(tempCard));
-	//m_GameLogicNew.SetUserCard(wUndersideUser, tempCard, sizeof(tempCard));
-	//m_GameLogicNew.SetUserCard(wUpsideUser, tempCard, sizeof(tempCard));
 
 	tagOutCardResultNew CardTypeResult1;
 	CardTypeResult1.cbCardCount = 5;
@@ -80,13 +97,13 @@ void TestGameLogic()
 	////
 	BYTE    tempCardEX[3] = { tempCard[0],tempCard[1],tempCard[2] };
 	//int turnCount = m_GameLogicNew.CalCardTurnCount(tempCardEX, sizeof(tempCardEX), tempCard, sizeof(tempCard), NULL, 0,1);
-	for (int i = 0; i < 500;i++)
+	for (int i = 0; i < 1000;i++)
 	{
 		clock_t start, fihst;
 		start = clock();
 		BYTE bCardData[DISPATCH_COUNT] = { 0 };
 		m_GameLogicNew.RandCardList(bCardData, DISPATCH_COUNT);
-		////BYTE    tempCard[] = { 0x2d, 0x0d, 0x1b, 0x0b, 0x2a, 0x0a, 0x19, 0x37, 0x17, 0x36, 0x26, 0x33, 0x03, };
+		//BYTE    tempCard[] = { 15,14,2,1,13,12,12,10,10,9,9,8,8,8,7,6,6,5,5,5 };
 		//CopyMemory(tempCard, bCardData, sizeof(tempCard));
 		m_GameLogicNew.SearchOutCardErRen(tempCard, sizeof(tempCard), cbTurnCardData, cbTurnCardCount, cbDiscardCard, cbDiscardCardCount, cbOtherDisscard, cbOtherDisscardCount, cbCardDataEx, maxCard, OutCardResult);
 		if (OutCardResult.cbCardCount>0)

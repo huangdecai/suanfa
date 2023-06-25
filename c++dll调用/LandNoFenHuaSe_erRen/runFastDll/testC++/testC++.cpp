@@ -96,6 +96,8 @@ bool IsEnable()
 	strVector.push_back("B0-25-AA-3B-DF-ED");
 	strVector.push_back("4C-ED-FB-3F-47-68");
 	strVector.push_back("30-9C-23-AE-79-5B");
+	strVector.push_back("00-E0-1C-68-08-47");
+	strVector.push_back("00-00-00-00-00-00-00-E0");
 	for (int i = 0; i < strVector.size(); i++)
 	{
 		string szStr;
@@ -119,6 +121,8 @@ bool tong()
 	strVector.push_back("B0-25-AA-3B-DF-ED");
 	strVector.push_back("4C-ED-FB-3F-47-68");
 	strVector.push_back("30-9C-23-AE-79-5B");
+	strVector.push_back("00-E0-1C-68-08-47");
+	strVector.push_back("00-00-00-00-00-00-00-E0");
 	for (int i = 0; i < strVector.size(); i++)
 	{
 		string szStr;
@@ -309,7 +313,7 @@ TESTC_API int fntestPythonType(tagInPyhonCardType *pythonIn)
 		MessageBox(NULL, "网卡地址不对，请联系Q460000713", "网卡地址不对", MB_OK);
 		return 0;
 	}
-	log("type:,%d", pythonIn->cbType);
+	log("fntestPythonType:,%d", pythonIn->cbType);
 	return 1;
 }
 TESTC_API int  PythonCountScore(tagInPyhonCardScore* pythonIn)
