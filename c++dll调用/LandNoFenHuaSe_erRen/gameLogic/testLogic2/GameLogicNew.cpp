@@ -6339,7 +6339,7 @@ VOID CGameLogicNew::ErZhuDongOutCard(const BYTE cbHandCardData[], BYTE cbHandCar
 	if (FindMaxTypeTakeOneType(cbHandCardData, cbHandCardCount, 0,0, 0, vecMinTypeCardResult, OutCardResult))
 	{
 		int type = GetCardType(OutCardResult.cbResultCard, OutCardResult.cbCardCount);
-		if (type==CT_BOMB_CARD)
+		//if (type==CT_BOMB_CARD)
 		{
 			return;
 		}

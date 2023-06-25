@@ -1,87 +1,17 @@
-﻿生成启动时间为 2023/6/24 11:21:41。
-     1>项目“D:\pythonTest\c++dll调用\LandNoFenHuaSe_erRen\gameLogic\testLogic2\testLogic2.vcxproj”在节点 2 上(Build 个目标)。
+﻿生成启动时间为 2023/6/25 18:25:13。
+     1>项目“D:\test\workTest\suanfa\c++dll调用\LandNoFenHuaSe_erRen\gameLogic\testLogic2\testLogic2.vcxproj”在节点 2 上(Build 个目标)。
      1>C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\V120\Microsoft.CppBuild.targets(388,5): warning MSB8028: The intermediate directory (Debug\) contains files shared from another project (testLogic2.vcxproj).  This can lead to incorrect clean and rebuild behavior.
      1>ClCompile:
-         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _LIB /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Yu"stdafx.h" /Fp"Debug\gameLogic.pch" /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt GameLogicNew.cpp testLogic2.cpp
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /I"C:\Program Files (x86)\Visual Leak Detector\include" /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _LIB /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Yu"stdafx.h" /Fp"Debug\gameLogic.pch" /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt testLogic2.cpp
          testLogic2.cpp
-     1>d:\pythontest\c++dll调用\landnofenhuase_erren\gamelogic\testlogic2\testlogic2.cpp(23): warning C4244: “参数”: 从“time_t”转换到“unsigned int”，可能丢失数据
-         GameLogicNew.cpp
-     1>d:\pythontest\c++dll调用\landnofenhuase_erren\gamelogic\testlogic2\gamelogicnew.cpp(953): warning C4018: “<”: 有符号/无符号不匹配
-     1>d:\pythontest\c++dll调用\landnofenhuase_erren\gamelogic\testlogic2\gamelogicnew.cpp(1006): warning C4018: “<”: 有符号/无符号不匹配
-     1>d:\pythontest\c++dll调用\landnofenhuase_erren\gamelogic\testlogic2\gamelogicnew.cpp(1027): warning C4018: “<”: 有符号/无符号不匹配
-     1>d:\pythontest\c++dll调用\landnofenhuase_erren\gamelogic\testlogic2\gamelogicnew.cpp(1048): warning C4018: “<”: 有符号/无符号不匹配
-     1>d:\pythontest\c++dll调用\landnofenhuase_erren\gamelogic\testlogic2\gamelogicnew.cpp(1066): warning C4018: “<”: 有符号/无符号不匹配
-     1>d:\pythontest\c++dll调用\landnofenhuase_erren\gamelogic\testlogic2\gamelogicnew.cpp(1167): warning C4244: “参数”: 从“float”转换到“const int”，可能丢失数据
-     1>d:\pythontest\c++dll调用\landnofenhuase_erren\gamelogic\testlogic2\gamelogicnew.cpp(1190): warning C4244: “参数”: 从“float”转换到“const int”，可能丢失数据
-     1>d:\pythontest\c++dll调用\landnofenhuase_erren\gamelogic\testlogic2\gamelogicnew.cpp(1221): warning C4244: “参数”: 从“float”转换到“const int”，可能丢失数据
-     1>d:\pythontest\c++dll调用\landnofenhuase_erren\gamelogic\testlogic2\gamelogicnew.cpp(1242): warning C4244: “参数”: 从“float”转换到“const int”，可能丢失数据
-     1>d:\pythontest\c++dll调用\landnofenhuase_erren\gamelogic\testlogic2\gamelogicnew.cpp(1677): warning C4101: “cbAllBomCardData”: 未引用的局部变量
-     1>d:\pythontest\c++dll调用\landnofenhuase_erren\gamelogic\testlogic2\gamelogicnew.cpp(1992): warning C4018: “<”: 有符号/无符号不匹配
-     1>d:\pythontest\c++dll调用\landnofenhuase_erren\gamelogic\testlogic2\gamelogicnew.cpp(2043): warning C4018: “<”: 有符号/无符号不匹配
-     1>d:\pythontest\c++dll调用\landnofenhuase_erren\gamelogic\testlogic2\gamelogicnew.cpp(2090): warning C4018: “<”: 有符号/无符号不匹配
-     1>d:\pythontest\c++dll调用\landnofenhuase_erren\gamelogic\testlogic2\gamelogicnew.cpp(2364): warning C4018: “<”: 有符号/无符号不匹配
-     1>d:\pythontest\c++dll调用\landnofenhuase_erren\gamelogic\testlogic2\gamelogicnew.cpp(2367): warning C4018: “<”: 有符号/无符号不匹配
-     1>d:\pythontest\c++dll调用\landnofenhuase_erren\gamelogic\testlogic2\gamelogicnew.cpp(2376): warning C4018: “<=”: 有符号/无符号不匹配
-     1>d:\pythontest\c++dll调用\landnofenhuase_erren\gamelogic\testlogic2\gamelogicnew.cpp(2452): warning C4018: “<”: 有符号/无符号不匹配
-     1>d:\pythontest\c++dll调用\landnofenhuase_erren\gamelogic\testlogic2\gamelogicnew.cpp(2942): warning C4018: “<”: 有符号/无符号不匹配
-     1>d:\pythontest\c++dll调用\landnofenhuase_erren\gamelogic\testlogic2\gamelogicnew.cpp(3024): warning C4018: “<”: 有符号/无符号不匹配
-     1>d:\pythontest\c++dll调用\landnofenhuase_erren\gamelogic\testlogic2\gamelogicnew.cpp(3049): warning C4018: “<”: 有符号/无符号不匹配
-     1>d:\pythontest\c++dll调用\landnofenhuase_erren\gamelogic\testlogic2\gamelogicnew.cpp(3078): warning C4018: “>=”: 有符号/无符号不匹配
-     1>d:\pythontest\c++dll调用\landnofenhuase_erren\gamelogic\testlogic2\gamelogicnew.cpp(3085): warning C4018: “<”: 有符号/无符号不匹配
-     1>d:\pythontest\c++dll调用\landnofenhuase_erren\gamelogic\testlogic2\gamelogicnew.cpp(3100): warning C4018: “<”: 有符号/无符号不匹配
-     1>d:\pythontest\c++dll调用\landnofenhuase_erren\gamelogic\testlogic2\gamelogicnew.cpp(3178): warning C4018: “>=”: 有符号/无符号不匹配
-     1>d:\pythontest\c++dll调用\landnofenhuase_erren\gamelogic\testlogic2\gamelogicnew.cpp(3180): warning C4018: “<”: 有符号/无符号不匹配
-     1>d:\pythontest\c++dll调用\landnofenhuase_erren\gamelogic\testlogic2\gamelogicnew.cpp(3190): warning C4018: “>=”: 有符号/无符号不匹配
-     1>d:\pythontest\c++dll调用\landnofenhuase_erren\gamelogic\testlogic2\gamelogicnew.cpp(3192): warning C4018: “<”: 有符号/无符号不匹配
-     1>d:\pythontest\c++dll调用\landnofenhuase_erren\gamelogic\testlogic2\gamelogicnew.cpp(3217): warning C4018: “<”: 有符号/无符号不匹配
-     1>d:\pythontest\c++dll调用\landnofenhuase_erren\gamelogic\testlogic2\gamelogicnew.cpp(3257): warning C4018: “<”: 有符号/无符号不匹配
-     1>d:\pythontest\c++dll调用\landnofenhuase_erren\gamelogic\testlogic2\gamelogicnew.cpp(3340): warning C4018: “<”: 有符号/无符号不匹配
-     1>d:\pythontest\c++dll调用\landnofenhuase_erren\gamelogic\testlogic2\gamelogicnew.cpp(3365): warning C4018: “<”: 有符号/无符号不匹配
-     1>d:\pythontest\c++dll调用\landnofenhuase_erren\gamelogic\testlogic2\gamelogicnew.cpp(3394): warning C4018: “>=”: 有符号/无符号不匹配
-     1>d:\pythontest\c++dll调用\landnofenhuase_erren\gamelogic\testlogic2\gamelogicnew.cpp(3402): warning C4018: “<”: 有符号/无符号不匹配
-     1>d:\pythontest\c++dll调用\landnofenhuase_erren\gamelogic\testlogic2\gamelogicnew.cpp(3414): warning C4018: “>=”: 有符号/无符号不匹配
-     1>d:\pythontest\c++dll调用\landnofenhuase_erren\gamelogic\testlogic2\gamelogicnew.cpp(3416): warning C4018: “<”: 有符号/无符号不匹配
-     1>d:\pythontest\c++dll调用\landnofenhuase_erren\gamelogic\testlogic2\gamelogicnew.cpp(3426): warning C4018: “>=”: 有符号/无符号不匹配
-     1>d:\pythontest\c++dll调用\landnofenhuase_erren\gamelogic\testlogic2\gamelogicnew.cpp(3428): warning C4018: “<”: 有符号/无符号不匹配
-     1>d:\pythontest\c++dll调用\landnofenhuase_erren\gamelogic\testlogic2\gamelogicnew.cpp(3450): warning C4018: “<”: 有符号/无符号不匹配
-     1>d:\pythontest\c++dll调用\landnofenhuase_erren\gamelogic\testlogic2\gamelogicnew.cpp(3505): warning C4018: “<”: 有符号/无符号不匹配
-     1>d:\pythontest\c++dll调用\landnofenhuase_erren\gamelogic\testlogic2\gamelogicnew.cpp(3539): warning C4018: “<”: 有符号/无符号不匹配
-     1>d:\pythontest\c++dll调用\landnofenhuase_erren\gamelogic\testlogic2\gamelogicnew.cpp(3581): warning C4018: “<”: 有符号/无符号不匹配
-     1>d:\pythontest\c++dll调用\landnofenhuase_erren\gamelogic\testlogic2\gamelogicnew.cpp(3586): warning C4018: “<”: 有符号/无符号不匹配
-     1>d:\pythontest\c++dll调用\landnofenhuase_erren\gamelogic\testlogic2\gamelogicnew.cpp(3640): warning C4018: “<”: 有符号/无符号不匹配
-     1>d:\pythontest\c++dll调用\landnofenhuase_erren\gamelogic\testlogic2\gamelogicnew.cpp(3666): warning C4018: “<”: 有符号/无符号不匹配
-     1>d:\pythontest\c++dll调用\landnofenhuase_erren\gamelogic\testlogic2\gamelogicnew.cpp(3772): warning C4018: “<”: 有符号/无符号不匹配
-     1>d:\pythontest\c++dll调用\landnofenhuase_erren\gamelogic\testlogic2\gamelogicnew.cpp(3787): warning C4018: “>=”: 有符号/无符号不匹配
-     1>d:\pythontest\c++dll调用\landnofenhuase_erren\gamelogic\testlogic2\gamelogicnew.cpp(4383): warning C4018: “<”: 有符号/无符号不匹配
-     1>d:\pythontest\c++dll调用\landnofenhuase_erren\gamelogic\testlogic2\gamelogicnew.cpp(4477): warning C4018: “<”: 有符号/无符号不匹配
-     1>d:\pythontest\c++dll调用\landnofenhuase_erren\gamelogic\testlogic2\gamelogicnew.cpp(4503): warning C4018: “<”: 有符号/无符号不匹配
-     1>d:\pythontest\c++dll调用\landnofenhuase_erren\gamelogic\testlogic2\gamelogicnew.cpp(4619): warning C4018: “<”: 有符号/无符号不匹配
-     1>d:\pythontest\c++dll调用\landnofenhuase_erren\gamelogic\testlogic2\gamelogicnew.cpp(4714): warning C4018: “<”: 有符号/无符号不匹配
-     1>d:\pythontest\c++dll调用\landnofenhuase_erren\gamelogic\testlogic2\gamelogicnew.cpp(4769): warning C4018: “<”: 有符号/无符号不匹配
-     1>d:\pythontest\c++dll调用\landnofenhuase_erren\gamelogic\testlogic2\gamelogicnew.cpp(4935): warning C4018: “<”: 有符号/无符号不匹配
-     1>d:\pythontest\c++dll调用\landnofenhuase_erren\gamelogic\testlogic2\gamelogicnew.cpp(4998): warning C4018: “<”: 有符号/无符号不匹配
-     1>d:\pythontest\c++dll调用\landnofenhuase_erren\gamelogic\testlogic2\gamelogicnew.cpp(5227): warning C4018: “<”: 有符号/无符号不匹配
-     1>d:\pythontest\c++dll调用\landnofenhuase_erren\gamelogic\testlogic2\gamelogicnew.cpp(5248): warning C4018: “<”: 有符号/无符号不匹配
-     1>d:\pythontest\c++dll调用\landnofenhuase_erren\gamelogic\testlogic2\gamelogicnew.cpp(5323): warning C4018: “<”: 有符号/无符号不匹配
-     1>d:\pythontest\c++dll调用\landnofenhuase_erren\gamelogic\testlogic2\gamelogicnew.cpp(5365): warning C4018: “<”: 有符号/无符号不匹配
-     1>d:\pythontest\c++dll调用\landnofenhuase_erren\gamelogic\testlogic2\gamelogicnew.cpp(5572): warning C4018: “<”: 有符号/无符号不匹配
-     1>d:\pythontest\c++dll调用\landnofenhuase_erren\gamelogic\testlogic2\gamelogicnew.cpp(5798): warning C4018: “<”: 有符号/无符号不匹配
-     1>d:\pythontest\c++dll调用\landnofenhuase_erren\gamelogic\testlogic2\gamelogicnew.cpp(5812): warning C4018: “<”: 有符号/无符号不匹配
-     1>d:\pythontest\c++dll调用\landnofenhuase_erren\gamelogic\testlogic2\gamelogicnew.cpp(5848): warning C4018: “<”: 有符号/无符号不匹配
-     1>d:\pythontest\c++dll调用\landnofenhuase_erren\gamelogic\testlogic2\gamelogicnew.cpp(6134): warning C4018: “<”: 有符号/无符号不匹配
-     1>d:\pythontest\c++dll调用\landnofenhuase_erren\gamelogic\testlogic2\gamelogicnew.cpp(6222): warning C4800: “BYTE”: 将值强制为布尔值“true”或“false”(性能警告)
-     1>d:\pythontest\c++dll调用\landnofenhuase_erren\gamelogic\testlogic2\gamelogicnew.cpp(6287): warning C4244: “=”: 从“float”转换到“int”，可能丢失数据
-     1>d:\pythontest\c++dll调用\landnofenhuase_erren\gamelogic\testlogic2\gamelogicnew.cpp(6290): warning C4244: “return”: 从“float”转换到“int”，可能丢失数据
-     1>d:\pythontest\c++dll调用\landnofenhuase_erren\gamelogic\testlogic2\gamelogicnew.cpp(6525): warning C4018: “<”: 有符号/无符号不匹配
-     1>d:\pythontest\c++dll调用\landnofenhuase_erren\gamelogic\testlogic2\gamelogicnew.cpp(6722): warning C4018: “<”: 有符号/无符号不匹配
-         正在生成代码...
+     1>d:\test\worktest\suanfa\c++dll调用\landnofenhuase_erren\gamelogic\testlogic2\testlogic2.cpp(23): warning C4244: “参数”: 从“time_t”转换到“unsigned int”，可能丢失数据
        Link:
-         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"D:\pythonTest\c++dll调用\LandNoFenHuaSe_erRen\gameLogic\Debug\gameLogic.exe" /INCREMENTAL /NOLOGO rpcrt4.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"D:\pythonTest\c++dll调用\LandNoFenHuaSe_erRen\gameLogic\Debug\gameLogic.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"D:\pythonTest\c++dll调用\LandNoFenHuaSe_erRen\gameLogic\Debug\gameLogic.lib" /MACHINE:X86 Debug\GameLogicNew.obj
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"D:\test\workTest\suanfa\c++dll调用\LandNoFenHuaSe_erRen\gameLogic\Debug\gameLogic.exe" /INCREMENTAL /NOLOGO /LIBPATH:"C:\Program Files (x86)\Visual Leak Detector\lib\Win32" rpcrt4.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"D:\test\workTest\suanfa\c++dll调用\LandNoFenHuaSe_erRen\gameLogic\Debug\gameLogic.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"D:\test\workTest\suanfa\c++dll调用\LandNoFenHuaSe_erRen\gameLogic\Debug\gameLogic.lib" /MACHINE:X86 Debug\GameLogicNew.obj
          Debug\stdafx.obj
          Debug\testLogic2.obj
-         testLogic2.vcxproj -> D:\pythonTest\c++dll调用\LandNoFenHuaSe_erRen\gameLogic\Debug\gameLogic.exe
-     1>已完成生成项目“D:\pythonTest\c++dll调用\LandNoFenHuaSe_erRen\gameLogic\testLogic2\testLogic2.vcxproj”(Build 个目标)的操作。
+         testLogic2.vcxproj -> D:\test\workTest\suanfa\c++dll调用\LandNoFenHuaSe_erRen\gameLogic\Debug\gameLogic.exe
+     1>已完成生成项目“D:\test\workTest\suanfa\c++dll调用\LandNoFenHuaSe_erRen\gameLogic\testLogic2\testLogic2.vcxproj”(Build 个目标)的操作。
 
 生成成功。
 
-已用时间 00:00:02.90
+已用时间 00:00:00.73
