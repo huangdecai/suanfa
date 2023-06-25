@@ -2507,3 +2507,21 @@ testCount:16
 cbCenterCard,2,cbWeaveKind,16,
 cbOperateCode,64,cbOperateCode,6,,6
 End
+
+cbHandCardCount:14
+
+testCount:1
+,33,33,18,19,20,21,22,23,23,23,24,55,55,55
+ wMeChairId:0,
+
+ wCurrentUser:0,
+
+ cbActionMask:0,
+
+ cbActionCard:55,
+
+ cbCardDataEx:20,
+,67,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+ cbDiscardCardCount:12,
+,49,49,49,50,53,51,36,40,39,52,39,35cbOperateCode,0,cbOperateCode,24,,24
+End

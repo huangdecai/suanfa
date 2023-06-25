@@ -746,7 +746,7 @@ BYTE CGameLogicNew::SearchOutCard(const BYTE cbHandCardData[], BYTE cbHandCardCo
 			
 			//提取带牌
 			bool bAllDistill = true;
-			if (G_THREE_TAKE_TWO_DAN&&cbCardCount>=cbTurnCardCount)
+			if (cbTurnOutType == CT_THREE_TAKE_ONE&&cbCardCount >= cbTurnCardCount)
 			{
 				
 				for (BYTE i = 0; i < cbLineResultCount; i++)
@@ -768,11 +768,12 @@ BYTE CGameLogicNew::SearchOutCard(const BYTE cbHandCardData[], BYTE cbHandCardCo
 					BYTE cbComCard[MAX_COLS];
 					BYTE cbComResCard[MAX_RESULT_COUNT][MAX_COLS];
 					int cbComResLen = 0;
-					BYTE cbSingleCardCount = cbLineCount*2;
-					if (cbRemainCardCount>17)
-					{
-						cbRemainCardCount = 10;//牌堆里这么多，数组为装不下，同时也没必要
-					}
+					BYTE cbSingleCardCount = cbLineCount*1;
+					//if (cbRemainCardCount>17)
+					//{
+					//	cbRemainCardCount = 10;//牌堆里这么多，数组为装不下，同时也没必要
+					//}
+					cbRemainCardCount = ClearReLogicValue(cbRemainCardData, cbRemainCardCount);
 					Combination(cbComCard, 0, cbComResCard, cbComResLen, cbRemainCardData, cbSingleCardCount, cbRemainCardCount, cbSingleCardCount);
 					tagSearchCardResult SameCardResult = {};
 					CopyMemory(&SameCardResult, pSearchCardResult,
@@ -4373,6 +4374,7 @@ bool CGameLogicNew::OutCardShengYuFenCheck(BYTE cbHandCardCount, const BYTE * cb
 	int minTypeCount = 0;
 	int resultIndex = -1;
 	float MinTypeScore = INT_MIN;
+	float BiShengScore = INT_MIN;
 	vector<tagOutCardResultNew>   vecMinTypeCardResultBak;
 	float tableScore[300] = { 0 };
 	bool bExistBiYing = false;
@@ -4436,29 +4438,31 @@ bool CGameLogicNew::OutCardShengYuFenCheck(BYTE cbHandCardCount, const BYTE * cb
 				}
 			
 			}
-			tagOutCardResultNew  tempOutCardResult;
+			tagOutCardResultNew  tempOutCardResult = {};
 			bool zhiJieYing = false;
 			int tempResultIndex = IsBiShengTurnCard(cbReserveCardData, cbReserveCardCount, TempMinTypeCardResult[i], tempOutCardResult, zhiJieYing);
-			if ((tempResultIndex!=-1) &&  bExistMax != true)
+			if ((tempResultIndex != -1) && bExistMax != true && tempMinTypeScore > BiShengScore)
 			{
 				MinTypeScore = tempMinTypeScore;
 				minTypeCount = tempMinTypeCount;
+				BiShengScore = MinTypeScore;
 				resultIndex = i;
 				vecMinTypeCardResultBak = TempMinTypeCardResult[i];
 				bExistBiYing = biYing;
-				break;
+				//break;
 			}
-			if (biYing &&  bExistMax != true)
+			else if (biYing &&  bExistMax != true && tempMinTypeScore > BiShengScore)
 			{
 				MinTypeScore = tempMinTypeScore;
 				minTypeCount = tempMinTypeCount;
+				BiShengScore = MinTypeScore;
 				resultIndex = i;
 				vecMinTypeCardResultBak = TempMinTypeCardResult[i];
 				bExistBiYing = biYing;
-				if (tempType==CT_BOMB_CARD)
+			/*	if (tempType==CT_BOMB_CARD)
 				{
 					break;
-				}
+				}*/
 			}
 			
 			else if (tempMinTypeCount == 1 && bExistMax != true)
@@ -4522,6 +4526,7 @@ bool CGameLogicNew::OutCardShengYuFenCheck(BYTE cbHandCardCount, const BYTE * cb
 		}
 
 	}	
+	
 	if ((resultIndex != -1) && bExistBiYing==false)
 	{
 		int tempCardType= GetCardType(SearchCardResult.cbResultCard[resultIndex], SearchCardResult.cbCardCount[resultIndex]);
@@ -5975,7 +5980,7 @@ bool CGameLogicNew::SearchOtherHandCardThan(const BYTE cbHandCardData[], BYTE cb
 		{
 			tempCardCount = tempCardCount - m_cbUserCardCount[m_wMeChairID];
 		}
-		tagSearchCardResult SearchCardResult;
+		tagSearchCardResult SearchCardResult = {};
 		SearchOutCard(tempCard, tempCardCount, cbHandCardData, cbHandCardCount, &SearchCardResult, bNoSearchBomb);
 		if (SearchCardResult.cbSearchCount > 0)
 		{
@@ -6221,29 +6226,7 @@ bool CGameLogicNew::SearchOutCardErRen(BYTE cbHandCardData[], BYTE cbHandCardCou
 	}
 	m_bHavePass = m_cbCardDataEx[0];
 	m_cbFirstCard = m_cbCardDataEx[1];
-	cout << m_bHavePass << endl;
-	for (int i = 0; i < cbHandCardCount; i++)
-	{
-		cout << (int)cbHandCardData[i] << ",";
-	}
-	cout << endl;
-	for (int i = 0; i < cbTurnCardCount; i++)
-	{
-		cout << (int)cbTurnCardData[i] << ",";
-	}
-	//cout << endl;
-	//for (int i = 0; i < cbHandCardCount; i++)
-	//{
-	//	cout << cbHandCardData[i] << ",";
-	//}
-	//cout << endl;
-	//for (int i = 0; i < cbHandCardCount; i++)
-	//{
-	//	cout << cbHandCardData[i] << ",";
-	//}
-	cout << endl;
-	cout << m_cbCardTypeCount << "," << m_cbRangCount << "," << m_cbBeiRangCount << endl;
-	cout << m_cbUserCardCount[0] << "," << m_cbUserCardCount[1] << "," << cbTurnCardData[0] << "," << (int)cbTurnCardCount <<endl;
+
 	//玩家判断
 	WORD wUndersideOfBanker = (m_wBankerUser + 1) % GAME_PLAYER;	//地主下家
 	WORD wUpsideOfBanker = (wUndersideOfBanker + 1) % GAME_PLAYER;	//地主上家

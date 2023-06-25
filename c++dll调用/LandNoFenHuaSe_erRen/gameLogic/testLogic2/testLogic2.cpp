@@ -57,24 +57,24 @@ void TestGameLogic()
 	
 	BYTE	cbHandCardData[NORMAL_COUNT] = { 0 };	// ÷…œ∆ÀøÀ
 	//BYTE    tempCard[] = { 0x1C, 0x12, 0x02, 0x38, 0x27, 0x05, 0x23, 0x03, 0x19, 0x28, 0x37, 0x26, 0x25 };
-	BYTE    tempCard[] = { 14, 1, 1, 1, 13, 12, 12, 11, 11, 9, 7, 7, 6, 5, 5, 5 };
+	BYTE    tempCard[] = { 15, 14, 2, 2, 2, 12, 12, 8, 8 };
 	//BYTE    tempCard[] = { 2, 2, 2, 13, 10, 8, 8, 7, 7, 5 };
 
 	tagOutCardResultNew  OutCardResult;
-	BYTE cbTurnCardData[] = { 12 };// { S6, 6, 5, 5, 4, 4 };
+	BYTE cbTurnCardData[] = { 13, 13, 13, 7 };// { S6, 6, 5, 5, 4, 4 };
 	int cbTurnCardCount =   sizeof(cbTurnCardData);
-	BYTE cbDiscardCard[] = { 1, 1, 6, 6, 6, 5, 11, 11, 11, 7 };
-	BYTE cbDiscardCardCount =  sizeof(cbDiscardCard);
-	BYTE cbOtherDisscard[] = { 5, 5, 8, 8, 8, 6 };
+	BYTE cbDiscardCard[] = { 7, 2, 1, 13, 12, 11, 10, 6, 6, 6, 1 };
+	BYTE cbDiscardCardCount = sizeof(cbDiscardCard);
+	BYTE cbOtherDisscard[] = { 1, 13, 13, 13, 7 };
 	BYTE cbOtherDisscardCount = sizeof(cbOtherDisscard);
-	BYTE cbCardDataEx[MAX_COUNT] = { 0, 0, 3, 17, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
-	BYTE maxCard[MAX_COUNT] = { 0, 0, 11, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
-	WORD wBankerUser = 0;
-	WORD wUndersideUser = (wBankerUser + 1) % GAME_PLAYER;
-	WORD wUpsideUser = (wUndersideUser + 1) % GAME_PLAYER;
-	m_GameLogicNew.SetBanker(wBankerUser);
+	BYTE cbCardDataEx[MAX_COUNT] = { 1, 1, 0, 20, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
+	BYTE maxCard[MAX_COUNT] = { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
+	//WORD wBankerUser = 0;
+	//WORD wUndersideUser = (wBankerUser + 1) % GAME_PLAYER;
+	//WORD wUpsideUser = (wUndersideUser + 1) % GAME_PLAYER;
+	//m_GameLogicNew.SetBanker(wBankerUser);
 
-	m_GameLogicNew.SetUserCard(wBankerUser, tempCard, sizeof(tempCard));
+	//m_GameLogicNew.SetUserCard(wBankerUser, tempCard, sizeof(tempCard));
 
 	tagOutCardResultNew CardTypeResult1;
 	CardTypeResult1.cbCardCount = 5;
@@ -91,8 +91,8 @@ void TestGameLogic()
 	/*clock_t start, fihst;
 	start = clock();*/
 
-	int cbCurrentLandScore = 0;
-	int tempScore = m_GameLogicNew.LandScoreErRen(tempCard, sizeof(tempCard), cbCurrentLandScore);
+	//int cbCurrentLandScore = 0;
+	//int tempScore = m_GameLogicNew.LandScoreErRen(tempCard, sizeof(tempCard), cbCurrentLandScore);
 	//int a = 4;
 	////
 	BYTE    tempCardEX[3] = { tempCard[0],tempCard[1],tempCard[2] };

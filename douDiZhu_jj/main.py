@@ -183,10 +183,11 @@ class MyPyQT_Form(QtWidgets.QWidget, Ui_Form):
         # self.handCardCount[0]=16
         # helper.SelectCards("77", self.handCardCount[0], True)
         self.turnCardReal = self.find_other_cardsEx(self.RPlayedCardsPos)
-        # self.user_hand_cards_real='DX2AAKKKQJJJTT98765'
-        # self.turnCardReal='8'
-        # self.myHaveOutCard = '6'
-        # self.rightHaveOutCard='8'
+        # self.bHavePass=True
+        # self.user_hand_cards_real='DX222QQ88'
+        # self.turnCardReal='KKK7'
+        # self.myHaveOutCard = '72AKQJT666A'
+        # self.rightHaveOutCard='AKKK7'
         # self.rangCount=1
         # self.handCardCount[0] = MAX_COUNT
         # self.yuanShiZhangShu = MAX_COUNT

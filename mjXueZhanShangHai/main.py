@@ -679,7 +679,8 @@ class MyPyQT_Form(QtWidgets.QWidget, Ui_Form):
                         ("cbOperateCode", c_ubyte),
                         ("cbResultCard", c_ubyte * MAX_COUNT)
                         ]
-        pDll = CDLL("./testC++.dll")
+        add_path = os.path.split(os.path.abspath(__file__))[0] + '\\'
+        pDll = CDLL(add_path+"./testC++.dll")
         arg1 = tagInPyhonNew()
         #tmpHandCard=[0x01,0x02,0x03,0x04,0x05,0x06,0x07,0x08,0x09,0x0A,0x0B,0x0C,0x0D,0x11,0x12,0x13,0x25,0x35,0x16,0x17]
         tmpHandCard=self.changeDataOut(HandCardData)
