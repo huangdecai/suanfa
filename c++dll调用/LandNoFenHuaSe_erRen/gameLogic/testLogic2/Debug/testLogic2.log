@@ -1,4 +1,4 @@
-﻿生成启动时间为 2023/6/25 18:25:13。
+﻿生成启动时间为 2023/6/26 9:53:56。
      1>项目“D:\test\workTest\suanfa\c++dll调用\LandNoFenHuaSe_erRen\gameLogic\testLogic2\testLogic2.vcxproj”在节点 2 上(Build 个目标)。
      1>C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\V120\Microsoft.CppBuild.targets(388,5): warning MSB8028: The intermediate directory (Debug\) contains files shared from another project (testLogic2.vcxproj).  This can lead to incorrect clean and rebuild behavior.
      1>ClCompile:
@@ -14,4 +14,4 @@
 
 生成成功。
 
-已用时间 00:00:00.73
+已用时间 00:00:00.77
