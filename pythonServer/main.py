@@ -8,7 +8,7 @@ import client
 
 if __name__ == '__main__':
 
-    isServer =1# int(sys.argv[1])
+    isServer = int(sys.argv[1])
     isDebug = True if sys.gettrace() else False
     if isDebug:
         isServer=0

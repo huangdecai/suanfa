@@ -1,58 +1,58 @@
-﻿生成启动时间为 2023/6/26 12:03:03。
+﻿生成启动时间为 2023/6/26 18:42:26。
      1>项目“D:\test\workTest\suanfa\c++dll调用\LandNoFenHuaSe_erRen\gameLogic\testLogic2\testLogic2.vcxproj”在节点 2 上(Build 个目标)。
      1>C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\V120\Microsoft.CppBuild.targets(388,5): warning MSB8028: The intermediate directory (Debug\) contains files shared from another project (testLogic2.vcxproj).  This can lead to incorrect clean and rebuild behavior.
      1>ClCompile:
          C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /I"C:\Program Files (x86)\Visual Leak Detector\include" /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _LIB /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Yu"stdafx.h" /Fp"Debug\gameLogic.pch" /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt GameLogicNew.cpp
          GameLogicNew.cpp
-     1>d:\test\worktest\suanfa\c++dll调用\landnofenhuase_erren\gamelogic\testlogic2\gamelogicnew.cpp(954): warning C4018: “<”: 有符号/无符号不匹配
-     1>d:\test\worktest\suanfa\c++dll调用\landnofenhuase_erren\gamelogic\testlogic2\gamelogicnew.cpp(1007): warning C4018: “<”: 有符号/无符号不匹配
-     1>d:\test\worktest\suanfa\c++dll调用\landnofenhuase_erren\gamelogic\testlogic2\gamelogicnew.cpp(1028): warning C4018: “<”: 有符号/无符号不匹配
-     1>d:\test\worktest\suanfa\c++dll调用\landnofenhuase_erren\gamelogic\testlogic2\gamelogicnew.cpp(1049): warning C4018: “<”: 有符号/无符号不匹配
-     1>d:\test\worktest\suanfa\c++dll调用\landnofenhuase_erren\gamelogic\testlogic2\gamelogicnew.cpp(1067): warning C4018: “<”: 有符号/无符号不匹配
-     1>d:\test\worktest\suanfa\c++dll调用\landnofenhuase_erren\gamelogic\testlogic2\gamelogicnew.cpp(1168): warning C4244: “参数”: 从“float”转换到“const int”，可能丢失数据
-     1>d:\test\worktest\suanfa\c++dll调用\landnofenhuase_erren\gamelogic\testlogic2\gamelogicnew.cpp(1191): warning C4244: “参数”: 从“float”转换到“const int”，可能丢失数据
-     1>d:\test\worktest\suanfa\c++dll调用\landnofenhuase_erren\gamelogic\testlogic2\gamelogicnew.cpp(1222): warning C4244: “参数”: 从“float”转换到“const int”，可能丢失数据
-     1>d:\test\worktest\suanfa\c++dll调用\landnofenhuase_erren\gamelogic\testlogic2\gamelogicnew.cpp(1243): warning C4244: “参数”: 从“float”转换到“const int”，可能丢失数据
-     1>d:\test\worktest\suanfa\c++dll调用\landnofenhuase_erren\gamelogic\testlogic2\gamelogicnew.cpp(1678): warning C4101: “cbAllBomCardData”: 未引用的局部变量
-     1>d:\test\worktest\suanfa\c++dll调用\landnofenhuase_erren\gamelogic\testlogic2\gamelogicnew.cpp(1993): warning C4018: “<”: 有符号/无符号不匹配
-     1>d:\test\worktest\suanfa\c++dll调用\landnofenhuase_erren\gamelogic\testlogic2\gamelogicnew.cpp(2044): warning C4018: “<”: 有符号/无符号不匹配
-     1>d:\test\worktest\suanfa\c++dll调用\landnofenhuase_erren\gamelogic\testlogic2\gamelogicnew.cpp(2091): warning C4018: “<”: 有符号/无符号不匹配
-     1>d:\test\worktest\suanfa\c++dll调用\landnofenhuase_erren\gamelogic\testlogic2\gamelogicnew.cpp(2365): warning C4018: “<”: 有符号/无符号不匹配
-     1>d:\test\worktest\suanfa\c++dll调用\landnofenhuase_erren\gamelogic\testlogic2\gamelogicnew.cpp(2368): warning C4018: “<”: 有符号/无符号不匹配
-     1>d:\test\worktest\suanfa\c++dll调用\landnofenhuase_erren\gamelogic\testlogic2\gamelogicnew.cpp(2377): warning C4018: “<=”: 有符号/无符号不匹配
-     1>d:\test\worktest\suanfa\c++dll调用\landnofenhuase_erren\gamelogic\testlogic2\gamelogicnew.cpp(2453): warning C4018: “<”: 有符号/无符号不匹配
-     1>d:\test\worktest\suanfa\c++dll调用\landnofenhuase_erren\gamelogic\testlogic2\gamelogicnew.cpp(2943): warning C4018: “<”: 有符号/无符号不匹配
-     1>d:\test\worktest\suanfa\c++dll调用\landnofenhuase_erren\gamelogic\testlogic2\gamelogicnew.cpp(3025): warning C4018: “<”: 有符号/无符号不匹配
-     1>d:\test\worktest\suanfa\c++dll调用\landnofenhuase_erren\gamelogic\testlogic2\gamelogicnew.cpp(3050): warning C4018: “<”: 有符号/无符号不匹配
-     1>d:\test\worktest\suanfa\c++dll调用\landnofenhuase_erren\gamelogic\testlogic2\gamelogicnew.cpp(3079): warning C4018: “>=”: 有符号/无符号不匹配
-     1>d:\test\worktest\suanfa\c++dll调用\landnofenhuase_erren\gamelogic\testlogic2\gamelogicnew.cpp(3086): warning C4018: “<”: 有符号/无符号不匹配
-     1>d:\test\worktest\suanfa\c++dll调用\landnofenhuase_erren\gamelogic\testlogic2\gamelogicnew.cpp(3101): warning C4018: “<”: 有符号/无符号不匹配
-     1>d:\test\worktest\suanfa\c++dll调用\landnofenhuase_erren\gamelogic\testlogic2\gamelogicnew.cpp(3179): warning C4018: “>=”: 有符号/无符号不匹配
-     1>d:\test\worktest\suanfa\c++dll调用\landnofenhuase_erren\gamelogic\testlogic2\gamelogicnew.cpp(3181): warning C4018: “<”: 有符号/无符号不匹配
-     1>d:\test\worktest\suanfa\c++dll调用\landnofenhuase_erren\gamelogic\testlogic2\gamelogicnew.cpp(3191): warning C4018: “>=”: 有符号/无符号不匹配
-     1>d:\test\worktest\suanfa\c++dll调用\landnofenhuase_erren\gamelogic\testlogic2\gamelogicnew.cpp(3193): warning C4018: “<”: 有符号/无符号不匹配
-     1>d:\test\worktest\suanfa\c++dll调用\landnofenhuase_erren\gamelogic\testlogic2\gamelogicnew.cpp(3218): warning C4018: “<”: 有符号/无符号不匹配
-     1>d:\test\worktest\suanfa\c++dll调用\landnofenhuase_erren\gamelogic\testlogic2\gamelogicnew.cpp(3258): warning C4018: “<”: 有符号/无符号不匹配
-     1>d:\test\worktest\suanfa\c++dll调用\landnofenhuase_erren\gamelogic\testlogic2\gamelogicnew.cpp(3341): warning C4018: “<”: 有符号/无符号不匹配
-     1>d:\test\worktest\suanfa\c++dll调用\landnofenhuase_erren\gamelogic\testlogic2\gamelogicnew.cpp(3366): warning C4018: “<”: 有符号/无符号不匹配
-     1>d:\test\worktest\suanfa\c++dll调用\landnofenhuase_erren\gamelogic\testlogic2\gamelogicnew.cpp(3395): warning C4018: “>=”: 有符号/无符号不匹配
-     1>d:\test\worktest\suanfa\c++dll调用\landnofenhuase_erren\gamelogic\testlogic2\gamelogicnew.cpp(3403): warning C4018: “<”: 有符号/无符号不匹配
-     1>d:\test\worktest\suanfa\c++dll调用\landnofenhuase_erren\gamelogic\testlogic2\gamelogicnew.cpp(3416): warning C4018: “>=”: 有符号/无符号不匹配
-     1>d:\test\worktest\suanfa\c++dll调用\landnofenhuase_erren\gamelogic\testlogic2\gamelogicnew.cpp(3418): warning C4018: “<”: 有符号/无符号不匹配
-     1>d:\test\worktest\suanfa\c++dll调用\landnofenhuase_erren\gamelogic\testlogic2\gamelogicnew.cpp(3428): warning C4018: “>=”: 有符号/无符号不匹配
-     1>d:\test\worktest\suanfa\c++dll调用\landnofenhuase_erren\gamelogic\testlogic2\gamelogicnew.cpp(3430): warning C4018: “<”: 有符号/无符号不匹配
-     1>d:\test\worktest\suanfa\c++dll调用\landnofenhuase_erren\gamelogic\testlogic2\gamelogicnew.cpp(3452): warning C4018: “<”: 有符号/无符号不匹配
-     1>d:\test\worktest\suanfa\c++dll调用\landnofenhuase_erren\gamelogic\testlogic2\gamelogicnew.cpp(3507): warning C4018: “<”: 有符号/无符号不匹配
-     1>d:\test\worktest\suanfa\c++dll调用\landnofenhuase_erren\gamelogic\testlogic2\gamelogicnew.cpp(3541): warning C4018: “<”: 有符号/无符号不匹配
-     1>d:\test\worktest\suanfa\c++dll调用\landnofenhuase_erren\gamelogic\testlogic2\gamelogicnew.cpp(3583): warning C4018: “<”: 有符号/无符号不匹配
-     1>d:\test\worktest\suanfa\c++dll调用\landnofenhuase_erren\gamelogic\testlogic2\gamelogicnew.cpp(3588): warning C4018: “<”: 有符号/无符号不匹配
-     1>d:\test\worktest\suanfa\c++dll调用\landnofenhuase_erren\gamelogic\testlogic2\gamelogicnew.cpp(3642): warning C4018: “<”: 有符号/无符号不匹配
-     1>d:\test\worktest\suanfa\c++dll调用\landnofenhuase_erren\gamelogic\testlogic2\gamelogicnew.cpp(3668): warning C4018: “<”: 有符号/无符号不匹配
-     1>d:\test\worktest\suanfa\c++dll调用\landnofenhuase_erren\gamelogic\testlogic2\gamelogicnew.cpp(3774): warning C4018: “<”: 有符号/无符号不匹配
-     1>d:\test\worktest\suanfa\c++dll调用\landnofenhuase_erren\gamelogic\testlogic2\gamelogicnew.cpp(3789): warning C4018: “>=”: 有符号/无符号不匹配
-     1>d:\test\worktest\suanfa\c++dll调用\landnofenhuase_erren\gamelogic\testlogic2\gamelogicnew.cpp(4387): warning C4018: “<”: 有符号/无符号不匹配
-     1>d:\test\worktest\suanfa\c++dll调用\landnofenhuase_erren\gamelogic\testlogic2\gamelogicnew.cpp(4494): warning C4018: “<”: 有符号/无符号不匹配
-     1>d:\test\worktest\suanfa\c++dll调用\landnofenhuase_erren\gamelogic\testlogic2\gamelogicnew.cpp(4520): warning C4018: “<”: 有符号/无符号不匹配
+     1>d:\test\worktest\suanfa\c++dll调用\landnofenhuase_erren\gamelogic\testlogic2\gamelogicnew.cpp(953): warning C4018: “<”: 有符号/无符号不匹配
+     1>d:\test\worktest\suanfa\c++dll调用\landnofenhuase_erren\gamelogic\testlogic2\gamelogicnew.cpp(1006): warning C4018: “<”: 有符号/无符号不匹配
+     1>d:\test\worktest\suanfa\c++dll调用\landnofenhuase_erren\gamelogic\testlogic2\gamelogicnew.cpp(1027): warning C4018: “<”: 有符号/无符号不匹配
+     1>d:\test\worktest\suanfa\c++dll调用\landnofenhuase_erren\gamelogic\testlogic2\gamelogicnew.cpp(1048): warning C4018: “<”: 有符号/无符号不匹配
+     1>d:\test\worktest\suanfa\c++dll调用\landnofenhuase_erren\gamelogic\testlogic2\gamelogicnew.cpp(1066): warning C4018: “<”: 有符号/无符号不匹配
+     1>d:\test\worktest\suanfa\c++dll调用\landnofenhuase_erren\gamelogic\testlogic2\gamelogicnew.cpp(1167): warning C4244: “参数”: 从“float”转换到“const int”，可能丢失数据
+     1>d:\test\worktest\suanfa\c++dll调用\landnofenhuase_erren\gamelogic\testlogic2\gamelogicnew.cpp(1190): warning C4244: “参数”: 从“float”转换到“const int”，可能丢失数据
+     1>d:\test\worktest\suanfa\c++dll调用\landnofenhuase_erren\gamelogic\testlogic2\gamelogicnew.cpp(1221): warning C4244: “参数”: 从“float”转换到“const int”，可能丢失数据
+     1>d:\test\worktest\suanfa\c++dll调用\landnofenhuase_erren\gamelogic\testlogic2\gamelogicnew.cpp(1242): warning C4244: “参数”: 从“float”转换到“const int”，可能丢失数据
+     1>d:\test\worktest\suanfa\c++dll调用\landnofenhuase_erren\gamelogic\testlogic2\gamelogicnew.cpp(1677): warning C4101: “cbAllBomCardData”: 未引用的局部变量
+     1>d:\test\worktest\suanfa\c++dll调用\landnofenhuase_erren\gamelogic\testlogic2\gamelogicnew.cpp(1992): warning C4018: “<”: 有符号/无符号不匹配
+     1>d:\test\worktest\suanfa\c++dll调用\landnofenhuase_erren\gamelogic\testlogic2\gamelogicnew.cpp(2043): warning C4018: “<”: 有符号/无符号不匹配
+     1>d:\test\worktest\suanfa\c++dll调用\landnofenhuase_erren\gamelogic\testlogic2\gamelogicnew.cpp(2090): warning C4018: “<”: 有符号/无符号不匹配
+     1>d:\test\worktest\suanfa\c++dll调用\landnofenhuase_erren\gamelogic\testlogic2\gamelogicnew.cpp(2364): warning C4018: “<”: 有符号/无符号不匹配
+     1>d:\test\worktest\suanfa\c++dll调用\landnofenhuase_erren\gamelogic\testlogic2\gamelogicnew.cpp(2367): warning C4018: “<”: 有符号/无符号不匹配
+     1>d:\test\worktest\suanfa\c++dll调用\landnofenhuase_erren\gamelogic\testlogic2\gamelogicnew.cpp(2376): warning C4018: “<=”: 有符号/无符号不匹配
+     1>d:\test\worktest\suanfa\c++dll调用\landnofenhuase_erren\gamelogic\testlogic2\gamelogicnew.cpp(2452): warning C4018: “<”: 有符号/无符号不匹配
+     1>d:\test\worktest\suanfa\c++dll调用\landnofenhuase_erren\gamelogic\testlogic2\gamelogicnew.cpp(2942): warning C4018: “<”: 有符号/无符号不匹配
+     1>d:\test\worktest\suanfa\c++dll调用\landnofenhuase_erren\gamelogic\testlogic2\gamelogicnew.cpp(3024): warning C4018: “<”: 有符号/无符号不匹配
+     1>d:\test\worktest\suanfa\c++dll调用\landnofenhuase_erren\gamelogic\testlogic2\gamelogicnew.cpp(3049): warning C4018: “<”: 有符号/无符号不匹配
+     1>d:\test\worktest\suanfa\c++dll调用\landnofenhuase_erren\gamelogic\testlogic2\gamelogicnew.cpp(3078): warning C4018: “>=”: 有符号/无符号不匹配
+     1>d:\test\worktest\suanfa\c++dll调用\landnofenhuase_erren\gamelogic\testlogic2\gamelogicnew.cpp(3085): warning C4018: “<”: 有符号/无符号不匹配
+     1>d:\test\worktest\suanfa\c++dll调用\landnofenhuase_erren\gamelogic\testlogic2\gamelogicnew.cpp(3100): warning C4018: “<”: 有符号/无符号不匹配
+     1>d:\test\worktest\suanfa\c++dll调用\landnofenhuase_erren\gamelogic\testlogic2\gamelogicnew.cpp(3178): warning C4018: “>=”: 有符号/无符号不匹配
+     1>d:\test\worktest\suanfa\c++dll调用\landnofenhuase_erren\gamelogic\testlogic2\gamelogicnew.cpp(3180): warning C4018: “<”: 有符号/无符号不匹配
+     1>d:\test\worktest\suanfa\c++dll调用\landnofenhuase_erren\gamelogic\testlogic2\gamelogicnew.cpp(3190): warning C4018: “>=”: 有符号/无符号不匹配
+     1>d:\test\worktest\suanfa\c++dll调用\landnofenhuase_erren\gamelogic\testlogic2\gamelogicnew.cpp(3192): warning C4018: “<”: 有符号/无符号不匹配
+     1>d:\test\worktest\suanfa\c++dll调用\landnofenhuase_erren\gamelogic\testlogic2\gamelogicnew.cpp(3217): warning C4018: “<”: 有符号/无符号不匹配
+     1>d:\test\worktest\suanfa\c++dll调用\landnofenhuase_erren\gamelogic\testlogic2\gamelogicnew.cpp(3257): warning C4018: “<”: 有符号/无符号不匹配
+     1>d:\test\worktest\suanfa\c++dll调用\landnofenhuase_erren\gamelogic\testlogic2\gamelogicnew.cpp(3340): warning C4018: “<”: 有符号/无符号不匹配
+     1>d:\test\worktest\suanfa\c++dll调用\landnofenhuase_erren\gamelogic\testlogic2\gamelogicnew.cpp(3365): warning C4018: “<”: 有符号/无符号不匹配
+     1>d:\test\worktest\suanfa\c++dll调用\landnofenhuase_erren\gamelogic\testlogic2\gamelogicnew.cpp(3394): warning C4018: “>=”: 有符号/无符号不匹配
+     1>d:\test\worktest\suanfa\c++dll调用\landnofenhuase_erren\gamelogic\testlogic2\gamelogicnew.cpp(3402): warning C4018: “<”: 有符号/无符号不匹配
+     1>d:\test\worktest\suanfa\c++dll调用\landnofenhuase_erren\gamelogic\testlogic2\gamelogicnew.cpp(3415): warning C4018: “>=”: 有符号/无符号不匹配
+     1>d:\test\worktest\suanfa\c++dll调用\landnofenhuase_erren\gamelogic\testlogic2\gamelogicnew.cpp(3417): warning C4018: “<”: 有符号/无符号不匹配
+     1>d:\test\worktest\suanfa\c++dll调用\landnofenhuase_erren\gamelogic\testlogic2\gamelogicnew.cpp(3427): warning C4018: “>=”: 有符号/无符号不匹配
+     1>d:\test\worktest\suanfa\c++dll调用\landnofenhuase_erren\gamelogic\testlogic2\gamelogicnew.cpp(3429): warning C4018: “<”: 有符号/无符号不匹配
+     1>d:\test\worktest\suanfa\c++dll调用\landnofenhuase_erren\gamelogic\testlogic2\gamelogicnew.cpp(3451): warning C4018: “<”: 有符号/无符号不匹配
+     1>d:\test\worktest\suanfa\c++dll调用\landnofenhuase_erren\gamelogic\testlogic2\gamelogicnew.cpp(3506): warning C4018: “<”: 有符号/无符号不匹配
+     1>d:\test\worktest\suanfa\c++dll调用\landnofenhuase_erren\gamelogic\testlogic2\gamelogicnew.cpp(3540): warning C4018: “<”: 有符号/无符号不匹配
+     1>d:\test\worktest\suanfa\c++dll调用\landnofenhuase_erren\gamelogic\testlogic2\gamelogicnew.cpp(3582): warning C4018: “<”: 有符号/无符号不匹配
+     1>d:\test\worktest\suanfa\c++dll调用\landnofenhuase_erren\gamelogic\testlogic2\gamelogicnew.cpp(3587): warning C4018: “<”: 有符号/无符号不匹配
+     1>d:\test\worktest\suanfa\c++dll调用\landnofenhuase_erren\gamelogic\testlogic2\gamelogicnew.cpp(3641): warning C4018: “<”: 有符号/无符号不匹配
+     1>d:\test\worktest\suanfa\c++dll调用\landnofenhuase_erren\gamelogic\testlogic2\gamelogicnew.cpp(3667): warning C4018: “<”: 有符号/无符号不匹配
+     1>d:\test\worktest\suanfa\c++dll调用\landnofenhuase_erren\gamelogic\testlogic2\gamelogicnew.cpp(3773): warning C4018: “<”: 有符号/无符号不匹配
+     1>d:\test\worktest\suanfa\c++dll调用\landnofenhuase_erren\gamelogic\testlogic2\gamelogicnew.cpp(3788): warning C4018: “>=”: 有符号/无符号不匹配
+     1>d:\test\worktest\suanfa\c++dll调用\landnofenhuase_erren\gamelogic\testlogic2\gamelogicnew.cpp(4386): warning C4018: “<”: 有符号/无符号不匹配
+     1>d:\test\worktest\suanfa\c++dll调用\landnofenhuase_erren\gamelogic\testlogic2\gamelogicnew.cpp(4493): warning C4018: “<”: 有符号/无符号不匹配
+     1>d:\test\worktest\suanfa\c++dll调用\landnofenhuase_erren\gamelogic\testlogic2\gamelogicnew.cpp(4519): warning C4018: “<”: 有符号/无符号不匹配
      1>d:\test\worktest\suanfa\c++dll调用\landnofenhuase_erren\gamelogic\testlogic2\gamelogicnew.cpp(4638): warning C4018: “<”: 有符号/无符号不匹配
      1>d:\test\worktest\suanfa\c++dll调用\landnofenhuase_erren\gamelogic\testlogic2\gamelogicnew.cpp(4733): warning C4018: “<”: 有符号/无符号不匹配
      1>d:\test\worktest\suanfa\c++dll调用\landnofenhuase_erren\gamelogic\testlogic2\gamelogicnew.cpp(4788): warning C4018: “<”: 有符号/无符号不匹配

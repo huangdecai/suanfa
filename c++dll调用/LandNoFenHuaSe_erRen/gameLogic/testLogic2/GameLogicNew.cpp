@@ -50,24 +50,23 @@ void CGameLogicNew::ReSetData()
 {
 	ZeroMemory(m_cbDiscardCard, sizeof(m_cbDiscardCard));
 	ZeroMemory(m_cbOtherDiscardCard, sizeof(m_cbOtherDiscardCard));
+	ZeroMemory(m_cbUserCardCount, sizeof(m_cbUserCardCount));
+	ZeroMemory(m_cbMaxCard, sizeof(m_cbMaxCard));
+	ZeroMemory(m_cbCardDataEx, sizeof(m_cbCardDataEx));
+	ZeroMemory(m_cbDiscardCard, sizeof(m_cbDiscardCard));
+	ZeroMemory(m_cbOtherDiscardCard, sizeof(m_cbOtherDiscardCard));
+	ZeroMemory(m_cbAllCardData, sizeof(m_cbAllCardData));
 	m_cbOtherDiscardCount = 0;
 	m_cbDiscardCardCount = 0;
 	m_cbFirstCard = 0;
 	m_bHavePass = false;
-	ZeroMemory(m_cbMaxCard, sizeof(m_cbMaxCard));
-	ZeroMemory(m_cbCardDataEx, sizeof(m_cbCardDataEx));
 	
 }
 
 //构造函数
 CGameLogicNew::CGameLogicNew()
 {
-	ZeroMemory(m_cbDiscardCard, sizeof(m_cbDiscardCard));
-	ZeroMemory(m_cbOtherDiscardCard, sizeof(m_cbOtherDiscardCard));
-	ZeroMemory(m_cbAllCardData, sizeof(m_cbAllCardData));
-	ZeroMemory(m_cbUserCardCount, sizeof(m_cbUserCardCount));
-	ZeroMemory(m_cbMaxCard, sizeof(m_cbMaxCard));
-	ZeroMemory(m_cbCardDataEx, sizeof(m_cbCardDataEx));
+	ReSetData();
 }
 
 //析构函数

@@ -69,34 +69,15 @@ void TestGameLogic()
 	BYTE cbOtherDisscardCount = sizeof(cbOtherDisscard);
 	BYTE cbCardDataEx[MAX_COUNT] = { 0, 0, 4, 20, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
 	BYTE maxCard[MAX_COUNT] = { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
-	//WORD wBankerUser = 0;
-	//WORD wUndersideUser = (wBankerUser + 1) % GAME_PLAYER;
-	//WORD wUpsideUser = (wUndersideUser + 1) % GAME_PLAYER;
-	//m_GameLogicNew.SetBanker(wBankerUser);
-
-	//m_GameLogicNew.SetUserCard(wBankerUser, tempCard, sizeof(tempCard));
-
-	tagOutCardResultNew CardTypeResult1;
-	CardTypeResult1.cbCardCount = 5;
-	BYTE    tempCard1[] = {  4, 4 };
-	BYTE    tempCard2[] = {  3, 3 };
-	BYTE    tempCard3[] = {  3, 4 };
-	CopyMemory(CardTypeResult1.cbResultCard, tempCard1, CardTypeResult1.cbCardCount);
-	float score1 = m_GameLogicNew.GetCardTypeScore(CardTypeResult1);
-	CopyMemory(CardTypeResult1.cbResultCard, tempCard2, CardTypeResult1.cbCardCount);
-	float score2 = m_GameLogicNew.GetCardTypeScore(CardTypeResult1);
-	CopyMemory(CardTypeResult1.cbResultCard, tempCard3, CardTypeResult1.cbCardCount);
-	float score3 = m_GameLogicNew.GetCardTypeScore(CardTypeResult1);
-
-	/*clock_t start, fihst;
-	start = clock();*/
+	
+	//tagOutCardResultNew CardTypeResult1;
+	//CardTypeResult1.cbCardCount = 5;
+	//BYTE    tempCard1[] = {  4, 4 };
+	//CopyMemory(CardTypeResult1.cbResultCard, tempCard1, CardTypeResult1.cbCardCount);
+	//float score1 = m_GameLogicNew.GetCardTypeScore(CardTypeResult1);
 
 	//int cbCurrentLandScore = 0;
 	//int tempScore = m_GameLogicNew.LandScoreErRen(tempCard, sizeof(tempCard), cbCurrentLandScore);
-	//int a = 4;
-	////
-	BYTE    tempCardEX[3] = { tempCard[0],tempCard[1],tempCard[2] };
-	//int turnCount = m_GameLogicNew.CalCardTurnCount(tempCardEX, sizeof(tempCardEX), tempCard, sizeof(tempCard), NULL, 0,1);
 	for (int i = 0; i < 1000;i++)
 	{
 		clock_t start, fihst;
