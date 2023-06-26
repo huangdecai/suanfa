@@ -68,9 +68,9 @@ class MyPyQT_Form(QtWidgets.QWidget, Ui_Form):
         self.OtherFilter = 25  # 别人的牌检测结果过滤参数
         self.SleepTime = 0.1  # 循环中睡眠时间
         self.yaoBuQi=True
-        self.RunGame = False
+        self.RunGame = True
         self.AutoPlay = True
-        self.game_over = False
+        self.game_over = True
         self.onlyTip=False
         self.mylastCard=""
         self.myHaveOutCard = ""
@@ -155,6 +155,16 @@ class MyPyQT_Form(QtWidgets.QWidget, Ui_Form):
             self.MAX_CARD_COUNT=NORMAL_COUNT
         a=4
     def init_cards(self):
+        # 得到出牌顺序
+        try:
+            self.start()
+        except Exception as e:
+            exc_type, exc_obj, exc_tb = sys.exc_info()
+            print(e)
+            traceback.print_tb(exc_tb)
+            self.stop()
+
+    def gameStart(self):
         self.RunGame = True
         GameHelper.Interrupt = False
         self.init_display()
@@ -231,15 +241,6 @@ class MyPyQT_Form(QtWidgets.QWidget, Ui_Form):
         self.setRangCount()
         self.shengYuCardData=self.shengYuCardData+self.user_hand_cards_real
         self.shengYuPaiShow(self.shengYuCardData)
-        # 得到出牌顺序
-        try:
-            self.start()
-        except Exception as e:
-            exc_type, exc_obj, exc_tb = sys.exc_info()
-            print(e)
-            traceback.print_tb(exc_tb)
-            self.stop()
-
     def sleep(self, ms):
         self.counter.restart()
         while self.counter.elapsed() < ms:
@@ -268,8 +269,10 @@ class MyPyQT_Form(QtWidgets.QWidget, Ui_Form):
         return (self.handCardCount[0]-self.beiRangCount)==0 or (self.handCardCount[1]-self.rangCount)==0
     def start(self):
         print("开始出牌\n")
-        while not self.game_over:
+        while self.RunGame:
             # 玩家出牌时就通过智能体获取action，否则通过识别获取其他玩家出牌
+            if self.game_over:
+               self.gameStart()
             if self.play_order == 0:
                 self.PredictedCard.setText("...")
                 if len(self.turnCardReal)==0 :
@@ -312,7 +315,9 @@ class MyPyQT_Form(QtWidgets.QWidget, Ui_Form):
                             if not self.RunGame:
                                 break
                             print(self.play_order,"等待出牌按钮",tempOutCardPos[0])
-                            self.detect_start_btn()
+                            self.game_over=self.detect_start_btn()
+                            if self.game_over:
+                                break
                             tryCount -= 1
                             result = helper.LocateOnScreen("go_btn", region=tempOutCardPos, confidence=0.85)
                             self.sleep(50)
@@ -358,7 +363,7 @@ class MyPyQT_Form(QtWidgets.QWidget, Ui_Form):
                             bGameOver=True
                             break
                 if bGameOver :
-                    self.detect_start_btn()
+                    self.game_over=self.detect_start_btn()
                 else:
                     # 未找到"不出"
                     if pass_flag is None:
@@ -475,7 +480,7 @@ class MyPyQT_Form(QtWidgets.QWidget, Ui_Form):
                 self.sleep(2000)
                 helper.ClickOnImage("change_player_btn", region=self.changePlayerBtnPos)
                 self.sleep(1000)
-                self.initStart()
+            return True
     def shengYuPaiShow(self, cards):
         #self.ThreeLandlordCards.resize(300,100)
         AllCard = {'3': 3, '4': 4, '5': 5, '6': 6, '7': 7,
@@ -750,34 +755,17 @@ class MyPyQT_Form(QtWidgets.QWidget, Ui_Form):
     def stop(self):
         try:
             self.RunGame = False
-            self.game_over = True
+            GameHelper.Interrupt = True
             self.env.reset()
             self.init_display()
 
         except AttributeError as e:
             pass
-        if self.AutoPlay:
-            play_btn = helper.LocateOnScreen("change_player_btn", region=self.changePlayerBtnPos)
-            while play_btn is None and self.AutoPlay:
-                play_btn = helper.LocateOnScreen("change_player_btn", region=self.changePlayerBtnPos)
-                self.sleep(100)
-            if play_btn is not None:
-                self.sleep(800)
-                helper.LeftClick((play_btn[0], play_btn[1]))
-                self.sleep(2500)
-                helper.ClickOnImage("sure", region=(440, 375, 160, 70))
-                print("click:sure")
-                self.initStart()
 
     def beforeStart(self):
         self.onlyTip = not self.onlyTip
         self.AutoStart.setText("只提示" if self.onlyTip else "代打")
-    def initStart(self):
-        self.RunGame = True
-        self.yaoBuQi=True
-        GameHelper.Interrupt = True
-        self.sleep(2000)
-        self.init_cards()
+
 
 if __name__ == '__main__':
     app = QtWidgets.QApplication(sys.argv)
