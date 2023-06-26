@@ -949,6 +949,7 @@ float CGameLogicNew::GetHandScore(vector<tagOutCardResultNew> &CardTypeResult, i
 	int typeCount[CT_TYPE_COUNT] = { 0 };
 	int shunIndex = 0;
 	bool bHave2 = false;
+	bool bHaveWang = false;
 	vector<int> vecShunZiCount;
 	for (int i = 0; i < CardTypeResult.size(); i++)
 	{
@@ -963,7 +964,8 @@ float CGameLogicNew::GetHandScore(vector<tagOutCardResultNew> &CardTypeResult, i
 		}
 		if (CardTypeResult[i].cbCardType == CT_MISSILE_CARD)
 		{   
-				score += 30;
+				score += 50;
+				bHaveWang = true;
 		}
 		else if (CardTypeResult[i].cbCardType == CT_DOUBLE)
 		{   //为了解决压对12,12，手上牌1,1,13,13,12，12，8，6，6上对1还是上对13的问题
@@ -974,6 +976,10 @@ float CGameLogicNew::GetHandScore(vector<tagOutCardResultNew> &CardTypeResult, i
 			else if (GetCardLogicValue(CardTypeResult[i].cbResultCard[0]) == 15)
 			{
 				score += 7;
+				if (bHaveWang)
+				{
+					score += 20;
+				}
 			}
 		}
 		else if (CardTypeResult[i].cbCardType == CT_THREE)
@@ -985,6 +991,10 @@ float CGameLogicNew::GetHandScore(vector<tagOutCardResultNew> &CardTypeResult, i
 			else if (GetCardLogicValue(CardTypeResult[i].cbResultCard[0]) == 15)
 			{
 				score += 9;
+				if (bHaveWang)
+				{
+					score += 30;
+				}
 			}
 		}
 		else if (m_bTrunMode&& CardTypeResult[i].cbCardType == CT_SINGLE)

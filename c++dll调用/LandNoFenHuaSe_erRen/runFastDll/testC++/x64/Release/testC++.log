@@ -1,37 +1,38 @@
-﻿生成启动时间为 2023/6/25 23:04:58。
+﻿生成启动时间为 2023/6/26 21:58:50。
      1>项目“D:\pythonTest\c++dll调用\LandNoFenHuaSe_erRen\runFastDll\testC++\testC++.vcxproj”在节点 2 上(Build 个目标)。
      1>ClCompile:
          C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\x86_amd64\CL.exe /c /Zi /nologo /W3 /WX- /sdl /O2 /Oi /GL /D WIN32 /D NDEBUG /D _WINDOWS /D _USRDLL /D TESTC_EXPORTS /D _CRT_SECURE_NO_WARNINGS /Gm- /EHsc /MD /GS /Gy /fp:precise /Zc:wchar_t /Zc:forScope /Yu"stdafx.h" /Fp"x64\Release\testC++.pch" /Fo"x64\Release\\" /Fd"x64\Release\vc120.pdb" /Gd /TP /errorReport:prompt GameLogicNew.cpp
          GameLogicNew.cpp
-     1>GameLogicNew.cpp(1168): warning C4244: “参数”: 从“float”转换到“const int”，可能丢失数据
-     1>GameLogicNew.cpp(1191): warning C4244: “参数”: 从“float”转换到“const int”，可能丢失数据
-     1>GameLogicNew.cpp(1222): warning C4244: “参数”: 从“float”转换到“const int”，可能丢失数据
-     1>GameLogicNew.cpp(1243): warning C4244: “参数”: 从“float”转换到“const int”，可能丢失数据
-     1>GameLogicNew.cpp(1678): warning C4101: “cbAllBomCardData”: 未引用的局部变量
-     1>GameLogicNew.cpp(2115): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
-     1>GameLogicNew.cpp(2143): warning C4267: “=”: 从“size_t”转换到“int”，可能丢失数据
-     1>GameLogicNew.cpp(2373): warning C4267: “=”: 从“size_t”转换到“int”，可能丢失数据
-     1>GameLogicNew.cpp(2383): warning C4267: “=”: 从“size_t”转换到“int”，可能丢失数据
-     1>GameLogicNew.cpp(2436): warning C4244: “初始化”: 从“__int64”转换到“int”，可能丢失数据
-     1>GameLogicNew.cpp(2978): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
-     1>GameLogicNew.cpp(3117): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
-     1>GameLogicNew.cpp(3149): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
-     1>GameLogicNew.cpp(3164): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
-     1>GameLogicNew.cpp(3294): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
-     1>GameLogicNew.cpp(3696): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
-     1>GameLogicNew.cpp(3722): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
-     1>GameLogicNew.cpp(4534): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
-     1>GameLogicNew.cpp(4535): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
-     1>GameLogicNew.cpp(5097): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
-     1>GameLogicNew.cpp(5110): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
-     1>GameLogicNew.cpp(5302): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
-     1>GameLogicNew.cpp(6227): warning C4800: “BYTE”: 将值强制为布尔值“true”或“false”(性能警告)
-     1>GameLogicNew.cpp(6270): warning C4244: “=”: 从“float”转换到“int”，可能丢失数据
-     1>GameLogicNew.cpp(6273): warning C4244: “return”: 从“float”转换到“int”，可能丢失数据
-     1>GameLogicNew.cpp(6379): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
-     1>GameLogicNew.cpp(6392): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
-     1>GameLogicNew.cpp(6721): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
-     1>GameLogicNew.cpp(6732): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
+     1>GameLogicNew.cpp(1177): warning C4244: “参数”: 从“float”转换到“const int”，可能丢失数据
+     1>GameLogicNew.cpp(1200): warning C4244: “参数”: 从“float”转换到“const int”，可能丢失数据
+     1>GameLogicNew.cpp(1231): warning C4244: “参数”: 从“float”转换到“const int”，可能丢失数据
+     1>GameLogicNew.cpp(1252): warning C4244: “参数”: 从“float”转换到“const int”，可能丢失数据
+     1>GameLogicNew.cpp(1687): warning C4101: “cbAllBomCardData”: 未引用的局部变量
+     1>GameLogicNew.cpp(2124): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
+     1>GameLogicNew.cpp(2152): warning C4267: “=”: 从“size_t”转换到“int”，可能丢失数据
+     1>GameLogicNew.cpp(2382): warning C4267: “=”: 从“size_t”转换到“int”，可能丢失数据
+     1>GameLogicNew.cpp(2392): warning C4267: “=”: 从“size_t”转换到“int”，可能丢失数据
+     1>GameLogicNew.cpp(2445): warning C4244: “初始化”: 从“__int64”转换到“int”，可能丢失数据
+     1>GameLogicNew.cpp(2987): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
+     1>GameLogicNew.cpp(3126): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
+     1>GameLogicNew.cpp(3158): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
+     1>GameLogicNew.cpp(3173): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
+     1>GameLogicNew.cpp(3303): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
+     1>GameLogicNew.cpp(3706): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
+     1>GameLogicNew.cpp(3732): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
+     1>GameLogicNew.cpp(4550): warning C4267: “参数”: 从“size_t”转换到“const BYTE”，可能丢失数据
+     1>GameLogicNew.cpp(4558): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
+     1>GameLogicNew.cpp(4559): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
+     1>GameLogicNew.cpp(5121): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
+     1>GameLogicNew.cpp(5134): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
+     1>GameLogicNew.cpp(5326): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
+     1>GameLogicNew.cpp(6251): warning C4800: “BYTE”: 将值强制为布尔值“true”或“false”(性能警告)
+     1>GameLogicNew.cpp(6294): warning C4244: “=”: 从“float”转换到“int”，可能丢失数据
+     1>GameLogicNew.cpp(6297): warning C4244: “return”: 从“float”转换到“int”，可能丢失数据
+     1>GameLogicNew.cpp(6403): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
+     1>GameLogicNew.cpp(6416): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
+     1>GameLogicNew.cpp(6745): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
+     1>GameLogicNew.cpp(6756): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
        Link:
          C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\x86_amd64\link.exe /ERRORREPORT:PROMPT /OUT:"D:\pythonTest\c++dll调用\LandNoFenHuaSe_erRen\runFastDll\x64\Release\testC++.dll" /INCREMENTAL:NO /NOLOGO netapi32.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"D:\pythonTest\c++dll调用\LandNoFenHuaSe_erRen\runFastDll\x64\Release\testC++.pdb" /SUBSYSTEM:WINDOWS /OPT:REF /OPT:ICF /LTCG /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"D:\pythonTest\c++dll调用\LandNoFenHuaSe_erRen\runFastDll\x64\Release\testC++.lib" /MACHINE:X64 /DLL x64\Release\cwritelog.obj
          x64\Release\dllmain.obj
@@ -46,4 +47,4 @@
 
 生成成功。
 
-已用时间 00:00:01.74
+已用时间 00:00:02.03

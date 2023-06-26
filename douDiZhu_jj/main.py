@@ -91,7 +91,7 @@ class MyPyQT_Form(QtWidgets.QWidget, Ui_Form):
         self.buJiaoBtnPos = (430, 400, 576, 137)
         self.jiaoDiZhuBtnPos = (717, 400, 576, 137)
         self.outCardBtnPos = (830, 400, 200, 150)
-        self.changePlayerBtnPos = (728, 617, 250, 80)
+        self.changePlayerBtnPos = (728, 617, 250, 90)
         self.tipBtnPos = (616, 406, 200, 100)
         self.rangCardPos = (468, 489, 200, 45)
         # 信号量
@@ -156,7 +156,9 @@ class MyPyQT_Form(QtWidgets.QWidget, Ui_Form):
         a=4
     def init_cards(self):
         # 得到出牌顺序
+
         try:
+            self.RunGame =True
             self.start()
         except Exception as e:
             exc_type, exc_obj, exc_tb = sys.exc_info()
@@ -165,7 +167,6 @@ class MyPyQT_Form(QtWidgets.QWidget, Ui_Form):
             self.stop()
 
     def gameStart(self):
-        self.RunGame = True
         GameHelper.Interrupt = False
         self.init_display()
         # 玩家手牌
@@ -182,17 +183,18 @@ class MyPyQT_Form(QtWidgets.QWidget, Ui_Form):
         self.env = None
         self.game_over= False
         helper.bTest = False
+
         # 识别玩家手牌
         # if self.connected==False:
         #     print("你的账号没有登陆，请联系Q：460000713，进行购买")
         #     return
         #tmpHandCard = self.changeDataOut('2AKQQJJT99877753')
         #tmpHandCardStr = self.changeDataIn(tmpHandCard)
-        #
+
         #result = self.getTipBtnrResult()
         # self.handCardCount[0]=16
         # helper.SelectCards("77", self.handCardCount[0], True)
-        self.turnCardReal = self.find_other_cardsEx(self.RPlayedCardsPos)
+        #self.turnCardReal = self.find_other_cardsEx(self.RPlayedCardsPos)
         # self.bHavePass=True
         # self.user_hand_cards_real='DX222QQ88'
         # self.turnCardReal='KKK7'
@@ -204,6 +206,7 @@ class MyPyQT_Form(QtWidgets.QWidget, Ui_Form):
         #
         # action_message = self.dllCall(self.user_hand_cards_real, self.turnCardReal, self.myHaveOutCard,
         #                               self.rightHaveOutCard, self.bHavePass, self.myHavePassType)
+        helper.ClickOnImage("change_player_btn", region=self.changePlayerBtnPos, confidence=0.70)
         if helper.bTest==True:
            result = helper.LocateOnScreen("tip_btn", region=self.tipBtnPos, confidence=0.75)
            self.turnCardReal = self.find_other_cardsEx(self.RPlayedCardsPos)
@@ -343,7 +346,7 @@ class MyPyQT_Form(QtWidgets.QWidget, Ui_Form):
                 #     self.sleep(20)
                 self.play_order = 1
 
-                self.detect_start_btn()
+                self.game_over=self.detect_start_btn()
             elif self.play_order == 1:
                 self.sleep(100)
                 pass_flag = helper.LocateOnScreen('pass',
@@ -394,13 +397,13 @@ class MyPyQT_Form(QtWidgets.QWidget, Ui_Form):
                     self.shengYuPaiShow(self.shengYuCardData)
                     self.sleep(800)
                     self.play_order = 0
-                    self.detect_start_btn()
+                    self.game_over=self.detect_start_btn()
 
             else:
                 pass
             self.sleep(50)
 
-        print("{}胜，本局结束!\n")
+        print("游戏停止结束!\n")
         # QMessageBox.information(self, "本局结束", "{}胜！".format("农民" if self.env.winner == "farmer" else "地主"),
         #                         QMessageBox.Yes, QMessageBox.Yes)
         #self.detect_start_btn()
@@ -423,28 +426,33 @@ class MyPyQT_Form(QtWidgets.QWidget, Ui_Form):
                     operateCount+=1
                 else:
                     helper.ClickOnImage("bujiao", region=self.buJiaoBtnPos)
+                    operateCount=0
             elif resultQ:
                 score = self.getCardScore(self.user_hand_cards_real)
                 self.QiangDiZhuFen.setText("抢地主分数:"+str(score))
                 if score >= 20 and operateCount==0:
                     helper.ClickOnImage("qiangdizhu", region=self.jiaoDiZhuBtnPos)
                     operateCount += 1
-                elif score >= 80 and operateCount<=1:
+                elif score >= 60 and operateCount<=1:
                     helper.ClickOnImage("qiangdizhu", region=self.jiaoDiZhuBtnPos)
                     operateCount += 1
-                elif score >= 150 and operateCount<=2:
+                elif score >= 100 and operateCount<=2:
                     helper.ClickOnImage("qiangdizhu", region=self.jiaoDiZhuBtnPos)
                     operateCount += 1
-                elif score >= 200 and operateCount<=3:
+                elif score >= 150 and operateCount<=3:
                     helper.ClickOnImage("qiangdizhu", region=self.jiaoDiZhuBtnPos)
                     operateCount += 1
                 else:
                     helper.ClickOnImage("buqiang", region=self.buJiaoBtnPos)
+                    operateCount = 0
                 print("jiaoDiZhuCheck...1",score)
-            self.sleep(100)
+            self.sleep(200)
             result = self.getTipBtnrResult()
             if result:
                 break
+            elif operateCount==0:
+                self.user_hand_cards_real = self.find_my_cards(self.MyHandCardsPos)
+                self.UserHandCards.setText(self.user_hand_cards_real)
 
     def isJiaoState(self):
         result = helper.LocateOnScreen("land0", region=(1200, 183, 50, 50),
@@ -474,11 +482,13 @@ class MyPyQT_Form(QtWidgets.QWidget, Ui_Form):
         result = helper.LocateOnScreen("change_player_btn", region=self.changePlayerBtnPos)
         if (result is not None) or self.isGameOver():
             print("点击换对手")
-            self.stop()
+            print("{}胜，本局结束!\n")
+            #self.stop()
             self.sleep(2500)
             if self.AutoPlay:
-                self.sleep(2000)
-                helper.ClickOnImage("change_player_btn", region=self.changePlayerBtnPos)
+                self.sleep(2500)
+                helper.ClickOnImage("change_player_btn", region=self.changePlayerBtnPos, confidence=0.70)
+                helper.LeftClick((self.changePlayerBtnPos[0] + 60, self.changePlayerBtnPos[1] + 30))
                 self.sleep(1000)
             return True
     def shengYuPaiShow(self, cards):
