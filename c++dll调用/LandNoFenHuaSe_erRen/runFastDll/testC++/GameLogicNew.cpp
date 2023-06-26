@@ -50,24 +50,23 @@ void CGameLogicNew::ReSetData()
 {
 	ZeroMemory(m_cbDiscardCard, sizeof(m_cbDiscardCard));
 	ZeroMemory(m_cbOtherDiscardCard, sizeof(m_cbOtherDiscardCard));
+	ZeroMemory(m_cbUserCardCount, sizeof(m_cbUserCardCount));
+	ZeroMemory(m_cbMaxCard, sizeof(m_cbMaxCard));
+	ZeroMemory(m_cbCardDataEx, sizeof(m_cbCardDataEx));
+	ZeroMemory(m_cbDiscardCard, sizeof(m_cbDiscardCard));
+	ZeroMemory(m_cbOtherDiscardCard, sizeof(m_cbOtherDiscardCard));
+	ZeroMemory(m_cbAllCardData, sizeof(m_cbAllCardData));
 	m_cbOtherDiscardCount = 0;
 	m_cbDiscardCardCount = 0;
 	m_cbFirstCard = 0;
 	m_bHavePass = false;
-	ZeroMemory(m_cbMaxCard, sizeof(m_cbMaxCard));
-	ZeroMemory(m_cbCardDataEx, sizeof(m_cbCardDataEx));
 	
 }
 
 //构造函数
 CGameLogicNew::CGameLogicNew()
 {
-	ZeroMemory(m_cbDiscardCard, sizeof(m_cbDiscardCard));
-	ZeroMemory(m_cbOtherDiscardCard, sizeof(m_cbOtherDiscardCard));
-	ZeroMemory(m_cbAllCardData, sizeof(m_cbAllCardData));
-	ZeroMemory(m_cbUserCardCount, sizeof(m_cbUserCardCount));
-	ZeroMemory(m_cbMaxCard, sizeof(m_cbMaxCard));
-	ZeroMemory(m_cbCardDataEx, sizeof(m_cbCardDataEx));
+	ReSetData();
 }
 
 //析构函数
@@ -3008,7 +3007,7 @@ int CGameLogicNew::YouXianDaNengShouHuiCard(const BYTE cbHandCardData[], BYTE cb
 				else{
 					bExistDoubleMax = SearchOtherHandCardThan(tmpTurnCard, tmpTurnCardCount, bCheck);
 				}
-				if ((bExistDoubleMax != true) || GetCardLogicValue(tmpTurnCard[0])==15)
+				if ((bExistDoubleMax != true) /*|| GetCardLogicValue(tmpTurnCard[0])==14*/)
 				{
 					DoubleReMaxCount++;
 					if (SearchOtherHandCardSame(tmpTurnCard, tmpTurnCardCount, type) == false)
@@ -3324,7 +3323,7 @@ int CGameLogicNew::IsBiShengTurnCard(const BYTE cbHandCardData[], BYTE cbHandCar
 			else{
 				bExistDoubleMax = SearchOtherHandCardThan(tmpTurnCard, tmpTurnCardCount, bCheck);
 			}
-			if ((bExistDoubleMax != true) || GetCardLogicValue(tmpTurnCard[0]) == 13)
+			if ((bExistDoubleMax != true) /*|| GetCardLogicValue(tmpTurnCard[0]) == 14*/)
 			{
 				DoubleReMaxCount++;
 				if (SearchOtherHandCardSame(tmpTurnCard, tmpTurnCardCount, type) == false)
@@ -3404,9 +3403,10 @@ int CGameLogicNew::IsBiShengTurnCard(const BYTE cbHandCardData[], BYTE cbHandCar
 		{
 			tempAllCount += vecMinTypeCardResult[allMaxCardIndex[i]].cbCardCount;
 		}
-		if ((tempAllCount + NoXiangDuiDaPaiMaxCount) >= m_cbUserCardCount[0])
+		if ((tempAllCount + NoXiangDuiDaPaiMaxCount) >= (cbHandCardCount -m_cbBeiRangCount ))
 		{
 			bZhiJieChu = true;
+			resultIndex = 0;
 		}
 	}
 
@@ -4375,23 +4375,33 @@ bool CGameLogicNew::OutCardShengYuFenCheck(BYTE cbHandCardCount, const BYTE * cb
 	int resultIndex = -1;
 	float MinTypeScore = INT_MIN;
 	float BiShengScore = INT_MIN;
+	vector<int> BiShengResult;
 	vector<tagOutCardResultNew>   vecMinTypeCardResultBak;
 	float tableScore[300] = { 0 };
 	bool bExistBiYing = false;
 	vector<vector<tagOutCardResultNew>>  TempMinTypeCardResult(SearchCardResult.cbSearchCount);
 	vector<BYTE> singleData;
 	vector<BYTE> doubleData;
-	int bombCount = 0;
+	vector<BYTE> BombData;
 	for (int i = 0; i < vecMinTypeCardResult.size();i++)
 	{
 		if (vecMinTypeCardResult[i].cbCardType == CT_SINGLE)
 		{
 			singleData.push_back(vecMinTypeCardResult[i].cbResultCard[0]);
 		}
-		if (vecMinTypeCardResult[i].cbCardType == CT_DOUBLE)
+		else if (vecMinTypeCardResult[i].cbCardType == CT_DOUBLE)
 		{
 			doubleData.push_back(vecMinTypeCardResult[i].cbResultCard[0]);
 			doubleData.push_back(vecMinTypeCardResult[i].cbResultCard[1]);
+		}
+		else if (vecMinTypeCardResult[i].cbCardType == CT_BOMB_CARD)
+		{
+			BombData.push_back(vecMinTypeCardResult[i].cbResultCard[0]);
+		}
+		else if (vecMinTypeCardResult[i].cbCardType == CT_MISSILE_CARD)
+		{
+			BombData.push_back(vecMinTypeCardResult[i].cbResultCard[0]);
+			BombData.push_back(vecMinTypeCardResult[i].cbResultCard[1]);
 		}
 	}
 	bool bExistMaxIndex[MAX_RESULT_COUNT] = { 0 };
@@ -4400,10 +4410,6 @@ bool CGameLogicNew::OutCardShengYuFenCheck(BYTE cbHandCardCount, const BYTE * cb
 
 		BYTE tempType = GetCardType(SearchCardResult.cbResultCard[i], SearchCardResult.cbCardCount[i]);
 		//不能拆炸弹处理
-		if (tempType >= CT_BOMB_CARD)
-		{
-			bombCount++;
-		}
 		int   tempCardCount = SearchCardResult.cbCardCount[i];
 		bool bExistMax = SearchOtherHandCardThan(SearchCardResult.cbResultCard[i], SearchCardResult.cbCardCount[i], true);
 		bExistMaxIndex[i] = bExistMax;
@@ -4441,7 +4447,13 @@ bool CGameLogicNew::OutCardShengYuFenCheck(BYTE cbHandCardCount, const BYTE * cb
 			tagOutCardResultNew  tempOutCardResult = {};
 			bool zhiJieYing = false;
 			int tempResultIndex = IsBiShengTurnCard(cbReserveCardData, cbReserveCardCount, TempMinTypeCardResult[i], tempOutCardResult, zhiJieYing);
-			if ((tempResultIndex != -1) && bExistMax != true && tempMinTypeScore > BiShengScore)
+			
+			if ((tempResultIndex != -1) && bExistMax != true && tempType >= CT_BOMB_CARD)
+			{
+				BiShengResult.push_back(i);
+			}
+
+			if ((tempResultIndex != -1) && bExistMax != true && (tempMinTypeScore > BiShengScore) )
 			{
 				MinTypeScore = tempMinTypeScore;
 				minTypeCount = tempMinTypeCount;
@@ -4451,7 +4463,7 @@ bool CGameLogicNew::OutCardShengYuFenCheck(BYTE cbHandCardCount, const BYTE * cb
 				bExistBiYing = biYing;
 				//break;
 			}
-			else if (biYing &&  bExistMax != true && tempMinTypeScore > BiShengScore)
+			else if (biYing &&  bExistMax != true && (tempMinTypeScore > BiShengScore) )
 			{
 				MinTypeScore = tempMinTypeScore;
 				minTypeCount = tempMinTypeCount;
@@ -4459,9 +4471,9 @@ bool CGameLogicNew::OutCardShengYuFenCheck(BYTE cbHandCardCount, const BYTE * cb
 				resultIndex = i;
 				vecMinTypeCardResultBak = TempMinTypeCardResult[i];
 				bExistBiYing = biYing;
-			/*	if (tempType==CT_BOMB_CARD)
+				/*if (tempType==CT_BOMB_CARD)
 				{
-					break;
+				break;
 				}*/
 			}
 			
@@ -4521,12 +4533,14 @@ bool CGameLogicNew::OutCardShengYuFenCheck(BYTE cbHandCardCount, const BYTE * cb
 					}
 				}
 			}
-		
-
 		}
-
 	}	
+	int tempCardType = GetCardType(SearchCardResult.cbResultCard[resultIndex], SearchCardResult.cbCardCount[resultIndex]);
 	
+	if (tempCardType<CT_BOMB_CARD&& BiShengResult.size()>0 && GetACardCount(BombData.data(), BombData.size(), SearchCardResult.cbResultCard[resultIndex][0])>0)
+	{
+		resultIndex = BiShengResult[0];
+	}
 	if ((resultIndex != -1) && bExistBiYing==false)
 	{
 		int tempCardType= GetCardType(SearchCardResult.cbResultCard[resultIndex], SearchCardResult.cbCardCount[resultIndex]);

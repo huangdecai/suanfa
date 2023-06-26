@@ -47,7 +47,7 @@
 #define CT_FOUR_TAKE_TWO			10									//四带两对
 #define CT_FOUR_TAKE_THREE			11									//四带两对
 #define CT_BOMB_CARD				12									//炸弹类型
-#define CT_MISSILE_CARD				13								//火箭类型
+#define CT_MISSILE_CARD				13								    //火箭类型
 #define CT_TYPE_COUNT				14									//最大类型
 const int CARD_TYPE_SCORE[CT_TYPE_COUNT] = { 0, 10, 20, 30, 40, 50, 60, 70, 80, 100, 110, 140, 150 };
 //////////////////////////////////////////////////////////////////////////////////

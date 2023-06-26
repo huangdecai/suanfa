@@ -101,25 +101,25 @@ protected:
 
 	//AI变量
 public:
-	static const BYTE				m_cbGoodcardData[GOOD_CARD_COUTN];	//好牌数据
-	BYTE							m_cbAllCardData[GAME_PLAYER][MAX_COUNT];//所有扑克
-	int							m_cbUserCardCount[GAME_PLAYER];		//扑克数目
-	WORD							m_wBankerUser;	
-	WORD                            m_wMeChairID = 0;
-	//地主玩家
+	BYTE                            m_cbAllCardData[GAME_PLAYER][MAX_COUNT];
+	int							    m_cbUserCardCount[GAME_PLAYER];		//扑克数目
+	BYTE                            m_cbMaxCard[MAX_COUNT];
+	BYTE                            m_cbCardDataEx[MAX_COUNT];
 	BYTE							m_cbDiscardCard[FULL_COUNT];//废弃牌
-	int                            m_cbDiscardCardCount = 0;
-	int                            m_cbRangCount = 0;
-	int                            m_cbBeiRangCount = 0;
 	BYTE                            m_cbOtherDiscardCard[MAX_COUNT];
-	int                            m_cbOtherDiscardCount = 0;
+
+	WORD							m_wBankerUser = 0;
+	WORD                            m_wMeChairID = 0;
+	int                             m_cbDiscardCardCount = 0;
+	int                             m_cbRangCount = 0;
+	int                             m_cbBeiRangCount = 0;
+	int                             m_cbOtherDiscardCount = 0;
 	BYTE                            m_cbFirstCard = 0;
-	int                            m_cbCardTypeCount = 0;//是16张还是15张
+	int                             m_cbCardTypeCount = 0;//是16张还是15张
 	bool                            m_bHavePass = false;
 	bool                            m_bShenBao = false;
 	bool                            m_bTrunMode = false;
-	BYTE                            m_cbMaxCard[MAX_COUNT];
-	BYTE                            m_cbCardDataEx[MAX_COUNT];
+	
 	//函数定义
 public:
 	//构造函数

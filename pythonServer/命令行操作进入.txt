@@ -1,0 +1,2 @@
+ 进入客户端:python .\main.py 0 
+ 进入服务端:python .\main.py 1 
