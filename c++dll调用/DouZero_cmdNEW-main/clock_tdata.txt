@@ -1,0 +1,26 @@
+
+cbHandCardCount:20
+
+testCount:1
+,1,2,3,4,5,6,7,8,9,10,11,12,13,17,18,19,37,53,22,23
+bTurnCardCount:0
+
+ cbDiscardCardCount:0,
+
+ cbRangCardCount:1,
+
+ cbOthreRangCardCount:0,
+,53,37End
+
+cbHandCardCount:20
+
+testCount:1
+,1,2,3,4,5,6,7,8,9,10,11,12,13,17,18,19,37,53,22,23
+bTurnCardCount:0
+
+ cbDiscardCardCount:0,
+
+ cbRangCardCount:1,
+
+ cbOthreRangCardCount:0,
+,53,37End

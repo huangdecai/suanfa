@@ -1,0 +1,1316 @@
+
+cbHandCardCount:14
+
+testCount:1
+,3,4,7,8,9,18,21,23,38,38,39,39,39,41
+ cbDiscardCardCount:0,
+cbOperateCode,0,cbOperateCode,41,End
+
+cbHandCardCount:14
+
+testCount:1
+,3,4,7,8,9,18,21,23,38,38,39,39,39,3
+ cbDiscardCardCount:0,
+cbOperateCode,0,cbOperateCode,18,End
+
+cbHandCardCount:14
+
+testCount:2
+,3,3,4,7,8,9,21,23,38,38,39,39,39,41
+ cbDiscardCardCount:2,
+,2,1cbOperateCode,0,cbOperateCode,41,End
+
+cbHandCardCount:14
+
+testCount:3
+,3,3,4,7,8,9,21,23,38,38,39,39,39,33
+ cbDiscardCardCount:4,
+,2,1,3,7cbOperateCode,0,cbOperateCode,33,End
+
+cbHandCardCount:14
+
+testCount:4
+,3,3,4,7,8,9,21,23,38,38,39,39,39,6
+ cbDiscardCardCount:6,
+,2,1,3,7,2,9cbOperateCode,0,cbOperateCode,9,End
+
+cbHandCardCount:14
+
+testCount:5
+,3,3,4,6,7,8,21,23,38,38,39,39,39,36
+ cbDiscardCardCount:7,
+,2,1,3,7,2,9,9cbOperateCode,0,cbOperateCode,36,End
+
+cbHandCardCount:14
+
+testCount:6
+,53,1,3,5,7,9,25,25,25,34,36,37,39,40
+ cbDiscardCardCount:0,
+cbOperateCode,0,cbOperateCode,9,End
+
+cbHandCardCount:14
+
+testCount:7
+,53,1,3,5,7,25,25,25,34,36,37,39,40,17
+ cbDiscardCardCount:1,
+,9cbOperateCode,0,cbOperateCode,17,End
+
+cbHandCardCount:14
+
+testCount:8
+,53,1,3,5,7,25,25,25,34,36,37,39,40,24
+ cbDiscardCardCount:2,
+,9,17cbOperateCode,0,cbOperateCode,24,End
+
+cbHandCardCount:14
+
+testCount:9
+,53,1,3,5,7,25,25,25,34,36,37,39,40,53
+ cbDiscardCardCount:4,
+,9,17,2,7cbOperateCode,0,cbOperateCode,34,End
+
+cbHandCardCount:13
+
+testCount:10
+,53,53,1,3,5,7,25,25,25,36,37,39,40
+ cbDiscardCardCount:6,
+,9,17,2,7,2,17cbOperateCode,16,cbOperateCode,25,End
+
+cbHandCardCount:11
+
+testCount:11
+,53,53,1,3,5,7,36,37,39,40,21
+ cbDiscardCardCount:8,
+,9,17,2,7,2,17,2,8cbOperateCode,0,cbOperateCode,21,End
+
+cbHandCardCount:11
+
+testCount:12
+,53,53,1,3,5,7,36,37,39,40,40
+ cbDiscardCardCount:10,
+,9,17,2,7,2,17,2,8,2,4cbOperateCode,0,cbOperateCode,39,End
+
+cbHandCardCount:11
+
+testCount:13
+,53,53,1,3,5,7,36,37,40,40,7
+ cbDiscardCardCount:12,
+,9,17,2,7,2,17,2,8,2,4,3,5cbOperateCode,0,cbOperateCode,1,End
+
+cbHandCardCount:11
+
+testCount:14
+,53,53,3,5,7,7,36,37,40,40,2
+ cbDiscardCardCount:13,
+,9,17,2,7,2,17,2,8,2,4,3,5,1cbOperateCode,0,cbOperateCode,5,End
+
+cbHandCardCount:10
+
+testCount:15
+,53,53,2,3,7,7,36,37,40,40
+ cbDiscardCardCount:14,
+,9,17,2,7,2,17,2,8,2,4,3,5,1,5cbOperateCode,8,cbOperateCode,7,End
+
+cbHandCardCount:8
+
+testCount:16
+,53,53,2,3,36,37,40,40
+ cbDiscardCardCount:16,
+,9,17,2,7,2,17,2,8,2,4,3,5,1,5,7,7cbOperateCode,0,cbOperateCode,2,End
+
+cbHandCardCount:13
+
+testCount:17
+,1,1,3,8,9,18,18,33,33,35,37,38,39
+ cbDiscardCardCount:0,
+cbOperateCode,8,cbOperateCode,18,End
+
+cbHandCardCount:11
+
+testCount:18
+,1,1,3,8,9,33,33,35,37,38,39
+ cbDiscardCardCount:4,
+,2,1,2,1cbOperateCode,0,cbOperateCode,3,End
+
+cbHandCardCount:10
+
+testCount:19
+,1,1,8,9,33,33,35,37,38,39
+ cbDiscardCardCount:5,
+,2,1,2,1,3cbOperateCode,8,cbOperateCode,33,End
+
+cbHandCardCount:8
+
+testCount:20
+,1,1,8,9,35,37,38,39
+ cbDiscardCardCount:9,
+,2,1,2,1,3,2,9,2,9cbOperateCode,0,cbOperateCode,35,End
+
+cbHandCardCount:8
+
+testCount:21
+,1,1,8,9,37,38,39,20
+ cbDiscardCardCount:11,
+,2,1,2,1,3,2,9,2,9,3,1cbOperateCode,0,cbOperateCode,20,End
+
+cbHandCardCount:8
+
+testCount:22
+,1,1,8,9,37,38,39,25
+ cbDiscardCardCount:13,
+,2,1,2,1,3,2,9,2,9,3,1,2,3cbOperateCode,0,cbOperateCode,25,End
+
+cbHandCardCount:7
+
+testCount:23
+,1,1,8,9,37,38,39
+ cbDiscardCardCount:15,
+,2,1,2,1,3,2,9,2,9,3,1,2,3,2,8cbOperateCode,8,cbOperateCode,1,End
+
+cbHandCardCount:5
+
+testCount:24
+,8,9,37,38,39
+ cbDiscardCardCount:17,
+,2,1,2,1,3,2,9,2,9,3,1,2,3,2,8,1,1cbOperateCode,0,cbOperateCode,8,End
+
+cbHandCardCount:5
+
+testCount:25
+,9,37,38,39,20
+ cbDiscardCardCount:18,
+,2,1,2,1,3,2,9,2,9,3,1,2,3,2,8,1,1,8cbOperateCode,0,cbOperateCode,9,End
+
+cbHandCardCount:5
+
+testCount:26
+,20,37,38,39,19
+ cbDiscardCardCount:19,
+,2,1,2,1,3,2,9,2,9,3,1,2,3,2,8,1,1,8,9cbOperateCode,0,cbOperateCode,19,End
+
+cbHandCardCount:5
+
+testCount:27
+,20,37,38,39,7
+ cbDiscardCardCount:21,
+,2,1,2,1,3,2,9,2,9,3,1,2,3,2,8,1,1,8,9,2,2cbOperateCode,0,cbOperateCode,7,End
+
+cbHandCardCount:5
+
+testCount:28
+,20,37,38,39,19
+ cbDiscardCardCount:22,
+,2,1,2,1,3,2,9,2,9,3,1,2,3,2,8,1,1,8,9,2,2,7cbOperateCode,0,cbOperateCode,19,End
+
+cbHandCardCount:5
+
+testCount:29
+,20,37,38,39,53
+ cbDiscardCardCount:24,
+,2,1,2,1,3,2,9,2,9,3,1,2,3,2,8,1,1,8,9,2,2,7,2,2cbOperateCode,64,cbOperateCode,53,End
+
+cbHandCardCount:5
+
+testCount:30
+,20,37,38,39,53
+ cbDiscardCardCount:24,
+,2,1,2,1,3,2,9,2,9,3,1,2,3,2,8,1,1,8,9,2,2,7,2,2cbOperateCode,0,cbOperateCode,20,End
+
+cbHandCardCount:14
+
+testCount:31
+,2,3,21,24,33,35,36,37,37,38,39,39,41,25
+ cbDiscardCardCount:0,
+cbOperateCode,0,cbOperateCode,33,End
+
+cbHandCardCount:14
+
+testCount:32
+,2,3,21,24,25,35,36,37,37,38,39,39,41,20
+ cbDiscardCardCount:2,
+,2,9cbOperateCode,0,cbOperateCode,41,End
+
+cbHandCardCount:14
+
+testCount:33
+,53,53,1,1,1,2,6,20,37,39,39,40,41,17
+ cbDiscardCardCount:0,
+cbOperateCode,0,cbOperateCode,17,End
+
+cbHandCardCount:14
+
+testCount:34
+,53,53,1,1,1,2,6,20,37,39,39,40,41,20
+ cbDiscardCardCount:1,
+,17cbOperateCode,0,cbOperateCode,2,End
+
+cbHandCardCount:14
+
+testCount:35
+,53,53,1,1,1,6,20,20,37,39,39,40,41,53
+ cbDiscardCardCount:2,
+,17,2cbOperateCode,64,cbOperateCode,53,End
+
+cbHandCardCount:14
+
+testCount:36
+,53,53,1,1,1,6,20,20,37,39,39,40,41,53
+ cbDiscardCardCount:2,
+,17,2cbOperateCode,0,cbOperateCode,6,End
+
+cbHandCardCount:14
+
+testCount:37
+,1,4,6,8,17,21,22,24,25,33,34,36,39,40
+ cbDiscardCardCount:0,
+cbOperateCode,0,cbOperateCode,1,End
+
+cbHandCardCount:14
+
+testCount:38
+,4,6,8,17,21,22,24,25,33,34,36,39,40,40
+ cbDiscardCardCount:1,
+,1cbOperateCode,0,cbOperateCode,17,End
+
+cbHandCardCount:14
+
+testCount:39
+,4,6,8,21,22,24,25,33,34,36,39,40,40,34
+ cbDiscardCardCount:2,
+,1,17cbOperateCode,0,cbOperateCode,8,End
+
+cbHandCardCount:14
+
+testCount:40
+,4,6,21,22,24,25,33,34,34,36,39,40,40,1
+ cbDiscardCardCount:3,
+,1,17,8cbOperateCode,0,cbOperateCode,1,End
+
+cbHandCardCount:14
+
+testCount:41
+,4,6,21,22,24,25,33,34,34,36,39,40,40,20
+ cbDiscardCardCount:4,
+,1,17,8,1cbOperateCode,0,cbOperateCode,39,End
+
+cbHandCardCount:14
+
+testCount:42
+,4,6,20,21,22,24,25,33,34,34,36,40,40,24
+ cbDiscardCardCount:6,
+,1,17,8,1,3,5cbOperateCode,0,cbOperateCode,25,End
+
+cbHandCardCount:14
+
+testCount:43
+,2,5,5,7,7,9,17,18,18,25,35,37,40,21
+ cbDiscardCardCount:0,
+cbOperateCode,0,cbOperateCode,25,End
+
+cbHandCardCount:14
+
+testCount:44
+,2,5,5,7,7,9,17,18,18,21,35,37,40,17
+ cbDiscardCardCount:2,
+,2,8cbOperateCode,0,cbOperateCode,9,End
+
+cbHandCardCount:14
+
+testCount:45
+,2,5,5,7,7,17,17,18,18,21,35,37,40,40
+ cbDiscardCardCount:3,
+,2,8,9cbOperateCode,0,cbOperateCode,2,End
+
+cbHandCardCount:14
+
+testCount:46
+,5,5,7,7,17,17,18,18,21,35,37,40,40,34
+ cbDiscardCardCount:4,
+,2,8,9,2cbOperateCode,0,cbOperateCode,21,End
+
+cbHandCardCount:13
+
+testCount:47
+,5,5,7,7,17,17,18,18,34,35,37,40,40
+ cbDiscardCardCount:6,
+,2,8,9,2,2,4cbOperateCode,8,cbOperateCode,17,End
+
+cbHandCardCount:11
+
+testCount:48
+,5,5,7,7,18,18,34,35,37,40,40
+ cbDiscardCardCount:8,
+,2,8,9,2,2,4,17,17cbOperateCode,0,cbOperateCode,37,End
+
+cbHandCardCount:11
+
+testCount:49
+,5,5,7,7,18,18,34,35,40,40,37
+ cbDiscardCardCount:10,
+,2,8,9,2,2,4,17,17,3,3cbOperateCode,0,cbOperateCode,37,End
+
+cbHandCardCount:11
+
+testCount:50
+,5,5,7,7,18,18,34,35,40,40,41
+ cbDiscardCardCount:12,
+,2,8,9,2,2,4,17,17,3,3,3,3cbOperateCode,0,cbOperateCode,41,End
+
+cbHandCardCount:10
+
+testCount:51
+,5,5,7,7,18,18,34,35,40,40
+ cbDiscardCardCount:14,
+,2,8,9,2,2,4,17,17,3,3,3,3,3,7cbOperateCode,8,cbOperateCode,40,End
+
+cbHandCardCount:8
+
+testCount:52
+,5,5,7,7,18,18,34,35
+ cbDiscardCardCount:18,
+,2,8,9,2,2,4,17,17,3,3,3,3,3,7,3,6,3,6cbOperateCode,0,cbOperateCode,7,End
+
+cbHandCardCount:8
+
+testCount:53
+,5,5,7,18,18,34,35,2
+ cbDiscardCardCount:19,
+,2,8,9,2,2,4,17,17,3,3,3,3,3,7,3,6,3,6,7cbOperateCode,0,cbOperateCode,2,End
+
+cbHandCardCount:14
+
+testCount:54
+,2,2,9,17,21,33,36,37,39,40,40,41,41,19
+ cbDiscardCardCount:0,
+cbOperateCode,0,cbOperateCode,9,End
+
+cbHandCardCount:13
+
+testCount:55
+,2,2,17,19,21,33,36,37,39,40,40,41,41
+ cbDiscardCardCount:1,
+,9cbOperateCode,8,cbOperateCode,40,End
+
+cbHandCardCount:11
+
+testCount:56
+,2,2,17,19,21,33,36,37,39,41,41
+ cbDiscardCardCount:5,
+,9,3,6,3,6cbOperateCode,0,cbOperateCode,33,End
+
+cbHandCardCount:10
+
+testCount:57
+,2,2,17,19,21,36,37,39,41,41
+ cbDiscardCardCount:7,
+,9,3,6,3,6,2,9cbOperateCode,8,cbOperateCode,2,End
+
+cbHandCardCount:8
+
+testCount:58
+,17,19,21,36,37,39,41,41
+ cbDiscardCardCount:9,
+,9,3,6,3,6,2,9,2,2cbOperateCode,0,cbOperateCode,17,End
+
+cbHandCardCount:8
+
+testCount:59
+,19,21,36,37,39,41,41,3
+ cbDiscardCardCount:10,
+,9,3,6,3,6,2,9,2,2,17cbOperateCode,0,cbOperateCode,3,End
+
+cbHandCardCount:8
+
+testCount:60
+,19,21,36,37,39,41,41,39
+ cbDiscardCardCount:11,
+,9,3,6,3,6,2,9,2,2,17,3cbOperateCode,0,cbOperateCode,19,End
+
+cbHandCardCount:14
+
+testCount:61
+,53,6,6,8,18,18,20,20,22,24,25,35,41,3
+ cbDiscardCardCount:0,
+cbOperateCode,0,cbOperateCode,41,End
+
+cbHandCardCount:14
+
+testCount:62
+,53,3,6,6,8,18,18,20,20,22,24,25,35,22
+ cbDiscardCardCount:2,
+,3,7cbOperateCode,0,cbOperateCode,3,End
+
+cbHandCardCount:14
+
+testCount:63
+,53,6,6,8,18,18,20,20,22,22,24,25,35,25
+ cbDiscardCardCount:3,
+,3,7,3cbOperateCode,0,cbOperateCode,35,End
+
+cbHandCardCount:13
+
+testCount:64
+,53,6,6,8,18,18,20,20,22,22,24,25,25
+ cbDiscardCardCount:5,
+,3,7,3,3,1cbOperateCode,8,cbOperateCode,18,End
+
+cbHandCardCount:11
+
+testCount:65
+,53,6,6,8,20,20,22,22,24,25,25
+ cbDiscardCardCount:9,
+,3,7,3,3,1,2,1,2,1cbOperateCode,0,cbOperateCode,8,End
+
+cbHandCardCount:10
+
+testCount:66
+,53,6,6,20,20,22,22,24,25,25
+ cbDiscardCardCount:10,
+,3,7,3,3,1,2,1,2,1,8cbOperateCode,8,cbOperateCode,25,End
+
+cbHandCardCount:8
+
+testCount:67
+,53,6,6,20,20,22,22,24
+ cbDiscardCardCount:14,
+,3,7,3,3,1,2,1,2,1,8,2,8,2,8cbOperateCode,0,cbOperateCode,24,End
+
+cbHandCardCount:14
+
+testCount:68
+,53,6,6,8,18,19,20,24,25,36,36,39,41,33
+ cbDiscardCardCount:0,
+cbOperateCode,0,cbOperateCode,33,End
+
+cbHandCardCount:14
+
+testCount:69
+,53,6,6,8,18,19,20,24,25,36,36,39,41,18
+ cbDiscardCardCount:2,
+,2,9cbOperateCode,0,cbOperateCode,8,End
+
+cbHandCardCount:14
+
+testCount:70
+,53,6,6,18,18,19,20,24,25,36,36,39,41,1
+ cbDiscardCardCount:3,
+,2,9,8cbOperateCode,0,cbOperateCode,1,End
+
+cbHandCardCount:14
+
+testCount:71
+,53,6,6,18,18,19,20,24,25,36,36,39,41,53
+ cbDiscardCardCount:4,
+,2,9,8,1cbOperateCode,0,cbOperateCode,18,End
+
+cbHandCardCount:14
+
+testCount:72
+,53,53,6,6,18,19,20,24,25,36,36,39,41,25
+ cbDiscardCardCount:6,
+,2,9,8,1,2,1cbOperateCode,0,cbOperateCode,25,End
+
+cbHandCardCount:14
+
+testCount:73
+,53,53,6,6,18,19,20,24,25,36,36,39,41,18
+ cbDiscardCardCount:8,
+,2,9,8,1,2,1,2,8cbOperateCode,0,cbOperateCode,18,End
+
+cbHandCardCount:13
+
+testCount:74
+,53,53,6,6,18,19,20,24,25,36,36,39,41
+ cbDiscardCardCount:10,
+,2,9,8,1,2,1,2,8,2,1cbOperateCode,8,cbOperateCode,6,End
+
+cbHandCardCount:11
+
+testCount:75
+,53,53,18,19,20,24,25,36,36,39,41
+ cbDiscardCardCount:12,
+,2,9,8,1,2,1,2,8,2,1,6,6cbOperateCode,0,cbOperateCode,41,End
+
+cbHandCardCount:11
+
+testCount:76
+,53,53,18,19,20,24,25,36,36,39,20
+ cbDiscardCardCount:14,
+,2,9,8,1,2,1,2,8,2,1,6,6,3,7cbOperateCode,0,cbOperateCode,39,End
+
+cbHandCardCount:11
+
+testCount:77
+,53,53,18,19,20,20,24,25,36,36,21
+ cbDiscardCardCount:16,
+,2,9,8,1,2,1,2,8,2,1,6,6,3,7,3,5cbOperateCode,64,cbOperateCode,21,End
+
+cbHandCardCount:11
+
+testCount:78
+,53,53,18,19,20,20,24,25,36,36,21
+ cbDiscardCardCount:16,
+,2,9,8,1,2,1,2,8,2,1,6,6,3,7,3,5cbOperateCode,0,cbOperateCode,20,End
+
+cbHandCardCount:14
+
+testCount:79
+,3,7,7,8,19,20,22,35,35,36,40,40,41,22
+ cbDiscardCardCount:0,
+cbOperateCode,0,cbOperateCode,41,End
+
+cbHandCardCount:14
+
+testCount:80
+,3,7,7,8,19,20,22,22,35,35,36,40,40,20
+ cbDiscardCardCount:2,
+,3,7cbOperateCode,0,cbOperateCode,3,End
+
+cbHandCardCount:14
+
+testCount:81
+,7,7,8,19,20,20,22,22,35,35,36,40,40,4
+ cbDiscardCardCount:3,
+,3,7,3cbOperateCode,0,cbOperateCode,4,End
+
+cbHandCardCount:14
+
+testCount:82
+,7,7,8,19,20,20,22,22,35,35,36,40,40,40
+ cbDiscardCardCount:4,
+,3,7,3,4cbOperateCode,0,cbOperateCode,8,End
+
+cbHandCardCount:13
+
+testCount:83
+,7,7,19,20,20,22,22,35,35,36,40,40,40
+ cbDiscardCardCount:5,
+,3,7,3,4,8cbOperateCode,8,cbOperateCode,35,End
+
+cbHandCardCount:11
+
+testCount:84
+,7,7,19,20,20,22,22,36,40,40,40
+ cbDiscardCardCount:9,
+,3,7,3,4,8,3,1,3,1cbOperateCode,0,cbOperateCode,36,End
+
+cbHandCardCount:11
+
+testCount:85
+,7,7,19,20,20,22,22,40,40,40,53
+ cbDiscardCardCount:11,
+,3,7,3,4,8,3,1,3,1,3,2cbOperateCode,0,cbOperateCode,19,End
+
+cbHandCardCount:11
+
+testCount:86
+,53,7,7,20,20,22,22,40,40,40,39
+ cbDiscardCardCount:13,
+,3,7,3,4,8,3,1,3,1,3,2,2,2cbOperateCode,0,cbOperateCode,39,End
+
+cbHandCardCount:11
+
+testCount:87
+,53,7,7,20,20,22,22,40,40,40,4
+ cbDiscardCardCount:15,
+,3,7,3,4,8,3,1,3,1,3,2,2,2,3,5cbOperateCode,0,cbOperateCode,4,End
+
+cbHandCardCount:10
+
+testCount:88
+,53,7,7,20,20,22,22,40,40,40
+ cbDiscardCardCount:16,
+,3,7,3,4,8,3,1,3,1,3,2,2,2,3,5,4cbOperateCode,8,cbOperateCode,20,End
+
+cbHandCardCount:8
+
+testCount:89
+,53,7,7,22,22,40,40,40
+ cbDiscardCardCount:20,
+,3,7,3,4,8,3,1,3,1,3,2,2,2,3,5,4,2,3,2,3cbOperateCode,0,cbOperateCode,7,End
+
+cbHandCardCount:7
+
+testCount:90
+,53,7,22,22,40,40,40
+ cbDiscardCardCount:21,
+,3,7,3,4,8,3,1,3,1,3,2,2,2,3,5,4,2,3,2,3,7cbOperateCode,8,cbOperateCode,22,End
+
+cbHandCardCount:5
+
+testCount:91
+,53,7,40,40,40
+ cbDiscardCardCount:25,
+,3,7,3,4,8,3,1,3,1,3,2,2,2,3,5,4,2,3,2,3,7,2,5,2,5cbOperateCode,0,cbOperateCode,7,End
+
+cbHandCardCount:5
+
+testCount:92
+,53,40,40,40,4
+ cbDiscardCardCount:26,
+,3,7,3,4,8,3,1,3,1,3,2,2,2,3,5,4,2,3,2,3,7,2,5,2,5,7cbOperateCode,64,cbOperateCode,4,End
+
+cbHandCardCount:5
+
+testCount:93
+,53,40,40,40,4
+ cbDiscardCardCount:26,
+,3,7,3,4,8,3,1,3,1,3,2,2,2,3,5,4,2,3,2,3,7,2,5,2,5,7cbOperateCode,0,cbOperateCode,4,End
+
+cbHandCardCount:14
+
+testCount:94
+,53,1,2,2,3,8,8,9,22,25,33,33,36,19
+ cbDiscardCardCount:0,
+cbOperateCode,0,cbOperateCode,25,End
+
+cbHandCardCount:14
+
+testCount:95
+,53,1,2,2,3,8,8,9,19,22,33,33,36,41
+ cbDiscardCardCount:2,
+,2,8cbOperateCode,0,cbOperateCode,41,End
+
+cbHandCardCount:14
+
+testCount:96
+,53,1,2,2,3,8,8,9,19,22,33,33,36,1
+ cbDiscardCardCount:4,
+,2,8,3,7cbOperateCode,0,cbOperateCode,9,End
+
+cbHandCardCount:14
+
+testCount:97
+,53,1,1,2,2,3,8,8,19,22,33,33,36,6
+ cbDiscardCardCount:5,
+,2,8,3,7,9cbOperateCode,0,cbOperateCode,19,End
+
+cbHandCardCount:14
+
+testCount:98
+,53,1,1,2,2,3,6,8,8,22,33,33,36,18
+ cbDiscardCardCount:7,
+,2,8,3,7,9,2,2cbOperateCode,0,cbOperateCode,18,End
+
+cbHandCardCount:14
+
+testCount:99
+,53,1,1,2,2,3,6,8,8,22,33,33,36,24
+ cbDiscardCardCount:9,
+,2,8,3,7,9,2,2,2,1cbOperateCode,0,cbOperateCode,36,End
+
+cbHandCardCount:14
+
+testCount:100
+,53,1,1,2,2,3,6,8,8,22,24,33,33,17
+ cbDiscardCardCount:11,
+,2,8,3,7,9,2,2,2,1,3,2cbOperateCode,0,cbOperateCode,17,End
+
+cbHandCardCount:14
+
+testCount:101
+,53,1,1,2,2,3,6,8,8,22,24,33,33,6
+ cbDiscardCardCount:12,
+,2,8,3,7,9,2,2,2,1,3,2,17cbOperateCode,0,cbOperateCode,33,End
+
+cbHandCardCount:14
+
+testCount:102
+,53,1,1,2,2,3,6,6,8,8,22,24,33,24
+ cbDiscardCardCount:14,
+,2,8,3,7,9,2,2,2,1,3,2,17,2,9cbOperateCode,0,cbOperateCode,33,End
+
+cbHandCardCount:14
+
+testCount:103
+,53,1,1,2,2,3,6,6,8,8,22,24,24,35
+ cbDiscardCardCount:16,
+,2,8,3,7,9,2,2,2,1,3,2,17,2,9,2,9cbOperateCode,0,cbOperateCode,35,End
+
+cbHandCardCount:14
+
+testCount:104
+,53,1,1,2,2,3,6,6,8,8,22,24,24,21
+ cbDiscardCardCount:18,
+,2,8,3,7,9,2,2,2,1,3,2,17,2,9,2,9,3,1cbOperateCode,0,cbOperateCode,1,End
+
+cbHandCardCount:14
+
+testCount:105
+,53,1,2,2,3,6,6,8,8,21,22,24,24,9
+ cbDiscardCardCount:19,
+,2,8,3,7,9,2,2,2,1,3,2,17,2,9,2,9,3,1,1cbOperateCode,0,cbOperateCode,9,End
+
+cbHandCardCount:13
+
+testCount:106
+,53,1,2,2,3,6,6,8,8,21,22,24,24
+ cbDiscardCardCount:20,
+,2,8,3,7,9,2,2,2,1,3,2,17,2,9,2,9,3,1,1,9cbOperateCode,8,cbOperateCode,24,End
+
+cbHandCardCount:11
+
+testCount:107
+,53,1,2,2,3,6,6,8,8,21,22
+ cbDiscardCardCount:24,
+,2,8,3,7,9,2,2,2,1,3,2,17,2,9,2,9,3,1,1,9,2,7,2,7cbOperateCode,0,cbOperateCode,2,End
+
+cbHandCardCount:11
+
+testCount:108
+,53,1,2,3,6,6,8,8,21,22,22
+ cbDiscardCardCount:25,
+,2,8,3,7,9,2,2,2,1,3,2,17,2,9,2,9,3,1,1,9,2,7,2,7,2cbOperateCode,0,cbOperateCode,21,End
+
+cbHandCardCount:11
+
+testCount:109
+,53,1,2,3,6,6,8,8,22,22,41
+ cbDiscardCardCount:27,
+,2,8,3,7,9,2,2,2,1,3,2,17,2,9,2,9,3,1,1,9,2,7,2,7,2,2,4cbOperateCode,0,cbOperateCode,41,End
+
+cbHandCardCount:10
+
+testCount:110
+,53,1,2,3,6,6,8,8,22,22
+ cbDiscardCardCount:29,
+,2,8,3,7,9,2,2,2,1,3,2,17,2,9,2,9,3,1,1,9,2,7,2,7,2,2,4,3,7cbOperateCode,8,cbOperateCode,8,End
+
+cbHandCardCount:8
+
+testCount:111
+,53,1,2,3,6,6,22,22
+ cbDiscardCardCount:31,
+,2,8,3,7,9,2,2,2,1,3,2,17,2,9,2,9,3,1,1,9,2,7,2,7,2,2,4,3,7,8,8cbOperateCode,0,cbOperateCode,6,End
+
+cbHandCardCount:8
+
+testCount:112
+,53,1,2,3,6,22,22,6
+ cbDiscardCardCount:32,
+,2,8,3,7,9,2,2,2,1,3,2,17,2,9,2,9,3,1,1,9,2,7,2,7,2,2,4,3,7,8,8,6cbOperateCode,64,cbOperateCode,6,End
+
+cbHandCardCount:8
+
+testCount:113
+,53,1,2,3,6,22,22,6
+ cbDiscardCardCount:32,
+,2,8,3,7,9,2,2,2,1,3,2,17,2,9,2,9,3,1,1,9,2,7,2,7,2,2,4,3,7,8,8,6cbOperateCode,0,cbOperateCode,6,End
+
+cbHandCardCount:14
+
+testCount:1
+,1,3,4,6,7,7,9,9,18,19,19,22,22,41
+ cbDiscardCardCount:0,
+cbOperateCode,0,cbOperateCode,41,End
+
+cbHandCardCount:14
+
+testCount:2
+,1,3,4,6,7,7,9,9,18,19,19,22,22,33
+ cbDiscardCardCount:2,
+,3,7cbOperateCode,0,cbOperateCode,33,End
+
+cbHandCardCount:14
+
+testCount:3
+,1,3,4,6,7,7,9,9,18,19,19,22,22,4
+ cbDiscardCardCount:4,
+,3,7,2,9cbOperateCode,0,cbOperateCode,18,End
+
+cbHandCardCount:14
+
+testCount:4
+,1,3,4,4,6,7,7,9,9,19,19,22,22,39
+ cbDiscardCardCount:6,
+,3,7,2,9,2,1cbOperateCode,0,cbOperateCode,39,End
+
+cbHandCardCount:14
+
+testCount:5
+,1,3,4,4,6,7,7,9,9,19,19,22,22,2
+ cbDiscardCardCount:8,
+,3,7,2,9,2,1,3,5cbOperateCode,0,cbOperateCode,6,End
+
+cbHandCardCount:14
+
+testCount:6
+,1,2,3,4,4,7,7,9,9,19,19,22,22,40
+ cbDiscardCardCount:9,
+,3,7,2,9,2,1,3,5,6cbOperateCode,0,cbOperateCode,40,End
+
+cbHandCardCount:14
+
+testCount:7
+,1,2,3,4,4,7,7,9,9,19,19,22,22,2
+ cbDiscardCardCount:11,
+,3,7,2,9,2,1,3,5,6,3,6cbOperateCode,0,cbOperateCode,2,End
+
+cbHandCardCount:14
+
+testCount:8
+,1,2,3,4,4,7,7,9,9,19,19,22,22,53
+ cbDiscardCardCount:12,
+,3,7,2,9,2,1,3,5,6,3,6,2cbOperateCode,0,cbOperateCode,9,End
+
+cbHandCardCount:14
+
+testCount:9
+,53,1,2,3,4,4,7,7,9,19,19,22,22,23
+ cbDiscardCardCount:13,
+,3,7,2,9,2,1,3,5,6,3,6,2,9cbOperateCode,0,cbOperateCode,9,End
+
+cbHandCardCount:14
+
+testCount:10
+,53,1,2,3,4,4,7,7,19,19,22,22,23,18
+ cbDiscardCardCount:14,
+,3,7,2,9,2,1,3,5,6,3,6,2,9,9cbOperateCode,0,cbOperateCode,18,End
+
+cbHandCardCount:14
+
+testCount:11
+,53,1,2,3,4,4,7,7,19,19,22,22,23,8
+ cbDiscardCardCount:16,
+,3,7,2,9,2,1,3,5,6,3,6,2,9,9,2,1cbOperateCode,0,cbOperateCode,8,End
+
+cbHandCardCount:14
+
+testCount:12
+,53,1,2,3,4,4,7,7,19,19,22,22,23,36
+ cbDiscardCardCount:17,
+,3,7,2,9,2,1,3,5,6,3,6,2,9,9,2,1,8cbOperateCode,0,cbOperateCode,36,End
+
+cbHandCardCount:14
+
+testCount:13
+,53,1,2,3,4,4,7,7,19,19,22,22,23,41
+ cbDiscardCardCount:19,
+,3,7,2,9,2,1,3,5,6,3,6,2,9,9,2,1,8,3,2cbOperateCode,0,cbOperateCode,41,End
+
+cbHandCardCount:14
+
+testCount:14
+,53,1,2,3,4,4,7,7,19,19,22,22,23,39
+ cbDiscardCardCount:21,
+,3,7,2,9,2,1,3,5,6,3,6,2,9,9,2,1,8,3,2,3,7cbOperateCode,0,cbOperateCode,39,End
+
+cbHandCardCount:14
+
+testCount:15
+,53,1,2,3,4,4,7,7,19,19,22,22,23,33
+ cbDiscardCardCount:23,
+,3,7,2,9,2,1,3,5,6,3,6,2,9,9,2,1,8,3,2,3,7,3,5cbOperateCode,0,cbOperateCode,33,End
+
+cbHandCardCount:14
+
+testCount:16
+,53,1,2,3,4,4,7,7,19,19,22,22,23,7
+ cbDiscardCardCount:25,
+,3,7,2,9,2,1,3,5,6,3,6,2,9,9,2,1,8,3,2,3,7,3,5,2,9cbOperateCode,0,cbOperateCode,23,End
+
+cbHandCardCount:14
+
+testCount:17
+,53,1,2,3,4,4,7,7,7,19,19,22,22,17
+ cbDiscardCardCount:27,
+,3,7,2,9,2,1,3,5,6,3,6,2,9,9,2,1,8,3,2,3,7,3,5,2,9,2,6cbOperateCode,0,cbOperateCode,17,End
+
+cbHandCardCount:14
+
+testCount:18
+,53,1,2,3,4,4,7,7,7,19,19,22,22,53
+ cbDiscardCardCount:28,
+,3,7,2,9,2,1,3,5,6,3,6,2,9,9,2,1,8,3,2,3,7,3,5,2,9,2,6,17cbOperateCode,64,cbOperateCode,53,End
+
+cbHandCardCount:14
+
+testCount:19
+,53,1,2,3,4,4,7,7,7,19,19,22,22,53
+ cbDiscardCardCount:28,
+,3,7,2,9,2,1,3,5,6,3,6,2,9,9,2,1,8,3,2,3,7,3,5,2,9,2,6,17cbOperateCode,0,cbOperateCode,19,End
+
+cbHandCardCount:14
+
+testCount:20
+,2,3,5,9,17,17,18,19,20,24,33,35,37,41
+ cbDiscardCardCount:0,
+cbOperateCode,0,cbOperateCode,9,End
+
+cbHandCardCount:14
+
+testCount:21
+,2,3,5,17,17,18,19,20,24,33,35,37,41,38
+ cbDiscardCardCount:1,
+,9cbOperateCode,0,cbOperateCode,41,End
+
+cbHandCardCount:14
+
+testCount:22
+,2,3,5,17,17,18,19,20,24,33,35,37,38,53
+ cbDiscardCardCount:3,
+,9,3,7cbOperateCode,0,cbOperateCode,24,End
+
+cbHandCardCount:14
+
+testCount:23
+,53,2,3,5,17,17,18,19,20,33,35,37,38,19
+ cbDiscardCardCount:5,
+,9,3,7,2,7cbOperateCode,0,cbOperateCode,17,End
+
+cbHandCardCount:14
+
+testCount:24
+,53,2,3,5,17,18,19,19,20,33,35,37,38,53
+ cbDiscardCardCount:6,
+,9,3,7,2,7,17cbOperateCode,0,cbOperateCode,5,End
+
+cbHandCardCount:14
+
+testCount:25
+,53,53,2,3,17,18,19,19,20,33,35,37,38,34
+ cbDiscardCardCount:7,
+,9,3,7,2,7,17,5cbOperateCode,0,cbOperateCode,3,End
+
+cbHandCardCount:14
+
+testCount:26
+,53,53,2,17,18,19,19,20,33,34,35,37,38,39
+ cbDiscardCardCount:8,
+,9,3,7,2,7,17,5,3cbOperateCode,64,cbOperateCode,39,End
+
+cbHandCardCount:14
+
+testCount:27
+,53,53,2,17,18,19,19,20,33,34,35,37,38,39
+ cbDiscardCardCount:8,
+,9,3,7,2,7,17,5,3cbOperateCode,0,cbOperateCode,2,End
+
+cbHandCardCount:14
+
+testCount:28
+,53,1,2,8,17,18,19,20,23,35,38,39,40,41
+ cbDiscardCardCount:0,
+cbOperateCode,0,cbOperateCode,8,End
+
+cbHandCardCount:14
+
+testCount:29
+,53,1,2,17,18,19,20,23,35,38,39,40,41,3
+ cbDiscardCardCount:1,
+,8cbOperateCode,0,cbOperateCode,23,End
+
+cbHandCardCount:14
+
+testCount:30
+,53,1,2,3,17,18,19,20,35,38,39,40,41,1
+ cbDiscardCardCount:3,
+,8,2,6cbOperateCode,0,cbOperateCode,35,End
+
+cbHandCardCount:14
+
+testCount:31
+,53,1,1,2,3,17,18,19,20,38,39,40,41,36
+ cbDiscardCardCount:5,
+,8,2,6,3,1cbOperateCode,0,cbOperateCode,1,End
+
+cbHandCardCount:14
+
+testCount:32
+,53,1,2,3,17,18,19,20,36,38,39,40,41,38
+ cbDiscardCardCount:6,
+,8,2,6,3,1,1cbOperateCode,0,cbOperateCode,41,End
+
+cbHandCardCount:14
+
+testCount:33
+,53,1,2,3,17,18,19,20,36,38,38,39,40,23
+ cbDiscardCardCount:8,
+,8,2,6,3,1,1,3,7cbOperateCode,0,cbOperateCode,23,End
+
+cbHandCardCount:14
+
+testCount:34
+,53,1,2,3,17,18,19,20,36,38,38,39,40,36
+ cbDiscardCardCount:10,
+,8,2,6,3,1,1,3,7,2,6cbOperateCode,0,cbOperateCode,20,End
+
+cbHandCardCount:14
+
+testCount:35
+,53,1,2,3,17,18,19,36,36,38,38,39,40,41
+ cbDiscardCardCount:12,
+,8,2,6,3,1,1,3,7,2,6,2,3cbOperateCode,64,cbOperateCode,41,End
+
+cbHandCardCount:14
+
+testCount:36
+,53,1,2,3,17,18,19,36,36,38,38,39,40,41
+ cbDiscardCardCount:12,
+,8,2,6,3,1,1,3,7,2,6,2,3cbOperateCode,0,cbOperateCode,41,End
+
+cbHandCardCount:14
+
+testCount:37
+,1,1,2,3,3,8,18,21,24,25,33,38,39,40
+ cbDiscardCardCount:0,
+cbOperateCode,0,cbOperateCode,33,End
+
+cbHandCardCount:14
+
+testCount:38
+,1,1,2,3,3,8,18,21,24,25,38,39,40,8
+ cbDiscardCardCount:2,
+,2,9cbOperateCode,0,cbOperateCode,18,End
+
+cbHandCardCount:14
+
+testCount:39
+,1,1,2,3,3,8,8,21,24,25,38,39,40,40
+ cbDiscardCardCount:4,
+,2,9,2,1cbOperateCode,0,cbOperateCode,21,End
+
+cbHandCardCount:14
+
+testCount:40
+,1,1,2,3,3,8,8,24,25,38,39,40,40,8
+ cbDiscardCardCount:6,
+,2,9,2,1,2,4cbOperateCode,0,cbOperateCode,40,End
+
+cbHandCardCount:14
+
+testCount:41
+,1,1,2,3,3,8,8,8,24,25,38,39,40,19
+ cbDiscardCardCount:8,
+,2,9,2,1,2,4,3,6cbOperateCode,0,cbOperateCode,19,End
+
+cbHandCardCount:14
+
+testCount:42
+,1,1,2,3,3,8,8,8,24,25,38,39,40,34
+ cbDiscardCardCount:10,
+,2,9,2,1,2,4,3,6,2,2cbOperateCode,0,cbOperateCode,34,End
+
+cbHandCardCount:14
+
+testCount:43
+,1,1,2,3,3,8,8,8,24,25,38,39,40,22
+ cbDiscardCardCount:12,
+,2,9,2,1,2,4,3,6,2,2,2,17cbOperateCode,0,cbOperateCode,22,End
+
+cbHandCardCount:13
+
+testCount:44
+,1,1,2,3,3,8,8,8,24,25,38,39,40
+ cbDiscardCardCount:14,
+,2,9,2,1,2,4,3,6,2,2,2,17,2,5cbOperateCode,8,cbOperateCode,1,End
+
+cbHandCardCount:11
+
+testCount:45
+,2,3,3,8,8,8,24,25,38,39,40
+ cbDiscardCardCount:16,
+,2,9,2,1,2,4,3,6,2,2,2,17,2,5,1,1cbOperateCode,0,cbOperateCode,2,End
+
+cbHandCardCount:11
+
+testCount:46
+,3,3,8,8,8,24,25,38,39,40,38
+ cbDiscardCardCount:17,
+,2,9,2,1,2,4,3,6,2,2,2,17,2,5,1,1,2cbOperateCode,0,cbOperateCode,38,End
+
+cbHandCardCount:11
+
+testCount:47
+,3,3,8,8,8,24,25,38,39,40,34
+ cbDiscardCardCount:19,
+,2,9,2,1,2,4,3,6,2,2,2,17,2,5,1,1,2,3,4cbOperateCode,0,cbOperateCode,34,End
+
+cbHandCardCount:11
+
+testCount:48
+,3,3,8,8,8,24,25,38,39,40,19
+ cbDiscardCardCount:21,
+,2,9,2,1,2,4,3,6,2,2,2,17,2,5,1,1,2,3,4,2,17cbOperateCode,0,cbOperateCode,19,End
+
+cbHandCardCount:11
+
+testCount:49
+,3,3,8,8,8,24,25,38,39,40,17
+ cbDiscardCardCount:23,
+,2,9,2,1,2,4,3,6,2,2,2,17,2,5,1,1,2,3,4,2,17,2,2cbOperateCode,0,cbOperateCode,17,End
+
+cbHandCardCount:11
+
+testCount:50
+,3,3,8,8,8,24,25,38,39,40,2
+ cbDiscardCardCount:24,
+,2,9,2,1,2,4,3,6,2,2,2,17,2,5,1,1,2,3,4,2,17,2,2,17cbOperateCode,0,cbOperateCode,2,End
+
+cbHandCardCount:11
+
+testCount:51
+,3,3,8,8,8,24,25,38,39,40,19
+ cbDiscardCardCount:25,
+,2,9,2,1,2,4,3,6,2,2,2,17,2,5,1,1,2,3,4,2,17,2,2,17,2cbOperateCode,0,cbOperateCode,19,End
+
+cbHandCardCount:11
+
+testCount:52
+,3,3,8,8,8,24,25,38,39,40,53
+ cbDiscardCardCount:27,
+,2,9,2,1,2,4,3,6,2,2,2,17,2,5,1,1,2,3,4,2,17,2,2,17,2,2,2cbOperateCode,64,cbOperateCode,53,End
+
+cbHandCardCount:11
+
+testCount:53
+,3,3,8,8,8,24,25,38,39,40,53
+ cbDiscardCardCount:27,
+,2,9,2,1,2,4,3,6,2,2,2,17,2,5,1,1,2,3,4,2,17,2,2,17,2,2,2cbOperateCode,0,cbOperateCode,25,End
+
+cbHandCardCount:14
+
+testCount:54
+,5,6,7,19,20,20,21,24,33,34,36,38,39,39
+ cbDiscardCardCount:0,
+cbOperateCode,0,cbOperateCode,24,End
+
+cbHandCardCount:14
+
+testCount:55
+,5,6,7,19,20,20,21,33,34,36,38,39,39,34
+ cbDiscardCardCount:2,
+,2,7cbOperateCode,0,cbOperateCode,33,End
+
+cbHandCardCount:14
+
+testCount:56
+,5,6,7,19,20,20,21,34,34,36,38,39,39,41
+ cbDiscardCardCount:4,
+,2,7,2,9cbOperateCode,0,cbOperateCode,41,End
+
+cbHandCardCount:14
+
+testCount:57
+,5,6,7,19,20,20,21,34,34,36,38,39,39,53
+ cbDiscardCardCount:6,
+,2,7,2,9,3,7cbOperateCode,0,cbOperateCode,20,End
+
+cbHandCardCount:14
+
+testCount:58
+,53,5,6,7,19,20,21,34,34,36,38,39,39,34
+ cbDiscardCardCount:8,
+,2,7,2,9,3,7,2,3cbOperateCode,64,cbOperateCode,34,End
+
+cbHandCardCount:14
+
+testCount:59
+,53,5,6,7,19,20,21,34,34,36,38,39,39,34
+ cbDiscardCardCount:8,
+,2,7,2,9,3,7,2,3cbOperateCode,0,cbOperateCode,39,End
+
+cbHandCardCount:14
+
+testCount:60
+,1,1,2,6,6,17,19,21,22,33,36,37,38,40
+ cbDiscardCardCount:0,
+cbOperateCode,0,cbOperateCode,33,End
+
+cbHandCardCount:14
+
+testCount:61
+,1,1,2,6,6,17,19,21,22,36,37,38,40,1
+ cbDiscardCardCount:2,
+,2,9cbOperateCode,0,cbOperateCode,2,End
+
+cbHandCardCount:14
+
+testCount:62
+,1,1,1,6,6,17,19,21,22,36,37,38,40,53
+ cbDiscardCardCount:3,
+,2,9,2cbOperateCode,0,cbOperateCode,40,End
+
+cbHandCardCount:14
+
+testCount:63
+,53,1,1,1,6,6,17,19,21,22,36,37,38,18
+ cbDiscardCardCount:5,
+,2,9,2,3,6cbOperateCode,64,cbOperateCode,18,End
+
+cbHandCardCount:14
+
+testCount:64
+,53,1,1,1,6,6,17,19,21,22,36,37,38,18
+ cbDiscardCardCount:5,
+,2,9,2,3,6cbOperateCode,0,cbOperateCode,6,End
+
+cbHandCardCount:14
+
+testCount:65
+,1,1,2,8,17,20,21,25,33,34,38,38,40,41
+ cbDiscardCardCount:0,
+cbOperateCode,0,cbOperateCode,17,End
+
+cbHandCardCount:14
+
+testCount:66
+,1,1,2,8,20,21,25,33,34,38,38,40,41,37
+ cbDiscardCardCount:1,
+,17cbOperateCode,0,cbOperateCode,25,End
+
+cbHandCardCount:14
+
+testCount:67
+,1,1,2,8,20,21,33,34,37,38,38,40,41,24
+ cbDiscardCardCount:3,
+,17,2,8cbOperateCode,0,cbOperateCode,8,End
+
+cbHandCardCount:14
+
+testCount:68
+,1,1,2,20,21,24,33,34,37,38,38,40,41,9
+ cbDiscardCardCount:4,
+,17,2,8,8cbOperateCode,0,cbOperateCode,9,End
+
+cbHandCardCount:14
+
+testCount:69
+,1,1,2,20,21,24,33,34,37,38,38,40,41,22
+ cbDiscardCardCount:5,
+,17,2,8,8,9cbOperateCode,0,cbOperateCode,2,End
+
+cbHandCardCount:14
+
+testCount:70
+,1,1,20,21,22,24,33,34,37,38,38,40,41,3
+ cbDiscardCardCount:6,
+,17,2,8,8,9,2cbOperateCode,0,cbOperateCode,3,End
+
+cbHandCardCount:14
+
+testCount:71
+,1,1,20,21,22,24,33,34,37,38,38,40,41,18
+ cbDiscardCardCount:7,
+,17,2,8,8,9,2,3cbOperateCode,0,cbOperateCode,18,End
+
+cbHandCardCount:14
+
+testCount:72
+,1,1,20,21,22,24,33,34,37,38,38,40,41,24
+ cbDiscardCardCount:9,
+,17,2,8,8,9,2,3,2,1cbOperateCode,0,cbOperateCode,37,End
+
+cbHandCardCount:14
+
+testCount:73
+,1,1,20,21,22,24,24,33,34,38,38,40,41,34
+ cbDiscardCardCount:11,
+,17,2,8,8,9,2,3,2,1,3,3cbOperateCode,0,cbOperateCode,33,End
+
+cbHandCardCount:14
+
+testCount:74
+,1,1,20,21,22,24,24,34,34,38,38,40,41,4
+ cbDiscardCardCount:13,
+,17,2,8,8,9,2,3,2,1,3,3,2,9cbOperateCode,0,cbOperateCode,4,End
