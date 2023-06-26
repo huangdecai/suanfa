@@ -1,3 +1,0 @@
-pyinstaller main.py 
-
-pyuic5 -o MainWindow.py MainWindow.ui
