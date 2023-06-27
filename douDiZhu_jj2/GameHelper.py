@@ -232,7 +232,7 @@ class GameHelper:
         image, _ = self.Screenshot()
         result = pyautogui.locate(needleImage=self.Pics[templateName], haystackImage=image, confidence=confidence, region=region)
         if result is not None:
-            self.LeftClick((result[0]+60, result[1]-20))
+            self.LeftClick((result[0]+60, result[1]+20))
 
     def GetCardsState(self, image,handCount):
         st = time.time()
@@ -380,11 +380,13 @@ class GameHelper:
                                             region=pos, confidence=0.83)
             print("找不到对方手牌起始位置")
             tryCount -= 1
+            if tryCount==0:
+                QtWidgets.QApplication.processEvents(QEventLoop.AllEvents, 10)
             #time.sleep(0.5)
         print("start pos", cardStartPos)
         if cardStartPos is None:
             return [], []
-        sx = cardStartPos[0]+ 6  # + 23
+        sx = cardStartPos[0]+ 5  # + 23
         AllCardsNC = ['rD', 'bX', '2', 'A', 'K', 'Q', 'J', 'T', '9', '8', '7', '6', '5', '4', '3']
         hand_cards = []
         select_map = []
