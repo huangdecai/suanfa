@@ -57,17 +57,17 @@ void TestGameLogic()
 	
 	BYTE	cbHandCardData[NORMAL_COUNT] = { 0 };	//ÊÖÉÏÆË¿Ë
 	//BYTE    tempCard[] = { 0x1C, 0x12, 0x02, 0x38, 0x27, 0x05, 0x23, 0x03, 0x19, 0x28, 0x37, 0x26, 0x25 };
-	BYTE    tempCard[] = { 15, 14, 2,2, 1, 10, 6, 6, 9, 9, 9, 8, 8, 8, 5, 5 };
+	BYTE    tempCard[] = { 13, 13, 13, 13, 12, 12, 12, 11, 11, 11, 10, 10, 10, 9, 9, 9, 8, 8, 8, 7 };
 	//BYTE    tempCard[] = { 2, 2, 2, 13, 10, 8, 8, 7, 7, 5 };
 
 	tagOutCardResultNew  OutCardResult;
 	BYTE cbTurnCardData[] = { 5};// { S6, 6, 5, 5, 4, 4 };
-	int cbTurnCardCount =    sizeof(cbTurnCardData);
-	BYTE cbDiscardCard[] = { 11,  };
+	int cbTurnCardCount = 0;   sizeof(cbTurnCardData);
+	BYTE cbDiscardCard[] = { 0,  };
 	BYTE cbDiscardCardCount = sizeof(cbDiscardCard);
 	BYTE cbOtherDisscard[] = { 1, };
 	BYTE cbOtherDisscardCount = sizeof(cbOtherDisscard);
-	BYTE cbCardDataEx[MAX_COUNT] = { 0, 0, 0, 17, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
+	BYTE cbCardDataEx[MAX_COUNT] = { 0, 1, 0, 20, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
 	BYTE maxCard[MAX_COUNT] = { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
 	
 	//tagOutCardResultNew CardTypeResult1;
@@ -93,7 +93,7 @@ void TestGameLogic()
 		}
 		fihst = clock();
 		double duration = (double)(fihst - start);
-		if (duration>2000)
+		if (duration>200)
 		{
 			int a=4;
 			cout << duration << endl;
