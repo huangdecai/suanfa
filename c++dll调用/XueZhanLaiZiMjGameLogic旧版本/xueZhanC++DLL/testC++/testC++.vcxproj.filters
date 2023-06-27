@@ -27,13 +27,16 @@
     <ClInclude Include="testC++.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="GameLogic.h">
+    <ClInclude Include="..\..\gameLogic\testLogic2\AndroidAI.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="CMD_Sparrow.h">
+    <ClInclude Include="..\..\gameLogic\testLogic2\CMD_Game.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="AndroidAI.h">
+    <ClInclude Include="..\..\gameLogic\testLogic2\fastHu.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gameLogic\testLogic2\GameLogic.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>
@@ -47,11 +50,14 @@
     <ClCompile Include="dllmain.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="GameLogic.cpp">
+    <ClCompile Include="..\..\gameLogic\testLogic2\AndroidAI.cpp">
       <Filter>头文件</Filter>
     </ClCompile>
-    <ClCompile Include="AndroidAI.cpp">
-      <Filter>源文件</Filter>
+    <ClCompile Include="..\..\gameLogic\testLogic2\fastHu.cpp">
+      <Filter>头文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gameLogic\testLogic2\GameLogic.cpp">
+      <Filter>头文件</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

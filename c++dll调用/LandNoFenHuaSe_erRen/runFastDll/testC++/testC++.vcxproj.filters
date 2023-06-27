@@ -27,13 +27,13 @@
     <ClInclude Include="testC++.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="GameLogicNew.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="CMD_Game.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
     <ClInclude Include="cwritelog.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gameLogic\testLogic2\CMD_Game.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gameLogic\testLogic2\GameLogicNew.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>
@@ -47,10 +47,10 @@
     <ClCompile Include="dllmain.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="GameLogicNew.cpp">
-      <Filter>头文件</Filter>
-    </ClCompile>
     <ClCompile Include="cwritelog.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gameLogic\testLogic2\GameLogicNew.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>

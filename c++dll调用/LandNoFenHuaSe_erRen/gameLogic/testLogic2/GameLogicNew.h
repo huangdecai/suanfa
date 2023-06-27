@@ -340,7 +340,9 @@ public:
 	//--三拖1变换3带2来拖
 	bool ThreeTakeOneChangeTwoTake(const BYTE cbCardData[], BYTE cbHandCardCount, vector<tagOutCardResultNew> &vecMinTypeCardResult, tagOutCardResultNew & OutCardResult);
 
-	bool ThreeTakeTwoTakeMinCard(const BYTE cbCardData[], BYTE cbHandCardCount, vector<tagOutCardResultNew> &vecMinTypeCardResult, tagOutCardResultNew & OutCardResult);
+	bool ThreeTakeTwoTakeMinCard(const BYTE cbCardData[], BYTE cbHandCardCount, vector<tagOutCardResultNew> &vecMinTypeCardResult, tagOutCardResultNew & OutCardResult, tagOutCardTypeResultNew * CardTypeResult);
+
+	bool isAllDoubleType(BYTE * cbComResCard, BYTE CardCount);
 
 	void SwitchArray(BYTE bInFirstList[], BYTE bInNextList[], int count);
 

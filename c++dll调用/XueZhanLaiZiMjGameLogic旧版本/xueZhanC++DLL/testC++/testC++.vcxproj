@@ -144,15 +144,18 @@
     <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="AndroidAI.h" />
-    <ClInclude Include="CMD_Sparrow.h" />
-    <ClInclude Include="GameLogic.h" />
+    <ClInclude Include="..\..\gameLogic\testLogic2\AndroidAI.h" />
+    <ClInclude Include="..\..\gameLogic\testLogic2\CMD_Game.h" />
+    <ClInclude Include="..\..\gameLogic\testLogic2\fastHu.h" />
+    <ClInclude Include="..\..\gameLogic\testLogic2\GameLogic.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
     <ClInclude Include="testC++.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="AndroidAI.cpp" />
+    <ClCompile Include="..\..\gameLogic\testLogic2\AndroidAI.cpp" />
+    <ClCompile Include="..\..\gameLogic\testLogic2\fastHu.cpp" />
+    <ClCompile Include="..\..\gameLogic\testLogic2\GameLogic.cpp" />
     <ClCompile Include="dllmain.cpp">
       <CompileAsManaged Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</CompileAsManaged>
       <CompileAsManaged Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</CompileAsManaged>
@@ -167,7 +170,6 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
       </PrecompiledHeader>
     </ClCompile>
-    <ClCompile Include="GameLogic.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>

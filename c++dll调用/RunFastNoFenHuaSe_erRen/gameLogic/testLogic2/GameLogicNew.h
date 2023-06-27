@@ -339,7 +339,8 @@ public:
 		-- ╫в╥т(m > n)
 		--C(m, n) = (m*(m - 1)*(m - 2)бн(m - n + 1)) / (n*(n - 1)*бн * 1)*/
 	int GetCMNSort(int m, int n);
-		
+
+	bool isAllDoubleType(BYTE * cbComResCard, BYTE CardCount);
 
 };
 

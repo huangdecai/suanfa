@@ -4,7 +4,6 @@
 #include "stdafx.h"
 #include "testC++.h"
 #include <stdio.h>
-#include "GameLogic.h"
 #include "nb30.h"
 static int testCount = 0;
 #define MAX_TEST_COUNT 20000

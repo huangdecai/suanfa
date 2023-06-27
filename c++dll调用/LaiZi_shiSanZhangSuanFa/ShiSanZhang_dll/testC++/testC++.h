@@ -9,7 +9,7 @@
 #else
 #define TESTC_API __declspec(dllimport)
 #endif
-#include "GameLogicNew.h"
+#include "../../gameLogic/./testLogic2/GameLogicNew.h"
 
 
 

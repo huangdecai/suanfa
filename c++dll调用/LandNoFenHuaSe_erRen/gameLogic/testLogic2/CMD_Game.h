@@ -103,7 +103,7 @@ struct CMD_C_OutCard
 //搜索结果
 struct tagSearchCardResult
 {
-	BYTE							cbSearchCount;						//结果数目
+	int							cbSearchCount;						//结果数目
 	BYTE							cbCardCount[MAX_RESULT_COUNT];				//扑克数目
 	BYTE							cbResultCard[MAX_RESULT_COUNT][MAX_COUNT];	//结果扑克
 };

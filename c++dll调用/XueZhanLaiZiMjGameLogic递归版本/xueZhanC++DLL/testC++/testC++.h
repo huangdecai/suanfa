@@ -9,7 +9,8 @@
 #else
 #define TESTC_API __declspec(dllimport)
 #endif
-#include "AndroidAI.h"
+#include "../../gameLogic/testLogic2/AndroidAI.h"
+#include "../../gameLogic/testLogic2/GameLogic.h"
 
 
 extern "C" TESTC_API tagOutCardResult* __stdcall fntestC(tagOutCardResult &OutCardResult, WORD wMeChairId, WORD wCurrentUser, BYTE cbCardDataEx[],  BYTE cbActionMask, BYTE cbActionCard, BYTE cbHandCardData[], BYTE cbHandCardCount, BYTE	DiscardCard[], BYTE cbDiscardCardCount, tagWeaveItem WeaveItemArray[GAME_PLAYER][MAX_WEAVE], BYTE cbWeaveCount[]);
