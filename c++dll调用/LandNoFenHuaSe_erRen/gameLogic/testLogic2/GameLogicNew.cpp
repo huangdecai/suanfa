@@ -1510,7 +1510,7 @@ void CGameLogicNew::GetThreeTakeTwoCardResult(BYTE * cbHandCardData, BYTE const 
 		Combination(cbComCard, 0, cbComResCard, cbComResLen, cbRemainCard, cbNeedCardCount, cbRemainCardCount, cbNeedCardCount);
 		for (int j = 0; j < cbComResLen; ++j)
 		{
-			if (isAllDoubleType(cbComResCard[i], cbNeedCardCount) == false)
+			if (isAllDoubleType(cbComResCard[j], cbNeedCardCount) == false)
 			{
 				continue;
 			}
@@ -1540,7 +1540,7 @@ void CGameLogicNew::GetThreeTakeTwoCardResult(BYTE * cbHandCardData, BYTE const 
 		Combination(cbComCard, 0, cbComResCard, cbComResLen, cbRemainCard, cbNeedCardCount, cbRemainCardCount, cbNeedCardCount);
 		for (int j = 0; j < cbComResLen; ++j)
 		{
-			if (isAllDoubleType(cbComResCard[i], cbNeedCardCount) == false)
+			if (isAllDoubleType(cbComResCard[j], cbNeedCardCount) == false)
 			{
 				continue;
 			}
