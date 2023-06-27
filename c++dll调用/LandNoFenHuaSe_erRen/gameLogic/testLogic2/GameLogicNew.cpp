@@ -4273,9 +4273,45 @@ bool CGameLogicNew::OutCardShengYuFenCheck(BYTE cbHandCardCount, const BYTE * cb
 				vecMinTypeCardResultBak = TempMinTypeCardResult[i];
 				break;
 			}
+			else if (m_cbUserCardCount[1] <= 2 && tempType == CT_SINGLE&&GetCardLogicValue(SearchCardResult.cbResultCard[i][0])==15)
+			{
+				MinTypeScore = tempMinTypeScore;
+				minTypeCount = tempMinTypeCount;
+				resultIndex = i;
+				vecMinTypeCardResultBak = TempMinTypeCardResult[i];
+			}
+			else if (tempType == CT_SINGLE&&GetCardLogicValue(SearchCardResult.cbResultCard[i][0]) == 15 && WuDiCheck(cbReserveCardData, cbReserveCardCount, NULL, 0, OutCardResult))
+			{
+				MinTypeScore = tempMinTypeScore;
+				minTypeCount = tempMinTypeCount;
+				resultIndex = i;
+				vecMinTypeCardResultBak = TempMinTypeCardResult[i];
+				//假设2大
+				if (GetACardCount(BombData.data(), BombData.size(), SearchCardResult.cbResultCard[i][0]) == 0)
+				{
+					vecIndexUnIncludeBomb.push_back(i);
+					bExistBiYing = true;
+				}
+			}
+			else if (tempType == CT_DOUBLE&&GetCardLogicValue(SearchCardResult.cbResultCard[i][0]) >= 13 && WuDiCheck(cbReserveCardData, cbReserveCardCount, NULL, 0, OutCardResult))
+			{
+				MinTypeScore = tempMinTypeScore;
+				minTypeCount = tempMinTypeCount;
+				resultIndex = i;
+				vecMinTypeCardResultBak = TempMinTypeCardResult[i];
+				//假设2大
+				if (GetACardCount(BombData.data(), BombData.size(), SearchCardResult.cbResultCard[i][0]) == 0)
+				{
+					vecIndexUnIncludeBomb.push_back(i);
+					bExistBiYing = true;
+				}
+			}
+
+			
 		
 		}
-	}	
+	}
+	ZeroMemory(&OutCardResult, sizeof(OutCardResult));
 	int tempCardType = GetCardType(SearchCardResult.cbResultCard[resultIndex], SearchCardResult.cbCardCount[resultIndex]);
 	
 	if (bExistBiYing&&vecIndexUnIncludeBomb.size()>0)

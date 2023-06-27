@@ -211,6 +211,7 @@ class Ui_Form(object):
 
         self.retranslateUi(Form)
         self.InitCard.clicked.connect(Form.init_cards)
+        self.startlogin.clicked.connect(Form.startLoginGame)
         self.Stop.clicked.connect(Form.stop)
         self.SwitchMode.clicked.connect(Form.switch_mode)
         self.AutoStart.clicked.connect(Form.beforeStart)

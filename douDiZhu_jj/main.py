@@ -159,6 +159,7 @@ class MyPyQT_Form(QtWidgets.QWidget, Ui_Form):
 
         try:
             self.RunGame =True
+            self.game_over=True
             self.start()
         except Exception as e:
             exc_type, exc_obj, exc_tb = sys.exc_info()
@@ -185,9 +186,9 @@ class MyPyQT_Form(QtWidgets.QWidget, Ui_Form):
         helper.bTest = False
 
         # 识别玩家手牌
-        # if self.connected==False:
-        #     print("你的账号没有登陆，请联系Q：460000713，进行购买")
-        #     return
+        if self.connected==False:
+            print("你的账号没有登陆，请联系Q：460000713，进行购买")
+            return
         #tmpHandCard = self.changeDataOut('2AKQQJJT99877753')
         #tmpHandCardStr = self.changeDataIn(tmpHandCard)
 
@@ -484,12 +485,15 @@ class MyPyQT_Form(QtWidgets.QWidget, Ui_Form):
             print("点击换对手")
             print("{}胜，本局结束!\n")
             #self.stop()
-            self.sleep(2500)
+            if result :
+                self.sleep(2500)
+            else:
+                self.sleep(5000)
             if self.AutoPlay:
                 self.sleep(2500)
                 helper.ClickOnImage("change_player_btn", region=self.changePlayerBtnPos, confidence=0.70)
                 helper.LeftClick((self.changePlayerBtnPos[0] + 60, self.changePlayerBtnPos[1] + 30))
-                self.sleep(1000)
+                self.sleep(500)
             return True
     def shengYuPaiShow(self, cards):
         #self.ThreeLandlordCards.resize(300,100)
