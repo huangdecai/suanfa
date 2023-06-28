@@ -4341,6 +4341,10 @@ bool CGameLogicNew::OutCardShengYuFenCheck(BYTE cbHandCardCount, const BYTE * cb
 
 				}
 			}
+			if (tempCardType>=CT_BOMB_CARD&&m_cbUserCardCount[1]>=10)
+			{
+				resultIndex = -1;
+			}
 		}
 		else{
 			if (tempCardType >= CT_BOMB_CARD)
