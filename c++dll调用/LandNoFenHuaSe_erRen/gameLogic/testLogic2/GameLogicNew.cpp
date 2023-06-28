@@ -5633,10 +5633,6 @@ bool CGameLogicNew::FindMaxTypeTakeOneType(const BYTE cbHandCardData[], BYTE cbH
 
 	for (int i = 0; i < vecMinTypeCardResult.size();i++)
 	{
-		if (vecMinTypeCardResult[i].cbCardType == CT_THREE_TAKE_ONE)
-		{
-			continue;
-		}
 		if (vecMinTypeCardResult[i].cbCardType == CT_BOMB_CARD || vecMinTypeCardResult[i].cbCardType == CT_MISSILE_CARD || cbTurnCardType == 0)
 		{
 			BYTE tmpTurnCard[MAX_COUNT] = { 0 };
