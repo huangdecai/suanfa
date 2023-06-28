@@ -14,33 +14,7 @@ import threading
 import struct
 
 MAX_COUNT=20
-class CMD_GR_LogonUserID(Structure):
-    _fields_ = [("dwUserID", c_int64 ),
-                ("password", c_int64)
-                ]
-class CMD_GR_LogonSuccess(Structure):
-    _fields_ = [("wTableID", c_ulong),
-                ("wChairID", c_ulong),
-                ]
 
-class CMD_GR_LogonFailure(Structure):
-    _fields_ = [("lErrorCode", c_ulong),
-                ("szDescribeString", c_wchar*128),
-                ]
-
-class cmd_cardDataInfo(Structure):
-    _fields_ = [
-                ("wChairID", c_ushort),
-                ("cbCardData", c_ubyte* 20),
-                ("cbCardCount", c_ubyte),
-                ("cbCardDataEx", c_ubyte * 200),
-                ("cbCardExCount", c_ubyte),
-                ]
-
-class CMD_GR_UserSitDown(Structure):
-    _fields_ = [("wTableID", c_ushort),
-                ("wChairID", c_ushort),
-                ]
 class Client:
     def __init__(self):
         self.client=None
@@ -61,7 +35,7 @@ class Client:
 
     def userCardData(self,tmpHandCard,ohtherCard):
         if self.client:
-            cardData = cmd_cardDataInfo()
+            cardData = socketTool.cmd_cardDataInfo()
             tmparray = c_ubyte * MAX_COUNT
             cardData.cbCardData = tmparray()
             for i in range(0, len(tmpHandCard)):
@@ -80,18 +54,18 @@ class Client:
             cardData.wChairID=self.wChairID
             socketTool.sendData(self.client,socketTool.MDM_GF_GAME,socketTool.SUB_C_SEND_CARD,cardData)
     def userSitDown(self):
-        loginData = CMD_GR_UserSitDown()
+        loginData = socketTool.CMD_GR_UserSitDown()
         loginData.wTableID = self.tableid
         loginData.wChairID = 0
         socketTool.sendData(self.client, socketTool.MDM_GR_USER, socketTool.SUB_GR_USER_SITDOWN, loginData)
     def userLogin(self):
-        loginData = CMD_GR_LogonUserID()
+        loginData = socketTool.CMD_GR_LogonUserID()
         tmp=sizeof(loginData)
         loginData.dwUserID =self.userid
         loginData.password = self.passWord
         socketTool.sendData(self.client, socketTool.MDM_GR_LOGON, socketTool.SUB_GR_LOGON_MOBILE, loginData)
     def userReady(self):
-        loginData = CMD_GR_LogonUserID()
+        loginData = socketTool.CMD_GR_LogonUserID()
         loginData.dwUserID = self.userid
         socketTool.sendData(self.client, socketTool.MDM_GF_FRAME, socketTool.SUB_GF_USER_READY, loginData)
     # 主程序入口函数
@@ -99,35 +73,21 @@ class Client:
     def recvGameData(self,msg_head,data):
         if msg_head.wMainCmdID==socketTool.MDM_GR_LOGON:
             if msg_head.wSubCmdID==socketTool.SUB_GR_LOGON_SUCCESS:
-                dataBuffer = CMD_GR_LogonSuccess.from_buffer(data)
+                dataBuffer = socketTool.CMD_GR_LogonSuccess.from_buffer(data)
                 print("登陆成功")
             elif msg_head.wSubCmdID==socketTool.SUB_GR_LOGON_FAILURE:
-                dataBuffer = CMD_GR_LogonFailure.from_buffer(data)
+                dataBuffer = socketTool.CMD_GR_LogonFailure.from_buffer(data)
                 print("登陆失败:",dataBuffer.szDescribeString)
         elif msg_head.wMainCmdID==socketTool.MDM_GR_USER:
             if msg_head.wSubCmdID == socketTool.SUB_GR_REQUEST_FAILURE:
                 print("坐下失败")
             elif msg_head.wSubCmdID == socketTool.SUB_GR_USER_SIT_SUCCESS:
-                dataBuffer = CMD_GR_UserSitDown.from_buffer(data)
+                dataBuffer = socketTool.CMD_GR_UserSitDown.from_buffer(data)
                 print("坐下成功,桌子号:",dataBuffer.wTableID,"椅子号:",dataBuffer.wChairID)
                 self.wChairID=dataBuffer.wChairID
-                if self.msgCall:
-                    self.msgCall(dataBuffer)
         elif msg_head.wMainCmdID == socketTool.MDM_GF_GAME:
-            if msg_head.wSubCmdID==socketTool.SUB_C_SEND_CARD:
-                dataBuffer = cmd_cardDataInfo.from_buffer(data)
-                tmpStr='座位号:'+str(dataBuffer.wChairID)
-                print("游戏消息1:", tmpStr)
-                tmpStr=''
-                for i in range(0,dataBuffer.cbCardCount):
-                    tmpStr=tmpStr+str(dataBuffer.cbCardData[i])+','
-                print("游戏消息2:", tmpStr)
-                tmpStr=''
-                for i in range(0,dataBuffer.cbCardExCount):
-                    tmpStr=tmpStr+str(dataBuffer.cbCardDataEx[i])+','
-                print("游戏消息3:", tmpStr)
-                if self.msgCall:
-                    self.msgCall(dataBuffer)
+            if self.msgCall:
+                self.msgCall(msg_head.wSubCmdID,data)
         else:
             print("ohter")
     def accept(self,client,parent):
@@ -147,7 +107,7 @@ class Client:
                         rlist.remove(client)
                         parent.client.close()
                         parent.client=None
-
+                        self.msgCall(-1,1)
 
     def readJson(self):
         with open("data_file.json", "r") as read_file:
@@ -172,6 +132,7 @@ class Client:
                 try:
                     # 处理客户端键盘输入并需要发送的消息
                     if testCount==1:
+                        testCount = 0
                         a=4
                         self.userLogin()
                         time.sleep(1)
@@ -180,9 +141,9 @@ class Client:
                         self.userReady()
                         #tmpHandCard=[0x01,0x02,0x03,0x04,0x05,0x06,0x07,0x08,0x09,0x0A,0x0B,0x0C,0x0D]
                         # tmpHandCard = [0x0D, 0x0D, 0x0D, 0x0D, 0x0D, 0x0D, 0x0D, 0x0D, 0x0D, 0x0D, 0x0D, 0x0D, 0x0D]
-                        #ohtherCard=[0x0D, 0x0D, 0x0D]
-                        #self.userCardData(tmpHandCard,ohtherCard)
-                    #testCount=0
+                        # ohtherCard=[0x0D, 0x0D, 0x0D]
+                        # self.userCardData(tmpHandCard,ohtherCard)
+
                     print("在连接")
                     break
                     time.sleep(10)

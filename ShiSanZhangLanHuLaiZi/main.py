@@ -4,6 +4,7 @@
 
 import GameHelper as gh
 from GameHelper import GameHelper
+import socketTool
 import os
 import sys
 import time
@@ -120,9 +121,9 @@ class MyPyQT_Form(QtWidgets.QWidget, Ui_Form):
         self.switch_mode()
         self.startgame.setVisible(False)
         self.lock = threading.Lock()
-
+        self.connected = False
         a=4
-    def RecvPlayerMsg(self, data):
+    def handCardMsgHelp(self,data):
         if data.wChairID!=self.fenFaQi.GetChaiID():
             #data.cbCardData=data.cbCardData[0,13]
             tmpdata=[]
@@ -146,6 +147,27 @@ class MyPyQT_Form(QtWidgets.QWidget, Ui_Form):
                             break
                 self.ShowPlayerCard(len(self.otherPlayerData)-1, tmpHandData)
             self.lock.release()
+    def RecvPlayerMsg(self,wSubCmdID, data):
+        if wSubCmdID == socketTool.SUB_C_SEND_CARD:
+            dataBuffer = socketTool.cmd_cardDataInfo.from_buffer(data)
+            tmpStr = '座位号:' + str(dataBuffer.wChairID)
+            print("游戏消息1:", tmpStr)
+            tmpStr = ''
+            for i in range(0, dataBuffer.cbCardCount):
+                tmpStr = tmpStr + str(dataBuffer.cbCardData[i]) + ','
+            print("游戏消息2:", tmpStr)
+            tmpStr = ''
+            for i in range(0, dataBuffer.cbCardExCount):
+                tmpStr = tmpStr + str(dataBuffer.cbCardDataEx[i]) + ','
+            print("游戏消息3:", tmpStr)
+            self.handCardMsgHelp(dataBuffer)
+        elif wSubCmdID == -1:
+            print("close")
+            self.connected=False
+            return
+        elif wSubCmdID==socketTool.SUB_GR_USER_SIT_SUCCESS:
+            if data.wChairID==self.fenFaQi.GetChaiID():
+                self.connected = True
 
         a = 4
     def ShowPlayerCard(self,id,data):
@@ -209,6 +231,9 @@ class MyPyQT_Form(QtWidgets.QWidget, Ui_Form):
         self.game_over= False
         self.shengYuPaiShow(self.allDisCardData)
         # 识别玩家手牌
+        if self.connected==False:
+            print("你的账号没有登陆，请联系Q：460000713，进行购买")
+            return
         #temp=self.have_white(self.RPlayedCardsPos)
         #self.turnCardReal = self.find_other_cards(self.RPlayedCardsPos)
         #tmpHandCard = self.changeDataOut('2AKQQJJT99877753')

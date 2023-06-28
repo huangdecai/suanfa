@@ -34,7 +34,33 @@ class TCP_Head(Structure):
                 ("wMainCmdID", c_ushort),
                 ("wSubCmdID", c_ushort)
                 ]
+class CMD_GR_LogonUserID(Structure):
+    _fields_ = [("dwUserID", c_int64 ),
+                ("password", c_int64)
+                ]
+class CMD_GR_LogonSuccess(Structure):
+    _fields_ = [("wTableID", c_ulong),
+                ("wChairID", c_ulong),
+                ]
 
+class CMD_GR_LogonFailure(Structure):
+    _fields_ = [("lErrorCode", c_ulong),
+                ("szDescribeString", c_wchar*128),
+                ]
+
+class cmd_cardDataInfo(Structure):
+    _fields_ = [
+                ("wChairID", c_ushort),
+                ("cbCardData", c_ubyte* 20),
+                ("cbCardCount", c_ubyte),
+                ("cbCardDataEx", c_ubyte * 200),
+                ("cbCardExCount", c_ubyte),
+                ]
+
+class CMD_GR_UserSitDown(Structure):
+    _fields_ = [("wTableID", c_ushort),
+                ("wChairID", c_ushort),
+                ]
 def to_byte(num, bits=None):
     if bits is None:
         bits = 8 # 给一个默认的的位长

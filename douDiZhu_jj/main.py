@@ -3,6 +3,7 @@
 # Modify by: Vincentzyx
 
 import GameHelper as gh
+import socketTool
 from GameHelper import GameHelper
 import os
 import sys
@@ -101,9 +102,28 @@ class MyPyQT_Form(QtWidgets.QWidget, Ui_Form):
         self.readJson()
         self.connected=False
         #self.init_cards()
-    def RecvPlayerMsg(self, data):
-        if data.wChairID==self.fenFaQi.GetChaiID():
-            self.connected=True
+
+    def RecvPlayerMsg(self,wSubCmdID, data):
+        if wSubCmdID == socketTool.SUB_C_SEND_CARD:
+            dataBuffer = socketTool.cmd_cardDataInfo.from_buffer(data)
+            tmpStr = '座位号:' + str(dataBuffer.wChairID)
+            print("游戏消息1:", tmpStr)
+            tmpStr = ''
+            for i in range(0, dataBuffer.cbCardCount):
+                tmpStr = tmpStr + str(dataBuffer.cbCardData[i]) + ','
+            print("游戏消息2:", tmpStr)
+            tmpStr = ''
+            for i in range(0, dataBuffer.cbCardExCount):
+                tmpStr = tmpStr + str(dataBuffer.cbCardDataEx[i]) + ','
+            print("游戏消息3:", tmpStr)
+        elif wSubCmdID == -1:
+            print("close")
+            self.connected=False
+            return
+        elif wSubCmdID==socketTool.SUB_GR_USER_SIT_SUCCESS:
+            if data.wChairID==self.fenFaQi.GetChaiID():
+                self.connected = True
+
     def startLoginGame(self):
         self.fenFaQi.start()
     def init_display(self):

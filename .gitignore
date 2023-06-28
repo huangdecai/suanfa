@@ -2,6 +2,7 @@
 中间目录
 dist
 build
+venv
 GloryProject.pdb
 libqpry_lua.so
 *.o
