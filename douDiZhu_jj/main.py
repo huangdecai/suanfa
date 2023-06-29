@@ -101,7 +101,7 @@ class MyPyQT_Form(QtWidgets.QWidget, Ui_Form):
         self.configData=None
         self.readJson()
         self.connected=False
-        #self.init_cards()
+        self.startLoginGame()
 
     def RecvPlayerMsg(self,wSubCmdID, data):
         if wSubCmdID == socketTool.SUB_C_SEND_CARD:
@@ -130,6 +130,7 @@ class MyPyQT_Form(QtWidgets.QWidget, Ui_Form):
         self.yuanShiZhangShu = self.MAX_CARD_COUNT
         self.rangCount = 0
         self.beiRangCount = 0
+        self.bHaveJiaWang=False
         self.WinRate.setText("评分")
         self.InitCard.setText("开始")
         self.UserHandCards.setText("手牌")
@@ -289,6 +290,13 @@ class MyPyQT_Form(QtWidgets.QWidget, Ui_Form):
                     tmpstr = tmpstr.replace(sub[i], '', 1)
                     break
         return tmpstr
+    def CheckZhangCard(self):
+        for i in range(2, 20):
+            result = helper.LocateOnScreen("zhang" + str(i), region=(1200, 183, 50, 50),
+                                           confidence=self.LandlordFlagConfidence)
+            if result:
+                return i
+        return 0
     def isGameOver(self):
         return (self.handCardCount[0]-self.beiRangCount)==0 or (self.handCardCount[1]-self.rangCount)==0
     def start(self):
@@ -392,7 +400,7 @@ class MyPyQT_Form(QtWidgets.QWidget, Ui_Form):
                     # 未找到"不出"
                     if pass_flag is None:
                         # 识别下家出牌
-                        self.sleep(200)
+                        self.sleep(600)
                         self.turnCardReal = self.find_other_cardsEx(self.RPlayedCardsPos)
                         if len(self.turnCardReal) > 0:
                             self.handCardCount[self.play_order] = self.handCardCount[self.play_order] - len(
@@ -404,6 +412,11 @@ class MyPyQT_Form(QtWidgets.QWidget, Ui_Form):
                         self.yaoBuQi = False
                         self.rightHaveOutCard = self.rightHaveOutCard  + self.turnCardReal
                         self.LPlayedCard.setText("对家牌："+self.rightHaveOutCard)
+                        zhang=self.CheckZhangCard()
+                        if self.bHaveJiaWang==False and self.handCardCount[self.play_order]-zhang==2:
+                            self.rightHaveOutCard+='DX'
+                            print("加双王")
+                            self.bHaveJiaWang =True
                     # 找到"不出"
                     else:
                         self.FillPassType(self.mylastCard)
@@ -442,7 +455,7 @@ class MyPyQT_Form(QtWidgets.QWidget, Ui_Form):
                 score=self.getCardScore(self.user_hand_cards_real)
                 print("jiaoDiZhuCheck...0",score)
                 self.jiaoDiZhuFen.setText("叫地主分数:"+str(score))
-                if score>=5 and operateCount==0:
+                if score>=-50 and operateCount==0:
                     helper.ClickOnImage("jiaodizhu", region=self.jiaoDiZhuBtnPos)
                     operateCount+=1
                 else:
@@ -451,16 +464,16 @@ class MyPyQT_Form(QtWidgets.QWidget, Ui_Form):
             elif resultQ:
                 score = self.getCardScore(self.user_hand_cards_real)
                 self.QiangDiZhuFen.setText("抢地主分数:"+str(score))
-                if score >= 20 and operateCount==0:
+                if score >=-35 and operateCount==0:
                     helper.ClickOnImage("qiangdizhu", region=self.jiaoDiZhuBtnPos)
                     operateCount += 1
-                elif score >= 60 and operateCount<=1:
+                elif score >= -10 and operateCount<=1:
                     helper.ClickOnImage("qiangdizhu", region=self.jiaoDiZhuBtnPos)
                     operateCount += 1
-                elif score >= 100 and operateCount<=2:
+                elif score >= 20 and operateCount<=2:
                     helper.ClickOnImage("qiangdizhu", region=self.jiaoDiZhuBtnPos)
                     operateCount += 1
-                elif score >= 150 and operateCount<=3:
+                elif score >= 40 and operateCount<=3:
                     helper.ClickOnImage("qiangdizhu", region=self.jiaoDiZhuBtnPos)
                     operateCount += 1
                 else:

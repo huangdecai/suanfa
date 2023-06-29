@@ -228,7 +228,7 @@ public:
 	//获取相对或者绝对大牌
 	int  IsJueDuiDaPai(const BYTE cbHandCardData[], BYTE cbHandCardCount, BYTE cardType, bool bNoSearchBomb=true);
 
-	float GetHandScore(vector<tagOutCardResultNew>   &CardTypeResult,int minTypeCount);
+	float GetHandScore(vector<tagOutCardResultNew>   &CardTypeResult, int minTypeCount, bool bJiaoFen=false);
 
 	float GetCardTypeScore(tagOutCardResultNew &CardTypeResult);
 
@@ -333,6 +333,7 @@ public:
 	bool SearchOutCardErRen(BYTE cbHandCardData[], BYTE cbHandCardCount, BYTE cbTurnCardData[], BYTE cbTurnCardCount, BYTE DiscardCard[], BYTE cbDiscardCardCount, BYTE	cbOtherDiscardCard[], BYTE	cbOtherDiscardCount, BYTE cbCardDataEx[], BYTE MaxCard[], tagOutCardResultNew & OutCardResult);
 	//地主出牌（先出牌）
 	VOID ErZhuDongOutCard(const BYTE cbHandCardData[], BYTE cbHandCardCount, tagOutCardResultNew & OutCardResult);
+
 	//地主出牌（后出牌）
 	VOID ErBeiDongOutCard(const BYTE cbHandCardData[], BYTE cbHandCardCount, WORD wOutCardUser, const BYTE cbTurnCardData[], BYTE cbTurnCardCount, tagOutCardResultNew & OutCardResult);
 
@@ -352,7 +353,61 @@ public:
 		-- 注意(m > n)
 		--C(m, n) = (m*(m - 1)*(m - 2)…(m - n + 1)) / (n*(n - 1)*… * 1)*/
 	int GetCMNSort(int m, int n);
-		
+	bool FourTakeFenChai(const BYTE cbHandCardData[], BYTE cbHandCardCount, tagOutCardResultNew & OutCardResult)
+	{
+		int type = GetCardType(cbHandCardData, cbHandCardCount);
+		if (type == CT_FOUR_TAKE_ONE)
+		{
+			BYTE cbRemainCard[MAX_COUNT] = {};
+			BYTE cbRemainCardCount = cbHandCardCount - 4;
+			CopyMemory(cbRemainCard, cbHandCardData, cbHandCardCount);
+			RemoveCard(cbHandCardData, 4, cbRemainCard, cbHandCardCount);
+			if (cbRemainCard[0] == cbRemainCard[1])
+			{
+				bool bExistMax = SearchOtherHandCardThan(cbRemainCard, cbRemainCardCount, true);
+				if (bExistMax == false)
+				{
+					ZeroMemory(&OutCardResult, sizeof(OutCardResult));
+					OutCardResult.cbCardCount = cbRemainCardCount;
+					CopyMemory(OutCardResult.cbResultCard, cbRemainCard, OutCardResult.cbCardCount);
+					return true;
+				}
+			}
+			else{
+				for (int j = 0; j < cbRemainCardCount; j++)
+				{
+					bool bExistMax = SearchOtherHandCardThan(cbRemainCard + j, 1, true);
+					if (bExistMax == false)
+					{
+						ZeroMemory(&OutCardResult, sizeof(OutCardResult));
+						OutCardResult.cbCardCount = 1;
+						CopyMemory(OutCardResult.cbResultCard, cbRemainCard + j, OutCardResult.cbCardCount);
+						return true;
+					}
+				}
+			}
+		}
+		else if (type == CT_FOUR_TAKE_TWO)
+		{
+			BYTE cbRemainCard[MAX_COUNT] = {};
+			BYTE cbRemainCardCount = cbHandCardCount - 4;
+			CopyMemory(cbRemainCard, cbHandCardData, cbHandCardCount);
+			RemoveCard(cbHandCardData, 4, cbRemainCard, cbHandCardCount);
+			for (int j = 0; j < cbRemainCardCount; j += 2)
+			{
+				bool bExistMax = SearchOtherHandCardThan(cbRemainCard + j, 2, true);
+				if (bExistMax == false)
+				{
+					ZeroMemory(&OutCardResult, sizeof(OutCardResult));
+					OutCardResult.cbCardCount = 2;
+					CopyMemory(OutCardResult.cbResultCard, cbRemainCard + j, OutCardResult.cbCardCount);
+					return true;
+				}
+			}
+
+		}
+		return false;
+	}
 
 };
 
