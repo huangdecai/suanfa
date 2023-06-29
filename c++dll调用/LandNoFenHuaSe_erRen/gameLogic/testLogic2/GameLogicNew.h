@@ -157,7 +157,8 @@ public:
 	bool CompareCard(const BYTE cbFirstCard[], const BYTE cbNextCard[], BYTE cbFirstCount, BYTE cbNextCount);
 	//出牌搜索
 	BYTE SearchOutCard(const BYTE cbHandCardData[], BYTE cbHandCardCount, const BYTE cbTurnCardData[], BYTE cbTurnCardCount, tagSearchCardResult *pSearchCardResult, bool bNoSearchBomb=false);
-
+	//出牌搜索
+	BYTE ZhuDongSearchOutCard(tagOutCardTypeResultNew   CardTypeResult[CT_TYPE_COUNT], tagSearchCardResult *pSearchCardResult, bool bNoSearchBomb = false);
 	//内部函数
 public:
 	//构造扑克
@@ -272,7 +273,7 @@ public:
 	BYTE SearchTakeCardType(const BYTE cbHandCardData[], BYTE cbHandCardCount, BYTE cbReferCard, BYTE cbSameCount, BYTE cbTakeCardCount,
 		tagSearchCardResult *pSearchCardResult);
 	//搜索飞机
-	BYTE SearchThreeTwoLine(const BYTE cbHandCardData[], BYTE cbHandCardCount, tagSearchCardResult *pSearchCardResult);
+	BYTE SearchThreeTwoLine(const BYTE cbHandCardData[], BYTE cbHandCardCount, BYTE cbReferCard, BYTE cbLineCount, BYTE cbTakeCardCount, tagSearchCardResult *pSearchCardResult);
 	//检测台面炸弹概率
 	bool CheckBombPercent(const BYTE cbHandCardData[], BYTE cbHandCardCount, BYTE	DiscardCard[], BYTE cbDiscardCardCount);
 	//检测两个数组是否相交
@@ -295,7 +296,7 @@ public:
 	//通用单双压牌策略
 	void CommonSDTurnCardSearch(vector<tagOutCardResultNew> &vecMinTypeCardResult, BYTE cbTurnCardLogic, tagOutCardResultNew &OutCardResult);
 	//无敌检测
-	bool  WuDiCheck(const BYTE * cbHandCardData, BYTE cbHandCardCount, const BYTE * cbTurnCardData, BYTE cbTurnCardCount, tagOutCardResultNew &OutCardResult);
+	bool  WuDiCheck(const BYTE * cbHandCardData, BYTE cbHandCardCount, const BYTE * cbTurnCardData, BYTE cbTurnCardCount, tagOutCardResultNew &OutCardResult, tagOutCardTypeResultNew *CardTypeResult=NULL);
 	//检测剩下牌是否必赢
 	bool CheckOutOneTypeWillWin(const BYTE * cbHandCardData, BYTE cbHandCardCount, const BYTE cbTurnCardData[], BYTE cbTurnCardCount, tagOutCardResultNew &OutCardResult);
 	//出牌剩余分牌推算

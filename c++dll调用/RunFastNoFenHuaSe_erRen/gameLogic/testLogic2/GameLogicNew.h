@@ -262,7 +262,7 @@ public:
 	BYTE SearchTakeCardType(const BYTE cbHandCardData[], BYTE cbHandCardCount, BYTE cbReferCard, BYTE cbSameCount, BYTE cbTakeCardCount,
 		tagSearchCardResult *pSearchCardResult);
 	//搜索飞机
-	BYTE SearchThreeTwoLine(const BYTE cbHandCardData[], BYTE cbHandCardCount, tagSearchCardResult *pSearchCardResult);
+	BYTE SearchThreeTwoLine(const BYTE cbHandCardData[], BYTE cbHandCardCount, BYTE cbReferCard, BYTE cbLineCount, BYTE cbTakeCardCount, tagSearchCardResult *pSearchCardResult);
 	//检测台面炸弹概率
 	bool CheckBombPercent(const BYTE cbHandCardData[], BYTE cbHandCardCount, BYTE	DiscardCard[], BYTE cbDiscardCardCount);
 	//检测两个数组是否相交

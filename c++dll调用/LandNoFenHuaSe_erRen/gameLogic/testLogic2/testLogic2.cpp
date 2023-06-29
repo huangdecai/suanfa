@@ -57,19 +57,20 @@ void TestGameLogic()
 	
 	BYTE	cbHandCardData[NORMAL_COUNT] = { 0 };	// ÷…œ∆ÀøÀ
 	//BYTE    tempCard[] = { 0x1C, 0x12, 0x02, 0x38, 0x27, 0x05, 0x23, 0x03, 0x19, 0x28, 0x37, 0x26, 0x25 };
-	BYTE    tempCard[] = { 1, 1, 1, 13, 13, 13, 10, 9, 9, 8, 8, 5 };
+	BYTE    tempCard[] = { 15, 2, 8, 8, 8, 8, 10, 10 };
 	//BYTE    tempCard[] = { 2, 2, 2, 13, 10, 8, 8, 7, 7, 5 };
 
 	tagOutCardResultNew  OutCardResult;
-	BYTE cbTurnCardData[] = { 1,1 };// { S6, 6, 5, 5, 4, 4 };
-	int cbTurnCardCount = 0;   sizeof(cbTurnCardData);
-	BYTE cbDiscardCard[] = { 2, 6, 6, 12, 12 };
+	BYTE cbTurnCardData[] = { 7, 7, 7, 8, 8, 8, 6, 6, 5, 5 };// { S6, 6, 5, 5, 4, 4 };
+	int cbTurnCardCount = 0;// sizeof(cbTurnCardData);
+	BYTE cbDiscardCard[] = { 2, 1, 7, 5, 12, 12, 11, 11, 9 };
 	BYTE cbDiscardCardCount = sizeof(cbDiscardCard);
-	BYTE cbOtherDisscard[] = { 7, 9, 9 };
+	BYTE cbOtherDisscard[] = { 5,5};
 	BYTE cbOtherDisscardCount = sizeof(cbOtherDisscard);
-	BYTE cbCardDataEx[MAX_COUNT] = { 0, 0, 1, 17, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
+	BYTE cbCardDataEx[MAX_COUNT] = { 1, 0, 3, 17, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
 	BYTE maxCard[MAX_COUNT] = { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
-	
+	tagSearchCardResult pSearchCardResult = {};
+	//m_GameLogicNew.SearchOutCard(tempCard, sizeof(tempCard), cbTurnCardData, 0, &pSearchCardResult);
 	//tagOutCardResultNew CardTypeResult1;
 	//CardTypeResult1.cbCardCount = 5;
 	//BYTE    tempCard1[] = {  4, 4 };

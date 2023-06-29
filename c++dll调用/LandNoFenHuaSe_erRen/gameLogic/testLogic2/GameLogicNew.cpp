@@ -115,7 +115,7 @@ BYTE CGameLogicNew::GetCardType(const BYTE cbCardData[], BYTE cbCardCount)
 		//牌型判断
 		if ((AnalyseResult.cbBlockCount[3]==1)&&(cbCardCount==4)) return CT_BOMB_CARD;
 		if ((AnalyseResult.cbBlockCount[3]==1)&&(cbCardCount==6)) return CT_FOUR_TAKE_ONE;
-		if ((AnalyseResult.cbBlockCount[3] == 1) && (cbCardCount == 7)) return CT_FOUR_TAKE_THREE;
+		//if ((AnalyseResult.cbBlockCount[3] == 1) && (cbCardCount == 7)) return CT_FOUR_TAKE_THREE;
 		if ((AnalyseResult.cbBlockCount[3]==1)&&(cbCardCount==8)&&(AnalyseResult.cbBlockCount[1]==2)) return CT_FOUR_TAKE_TWO;
 		if ((AnalyseResult.cbBlockCount[3] == 1) && (cbCardCount == 5)) return CT_THREE_TAKE_TWO;
 		return CT_ERROR;
@@ -460,9 +460,9 @@ bool CGameLogicNew::CompareCard(const BYTE cbFirstCard[], const BYTE cbNextCard[
 			//对比扑克
 			return cbNextLogicValue>cbFirstLogicValue;
 		}
-	//case CT_FOUR_TAKE_ONE:
-	//case CT_FOUR_TAKE_TWO:
-	case CT_FOUR_TAKE_THREE:
+	case CT_FOUR_TAKE_ONE:
+	case CT_FOUR_TAKE_TWO:
+	//case CT_FOUR_TAKE_THREE:
 		{
 			//分析扑克
 			tagAnalyseResultNew NextResult;
@@ -586,35 +586,23 @@ BYTE CGameLogicNew::SearchOutCard(const BYTE cbHandCardData[], BYTE cbHandCardCo
 		}
 
 		//三带一单
-		//cbTmpCount = SearchTakeCardType(cbCardData, cbCardCount, 0, 3, 1, &tmpSearchCardResult);
-		//if (cbTmpCount > 0)
-		//{
-		//	pSearchCardResult->cbCardCount[cbResultCount] = tmpSearchCardResult.cbCardCount[0];
-		//	CopyMemory(pSearchCardResult->cbResultCard[cbResultCount], tmpSearchCardResult.cbResultCard[0],
-		//		sizeof(BYTE)*tmpSearchCardResult.cbCardCount[0]);
-		//	cbResultCount++;
-		//}
+			cbTmpCount = SearchTakeCardType(cbCardData, cbCardCount, 0, 3, 1, &tmpSearchCardResult);
+		if (cbTmpCount > 0)
+		{
+			pSearchCardResult->cbCardCount[cbResultCount] = tmpSearchCardResult.cbCardCount[0];
+			CopyMemory(pSearchCardResult->cbResultCard[cbResultCount], tmpSearchCardResult.cbResultCard[0],
+				sizeof(BYTE)*tmpSearchCardResult.cbCardCount[0]);
+			cbResultCount++;
+		}
 
 		//三带一对
 		cbTmpCount = SearchTakeCardType(cbCardData, cbCardCount, 0, 3, 2, &tmpSearchCardResult);
 		if (cbTmpCount > 0)
 		{
-			if (cbCardCount <= m_cbCardTypeCount)
-			{
-				for (int i = 0; i < tmpSearchCardResult.cbSearchCount; i++)
-				{
-					pSearchCardResult->cbCardCount[cbResultCount] = tmpSearchCardResult.cbCardCount[i];
-					CopyMemory(pSearchCardResult->cbResultCard[cbResultCount], tmpSearchCardResult.cbResultCard[i],
-						sizeof(BYTE)*tmpSearchCardResult.cbCardCount[i]);
-					cbResultCount++;
-				}
-			}
-			else{
 				pSearchCardResult->cbCardCount[cbResultCount] = tmpSearchCardResult.cbCardCount[0];
 				CopyMemory(pSearchCardResult->cbResultCard[cbResultCount], tmpSearchCardResult.cbResultCard[0],
 					sizeof(BYTE)*tmpSearchCardResult.cbCardCount[0]);
 				cbResultCount++;
-			}
 			
 		}
 
@@ -649,14 +637,60 @@ BYTE CGameLogicNew::SearchOutCard(const BYTE cbHandCardData[], BYTE cbHandCardCo
 		}
 
 		////飞机
-		//cbTmpCount = SearchThreeTwoLine( cbCardData,cbCardCount,&tmpSearchCardResult );
-		//if( cbTmpCount > 0 )
-		//{
-		//	pSearchCardResult->cbCardCount[cbResultCount] = tmpSearchCardResult.cbCardCount[0];
-		//	CopyMemory( pSearchCardResult->cbResultCard[cbResultCount],tmpSearchCardResult.cbResultCard[0],
-		//		sizeof(BYTE)*tmpSearchCardResult.cbCardCount[0] );
-		//	cbResultCount++;
-		//}
+		for (int i = 2; i <= 5;i++)
+		{
+			cbTmpCount = SearchThreeTwoLine(cbCardData, cbCardCount, 0, i, 1, &tmpSearchCardResult);
+			if (cbTmpCount > 0)
+			{
+				pSearchCardResult->cbCardCount[cbResultCount] = tmpSearchCardResult.cbCardCount[0];
+				CopyMemory(pSearchCardResult->cbResultCard[cbResultCount], tmpSearchCardResult.cbResultCard[0],
+					sizeof(BYTE)*tmpSearchCardResult.cbCardCount[0]);
+				cbResultCount++;
+			}
+			else
+			{
+				break;
+			}
+		}
+		for (int i = 2; i < 5; i++)
+		{
+			cbTmpCount = SearchThreeTwoLine(cbCardData, cbCardCount, 0, i, 2, &tmpSearchCardResult);
+			if (cbTmpCount > 0)
+			{
+				pSearchCardResult->cbCardCount[cbResultCount] = tmpSearchCardResult.cbCardCount[0];
+				CopyMemory(pSearchCardResult->cbResultCard[cbResultCount], tmpSearchCardResult.cbResultCard[0],
+					sizeof(BYTE)*tmpSearchCardResult.cbCardCount[0]);
+				cbResultCount++;
+			}
+			else
+			{
+				break;
+			}
+		}
+		//四带1
+		cbTmpCount = SearchTakeCardType(cbCardData, cbCardCount, 0, 4, 2, &tmpSearchCardResult);
+		if (cbTmpCount > 0)
+		{
+			{
+				pSearchCardResult->cbCardCount[cbResultCount] = tmpSearchCardResult.cbCardCount[0];
+				CopyMemory(pSearchCardResult->cbResultCard[cbResultCount], tmpSearchCardResult.cbResultCard[0],
+					sizeof(BYTE)*tmpSearchCardResult.cbCardCount[0]);
+				cbResultCount++;
+			}
+
+		}
+		//四带2
+		cbTmpCount = SearchTakeCardType(cbCardData, cbCardCount, 0, 4, 4, &tmpSearchCardResult);
+		if (cbTmpCount > 0)
+		{
+			{
+				pSearchCardResult->cbCardCount[cbResultCount] = tmpSearchCardResult.cbCardCount[0];
+				CopyMemory(pSearchCardResult->cbResultCard[cbResultCount], tmpSearchCardResult.cbResultCard[0],
+					sizeof(BYTE)*tmpSearchCardResult.cbCardCount[0]);
+				cbResultCount++;
+			}
+
+		}
 
 		//炸弹
 		if (cbSameCount != 4)
@@ -721,187 +755,43 @@ BYTE CGameLogicNew::SearchOutCard(const BYTE cbHandCardData[], BYTE cbHandCardCo
 	{
 		//效验牌数
 		if (cbCardCount < cbTurnCardCount) break;
-		int cbLineResultCount = cbResultCount;
+		BYTE cbTakeCardCount = cbTurnOutType == CT_THREE_TAKE_ONE ? 1 : 2;
 		//如果是三带一或三带二
 		if (cbTurnCardCount == 4 || cbTurnCardCount == 5)
 		{
-			BYTE cbTakeCardCount = cbTurnOutType == CT_THREE_TAKE_ONE ? 1 : 2;
-
 			//搜索三带牌型
 			cbResultCount = SearchTakeCardType(cbCardData, cbCardCount, cbTurnCardData[2], 3, cbTakeCardCount, pSearchCardResult);
 		}
 		else
 		{
-			//变量定义
-			BYTE cbBlockCount = 3;
-			BYTE cbLineCount = cbTurnCardCount / (cbTurnOutType == CT_THREE_TAKE_ONE ? 4 : 5);
-			BYTE cbTakeCardCount = cbTurnOutType == CT_THREE_TAKE_ONE ? 1 : 2;
-
-			//搜索连牌
-			BYTE cbTmpTurnCard[FULL_COUNT] = {};
-			CopyMemory(cbTmpTurnCard, cbTurnCardData, sizeof(BYTE)*cbTurnCardCount);
-			SortOutCardList(cbTmpTurnCard, cbTurnCardCount);
-			cbLineResultCount = SearchLineCardType(cbCardData, cbCardCount, cbTmpTurnCard[0], cbBlockCount, cbLineCount, pSearchCardResult);
-			
-			//提取带牌
-			bool bAllDistill = true;
-			if (cbTurnOutType == CT_THREE_TAKE_ONE&&cbCardCount >= cbTurnCardCount)
+			BYTE cbLineCount = 2;
+			if (cbTurnOutType == CT_THREE_TAKE_ONE)
 			{
-				
-				for (BYTE i = 0; i < cbLineResultCount; i++)
-				{
-
-					//变量定义
-					BYTE cbTmpCardData[FULL_COUNT];
-					BYTE cbTmpCardCount = cbCardCount;
-
-					//删除连牌
-					CopyMemory(cbTmpCardData, cbCardData, sizeof(BYTE)*cbCardCount);
-					//去掉三条
-					BYTE cbRemainCardData[FULL_COUNT];
-					CopyMemory(cbRemainCardData, cbTmpCardData, cbHandCardCount);
-					BYTE cbRemainCardCount = cbHandCardCount - 3*cbLineCount;
-					RemoveCard(pSearchCardResult->cbResultCard[i], pSearchCardResult->cbCardCount[i], cbRemainCardData, cbHandCardCount);
-					int cbDistillCount = cbTakeCardCount*cbLineCount;
-					//单牌组合
-					BYTE cbComCard[MAX_COLS];
-					BYTE cbComResCard[MAX_RESULT_COUNT][MAX_COLS];
-					int cbComResLen = 0;
-					BYTE cbSingleCardCount = cbLineCount*1;
-					//if (cbRemainCardCount>17)
-					//{
-					//	cbRemainCardCount = 10;//牌堆里这么多，数组为装不下，同时也没必要
-					//}
-					cbRemainCardCount = ClearReLogicValue(cbRemainCardData, cbRemainCardCount);
-					Combination(cbComCard, 0, cbComResCard, cbComResLen, cbRemainCardData, cbSingleCardCount, cbRemainCardCount, cbSingleCardCount);
-					tagSearchCardResult SameCardResult = {};
-					CopyMemory(&SameCardResult, pSearchCardResult,
-						sizeof(SameCardResult));
-					int cbSameCount = cbLineCount * 3;
-					for (BYTE m = 0; m < cbComResLen; m++)
-					{
-						//复制带牌
-						CopyMemory(&SameCardResult.cbResultCard[i][cbSameCount], cbComResCard[m],
-							cbDistillCount);
-						SameCardResult.cbCardCount[i] = cbTurnCardCount;
-						//复制结果
-						CopyMemory(pSearchCardResult->cbResultCard[cbResultCount], SameCardResult.cbResultCard[i],
-							cbTurnCardCount);
-						pSearchCardResult->cbCardCount[cbResultCount] = SameCardResult.cbCardCount[i];
-						cbResultCount++;
-					}
-				}
-				break;
+				cbLineCount = cbTurnCardCount / 4;
 			}
-			else
-			{
-				for (BYTE i = 0; i < cbLineResultCount; i++)
-				{
-					BYTE cbResultIndex = i;
-
-					//变量定义
-					BYTE cbTmpCardData[FULL_COUNT];
-					BYTE cbTmpCardCount = cbCardCount;
-
-					//删除连牌
-					CopyMemory(cbTmpCardData, cbCardData, sizeof(BYTE)*cbCardCount);
-					VERIFY(RemoveCard(pSearchCardResult->cbResultCard[cbResultIndex], pSearchCardResult->cbCardCount[cbResultIndex],
-						cbTmpCardData, cbTmpCardCount));
-					cbTmpCardCount -= pSearchCardResult->cbCardCount[cbResultIndex];
-
-					//分析牌
-					tagAnalyseResultNew  TmpResult = {};
-					AnalysebCardData(cbTmpCardData, cbTmpCardCount, TmpResult);
-
-					//提取牌
-					BYTE cbDistillCard[FULL_COUNT] = {};
-					BYTE cbDistillCount = 0;
-					for (BYTE j = cbTakeCardCount - 1; j < CountArray(TmpResult.cbBlockCount); j++)
-					{
-						if (TmpResult.cbBlockCount[j] > 0)
-						{
-							if (j + 1 == cbTakeCardCount && TmpResult.cbBlockCount[j] >= cbLineCount)
-							{
-								BYTE cbTmpBlockCount = TmpResult.cbBlockCount[j];
-								CopyMemory(cbDistillCard, &TmpResult.cbCardData[j][(cbTmpBlockCount - cbLineCount)*(j + 1)],
-									sizeof(BYTE)*(j + 1)*cbLineCount);
-								cbDistillCount = (j + 1)*cbLineCount;
-								break;
-							}
-							else
-							{
-								for (BYTE k = 0; k < TmpResult.cbBlockCount[j]; k++)
-								{
-									BYTE cbTmpBlockCount = TmpResult.cbBlockCount[j];
-									CopyMemory(&cbDistillCard[cbDistillCount], &TmpResult.cbCardData[j][(cbTmpBlockCount - k - 1)*(j + 1)],
-										sizeof(BYTE)*cbTakeCardCount);
-									cbDistillCount += cbTakeCardCount;
-
-									//提取完成
-									if (cbDistillCount == cbTakeCardCount*cbLineCount) break;
-								}
-							}
-						}
-
-						//提取完成
-						if (cbDistillCount == cbTakeCardCount*cbLineCount) break;
-					}
-
-					//提取完成
-					if (cbDistillCount == cbTakeCardCount*cbLineCount)
-					{
-						//复制带牌
-						BYTE cbCount = pSearchCardResult->cbCardCount[cbResultIndex];
-						CopyMemory(&pSearchCardResult->cbResultCard[cbResultIndex][cbCount], cbDistillCard,
-							sizeof(BYTE)*cbDistillCount);
-						pSearchCardResult->cbCardCount[cbResultIndex] += cbDistillCount;
-					}
-					//否则删除连牌
-					else
-					{
-						bAllDistill = false;
-						pSearchCardResult->cbCardCount[cbResultIndex] = 0;
-					}
-				}
-
+			else{
+				cbLineCount = cbTurnCardCount / 5;
 			}
-			
-			//整理组合
-			if (!bAllDistill)
-			{
-				pSearchCardResult->cbSearchCount = cbResultCount;
-				cbResultCount = 0;
-				for (BYTE i = 0; i < pSearchCardResult->cbSearchCount; i++)
-				{
-					if (pSearchCardResult->cbCardCount[i] != 0)
-					{
-						tmpSearchCardResult.cbCardCount[cbResultCount] = pSearchCardResult->cbCardCount[i];
-						CopyMemory(tmpSearchCardResult.cbResultCard[cbResultCount], pSearchCardResult->cbResultCard[i],
-							sizeof(BYTE)*pSearchCardResult->cbCardCount[i]);
-						cbResultCount++;
-					}
-				}
-				tmpSearchCardResult.cbSearchCount = cbResultCount;
-				CopyMemory(pSearchCardResult, &tmpSearchCardResult, sizeof(tagSearchCardResult));
-			}
+
+			cbResultCount = SearchThreeTwoLine(cbCardData, cbCardCount, cbTurnCardData[2], cbLineCount, cbTakeCardCount, pSearchCardResult);
 		}
 
 		break;
 	}
-	//case CT_FOUR_TAKE_ONE:		//四带两单
-	//case CT_FOUR_TAKE_TWO:		//四带两双
-	//{
-	//	BYTE cbTakeCount = cbTurnOutType == CT_FOUR_TAKE_ONE ? 1 : 2;
+	case CT_FOUR_TAKE_ONE:		//四带两单
+	case CT_FOUR_TAKE_TWO:		//四带两双
+	{
+		BYTE cbTakeCount = cbTurnOutType == CT_FOUR_TAKE_ONE ? 1 : 2;
 
-	//	BYTE cbTmpTurnCard[MAX_COUNT] = {};
-	//	CopyMemory(cbTmpTurnCard, cbTurnCardData, sizeof(BYTE)*cbTurnCardCount);
-	//	SortOutCardList(cbTmpTurnCard, cbTurnCardCount);
+		BYTE cbTmpTurnCard[MAX_COUNT] = {};
+		CopyMemory(cbTmpTurnCard, cbTurnCardData, sizeof(BYTE)*cbTurnCardCount);
+		SortOutCardList(cbTmpTurnCard, cbTurnCardCount);
 
-	//	//搜索带牌
-	//	cbResultCount = SearchTakeCardType(cbCardData, cbCardCount, cbTmpTurnCard[0], 4, cbTakeCount, pSearchCardResult);
+		//搜索带牌
+		cbResultCount = SearchTakeCardType(cbCardData, cbCardCount, cbTmpTurnCard[0], 4, cbTakeCount, pSearchCardResult);
 
-	//	break;
-	//}
+		break;
+	}
 	}
 	if (bNoSearchBomb==false)
 	{
@@ -1236,13 +1126,9 @@ float  CGameLogicNew::GetCardTypeScore(tagOutCardResultNew& CardTypeResult)
 		}
 		return ((float)GetCardLogicValue(cbCardData[0]) - 3 + 1) / 2 + 9+score;
 	}
-	else if (type == CT_FOUR_TAKE_ONE || type == CT_FOUR_TAKE_THREE)
+	else if (type == CT_FOUR_TAKE_ONE )
 	{
 		int tempCardCount =2;
-		if (type == CT_FOUR_TAKE_THREE)
-		{
-			tempCardCount = 3;
-		}
 		float score = 0;
 		vector<int> TwoCardLogic;
 		for (int i = 0; i < tempCardCount; i++)
@@ -2355,193 +2241,69 @@ BYTE CGameLogicNew::SearchTakeCardType(const BYTE cbHandCardData[], BYTE cbHandC
 	BYTE cbResultCount = 0;
 
 	//效验
-	ASSERT(cbSameCount == 3 || cbSameCount == 4);
-	ASSERT(cbTakeCardCount == 1 || cbTakeCardCount == 2);
 	if (cbSameCount != 3 && cbSameCount != 4)
 		return cbResultCount;
-	if (cbTakeCardCount != 1 && cbTakeCardCount != 2)
-		return cbResultCount;
-
 	//长度判断
-	if (cbSameCount == 4 && cbHandCardCount < cbSameCount + cbTakeCardCount * 2 ||
-		cbHandCardCount < cbSameCount + cbTakeCardCount)
+	if (cbSameCount == 4 && cbHandCardCount < cbSameCount + cbTakeCardCount)
 		return cbResultCount;
 
 	//构造扑克
-	BYTE cbCardData[FULL_COUNT];
+	BYTE cbCardData[FULL_COUNT] = {};
 	BYTE cbCardCount = cbHandCardCount;
 	CopyMemory(cbCardData, cbHandCardData, sizeof(BYTE)*cbHandCardCount);
 
-	if (cbCardCount<=NORMAL_COUNT)
-	{
-		BYTE cbHandAllFourCardData[MAX_COUNT] = { 0 };
-		BYTE cbHandAllFourCardCount = 0;
-		//抽取四张
-		GetAllBomCard(cbCardData, cbCardCount, cbHandAllFourCardData, cbHandAllFourCardCount);
-		//移除四条
-		RemoveCard(cbHandAllFourCardData, cbHandAllFourCardCount, cbCardData, cbCardCount);
-		cbCardCount -= cbHandAllFourCardCount;
-	}
 	//排列扑克
 	SortCardList(cbCardData, cbCardCount, ST_ORDER);
 
 	//搜索同张
-	tagSearchCardResult SameCardResult = {};
-	BYTE cbSameCardResultCount = SearchSameCard(cbCardData, cbCardCount, cbReferCard, cbSameCount, &SameCardResult);
+	tagSearchCardResult tmpSearchResult = {};
+	BYTE cbTmpResultCount = SearchSameCard(cbCardData, cbCardCount, cbReferCard, cbSameCount, &tmpSearchResult);
 
-	if (cbSameCardResultCount > 0)
+	if (cbTmpResultCount > 0)
 	{
-		//分析扑克
-		tagAnalyseResultNew AnalyseResult;
-		AnalysebCardData(cbCardData, cbCardCount, AnalyseResult);
-
-		//需要牌数
-		BYTE cbNeedCount = cbSameCount + cbTakeCardCount;
-		if (cbSameCount == 4) cbNeedCount += cbTakeCardCount;
-		int startValue = cbTakeCardCount - 1;
-		if (cbSameCount==3&&cbTakeCardCount == 2 && G_THREE_TAKE_TWO_DAN)
-		{
-			startValue = 0;
-		}
-				
 		//提取带牌
-		for (BYTE i = 0; i < cbSameCardResultCount; i++)
+		for (BYTE i = 0; i < cbTmpResultCount; i++)
 		{
-			bool bMerge = false;
-
-			for (BYTE j = startValue; j < CountArray(AnalyseResult.cbBlockCount); j++)
+			BYTE cbRemainCard[FULL_COUNT];
+			BYTE cbRemainCardCount = cbHandCardCount - tmpSearchResult.cbCardCount[i];
+			BYTE cbNeedCardCount =  cbTakeCardCount;
+			if (cbRemainCardCount < cbNeedCardCount)
 			{
-				for (BYTE k = 0; k < AnalyseResult.cbBlockCount[j]; k++)
+				continue;
+			}
+			
+			CopyMemory(cbRemainCard, cbHandCardData, cbHandCardCount*sizeof(BYTE));
+			RemoveCard(tmpSearchResult.cbResultCard[i], tmpSearchResult.cbCardCount[i], cbRemainCard, cbHandCardCount);
+			for (int j = 0; j < tmpSearchResult.cbCardCount[i]; j++)
+			{
+				if (RemoveCard(&tmpSearchResult.cbResultCard[i][j], 1, cbRemainCard, cbRemainCardCount))
 				{
-					//从小到大
-					BYTE cbIndex = (AnalyseResult.cbBlockCount[j] - k - 1)*(j + 1);
-
-					//过滤相同牌
-					if (GetCardValue(SameCardResult.cbResultCard[i][0]) ==
-						GetCardValue(AnalyseResult.cbCardData[j][cbIndex]))
-						continue;
-					if (cbHandCardCount<=MAX_COUNT)
-					{
-						if ((cbTakeCardCount == 1 && (cbSameCount == 3 || cbSameCount == 4)) || (G_THREE_TAKE_TWO_DAN&&cbTakeCardCount == 2 && cbSameCount==3))
-						{
-							//恢复扑克，防止分析时改变扑克
-							BYTE  cbTmpCardData[FULL_COUNT] = { 0 };
-							CopyMemory(cbTmpCardData, cbHandCardData, cbHandCardCount);
-
-							BYTE cbHandThreeCard[FULL_COUNT] = { 0 };
-							BYTE cbHandThreeCount = 0;
-
-							//去掉三条
-							BYTE cbRemainCardData[FULL_COUNT];
-							CopyMemory(cbRemainCardData, cbTmpCardData, cbHandCardCount);
-							BYTE cbRemainCardCount = cbHandCardCount - SameCardResult.cbCardCount[i];
-							RemoveCard(SameCardResult.cbResultCard[i], SameCardResult.cbCardCount[i], cbRemainCardData, cbHandCardCount);
-							if (cbSameCount == 4 || (cbSameCount == 3 && cbTakeCardCount == 1) || (G_THREE_TAKE_TWO_DAN&&cbTakeCardCount == 2 && cbSameCount == 3))
-							{
-								//单牌组合
-								BYTE cbComCard[MAX_COLS];
-								BYTE cbComResCard[MAX_RESULT_COUNT][MAX_COLS];
-								int cbComResLen = 0;
-								BYTE cbSingleCardCount = cbTakeCardCount;
-								cbRemainCardCount = ClearReLogicValue(cbRemainCardData, cbRemainCardCount);
-								Combination(cbComCard, 0, cbComResCard, cbComResLen, cbRemainCardData, cbSingleCardCount, cbRemainCardCount, cbSingleCardCount);
-								for (BYTE m = 0; m < cbComResLen; m++)
-								{
-									//复制带牌
-									CopyMemory(&SameCardResult.cbResultCard[i][cbSameCount], cbComResCard[m],
-										sizeof(BYTE)*(cbNeedCount - cbSameCount));
-									SameCardResult.cbCardCount[i] = cbNeedCount;
-									//复制结果
-									CopyMemory(pSearchCardResult->cbResultCard[cbResultCount], SameCardResult.cbResultCard[i],
-										sizeof(BYTE)*SameCardResult.cbCardCount[i]);
-									pSearchCardResult->cbCardCount[cbResultCount] = SameCardResult.cbCardCount[i];
-									cbResultCount++;
-								}
-							}
-							else
-							{
-								for (int m = 0; m < cbRemainCardCount; m += cbTakeCardCount)
-								{
-									//复制带牌
-									CopyMemory(&SameCardResult.cbResultCard[i][cbSameCount], &cbRemainCardData[m],
-										sizeof(BYTE)*(cbNeedCount - cbSameCount));
-									SameCardResult.cbCardCount[i] = cbNeedCount;
-									//复制结果
-									CopyMemory(pSearchCardResult->cbResultCard[cbResultCount], SameCardResult.cbResultCard[i],
-										sizeof(BYTE)*SameCardResult.cbCardCount[i]);
-									pSearchCardResult->cbCardCount[cbResultCount] = SameCardResult.cbCardCount[i];
-									cbResultCount++;
-								}
-							}
-
-							bMerge = true;
-
-							//下一组合
-							break;
-						}
-						else if (cbTakeCardCount == 2 && cbSameCount == 3)
-						{
-							//恢复扑克，防止分析时改变扑克
-							BYTE  cbTmpCardData[FULL_COUNT] = { 0 };
-							CopyMemory(cbTmpCardData, cbHandCardData, cbHandCardCount);
-
-							BYTE cbHandThreeCard[FULL_COUNT] = { 0 };
-							BYTE cbHandThreeCount = 0;
-
-							//去掉三条
-							BYTE cbRemainCardData[FULL_COUNT];
-							CopyMemory(cbRemainCardData, cbTmpCardData, cbHandCardCount);
-							BYTE cbRemainCardCount = cbHandCardCount - SameCardResult.cbCardCount[i];
-							RemoveCard(SameCardResult.cbResultCard[i], SameCardResult.cbCardCount[i], cbRemainCardData, cbHandCardCount);
-							tagSearchCardResult tmpSearchCardResult = {};
-						
-							int	cbTmpCount = SearchSameCard(cbRemainCardData, cbRemainCardCount, 0, 2, &tmpSearchCardResult);
-
-							for (int m = 0; m < tmpSearchCardResult.cbSearchCount; m++)
-							{
-								//复制带牌
-								CopyMemory(&SameCardResult.cbResultCard[i][3], tmpSearchCardResult.cbResultCard[m],
-									sizeof(BYTE)*cbTakeCardCount);
-								SameCardResult.cbCardCount[i] = cbSameCount + 2;
-								//复制结果
-								CopyMemory(pSearchCardResult->cbResultCard[cbResultCount], SameCardResult.cbResultCard[i],
-									sizeof(BYTE)*SameCardResult.cbCardCount[i]);
-								pSearchCardResult->cbCardCount[cbResultCount] = SameCardResult.cbCardCount[i];
-								cbResultCount++;
-							}
-							bMerge = true;
-
-							//下一组合
-							break;
-						}
-					}
-					else
-					{
-						//复制带牌
-						BYTE cbCount = SameCardResult.cbCardCount[i];
-						CopyMemory(&SameCardResult.cbResultCard[i][cbCount], &AnalyseResult.cbCardData[j][cbIndex],
-							sizeof(BYTE)*cbTakeCardCount);
-						SameCardResult.cbCardCount[i] += cbTakeCardCount;
-
-						if (SameCardResult.cbCardCount[i] < cbNeedCount) continue;
-
-						if (pSearchCardResult == NULL) return 1;
-
-						//复制结果
-						CopyMemory(pSearchCardResult->cbResultCard[cbResultCount], SameCardResult.cbResultCard[i],
-							sizeof(BYTE)*SameCardResult.cbCardCount[i]);
-						pSearchCardResult->cbCardCount[cbResultCount] = SameCardResult.cbCardCount[i];
-						cbResultCount++;
-
-						bMerge = true;
-
-						//下一组合
-						break;
-					}
-				
+					cbRemainCardCount--;
 				}
+			}
+			//单牌组合
+			BYTE cbComCard[MAX_COLS];
+			BYTE cbComResCard[MAX_RESULT_COUNT][MAX_COLS];
+			int cbComResLen = 0;
+			//单牌组合
+			if (cbTakeCardCount == 1)
+			{
+				cbRemainCardCount = ClearReLogicValue(cbRemainCard, cbRemainCardCount);
+			}
+			Combination(cbComCard, 0, cbComResCard, cbComResLen, cbRemainCard, cbNeedCardCount, cbRemainCardCount, cbNeedCardCount);
+			for (int j = 0; j < cbComResLen; ++j)
+			{
+				if (((cbSameCount == 3 && cbTakeCardCount == 2) || (cbSameCount == 4 && cbTakeCardCount == 4)) && isAllDoubleType(cbComResCard[j], cbNeedCardCount) == false)
+				{
+					continue;
+				}
+				 cbResultCount = pSearchCardResult->cbSearchCount++;
+				CopyMemory(pSearchCardResult->cbResultCard[cbResultCount], tmpSearchResult.cbResultCard[i],
+					tmpSearchResult.cbCardCount[i]);
+				CopyMemory(pSearchCardResult->cbResultCard[cbResultCount] + tmpSearchResult.cbCardCount[i], cbComResCard[j],
+					cbNeedCardCount);
+				pSearchCardResult->cbCardCount[cbResultCount] = tmpSearchResult.cbCardCount[i] + cbNeedCardCount;
 
-				if (bMerge) break;
 			}
 		}
 	}
@@ -2551,166 +2313,7 @@ BYTE CGameLogicNew::SearchTakeCardType(const BYTE cbHandCardData[], BYTE cbHandC
 	return cbResultCount;
 }
 
-BYTE CGameLogicNew::SearchThreeTwoLine(const BYTE cbHandCardData[], BYTE cbHandCardCount, tagSearchCardResult *pSearchCardResult)
-{
-	//设置结果
-	if (pSearchCardResult)
-		ZeroMemory(pSearchCardResult, sizeof(tagSearchCardResult));
 
-	//变量定义
-	tagSearchCardResult tmpSearchResult = {};
-	tagSearchCardResult tmpSingleWing = {};
-	tagSearchCardResult tmpDoubleWing = {};
-	BYTE cbTmpResultCount = 0;
-
-	//搜索连牌
-	cbTmpResultCount = SearchLineCardType(cbHandCardData, cbHandCardCount, 0, 3, 0, &tmpSearchResult);
-
-	if (cbTmpResultCount > 0)
-	{
-		//提取带牌
-		for (BYTE i = 0; i < cbTmpResultCount; i++)
-		{
-			//变量定义
-			BYTE cbTmpCardData[FULL_COUNT];
-			BYTE cbTmpCardCount = cbHandCardCount;
-
-			//不够牌
-			if (cbHandCardCount - tmpSearchResult.cbCardCount[i] < tmpSearchResult.cbCardCount[i] / 3)
-			{
-				BYTE cbNeedDelCount = 3;
-				while (cbHandCardCount + cbNeedDelCount - tmpSearchResult.cbCardCount[i] < (tmpSearchResult.cbCardCount[i] - cbNeedDelCount) / 3)
-					cbNeedDelCount += 3;
-				//不够连牌
-				if ((tmpSearchResult.cbCardCount[i] - cbNeedDelCount) / 3 < 2)
-				{
-					//废除连牌
-					continue;
-				}
-
-				//拆分连牌
-				RemoveCard(tmpSearchResult.cbResultCard[i], cbNeedDelCount, tmpSearchResult.cbResultCard[i],
-					tmpSearchResult.cbCardCount[i]);
-				tmpSearchResult.cbCardCount[i] -= cbNeedDelCount;
-			}
-
-			if (pSearchCardResult == NULL) return 1;
-
-			//删除连牌
-			CopyMemory(cbTmpCardData, cbHandCardData, sizeof(BYTE)*cbHandCardCount);
-			VERIFY(RemoveCard(tmpSearchResult.cbResultCard[i], tmpSearchResult.cbCardCount[i],
-				cbTmpCardData, cbTmpCardCount));
-			cbTmpCardCount -= tmpSearchResult.cbCardCount[i];
-
-			//组合飞机
-			BYTE cbNeedCount = tmpSearchResult.cbCardCount[i] / 3;
-			ASSERT(cbNeedCount <= cbTmpCardCount);
-
-			BYTE cbResultCount = tmpSingleWing.cbSearchCount++;
-			CopyMemory(tmpSingleWing.cbResultCard[cbResultCount], tmpSearchResult.cbResultCard[i],
-				sizeof(BYTE)*tmpSearchResult.cbCardCount[i]);
-			CopyMemory(&tmpSingleWing.cbResultCard[cbResultCount][tmpSearchResult.cbCardCount[i]],
-				&cbTmpCardData[cbTmpCardCount - cbNeedCount], sizeof(BYTE)*cbNeedCount);
-			tmpSingleWing.cbCardCount[i] = tmpSearchResult.cbCardCount[i] + cbNeedCount;
-
-			//不够带翅膀
-			if (cbTmpCardCount < tmpSearchResult.cbCardCount[i] / 3 * 2)
-			{
-				BYTE cbNeedDelCount = 3;
-				while (cbTmpCardCount + cbNeedDelCount - tmpSearchResult.cbCardCount[i] < (tmpSearchResult.cbCardCount[i] - cbNeedDelCount) / 3 * 2)
-					cbNeedDelCount += 3;
-				//不够连牌
-				if ((tmpSearchResult.cbCardCount[i] - cbNeedDelCount) / 3 < 2)
-				{
-					//废除连牌
-					continue;
-				}
-
-				//拆分连牌
-				RemoveCard(tmpSearchResult.cbResultCard[i], cbNeedDelCount, tmpSearchResult.cbResultCard[i],
-					tmpSearchResult.cbCardCount[i]);
-				tmpSearchResult.cbCardCount[i] -= cbNeedDelCount;
-
-				//重新删除连牌
-				CopyMemory(cbTmpCardData, cbHandCardData, sizeof(BYTE)*cbHandCardCount);
-				VERIFY(RemoveCard(tmpSearchResult.cbResultCard[i], tmpSearchResult.cbCardCount[i],
-					cbTmpCardData, cbTmpCardCount));
-				cbTmpCardCount = cbHandCardCount - tmpSearchResult.cbCardCount[i];
-			}
-
-			//分析牌
-			tagAnalyseResultNew  TmpResult = {};
-			AnalysebCardData(cbTmpCardData, cbTmpCardCount, TmpResult);
-
-			//提取翅膀
-			BYTE cbDistillCard[FULL_COUNT] = {};
-			BYTE cbDistillCount = 0;
-			BYTE cbLineCount = tmpSearchResult.cbCardCount[i] / 3;
-			for (BYTE j = 1; j < CountArray(TmpResult.cbBlockCount); j++)
-			{
-				if (TmpResult.cbBlockCount[j] > 0)
-				{
-					if (j + 1 == 2 && TmpResult.cbBlockCount[j] >= cbLineCount)
-					{
-						BYTE cbTmpBlockCount = TmpResult.cbBlockCount[j];
-						CopyMemory(cbDistillCard, &TmpResult.cbCardData[j][(cbTmpBlockCount - cbLineCount)*(j + 1)],
-							sizeof(BYTE)*(j + 1)*cbLineCount);
-						cbDistillCount = (j + 1)*cbLineCount;
-						break;
-					}
-					else
-					{
-						for (BYTE k = 0; k < TmpResult.cbBlockCount[j]; k++)
-						{
-							BYTE cbTmpBlockCount = TmpResult.cbBlockCount[j];
-							CopyMemory(&cbDistillCard[cbDistillCount], &TmpResult.cbCardData[j][(cbTmpBlockCount - k - 1)*(j + 1)],
-								sizeof(BYTE) * 2);
-							cbDistillCount += 2;
-
-							//提取完成
-							if (cbDistillCount == 2 * cbLineCount) break;
-						}
-					}
-				}
-
-				//提取完成
-				if (cbDistillCount == 2 * cbLineCount) break;
-			}
-
-			//提取完成
-			if (cbDistillCount == 2 * cbLineCount)
-			{
-				//复制翅膀
-				cbResultCount = tmpDoubleWing.cbSearchCount++;
-				CopyMemory(tmpDoubleWing.cbResultCard[cbResultCount], tmpSearchResult.cbResultCard[i],
-					sizeof(BYTE)*tmpSearchResult.cbCardCount[i]);
-				CopyMemory(&tmpDoubleWing.cbResultCard[cbResultCount][tmpSearchResult.cbCardCount[i]],
-					cbDistillCard, sizeof(BYTE)*cbDistillCount);
-				tmpDoubleWing.cbCardCount[i] = tmpSearchResult.cbCardCount[i] + cbDistillCount;
-			}
-		}
-
-		//复制结果
-		for (BYTE i = 0; i < tmpDoubleWing.cbSearchCount; i++)
-		{
-			BYTE cbResultCount = pSearchCardResult->cbSearchCount++;
-
-			CopyMemory(pSearchCardResult->cbResultCard[cbResultCount], tmpDoubleWing.cbResultCard[i],
-				sizeof(BYTE)*tmpDoubleWing.cbCardCount[i]);
-			pSearchCardResult->cbCardCount[cbResultCount] = tmpDoubleWing.cbCardCount[i];
-		}
-		for (BYTE i = 0; i < tmpSingleWing.cbSearchCount; i++)
-		{
-			BYTE cbResultCount = pSearchCardResult->cbSearchCount++;
-
-			CopyMemory(pSearchCardResult->cbResultCard[cbResultCount], tmpSingleWing.cbResultCard[i],
-				sizeof(BYTE)*tmpSingleWing.cbCardCount[i]);
-			pSearchCardResult->cbCardCount[cbResultCount] = tmpSingleWing.cbCardCount[i];
-		}
-	}
-
-	return pSearchCardResult == NULL ? 0 : pSearchCardResult->cbSearchCount;
-}
 
 int CGameLogicNew::YouXianDaNengShouHuiCard(const BYTE cbHandCardData[], BYTE cbHandCardCount, vector<tagOutCardResultNew>& vecMinTypeCardResult, tagOutCardResultNew & OutCardResult, bool &bZhiJieChu)
 {
@@ -5197,17 +4800,21 @@ void CGameLogicNew::OutCardSpecialCheck(tagOutCardResultNew &OutCardResult, vect
 
 }
 
-bool CGameLogicNew::WuDiCheck(const BYTE * cbHandCardData, BYTE cbHandCardCount, const BYTE * cbTurnCardData, BYTE cbTurnCardCount, tagOutCardResultNew &OutCardResult)
+bool CGameLogicNew::WuDiCheck(const BYTE * cbHandCardData, BYTE cbHandCardCount, const BYTE * cbTurnCardData, BYTE cbTurnCardCount, tagOutCardResultNew &OutCardResult, tagOutCardTypeResultNew *CardTypeResult)
 {
 	tagSearchCardResult SearchCardResult;
-	SearchOutCard(cbHandCardData, cbHandCardCount, cbTurnCardData, cbTurnCardCount, &SearchCardResult);
+	//if (CardTypeResult!=NULL)
+	//{
+	//	ZhuDongSearchOutCard(CardTypeResult, &SearchCardResult);
+	//}
+	//else
+	{
+		SearchOutCard(cbHandCardData, cbHandCardCount, cbTurnCardData, cbTurnCardCount, &SearchCardResult);
+	}
+	
 	for (int i = 0; i < SearchCardResult.cbSearchCount; i++)
 	{
 		bool	bExistMax = SearchOtherHandCardThan(SearchCardResult.cbResultCard[i], SearchCardResult.cbCardCount[i], false);
-		if (SearchCardResult.cbCardCount[i]>m_cbUserCardCount[1])
-		{
-			bExistMax = false;
-		}
 		if (bExistMax == false)
 		{
 			if (CheckOutOneTypeWillWin(cbHandCardData, cbHandCardCount, SearchCardResult.cbResultCard[i], SearchCardResult.cbCardCount[i], OutCardResult))
@@ -5598,36 +5205,110 @@ bool CGameLogicNew::FindMaxTypeTakeOneType(const BYTE cbHandCardData[], BYTE cbH
 {
 	if (vecMinTypeCardResult.size() != 2)
 	{
-		int type = 0;
-		int index =-1;
-		for (int i = 0; i < vecMinTypeCardResult.size(); i++)
+		if (vecMinTypeCardResult.size()==1)
 		{
-			bool bExistMax = false;
-			type = vecMinTypeCardResult[i].cbCardType;
-			bExistMax = SearchOtherHandCardThan(vecMinTypeCardResult[i].cbResultCard, vecMinTypeCardResult[i].cbCardCount, true);
-			if (bExistMax == false && type>=CT_BOMB_CARD)
+			int type = vecMinTypeCardResult[0].cbCardType;
+			if (type==CT_FOUR_TAKE_ONE)
 			{
-				 index = i;
+				BYTE cbRemainCard[MAX_COUNT] = {};
+				BYTE cbRemainCardCount =  vecMinTypeCardResult[0].cbCardCount-4;
+				CopyMemory(cbRemainCard, cbHandCardData, vecMinTypeCardResult[0].cbCardCount);
+				RemoveCard(vecMinTypeCardResult[0].cbResultCard, 4, cbRemainCard, vecMinTypeCardResult[0].cbCardCount);
+				if (cbRemainCard[0]==cbRemainCard[1])
+				{
+					bool bExistMax = SearchOtherHandCardThan(cbRemainCard, cbRemainCardCount, true);
+					if (bExistMax == false)
+					{
+						ZeroMemory(&OutCardResult, sizeof(OutCardResult));
+						OutCardResult.cbCardCount = cbRemainCardCount;
+						CopyMemory(OutCardResult.cbResultCard, cbRemainCard, OutCardResult.cbCardCount);
+						return true;
+					}
+				}
+				else{
+					bool bExistMax = SearchOtherHandCardThan(&cbRemainCard[0], 1, true);
+					if (bExistMax == false)
+					{
+						ZeroMemory(&OutCardResult, sizeof(OutCardResult));
+						OutCardResult.cbCardCount = 1;
+						CopyMemory(OutCardResult.cbResultCard, cbRemainCard, OutCardResult.cbCardCount);
+						return true;
+					}
+					else{
+						bool bExistMax = SearchOtherHandCardThan(&cbRemainCard[2], 1, true);
+						if (bExistMax == false)
+						{
+							ZeroMemory(&OutCardResult, sizeof(OutCardResult));
+							OutCardResult.cbCardCount = 1;
+							CopyMemory(OutCardResult.cbResultCard, cbRemainCard, OutCardResult.cbCardCount);
+							return true;
+						}
+					}
+				}
+			}
+			else if (type==CT_FOUR_TAKE_TWO)
+			{
+				BYTE cbRemainCard[MAX_COUNT] = {};
+				BYTE cbRemainCardCount = vecMinTypeCardResult[0].cbCardCount - 4;
+				CopyMemory(cbRemainCard, cbHandCardData, vecMinTypeCardResult[0].cbCardCount);
+				RemoveCard(vecMinTypeCardResult[0].cbResultCard, 4, cbRemainCard, vecMinTypeCardResult[0].cbCardCount);
+				for (int j = 0; j < cbRemainCardCount;j+=2)
+				{
+					bool bExistMax = SearchOtherHandCardThan(cbRemainCard + j, 2, true);
+					if (bExistMax == false)
+					{
+						ZeroMemory(&OutCardResult, sizeof(OutCardResult));
+						OutCardResult.cbCardCount = 2;
+						CopyMemory(OutCardResult.cbResultCard, cbRemainCard + j, OutCardResult.cbCardCount);
+						return true;
+					}
+				}
+				
 			}
 		}
-		if (OutCardResult.cbCardCount == 0 && cbTurnCardCount == 0)
+		else
 		{
+			int type = 0;
+			int index = -1;
 			for (int i = 0; i < vecMinTypeCardResult.size(); i++)
 			{
-				if (vecMinTypeCardResult[i].cbCardCount  >= m_cbUserCardCount[0])
+				bool bExistMax = false;
+				type = vecMinTypeCardResult[i].cbCardType;
+				bExistMax = SearchOtherHandCardThan(vecMinTypeCardResult[i].cbResultCard, vecMinTypeCardResult[i].cbCardCount, true);
+				if (bExistMax == false)
 				{
-					int tmpIndex = i;
-					if (index!=-1)
+					if (index != -1)
 					{
-						tmpIndex = index;
+						if (vecMinTypeCardResult[i].cbCardCount < m_cbUserCardCount[0])
+						{
+							index = i;
+						}
 					}
-					ZeroMemory(&OutCardResult, sizeof(OutCardResult));
-					OutCardResult.cbCardCount = vecMinTypeCardResult[tmpIndex].cbCardCount;
-					CopyMemory(OutCardResult.cbResultCard, vecMinTypeCardResult[tmpIndex].cbResultCard, OutCardResult.cbCardCount);
-					return true;
+					else{
+						index = i;
+					}
+				}
+			}
+			if (OutCardResult.cbCardCount == 0 && cbTurnCardCount == 0)
+			{
+				for (int i = 0; i < vecMinTypeCardResult.size(); i++)
+				{
+					if (vecMinTypeCardResult[i].cbCardCount >= m_cbUserCardCount[0])
+					{
+						int tmpIndex = i;
+						if (index != -1)
+						{
+							tmpIndex = index;
+						}
+						ZeroMemory(&OutCardResult, sizeof(OutCardResult));
+						OutCardResult.cbCardCount = vecMinTypeCardResult[tmpIndex].cbCardCount;
+						CopyMemory(OutCardResult.cbResultCard, vecMinTypeCardResult[tmpIndex].cbResultCard, OutCardResult.cbCardCount);
+						return true;
+					}
 				}
 			}
 		}
+		
 		return false;
 	}
 
@@ -5706,6 +5387,10 @@ bool CGameLogicNew::SearchOtherHandCardThan(const BYTE cbHandCardData[], BYTE cb
 	{
 		//获取类型
 		BYTE cbTmpType = GetCardType(cbHandCardData, cbHandCardCount);
+		if (cbTmpType>=CT_FOUR_TAKE_ONE)
+		{
+			return false;
+		}
 		{
 			bool bEnable = false;
 			int indexType = cbTmpType;
@@ -6149,14 +5834,14 @@ VOID CGameLogicNew::ErZhuDongOutCard(const BYTE cbHandCardData[], BYTE cbHandCar
 	}
 	WORD wUndersideUser = (m_wBankerUser + 1) % GAME_PLAYER;
 	WORD wUpsideUser = (wUndersideUser + 1) % GAME_PLAYER;
-	if (WuDiCheck(cbHandCardData, cbHandCardCount, NULL, 0, OutCardResult))
+	if (WuDiCheck(cbHandCardData, cbHandCardCount, NULL, 0, OutCardResult, CardTypeResult))
 	{
 		BaoDanJiaoYan(OutCardResult, wUndersideUser, cbHandCardData);
 		return;
 	}
 	int tmpType = GetCardType(cbHandCardData, cbHandCardCount);
 	
-	if ((tmpType != CT_ERROR && (tmpType != CT_THREE_TAKE_ONE) && (tmpType != CT_FOUR_TAKE_THREE)) || (tmpType == CT_THREE_TAKE_ONE&&cbHandCardCount == 4))
+	if ((tmpType != CT_ERROR && (tmpType != CT_THREE_TAKE_ONE)) || (tmpType == CT_THREE_TAKE_ONE&&cbHandCardCount == 4))
 	{
 		OutCardResult.cbCardCount = cbHandCardCount;
 		CopyMemory(OutCardResult.cbResultCard, cbHandCardData, OutCardResult.cbCardCount);
@@ -6653,6 +6338,83 @@ bool CGameLogicNew::isAllDoubleType(BYTE * cbComResCard, BYTE CardCount)
 		}
 	}
 	return true;
+}
+
+BYTE CGameLogicNew::ZhuDongSearchOutCard(tagOutCardTypeResultNew CardTypeResult[CT_TYPE_COUNT], tagSearchCardResult *pSearchCardResult, bool bNoSearchBomb /*= false*/)
+{
+	ZeroMemory(pSearchCardResult, sizeof(tagSearchCardResult));
+	for (int i = 0; i < CT_TYPE_COUNT; i++)
+	{
+		for (int j = 0; j < CardTypeResult[i].cbCardTypeCount; j++)
+		{
+			CopyMemory(pSearchCardResult->cbResultCard[pSearchCardResult->cbSearchCount], CardTypeResult[i].cbCardData[j],
+				CardTypeResult[i].cbEachHandCardCount[j]);
+			pSearchCardResult->cbCardCount[pSearchCardResult->cbSearchCount] = CardTypeResult[i].cbEachHandCardCount[j];
+			pSearchCardResult->cbSearchCount++;
+		}
+	}
+	return true;
+}
+
+BYTE CGameLogicNew::SearchThreeTwoLine(const BYTE cbHandCardData[], BYTE cbHandCardCount, BYTE cbReferCard, BYTE cbLineCount, BYTE cbTakeCardCount, tagSearchCardResult *pSearchCardResult)
+{
+	//设置结果
+	if (pSearchCardResult)
+		ZeroMemory(pSearchCardResult, sizeof(tagSearchCardResult));
+	//变量定义
+	tagSearchCardResult tmpSearchResult = {};
+	//搜索连牌
+	BYTE cbTmpResultCount = SearchLineCardType(cbHandCardData, cbHandCardCount, cbReferCard, 3, cbLineCount, &tmpSearchResult);
+
+	if (cbTmpResultCount > 0)
+	{
+		//提取带牌
+		for (BYTE i = 0; i < cbTmpResultCount; i++)
+		{
+			BYTE cbRemainCard[FULL_COUNT];
+			BYTE cbRemainCardCount = cbHandCardCount - tmpSearchResult.cbCardCount[i];
+			BYTE cbNeedCardCount = tmpSearchResult.cbCardCount[i] / 3 * cbTakeCardCount;
+			if (cbRemainCardCount < cbNeedCardCount)
+			{
+				continue;
+			}
+			CopyMemory(cbRemainCard, cbHandCardData, cbHandCardCount*sizeof(BYTE));
+			RemoveCard(tmpSearchResult.cbResultCard[i], tmpSearchResult.cbCardCount[i], cbRemainCard, cbHandCardCount);
+			for (int j = 0; j < tmpSearchResult.cbCardCount[i]; j++)
+			{
+				if (RemoveCard(&tmpSearchResult.cbResultCard[i][j], 1, cbRemainCard, cbRemainCardCount))
+				{
+					cbRemainCardCount--;
+				}
+			}
+			//单牌组合
+			BYTE cbComCard[MAX_COLS];
+			BYTE cbComResCard[MAX_RESULT_COUNT][MAX_COLS];
+			int cbComResLen = 0;
+			//单牌组合
+			if (cbTakeCardCount == 1)
+			{
+				cbRemainCardCount = ClearReLogicValue(cbRemainCard, cbRemainCardCount);
+			}
+			Combination(cbComCard, 0, cbComResCard, cbComResLen, cbRemainCard, cbNeedCardCount, cbRemainCardCount, cbNeedCardCount);
+			for (int j = 0; j < cbComResLen; ++j)
+			{
+				if ((cbTakeCardCount == 2) && isAllDoubleType(cbComResCard[j], cbNeedCardCount) == false)
+				{
+					continue;
+				}
+				BYTE cbResultCount = pSearchCardResult->cbSearchCount++;
+				CopyMemory(pSearchCardResult->cbResultCard[cbResultCount], tmpSearchResult.cbResultCard[i],
+					tmpSearchResult.cbCardCount[i]);
+				CopyMemory(pSearchCardResult->cbResultCard[cbResultCount] + tmpSearchResult.cbCardCount[i], cbComResCard[j],
+					cbNeedCardCount);
+				pSearchCardResult->cbCardCount[cbResultCount] = tmpSearchResult.cbCardCount[i] + cbNeedCardCount;
+
+			}
+		}
+	}
+
+	return pSearchCardResult->cbSearchCount;
 }
 
 //////////////////////////////////////////////////////////////////////////
