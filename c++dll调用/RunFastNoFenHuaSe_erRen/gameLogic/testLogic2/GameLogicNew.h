@@ -299,8 +299,6 @@ public:
 	bool NoOutCardUserHandCardCountCheck(WORD wOutCardUser, BYTE cbCardCount,bool bXiaoYu=true,bool bYu=true,bool bOnlyDengYu=false);
 	//从三带一或者三带二中找出最小的对
 	vector<BYTE> SearchOneOrTwoFromThreeTake(vector<tagOutCardResultNew> &vecMinTypeCardResult, BYTE cbOutCardType, tagOutCardResultNew &OutCardResult);
-	//从三带一或者三带二中交换最小的带牌
-	bool SwitchOneOrTwoFromThreeTake(vector<tagOutCardResultNew> &vecMinTypeCardResult, BYTE cbOutCardType, tagOutCardResultNew &OutCardResult);
 	//判断是否是最大类型带上拖一类型
 	bool FindMaxTypeTakeOneType(const BYTE cbHandCardData[], BYTE cbHandCardCount, BYTE cbTurnCardType, const BYTE cbTurnCardData[], BYTE cbTurnCardCount, vector<tagOutCardResultNew> & vecMinTypeCardResult, tagOutCardResultNew &OutCardResult);
 

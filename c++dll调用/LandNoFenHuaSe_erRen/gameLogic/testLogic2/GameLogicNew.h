@@ -310,8 +310,6 @@ public:
 	bool NoOutCardUserHandCardCountCheck(WORD wOutCardUser, BYTE cbCardCount,bool bXiaoYu=true,bool bYu=true,bool bOnlyDengYu=false);
 	//从三带一或者三带二中找出最小的对
 	vector<BYTE> SearchOneOrTwoFromThreeTake(vector<tagOutCardResultNew> &vecMinTypeCardResult, BYTE cbOutCardType, tagOutCardResultNew &OutCardResult);
-	//从三带一或者三带二中交换最小的带牌
-	bool SwitchOneOrTwoFromThreeTake(vector<tagOutCardResultNew> &vecMinTypeCardResult, BYTE cbOutCardType, tagOutCardResultNew &OutCardResult);
 	//判断是否是最大类型带上拖一类型
 	bool FindMaxTypeTakeOneType(const BYTE cbHandCardData[], BYTE cbHandCardCount, BYTE cbTurnCardType, const BYTE cbTurnCardData[], BYTE cbTurnCardCount, vector<tagOutCardResultNew> & vecMinTypeCardResult, tagOutCardResultNew &OutCardResult);
 
@@ -353,62 +351,8 @@ public:
 		-- 注意(m > n)
 		--C(m, n) = (m*(m - 1)*(m - 2)…(m - n + 1)) / (n*(n - 1)*… * 1)*/
 	int GetCMNSort(int m, int n);
-	bool FourTakeFenChai(const BYTE cbHandCardData[], BYTE cbHandCardCount, tagOutCardResultNew & OutCardResult)
-	{
-		int type = GetCardType(cbHandCardData, cbHandCardCount);
-		if (type == CT_FOUR_TAKE_ONE)
-		{
-			BYTE cbRemainCard[MAX_COUNT] = {};
-			BYTE cbRemainCardCount = cbHandCardCount - 4;
-			CopyMemory(cbRemainCard, cbHandCardData, cbHandCardCount);
-			RemoveCard(cbHandCardData, 4, cbRemainCard, cbHandCardCount);
-			if (cbRemainCard[0] == cbRemainCard[1])
-			{
-				bool bExistMax = SearchOtherHandCardThan(cbRemainCard, cbRemainCardCount, true);
-				if (bExistMax == false)
-				{
-					ZeroMemory(&OutCardResult, sizeof(OutCardResult));
-					OutCardResult.cbCardCount = cbRemainCardCount;
-					CopyMemory(OutCardResult.cbResultCard, cbRemainCard, OutCardResult.cbCardCount);
-					return true;
-				}
-			}
-			else{
-				for (int j = 0; j < cbRemainCardCount; j++)
-				{
-					bool bExistMax = SearchOtherHandCardThan(cbRemainCard + j, 1, true);
-					if (bExistMax == false)
-					{
-						ZeroMemory(&OutCardResult, sizeof(OutCardResult));
-						OutCardResult.cbCardCount = 1;
-						CopyMemory(OutCardResult.cbResultCard, cbRemainCard + j, OutCardResult.cbCardCount);
-						return true;
-					}
-				}
-			}
-		}
-		else if (type == CT_FOUR_TAKE_TWO)
-		{
-			BYTE cbRemainCard[MAX_COUNT] = {};
-			BYTE cbRemainCardCount = cbHandCardCount - 4;
-			CopyMemory(cbRemainCard, cbHandCardData, cbHandCardCount);
-			RemoveCard(cbHandCardData, 4, cbRemainCard, cbHandCardCount);
-			for (int j = 0; j < cbRemainCardCount; j += 2)
-			{
-				bool bExistMax = SearchOtherHandCardThan(cbRemainCard + j, 2, true);
-				if (bExistMax == false)
-				{
-					ZeroMemory(&OutCardResult, sizeof(OutCardResult));
-					OutCardResult.cbCardCount = 2;
-					CopyMemory(OutCardResult.cbResultCard, cbRemainCard + j, OutCardResult.cbCardCount);
-					return true;
-				}
-			}
-
-		}
-		return false;
-	}
-
+	bool FourTakeFenChai(const BYTE cbHandCardData[], BYTE cbHandCardCount, tagOutCardResultNew & OutCardResult);
+	bool ThreeTakeMinCard(const BYTE cbCardData[], BYTE cbHandCardCount, vector<tagOutCardResultNew> &vecMinTypeCardResult, tagOutCardResultNew & OutCardResult, tagOutCardTypeResultNew * CardTypeResult);
 };
 
 //////////////////////////////////////////////////////////////////////////

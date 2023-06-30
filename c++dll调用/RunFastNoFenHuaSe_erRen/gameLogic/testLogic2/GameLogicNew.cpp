@@ -2466,9 +2466,7 @@ BYTE CGameLogicNew::SearchTakeCardType(const BYTE cbHandCardData[], BYTE cbHandC
 		}
 	}
 
-	if (pSearchCardResult)
-		pSearchCardResult->cbSearchCount = cbResultCount;
-	return cbResultCount;
+	return	pSearchCardResult->cbSearchCount;
 }
 
 
@@ -4529,57 +4527,6 @@ vector<BYTE> CGameLogicNew::SearchOneOrTwoFromThreeTake(vector<tagOutCardResultN
 	return vecResultData;
 }
 
-bool CGameLogicNew::SwitchOneOrTwoFromThreeTake(vector<tagOutCardResultNew> &vecMinTypeCardResult, BYTE cbOutCardType, tagOutCardResultNew &OutCardResult)
-{
-	vector<BYTE> vecResultData;
-	for (int j = 0; j < vecMinTypeCardResult.size(); j++)
-	{
-		if (cbOutCardType == CT_THREE_TAKE_ONE)
-		{
-			if (vecMinTypeCardResult[j].cbCardType == cbOutCardType)
-			{
-				for (int k = 0; k < vecMinTypeCardResult[j].cbCardCount / 4; k++)
-				{
-					vecResultData.push_back(vecMinTypeCardResult[j].cbResultCard[vecMinTypeCardResult[j].cbCardCount - 1 - k]);
-				}
-			}
-
-		}
-		if (cbOutCardType == CT_THREE_TAKE_TWO)
-		{
-			if (vecMinTypeCardResult[j].cbCardType == cbOutCardType)
-			{
-				for (int k = 0; k < vecMinTypeCardResult[j].cbCardCount / 5; k++)
-				{
-					vecResultData.push_back(vecMinTypeCardResult[j].cbResultCard[vecMinTypeCardResult[j].cbCardCount - 1 -2*k]);
-					vecResultData.push_back(vecMinTypeCardResult[j].cbResultCard[vecMinTypeCardResult[j].cbCardCount - 2 -2*k]);
-				}
-			}
-		}
-
-	}
-
-	if (vecResultData.size() > 0)
-	{
-		sort(vecResultData.begin(), vecResultData.end(), [this](BYTE first, BYTE second)
-		{
-			if (GetCardLogicValue(first) < GetCardLogicValue(second))
-			{
-				return true;
-			}
-			return false;
-		});
-		int count = OutCardResult.cbCardCount / 4;
-		int takeCount = 1;
-		if (cbOutCardType == CT_THREE_TAKE_TWO)
-		{
-			count = OutCardResult.cbCardCount / 5;
-			takeCount = 2;
-		}
-		CopyMemory(OutCardResult.cbResultCard + 3 * count, &vecResultData[0], takeCount*count);
-	}
-	return true;
-}
 
 //地主出牌（先出牌）
 VOID CGameLogicNew::BankerOutCard(const BYTE cbHandCardData[], BYTE cbHandCardCount, tagOutCardResultNew & OutCardResult)
@@ -4921,10 +4868,6 @@ void CGameLogicNew::OutCardSpecialCheck(tagOutCardResultNew &OutCardResult, vect
 	if (tempType == CT_DOUBLE )
 	{
 		SearchOneOrTwoFromThreeTake(vecMinTypeCardResult, tempType, OutCardResult);
-	}
-	else if (tempType == CT_THREE_TAKE_ONE || tempType == CT_THREE_TAKE_TWO)
-	{
-		SwitchOneOrTwoFromThreeTake(vecMinTypeCardResult, tempType, OutCardResult);
 	}
 
 }

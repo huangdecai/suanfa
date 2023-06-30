@@ -56,28 +56,28 @@ void TestGameLogic()
 {
 	
 	BYTE	cbHandCardData[NORMAL_COUNT] = { 0 };	// ÷…œ∆ÀøÀ
-	//BYTE    tempCard[] = { 0x1C, 0x12, 0x02, 0x38, 0x27, 0x05, 0x23, 0x03, 0x19, 0x28, 0x37, 0x26, 0x25 };
-	//BYTE    tempCard[] = { 15, 14, 2, 2, 1, 1, 1, 13, 11, 11, 8, 7, 7, 7, 12, 12, 12, 6, 9, 9 };
+	//BYTE    tempCard[] = {  2, 12, 12, 12, 11, 11, 11, 11, 10, 9, 8, 8, 8, 7, 7 };
+	BYTE    tempCard[] = { 14, 2, 2, 2, 1, 1, 1, 1,9, 9,8,7, 7, 7 };
 	
-	BYTE    tempCard[] = { 1, 1, 12, 12, 12, 7 };
+	//BYTE    tempCard[] = { 1, 1, 12, 12, 12, 7 };
 	//BYTE    tempCard[] = { 2, 2, 2, 13, 10, 8, 8, 7, 7, 5 };
 
 	tagOutCardResultNew  OutCardResult;
 	BYTE cbTurnCardData[] = { 11, 11 };// { S6, 6, 5, 5, 4, 4 };
 	int cbTurnCardCount = 0; sizeof(cbTurnCardData);
-	BYTE cbDiscardCard[] = { 13, 13, 11, 10, 9, 8, 7, 6, 5, 10, 2 };
-	BYTE cbDiscardCardCount = sizeof(cbDiscardCard);
-	BYTE cbOtherDisscard[] = { 5, 5, 11 };
-	BYTE cbOtherDisscardCount = sizeof(cbOtherDisscard);
-	BYTE cbCardDataEx[MAX_COUNT] = { 1, 0, 1, 17, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
-	BYTE maxCard[MAX_COUNT] = { 0, 0, 13, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
+	BYTE cbDiscardCard[] = { 13, 13, 12, 12, 11, 11 };
+	BYTE cbDiscardCardCount =  sizeof(cbDiscardCard);
+	BYTE cbOtherDisscard[] = { 0 };
+	BYTE cbOtherDisscardCount = 0; sizeof(cbOtherDisscard);
+	BYTE cbCardDataEx[MAX_COUNT] = { 0, 3, 0, 20, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
+	BYTE maxCard[MAX_COUNT] = { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
 	tagSearchCardResult pSearchCardResult = {};
 	//m_GameLogicNew.SearchOutCard(tempCard, sizeof(tempCard), cbTurnCardData, 0, &pSearchCardResult);
-	//tagOutCardResultNew CardTypeResult1;
-	//CardTypeResult1.cbCardCount = 5;
-	//BYTE    tempCard1[] = {  4, 4 };
-	//CopyMemory(CardTypeResult1.cbResultCard, tempCard1, CardTypeResult1.cbCardCount);
-	//float score1 = m_GameLogicNew.GetCardTypeScore(CardTypeResult1);
+	tagOutCardResultNew CardTypeResult1;
+	BYTE    tempCard1[] = {  1, 1,1,1,15,8 };
+	CardTypeResult1.cbCardCount = sizeof(tempCard1);
+	CopyMemory(CardTypeResult1.cbResultCard, tempCard1, CardTypeResult1.cbCardCount);
+	float score1 = m_GameLogicNew.GetCardTypeScore(CardTypeResult1);
 
 	//int cbCurrentLandScore = 0;
 	//int tempScore = m_GameLogicNew.LandScoreErRen(tempCard, sizeof(tempCard), cbCurrentLandScore);
