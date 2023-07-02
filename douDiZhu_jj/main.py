@@ -291,9 +291,10 @@ class MyPyQT_Form(QtWidgets.QWidget, Ui_Form):
                     break
         return tmpstr
     def CheckZhangCard(self):
+        img, _ = helper.Screenshot()
         for i in range(2, 20):
-            result = helper.LocateOnScreen("zhang" + str(i), region=(1200, 183, 50, 50),
-                                           confidence=self.LandlordFlagConfidence)
+            result = pyautogui.locate(needleImage=helper.Pics["zhang" + str(i)], haystackImage=img,
+                                       region=(1200, 183, 50, 50), confidence=self.LandlordFlagConfidence)
             if result:
                 return i
         return 0
@@ -400,7 +401,7 @@ class MyPyQT_Form(QtWidgets.QWidget, Ui_Form):
                     # 未找到"不出"
                     if pass_flag is None:
                         # 识别下家出牌
-                        self.sleep(600)
+                        self.sleep(300)
                         self.turnCardReal = self.find_other_cardsEx(self.RPlayedCardsPos)
                         if len(self.turnCardReal) > 0:
                             self.handCardCount[self.play_order] = self.handCardCount[self.play_order] - len(
@@ -411,12 +412,13 @@ class MyPyQT_Form(QtWidgets.QWidget, Ui_Form):
                         self.shengYuCardData = self.shengYuCardData + self.turnCardReal
                         self.yaoBuQi = False
                         self.rightHaveOutCard = self.rightHaveOutCard  + self.turnCardReal
-                        self.LPlayedCard.setText("对家牌："+self.rightHaveOutCard)
-                        zhang=self.CheckZhangCard()
-                        if self.bHaveJiaWang==False and self.handCardCount[self.play_order]-zhang==2:
-                            self.rightHaveOutCard+='DX'
+                        zhang = self.CheckZhangCard()
+                        if self.bHaveJiaWang == False and self.handCardCount[self.play_order] - zhang == 2:
+                            self.rightHaveOutCard += 'DX'
                             print("加双王")
-                            self.bHaveJiaWang =True
+                            self.bHaveJiaWang = True
+                        self.LPlayedCard.setText("对家牌："+self.rightHaveOutCard)
+
                     # 找到"不出"
                     else:
                         self.FillPassType(self.mylastCard)
