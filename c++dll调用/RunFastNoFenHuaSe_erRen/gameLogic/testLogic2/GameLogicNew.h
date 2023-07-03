@@ -339,7 +339,7 @@ public:
 	int GetCMNSort(int m, int n);
 
 	bool isAllDoubleType(BYTE * cbComResCard, BYTE CardCount);
-
+	int getMostCountIndex(vector<vector<int>> MaxIndexSet, int type, vector<tagOutCardResultNew>&  vecMinTypeCardResult);
 };
 
 //////////////////////////////////////////////////////////////////////////

@@ -284,6 +284,9 @@ public:
 	//出牌策略算法
 	//优先打能收回来的牌
 	int YouXianDaNengShouHuiCard(const BYTE cbHandCardData[], BYTE cbHandCardCount, vector<tagOutCardResultNew>&  vecMinTypeCardResult, tagOutCardResultNew & OutCardResult, bool &bZhiJieChu);
+
+	int getMostCountIndex(vector<vector<int>> MaxIndexSet,int type, vector<tagOutCardResultNew>&  vecMinTypeCardResult);
+
 	//压出一手牌后是否进入必胜模式
 	int IsBiShengTurnCard(const BYTE cbHandCardData[], BYTE cbHandCardCount, vector<tagOutCardResultNew>& vecMinTypeCardResult, tagOutCardResultNew & OutCardResult, bool &bZhiJieChu);
 	
