@@ -867,7 +867,7 @@ float CGameLogicNew::GetHandScore(vector<tagOutCardResultNew> &CardTypeResult, i
 		{
 			if (GetCardLogicValue(CardTypeResult[i].cbResultCard[0]) == 15 && bJiaoFen)
 			{
-				score += 10;
+				score += 5;
 				if (bHaveWang==1)
 				{
 					score += 3;
