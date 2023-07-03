@@ -57,7 +57,7 @@ void TestGameLogic()
 	
 	BYTE	cbHandCardData[NORMAL_COUNT] = { 0 };	// ÷…œ∆ÀøÀ
 	//BYTE    tempCard[] = {  2, 12, 12, 12, 11, 11, 11, 11, 10, 9, 8, 8, 8, 7, 7 };
-	BYTE    tempCard[] = { 2,2,1,1,1,12,12, 10,   10, 10, 9, 9, 8, 8,  6 };
+	BYTE    tempCard[] = { 15,2,1,13,13,12,12, 10,10, 10, 7, 7, 8, 8, 6,5,5 };
 	
 	//BYTE    tempCard[] = { 1, 1, 12, 12, 12, 7 };
 	//BYTE    tempCard[] = { 2, 2, 2, 13, 10, 8, 8, 7, 7, 5 };
@@ -83,8 +83,8 @@ void TestGameLogic()
 	CardTypeResult2.cbCardCount = sizeof(tempCard2);
 	CopyMemory(CardTypeResult2.cbResultCard, tempCard2, CardTypeResult2.cbCardCount);
 	float score2 = m_GameLogicNew.GetCardTypeScore(CardTypeResult2);
-	//int cbCurrentLandScore = 0;
-	//int tempScore = m_GameLogicNew.LandScoreErRen(tempCard, sizeof(tempCard), cbCurrentLandScore);
+	int cbCurrentLandScore = 0;
+	int tempScore = m_GameLogicNew.LandScoreErRen(tempCard, sizeof(tempCard), cbCurrentLandScore);
 	for (int i = 0; i < 1000;i++)
 	{
 		clock_t start, fihst;

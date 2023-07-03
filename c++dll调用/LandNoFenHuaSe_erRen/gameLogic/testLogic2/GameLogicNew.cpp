@@ -845,9 +845,10 @@ float CGameLogicNew::GetHandScore(vector<tagOutCardResultNew> &CardTypeResult, i
 	{
 		if (CardTypeResult[i].cbCardType == CT_SINGLE)
 		{
-			if (GetCardLogicValue(CardTypeResult[i].cbResultCard[0]) == 17)
+			if (GetCardLogicValue(CardTypeResult[i].cbResultCard[0]) == 17 && bJiaoFen)
 			{
 				bHaveWang = 1;
+				score += 10;
 			}
 		}
 	}
@@ -864,14 +865,14 @@ float CGameLogicNew::GetHandScore(vector<tagOutCardResultNew> &CardTypeResult, i
 		}
 		else if (CardTypeResult[i].cbCardType == CT_SINGLE)
 		{
-			 if (GetCardLogicValue(CardTypeResult[i].cbResultCard[0]) == 15)
+			if (GetCardLogicValue(CardTypeResult[i].cbResultCard[0]) == 15 && bJiaoFen)
 			{
 				score += 10;
 				if (bHaveWang==1)
 				{
 					score += 3;
 				}
-				else if (bHaveWang == 1)
+				else if (bHaveWang == 2)
 				{
 					score += 5;
 				}

@@ -177,7 +177,6 @@ class MyPyQT_Form(QtWidgets.QWidget, Ui_Form):
         a=4
     def init_cards(self):
         # 得到出牌顺序
-
         try:
             self.RunGame =True
             self.game_over=True
@@ -187,6 +186,9 @@ class MyPyQT_Form(QtWidgets.QWidget, Ui_Form):
             print(e)
             traceback.print_tb(exc_tb)
             self.stop()
+            print("出错后重新开始....")
+            self.sleep(1000)
+            self.init_cards()
 
     def gameStart(self):
         GameHelper.Interrupt = False
@@ -217,17 +219,6 @@ class MyPyQT_Form(QtWidgets.QWidget, Ui_Form):
         # self.handCardCount[0]=16
         # helper.SelectCards("77", self.handCardCount[0], True)
         #self.turnCardReal = self.find_other_cardsEx(self.RPlayedCardsPos)
-        # self.bHavePass=True
-        # self.user_hand_cards_real='DX222QQ88'
-        # self.turnCardReal='KKK7'
-        # self.myHaveOutCard = '72AKQJT666A'
-        # self.rightHaveOutCard='AKKK7'
-        # self.rangCount=1
-        # self.handCardCount[0] = MAX_COUNT
-        # self.yuanShiZhangShu = MAX_COUNT
-        #
-        # action_message = self.dllCall(self.user_hand_cards_real, self.turnCardReal, self.myHaveOutCard,
-        #                               self.rightHaveOutCard, self.bHavePass, self.myHavePassType)
         helper.ClickOnImage("change_player_btn", region=self.changePlayerBtnPos, confidence=0.70)
         if helper.bTest==True:
            result = helper.LocateOnScreen("tip_btn", region=self.tipBtnPos, confidence=0.75)
