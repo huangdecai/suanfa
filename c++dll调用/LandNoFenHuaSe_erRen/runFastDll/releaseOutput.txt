@@ -1,0 +1,8 @@
+"D:\pythonTest\c++dll调用\LandNoFenHuaSe_erRen\runFastDll\testC++.sln" 
+21:35
+
+无法打开“D:\pythonTest\c++dll调用\LandNoFenHuaSe_erRen\runFastDll\testC++\testC++.vcxproj”，因为此版本的应用程序不支持其项目类型(.vcxproj)。
+
+若要打开它，请使用支持此类型项目的版本。========== 生成: 成功或最新 0 个，失败 0 个，跳过 0 个 ==========
+
+21:35
