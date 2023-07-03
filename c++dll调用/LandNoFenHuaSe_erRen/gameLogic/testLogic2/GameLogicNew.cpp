@@ -839,16 +839,16 @@ float CGameLogicNew::GetHandScore(vector<tagOutCardResultNew> &CardTypeResult, i
 	int typeCount[CT_TYPE_COUNT] = { 0 };
 	int shunIndex = 0;
 	bool bHave2 = false;
-	bool bHaveWang = false;
-	bool bHaveDaWang = false;
+	int bHaveWang = 2;
 	vector<int> vecShunZiCount;
 	for (int i = 0; i < CardTypeResult.size(); i++)
 	{
-		if (CardTypeResult[i].cbCardType == CT_SINGLE_LINE)
+		if (CardTypeResult[i].cbCardType == CT_SINGLE)
 		{
-			if (GetCardLogicValue(CardTypeResult[i].cbResultCard[0]) == 17)
+			if (GetCardLogicValue(CardTypeResult[i].cbResultCard[0]) == 17 && bJiaoFen)
 			{
-				bHaveDaWang = true;
+				bHaveWang = 1;
+				score += 10;
 			}
 		}
 	}
@@ -860,17 +860,28 @@ float CGameLogicNew::GetHandScore(vector<tagOutCardResultNew> &CardTypeResult, i
 		typeCount[CardTypeResult[i].cbCardType]++;
 		if (CardTypeResult[i].cbCardType==CT_SINGLE_LINE)
 		{
-			if (GetCardLogicValue(CardTypeResult[i].cbResultCard[0]) == 17)
-			{
-				bHaveDaWang = true;
-			}
 			shunIndex = i;
 			vecShunZiCount.push_back(CardTypeResult[i].cbCardCount);
+		}
+		else if (CardTypeResult[i].cbCardType == CT_SINGLE)
+		{
+			if (GetCardLogicValue(CardTypeResult[i].cbResultCard[0]) == 15 && bJiaoFen)
+			{
+				score += 5;
+				if (bHaveWang==1)
+				{
+					score += 3;
+				}
+				else if (bHaveWang == 2)
+				{
+					score += 5;
+				}
+			}
 		}
 		if (CardTypeResult[i].cbCardType == CT_MISSILE_CARD)
 		{   
 				score += 50;
-				bHaveWang = true;
+				bHaveWang = 2;
 		}
 		else if (CardTypeResult[i].cbCardType == CT_DOUBLE)
 		{   //为了解决压对12,12，手上牌1,1,13,13,12，12，8，6，6上对1还是上对13的问题
@@ -881,45 +892,40 @@ float CGameLogicNew::GetHandScore(vector<tagOutCardResultNew> &CardTypeResult, i
 			else if (GetCardLogicValue(CardTypeResult[i].cbResultCard[0]) == 15)
 			{
 				score += 7;
-				if (bHaveWang&&bJiaoFen==true)
+				if (bHaveWang==2&&bJiaoFen == true)
 				{
 					score += 20;
 				}
-				else if (bHaveDaWang&&bJiaoFen == true)
+				else if (bHaveWang==2&&bJiaoFen == true)
 				{
 					score += 10;
 				}
 			}
 		}
-		else if (CardTypeResult[i].cbCardType == CT_THREE)
+		else if (CardTypeResult[i].cbCardType == CT_THREE || CardTypeResult[i].cbCardType == CT_THREE_TAKE_ONE || CardTypeResult[i].cbCardType == CT_THREE_TAKE_TWO)
 		{   //为了解决压对12,12，手上牌1,1,13,13,12，12，8，6，6上对1还是上对13的问题
 			if (GetCardLogicValue(CardTypeResult[i].cbResultCard[0]) == 14)
 			{
-				score += 7;
+				score += 8;
 			}
 			else if (GetCardLogicValue(CardTypeResult[i].cbResultCard[0]) == 15)
 			{
-				score += 9;
-				if (bHaveWang&&bJiaoFen == true)
+				score += 10;
+				if (bHaveWang==2&&bJiaoFen == true)
 				{
 					score += 30;
 				}
-				else if (bHaveDaWang&&bJiaoFen == true)
+				else if (bHaveWang==2&&bJiaoFen == true)
 				{
 					score += 20;
 				}
 			}
 		}
 		else if (m_bTrunMode&& CardTypeResult[i].cbCardType == CT_SINGLE)
-		{   //为了解决压对12,12，手上牌1,1,13,13,12，12，8，6，6上对1还是上对13的问题
-			if (GetCardLogicValue(CardTypeResult[i].cbResultCard[0]) == 14)
+		{   
+			if (IsJueDuiDaPai(CardTypeResult[i].cbResultCard, CardTypeResult[i].cbCardCount, CardTypeResult[i].cbCardType) == JUE_DUI_DA)
 			{
-				bHave2 = true;
-				score += 3;
-			}
-			else if (bHave2&&GetCardLogicValue(CardTypeResult[i].cbResultCard[0]) == 15)
-			{
-				score += 5;
+				score += 10;
 			}
 		}
 	}
@@ -975,7 +981,6 @@ float CGameLogicNew::GetHandScore(vector<tagOutCardResultNew> &CardTypeResult, i
 				if (IsJueDuiDaPai(CardTypeResult[i].cbResultCard, 2, CT_DOUBLE)==JUE_DUI_DA)
 				{
 					score += 7;
-
 				}
 			}
 
@@ -1082,10 +1087,10 @@ float  CGameLogicNew::GetCardTypeScore(tagOutCardResultNew& CardTypeResult)
 			{
 				float logic = GetCardLogicValue(cbCardData[cbCardCount - i - 1]);
 				float tempscore = 0.0f;
-				if (m_bTrunMode && (GetCardLogicValue(cbCardData[cbCardCount - i - 1])>11))
+			/*	if (m_bTrunMode && (GetCardLogicValue(cbCardData[cbCardCount - i - 1])>11))
 				{
 					tempscore = (float)(GetCardLogicValue(cbCardData[cbCardCount - i - 1]) - 10);
-				}
+				}*/
 				score = score + tempscore + (float)(logic / 100);
 				TwoCardLogic.push_back(logic);
 			}
@@ -2446,7 +2451,7 @@ int CGameLogicNew::YouXianDaNengShouHuiCard(const BYTE cbHandCardData[], BYTE cb
 			
 			if (SearchOtherHandCardSame(tmpTurnCard, tmpTurnCardCount, type) == false)
 			{
-				juDuiMaxIndex[type]++;
+			    juDuiMaxIndex[type]++;
 			}
 			else
 			{
@@ -2547,7 +2552,7 @@ int CGameLogicNew::YouXianDaNengShouHuiCard(const BYTE cbHandCardData[], BYTE cb
 			{
 				
 				tempTypeCount = typeCount[i];
-				resultIndex = MaxIndexSet[i][tempSize - 1];
+				resultIndex = getMostCountIndex(MaxIndexSet, i, vecMinTypeCardResult);
 				if (i == CT_DOUBLE)
 				{
 					if ((juDuiMaxIndex[CT_SINGLE] > 0) && (juDuiMaxIndex[CT_DOUBLE] > 0) && (tempSize>=3) && (typeCount[CT_SINGLE] + typeCount[CT_DOUBLE]) == vecMinTypeCardResult.size())
@@ -2567,7 +2572,7 @@ int CGameLogicNew::YouXianDaNengShouHuiCard(const BYTE cbHandCardData[], BYTE cb
 				int tempSize = MaxIndexSet[i].size();
 				if (xiangDuiMaxIndex[i] > 0 && typeCount[i] > 1 && tempSize > 0)
 				{
-					resultIndex = MaxIndexSet[i][tempSize - 1];
+					resultIndex = getMostCountIndex(MaxIndexSet, i, vecMinTypeCardResult);
 					break;
 				}
 
@@ -2582,7 +2587,7 @@ int CGameLogicNew::YouXianDaNengShouHuiCard(const BYTE cbHandCardData[], BYTE cb
 					int tempSize = MaxIndexSet[i].size();
 					if (xiangDuiMaxIndex[i] > 0 && typeCount[i] > 1 && typeCount[i] > tempTypeCount && tempSize > 0)
 					{
-						resultIndex = MaxIndexSet[i][tempSize - 1];
+						resultIndex = getMostCountIndex(MaxIndexSet, i, vecMinTypeCardResult);
 						break;
 					}
 
@@ -3992,7 +3997,7 @@ bool CGameLogicNew::OutCardShengYuFenCheck(BYTE cbHandCardCount, const BYTE * cb
 
 				}
 			}
-			if (tempCardType>=CT_BOMB_CARD&&m_cbUserCardCount[1]>=10)
+			if (tempCardType >= CT_BOMB_CARD && (m_cbUserCardCount[1] >= 10) || (m_cbUserCardCount[1]==1))
 			{
 				resultIndex = -1;
 			}
@@ -6566,6 +6571,25 @@ bool CGameLogicNew::ThreeTakeMinCard(const BYTE cbCardData[], BYTE cbHandCardCou
 		return true;
 	}
 	return false;
+}
+
+int CGameLogicNew::getMostCountIndex(vector<vector<int>> MaxIndexSet, int type, vector<tagOutCardResultNew>&  vecMinTypeCardResult)
+{
+	int tempSize = MaxIndexSet[type].size();
+	int resultIndex = -1;
+	if (tempSize>0)
+	{
+		resultIndex = MaxIndexSet[type][tempSize - 1];
+		int tempCount = vecMinTypeCardResult[resultIndex].cbCardCount;
+		for (int i = 0; i < tempSize;i++)
+		{
+			if (vecMinTypeCardResult[MaxIndexSet[type][i]].cbCardCount>tempCount)
+			{
+				resultIndex = MaxIndexSet[type][i];
+			}
+		}
+	}
+	return resultIndex;
 }
 
 //////////////////////////////////////////////////////////////////////////

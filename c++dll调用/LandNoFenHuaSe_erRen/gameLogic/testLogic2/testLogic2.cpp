@@ -57,30 +57,34 @@ void TestGameLogic()
 	
 	BYTE	cbHandCardData[NORMAL_COUNT] = { 0 };	// ÷…œ∆ÀøÀ
 	//BYTE    tempCard[] = {  2, 12, 12, 12, 11, 11, 11, 11, 10, 9, 8, 8, 8, 7, 7 };
-	BYTE    tempCard[] = { 14, 2, 2, 2, 1, 1, 1, 1,9, 9,8,7, 7, 7 };
+	BYTE    tempCard[] = { 15,2,1,13,13,12,12, 10,10, 10, 7, 7, 8, 8, 6,5,5 };
 	
 	//BYTE    tempCard[] = { 1, 1, 12, 12, 12, 7 };
 	//BYTE    tempCard[] = { 2, 2, 2, 13, 10, 8, 8, 7, 7, 5 };
 
 	tagOutCardResultNew  OutCardResult;
-	BYTE cbTurnCardData[] = { 11, 11 };// { S6, 6, 5, 5, 4, 4 };
-	int cbTurnCardCount = 0; sizeof(cbTurnCardData);
-	BYTE cbDiscardCard[] = { 13, 13, 12, 12, 11, 11 };
+	BYTE cbTurnCardData[] = { 10 };// { S6, 6, 5, 5, 4, 4 };
+	int cbTurnCardCount = sizeof(cbTurnCardData);
+	BYTE cbDiscardCard[] = { 14 };
 	BYTE cbDiscardCardCount =  sizeof(cbDiscardCard);
-	BYTE cbOtherDisscard[] = { 0 };
-	BYTE cbOtherDisscardCount = 0; sizeof(cbOtherDisscard);
-	BYTE cbCardDataEx[MAX_COUNT] = { 0, 3, 0, 20, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
+	BYTE cbOtherDisscard[] = { 15 };
+	BYTE cbOtherDisscardCount =  sizeof(cbOtherDisscard);
+	BYTE cbCardDataEx[MAX_COUNT] = { 0, 0, 2, 17, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
 	BYTE maxCard[MAX_COUNT] = { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
 	tagSearchCardResult pSearchCardResult = {};
 	//m_GameLogicNew.SearchOutCard(tempCard, sizeof(tempCard), cbTurnCardData, 0, &pSearchCardResult);
 	tagOutCardResultNew CardTypeResult1;
-	BYTE    tempCard1[] = {  1, 1,1,1,15,8 };
+	BYTE    tempCard1[] = {  1, 1,1,1,6 };
 	CardTypeResult1.cbCardCount = sizeof(tempCard1);
 	CopyMemory(CardTypeResult1.cbResultCard, tempCard1, CardTypeResult1.cbCardCount);
 	float score1 = m_GameLogicNew.GetCardTypeScore(CardTypeResult1);
-
-	//int cbCurrentLandScore = 0;
-	//int tempScore = m_GameLogicNew.LandScoreErRen(tempCard, sizeof(tempCard), cbCurrentLandScore);
+	tagOutCardResultNew CardTypeResult2;
+	BYTE    tempCard2[] = { 10, 10, 10, 12, 12 };
+	CardTypeResult2.cbCardCount = sizeof(tempCard2);
+	CopyMemory(CardTypeResult2.cbResultCard, tempCard2, CardTypeResult2.cbCardCount);
+	float score2 = m_GameLogicNew.GetCardTypeScore(CardTypeResult2);
+	int cbCurrentLandScore = 0;
+	int tempScore = m_GameLogicNew.LandScoreErRen(tempCard, sizeof(tempCard), cbCurrentLandScore);
 	for (int i = 0; i < 1000;i++)
 	{
 		clock_t start, fihst;
