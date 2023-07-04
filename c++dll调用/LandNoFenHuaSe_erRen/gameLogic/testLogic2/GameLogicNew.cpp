@@ -667,6 +667,18 @@ BYTE CGameLogicNew::SearchOutCard(const BYTE cbHandCardData[], BYTE cbHandCardCo
 				break;
 			}
 		}
+		//炸弹
+		if (cbSameCount != 4)
+		{
+			cbTmpCount = SearchSameCard(cbCardData, cbCardCount, 0, 4, &tmpSearchCardResult);
+			if (cbTmpCount > 0)
+			{
+				pSearchCardResult->cbCardCount[cbResultCount] = tmpSearchCardResult.cbCardCount[0];
+				CopyMemory(pSearchCardResult->cbResultCard[cbResultCount], tmpSearchCardResult.cbResultCard[0],
+					sizeof(BYTE)*tmpSearchCardResult.cbCardCount[0]);
+				cbResultCount++;
+			}
+		}
 		//四带1
 		cbTmpCount = SearchTakeCardType(cbCardData, cbCardCount, 0, 4, 2, &tmpSearchCardResult);
 		if (cbTmpCount > 0)
@@ -692,18 +704,7 @@ BYTE CGameLogicNew::SearchOutCard(const BYTE cbHandCardData[], BYTE cbHandCardCo
 
 		}
 
-		//炸弹
-		if (cbSameCount != 4)
-		{
-			cbTmpCount = SearchSameCard(cbCardData, cbCardCount, 0, 4, &tmpSearchCardResult);
-			if (cbTmpCount > 0)
-			{
-				pSearchCardResult->cbCardCount[cbResultCount] = tmpSearchCardResult.cbCardCount[0];
-				CopyMemory(pSearchCardResult->cbResultCard[cbResultCount], tmpSearchCardResult.cbResultCard[0],
-					sizeof(BYTE)*tmpSearchCardResult.cbCardCount[0]);
-				cbResultCount++;
-			}
-		}
+		
 
 		//搜索火箭
 		if ((cbCardCount >= 2) && (cbCardData[0] == 15) && (cbCardData[1] == 14))
@@ -2309,6 +2310,20 @@ BYTE CGameLogicNew::SearchTakeCardType(const BYTE cbHandCardData[], BYTE cbHandC
 					cbRemainCardCount--;
 				}
 			}
+			if (cbTakeCardCount>=2)
+			{
+				//不能带两王
+				SortCardList(cbRemainCard, cbRemainCardCount, ST_ORDER);
+				if (cbRemainCard[0] == 15 && cbRemainCard[1] == 14)
+				{
+					BYTE tempCard[2] = { 15, 14 };
+					if (RemoveCard(tempCard, sizeof(tempCard), cbRemainCard, cbRemainCardCount))
+					{
+						cbRemainCardCount-=2;
+					}
+				}
+			}
+
 			//单牌组合
 			BYTE cbComCard[MAX_COLS];
 			BYTE cbComResCard[MAX_RESULT_COUNT][MAX_COLS];
