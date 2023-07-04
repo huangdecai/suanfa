@@ -405,8 +405,15 @@ class MyPyQT_Form(QtWidgets.QWidget, Ui_Form):
                         self.rightHaveOutCard = self.rightHaveOutCard  + self.turnCardReal
                         zhang = self.CheckZhangCard()
                         if self.bHaveJiaWang == False and self.handCardCount[self.play_order] - zhang == 2:
-                            self.rightHaveOutCard += 'DX'
-                            print("加双王")
+                            print("zhang:",zhang)
+                            if self.yuanShiZhangShu==NORMAL_COUNT:
+                                if (len(self.rightHaveOutCard)+2)<MAX_COUNT:
+                                    self.rightHaveOutCard += 'DX'
+                                    print("加双王")
+                            else:
+                                if (len(self.rightHaveOutCard)+2)<NORMAL_COUNT:
+                                    self.rightHaveOutCard += 'DX'
+                                    print("加双王")
                             self.bHaveJiaWang = True
                         self.LPlayedCard.setText("对家牌："+self.rightHaveOutCard)
 
