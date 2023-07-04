@@ -448,7 +448,7 @@ class MyPyQT_Form(QtWidgets.QWidget, Ui_Form):
                 score=self.getCardScore(self.user_hand_cards_real)
                 print("jiaoDiZhuCheck...0",score)
                 self.jiaoDiZhuFen.setText("叫地主分数:"+str(score))
-                if score>=-50 and operateCount==0:
+                if score>=-35 and operateCount==0:
                     helper.ClickOnImage("jiaodizhu", region=self.jiaoDiZhuBtnPos)
                     operateCount+=1
                 else:
@@ -457,10 +457,10 @@ class MyPyQT_Form(QtWidgets.QWidget, Ui_Form):
             elif resultQ:
                 score = self.getCardScore(self.user_hand_cards_real)
                 self.QiangDiZhuFen.setText("抢地主分数:"+str(score))
-                if score >=-35 and operateCount==0:
+                if score >=-30 and operateCount==0:
                     helper.ClickOnImage("qiangdizhu", region=self.jiaoDiZhuBtnPos)
                     operateCount += 1
-                elif score >= -10 and operateCount<=1:
+                elif score >= -5 and operateCount<=1:
                     helper.ClickOnImage("qiangdizhu", region=self.jiaoDiZhuBtnPos)
                     operateCount += 1
                 elif score >= 20 and operateCount<=2:
