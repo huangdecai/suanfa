@@ -3212,6 +3212,7 @@ bool CGameLogicNew::isBiYing(vector<tagOutCardResultNew > & CardTypeResult)
 	//--优先打能收回来的牌
 	bool bExistJuiMax = true;
 	int xiangDuiDaPaiCount = 0;
+	int totalCount = 0;
 	for (int i = 0; i < CardTypeResult.size(); i++)
 	{
 		int type = GetCardType(CardTypeResult[i].cbResultCard, CardTypeResult[i].cbCardCount);
@@ -3223,6 +3224,11 @@ bool CGameLogicNew::isBiYing(vector<tagOutCardResultNew > & CardTypeResult)
 			if (bExistMax != true)
 			{
 				xiangDuiDaPaiCount = xiangDuiDaPaiCount + 1;
+				totalCount += CardTypeResult[i].cbCardCount;
+				if (totalCount >= m_cbUserCardCount[0])
+				{
+					return true;
+				}
 			}
 		}
 	}
@@ -3818,8 +3824,13 @@ bool CGameLogicNew::OutCardShengYuFenCheck(BYTE cbHandCardCount, const BYTE * cb
 	vector<BYTE> singleData;
 	vector<BYTE> doubleData;
 	vector<BYTE> BombData;
+	bool bHaveBombType = false;
 	for (int i = 0; i < vecMinTypeCardResult.size();i++)
 	{
+		if (vecMinTypeCardResult[i].cbCardType>=CT_FOUR_TAKE_ONE)
+		{
+			bHaveBombType = true;
+		}
 		if (vecMinTypeCardResult[i].cbCardType == CT_SINGLE)
 		{
 			singleData.push_back(vecMinTypeCardResult[i].cbResultCard[0]);
@@ -3976,24 +3987,33 @@ bool CGameLogicNew::OutCardShengYuFenCheck(BYTE cbHandCardCount, const BYTE * cb
 		}
 	}
 	ZeroMemory(&OutCardResult, sizeof(OutCardResult));
-	int tempCardType = GetCardType(SearchCardResult.cbResultCard[resultIndex], SearchCardResult.cbCardCount[resultIndex]);
-	
-	if (bExistBiYing&&vecIndexUnIncludeBomb.size()>0)
-	{
-		resultIndex = vecIndexUnIncludeBomb[vecIndexUnIncludeBomb.size()-1];
-	}
-	else if (tempCardType<CT_BOMB_CARD&& BiShengResult.size()>0 && GetACardCount(BombData.data(), BombData.size(), SearchCardResult.cbResultCard[resultIndex][0])>0)
-	{
-		resultIndex = BiShengResult[0];
-	}
 	if ((resultIndex != -1))
 	{
-		int tempCardType = GetCardType(SearchCardResult.cbResultCard[resultIndex], SearchCardResult.cbCardCount[resultIndex]);
+		 int tempCardType = GetCardType(SearchCardResult.cbResultCard[resultIndex], SearchCardResult.cbCardCount[resultIndex]);
+
+		if (resultIndex != -1 && bExistBiYing&&vecIndexUnIncludeBomb.size() > 0)
+		{
+			int tempIndex = vecIndexUnIncludeBomb[vecIndexUnIncludeBomb.size() - 1];
+			int reIndex = IsJueDuiDaPai(SearchCardResult.cbResultCard[tempIndex], SearchCardResult.cbCardCount[tempIndex], CT_SINGLE);
+			if ((reIndex == XIANG_DUI_DA || reIndex == JUE_DUI_DA) && m_cbUserCardCount[1] != SearchCardResult.cbCardCount[resultIndex]&&bHaveBombType)
+			{
+				int a = 0;
+			}
+			else{
+				resultIndex = vecIndexUnIncludeBomb[vecIndexUnIncludeBomb.size() - 1];
+			}
+		}
+		else if (tempCardType < CT_BOMB_CARD&& BiShengResult.size()>0 && GetACardCount(BombData.data(), BombData.size(), SearchCardResult.cbResultCard[resultIndex][0]) > 0)
+		{
+			resultIndex = BiShengResult[0];
+		}
+		tempCardType = GetCardType(SearchCardResult.cbResultCard[resultIndex], SearchCardResult.cbCardCount[resultIndex]);
 		if (tempCardType == CT_MISSILE_CARD&&bExistBiYing&&m_cbUserCardCount[1] >= 13)
 		{
 			resultIndex = -1;
 		}
 	}
+	
 	if ((resultIndex != -1) && bExistBiYing==false)
 	{
 		int tempCardType = GetCardType(SearchCardResult.cbResultCard[resultIndex], SearchCardResult.cbCardCount[resultIndex]);
@@ -5310,6 +5330,10 @@ bool CGameLogicNew::SearchOtherHandCardThan(const BYTE cbHandCardData[], BYTE cb
 	{
 		bNoSearchBomb = true;
 	}*/
+	if (m_cbUserCardCount[1]<4)
+	{
+		bNoSearchBomb = false;
+	}
 	if ((cbHandCardCount>m_cbUserCardCount[1]) || (cbHandCardCount >= 10))
 	{
 		return false;
@@ -5787,7 +5811,7 @@ VOID CGameLogicNew::ErZhuDongOutCard(const BYTE cbHandCardData[], BYTE cbHandCar
 	}
 	int tmpType = GetCardType(cbHandCardData, cbHandCardCount);
 	
-	if ((tmpType != CT_ERROR && (tmpType != CT_THREE_TAKE_ONE)) || (tmpType == CT_THREE_TAKE_ONE&&cbHandCardCount == 4))
+	if (tmpType != CT_ERROR )
 	{
 		OutCardResult.cbCardCount = cbHandCardCount;
 		CopyMemory(OutCardResult.cbResultCard, cbHandCardData, OutCardResult.cbCardCount);
@@ -6464,46 +6488,54 @@ bool CGameLogicNew::FourTakeFenChai(const BYTE cbHandCardData[], BYTE cbHandCard
 
 		}
 	}
-
-	if (singleData.size() >= 1)
+	if (outtype == CT_FOUR_TAKE_ONE)
 	{
-		sort(singleData.begin(), singleData.end(), [this](BYTE first, BYTE second)
+		if (singleData.size() >= 1)
 		{
-			if (GetCardLogicValue(first) > GetCardLogicValue(second))
+			sort(singleData.begin(), singleData.end(), [this](BYTE first, BYTE second)
 			{
-				return true;
+				if (GetCardLogicValue(first) > GetCardLogicValue(second))
+				{
+					return true;
+				}
+				return false;
+			});
+			for (int i = 0; i < singleData.size(); i++)
+			{
+				BYTE tmpTurnCard[MAX_COUNT] = { 0 };
+				tmpTurnCard[0] = { singleData[i] };
+				int tmpTurnCardCount = 1;
+				int reIndex = IsJueDuiDaPai(tmpTurnCard, tmpTurnCardCount, CT_SINGLE);
+				if (reIndex == XIANG_DUI_DA)
+				{
+					OutCardResult.cbCardCount = 1;
+					OutCardResult.cbCardType = CT_SINGLE;
+					CopyMemory(OutCardResult.cbResultCard, &singleData[i], 1);
+					return true;
+				}
+				else if(reIndex == JUE_DUI_DA)
+				{
+					int tempIndex = singleData.size() - 1;
+					if (m_cbUserCardCount[1]==1)
+					{
+						tempIndex = i;
+					}
+						OutCardResult.cbCardCount = 1;
+						OutCardResult.cbCardType = CT_SINGLE;
+						CopyMemory(OutCardResult.cbResultCard, &singleData[tempIndex], 1);
+						return true;
+				}
 			}
-			return false;
-		});
-		for (int i = 0; i < singleData.size(); i++)
-		{
-			BYTE tmpTurnCard[MAX_COUNT] = { 0 };
-			tmpTurnCard[0] = { singleData[i] };
-			int tmpTurnCardCount = 1;
-			int reIndex = IsJueDuiDaPai(tmpTurnCard, tmpTurnCardCount, CT_SINGLE);
-			if (reIndex >= XIANG_DUI_DA)
+			if (m_cbUserCardCount[1]>1 && vecMinTypeCardResult.size() == 1)
 			{
+				ZeroMemory(&OutCardResult, sizeof(OutCardResult));
 				OutCardResult.cbCardCount = 1;
-				OutCardResult.cbCardType = CT_SINGLE;
-				CopyMemory(OutCardResult.cbResultCard, &singleData[i], 1);
+				CopyMemory(OutCardResult.cbResultCard, &singleData[singleData.size() - 1], OutCardResult.cbCardCount);
 				return true;
 			}
-		}
-		if (m_cbUserCardCount[1]>1)
-		{
-			ZeroMemory(&OutCardResult, sizeof(OutCardResult));
-			OutCardResult.cbCardCount = 1;
-			CopyMemory(OutCardResult.cbResultCard, &singleData[0], OutCardResult.cbCardCount);
-			return true;
-		}
-		else if (vecMinTypeCardResult.size()==1)
-		{
-			ZeroMemory(&OutCardResult, sizeof(OutCardResult));
-			OutCardResult.cbCardCount = 4;
-			CopyMemory(OutCardResult.cbResultCard, vecMinTypeCardResult[0].cbResultCard, OutCardResult.cbCardCount);
-			return true;
 		}
 	}
+	
 
 	if (doubleData.size() >= 2)
 	{
@@ -6522,27 +6554,32 @@ bool CGameLogicNew::FourTakeFenChai(const BYTE cbHandCardData[], BYTE cbHandCard
 			tmpTurnCard[1] = { doubleData[i + 1] };
 			int tmpTurnCardCount = 2;
 			int reIndex = IsJueDuiDaPai(tmpTurnCard, tmpTurnCardCount, CT_DOUBLE);
-			if (reIndex >= XIANG_DUI_DA)
+			if (reIndex == XIANG_DUI_DA)
 			{
 				OutCardResult.cbCardCount = 2;
 				OutCardResult.cbCardType = CT_DOUBLE;
 				CopyMemory(OutCardResult.cbResultCard, &doubleData[i], 2);
 				return true;
 			}
+			else if (reIndex == JUE_DUI_DA)
+			{
+				int tempIndex = doubleData.size() - 2;
+				if (m_cbUserCardCount[1] == 2)
+				{
+					tempIndex = i;
+				}
+				OutCardResult.cbCardCount = 2;
+				OutCardResult.cbCardType = CT_DOUBLE;
+				CopyMemory(OutCardResult.cbResultCard, &doubleData[i], 2);
+				return true;
+			}
 		}
-		if (m_cbUserCardCount[1]!=2)
+		if (m_cbUserCardCount[1] != 2 && vecMinTypeCardResult.size() == 1)
 		{
 			ZeroMemory(&OutCardResult, sizeof(OutCardResult));
 			OutCardResult.cbCardCount = 2;
 			OutCardResult.cbCardType = CT_DOUBLE;
 			CopyMemory(OutCardResult.cbResultCard, &doubleData[0], 2);
-			return true;
-		}
-		else if (vecMinTypeCardResult.size() == 1)
-		{
-			ZeroMemory(&OutCardResult, sizeof(OutCardResult));
-			OutCardResult.cbCardCount = 4;
-			CopyMemory(OutCardResult.cbResultCard, vecMinTypeCardResult[0].cbResultCard, OutCardResult.cbCardCount);
 			return true;
 		}
 	}

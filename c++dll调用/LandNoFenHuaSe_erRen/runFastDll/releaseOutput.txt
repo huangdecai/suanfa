@@ -1,5 +1,5 @@
-"D:\pythonTest\c++dll调用\LandNoFenHuaSe_erRen\runFastDll\testC++.sln" 
-20:23
+"D:\test\workTest\suanfa\c++dll调用\LandNoFenHuaSe_erRen\runFastDll\testC++.sln" 
+17:52
 1>------ 已启动生成:  项目: testC++, 配置: Release x64 ------
 1>  GameLogicNew.cpp
 1>..\..\gameLogic\testLogic2\GameLogicNew.cpp(1096): warning C4244: “参数”: 从“float”转换到“const int”，可能丢失数据
@@ -18,27 +18,29 @@
 1>..\..\gameLogic\testLogic2\GameLogicNew.cpp(2735): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
 1>..\..\gameLogic\testLogic2\GameLogicNew.cpp(3138): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
 1>..\..\gameLogic\testLogic2\GameLogicNew.cpp(3164): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
-1>..\..\gameLogic\testLogic2\GameLogicNew.cpp(3896): warning C4267: “参数”: 从“size_t”转换到“const BYTE”，可能丢失数据
-1>..\..\gameLogic\testLogic2\GameLogicNew.cpp(3920): warning C4267: “参数”: 从“size_t”转换到“const BYTE”，可能丢失数据
-1>..\..\gameLogic\testLogic2\GameLogicNew.cpp(3954): warning C4267: “参数”: 从“size_t”转换到“const BYTE”，可能丢失数据
-1>..\..\gameLogic\testLogic2\GameLogicNew.cpp(3967): warning C4267: “参数”: 从“size_t”转换到“const BYTE”，可能丢失数据
-1>..\..\gameLogic\testLogic2\GameLogicNew.cpp(3985): warning C4267: “参数”: 从“size_t”转换到“const BYTE”，可能丢失数据
-1>..\..\gameLogic\testLogic2\GameLogicNew.cpp(4001): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
-1>..\..\gameLogic\testLogic2\GameLogicNew.cpp(4002): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
-1>..\..\gameLogic\testLogic2\GameLogicNew.cpp(4517): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
-1>..\..\gameLogic\testLogic2\GameLogicNew.cpp(4530): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
-1>..\..\gameLogic\testLogic2\GameLogicNew.cpp(4722): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
-1>..\..\gameLogic\testLogic2\GameLogicNew.cpp(5671): warning C4800: “BYTE”: 将值强制为布尔值“true”或“false”(性能警告)
-1>..\..\gameLogic\testLogic2\GameLogicNew.cpp(5712): warning C4244: “初始化”: 从“float”转换到“int”，可能丢失数据
-1>..\..\gameLogic\testLogic2\GameLogicNew.cpp(5824): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
-1>..\..\gameLogic\testLogic2\GameLogicNew.cpp(5837): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
-1>..\..\gameLogic\testLogic2\GameLogicNew.cpp(6206): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
-1>..\..\gameLogic\testLogic2\GameLogicNew.cpp(6217): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
-1>..\..\gameLogic\testLogic2\GameLogicNew.cpp(6687): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
-1>     正在创建库 D:\pythonTest\c++dll调用\LandNoFenHuaSe_erRen\runFastDll\x64\Release\testC++.lib 和对象 D:\pythonTest\c++dll调用\LandNoFenHuaSe_erRen\runFastDll\x64\Release\testC++.exp
+1>..\..\gameLogic\testLogic2\GameLogicNew.cpp(3907): warning C4267: “参数”: 从“size_t”转换到“const BYTE”，可能丢失数据
+1>..\..\gameLogic\testLogic2\GameLogicNew.cpp(3931): warning C4267: “参数”: 从“size_t”转换到“const BYTE”，可能丢失数据
+1>..\..\gameLogic\testLogic2\GameLogicNew.cpp(3965): warning C4267: “参数”: 从“size_t”转换到“const BYTE”，可能丢失数据
+1>..\..\gameLogic\testLogic2\GameLogicNew.cpp(3978): warning C4267: “参数”: 从“size_t”转换到“const BYTE”，可能丢失数据
+1>..\..\gameLogic\testLogic2\GameLogicNew.cpp(4006): warning C4267: “参数”: 从“size_t”转换到“const BYTE”，可能丢失数据
+1>..\..\gameLogic\testLogic2\GameLogicNew.cpp(4021): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
+1>..\..\gameLogic\testLogic2\GameLogicNew.cpp(4022): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
+1>..\..\gameLogic\testLogic2\GameLogicNew.cpp(4537): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
+1>..\..\gameLogic\testLogic2\GameLogicNew.cpp(4550): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
+1>..\..\gameLogic\testLogic2\GameLogicNew.cpp(4742): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
+1>..\..\gameLogic\testLogic2\GameLogicNew.cpp(5695): warning C4800: “BYTE”: 将值强制为布尔值“true”或“false”(性能警告)
+1>..\..\gameLogic\testLogic2\GameLogicNew.cpp(5736): warning C4244: “初始化”: 从“float”转换到“int”，可能丢失数据
+1>..\..\gameLogic\testLogic2\GameLogicNew.cpp(5848): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
+1>..\..\gameLogic\testLogic2\GameLogicNew.cpp(5861): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
+1>..\..\gameLogic\testLogic2\GameLogicNew.cpp(6230): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
+1>..\..\gameLogic\testLogic2\GameLogicNew.cpp(6241): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
+1>..\..\gameLogic\testLogic2\GameLogicNew.cpp(6518): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
+1>..\..\gameLogic\testLogic2\GameLogicNew.cpp(6566): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
+1>..\..\gameLogic\testLogic2\GameLogicNew.cpp(6724): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
+1>     正在创建库 D:\test\workTest\suanfa\c++dll调用\LandNoFenHuaSe_erRen\runFastDll\x64\Release\testC++.lib 和对象 D:\test\workTest\suanfa\c++dll调用\LandNoFenHuaSe_erRen\runFastDll\x64\Release\testC++.exp
 1>  正在生成代码
 1>  已完成代码的生成
-1>  testC++.vcxproj -> D:\pythonTest\c++dll调用\LandNoFenHuaSe_erRen\runFastDll\x64\Release\testC++.dll
+1>  testC++.vcxproj -> D:\test\workTest\suanfa\c++dll调用\LandNoFenHuaSe_erRen\runFastDll\x64\Release\testC++.dll
 ========== 生成:  成功 1 个，失败 0 个，最新 0 个，跳过 0 个 ==========
 
-20:23
+17:52
