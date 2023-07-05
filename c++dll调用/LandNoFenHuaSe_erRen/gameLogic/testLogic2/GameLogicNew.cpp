@@ -840,7 +840,8 @@ float CGameLogicNew::GetHandScore(vector<tagOutCardResultNew> &CardTypeResult, i
 	int typeCount[CT_TYPE_COUNT] = { 0 };
 	int shunIndex = 0;
 	bool bHave2 = false;
-	int bHaveWang = 2;
+	int bHaveWang = 0;
+	bool bHaveBoomb = false;
 	vector<int> vecShunZiCount;
 	for (int i = 0; i < CardTypeResult.size(); i++)
 	{
@@ -851,6 +852,10 @@ float CGameLogicNew::GetHandScore(vector<tagOutCardResultNew> &CardTypeResult, i
 				bHaveWang = 1;
 				score += 10;
 			}
+		}
+		else if (CardTypeResult[i].cbCardType >= CT_FOUR_TAKE_ONE)
+		{
+			bHaveBoomb = true;
 		}
 	}
 	for (int i = 0; i < CardTypeResult.size(); i++)
@@ -877,6 +882,7 @@ float CGameLogicNew::GetHandScore(vector<tagOutCardResultNew> &CardTypeResult, i
 				{
 					score += 5;
 				}
+				bHave2 = true;
 			}
 		}
 		if (CardTypeResult[i].cbCardType == CT_MISSILE_CARD)
@@ -1024,6 +1030,10 @@ float CGameLogicNew::GetHandScore(vector<tagOutCardResultNew> &CardTypeResult, i
 	if (vecShunZiCount.size() == 2 && vecShunZiCount[0] == vecShunZiCount[1])
 	{
 		score += 2;
+	}
+	if (bJiaoFen&&bHave2&&bHaveBoomb==false)
+	{
+		score -= 30;
 	}
 	
 	//如果最小牌型数小于10的话,应该适当加分
@@ -5792,6 +5802,7 @@ VOID CGameLogicNew::ErZhuDongOutCard(const BYTE cbHandCardData[], BYTE cbHandCar
 		int type = GetCardType(OutCardResult.cbResultCard, OutCardResult.cbCardCount);
 		//if (type==CT_BOMB_CARD)
 		{
+			ThreeTakeTwoTakeMinCard(cbHandCardData, cbHandCardCount, vecMinTypeCardResult, OutCardResult, CardTypeResult);
 			return;
 		}
 	}
@@ -5806,6 +5817,7 @@ VOID CGameLogicNew::ErZhuDongOutCard(const BYTE cbHandCardData[], BYTE cbHandCar
 	WORD wUpsideUser = (wUndersideUser + 1) % GAME_PLAYER;
 	if (WuDiCheck(cbHandCardData, cbHandCardCount, NULL, 0, OutCardResult, CardTypeResult))
 	{
+		ThreeTakeTwoTakeMinCard(cbHandCardData, cbHandCardCount, vecMinTypeCardResult, OutCardResult, CardTypeResult);
 		BaoDanJiaoYan(OutCardResult, wUndersideUser, cbHandCardData);
 		return;
 	}
@@ -6098,7 +6110,7 @@ bool CGameLogicNew::ThreeTakeTwoTakeMinCard(const BYTE cbCardData[], BYTE cbHand
 
 	int outCardType = GetCardType(OutCardResult.cbResultCard, OutCardResult.cbCardCount);
 	
-	if (outCardType == CT_THREE_TAKE_TWO || outCardType == CT_THREE_TAKE_ONE )
+	if (outCardType == CT_FOUR_TAKE_ONE||outCardType == CT_THREE_TAKE_TWO || outCardType == CT_THREE_TAKE_ONE)
 	{
 		if (OutCardResult.cbCardCount<=5)
 		{
@@ -6117,7 +6129,11 @@ bool CGameLogicNew::ThreeTakeTwoTakeMinCard(const BYTE cbCardData[], BYTE cbHand
 			}
 		}
 		BYTE cbNeedCardCount = 0;
-		if (outCardType == CT_THREE_TAKE_ONE)
+		if (outCardType == CT_FOUR_TAKE_ONE)
+		{
+			cbNeedCardCount = 2;
+		}
+		else if (outCardType == CT_THREE_TAKE_ONE)
 		{
 			cbNeedCardCount=OutCardResult.cbCardCount / 4 ;
 		}
