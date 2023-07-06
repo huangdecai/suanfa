@@ -455,7 +455,7 @@ class MyPyQT_Form(QtWidgets.QWidget, Ui_Form):
                 score=self.getCardScore(self.user_hand_cards_real)
                 print("jiaoDiZhuCheck...0",score)
                 self.jiaoDiZhuFen.setText("叫地主分数:"+str(score))
-                if score>=-35 and operateCount==0:
+                if score>=-5 and operateCount==0:
                     helper.ClickOnImage("jiaodizhu", region=self.jiaoDiZhuBtnPos)
                     operateCount+=1
                 else:
@@ -464,16 +464,16 @@ class MyPyQT_Form(QtWidgets.QWidget, Ui_Form):
             elif resultQ:
                 score = self.getCardScore(self.user_hand_cards_real)
                 self.QiangDiZhuFen.setText("抢地主分数:"+str(score))
-                if score >=-30 and operateCount==0:
+                if score >=-0 and operateCount==0:
                     helper.ClickOnImage("qiangdizhu", region=self.jiaoDiZhuBtnPos)
                     operateCount += 1
-                elif score >= -5 and operateCount<=1:
+                elif score >= 15 and operateCount<=1:
                     helper.ClickOnImage("qiangdizhu", region=self.jiaoDiZhuBtnPos)
                     operateCount += 1
-                elif score >= 20 and operateCount<=2:
+                elif score >= 30 and operateCount<=2:
                     helper.ClickOnImage("qiangdizhu", region=self.jiaoDiZhuBtnPos)
                     operateCount += 1
-                elif score >= 40 and operateCount<=3:
+                elif score >= 50 and operateCount<=3:
                     helper.ClickOnImage("qiangdizhu", region=self.jiaoDiZhuBtnPos)
                     operateCount += 1
                 else:
@@ -511,9 +511,12 @@ class MyPyQT_Form(QtWidgets.QWidget, Ui_Form):
                 return  0
             self.sleep(100)
 
-
     def detect_start_btn(self):
         result = helper.LocateOnScreen("change_player_btn", region=self.changePlayerBtnPos)
+        if result is None:
+            resultZhiDao = helper.LocateOnScreen("zhidao", region=(568, 509, 250, 90))
+            if resultZhiDao:
+                helper.ClickOnImage("zhidao", region=(568, 509, 250, 90), confidence=0.70)
         if (result is not None) or self.isGameOver():
             print("点击换对手")
             print("{}胜，本局结束!\n")
