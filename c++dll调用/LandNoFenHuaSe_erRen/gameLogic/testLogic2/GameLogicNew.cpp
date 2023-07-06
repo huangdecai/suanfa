@@ -2472,10 +2472,10 @@ int CGameLogicNew::YouXianDaNengShouHuiCard(const BYTE cbHandCardData[], BYTE cb
 			{
 				xiangDuiMaxIndex[type]++;
 			}
-			if (type == CT_FOUR_TAKE_ONE || type == CT_FOUR_TAKE_ONE)
+		/*	if (type == CT_FOUR_TAKE_ONE || type == CT_FOUR_TAKE_ONE)
 			{
 				continue;
-			}
+			}*/
 			allMaxCardIndex.push_back(i);
 			if (MaxIndexSet[type].size() == 0)
 			{
@@ -2527,7 +2527,31 @@ int CGameLogicNew::YouXianDaNengShouHuiCard(const BYTE cbHandCardData[], BYTE cb
 	}
 	if (bZhiJieChu)
 	{
-		if (allMaxCardIndex.size() > 0)
+		if (juDuiMaxIndex[CT_SINGLE] == 1 && juDuiMaxIndex[CT_FOUR_TAKE_ONE]==1&&m_cbUserCardCount[1]!=1)
+		{
+			for (int i = 0; i < vecMinTypeCardResult.size(); i++)
+			{
+				int type = vecMinTypeCardResult[i].cbCardType;
+				if (type == CT_SINGLE)
+				{
+					resultIndex = i;
+					break;
+				}
+			}
+		}
+		else if (juDuiMaxIndex[CT_DOUBLE] == 1 && juDuiMaxIndex[CT_FOUR_TAKE_TWO] == 1 && m_cbUserCardCount[1] != 2)
+		{
+			for (int i = 0; i < vecMinTypeCardResult.size(); i++)
+			{
+				int type = vecMinTypeCardResult[i].cbCardType;
+				if (type == CT_DOUBLE)
+				{
+					resultIndex = i;
+					break;
+				}
+			}
+		}
+		else if (allMaxCardIndex.size() > 0)
 		{
 			resultIndex = allMaxCardIndex[allMaxCardIndex.size() - 1];
 			int maxTypeCount = vecMinTypeCardResult[resultIndex].cbCardCount;
@@ -4768,10 +4792,42 @@ void CGameLogicNew::OutSingleOrDoubleMinCard(const BYTE * cbHandCardData, BYTE c
 	for (int i = 0; i < vecMinTypeCardResult.size(); i++)
 	{
 		if (vecMinTypeCardResult[i].cbCardType == type)
+		{
 			for (int j = 0; j < cardCount; j++)
 			{
 				vecResultData.push_back(vecMinTypeCardResult[i].cbResultCard[j]);
 			}
+		}
+		else if (vecMinTypeCardResult[i].cbCardType == CT_FOUR_TAKE_ONE)
+		{
+				if (vecMinTypeCardResult[i].cbResultCard[4] != vecMinTypeCardResult[i].cbResultCard[5] && type == CT_SINGLE)
+				{
+					vecResultData.push_back(vecMinTypeCardResult[i].cbResultCard[4]);
+					vecResultData.push_back(vecMinTypeCardResult[i].cbResultCard[5]);
+				}
+				else if (vecMinTypeCardResult[i].cbResultCard[4] == vecMinTypeCardResult[i].cbResultCard[5] && type == CT_DOUBLE)
+				{
+					vecResultData.push_back(vecMinTypeCardResult[i].cbResultCard[4]);
+					vecResultData.push_back(vecMinTypeCardResult[i].cbResultCard[5]);
+				}
+			
+		}
+		else if (vecMinTypeCardResult[i].cbCardType == CT_FOUR_TAKE_TWO)
+		{
+				vecResultData.push_back(vecMinTypeCardResult[i].cbResultCard[4]);
+				vecResultData.push_back(vecMinTypeCardResult[i].cbResultCard[5]);
+				vecResultData.push_back(vecMinTypeCardResult[i].cbResultCard[6]);
+				vecResultData.push_back(vecMinTypeCardResult[i].cbResultCard[7]);
+		}
+		else if (vecMinTypeCardResult[i].cbCardType == CT_THREE_TAKE_TWO)
+		{
+			int tempCount = vecMinTypeCardResult[i].cbCardCount / 5;
+			for (int j = 0; j < tempCount*2;j++)
+			{
+				vecResultData.push_back(vecMinTypeCardResult[i].cbResultCard[tempCount*3+j]);
+			}
+		}
+			
 	}
 	// --防止单牌从三带一中出去
 	if (type == CT_SINGLE)
@@ -5821,15 +5877,19 @@ VOID CGameLogicNew::ErZhuDongOutCard(const BYTE cbHandCardData[], BYTE cbHandCar
 	int outIndex = YouXianDaNengShouHuiCard(cbHandCardData, cbHandCardCount, vecMinTypeCardResult, OutCardResult, bZhiJieChu);
 	if (OutCardResult.cbCardCount>0)
 	{
-		    int  type = OutCardResult.cbCardType;
+		    int  type =GetCardType(OutCardResult.cbResultCard,OutCardResult.cbCardCount);
 			 if (bZhiJieChu == true)
 			{
 				//ThreeTakeOneChangeTwoTake(cbHandCardData, cbHandCardCount, vecMinTypeCardResult, OutCardResult);
 				ThreeTakeTwoTakeMinCard(cbHandCardData, cbHandCardCount, vecMinTypeCardResult, OutCardResult, CardTypeResult);
+				if ((type == CT_SINGLE || type == CT_DOUBLE) && OutCardResult.cbCardCount != m_cbUserCardCount[1])
+				{
+					OutSingleOrDoubleMinCard(cbHandCardData, cbHandCardCount, vecMinTypeCardResult, OutCardResult, type);
+				}
 				BaoDanJiaoYan(OutCardResult, wUndersideUser, cbHandCardData);
 				return;
 			}
-			else if ((type == CT_SINGLE || type == CT_DOUBLE) )
+			 else if ((type == CT_SINGLE || type == CT_DOUBLE) && OutCardResult.cbCardCount!=m_cbUserCardCount[1])
 			{
 				OutSingleOrDoubleMinCard(cbHandCardData, cbHandCardCount, vecMinTypeCardResult, OutCardResult, type);
 			}

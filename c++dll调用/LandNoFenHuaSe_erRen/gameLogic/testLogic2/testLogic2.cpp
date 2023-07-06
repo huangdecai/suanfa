@@ -57,7 +57,7 @@ void TestGameLogic()
 	
 	BYTE	cbHandCardData[NORMAL_COUNT] = { 0 };	// ÷…œ∆ÀøÀ
 	//BYTE    tempCard[] = {  2, 12, 12, 12, 11, 11, 11, 11, 10, 9, 8, 8, 8, 7, 7 };
-	BYTE    tempCard[] = { 14, 13,13,1, 1, 1, 1, 6,6 };
+	BYTE    tempCard[] = { 2,2,13,  11,11,11,11,5,5,6,6 };
 	
 	//BYTE    tempCard[] = { 1, 1, 12, 12, 12, 7 };
 	//BYTE    tempCard[] = { 2, 2, 2, 13, 10, 8, 8, 7, 7, 5 };
@@ -65,9 +65,9 @@ void TestGameLogic()
 	tagOutCardResultNew  OutCardResult;
 	BYTE cbTurnCardData[] = { 6,6 };// { S6, 6, 5, 5, 4, 4 };
 	int cbTurnCardCount = 0; sizeof(cbTurnCardData);
-	BYTE cbDiscardCard[] = { 7, 7, 15, 8, 2, 12, 9, 9, 8, 7, 7 };
+	BYTE cbDiscardCard[] = { 12, 12, 2, 2, 10, 10, 10, 10, 8, 8, 7, 7, };
 	BYTE cbDiscardCardCount =  sizeof(cbDiscardCard);
-	BYTE cbOtherDisscard[] = { 9, 6, 2, 5, 10, 5, 11, 2, };
+	BYTE cbOtherDisscard[] = { 13,13 };
 	BYTE cbOtherDisscardCount =  sizeof(cbOtherDisscard);
 	BYTE cbCardDataEx[MAX_COUNT] = { 0, 1, 0, 20, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
 	BYTE maxCard[MAX_COUNT] = { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
