@@ -2494,7 +2494,13 @@ int CGameLogicNew::YouXianDaNengShouHuiCard(const BYTE cbHandCardData[], BYTE cb
 			
 			if (SearchOtherHandCardSame(tmpTurnCard, tmpTurnCardCount, type) == false)
 			{
-			    juDuiMaxIndex[type]++;
+				if ((type == CT_THREE_TAKE_ONE || type == CT_THREE_TAKE_TWO) && tmpTurnCardCount>5)
+				{
+					xiangDuiMaxIndex[type]++;
+				}
+				else{
+					juDuiMaxIndex[type]++;
+				}
 			}
 			else
 			{
@@ -6884,10 +6890,15 @@ bool CGameLogicNew::ThreeTakeMinCard(const BYTE cbCardData[], BYTE cbHandCardCou
 	return false;
 }
 
-int CGameLogicNew::getMostCountIndex(vector<vector<int>> MaxIndexSet, int type, vector<tagOutCardResultNew>&  vecMinTypeCardResult)
+int CGameLogicNew::getMostCountIndex( vector<vector<int>> MaxIndexSet, int type, vector<tagOutCardResultNew>&  vecMinTypeCardResult)
 {
-	int tempSize = MaxIndexSet[type].size();
 	int resultIndex = -1;
+	int tempSize = MaxIndexSet[type].size();
+	if ((type == CT_THREE_TAKE_ONE || type == CT_THREE_TAKE_TWO) && tempSize>=2)
+	{
+		resultIndex = resultIndex = MaxIndexSet[type][tempSize - 1];
+		return resultIndex;
+	}
 	if (tempSize>0)
 	{
 		resultIndex = MaxIndexSet[type][tempSize - 1];
