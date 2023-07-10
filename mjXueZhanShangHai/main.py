@@ -233,6 +233,7 @@ class MyPyQT_Form(QtWidgets.QWidget, Ui_Form):
         self.env = None
         self.game_over= False
         helper.bTest = False
+        #self.callCard = 0x03
         # result = pyautogui.locate(needleImage=helper.Pics["out0_7"], haystackImage=img,
         #                           region=actionSearchPos,
         #                           confidence=0.70)
@@ -244,9 +245,9 @@ class MyPyQT_Form(QtWidgets.QWidget, Ui_Form):
         #self.turnCardReal = self.find_other_cards(self.RPlayedCardsPos)
         #tmpHandCard = self.changeDataOut('2AKQQJJT99877753')
         #tmpHandCardStr = self.changeDataIn(tmpHandCard)
-        # self.user_hand_cards_real=self.changeDataIn([33, 33, 18, 19, 20, 21, 22, 23, 23, 23, 24, 55, 55, 55])
-        # self.allDisCardData=self.changeDataIn([49,49,49,50,53,51,36,40,39,52,39,35])
-        # action_message, cbOperateCode = self.dllCall(self.user_hand_cards_real, self.allDisCardData, 0, 0,
+        #self.user_hand_cards_real=self.changeDataIn([33, 33, 18, 19, 20, 21, 22, 23, 23, 23, 24, 55, 55, 55])
+        #self.allDisCardData=self.changeDataIn([49,49,49,50,53,51,36,40,39,52,39,35])
+        #action_message, cbOperateCode = self.dllCall(self.user_hand_cards_real, self.allDisCardData, 0, 0,
         #                                              self.callCard, 0, '33', self.cbLaiZi)
         #result = helper.LocateOnScreen("change_player_btn", region=self.changePlayerBtnPos, confidence=0.75)
 
@@ -264,7 +265,7 @@ class MyPyQT_Form(QtWidgets.QWidget, Ui_Form):
         print("开始对局手牌数：",len(self.user_hand_cards_real))
         print("手牌:",self.user_hand_cards_real)
         # 生成手牌结束，校验手牌数量
-        self.dingQueCard(self.user_hand_cards_real)
+        #self.dingQueCard(self.user_hand_cards_real)
         self.isGameStart()
         # 得到出牌顺序
         self.play_order = 0#self.find_landlord()
@@ -332,7 +333,7 @@ class MyPyQT_Form(QtWidgets.QWidget, Ui_Form):
             img, _ = helper.Screenshot()
             for i in range(0, len(actionStr)):
                 result = pyautogui.locate(needleImage=helper.Pics[actionStr[i]], haystackImage=img,
-                                          region=pos, confidence=0.88)
+                                          region=pos, confidence=0.92)
                 print("haveOutCard-...")
                 if result is not None:
                     ActionPos=(result.left, result.top, result.width, result.height)
@@ -641,6 +642,7 @@ class MyPyQT_Form(QtWidgets.QWidget, Ui_Form):
                         ("cbHandCardCount", c_ubyte),
                         ("cbType", c_ubyte ),
                         ]
+        add_path = os.path.split(os.path.abspath(__file__))[0] + '\\'
         pDll = CDLL("./testC++.dll")
         arg1 = tagInPyhonType()
         tmpHandCard=self.changeDataOut(HandCardData)
@@ -680,7 +682,8 @@ class MyPyQT_Form(QtWidgets.QWidget, Ui_Form):
                         ("cbResultCard", c_ubyte * MAX_COUNT)
                         ]
         add_path = os.path.split(os.path.abspath(__file__))[0] + '\\'
-        pDll = CDLL(add_path+"./testC++.dll")
+        print(add_path)
+        pDll = CDLL("./testC++.dll")
         arg1 = tagInPyhonNew()
         #tmpHandCard=[0x01,0x02,0x03,0x04,0x05,0x06,0x07,0x08,0x09,0x0A,0x0B,0x0C,0x0D,0x11,0x12,0x13,0x25,0x35,0x16,0x17]
         tmpHandCard=self.changeDataOut(HandCardData)

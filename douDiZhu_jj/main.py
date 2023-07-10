@@ -346,34 +346,35 @@ class MyPyQT_Form(QtWidgets.QWidget, Ui_Form):
                             result = helper.LocateOnScreen("go_btn", region=tempOutCardPos, confidence=0.85)
                             self.sleep(50)
                         helper.ClickOnImage("go_btn", region=tempOutCardPos, confidence=0.85)
+                if self.game_over:
+                    inta=4
+                else:
+                    # 更新界面
+                    #tmpCard=self.find_other_cardsEx(self.MyHandCardsPos)
+                    self.mylastCard =action_message
+                    if len(action_message)>0:
+                       self.myHaveOutCard=self.myHaveOutCard+action_message
+                       self.RPlayedCard.setText("我方牌："+self.myHaveOutCard)
+                    self.handCardCount[self.play_order]=self.handCardCount[self.play_order]-len(action_message)
+                    self.allDisCardData=self.allDisCardData+action_message
+                    self.user_hand_cards_real = self.DeleteCard(self.user_hand_cards_real, action_message)
+                    self.UserHandCards.setText("手牌：" + self.user_hand_cards_real)
+                    print(self.play_order,"handcount0：", self.handCardCount[0])
+                    print(self.play_order,"handcount1：", self.handCardCount[1])
+                    #这个地方不要轻易打开，不同的平台消失这个按钮速度不同，慢的可以打开，不慢的就不要打开，否则下家又出完牌了，你才识别出来
+                    # result = self.getTipBtnrResult()
+                    # while (result is not None) and bPass==False :
+                    #     result = self.getTipBtnrResult()
+                    #     print(self.play_order, "wait--tip_btn")
+                    #     self.sleep(20)
+                    self.play_order = 1
 
-                # 更新界面
-                #tmpCard=self.find_other_cardsEx(self.MyHandCardsPos)
-                self.mylastCard =action_message
-                if len(action_message)>0:
-                   self.myHaveOutCard=self.myHaveOutCard+action_message
-                   self.RPlayedCard.setText("我方牌："+self.myHaveOutCard)
-                self.handCardCount[self.play_order]=self.handCardCount[self.play_order]-len(action_message)
-                self.allDisCardData=self.allDisCardData+action_message
-                self.user_hand_cards_real = self.DeleteCard(self.user_hand_cards_real, action_message)
-                self.UserHandCards.setText("手牌：" + self.user_hand_cards_real)
-                print(self.play_order,"handcount0：", self.handCardCount[0])
-                print(self.play_order,"handcount1：", self.handCardCount[1])
-                #这个地方不要轻易打开，不同的平台消失这个按钮速度不同，慢的可以打开，不慢的就不要打开，否则下家又出完牌了，你才识别出来
-                # result = self.getTipBtnrResult()
-                # while (result is not None) and bPass==False :
-                #     result = self.getTipBtnrResult()
-                #     print(self.play_order, "wait--tip_btn")
-                #     self.sleep(20)
-                self.play_order = 1
-
-                self.game_over=self.detect_start_btn()
+                    self.game_over=self.detect_start_btn()
             elif self.play_order == 1:
                 self.sleep(100)
                 pass_flag = helper.LocateOnScreen('pass',
                                                   region=self.otherPassPos,
                                                   confidence=self.PassConfidence)
-                bGameOver=False
                 GameOverCheckOut=0
                 while self.RunGame and self.have_white(self.RPlayedCardsPos) == 0 and pass_flag is None:
                     print(self.play_order,"等待下家出牌")
@@ -382,12 +383,11 @@ class MyPyQT_Form(QtWidgets.QWidget, Ui_Form):
                                                       confidence=self.PassConfidence)
                     GameOverCheckOut=GameOverCheckOut+1
                     if GameOverCheckOut%3==0:
-                        result = helper.LocateOnScreen("change_player_btn", region=self.changePlayerBtnPos)
-                        if (result is not None) :
-                            bGameOver=True
+                        self.game_over = self.detect_start_btn()
+                        if self.game_over:
                             break
-                if bGameOver :
-                    self.game_over=self.detect_start_btn()
+                if self.game_over :
+                    inta=4
                 else:
                     # 未找到"不出"
                     if pass_flag is None:

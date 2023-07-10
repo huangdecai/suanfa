@@ -2525,3 +2525,57 @@ testCount:1
  cbDiscardCardCount:12,
 ,49,49,49,50,53,51,36,40,39,52,39,35cbOperateCode,0,cbOperateCode,24,,24
 End
+
+fntestPythonCallCard
+
+cbHandCardCount:13
+
+testCount:1
+,2,2,6,7,8,8,9,18,20,21,35,36,40
+type:,1
+End
+
+fntestPythonCallCard
+
+cbHandCardCount:13
+
+testCount:1
+,1,7,9,9,19,24,25,33,35,36,36,37,41
+type:,1
+End
+
+cbHandCardCount:14
+
+testCount:2
+,1,7,9,9,33,35,36,36,37,41,19,24,25,41
+ wMeChairId:0,
+
+ wCurrentUser:0,
+
+ cbActionMask:0,
+
+ cbActionCard:41,
+
+ cbCardDataEx:20,
+,19,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+ cbDiscardCardCount:0,
+cbOperateCode,0,cbOperateCode,19,,19
+End
+
+cbHandCardCount:14
+
+testCount:3
+,1,7,9,9,33,35,36,36,37,41,41,24,25,37
+ wMeChairId:0,
+
+ wCurrentUser:0,
+
+ cbActionMask:0,
+
+ cbActionCard:37,
+
+ cbCardDataEx:20,
+,19,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+ cbDiscardCardCount:1,
+,19cbOperateCode,0,cbOperateCode,24,,24
+End
