@@ -3844,7 +3844,7 @@ BYTE CGameLogicNew::SearchLineCardType(const BYTE cbHandCardData[], BYTE cbHandC
 	//ËÑË÷Ë³×Ó
 	BYTE cbTmpLinkCount = 0;
 	BYTE cbValueIndex = 0;
-	for (cbValueIndex = cbReferIndex; cbValueIndex < 14; cbValueIndex++)
+	for (cbValueIndex = cbReferIndex; cbValueIndex < 15; cbValueIndex++)
 	{
 		//¼ÌÐøÅÐ¶Ï
 		if (Distributing.cbDistributing[cbValueIndex][cbIndexCount] < cbBlockCount)

@@ -3314,7 +3314,7 @@ BYTE CGameLogicNew::SearchAllLineCardType(const BYTE cbHandCardData[], BYTE cbHa
 	//ËÑË÷Ë³×Ó
 	BYTE cbTmpLinkCount = 0;
 	int needLaiZiCount = 0;
-	for (BYTE cbValueIndex = 0; cbValueIndex < 14; cbValueIndex++)
+	for (BYTE cbValueIndex = 0; cbValueIndex < 15; cbValueIndex++)
 	{
 		//¼ÌÐøÅÐ¶Ï
 		if (Distributing.cbDistributing[cbValueIndex][cbIndexCount] < cbBlockCount)
