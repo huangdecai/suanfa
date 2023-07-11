@@ -782,7 +782,7 @@ BYTE CGameLogicNew::SearchOutCard(const BYTE cbHandCardData[], BYTE cbHandCardCo
 	case CT_FOUR_TAKE_ONE:		//四带两单
 	case CT_FOUR_TAKE_TWO:		//四带两双
 	{
-		BYTE cbTakeCount = cbTurnOutType == CT_FOUR_TAKE_ONE ? 1 : 2;
+		BYTE cbTakeCount = cbTurnOutType == CT_FOUR_TAKE_ONE ? 2 : 4;
 
 		BYTE cbTmpTurnCard[MAX_COUNT] = {};
 		CopyMemory(cbTmpTurnCard, cbTurnCardData, sizeof(BYTE)*cbTurnCardCount);
@@ -841,7 +841,7 @@ float CGameLogicNew::GetHandScore(vector<tagOutCardResultNew> &CardTypeResult, i
 	int shunIndex = 0;
 	bool bHave2 = false;
 	int bHaveWang = 0;
-	bool bHaveBoomb = false;
+	int bHaveBoombCount = 0;
 	vector<int> vecShunZiCount;
 	for (int i = 0; i < CardTypeResult.size(); i++)
 	{
@@ -854,9 +854,18 @@ float CGameLogicNew::GetHandScore(vector<tagOutCardResultNew> &CardTypeResult, i
 				score += 10;
 			}
 		}
+		else if (CardTypeResult[i].cbCardType == CT_MISSILE_CARD)
+		{
+			score += 50;
+			bHaveWang = 2;
+		}
 		else if (CardTypeResult[i].cbCardType >= CT_FOUR_TAKE_ONE)
 		{
-			bHaveBoomb = true;
+			bHaveBoombCount++;
+			if (bJiaoFen)
+			{
+				score += 25;
+			}
 		}
 	}
 	for (int i = 0; i < CardTypeResult.size(); i++)
@@ -876,20 +885,16 @@ float CGameLogicNew::GetHandScore(vector<tagOutCardResultNew> &CardTypeResult, i
 				score += 5;
 				if (bHaveWang==1)
 				{
-					score += 3;
+					score += 5;
 				}
 				else if (bHaveWang == 2)
 				{
-					score += 5;
+					score += 10;
 				}
 				bHave2 = true;
 			}
 		}
-		if (CardTypeResult[i].cbCardType == CT_MISSILE_CARD)
-		{   
-				score += 50;
-				bHaveWang = 2;
-		}
+		
 		else if (CardTypeResult[i].cbCardType == CT_DOUBLE)
 		{   //为了解决压对12,12，手上牌1,1,13,13,12，12，8，6，6上对1还是上对13的问题
 			if (bJiaoFen)
@@ -897,17 +902,21 @@ float CGameLogicNew::GetHandScore(vector<tagOutCardResultNew> &CardTypeResult, i
 				if (GetCardLogicValue(CardTypeResult[i].cbResultCard[0]) == 14)
 				{
 					score += 5;
+					if (bHave2)
+					{
+						score += 5;
+					}
 				}
 				else if (GetCardLogicValue(CardTypeResult[i].cbResultCard[0]) == 15)
 				{
 					score += 7;
 					if (bHaveWang == 2 )
 					{
-						score += 20;
+						score += 30;
 					}
-					else if (bHaveWang == 2 )
+					else if (bHaveWang == 1 )
 					{
-						score += 10;
+						score += 20;
 					}
 				}
 			}
@@ -920,6 +929,10 @@ float CGameLogicNew::GetHandScore(vector<tagOutCardResultNew> &CardTypeResult, i
 				if (GetCardLogicValue(CardTypeResult[i].cbResultCard[0]) == 14)
 				{
 					score += 8;
+					if (bHave2)
+					{
+						score += 5;
+					}
 				}
 				else if (GetCardLogicValue(CardTypeResult[i].cbResultCard[0]) == 15)
 				{
@@ -928,10 +941,11 @@ float CGameLogicNew::GetHandScore(vector<tagOutCardResultNew> &CardTypeResult, i
 					{
 						score += 30;
 					}
-					else if (bHaveWang == 2 )
+					else if (bHaveWang == 1 )
 					{
 						score += 20;
 					}
+					bHave2 = true;
 				}
 			}
 			
@@ -1039,7 +1053,7 @@ float CGameLogicNew::GetHandScore(vector<tagOutCardResultNew> &CardTypeResult, i
 	{
 		score += 2;
 	}
-	if (bJiaoFen&&bHave2&&bHaveBoomb==false)
+	if (bJiaoFen&&bHave2&&bHaveBoombCount == 0 && bHaveWang == 0)
 	{
 		score -= 30;
 	}
@@ -2589,6 +2603,48 @@ int CGameLogicNew::YouXianDaNengShouHuiCard(const BYTE cbHandCardData[], BYTE cb
 				}
 			}
 		}
+		else if ((juDuiMaxIndex[CT_MISSILE_CARD] + juDuiMaxIndex[CT_FOUR_TAKE_TWO] + juDuiMaxIndex[CT_FOUR_TAKE_ONE] + juDuiMaxIndex[CT_BOMB_CARD]) == (vecMinTypeCardResult.size() - 1) && m_cbUserCardCount[1] != vecMinTypeCardResult[vecMinTypeCardResult.size() - 1].cbCardCount)
+		{
+			for (int i = 0; i < vecMinTypeCardResult.size(); i++)
+			{
+				int type = vecMinTypeCardResult[i].cbCardType;
+				if (type == CT_FOUR_TAKE_ONE )
+				{
+					int szie = vecMinTypeCardResult[i].cbCardCount;
+					if (vecMinTypeCardResult[i].cbResultCard[szie - 1] == vecMinTypeCardResult[i].cbResultCard[szie-2])
+					{
+						BYTE tmpTurnCard[MAX_COUNT] = { 0 };
+						int tmpTurnCardCount = 2;
+						CopyMemory(tmpTurnCard, vecMinTypeCardResult[i].cbResultCard + 4, tmpTurnCardCount);
+						bool bExistMax = SearchOtherHandCardThan(tmpTurnCard, tmpTurnCardCount, true);
+						if (bExistMax == false)
+						{
+							resultIndex = i;
+							OutCardResult.cbCardCount = tmpTurnCardCount;
+							OutCardResult.cbCardType = CT_DOUBLE;
+							CopyMemory(OutCardResult.cbResultCard, tmpTurnCard, OutCardResult.cbCardCount);
+							return resultIndex;
+						}
+					}
+				}
+				else if (type == CT_THREE_TAKE_ONE&& vecMinTypeCardResult[i].cbCardCount==4)
+				{
+						BYTE tmpTurnCard[MAX_COUNT] = { 0 };
+						int tmpTurnCardCount = 1;
+						CopyMemory(tmpTurnCard, vecMinTypeCardResult[i].cbResultCard + 3, tmpTurnCardCount);
+						bool bExistMax = SearchOtherHandCardThan(tmpTurnCard, tmpTurnCardCount, true);
+						if (bExistMax == false)
+						{
+							resultIndex = i;
+							OutCardResult.cbCardCount = tmpTurnCardCount;
+							OutCardResult.cbCardType = CT_SINGLE;
+							CopyMemory(OutCardResult.cbResultCard, tmpTurnCard, OutCardResult.cbCardCount);
+							return resultIndex;
+						}
+				}
+			}
+			resultIndex = vecMinTypeCardResult.size() - 1;
+		}
 		else if (allMaxCardIndex.size() > 0)
 		{
 			resultIndex = allMaxCardIndex[allMaxCardIndex.size() - 1];
@@ -3901,12 +3957,12 @@ bool CGameLogicNew::OutCardShengYuFenCheck(BYTE cbHandCardCount, const BYTE * cb
 	vector<BYTE> singleData;
 	vector<BYTE> doubleData;
 	vector<BYTE> BombData;
-	bool bHaveBombType = false;
+	int bHaveBombTypeCount = 0;
 	for (int i = 0; i < vecMinTypeCardResult.size();i++)
 	{
 		if (vecMinTypeCardResult[i].cbCardType>=CT_FOUR_TAKE_ONE)
 		{
-			bHaveBombType = true;
+			bHaveBombTypeCount++;
 		}
 		if (vecMinTypeCardResult[i].cbCardType == CT_SINGLE)
 		{
@@ -3975,6 +4031,30 @@ bool CGameLogicNew::OutCardShengYuFenCheck(BYTE cbHandCardCount, const BYTE * cb
 			{
 				BiShengResult.push_back(i);
 			}
+			else if ((bExistMax != true) && (tempType <CT_FOUR_TAKE_ONE) )
+			{
+				//大一手，炸弹和大小王带两手就获胜的牌
+				int tmpMaxCount = 0;
+				if (TempMinTypeCardResult[i][0].cbCardType >= CT_BOMB_CARD  )
+				{
+					for (int j = 1; j < TempMinTypeCardResult[i].size(); j++)
+					{
+						if ((TempMinTypeCardResult[i][0].cbCardCount + tmpMaxCount + TempMinTypeCardResult[i][j].cbCardCount)>=m_cbUserCardCount[0])
+						{
+							BiShengResult.push_back(i);
+							bExistBiYing = true;
+							resultIndex = i;
+							break;
+						}
+						else if (TempMinTypeCardResult[i][j].cbCardCount>tmpMaxCount)
+						{
+							tmpMaxCount = TempMinTypeCardResult[i][j].cbCardCount;
+						}
+						
+					}
+				}
+				
+			}
 
 			if ((tempResultIndex != -1) && bExistMax != true && (tempMinTypeScore > BiShengScore) )
 			{
@@ -3989,16 +4069,8 @@ bool CGameLogicNew::OutCardShengYuFenCheck(BYTE cbHandCardCount, const BYTE * cb
 				bExistBiYing = biYing;
 				if (zhiJieYing )
 				{
-			/*		if (tempType == CT_THREE_TAKE_ONE || tempType == CT_THREE_TAKE_TWO)
-					{
-
-					}
-					else*/
-					{
-						bExistBiYing = zhiJieYing;
-					}
+					bExistBiYing = zhiJieYing;
 				}
-				//break;
 			}
 			else if (biYing &&  bExistMax != true && (tempMinTypeScore > BiShengScore) )
 			{
@@ -4045,7 +4117,7 @@ bool CGameLogicNew::OutCardShengYuFenCheck(BYTE cbHandCardCount, const BYTE * cb
 					bExistBiYing = true;
 				}
 			}
-			else if (tempType == CT_DOUBLE&&GetCardLogicValue(SearchCardResult.cbResultCard[i][0]) >= 13 && WuDiCheck(cbReserveCardData, cbReserveCardCount, NULL, 0, OutCardResult))
+			else if (bExistBiYing==false&&tempType == CT_DOUBLE&&GetCardLogicValue(SearchCardResult.cbResultCard[i][0]) >= 13 && WuDiCheck(cbReserveCardData, cbReserveCardCount, NULL, 0, OutCardResult))
 			{
 				MinTypeScore = tempMinTypeScore;
 				minTypeCount = tempMinTypeCount;
@@ -4072,7 +4144,7 @@ bool CGameLogicNew::OutCardShengYuFenCheck(BYTE cbHandCardCount, const BYTE * cb
 		{
 			int tempIndex = vecIndexUnIncludeBomb[vecIndexUnIncludeBomb.size() - 1];
 			int reIndex = IsJueDuiDaPai(SearchCardResult.cbResultCard[tempIndex], SearchCardResult.cbCardCount[tempIndex], CT_SINGLE);
-			if ((reIndex == XIANG_DUI_DA || reIndex == JUE_DUI_DA) && m_cbUserCardCount[1] != SearchCardResult.cbCardCount[resultIndex]&&bHaveBombType)
+			if ((reIndex == XIANG_DUI_DA || reIndex == JUE_DUI_DA) && m_cbUserCardCount[1] != SearchCardResult.cbCardCount[resultIndex] && bHaveBombTypeCount>0)
 			{
 				int a = 0;
 			}
@@ -4117,7 +4189,10 @@ bool CGameLogicNew::OutCardShengYuFenCheck(BYTE cbHandCardCount, const BYTE * cb
 		else{
 			if (tempCardType >= CT_BOMB_CARD)
 			{
-				
+				if (bHaveBombTypeCount<=1&&(m_cbUserCardCount[1] >= 10) || (m_cbUserCardCount[1] <= 2))
+				{
+					resultIndex = -1;
+				}
 			}
 			else
 			{
@@ -4952,6 +5027,16 @@ bool CGameLogicNew::WuDiCheck(const BYTE * cbHandCardData, BYTE cbHandCardCount,
 	{
 		SearchOutCard(cbHandCardData, cbHandCardCount, cbTurnCardData, cbTurnCardCount, &SearchCardResult);
 	}
+	int bombTypeIndex = -1;
+	for (int i = 0; i < SearchCardResult.cbSearchCount; i++)
+	{
+		int type = GetCardType(SearchCardResult.cbResultCard[i], SearchCardResult.cbCardCount[i]);
+		bool	bExistMax = SearchOtherHandCardThan(SearchCardResult.cbResultCard[i], SearchCardResult.cbCardCount[i], false);
+		if (bExistMax == false && type>=CT_BOMB_CARD)
+		{
+			bombTypeIndex = i;
+		}
+	}
 	
 	for (int i = 0; i < SearchCardResult.cbSearchCount; i++)
 	{
@@ -4967,9 +5052,15 @@ bool CGameLogicNew::WuDiCheck(const BYTE * cbHandCardData, BYTE cbHandCardCount,
 			}
 		}
 		else if (SearchCardResult.cbCardCount[i] >= m_cbUserCardCount[0]){
+			int index = i;
+			if (bombTypeIndex != -1)
+			{
+				//要赢了提前把炸弹打出去
+				index = bombTypeIndex;
+			}
 			ZeroMemory(&OutCardResult, sizeof(OutCardResult));
-			OutCardResult.cbCardCount = SearchCardResult.cbCardCount[i];
-			CopyMemory(OutCardResult.cbResultCard, SearchCardResult.cbResultCard[i], OutCardResult.cbCardCount);
+			OutCardResult.cbCardCount = SearchCardResult.cbCardCount[index];
+			CopyMemory(OutCardResult.cbResultCard, SearchCardResult.cbResultCard[index], OutCardResult.cbCardCount);
 			return true;
 		}
 	}
@@ -5405,14 +5496,14 @@ bool CGameLogicNew::FindMaxTypeTakeOneType(const BYTE cbHandCardData[], BYTE cbH
 				}
 				return true;
 		}
-		for (int i = vecMinTypeCardResult.size() - 1; i >= 0; i--)
+		for (int i = 0; i < vecMinTypeCardResult.size(); i++)
 		{
 			if (vecMinTypeCardResult[i].cbCardType == CT_BOMB_CARD || vecMinTypeCardResult[i].cbCardType == CT_MISSILE_CARD || cbTurnCardType == 0)
 			{
 				BYTE tmpTurnCard[MAX_COUNT] = { 0 };
 				CopyMemory(tmpTurnCard, vecMinTypeCardResult[i].cbResultCard, vecMinTypeCardResult[i].cbCardCount);
 				bool bExistMax = SearchOtherHandCardThan(tmpTurnCard, vecMinTypeCardResult[i].cbCardCount, false);
-				if (bExistMax == false)
+				if (bExistMax == false||vecMinTypeCardResult[i].cbCardCount >= m_cbUserCardCount[0])
 				{
 					ZeroMemory(&OutCardResult, sizeof(OutCardResult));
 					if (FourTakeFenChai(vecMinTypeCardResult[i].cbResultCard, vecMinTypeCardResult[i].cbCardCount, vecMinTypeCardResult, OutCardResult))
@@ -6244,8 +6335,13 @@ bool CGameLogicNew::ThreeTakeTwoTakeMinCard(const BYTE cbCardData[], BYTE cbHand
 {
 
 	int outCardType = GetCardType(OutCardResult.cbResultCard, OutCardResult.cbCardCount);
+	bool bEnalbe = true;
+	if (OutCardResult.cbCardCount >= 8 && vecMinTypeCardResult.size() <= 2)
+	{
+		bEnalbe = false;
+	}
 	
-	if (outCardType == CT_FOUR_TAKE_ONE||outCardType == CT_THREE_TAKE_TWO || outCardType == CT_THREE_TAKE_ONE)
+	if ((outCardType == CT_FOUR_TAKE_ONE || outCardType == CT_THREE_TAKE_TWO || outCardType == CT_THREE_TAKE_ONE) && bEnalbe)
 	{
 		if (OutCardResult.cbCardCount<=5)
 		{
@@ -6680,6 +6776,14 @@ bool CGameLogicNew::FourTakeFenChai(const BYTE cbHandCardData[], BYTE cbHandCard
 						OutCardResult.cbCardType = CT_SINGLE;
 						CopyMemory(OutCardResult.cbResultCard, &singleData[tempIndex], 1);
 						return true;
+				}
+				else if (tmpTurnCard[0] == 14 && vecMinTypeCardResult.size() == 2 && singleData.size()==3)
+				{
+					int tempIndex = singleData.size() - 1;
+					OutCardResult.cbCardCount = 1;
+					OutCardResult.cbCardType = CT_SINGLE;
+					CopyMemory(OutCardResult.cbResultCard, &singleData[tempIndex], 1);
+					return true;
 				}
 			}
 			if (doubleData.size() >= 1&&vecMinTypeCardResult.size() == 1)

@@ -187,7 +187,9 @@ class MyPyQT_Form(QtWidgets.QWidget, Ui_Form):
             traceback.print_tb(exc_tb)
             self.stop()
             print("出错后重新开始....")
-            self.sleep(1000)
+            while self.detect_start_btn()==False:
+                self.sleep(1000)
+
             self.init_cards()
 
     def gameStart(self):
@@ -444,6 +446,8 @@ class MyPyQT_Form(QtWidgets.QWidget, Ui_Form):
 
     def jiaoDiZhuCheck(self):
         operateCount=0
+        tryCount=0
+        bJiao=False
         while self.isJiaoState() is None :
 
             resultJ = helper.LocateOnScreen("jiaodizhu", region=self.jiaoDiZhuBtnPos,
@@ -455,7 +459,7 @@ class MyPyQT_Form(QtWidgets.QWidget, Ui_Form):
                 score=self.getCardScore(self.user_hand_cards_real)
                 print("jiaoDiZhuCheck...0",score)
                 self.jiaoDiZhuFen.setText("叫地主分数:"+str(score))
-                if score>=-5 and operateCount==0:
+                if score>=-15 and operateCount==0:
                     helper.ClickOnImage("jiaodizhu", region=self.jiaoDiZhuBtnPos)
                     operateCount+=1
                 else:
@@ -464,16 +468,19 @@ class MyPyQT_Form(QtWidgets.QWidget, Ui_Form):
             elif resultQ:
                 score = self.getCardScore(self.user_hand_cards_real)
                 self.QiangDiZhuFen.setText("抢地主分数:"+str(score))
-                if score >=-0 and operateCount==0:
+                if bJiao and score>=35:
                     helper.ClickOnImage("qiangdizhu", region=self.jiaoDiZhuBtnPos)
                     operateCount += 1
-                elif score >= 15 and operateCount<=1:
+                elif score >=-10 and operateCount==0:
                     helper.ClickOnImage("qiangdizhu", region=self.jiaoDiZhuBtnPos)
                     operateCount += 1
-                elif score >= 30 and operateCount<=2:
+                elif score >= 0 and operateCount<=1:
                     helper.ClickOnImage("qiangdizhu", region=self.jiaoDiZhuBtnPos)
                     operateCount += 1
-                elif score >= 50 and operateCount<=3:
+                elif score >= 10 and operateCount<=2:
+                    helper.ClickOnImage("qiangdizhu", region=self.jiaoDiZhuBtnPos)
+                    operateCount += 1
+                elif score >= 30 and operateCount<=3:
                     helper.ClickOnImage("qiangdizhu", region=self.jiaoDiZhuBtnPos)
                     operateCount += 1
                 else:
@@ -482,6 +489,9 @@ class MyPyQT_Form(QtWidgets.QWidget, Ui_Form):
                 print("jiaoDiZhuCheck...1",score)
             self.sleep(200)
             result = self.getTipBtnrResult()
+            tryCount+=1
+            if tryCount>20:
+                a=3/0
             if result:
                 break
             elif operateCount==0:
@@ -531,6 +541,8 @@ class MyPyQT_Form(QtWidgets.QWidget, Ui_Form):
                 helper.LeftClick((self.changePlayerBtnPos[0] + 60, self.changePlayerBtnPos[1] + 30))
                 self.sleep(500)
             return True
+        else:
+            return False
     def shengYuPaiShow(self, cards):
         #self.ThreeLandlordCards.resize(300,100)
         AllCard = {'3': 3, '4': 4, '5': 5, '6': 6, '7': 7,

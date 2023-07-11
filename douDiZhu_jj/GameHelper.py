@@ -515,7 +515,7 @@ class GameHelper:
                     print("点击", handCardsInfo[i][1])
                     break
 
-            time.sleep(0.13)  #这里不能设置过快，否则会造成上面点击的扑克弹起了，但是下面得到的截图是没弹起的
+            time.sleep(0.15)  #这里不能设置过快，否则会造成上面点击的扑克弹起了，但是下面得到的截图是没弹起的
             if self.Interrupt:
                 break
             if no_check:
