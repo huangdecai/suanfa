@@ -323,10 +323,6 @@ TESTC_API int  PythonCountScore(tagInPyhonCardScore* pythonIn)
 
 	log(pythonIn->cbHandCardData, pythonIn->cbHandCardCount);
 	int score = m_GameLogicNew.LandScoreErRen(pythonIn->cbHandCardData, pythonIn->cbHandCardCount, pythonIn->cbCardScore);
-	if (score < 0)
-	{
-		score = 0;
-	}
 	log("PythonCountScore:%d", score);
 
 	return score;

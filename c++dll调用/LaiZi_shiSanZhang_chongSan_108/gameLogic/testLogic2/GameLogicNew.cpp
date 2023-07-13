@@ -3367,7 +3367,8 @@ BYTE CGameLogicNew::SearchAllLineCardType(const BYTE cbHandCardData[], BYTE cbHa
 			cbTmpLinkCount++;
 
 			//Ñ°ÕÒ×î³¤Á¬
-			if (cbLineCount == 0) continue;
+			if (cbLineCount == 0 && cbValueIndex!=13)
+				continue;
 		}
 		if (cbTmpLinkCount >= cbLineCount || (cbTmpLinkCount + needLaiZiCount >= cbLineCount))
 		{

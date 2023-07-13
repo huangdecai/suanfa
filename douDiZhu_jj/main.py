@@ -462,31 +462,36 @@ class MyPyQT_Form(QtWidgets.QWidget, Ui_Form):
                 if score>=-15 and operateCount==0:
                     helper.ClickOnImage("jiaodizhu", region=self.jiaoDiZhuBtnPos)
                     operateCount+=1
+                    bJiao = True
                 else:
                     helper.ClickOnImage("bujiao", region=self.buJiaoBtnPos)
                     operateCount=0
             elif resultQ:
                 score = self.getCardScore(self.user_hand_cards_real)
                 self.QiangDiZhuFen.setText("抢地主分数:"+str(score))
-                if bJiao and score>=35:
+                if bJiao and score>=40:
                     helper.ClickOnImage("qiangdizhu", region=self.jiaoDiZhuBtnPos)
                     operateCount += 1
-                elif score >=-10 and operateCount==0:
+                elif score >=0 and operateCount==0:
+                    print("operateCount...1", score,operateCount)
                     helper.ClickOnImage("qiangdizhu", region=self.jiaoDiZhuBtnPos)
                     operateCount += 1
-                elif score >= 0 and operateCount<=1:
+                elif score >= 10 and operateCount<=1:
+                    print("operateCount...2", score, operateCount)
                     helper.ClickOnImage("qiangdizhu", region=self.jiaoDiZhuBtnPos)
                     operateCount += 1
-                elif score >= 10 and operateCount<=2:
+                elif score >= 20 and operateCount<=2:
+                    print("operateCount...3", score, operateCount)
                     helper.ClickOnImage("qiangdizhu", region=self.jiaoDiZhuBtnPos)
                     operateCount += 1
                 elif score >= 30 and operateCount<=3:
+                    print("operateCount...4", score, operateCount)
                     helper.ClickOnImage("qiangdizhu", region=self.jiaoDiZhuBtnPos)
                     operateCount += 1
                 else:
                     helper.ClickOnImage("buqiang", region=self.buJiaoBtnPos)
                     operateCount = 0
-                print("jiaoDiZhuCheck...1",score)
+                print("jiaoDiZhuCheck...1",score,operateCount)
             self.sleep(200)
             result = self.getTipBtnrResult()
             tryCount+=1
