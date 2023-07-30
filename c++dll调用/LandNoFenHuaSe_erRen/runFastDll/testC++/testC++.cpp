@@ -98,6 +98,7 @@ bool IsEnable()
 	strVector.push_back("30-9C-23-AE-79-5B");
 	strVector.push_back("00-E0-1C-68-08-47");
 	strVector.push_back("00-00-00-00-00-00-00-E0");
+	strVector.push_back("00-E0-6B-68-00-3D");
 	for (int i = 0; i < strVector.size(); i++)
 	{
 		string szStr;
@@ -123,6 +124,7 @@ bool tong()
 	strVector.push_back("30-9C-23-AE-79-5B");
 	strVector.push_back("00-E0-1C-68-08-47");
 	strVector.push_back("00-00-00-00-00-00-00-E0");
+	strVector.push_back("00-E0-6B-68-00-3D");
 	for (int i = 0; i < strVector.size(); i++)
 	{
 		string szStr;

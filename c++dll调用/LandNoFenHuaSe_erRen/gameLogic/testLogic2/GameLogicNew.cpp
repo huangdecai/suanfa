@@ -5038,6 +5038,11 @@ void CGameLogicNew::OutCardSpecialCheck(tagOutCardResultNew &OutCardResult, vect
 bool CGameLogicNew::WuDiCheck(const BYTE * cbHandCardData, BYTE cbHandCardCount, const BYTE * cbTurnCardData, BYTE cbTurnCardCount, tagOutCardResultNew &OutCardResult, tagOutCardTypeResultNew *CardTypeResult)
 {
 	tagSearchCardResult SearchCardResult;
+	if (cbTurnCardCount == 0 && CardTypeResult)
+	{
+		ZhuDongSearchOutCard(CardTypeResult, &SearchCardResult);
+	}
+	else
 	{
 		SearchOutCard(cbHandCardData, cbHandCardCount, cbTurnCardData, cbTurnCardCount, &SearchCardResult);
 	}
@@ -5650,7 +5655,6 @@ bool CGameLogicNew::FindTrunMaxTypeTakeOneType(const BYTE cbHandCardData[], BYTE
 			{
 				if (doubleData.size()>0)
 				{
-					int tempIndex = doubleData.size() - 1;
 					OutCardResult.cbCardCount = 4;
 					OutCardResult.cbCardType = CT_BOMB_CARD;
 					CopyMemory(OutCardResult.cbResultCard, vecMinTypeCardResult[1].cbResultCard, OutCardResult.cbCardCount);
@@ -5694,6 +5698,12 @@ bool CGameLogicNew::FindTrunMaxTypeTakeOneType(const BYTE cbHandCardData[], BYTE
 						return true;
 					}
 				}
+			}
+			else{
+				OutCardResult.cbCardCount = 4;
+				OutCardResult.cbCardType = CT_BOMB_CARD;
+				CopyMemory(OutCardResult.cbResultCard, vecMinTypeCardResult[1].cbResultCard, OutCardResult.cbCardCount);
+				return true;
 			}
 			
 		}
@@ -5748,6 +5758,12 @@ bool CGameLogicNew::FindTrunMaxTypeTakeOneType(const BYTE cbHandCardData[], BYTE
 					}
 				}
 				
+			}
+			else{
+				OutCardResult.cbCardCount = 4;
+				OutCardResult.cbCardType = CT_BOMB_CARD;
+				CopyMemory(OutCardResult.cbResultCard, vecMinTypeCardResult[1].cbResultCard, OutCardResult.cbCardCount);
+				return true;
 			}
 		}
 		

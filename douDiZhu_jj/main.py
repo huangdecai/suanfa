@@ -187,7 +187,11 @@ class MyPyQT_Form(QtWidgets.QWidget, Ui_Form):
             traceback.print_tb(exc_tb)
             self.stop()
             print("出错后重新开始....")
-            while self.detect_start_btn()==False:
+            result = helper.LocateOnScreen("change_player_btn", region=self.changePlayerBtnPos)
+            while result is None:
+                result = helper.LocateOnScreen("change_player_btn", region=self.changePlayerBtnPos)
+                if result :
+                    helper.ClickOnImage("change_player_btn", region=self.changePlayerBtnPos)
                 self.sleep(1000)
 
             self.init_cards()
