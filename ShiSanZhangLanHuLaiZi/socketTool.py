@@ -36,7 +36,8 @@ class TCP_Head(Structure):
                 ]
 class CMD_GR_LogonUserID(Structure):
     _fields_ = [("dwUserID", c_int64 ),
-                ("password", c_int64)
+                ("password", c_int64),
+                ("szMachineID", c_wchar * 128)
                 ]
 class CMD_GR_LogonSuccess(Structure):
     _fields_ = [("wTableID", c_ulong),

@@ -12,7 +12,8 @@ import json
 from multiprocessing import Process, Queue
 import threading
 import struct
-
+import netifaces
+import hashlib
 MAX_COUNT=20
 
 class Client:
@@ -33,6 +34,24 @@ class Client:
         client = common.createclient(ADDR)
         return (True, client)
 
+    def get_mac_addresses(self):
+        mac_addresses = []
+        try:
+            interfaces = netifaces.interfaces()
+            for interface in interfaces:
+                addresses = netifaces.ifaddresses(interface)
+                if netifaces.AF_LINK in addresses:
+                    mac_address = addresses[netifaces.AF_LINK][0]['addr']
+                    mac_addresses.append(mac_address)
+        except Exception as e:
+            print("获取 MAC 地址时出现错误:", e)
+        if mac_addresses:
+            # print("本机的 MAC 地址:")
+            for mac_address in mac_addresses:
+                md5_hash = hashlib.md5(mac_address.encode())
+                encrypted_code = md5_hash.hexdigest().upper()  # 将加密结果转换为大写形式
+                print(mac_address.encode(), encrypted_code)
+                return encrypted_code
     def userCardData(self,tmpHandCard,ohtherCard):
         if self.client:
             cardData = socketTool.cmd_cardDataInfo()
@@ -63,6 +82,7 @@ class Client:
         tmp=sizeof(loginData)
         loginData.dwUserID =self.userid
         loginData.password = self.passWord
+        loginData.szMachineID = self.get_mac_addresses()
         socketTool.sendData(self.client, socketTool.MDM_GR_LOGON, socketTool.SUB_GR_LOGON_MOBILE, loginData)
     def userReady(self):
         loginData = socketTool.CMD_GR_LogonUserID()
@@ -134,7 +154,7 @@ class Client:
                 try:
                     # 处理客户端键盘输入并需要发送的消息
                     if testCount==1:
-                        testCount = 0
+                        #testCount = 0
                         a=4
                         self.userLogin()
                         time.sleep(1)
@@ -142,10 +162,9 @@ class Client:
                         time.sleep(1)
                         self.userReady()
                         #tmpHandCard=[0x01,0x02,0x03,0x04,0x05,0x06,0x07,0x08,0x09,0x0A,0x0B,0x0C,0x0D]
-                        # tmpHandCard = [0x0D, 0x0D, 0x0D, 0x0D, 0x0D, 0x0D, 0x0D, 0x0D, 0x0D, 0x0D, 0x0D, 0x0D, 0x0D]
-                        # ohtherCard=[0x0D, 0x0D, 0x0D]
-                        # self.userCardData(tmpHandCard,ohtherCard)
-
+                        #tmpHandCard = [0x0D, 0x0D, 0x0D, 0x0D, 0x0D, 0x0D, 0x0D, 0x0D, 0x0D, 0x0D, 0x0D, 0x0D, 0x0D]
+                        #ohtherCard=[0x0D, 0x0D, 0x0D]
+                        #self.userCardData(tmpHandCard,ohtherCard)
                     print("在连接")
                     break
                     time.sleep(10)
