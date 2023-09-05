@@ -257,7 +257,68 @@ public://动作判断
 	BYTE GetTingData(const BYTE cbCardIndex[MAX_INDEX], const tagWeaveItem WeaveItem[], BYTE cbWeaveCount,BYTE& cbOutCardCount, BYTE cbOutCardData[]);
 	//获取辅助数据，打哪些牌能听，以及能胡哪些牌
 	BYTE GetTingDataEx(const BYTE cbCardIndex[MAX_INDEX], const tagWeaveItem WeaveItem[], BYTE cbWeaveCount, BYTE& cbOutCardCount,BYTE cbOutCardData[],BYTE cbHuCardCount[],BYTE cbHuCardData[][HEAP_FULL_COUNT],BYTE cbHuFan[][HEAP_FULL_COUNT]);
+	//二向听
+	BYTE GetErXiangTingDataEx(const BYTE cbCardIndex[MAX_INDEX], const tagWeaveItem WeaveItem[], BYTE cbWeaveCount, BYTE& cbOutCardCount, BYTE cbOutCardData[], BYTE cbHuCardCount[], BYTE cbHuCardData[][HEAP_FULL_COUNT], BYTE cbHuFan[][HEAP_FULL_COUNT])
+	{
+		//复制数据
+		BYTE cbOutCount = 0;
+		BYTE cbCardIndexTemp[MAX_INDEX];
+		CopyMemory(cbCardIndexTemp, cbCardIndex, sizeof(cbCardIndexTemp));
+		BYTE cbCardCount = GetCardCount(cbCardIndexTemp);
+		if (cbCardCount<=2)
+		{
+			return 0;
+		}
+		CChiHuRight chr;
 
+		if ((cbCardCount - 2) % 3 == 0)
+		{
+			BYTE	cbHandCardData[MAX_COUNT] = { 0 };	//手上扑克
+			SwitchToCardData(cbCardIndex, cbHandCardData);
+			for (int i=0;i<2;i++ )
+			{
+				for (int j= i+1;j<2;j++)
+				{
+					if (cbHandCardData[i] > 0)
+					{
+						SwitchToCardData(m_cbMagicIndex[0]);
+					}
+				}
+				
+			}
+			for (BYTE i = 0; i < MAX_INDEX - MAX_HUA_COUNT; i++)
+			{
+				if (cbCardIndexTemp[i] == 0) continue;
+				cbCardIndexTemp[i]--;
+
+				bool bAdd = false;
+				BYTE nCount = 0;
+				for (BYTE j = 0; j < MAX_INDEX - MAX_HUA_COUNT; j++)
+				{
+					BYTE cbCurrentCard = SwitchToCardData(j);
+					if (WIK_CHI_HU == AnalyseChiHuCard(cbCardIndexTemp, WeaveItem, cbWeaveCount, cbCurrentCard, chr))
+					{
+						if (bAdd == FALSE)
+						{
+							bAdd = true;
+							cbOutCardData[cbOutCount++] = SwitchToCardData(i);
+						}
+						cbHuCardData[cbOutCount - 1][nCount] = SwitchToCardData(j);
+						cbHuFan[cbOutCount - 1][nCount] = GetUserHuFan(chr);
+						nCount++;
+					}
+				}
+				if (bAdd)
+					cbHuCardCount[cbOutCount - 1] = nCount;
+
+				cbCardIndexTemp[i]++;
+			}
+		}
+		
+
+		cbOutCardCount = cbOutCount;
+		return cbOutCount;
+	}
 public://转换函数
 	//扑克转换
 	BYTE SwitchToCardData(BYTE cbCardIndex);
