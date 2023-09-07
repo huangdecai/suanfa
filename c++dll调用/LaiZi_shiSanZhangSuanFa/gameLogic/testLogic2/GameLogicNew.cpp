@@ -4421,6 +4421,18 @@ VOID CGameLogicNew::SearchOutCardShiSanZhang(const BYTE cbHandCardData[], BYTE c
 	{
 		SwitchArray(&Array[0][0], &Array[1][0], DOU_HAND_COUNT);
 	}
+	//else 
+	//{
+	// //有的地方A开头顺子最小，调整一下顺序
+	//	BYTE  cbMaxCard = 0;
+	//	int type1 = GetCardType(Array[1], DOU_HAND_COUNT, cbMaxCard);
+	//	int type0 = GetCardType(Array[0], DOU_HAND_COUNT, cbMaxCard);
+	//	if (type1== CT_FIVE_MIXED_FLUSH_NO_A&&type0== CT_FIVE_MIXED_FLUSH_FIRST_A)
+	//	{
+	//		SwitchArray(&Array[0][0], &Array[1][0], DOU_HAND_COUNT);
+	//	}
+
+	//}
 
 	resultCompare1 = CompareCard(Array[2], Array[1], 3, DOU_HAND_COUNT, true, true);
 	int resultCompare2 = CompareCard(Array[1], Array[0], 5, DOU_HAND_COUNT, true, true);
