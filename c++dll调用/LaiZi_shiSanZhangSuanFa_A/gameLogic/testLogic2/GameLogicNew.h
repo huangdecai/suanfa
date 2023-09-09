@@ -15,8 +15,8 @@ const int douNum[DOU_NUM] = { DOU_HAND_COUNT, DOU_HAND_COUNT, 3 };
 #define CT_ONE_DOUBLE					2								//对牌类型
 #define CT_TWO_DOUBLE					3								//两对牌型
 #define CT_THREE						4								//三张牌型
-#define CT_FIVE_MIXED_FLUSH_NO_A		5								//普通顺子
-#define CT_FIVE_MIXED_FLUSH_FIRST_A		6								//A前顺子
+#define CT_FIVE_MIXED_FLUSH_NO_A		6								//普通顺子
+#define CT_FIVE_MIXED_FLUSH_FIRST_A		5								//A前顺子
 #define CT_FIVE_MIXED_FLUSH_BACK_A		7								//A后顺子
 #define CT_FIVE_FLUSH					8								//同花
 #define CT_FIVE_THREE_DEOUBLE			9								//三条一对

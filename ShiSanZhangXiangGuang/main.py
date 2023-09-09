@@ -32,6 +32,7 @@ import BidModel
 import LandlordModel
 import FarmerModel
 from ctypes import *
+import json
 MAX_COUNT=20
 FULL_COUNT=54
 EnvCard2RealCard = {3: '3', 4: '4', 5: '5', 6: '6', 7: '7',
@@ -106,6 +107,7 @@ class MyPyQT_Form(QtWidgets.QWidget, Ui_Form):
         self.shouldExit = 0  # 通知上一轮记牌结束
         self.canRecord = threading.Lock()  # 开始记牌
 
+        self.readJson()
     def init_display(self):
         self.WinRate.setText("评分")
         self.InitCard.setText("开始")
@@ -117,7 +119,15 @@ class MyPyQT_Form(QtWidgets.QWidget, Ui_Form):
         self.SwitchMode.setText("自动" if self.AutoPlay else "单局")
         for player in self.Players:
             player.setStyleSheet('background-color: rgba(255, 0, 0, 0);')
-
+    def readJson(self):
+        with open("data_file.json", "r") as read_file:
+            self.configData = json.load(read_file)
+        self.userid = self.configData["userid"]
+        self.tableid=self.configData["tableid"]
+        self.port=self.configData["port"]
+        self.m_duokai=str(self.configData["duokai"])
+        self.setWindowTitle(self.m_duokai+'号机')
+        helper.setFindStr(self.m_duokai)
     def switch_mode(self):
         self.AutoPlay = not self.AutoPlay
         self.SwitchMode.setText("自动" if self.AutoPlay else "单局")
@@ -205,6 +215,8 @@ class MyPyQT_Form(QtWidgets.QWidget, Ui_Form):
             print(e)
             traceback.print_tb(exc_tb)
             self.stop()
+            self.sleep(2000)
+            self.init_cards()
     def start(self):
         print("开始出牌\n")
         while not self.game_over:

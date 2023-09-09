@@ -180,9 +180,14 @@ class GameHelper:
                 imgCv = cv2.imread("./pics/" + file)
                 self.Pics.update({info[0]: tmpImage})
                 self.PicsCV.update({info[0]: imgCv})
-
+        self.duokaiStr = "test001"
+    def setFindStr(self,findStr):
+        if findStr!='0':
+            self.duokaiStr = "test00"
+            self.duokaiStr=self.duokaiStr+(findStr)
+            tmp=4
     def Screenshot(self, region=None):  # -> (im, (left, top))
-        self.Handle = win32gui.FindWindow("LDPlayerMainFrame", "test001")
+        self.Handle = win32gui.FindWindow("LDPlayerMainFrame", self.duokaiStr)
         hwnd = self.Handle
         if self.bTest == True:
             im = Image.open(r"testRunFast2.png")

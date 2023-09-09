@@ -4424,13 +4424,13 @@ VOID CGameLogicNew::SearchOutCardShiSanZhang(const BYTE cbHandCardData[], BYTE c
 	else 
 	{
 	 //有的地方A开头顺子最小，调整一下顺序
-		BYTE  cbMaxCard = 0;
+		/*BYTE  cbMaxCard = 0;
 		int type1 = GetCardType(Array[1], DOU_HAND_COUNT, cbMaxCard);
 		int type0 = GetCardType(Array[0], DOU_HAND_COUNT, cbMaxCard);
 		if (type1== CT_FIVE_MIXED_FLUSH_NO_A&&type0== CT_FIVE_MIXED_FLUSH_FIRST_A)
 		{
 			SwitchArray(&Array[0][0], &Array[1][0], DOU_HAND_COUNT);
-		}
+		}*/
 
 	}
 
@@ -6098,6 +6098,70 @@ void CGameLogicNew::ShiSanZhangOutCardCeLue(const BYTE cbHandCardData[], BYTE cb
 			for (int i = 0; i < 3; i++)
 			{
 				if (GetCardLogicValue(Array[2][i]) == 6)
+				{
+					SwitchArray(&Array[2][i], &Array[index][0], 1);
+					SortCardList(Array[2], 3, ST_ASCENDING);
+					SortCardList(Array[index], DOU_HAND_COUNT, ST_ASCENDING);
+					bExist = true;
+					break;
+				}
+			}
+		}
+		index = 0;
+		if (type0 == CT_FIVE_MIXED_FLUSH_BACK_A&&bExist == false)
+		{
+			for (int i = 0; i < 3; i++)
+			{
+				if (GetCardLogicValue(Array[2][i]) == 9)
+				{
+					SwitchArray(&Array[2][i], &Array[index][4], 1);
+					SortCardList(Array[2], 3, ST_ASCENDING);
+					SortCardList(Array[index], DOU_HAND_COUNT, ST_ASCENDING);
+					bExist = true;
+					break;
+				}
+			}
+		}
+		if (type1 == CT_FIVE_MIXED_FLUSH_BACK_A&&bExist == false)
+		{
+			index = 1;
+			for (int i = 0; i < 3; i++)
+			{
+				if (GetCardLogicValue(Array[2][i]) == 9)
+				{
+					SwitchArray(&Array[2][i], &Array[index][0], 1);
+					SortCardList(Array[2], 3, ST_ASCENDING);
+					SortCardList(Array[index], DOU_HAND_COUNT, ST_ASCENDING);
+					break;
+				}
+			}
+		}
+
+	}
+	else  if ((type0 == CT_FIVE_MIXED_FLUSH_BACK_A || type1 == CT_FIVE_MIXED_FLUSH_BACK_A) && type2 == CT_SINGLE)
+	{
+		int index = 0;
+		bool bExist = false;
+		if (type0 == CT_FIVE_MIXED_FLUSH_BACK_A)
+		{
+			for (int i = 0; i < 3; i++)
+			{
+				if (GetCardLogicValue(Array[2][i]) == 9)
+				{
+					SwitchArray(&Array[2][i], &Array[index][0], 1);
+					SortCardList(Array[2], 3, ST_ASCENDING);
+					SortCardList(Array[index], DOU_HAND_COUNT, ST_ASCENDING);
+					bExist = true;
+					break;
+				}
+			}
+		}
+		if (type1 == CT_FIVE_MIXED_FLUSH_BACK_A&&bExist == false)
+		{
+			index = 1;
+			for (int i = 0; i < 3; i++)
+			{
+				if (GetCardLogicValue(Array[2][i]) == 9)
 				{
 					SwitchArray(&Array[2][i], &Array[index][0], 1);
 					SortCardList(Array[2], 3, ST_ASCENDING);
