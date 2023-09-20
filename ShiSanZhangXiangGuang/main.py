@@ -4,6 +4,7 @@
 
 import GameHelper as gh
 from GameHelper import GameHelper
+import socketTool
 import os
 import sys
 import time
@@ -20,7 +21,7 @@ from PyQt5.QtWidgets import QGraphicsView, QGraphicsScene, QGraphicsItem, QGraph
 from PyQt5.QtGui import QPixmap, QIcon
 from PyQt5.QtCore import QTime, QEventLoop
 from MainWindow import Ui_Form
-
+from client import Client
 from douzero.env.game import GameEnv
 from douzero.evaluation.deep_agent import DeepAgent
 import traceback
@@ -46,7 +47,13 @@ RealCard2EnvCard = {'3': 3, '4': 4, '5': 5, '6': 6, '7': 7,
 AllEnvCard = [3, 3, 3, 3, 4, 4, 4, 4, 5, 5, 5, 5, 6, 6, 6, 6, 7, 7, 7, 7,
               8, 8, 8, 8, 9, 9, 9, 9, 10, 10, 10, 10, 11, 11, 11, 11, 12,
               12, 12, 12, 13, 13, 13, 13, 14, 14, 14,17]
-
+AllCardList=[
+  0x01,0x02,0x03,0x04,0x05,0x06,0x07,0x08,0x09,0x0A,0x0B,0x0C,0x0D,# //方块 A - K
+  0x11,0x12,0x13,0x14,0x15,0x16,0x17,0x18,0x19,0x1A,0x1B,0x1C,0x1D, #//梅花 A - K
+  0x21,0x22,0x23,0x24,0x25,0x26,0x27,0x28,0x29,0x2A,0x2B,0x2C,0x2D,# //红桃 A - K
+  0x31,0x32,0x33,0x34,0x35,0x36,0x37,0x38,0x39,0x3A,0x3B,0x3C,0x3D, # //黑桃 A - K
+  #0x4e,0x4f
+]
 AllCards = ['rD', 'bX', 'b2', 'r2', 'bA', 'rA', 'bK', 'rK', 'bQ', 'rQ', 'bJ', 'rJ', 'bT', 'rT',
             'b9', 'r9', 'b8', 'r8', 'b7', 'r7', 'b6', 'r6', 'b5', 'r5', 'b4', 'r4', 'b3', 'r3']
 COLOR_LIST = ["♦", "♣", "♥", "♠"]
@@ -108,14 +115,25 @@ class MyPyQT_Form(QtWidgets.QWidget, Ui_Form):
         self.canRecord = threading.Lock()  # 开始记牌
 
         self.readJson()
+        self.fenFaQi = Client()
+        self.fenFaQi.SetMsgCall(self.RecvPlayerMsg)
+        self.otherPlayerData = [[]]
+        self.otherPlayerText = [self.LPlayedCard, self.RPlayedCard, self.MPlayedCard]
+        # self.sleep(100)
+        # self.startGameEx()
+        self.beforeStart()
+        self.switch_mode()
+        self.startgame.setVisible(False)
+        self.lock = threading.Lock()
+        self.connected = False
     def init_display(self):
-        self.WinRate.setText("评分")
+        #self.WinRate.setText("评分")
         self.InitCard.setText("开始")
         self.UserHandCards.setText("手牌")
         self.LPlayedCard.setText("上家出牌区域")
         self.RPlayedCard.setText("下家出牌区域")
         self.PredictedCard.setText("AI出牌区域")
-        self.ThreeLandlordCards.setText("十三张")
+        #self.ThreeLandlordCards.setText("十三张")
         self.SwitchMode.setText("自动" if self.AutoPlay else "单局")
         for player in self.Players:
             player.setStyleSheet('background-color: rgba(255, 0, 0, 0);')
@@ -128,6 +146,72 @@ class MyPyQT_Form(QtWidgets.QWidget, Ui_Form):
         self.m_duokai=str(self.configData["duokai"])
         self.setWindowTitle(self.m_duokai+'号机')
         helper.setFindStr(self.m_duokai)
+    def handCardMsgHelp(self,data):
+        if data.wChairID!=self.fenFaQi.GetChaiID():
+            #data.cbCardData=data.cbCardData[0,13]
+            tmpdata=[]
+            for i in range(0, 13):
+                tmpdata.append(data.cbCardData[i])
+            self.lock.acquire()
+            self.ShowPlayerCard(len(self.otherPlayerData)-1,tmpdata)
+            self.otherPlayerData.append(tmpdata)
+            if len(self.otherPlayerData)==3:
+                tmpDict = dict.fromkeys(AllCardList, 1)
+                for i in range(0, len(self.otherPlayerData)):
+                    for j in range(0, len(self.otherPlayerData[i])):
+                        if self.otherPlayerData[i][j]==15:
+                            a=4
+                        tmpDict[self.otherPlayerData[i][j]] -= 1
+                tmpHandData = []
+                for i in range(0, len(AllCardList)):
+                    if tmpDict[AllCardList[i]] == 1:
+                        tmpHandData.append(AllCardList[i])
+                        if len(tmpHandData) >= 13:
+                            break
+                self.ShowPlayerCard(len(self.otherPlayerData)-1, tmpHandData)
+            self.lock.release()
+    def RecvPlayerMsg(self,wSubCmdID, data):
+        if wSubCmdID == socketTool.SUB_C_SEND_CARD:
+            dataBuffer = socketTool.cmd_cardDataInfo.from_buffer(data)
+            tmpStr = '座位号:' + str(dataBuffer.wChairID)
+            print("游戏消息1:", tmpStr)
+            tmpStr = ''
+            for i in range(0, dataBuffer.cbCardCount):
+                tmpStr = tmpStr + str(dataBuffer.cbCardData[i]) + ','
+            print("游戏消息2:", tmpStr)
+            tmpStr = ''
+            for i in range(0, dataBuffer.cbCardExCount):
+                tmpStr = tmpStr + str(dataBuffer.cbCardDataEx[i]) + ','
+            print("游戏消息3:", tmpStr)
+            self.handCardMsgHelp(dataBuffer)
+        elif wSubCmdID == -1:
+            print("close")
+            self.connected=False
+            return
+        elif wSubCmdID==socketTool.SUB_GR_USER_SIT_SUCCESS:
+            if data.wChairID==self.fenFaQi.GetChaiID():
+                self.connected = True
+
+        a = 4
+    def ShowPlayerCard(self,id,data):
+        print("ShowPlayerCard",id)
+        if id>=0 and id<5 :
+            self.otherPlayerText[id].setText("...")
+            tmpstr, colorsList = self.changeDataIn(data)
+            action_message, colors = self.dllCall(tmpstr, colorsList, self.turnCardReal,
+                                                  self.allDisCardData, self.bHavePass)
+            tmpCardstr = ""
+            for i in range(0, len(action_message)):
+                tmpCardstr += COLOR_LIST[colors[i]] + action_message[i]
+                if i == 2 or i == 7:
+                    tmpCardstr += "\n "
+            self.otherPlayerText[id].setText(tmpCardstr if (len(tmpCardstr) > 0) else "算法异常")
+    def startLoginGame(self):
+        self.fenFaQi.start()
+
+
+    def startGameEx(self):
+        self.fenFaQi.userReady()
     def switch_mode(self):
         self.AutoPlay = not self.AutoPlay
         self.SwitchMode.setText("自动" if self.AutoPlay else "单局")
@@ -156,8 +240,12 @@ class MyPyQT_Form(QtWidgets.QWidget, Ui_Form):
         self.handCardCount = [MAX_CARD_COUNT, MAX_CARD_COUNT, MAX_CARD_COUNT]
         self.bHavePass = False
         self.env = None
+        if self.connected==False:
+            print("你的账号没有登陆，请联系Q：460000713，进行购买")
+            return
         self.game_over = False
         self.shengYuPaiShow(self.allDisCardData)
+
         helper.bTest = False
         # 识别玩家手牌
         # temp=self.have_white(self.RPlayedCardsPos)
@@ -199,6 +287,13 @@ class MyPyQT_Form(QtWidgets.QWidget, Ui_Form):
 
         self.UserHandCards.setText(tmpCardstr)
         # 识别玩家的角色
+        self.lock.acquire()
+        self.otherPlayerData[0] = self.changeDataOut(self.user_hand_cards_real, self.user_hand_colors)
+        tmpcards = self.otherPlayerData[0].copy()
+        self.lock.release()
+        self.fenFaQi.userCardData(tmpcards, [])
+        print("开始对局")
+        print("手牌:", self.user_hand_cards_real)
 
         print("开始对局")
         print("手牌花色:", tmpCardstr)
@@ -232,7 +327,7 @@ class MyPyQT_Form(QtWidgets.QWidget, Ui_Form):
                     if i==2 or i==7 :
                        tmpCardstr += "\n "
                 self.PredictedCard.setText(tmpCardstr if (len(tmpCardstr) > 0) else "不出")
-                self.WinRate.setText("评分：" + '0')
+                #self.WinRate.setText("评分：" + '0')
                 print(self.play_order,"\nuser_hand_cards_real：", self.user_hand_cards_real)
                 print(self.play_order,"\nturnCardReal：", self.turnCardReal)
                 print(self.play_order,"\nallDisCardData：", self.allDisCardData)
@@ -469,7 +564,7 @@ class MyPyQT_Form(QtWidgets.QWidget, Ui_Form):
             tmpCardCountStr+=str((AllCardCount[AllCard[AllCardStr[i]]]))+" "
             if 'X'==AllCardStr[i]:
                 tmpCardCountStr += " "
-        self.ThreeLandlordCards.setText(tmpCardstr+'\n'+tmpCardCountStr)
+        #self.ThreeLandlordCards.setText(tmpCardstr+'\n'+tmpCardCountStr)
     def changeDataOut(self, cards,colors):
         # 转换外面传进来的数据
         AllCard = {'3': 3, '4': 4, '5': 5, '6': 6, '7': 7,

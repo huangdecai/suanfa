@@ -139,6 +139,7 @@ public:
 	BYTE							m_cbDiscardCard[FULL_COUNT];//·ÏÆúÅÆ
 	BYTE                            m_cbDiscardCardCount = 0;
 	BYTE                            m_cbOthreRangCardCount = 0;
+	bool                            m_bSanDaYi = false;
 	bool                            m_bHavePass = false;
 
 	//º¯Êý¶¨Òå
@@ -345,6 +346,9 @@ public:
 	//³öÅÆËÑË÷
 	bool SearchOutCardErRen(BYTE cbHandCardData[], BYTE cbHandCardCount, BYTE cbTurnCardData[], BYTE cbTurnCardCount, BYTE	DiscardCard[], BYTE cbDiscardCardCount, BYTE cbRangCardCount, BYTE cbOthreRangCardCount, tagOutCardResultNew & OutCardResult);
 	VOID SearchOutCardShiSanZhang(const BYTE cbHandCardData[], BYTE cbHandCardCount, tagOutCardResultNew & OutCardResult);
+	VOID SearchOutCardShiSanZhangTurn(const BYTE cbHandCardData[], BYTE cbHandCardCount, tagOutCardResultNew & OutCardResult, tagOutCardResultNew & TurnOutCardResult2);
+
+	void JiaoYanWuLong(BYTE Array[DOU_NUM][DOU_HAND_COUNT]);
 
 	VOID shengChengSanDou(vector<tagOutCardResultNew> &vecMinTypeCardResult, BYTE  Array[DOU_NUM][DOU_HAND_COUNT]);
 

@@ -42,8 +42,8 @@ void TestGameLogic()
 	//BYTE    tempCard[] = { 0x02 };
 	CopyMemory(cbHandCardData, tempCard, sizeof(tempCard));
 	tagOutCardResultNew  OutCardResult;
-	BYTE cbTurnCardData[] = { 0x37 };
-	int cbTurnCardCount = 0;
+	BYTE cbTurnCardData[] = { 0x18, 0x15, 0x12, 0x21, 0x2A, 0x26, 0x24, 0x22, 0x11, 0x1D, 0x1C, 0x1B, 0x1A };
+	int cbTurnCardCount = 13;
 	int cbRangCardCount = 0;
 	int cbOthreRangCardCount = 0;
 	BYTE cbDiscardCard[] = { 0x01 };
