@@ -281,7 +281,7 @@ class GameHelper:
         print("start pos", cardStartPos)
         if cardStartPos is None:
             return [],[],[]
-        sx = cardStartPos[0]+8 #+ 23
+        sx = cardStartPos[0]+7 #+ 23
         AllCardsNC = ['rD', 'bX', 'A', 'K', 'Q', 'J', 'T', '9', '8', '7', '6', '5', '4', '3','2']
         hand_cards = []
         select_map = []
@@ -332,7 +332,10 @@ class GameHelper:
                         break
                 else:
                     for card_type in ["r", "b"]:
-                        result = LocateOnImage(imgCv, self.PicsCV["m" + card_type + AllCardsNC[ci]], region=(sx + totalSpaceX, spaceY+totalSpaceY - checkSelect * 25, sw, 68), confidence=0.83)
+                        tmpdence=0.83
+                        if AllCardsNC[ci]=='T':
+                            tmpdence=0.82
+                        result = LocateOnImage(imgCv, self.PicsCV["m" + card_type + AllCardsNC[ci]], region=(sx + totalSpaceX, spaceY+totalSpaceY - checkSelect * 25, sw, 68), confidence=tmpdence)
                         if result is not None:
                             cardPos = (sx + totalSpaceX + sw // 2, spaceY+totalSpaceY - checkSelect * 25 + sh // 2)
                             cardSearchFrom = ci

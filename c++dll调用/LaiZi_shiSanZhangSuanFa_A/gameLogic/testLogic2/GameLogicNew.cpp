@@ -6129,7 +6129,7 @@ void CGameLogicNew::ShiSanZhangOutCardCeLue(const BYTE cbHandCardData[], BYTE cb
 			{
 				if (GetCardLogicValue(Array[2][i]) == 9)
 				{
-					SwitchArray(&Array[2][i], &Array[index][0], 1);
+					SwitchArray(&Array[2][i], &Array[index][4], 1);
 					SortCardList(Array[2], 3, ST_ASCENDING);
 					SortCardList(Array[index], DOU_HAND_COUNT, ST_ASCENDING);
 					break;
@@ -6148,7 +6148,7 @@ void CGameLogicNew::ShiSanZhangOutCardCeLue(const BYTE cbHandCardData[], BYTE cb
 			{
 				if (GetCardLogicValue(Array[2][i]) == 9)
 				{
-					SwitchArray(&Array[2][i], &Array[index][0], 1);
+					SwitchArray(&Array[2][i], &Array[index][4], 1);
 					SortCardList(Array[2], 3, ST_ASCENDING);
 					SortCardList(Array[index], DOU_HAND_COUNT, ST_ASCENDING);
 					bExist = true;
@@ -6163,7 +6163,7 @@ void CGameLogicNew::ShiSanZhangOutCardCeLue(const BYTE cbHandCardData[], BYTE cb
 			{
 				if (GetCardLogicValue(Array[2][i]) == 9)
 				{
-					SwitchArray(&Array[2][i], &Array[index][0], 1);
+					SwitchArray(&Array[2][i], &Array[index][4], 1);
 					SortCardList(Array[2], 3, ST_ASCENDING);
 					SortCardList(Array[index], DOU_HAND_COUNT, ST_ASCENDING);
 					break;
