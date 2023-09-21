@@ -1704,7 +1704,7 @@ int CGameLogicNew::FindCardKindMinNum(BYTE const cbHandCardData[], BYTE const cb
 				CardResultShao[1] = resultAllVec[j][i];
 				MinTypeScoreShao[1]=tempScore;
 			}
-			else if (m_bSanDaYi&&resultAllVec[j].at(i).size() <=6 && tempScore > MinTypeScoreShao[1])
+			else if (m_bSanDaYi&&resultAllVec[j].at(i).size() <=7 /*&& tempScore > MinTypeScoreShao[1]*/)
 			{
 				CardResultShao[1] = resultAllVec[j][i];
 				MinTypeScoreShao[1] = tempScore;
@@ -4250,7 +4250,7 @@ bool CGameLogicNew::SearchOutCardErRen(BYTE cbHandCardData[], BYTE cbHandCardCou
 		m_bSanDaYi = false;
 		SearchOutCardShiSanZhang(cbHandCardData, cbHandCardCount, OutCardResult);
 	}
-	else if (cbTurnCardCount == MAX_COUNT)
+	else if (cbTurnCardCount == 13)
 	{
 		m_bSanDaYi = true;
 		tagOutCardResultNew  TurnOutCardResult;
@@ -4490,14 +4490,6 @@ VOID CGameLogicNew::SearchOutCardShiSanZhangTurn(const BYTE cbHandCardData[], BY
 			duoZhongBaiFa++;
 			int tmpSize = vecMinTypeCardResult.size();
 			int tmpSize2 = vecMinTypeCardResultShao[i].size();
-			if (tmpSize2 == 3 && (vecMinTypeCardResultShao[i][1].cbCardType == CT_TWO_DOUBLE && vecMinTypeCardResultShao[i][2].cbCardType == CT_TWO_DOUBLE))
-			{
-			}
-			else if ((tmpSize - tmpSize2) >= 2)
-			{
-				swap(vecMinTypeCardResult, vecMinTypeCardResultShao[i]);
-			}
-			else
 			{
 				BYTE Array[DOU_NUM][DOU_HAND_COUNT] = { 0 };
 				CopyMemory(Array, TurnOutCardResult2.cbResultCard, douNum[2]);
@@ -4513,12 +4505,11 @@ VOID CGameLogicNew::SearchOutCardShiSanZhangTurn(const BYTE cbHandCardData[], BY
 					resultCompare += CompareCard(Array[j], Array2[j], douNum[j], douNum[j], true, true);
 				}
 
-				if (resultCompare >= 1)
+				if (resultCompare >= 3)
 				{
 					//Ð£ÑéÎÚÁú
 					JiaoYanWuLong(Array2);
 					int num = 0;
-
 					for (int i = 0; i < DOU_NUM; i++)
 					{
 						CopyMemory(OutCardResult.cbResultCard + num, Array2[2 - i], douNum[2 - i]);
@@ -4527,10 +4518,10 @@ VOID CGameLogicNew::SearchOutCardShiSanZhangTurn(const BYTE cbHandCardData[], BY
 					OutCardResult.cbCardType = 1;
 					return;
 				}
+
 			}
 		}
 	}
-
 
 	BYTE Array[DOU_NUM][DOU_HAND_COUNT] = { 0 };
 	shengChengSanDou(vecMinTypeCardResult, Array);

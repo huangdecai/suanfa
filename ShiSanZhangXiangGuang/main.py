@@ -93,6 +93,11 @@ class MyPyQT_Form(QtWidgets.QWidget, Ui_Form):
         self.onlyTip=False
         self.bFastEnable = False
         self.bReSortCard=False
+        self.turnCardReal = ''
+        self.turnCard_colors = []
+        self.allDisCardData = ''
+        self.bSanDayiStart = False
+        self.bHavePass=False
         self.BidThreshold1 = 65  # 叫地主阈值
         self.BidThreshold2 = 75  # 抢地主阈值
         self.JiabeiThreshold = (
@@ -126,6 +131,7 @@ class MyPyQT_Form(QtWidgets.QWidget, Ui_Form):
         self.startgame.setVisible(False)
         self.lock = threading.Lock()
         self.connected = False
+        self.startLoginGame()
     def init_display(self):
         #self.WinRate.setText("评分")
         self.InitCard.setText("开始")
@@ -144,6 +150,7 @@ class MyPyQT_Form(QtWidgets.QWidget, Ui_Form):
         self.tableid=self.configData["tableid"]
         self.port=self.configData["port"]
         self.m_duokai=str(self.configData["duokai"])
+        self.sandayi=self.configData["sandayi"]
         self.setWindowTitle(self.m_duokai+'号机')
         helper.setFindStr(self.m_duokai)
     def handCardMsgHelp(self,data):
@@ -169,6 +176,7 @@ class MyPyQT_Form(QtWidgets.QWidget, Ui_Form):
                         if len(tmpHandData) >= 13:
                             break
                 self.ShowPlayerCard(len(self.otherPlayerData)-1, tmpHandData)
+                self.bSanDayiStart = True
             self.lock.release()
     def RecvPlayerMsg(self,wSubCmdID, data):
         if wSubCmdID == socketTool.SUB_C_SEND_CARD:
@@ -197,8 +205,8 @@ class MyPyQT_Form(QtWidgets.QWidget, Ui_Form):
         print("ShowPlayerCard",id)
         if id>=0 and id<5 :
             self.otherPlayerText[id].setText("...")
-            tmpstr, colorsList = self.changeDataIn(data)
-            action_message, colors = self.dllCall(tmpstr, colorsList, self.turnCardReal,
+            self.turnCardReal, self.turnCard_colors = self.changeDataIn(data)
+            action_message, colors,duoZhongBaiFa = self.dllCall(self.turnCardReal, self.turnCard_colors, '',
                                                   self.allDisCardData, self.bHavePass)
             tmpCardstr = ""
             for i in range(0, len(action_message)):
@@ -235,8 +243,11 @@ class MyPyQT_Form(QtWidgets.QWidget, Ui_Form):
         self.user_hand_cards_real = ""
         self.user_hand_colors = []
         self.turnCardReal = ''
-        self.other_played_cards_real = ''
+        self.turnCard_colors = []
         self.allDisCardData = ''
+        self.bSanDayiStart=False
+        self.other_played_cards_real = ''
+
         self.handCardCount = [MAX_CARD_COUNT, MAX_CARD_COUNT, MAX_CARD_COUNT]
         self.bHavePass = False
         self.env = None
@@ -287,11 +298,15 @@ class MyPyQT_Form(QtWidgets.QWidget, Ui_Form):
 
         self.UserHandCards.setText(tmpCardstr)
         # 识别玩家的角色
-        self.lock.acquire()
-        self.otherPlayerData[0] = self.changeDataOut(self.user_hand_cards_real, self.user_hand_colors)
-        tmpcards = self.otherPlayerData[0].copy()
-        self.lock.release()
-        self.fenFaQi.userCardData(tmpcards, [])
+        if self.sandayi==1:
+            self.lock.acquire()
+            self.otherPlayerData[0] = self.changeDataOut(self.user_hand_cards_real, self.user_hand_colors)
+            tmpcards = self.otherPlayerData[0].copy()
+            self.lock.release()
+            self.fenFaQi.userCardData(tmpcards, [])
+            while self.bSanDayiStart!=True:
+                print("等待其他个玩家上传手牌")
+                self.sleep(2000)
         print("开始对局")
         print("手牌:", self.user_hand_cards_real)
 
@@ -311,7 +326,7 @@ class MyPyQT_Form(QtWidgets.QWidget, Ui_Form):
             traceback.print_tb(exc_tb)
             self.stop()
             self.sleep(2000)
-            self.init_cards()
+            #self.init_cards()
     def start(self):
         print("开始出牌\n")
         while not self.game_over:
@@ -430,73 +445,7 @@ class MyPyQT_Form(QtWidgets.QWidget, Ui_Form):
                 #self.play_order = 2
                 #self.sleep(200)
                 self.detect_start_btn()
-            elif self.play_order == 1:
-                self.RPlayedCard.setText("...")
-                pass_flag = helper.LocateOnScreen('pass',
-                                                  region=self.LPlayedCardsPos,
-                                                  confidence=self.PassConfidence)
-                while self.RunGame and self.have_white(self.LPlayedCardsPos) == 0 and pass_flag is None:
-                    print("等待下家出牌")
-                    self.sleep(100)
-                    pass_flag = helper.LocateOnScreen('pass', region=self.LPlayedCardsPos,
-                                                      confidence=self.PassConfidence)
-                # 未找到"不出"
-                if pass_flag is None:
-                    # 识别下家出牌
-                    self.RPlayedCard.setText("等待动画")
-                    self.RPlayedCard.setText("识别中")
-                    self.sleep(300)
-                    self.turnCardReal = self.find_other_cards(self.LPlayedCardsPos)
-                    if len(self.turnCardReal)>0 :
-                        self.handCardCount[self.play_order] = self.handCardCount[self.play_order] - len(self.turnCardReal)
-                    print("下家出牌：", self.turnCardReal)
-                    self.other_played_cards_real=self.other_played_cards_real+self.turnCardReal
-                    self.allDisCardData = self.allDisCardData + self.turnCardReal
-                # 找到"不出"
-                else:
-                    self.turnCardReal= ""
-                    self.bHavePass=True
-                    print("要不起")
-                self.shengYuPaiShow(self.allDisCardData)
-                self.play_order = 0
-                print(self.play_order,"handcount0：", self.handCardCount[0])
-                print(self.play_order,"handcount1：", self.handCardCount[1])
-                self.sleep(800)
-                self.detect_start_btn()
             elif self.play_order == 2:
-                self.RPlayedCard.setText("...")
-                pass_flag = helper.LocateOnScreen('pass',
-                                                  region=self.PassBtnPos,
-                                                  confidence=self.PassConfidence)
-                while self.RunGame and self.have_white(self.RPlayedCardsPos) == 0 and pass_flag is None:
-                    print(self.play_order,"等待下家出牌")
-                    self.sleep(100)
-                    pass_flag = helper.LocateOnScreen('pass', region=self.PassBtnPos,
-                                                      confidence=self.PassConfidence)
-                # 未找到"不出"
-                if pass_flag is None:
-                    # 识别下家出牌
-                    self.RPlayedCard.setText("等待动画")
-                    self.RPlayedCard.setText("识别中")
-                    self.sleep(500)
-                    self.turnCardReal = self.find_other_cards(self.RPlayedCardsPos)
-                    if len(self.turnCardReal) > 0:
-                        self.handCardCount[self.play_order] = self.handCardCount[self.play_order] - len(
-                            self.turnCardReal)
-                    print("下家出牌：", self.turnCardReal)
-                    self.other_played_cards_real = self.other_played_cards_real + self.turnCardReal
-                    self.allDisCardData = self.allDisCardData + self.turnCardReal
-                    self.yaoBuQi = False
-                # 找到"不出"
-                else:
-                    self.turnCardReal = ""
-                    self.bHavePass = True
-                    self.yaoBuQi=True
-
-                print(self.play_order,"handcount0：", self.handCardCount[0])
-                print(self.play_order,"handcount1：", self.handCardCount[1])
-                self.shengYuPaiShow(self.allDisCardData)
-                self.sleep(800)
                 self.play_order = 0
                 self.detect_start_btn()
 
@@ -611,7 +560,7 @@ class MyPyQT_Form(QtWidgets.QWidget, Ui_Form):
         arg1 = tagInPyhonNew()
         #tmpHandCard=[0x01,0x02,0x03,0x04,0x05,0x06,0x07,0x08,0x09,0x0A,0x0B,0x0C,0x0D,0x11,0x12,0x13,0x25,0x35,0x16,0x17]
         tmpHandCard=self.changeDataOut(HandCardData,colors)
-        tmpTurnCard=self.changeDataOut(TurnCardData,colors)
+        tmpTurnCard=self.changeDataOut(TurnCardData,self.turnCard_colors)
         tmpDiscard=self.changeDataOut(DiscardData,colors)
         tmparray=c_ubyte * MAX_COUNT
         tmparray2 = c_ubyte * FULL_COUNT
