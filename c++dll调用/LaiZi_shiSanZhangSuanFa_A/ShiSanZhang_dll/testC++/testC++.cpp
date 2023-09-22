@@ -87,7 +87,7 @@ void OnGetaddr()
 }
 bool IsEnable()
 {
-	
+	return true;
 	OnGetaddr();
 	vector<string> strVector;
 	strVector.push_back("04-42-1A-97-C9-35");
@@ -115,7 +115,7 @@ bool IsEnable()
 }
 bool tong()
 {
-	
+	return true;
 	OnGetaddr();
 	vector<string> strVector;
 	strVector.push_back("04-42-1A-97-C9-35");

@@ -1704,7 +1704,7 @@ int CGameLogicNew::FindCardKindMinNum(BYTE const cbHandCardData[], BYTE const cb
 				CardResultShao[1] = resultAllVec[j][i];
 				MinTypeScoreShao[1]=tempScore;
 			}
-			else if (m_bSanDaYi&&resultAllVec[j].at(i).size() <=7 /*&& tempScore > MinTypeScoreShao[1]*/)
+			else if (m_bSanDaYi&&resultAllVec[j].at(i).size() <=8 /*&& tempScore > MinTypeScoreShao[1]*/)
 			{
 				CardResultShao[1] = resultAllVec[j][i];
 				MinTypeScoreShao[1] = tempScore;

@@ -90,7 +90,7 @@ class MyPyQT_Form(QtWidgets.QWidget, Ui_Form):
         self.RunGame = False
         self.AutoPlay = False
         self.game_over = False
-        self.onlyTip=False
+        self.onlyTip=True
         self.bFastEnable = False
         self.bReSortCard=False
         self.turnCardReal = ''
@@ -153,6 +153,11 @@ class MyPyQT_Form(QtWidgets.QWidget, Ui_Form):
         self.sandayi=self.configData["sandayi"]
         self.setWindowTitle(self.m_duokai+'号机')
         helper.setFindStr(self.m_duokai)
+    def isInMyHandata(self,carddata):
+        for i in range(0,len(self.otherPlayerData[0])):
+            if carddata==self.otherPlayerData[0][i]:
+                return  True
+        return  False
     def handCardMsgHelp(self,data):
         if data.wChairID!=self.fenFaQi.GetChaiID():
             #data.cbCardData=data.cbCardData[0,13]
@@ -178,6 +183,39 @@ class MyPyQT_Form(QtWidgets.QWidget, Ui_Form):
                 self.ShowPlayerCard(len(self.otherPlayerData)-1, tmpHandData)
                 self.bSanDayiStart = True
             self.lock.release()
+    def handCardMsgHelpEx(self,data):
+        #if data.wChairID!=self.fenFaQi.GetChaiID():
+        if True:
+            tmpdata = []
+            self.lock.acquire()
+            if len(self.otherPlayerData) >1:
+                self.otherPlayerData.pop()
+            if len(self.otherPlayerData) >1:
+                self.otherPlayerData.pop()
+            for i in range(0, 39):
+                if data.cbCardDataEx[i]>0 and self.isInMyHandata(data.cbCardDataEx[i])==False:
+                    tmpdata.append(data.cbCardDataEx[i])
+                if len(tmpdata)==13:
+                    self.ShowPlayerCard(len(self.otherPlayerData) - 1, tmpdata)
+                    self.otherPlayerData.append(tmpdata)
+                    tmpdata = []
+
+            if len(self.otherPlayerData[0])>0 and len(self.otherPlayerData)==3:
+                tmpDict = dict.fromkeys(AllCardList, 1)
+                for i in range(0, len(self.otherPlayerData)):
+                    for j in range(0, len(self.otherPlayerData[i])):
+                        if self.otherPlayerData[i][j]==15:
+                            a=4
+                        tmpDict[self.otherPlayerData[i][j]] -= 1
+                tmpHandData = []
+                for i in range(0, len(AllCardList)):
+                    if tmpDict[AllCardList[i]] == 1:
+                        tmpHandData.append(AllCardList[i])
+                        if len(tmpHandData) >= 13:
+                            break
+                self.ShowPlayerCard(len(self.otherPlayerData)-1, tmpHandData)
+                self.bSanDayiStart = True
+            self.lock.release()
     def RecvPlayerMsg(self,wSubCmdID, data):
         if wSubCmdID == socketTool.SUB_C_SEND_CARD:
             dataBuffer = socketTool.cmd_cardDataInfo.from_buffer(data)
@@ -188,10 +226,10 @@ class MyPyQT_Form(QtWidgets.QWidget, Ui_Form):
                 tmpStr = tmpStr + str(dataBuffer.cbCardData[i]) + ','
             print("游戏消息2:", tmpStr)
             tmpStr = ''
-            for i in range(0, dataBuffer.cbCardExCount):
+            for i in range(0, 39):
                 tmpStr = tmpStr + str(dataBuffer.cbCardDataEx[i]) + ','
             print("游戏消息3:", tmpStr)
-            self.handCardMsgHelp(dataBuffer)
+            self.handCardMsgHelpEx(dataBuffer)
         elif wSubCmdID == -1:
             print("close")
             self.connected=False
@@ -253,6 +291,7 @@ class MyPyQT_Form(QtWidgets.QWidget, Ui_Form):
         self.env = None
         if self.connected==False:
             print("你的账号没有登陆，请联系Q：460000713，进行购买")
+            self.sleep(1000)
             return
         self.game_over = False
         self.shengYuPaiShow(self.allDisCardData)
