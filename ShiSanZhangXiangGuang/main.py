@@ -214,6 +214,10 @@ class MyPyQT_Form(QtWidgets.QWidget, Ui_Form):
                         if len(tmpHandData) >= 13:
                             break
                 self.ShowPlayerCard(len(self.otherPlayerData)-1, tmpHandData)
+                tmpStr = '最后一家的牌：'
+                for i in range(0, len(tmpHandData)):
+                    tmpStr = tmpStr + str(tmpHandData[i]) + ','
+                print(tmpStr)
                 self.bSanDayiStart = True
             self.lock.release()
     def RecvPlayerMsg(self,wSubCmdID, data):
@@ -243,7 +247,8 @@ class MyPyQT_Form(QtWidgets.QWidget, Ui_Form):
         print("ShowPlayerCard",id)
         if id>=0 and id<5 :
             self.otherPlayerText[id].setText("...")
-            self.turnCardReal, self.turnCard_colors = self.changeDataIn(data)
+            tempData=data.copy()
+            self.turnCardReal, self.turnCard_colors = self.changeDataIn(tempData)
             action_message, colors,duoZhongBaiFa = self.dllCall(self.turnCardReal, self.turnCard_colors, '',
                                                   self.allDisCardData, self.bHavePass)
             tmpCardstr = ""
@@ -568,7 +573,8 @@ class MyPyQT_Form(QtWidgets.QWidget, Ui_Form):
             AllCardCount[tmpCard[i]]+=1
         return AllcardData
 
-    def changeDataIn(self, cards):
+    def changeDataIn(self, cardsData):
+        cards=cardsData.copy()
         # 转换外面传进来的数据
         AllCard = {3: '3', 4: '4', 5: '5', 6: '6', 7: '7',
                             8: '8', 9: '9', 10: 'T', 11: 'J', 12: 'Q',
