@@ -17,7 +17,7 @@ MDM_GF_FRAME=100									#//框架命令
 
 MDM_GF_GAME					= 200
 SUB_C_SEND_CARD = 1									  # // --用户叫庄
-
+SUB_C_RESET_TABLE = 2									  # // --用户叫庄
 SOCKET_TCP_BUFFER=16384
 DK_MAPPED		=0x01								#//映射类型
 DK_ENCRYPT		=0x02								#//加密类型
@@ -34,20 +34,24 @@ class TCP_Head(Structure):
                 ("wMainCmdID", c_ushort),
                 ("wSubCmdID", c_ushort)
                 ]
+    _pack_ = 1
 class CMD_GR_LogonUserID(Structure):
     _fields_ = [("dwUserID", c_int64 ),
                 ("password", c_int64),
                 ("szMachineID", c_wchar * 128)
                 ]
+    _pack_ = 1
 class CMD_GR_LogonSuccess(Structure):
     _fields_ = [("wTableID", c_ulong),
                 ("wChairID", c_ulong),
                 ]
+    _pack_ = 1
 
 class CMD_GR_LogonFailure(Structure):
     _fields_ = [("lErrorCode", c_ulong),
                 ("szDescribeString", c_wchar*128),
                 ]
+    _pack_ = 1
 
 class cmd_cardDataInfo(Structure):
     _fields_ = [
@@ -57,11 +61,18 @@ class cmd_cardDataInfo(Structure):
                 ("cbCardDataEx", c_ubyte * 200),
                 ("cbCardExCount", c_ubyte),
                 ]
-
+    _pack_ = 1
+class cmd_reSetTable(Structure):
+    _fields_ = [
+                ("wChairID", c_ushort),
+                ("status", c_ubyte),
+                ]
+    _pack_ = 1
 class CMD_GR_UserSitDown(Structure):
     _fields_ = [("wTableID", c_ushort),
                 ("wChairID", c_ushort),
                 ]
+    _pack_ = 1
 def to_byte(num, bits=None):
     if bits is None:
         bits = 8 # 给一个默认的的位长

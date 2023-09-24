@@ -421,6 +421,31 @@
     <string>开始游戏</string>
    </property>
   </widget>
+  <widget class="QPushButton" name="reSetTable">
+   <property name="geometry">
+    <rect>
+     <x>650</x>
+     <y>440</y>
+     <width>111</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>等线</family>
+     <pointsize>14</pointsize>
+     <weight>50</weight>
+     <italic>false</italic>
+     <bold>false</bold>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true"/>
+   </property>
+   <property name="text">
+    <string>重置桌子</string>
+   </property>
+  </widget>
  </widget>
  <resources/>
  <connections>

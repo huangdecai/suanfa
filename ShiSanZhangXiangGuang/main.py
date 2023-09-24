@@ -140,7 +140,7 @@ class MyPyQT_Form(QtWidgets.QWidget, Ui_Form):
         self.RPlayedCard.setText("下家出牌区域")
         self.PredictedCard.setText("AI出牌区域")
         #self.ThreeLandlordCards.setText("十三张")
-        self.SwitchMode.setText("自动" if self.AutoPlay else "单局")
+        self.SwitchMode.setText("自动下一局" if self.AutoPlay else "单局")
         for player in self.Players:
             player.setStyleSheet('background-color: rgba(255, 0, 0, 0);')
     def readJson(self):
@@ -238,9 +238,16 @@ class MyPyQT_Form(QtWidgets.QWidget, Ui_Form):
             print("close")
             self.connected=False
             return
+        elif wSubCmdID == socketTool.SUB_C_RESET_TABLE:
+            dataBuffer = socketTool.cmd_reSetTable.from_buffer(data)
+            tmpStr = '座位号:' + str(dataBuffer.wChairID)
+            print("重置桌子状态:", tmpStr)
+            return
         elif wSubCmdID==socketTool.SUB_GR_USER_SIT_SUCCESS:
             if data.wChairID==self.fenFaQi.GetChaiID():
                 self.connected = True
+        else:
+            print("其他无关消息")
 
         a = 4
     def ShowPlayerCard(self,id,data):
@@ -259,13 +266,13 @@ class MyPyQT_Form(QtWidgets.QWidget, Ui_Form):
             self.otherPlayerText[id].setText(tmpCardstr if (len(tmpCardstr) > 0) else "算法异常")
     def startLoginGame(self):
         self.fenFaQi.start()
-
-
+    def reSetTableStatus(self):
+        self.fenFaQi.ReSetTable()
     def startGameEx(self):
         self.fenFaQi.userReady()
     def switch_mode(self):
         self.AutoPlay = not self.AutoPlay
-        self.SwitchMode.setText("自动" if self.AutoPlay else "单局")
+        self.SwitchMode.setText("自动下一局" if self.AutoPlay else "单局")
     def IsSameCard(self):
         tmpCardstr = ""
         for i in range(0, len(self.user_hand_cards_real)):
@@ -419,6 +426,8 @@ class MyPyQT_Form(QtWidgets.QWidget, Ui_Form):
                                         #randnum = random.randint(2, 4)
                                     if self.bFastEnable or duoZhongBaiFa==1 :
                                         randnum=random.randint(1, 2)
+                                    if self.onlyTip:
+                                        break
                                     self.sleep(1000 * randnum)
                                     print("切换牌:",colors[i], action_message[i],)
                                     helper.LeftClickEX(handCardsInfo[i][1], handCardsInfo[j][1])

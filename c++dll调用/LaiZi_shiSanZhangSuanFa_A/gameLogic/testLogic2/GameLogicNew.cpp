@@ -1706,8 +1706,8 @@ int CGameLogicNew::FindCardKindMinNum(BYTE const cbHandCardData[], BYTE const cb
 			}
 			else if (m_bSanDaYi&&resultAllVec[j].at(i).size() <=8 /*&& tempScore > MinTypeScoreShao[1]*/)
 			{
-				CardResultShao[1] = resultAllVec[j][i];
-				MinTypeScoreShao[1] = tempScore;
+				CardResultShao.push_back(resultAllVec[j][i]);
+				MinTypeScoreShao.push_back(tempScore);
 			}
 
 		}
@@ -4252,11 +4252,13 @@ bool CGameLogicNew::SearchOutCardErRen(BYTE cbHandCardData[], BYTE cbHandCardCou
 	}
 	else if (cbTurnCardCount == 13)
 	{
-		m_bSanDaYi = true;
+		
 		tagOutCardResultNew  TurnOutCardResult;
 		SearchOutCardShiSanZhang(cbTurnCardData, cbTurnCardCount, TurnOutCardResult);
-		SearchOutCardShiSanZhangTurn(cbHandCardData, cbHandCardCount, OutCardResult, TurnOutCardResult);
-		
+		tagOutCardResultNew  FirstOutCardResult;
+		SearchOutCardShiSanZhang(cbHandCardData, cbHandCardCount, FirstOutCardResult);
+		m_bSanDaYi = true;
+		SearchOutCardShiSanZhangTurn(cbHandCardData, cbHandCardCount, OutCardResult, TurnOutCardResult, FirstOutCardResult);
 	}
 	int count = 0;
 	if (tmpWang.size()>0)
@@ -4468,7 +4470,7 @@ VOID CGameLogicNew::SearchOutCardShiSanZhang(const BYTE cbHandCardData[], BYTE c
 
 
 
-VOID CGameLogicNew::SearchOutCardShiSanZhangTurn(const BYTE cbHandCardData[], BYTE cbHandCardCount, tagOutCardResultNew & OutCardResult, tagOutCardResultNew & TurnOutCardResult2)
+VOID CGameLogicNew::SearchOutCardShiSanZhangTurn(const BYTE cbHandCardData[], BYTE cbHandCardCount, tagOutCardResultNew & OutCardResult, tagOutCardResultNew & TurnOutCardResult, tagOutCardResultNew & FirstOutCardResult)
 {
 	//零下标没用
 	tagOutCardTypeResultNew CardTypeResult[CT_TYPE_COUNT];
@@ -4483,6 +4485,47 @@ VOID CGameLogicNew::SearchOutCardShiSanZhangTurn(const BYTE cbHandCardData[], BY
 	bool biYing = false;
 	int duoZhongBaiFa = 1;
 	int minTypeCount = FindCardKindMinNum(cbHandCardData, cbHandCardCount, CardTypeResult, vecMinTypeCardResult, vecMinTypeCardResultShao, tempMinTypeScore, tempMinTypeScoreShao, biYing);
+	BYTE ArrayTurn[DOU_NUM][DOU_HAND_COUNT] = { 0 };
+	CopyMemory(ArrayTurn[2], TurnOutCardResult.cbResultCard, douNum[2]);
+	CopyMemory(ArrayTurn[1], TurnOutCardResult.cbResultCard + 3, douNum[1]);
+	CopyMemory(ArrayTurn[0], TurnOutCardResult.cbResultCard + 8, douNum[0]);
+
+	BYTE ArrayFirst[DOU_NUM][DOU_HAND_COUNT] = { 0 };
+	CopyMemory(ArrayFirst[2], FirstOutCardResult.cbResultCard, douNum[2]);
+	CopyMemory(ArrayFirst[1], FirstOutCardResult.cbResultCard + 3, douNum[1]);
+	CopyMemory(ArrayFirst[0], FirstOutCardResult.cbResultCard + 8, douNum[0]);
+	BYTE cbMaxCard = 0;
+	int resultFirst = 0;
+	for (int j = 0; j < DOU_NUM; j++)
+	{
+		resultFirst += CompareCard(ArrayTurn[j], ArrayFirst[j], douNum[j], douNum[j], true, true);
+	}
+	if (resultFirst>=3)
+	{
+		CopyMemory(&OutCardResult, &FirstOutCardResult, sizeof(tagOutCardResultNew));
+		return;
+	}
+	else if (resultFirst<=2)
+	{
+		
+		int type2 = GetCardType(ArrayFirst[2], douNum[2], cbMaxCard);
+		int type1 = GetCardType(ArrayFirst[1], douNum[1], cbMaxCard);
+		int type0 = GetCardType(ArrayFirst[0], douNum[0], cbMaxCard);
+		if (type1 == CT_ONE_DOUBLE&&type2 == CT_ONE_DOUBLE&&type0!=CT_TWO_DOUBLE)
+		{
+			SwitchArray(&ArrayFirst[1][2], &ArrayFirst[2][0], 2);
+			TrunCheck(ArrayTurn, ArrayFirst, resultFirst, FirstOutCardResult);
+
+		}
+		else if (type1 == CT_ONE_DOUBLE&&type2 == CT_ONE_DOUBLE&&type0 == CT_TWO_DOUBLE)
+		{
+			SwitchArray(&ArrayFirst[1][2], &ArrayFirst[2][0], 2);
+			SwitchArray(&ArrayFirst[1][0], &ArrayFirst[0][0], 2);
+			SwitchArray(&ArrayFirst[1][0], &ArrayFirst[1][2], 2);
+			JiaoYanWuLong(ArrayFirst);
+			TrunCheck(ArrayTurn, ArrayFirst, resultFirst, FirstOutCardResult);
+		}
+	}
 	for (int i = 0; i < vecMinTypeCardResultShao.size(); i++)
 	{
 		if (vecMinTypeCardResultShao[i].size() > 0)
@@ -4492,13 +4535,14 @@ VOID CGameLogicNew::SearchOutCardShiSanZhangTurn(const BYTE cbHandCardData[], BY
 			int tmpSize2 = vecMinTypeCardResultShao[i].size();
 			{
 				BYTE Array[DOU_NUM][DOU_HAND_COUNT] = { 0 };
-				CopyMemory(Array, TurnOutCardResult2.cbResultCard, douNum[2]);
-				CopyMemory(Array, TurnOutCardResult2.cbResultCard + 3, douNum[1]);
-				CopyMemory(Array, TurnOutCardResult2.cbResultCard + 8, douNum[0]);
+				CopyMemory(Array[2], TurnOutCardResult.cbResultCard, douNum[2]);
+				CopyMemory(Array[1], TurnOutCardResult.cbResultCard + 3, douNum[1]);
+				CopyMemory(Array[0], TurnOutCardResult.cbResultCard + 8, douNum[0]);
 
 				BYTE Array2[DOU_NUM][DOU_HAND_COUNT] = { 0 };
 				int  ArrayCount2[DOU_NUM] = { 0 };
 				shengChengSanDou(vecMinTypeCardResultShao[i], Array2);
+				ShiSanZhangOutCardCeLue(cbHandCardData, cbHandCardCount, Array2, CardTypeResult);
 				int resultCompare = 0;
 				for (int j = 0; j < DOU_NUM; j++)
 				{
@@ -4518,27 +4562,47 @@ VOID CGameLogicNew::SearchOutCardShiSanZhangTurn(const BYTE cbHandCardData[], BY
 					OutCardResult.cbCardType = 1;
 					return;
 				}
+				else if (resultCompare>resultFirst)
+				{
+					//校验乌龙
+					JiaoYanWuLong(Array2);
+					int num = 0;
+					for (int i = 0; i < DOU_NUM; i++)
+					{
+						CopyMemory(OutCardResult.cbResultCard + num, Array2[2 - i], douNum[2 - i]);
+						num += douNum[2 - i];
+					}
+					OutCardResult.cbCardType = 1;
+				}
 
 			}
 		}
 	}
 
-	BYTE Array[DOU_NUM][DOU_HAND_COUNT] = { 0 };
-	shengChengSanDou(vecMinTypeCardResult, Array);
-	ShiSanZhangOutCardCeLue(cbHandCardData, cbHandCardCount, Array, CardTypeResult);
-	//校验乌龙
-	JiaoYanWuLong(Array);
-
-	int num = 0;
-
-	for (int i = 0; i < DOU_NUM; i++)
-	{
-		CopyMemory(OutCardResult.cbResultCard + num, Array[2 - i], douNum[2 - i]);
-		num += douNum[2 - i];
-	}
-	OutCardResult.cbCardType = duoZhongBaiFa;
+	CopyMemory(&OutCardResult, &FirstOutCardResult, sizeof(tagOutCardResultNew));
 
 	return;
+}
+
+int CGameLogicNew::TrunCheck(BYTE  ArrayTurn[DOU_NUM][DOU_HAND_COUNT], BYTE  ArrayFirst[DOU_NUM][DOU_HAND_COUNT], int &resultFirst, tagOutCardResultNew &FirstOutCardResult)
+{
+	int tempReuslt = 0;
+	for (int j = 0; j < DOU_NUM; j++)
+	{
+		tempReuslt += CompareCard(ArrayTurn[j], ArrayFirst[j], douNum[j], douNum[j], true, true);
+	}
+	if (tempReuslt > resultFirst)
+	{
+		int num = 0;
+		for (int i = 0; i < DOU_NUM; i++)
+		{
+			CopyMemory(FirstOutCardResult.cbResultCard + num, ArrayFirst[2 - i], douNum[2 - i]);
+			num += douNum[2 - i];
+		}
+		resultFirst = tempReuslt;
+		return tempReuslt;
+	}
+	return 0;
 }
 
 void CGameLogicNew::JiaoYanWuLong(BYTE Array[DOU_NUM][DOU_HAND_COUNT])

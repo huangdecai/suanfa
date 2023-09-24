@@ -346,7 +346,9 @@ public:
 	//³öÅÆËÑË÷
 	bool SearchOutCardErRen(BYTE cbHandCardData[], BYTE cbHandCardCount, BYTE cbTurnCardData[], BYTE cbTurnCardCount, BYTE	DiscardCard[], BYTE cbDiscardCardCount, BYTE cbRangCardCount, BYTE cbOthreRangCardCount, tagOutCardResultNew & OutCardResult);
 	VOID SearchOutCardShiSanZhang(const BYTE cbHandCardData[], BYTE cbHandCardCount, tagOutCardResultNew & OutCardResult);
-	VOID SearchOutCardShiSanZhangTurn(const BYTE cbHandCardData[], BYTE cbHandCardCount, tagOutCardResultNew & OutCardResult, tagOutCardResultNew & TurnOutCardResult2);
+	VOID SearchOutCardShiSanZhangTurn(const BYTE cbHandCardData[], BYTE cbHandCardCount, tagOutCardResultNew & OutCardResult, tagOutCardResultNew & TurnOutCardResult, tagOutCardResultNew & FirstOutCardResult);
+
+	int TrunCheck(BYTE  ArrayTurn[DOU_NUM][DOU_HAND_COUNT], BYTE  ArrayFirst[DOU_NUM][DOU_HAND_COUNT], int &resultFirst, tagOutCardResultNew &FirstOutCardResult);
 
 	void JiaoYanWuLong(BYTE Array[DOU_NUM][DOU_HAND_COUNT]);
 

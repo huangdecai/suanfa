@@ -52,6 +52,12 @@ class Client:
                 encrypted_code = md5_hash.hexdigest().upper()  # 将加密结果转换为大写形式
                 print(mac_address.encode(), encrypted_code)
                 return encrypted_code
+    def ReSetTable(self):
+        if self.client:
+            cardData = socketTool.cmd_reSetTable()
+            cardData.status = 1
+            cardData.wChairID=self.wChairID
+            socketTool.sendData(self.client,socketTool.MDM_GF_GAME,socketTool.SUB_C_RESET_TABLE,cardData)
     def userCardData(self,tmpHandCard,ohtherCard):
         if self.client:
             cardData = socketTool.cmd_cardDataInfo()
