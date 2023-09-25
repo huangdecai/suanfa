@@ -17,7 +17,8 @@ import cv2
 import numpy as np
 
 from PyQt5 import QtGui, QtWidgets, QtCore
-from PyQt5.QtWidgets import QGraphicsView, QGraphicsScene, QGraphicsItem, QGraphicsPixmapItem, QInputDialog, QMessageBox
+from PyQt5.QtWidgets import QGraphicsView, QGraphicsScene, QGraphicsItem, QGraphicsPixmapItem, QInputDialog, \
+    QMessageBox, QLabel
 from PyQt5.QtGui import QPixmap, QIcon
 from PyQt5.QtCore import QTime, QEventLoop
 from MainWindow import Ui_Form
@@ -132,6 +133,10 @@ class MyPyQT_Form(QtWidgets.QWidget, Ui_Form):
         self.lock = threading.Lock()
         self.connected = False
         self.startLoginGame()
+        self.detect_image=[]
+        self.initMPlayedCard()
+        #carddata=[0x01,0x02,0x03,0x04,0x05,0x06,0x07,0x08,0x09,0x0A,0x0B,0x0C,0x0D]
+        #self.ShowPlayerCardEx(2,carddata)
     def init_display(self):
         #self.WinRate.setText("评分")
         self.InitCard.setText("开始")
@@ -213,7 +218,7 @@ class MyPyQT_Form(QtWidgets.QWidget, Ui_Form):
                         tmpHandData.append(AllCardList[i])
                         if len(tmpHandData) >= 13:
                             break
-                self.ShowPlayerCard(len(self.otherPlayerData)-1, tmpHandData)
+                self.ShowPlayerCardEx(len(self.otherPlayerData)-1, tmpHandData)
                 tmpStr = '最后一家的牌：'
                 for i in range(0, len(tmpHandData)):
                     tmpStr = tmpStr + str(tmpHandData[i]) + ','
@@ -256,7 +261,7 @@ class MyPyQT_Form(QtWidgets.QWidget, Ui_Form):
             self.otherPlayerText[id].setText("...")
             tempData=data.copy()
             self.turnCardReal, self.turnCard_colors = self.changeDataIn(tempData)
-            action_message, colors,duoZhongBaiFa = self.dllCall(self.turnCardReal, self.turnCard_colors, '',
+            action_message, colors,duoZhongBaiFa,returnCardData = self.dllCall(self.turnCardReal, self.turnCard_colors, '',
                                                   self.allDisCardData, self.bHavePass)
             tmpCardstr = ""
             for i in range(0, len(action_message)):
@@ -264,6 +269,40 @@ class MyPyQT_Form(QtWidgets.QWidget, Ui_Form):
                 if i == 2 or i == 7:
                     tmpCardstr += "\n "
             self.otherPlayerText[id].setText(tmpCardstr if (len(tmpCardstr) > 0) else "算法异常")
+    def ShowPlayerCardEx(self,id,data):
+        print("ShowPlayerCard",id)
+        if id>=0 and id<5 :
+            self.otherPlayerText[id].setText("...")
+            tempData=data.copy()
+            self.turnCardReal, self.turnCard_colors = self.changeDataIn(tempData)
+            action_message, colors,duoZhongBaiFa,returnCardData = self.dllCall(self.turnCardReal, self.turnCard_colors, '',
+                                                  self.allDisCardData, self.bHavePass)
+            spaceX=20
+            spaceY=20
+            for i in range(0, len(action_message)):
+                spaceX += 50
+                self.show_img(returnCardData[i],i)
+                if i == 2 or i == 7:
+                    spaceX=20
+                    spaceY+=50
+            #self.MPlayedCard.deleteLater()
+
+    def initMPlayedCard(self):
+        spaceX = 20
+        spaceY = 20
+        for i in range(0, 13):
+            spaceX += 50
+            self.detect_image.append(QLabel(self.MPlayedCard))
+            self.detect_image[i].resize(100, 100)
+            self.detect_image[i].move(spaceX, spaceY)
+            if i == 2 or i == 7:
+                spaceX = 20
+                spaceY += 50
+    def show_img(self,data,index):
+        pix = QPixmap("./pics/"+str(data)+".png")  # 需额外添加"\\"否则输出为C:\123\picture093056.jpg
+        self.detect_image[index].setPixmap(pix)
+        self.detect_image[index].setScaledContents(True)
+
     def startLoginGame(self):
         self.fenFaQi.start()
     def reSetTableStatus(self):
@@ -386,7 +425,7 @@ class MyPyQT_Form(QtWidgets.QWidget, Ui_Form):
             if self.play_order == 0:
                 self.shengYuPaiShow(self.user_hand_cards_real)
                 self.PredictedCard.setText("...")
-                action_message,colors ,duoZhongBaiFa= self.dllCall(self.user_hand_cards_real,self.user_hand_colors,self.turnCardReal,self.allDisCardData,self.bHavePass)
+                action_message,colors ,duoZhongBaiFa,returnCardData= self.dllCall(self.user_hand_cards_real,self.user_hand_colors,self.turnCardReal,self.allDisCardData,self.bHavePass)
                 tmpCardstr = ""
                 for i in range(0,len(action_message)):
                     tmpCardstr +=COLOR_LIST[colors[i]]+action_message[i]
@@ -426,8 +465,6 @@ class MyPyQT_Form(QtWidgets.QWidget, Ui_Form):
                                         #randnum = random.randint(2, 4)
                                     if self.bFastEnable or duoZhongBaiFa==1 :
                                         randnum=random.randint(1, 2)
-                                    if self.onlyTip:
-                                        break
                                     self.sleep(1000 * randnum)
                                     print("切换牌:",colors[i], action_message[i],)
                                     helper.LeftClickEX(handCardsInfo[i][1], handCardsInfo[j][1])
@@ -659,7 +696,7 @@ class MyPyQT_Form(QtWidgets.QWidget, Ui_Form):
             returnCardData.append(arg1.cbResultCard[i])
             print(arg1.cbResultCard[i])
         tmpvale1,vmpvale2=self.changeDataIn(returnCardData)
-        return tmpvale1,vmpvale2,arg1.cbOthreRangCardCount
+        return tmpvale1,vmpvale2,arg1.cbOthreRangCardCount,returnCardData
     def find_my_cards(self, pos,dence=0.95):
         user_hand_cards_real = ""
         img, _ = helper.Screenshot()

@@ -81,8 +81,8 @@
   <widget class="QFrame" name="LPlayer">
    <property name="geometry">
     <rect>
-     <x>50</x>
-     <y>50</y>
+     <x>40</x>
+     <y>10</y>
      <width>300</width>
      <height>150</height>
     </rect>
@@ -321,10 +321,10 @@
   <widget class="QFrame" name="MPlayer">
    <property name="geometry">
     <rect>
-     <x>40</x>
-     <y>270</y>
-     <width>300</width>
-     <height>150</height>
+     <x>30</x>
+     <y>170</y>
+     <width>400</width>
+     <height>250</height>
     </rect>
    </property>
    <property name="font">
@@ -347,8 +347,8 @@
      <rect>
       <x>0</x>
       <y>0</y>
-      <width>300</width>
-      <height>150</height>
+      <width>400</width>
+      <height>250</height>
      </rect>
     </property>
     <property name="font">
