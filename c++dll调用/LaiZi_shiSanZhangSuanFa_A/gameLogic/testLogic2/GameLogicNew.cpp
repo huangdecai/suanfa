@@ -4511,11 +4511,17 @@ VOID CGameLogicNew::SearchOutCardShiSanZhangTurn(const BYTE cbHandCardData[], BY
 		int type2 = GetCardType(ArrayFirst[2], douNum[2], cbMaxCard);
 		int type1 = GetCardType(ArrayFirst[1], douNum[1], cbMaxCard);
 		int type0 = GetCardType(ArrayFirst[0], douNum[0], cbMaxCard);
-		if (type1 == CT_ONE_DOUBLE&&type2 == CT_ONE_DOUBLE&&type0!=CT_TWO_DOUBLE)
+		if (type1 == CT_ONE_DOUBLE&&type2 == CT_ONE_DOUBLE&&type0>CT_TWO_DOUBLE)
 		{
 			SwitchArray(&ArrayFirst[1][2], &ArrayFirst[2][0], 2);
 			TrunCheck(ArrayTurn, ArrayFirst, resultFirst, FirstOutCardResult);
 
+		}
+		else if (type1 == CT_ONE_DOUBLE&&type2 == CT_ONE_DOUBLE&&type0 == CT_ONE_DOUBLE)
+		{
+			SwitchArray(&ArrayFirst[0][2], &ArrayFirst[2][0], 2);
+			SwitchArray(&ArrayFirst[1][2], &ArrayFirst[2][0], 2);
+			TrunCheck(ArrayTurn, ArrayFirst, resultFirst, FirstOutCardResult);
 		}
 		else if (type1 == CT_ONE_DOUBLE&&type2 == CT_ONE_DOUBLE&&type0 == CT_TWO_DOUBLE)
 		{
