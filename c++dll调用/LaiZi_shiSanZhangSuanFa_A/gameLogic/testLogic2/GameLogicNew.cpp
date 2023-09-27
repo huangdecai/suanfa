@@ -4574,10 +4574,10 @@ VOID CGameLogicNew::SearchOutCardShiSanZhangTurn(const BYTE cbHandCardData[], BY
 					int num = 0;
 					for (int i = 0; i < DOU_NUM; i++)
 					{
-						CopyMemory(OutCardResult.cbResultCard + num, Array2[2 - i], douNum[2 - i]);
+						CopyMemory(FirstOutCardResult.cbResultCard + num, Array2[2 - i], douNum[2 - i]);
 						num += douNum[2 - i];
 					}
-					OutCardResult.cbCardType = 1;
+					FirstOutCardResult.cbCardType = 1;
 				}
 
 			}
