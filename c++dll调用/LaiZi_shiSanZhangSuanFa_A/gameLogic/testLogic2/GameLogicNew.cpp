@@ -4543,6 +4543,8 @@ VOID CGameLogicNew::SearchOutCardShiSanZhangTurn(const BYTE cbHandCardData[], BY
 				int  ArrayCount2[DOU_NUM] = { 0 };
 				shengChengSanDou(vecMinTypeCardResultShao[i], Array2);
 				ShiSanZhangOutCardCeLue(cbHandCardData, cbHandCardCount, Array2, CardTypeResult);
+				//校验乌龙
+				JiaoYanWuLong(Array2);
 				int resultCompare = 0;
 				for (int j = 0; j < DOU_NUM; j++)
 				{
@@ -4551,8 +4553,7 @@ VOID CGameLogicNew::SearchOutCardShiSanZhangTurn(const BYTE cbHandCardData[], BY
 
 				if (resultCompare >= 3)
 				{
-					//校验乌龙
-					JiaoYanWuLong(Array2);
+					
 					int num = 0;
 					for (int i = 0; i < DOU_NUM; i++)
 					{
@@ -4564,8 +4565,6 @@ VOID CGameLogicNew::SearchOutCardShiSanZhangTurn(const BYTE cbHandCardData[], BY
 				}
 				else if (resultCompare>resultFirst)
 				{
-					//校验乌龙
-					JiaoYanWuLong(Array2);
 					int num = 0;
 					for (int i = 0; i < DOU_NUM; i++)
 					{
