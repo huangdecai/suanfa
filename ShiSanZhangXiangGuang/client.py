@@ -111,6 +111,8 @@ class Client:
                 dataBuffer = socketTool.CMD_GR_UserSitDown.from_buffer(data)
                 print("坐下成功,桌子号:",dataBuffer.wTableID,"椅子号:",dataBuffer.wChairID)
                 self.wChairID=dataBuffer.wChairID
+                if self.wChairID==0:
+                    self.ReSetTable()
                 if self.msgCall:
                     self.msgCall(msg_head.wSubCmdID, dataBuffer)
         elif msg_head.wMainCmdID == socketTool.MDM_GF_GAME:
