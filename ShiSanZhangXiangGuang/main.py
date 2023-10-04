@@ -548,12 +548,12 @@ class MyPyQT_Form(QtWidgets.QWidget, Ui_Form):
         return tmpstr
 
     def isGameOver(self):
-        result = helper.LocateOnScreen("go_btn", region=self.OutCardBtnPos, confidence=0.80)
+        result = helper.LocateOnScreen("go_btn", region=self.OutCardBtnPos, confidence=0.75)
         while result is None:
             if self.RunGame == False:
                 break
             print("等待游戏结束")
-            result = helper.LocateOnScreen("go_btn", region=self.OutCardBtnPos, confidence=0.80)
+            result = helper.LocateOnScreen("go_btn", region=self.OutCardBtnPos, confidence=0.75)
             self.sleep(1000)
         return True
     def find_landlord(self):
