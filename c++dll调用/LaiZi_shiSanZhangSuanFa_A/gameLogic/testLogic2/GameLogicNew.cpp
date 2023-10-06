@@ -4542,6 +4542,8 @@ VOID CGameLogicNew::SearchOutCardShiSanZhangTurn(const BYTE cbHandCardData[], BY
 			}
 		}
 	}
+	float maxSaoFen = 0.0f;
+
 	for (int i = 0; i < vecMinTypeCardResultShao.size(); i++)
 	{
 		if (vecMinTypeCardResultShao[i].size() > 0)
@@ -4559,11 +4561,12 @@ VOID CGameLogicNew::SearchOutCardShiSanZhangTurn(const BYTE cbHandCardData[], BY
 				int  ArrayCount2[DOU_NUM] = { 0 };
 				shengChengSanDou(vecMinTypeCardResultShao[i], Array2);
 				ShiSanZhangOutCardCeLue(cbHandCardData, cbHandCardCount, Array2, CardTypeResult);
-				if (i==10)
+				if (i==107)
 				{
 					int a = 4;
 				}
 				//Ð£ÑéÎÚÁú
+				JiaoYanWuLong(Array2);
 				JiaoYanWuLong(Array2);
 				int resultCompare = 0;
 				for (int j = 0; j < DOU_NUM; j++)
@@ -4583,7 +4586,7 @@ VOID CGameLogicNew::SearchOutCardShiSanZhangTurn(const BYTE cbHandCardData[], BY
 					OutCardResult.cbCardType = 1;
 					return;
 				}
-				else if (resultCompare>resultFirst)
+				else if (resultCompare>resultFirst&&maxSaoFen<tempMinTypeScoreShao[i])
 				{
 					int num = 0;
 					for (int i = 0; i < DOU_NUM; i++)
@@ -4592,6 +4595,7 @@ VOID CGameLogicNew::SearchOutCardShiSanZhangTurn(const BYTE cbHandCardData[], BY
 						num += douNum[2 - i];
 					}
 					FirstOutCardResult.cbCardType = 1;
+					maxSaoFen = tempMinTypeScoreShao[i];
 				}
 
 			}
