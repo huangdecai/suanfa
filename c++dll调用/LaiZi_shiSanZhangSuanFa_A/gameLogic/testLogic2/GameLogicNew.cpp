@@ -4574,7 +4574,7 @@ VOID CGameLogicNew::SearchOutCardShiSanZhangTurn(const BYTE cbHandCardData[], BY
 					resultCompare += CompareCard(Array[j], Array2[j], douNum[j], douNum[j], true, true);
 				}
 
-				if (resultCompare >= 3)
+				if (resultCompare>resultFirst&&resultCompare >= 3)
 				{
 					
 					int num = 0;

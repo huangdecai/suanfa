@@ -344,6 +344,7 @@ class MyPyQT_Form(QtWidgets.QWidget, Ui_Form):
                 tmpStr = tmpStr + str(tmpHandData[i]) + ','
             print(tmpStr)
             self.bSanDayiStart = True
+        helper.setFindStr(str(1))
     def gameInit(self):
         self.InitCard.setEnabled(False)
         self.RunGame = True
@@ -421,7 +422,6 @@ class MyPyQT_Form(QtWidgets.QWidget, Ui_Form):
                     return False
                 break
                 self.sleep(2000)
-        helper.setFindStr(str(1))
         print("开始对局")
         print("手牌:", self.user_hand_cards_real)
 
