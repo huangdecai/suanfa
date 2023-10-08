@@ -98,6 +98,7 @@ class MyPyQT_Form(QtWidgets.QWidget, Ui_Form):
         self.turnCard_colors = []
         self.allDisCardData = ''
         self.bSanDayiStart = False
+        self.bHaveShiBie=False
         self.bHavePass=False
         self.BidThreshold1 = 65  # 叫地主阈值
         self.BidThreshold2 = 75  # 抢地主阈值
@@ -163,31 +164,6 @@ class MyPyQT_Form(QtWidgets.QWidget, Ui_Form):
             if carddata==self.otherPlayerData[0][i]:
                 return  True
         return  False
-    def handCardMsgHelp(self,data):
-        if data.wChairID!=self.fenFaQi.GetChaiID():
-            #data.cbCardData=data.cbCardData[0,13]
-            tmpdata=[]
-            for i in range(0, 13):
-                tmpdata.append(data.cbCardData[i])
-            self.lock.acquire()
-            self.ShowPlayerCard(len(self.otherPlayerData)-1,tmpdata)
-            self.otherPlayerData.append(tmpdata)
-            if len(self.otherPlayerData)==3:
-                tmpDict = dict.fromkeys(AllCardList, 1)
-                for i in range(0, len(self.otherPlayerData)):
-                    for j in range(0, len(self.otherPlayerData[i])):
-                        if self.otherPlayerData[i][j]==15:
-                            a=4
-                        tmpDict[self.otherPlayerData[i][j]] -= 1
-                tmpHandData = []
-                for i in range(0, len(AllCardList)):
-                    if tmpDict[AllCardList[i]] == 1:
-                        tmpHandData.append(AllCardList[i])
-                        if len(tmpHandData) >= 13:
-                            break
-                self.ShowPlayerCard(len(self.otherPlayerData)-1, tmpHandData)
-                self.bSanDayiStart = True
-            self.lock.release()
     def handCardMsgHelpEx(self,data):
         #if data.wChairID!=self.fenFaQi.GetChaiID():
         if True:
@@ -325,8 +301,10 @@ class MyPyQT_Form(QtWidgets.QWidget, Ui_Form):
         return False
 
     def gameInit(self):
+        self.InitCard.setEnabled(False)
         self.RunGame = True
         GameHelper.Interrupt = False
+        self.bReSortCard=False
         self.init_display()
         # 玩家手牌
         self.user_hand_cards_real = ""
@@ -388,14 +366,18 @@ class MyPyQT_Form(QtWidgets.QWidget, Ui_Form):
 
         self.UserHandCards.setText(tmpCardstr)
         # 识别玩家的角色
-        if self.sandayi==1:
+        if self.sandayi==1 and self.bReSortCard==False:
             self.lock.acquire()
             self.otherPlayerData[0] = self.changeDataOut(self.user_hand_cards_real, self.user_hand_colors)
             tmpcards = self.otherPlayerData[0].copy()
             self.lock.release()
             self.fenFaQi.userCardData(tmpcards, [])
-            while self.bSanDayiStart!=True:
+            while self.bSanDayiStart==False:
                 print("等待其他个玩家上传手牌")
+                if self.RunGame==False:
+                    print("游戏已经停止")
+                    print("请按开始按钮")
+                    return False
                 self.sleep(2000)
         print("开始对局")
         print("手牌:", self.user_hand_cards_real)
@@ -406,6 +388,7 @@ class MyPyQT_Form(QtWidgets.QWidget, Ui_Form):
         # 生成手牌结束，校验手牌数量
         # 得到出牌顺序
         self.play_order = 0  # self.find_landlord()
+        return  True
     def init_cards(self):
         self.game_over=False
         try:
@@ -414,6 +397,7 @@ class MyPyQT_Form(QtWidgets.QWidget, Ui_Form):
             exc_type, exc_obj, exc_tb = sys.exc_info()
             print(e)
             traceback.print_tb(exc_tb)
+            print("游戏出现异常请重新开始")
             self.stop()
             self.sleep(2000)
             #self.init_cards()
@@ -421,7 +405,8 @@ class MyPyQT_Form(QtWidgets.QWidget, Ui_Form):
         print("开始出牌\n")
         while not self.game_over:
             # 玩家出牌时就通过智能体获取action，否则通过识别获取其他玩家出牌
-            self.gameInit()
+            if self.gameInit()==False:
+                break
             if self.play_order == 0:
                 self.shengYuPaiShow(self.user_hand_cards_real)
                 self.PredictedCard.setText("...")
@@ -563,11 +548,12 @@ class MyPyQT_Form(QtWidgets.QWidget, Ui_Form):
         return tmpstr
 
     def isGameOver(self):
-        result = helper.LocateOnScreen("go_btn", region=self.OutCardBtnPos, confidence=0.80)
+        result = helper.LocateOnScreen("go_btn", region=self.OutCardBtnPos, confidence=0.75)
         while result is None:
             if self.RunGame == False:
                 break
-            result = helper.LocateOnScreen("go_btn", region=self.OutCardBtnPos, confidence=0.80)
+            print("等待游戏结束")
+            result = helper.LocateOnScreen("go_btn", region=self.OutCardBtnPos, confidence=0.75)
             self.sleep(1000)
         return True
     def find_landlord(self):
@@ -579,7 +565,7 @@ class MyPyQT_Form(QtWidgets.QWidget, Ui_Form):
 
     def detect_start_btn(self):
         if  self.isGameOver():
-            print("点击换对手")
+            print("点击切换对手")
             #self.stop()
             if self.AutoPlay:
                 self.sleep(100)
@@ -746,6 +732,7 @@ class MyPyQT_Form(QtWidgets.QWidget, Ui_Form):
         try:
             self.RunGame = False
             self.game_over = True
+            self.InitCard.setEnabled(True)
             #self.env.reset()
             self.init_display()
             self.PreWinrate.setText("局前预估胜率：")
