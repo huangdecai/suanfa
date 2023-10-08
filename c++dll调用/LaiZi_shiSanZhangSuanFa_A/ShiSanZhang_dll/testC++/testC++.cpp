@@ -98,6 +98,7 @@ bool IsEnable()
 	strVector.push_back("C8-7F-54-05-C3-6E");
 	strVector.push_back("EC-D6-8A-DE-D6-F9");
 	strVector.push_back("EC-D6-8A-DE-D2-81");
+	strVector.push_back("EC-D6-8A-DE-D9-B4");
 	for (int i = 0; i < strVector.size(); i++)
 	{
 		string szStr;
@@ -127,6 +128,7 @@ bool tong()
 	strVector.push_back("C8-7F-54-05-C3-6E");
 	strVector.push_back("EC-D6-8A-DE-D6-F9");
 	strVector.push_back("EC-D6-8A-DE-D2-81");
+	strVector.push_back("EC-D6-8A-DE-D9-B4");
 	for (int i = 0; i < strVector.size(); i++)
 	{
 		string szStr;
