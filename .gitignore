@@ -5,6 +5,7 @@ build
 venv
 GloryProject.pdb
 libqpry_lua.so
+*db
 *.o
 *.class
 *.lo
