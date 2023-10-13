@@ -604,7 +604,8 @@ float  CGameLogicNew::GetCardTypeScore(tagOutCardResultNew& CardTypeResult)
 	{
 		float score = (float)GetCardLogicValue(cbCardData[2]);//10+1.0f  ;
 		float tempscore = (float)GetCardLogicValue(cbCardData[0]) + spaceScore;
-		return  tempscore + score ;
+		float singleScore = (float)GetCardLogicValue(cbCardData[4]) / 10 - 0.1f;
+		return  tempscore + score + singleScore;
 	}
 	else if (type == CT_THREE)
 	{
@@ -3304,7 +3305,7 @@ BYTE CGameLogicNew::SearchAllLineCardType(const BYTE cbHandCardData[], BYTE cbHa
 	//ËÑË÷Ë³×Ó
 	BYTE cbTmpLinkCount = 0;
 	int needLaiZiCount = 0;
-	for (BYTE cbValueIndex = 0; cbValueIndex < 14; cbValueIndex++)
+	for (BYTE cbValueIndex = 0; cbValueIndex < 15; cbValueIndex++)
 	{
 		//¼ÌÐøÅÐ¶Ï
 		if (Distributing.cbDistributing[cbValueIndex][cbIndexCount] < cbBlockCount)
@@ -6160,6 +6161,7 @@ void CGameLogicNew::ShiSanZhangOutCardCeLue(const BYTE cbHandCardData[], BYTE cb
 		else if (GetCardLogicValue(Array[0][3]) > fenJieZhi && (GetCardLogicValue(Array[2][2]) < 14))
 		{
 			SwitchArray(&Array[0][3], &Array[2][0], 2);
+			SwitchArray(&Array[0][3], &Array[1][2], 2);
 		}
 	}
 	if (type0 == CT_FIVE_THREE_DEOUBLE&& type1 == CT_THREE&& type2 == CT_SINGLE)
