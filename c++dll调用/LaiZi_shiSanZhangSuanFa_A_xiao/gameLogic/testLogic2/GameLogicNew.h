@@ -405,6 +405,7 @@ public:
 	int SearchTongHuaTypeTurnCount(BYTE * allCard, BYTE allCardCardCount, BYTE * cbCardData, BYTE cbCardCount);
 
 	int SearchAllLineCardTypeTurnCount(const BYTE cbHandCardData[], BYTE cbHandCardCount, BYTE cbLineCount, BYTE cbReferCard, int type);
+	int CheckSingleCardOrder(BYTE  Array[DOU_NUM][DOU_HAND_COUNT]);
 };
 
 //////////////////////////////////////////////////////////////////////////

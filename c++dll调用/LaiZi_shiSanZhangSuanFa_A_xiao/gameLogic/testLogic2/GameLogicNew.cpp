@@ -4617,6 +4617,7 @@ int CGameLogicNew::TrunCheck(BYTE  ArrayTurn[DOU_NUM][DOU_HAND_COUNT], BYTE  Arr
 	}
 	if (tempReuslt > resultFirst)
 	{
+		CheckSingleCardOrder(ArrayFirst);
 		int num = 0;
 		for (int i = 0; i < DOU_NUM; i++)
 		{
@@ -4675,6 +4676,7 @@ void CGameLogicNew::JiaoYanWuLong(BYTE Array[DOU_NUM][DOU_HAND_COUNT])
 	{
 		int a = 4;
 	}
+	CheckSingleCardOrder(Array);
 }
 
 VOID CGameLogicNew::shengChengSanDou(vector<tagOutCardResultNew> &vecMinTypeCardResult, BYTE  Array[DOU_NUM][DOU_HAND_COUNT])
@@ -7207,7 +7209,7 @@ void CGameLogicNew::ShiSanZhangOutCardCeLue(const BYTE cbHandCardData[], BYTE cb
 			}
 		}
 	}
-
+	CheckSingleCardOrder(Array);
 }
 
 bool CGameLogicNew::checkSpecial(const BYTE * cbHandCardData, BYTE cbHandCardCount, tagOutCardTypeResultNew &NoReDoubleCardTypeResult, BYTE  Array[DOU_NUM][DOU_HAND_COUNT])
@@ -7971,6 +7973,76 @@ int CGameLogicNew::SearchAllLineCardTypeTurnCount(const BYTE cbHandCardData[], B
 	return resultCount;
 }
 
+
+int CGameLogicNew::CheckSingleCardOrder(BYTE Array[DOU_NUM][DOU_HAND_COUNT])
+{
+	//末对是三拖2,中间是一对的情况的优化
+	vector<BYTE> singleVec;
+	for (int i = 0;i < DOU_NUM;i++)
+	{
+		BYTE cbMaxCard = 0;
+		int type = GetCardType(Array[i], douNum[i], cbMaxCard);
+		int index = -1;
+		if (type == CT_SINGLE)
+		{
+			index = 0;
+		}
+		else if (type == CT_ONE_DOUBLE)
+		{
+			index = 2;
+		}
+		else if (type == CT_TWO_DOUBLE|| type == CT_FIVE_FOUR_ONE)
+		{
+			index = 4;
+		}
+		else if (type == CT_THREE)
+		{
+			index = 3;
+		}
+		if (index!=-1)
+		{
+			for (int j = index;j < douNum[i];j++)
+			{
+				singleVec.push_back(Array[i][j]);
+			}
+		}
+	}
+	sort(singleVec.begin(), singleVec.end(), [this](BYTE  first, BYTE second)
+	{
+		return GetCardLogicValue(first) < GetCardLogicValue(second);
+	});
+	int num = 0;
+	for (int i = 0;i < DOU_NUM;i++)
+	{
+		BYTE cbMaxCard = 0;
+		int type = GetCardType(Array[i], douNum[i], cbMaxCard);
+		int index = -1;
+		if (type == CT_SINGLE)
+		{
+			index = 0;
+		}
+		else if (type == CT_ONE_DOUBLE)
+		{
+			index = 2;
+		}
+		else if (type == CT_TWO_DOUBLE || type == CT_FIVE_FOUR_ONE)
+		{
+			index = 4;
+		}
+		else if (type == CT_THREE)
+		{
+			index = 3;
+		}
+		if (index != -1)
+		{
+			for (int j = index;j < douNum[i];j++)
+			{
+				Array[i][j] = singleVec[num++];
+			}
+		}
+	}
+	return 0;
+}
 
 //////////////////////////////////////////////////////////////////////////
 
