@@ -18,6 +18,7 @@ CAndroidAI m_AndroidAI;
 #include <map>
 #include <ctime>
 #include<sys/timeb.h>
+int SelectCallCard(const BYTE cbCardIndex[MAX_INDEX]);
 static int getRandEx(int nMin, int nMax)
 {
 	if (nMax <= nMin)
@@ -26,70 +27,7 @@ static int getRandEx(int nMin, int nMax)
 	std::uniform_int_distribution<int> dis(nMin, nMax);
 	return dis(generator);
 }
-int SelectCallCard(const BYTE cbCardIndex[MAX_INDEX])
-{
-	//--初始化定换的牌
-	int tempColorCount[] = { m_GameLogic.GetColorCount(cbCardIndex, 0), m_GameLogic.GetColorCount(cbCardIndex, 1), m_GameLogic.GetColorCount(cbCardIndex, 2) };
-	//--选择最少的大于3的交换牌, 1是万, 2是条, 3是筒
-	int sanZhongPaiIndex[3][MAX_INDEX] = {};
-	// //转换索引
-	BYTE byCard[3][MAX_INDEX] = {};
-	int byCardCount[] = { 0, 0, 0 };
-	int sanZhongPaiScore[] = { 0, 0, 0 };
-	int bExistSiNum[] = { 0, 0, 0 };
-	for (int i = 0; i < 3; i++)
-	{
-		if (tempColorCount[i] > 0)
-		{
-			for (int j = (i)* 9; j < MAX_INDEX - MAX_HUA_COUNT; j++)
-			{
-				if (j < (i + 1) * 9){
-					sanZhongPaiIndex[i][j] = cbCardIndex[j];
-					if (cbCardIndex[j] == 4)
-					{
-						bExistSiNum[i] = 1;
-					}
-				}
-				else{
-					break;
-				}
-			}
-			for (int j = 0; j < MAX_COUNT; j++)
-			{
-				byCard[i][j] = 0;
-			}
 
-			for (int j = 0; j < MAX_INDEX - 1; j++)
-			{
-				for (int k = 0; k < sanZhongPaiIndex[i][j]; k++)
-				{
-					byCardCount[i] = byCardCount[i] + 1;
-					byCard[i][byCardCount[i]] = j;
-				}
-			}
-			m_AndroidAI.SetEnjoinOutCard(0, 0);
-			m_AndroidAI.SetCardData(byCard[i], byCardCount[i], 0, 0);
-			m_AndroidAI.Think();
-			sanZhongPaiScore[i] = m_AndroidAI.GetMaxScore();
-		}
-		else
-		{
-			return i;
-		}
-	}
-
-	int minScore = INT_MAX;
-	int tempSelectIndex = 0;
-	for (int i = 0; i< 3; i++)
-	{
-		if ((minScore > sanZhongPaiScore[i] || (tempColorCount[tempSelectIndex] - tempColorCount[i]) >= 2) && bExistSiNum[i] != 1)
-		{
-			minScore = sanZhongPaiScore[i];
-			tempSelectIndex = i;
-		}
-	}
-	return tempSelectIndex;
-}
 void TestGameLogic()
 {
 
@@ -137,8 +75,8 @@ void TestGameLogic()
 	CopyMemory(WeaveItemArray[0][3].cbCardData, tmpCardData4, sizeof(tmpCardData4));
 	BYTE cbWeaveCount[MAX_WEAVE] = { 0,0,0,0 };
 	BYTE cbCardIndex[MAX_INDEX] = { 0 };	//手中扑克
-	BYTE    tempCard[] = { 1, 1, 5, 7, 18, 19, 20, 22, 25, 35, 39, 40, 40, 17 };
-	BYTE cbActionCard = 17;
+	BYTE    tempCard[] = { 0x22,0x23,0x23,0x27,0x02,0x03,0x04,0x11,0x11,0x11,0x15,0x16,0x16,0x17 };
+	BYTE cbActionCard = 0x16;
 	BYTE cbActionMask = 0;// 0;// WIK_CHI_HU;
 		//BYTE    tempCard[] = { 4, 38, 8, 56, 10, 9, 11, 43, 12, 44, 60, 1, 33 };
 
@@ -149,7 +87,7 @@ void TestGameLogic()
 	int cbTurnCardCount = 0;
 	int cbRangCardCount = 0;
 	int cbOthreRangCardCount = 0;
-	BYTE cbCardDataEx[] = { 19, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
+	BYTE cbCardDataEx[] = { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
 	BYTE cbDiscardCard[] = { 49, 34 };
 	m_GameLogic.SwitchToCardIndex(cbHandCardData, sizeof(tempCard), cbCardIndex);
 	int que = SelectCallCard(cbCardIndex);
@@ -191,7 +129,70 @@ void TestGameLogic()
 	//CTraceService::TraceString(str, TraceLevel_Exception);
 
 }
+int SelectCallCard(const BYTE cbCardIndex[MAX_INDEX])
+{
+	//--初始化定换的牌
+	int tempColorCount[] = { m_GameLogic.GetColorCount(cbCardIndex, 0), m_GameLogic.GetColorCount(cbCardIndex, 1), m_GameLogic.GetColorCount(cbCardIndex, 2) };
+	//--选择最少的大于3的交换牌, 1是万, 2是条, 3是筒
+	int sanZhongPaiIndex[3][MAX_INDEX] = {};
+	// //转换索引
+	BYTE byCard[3][MAX_INDEX] = {};
+	int byCardCount[] = { 0, 0, 0 };
+	int sanZhongPaiScore[] = { 0, 0, 0 };
+	int bExistSiNum[] = { 0, 0, 0 };
+	for (int i = 0; i < 3; i++)
+	{
+		if (tempColorCount[i] > 0)
+		{
+			for (int j = (i) * 9; j < MAX_INDEX - MAX_HUA_COUNT; j++)
+			{
+				if (j < (i + 1) * 9) {
+					sanZhongPaiIndex[i][j] = cbCardIndex[j];
+					if (cbCardIndex[j] == 4)
+					{
+						bExistSiNum[i] = 1;
+					}
+				}
+				else {
+					break;
+				}
+			}
+			for (int j = 0; j < MAX_COUNT; j++)
+			{
+				byCard[i][j] = 0;
+			}
 
+			for (int j = 0; j < MAX_INDEX - 1; j++)
+			{
+				for (int k = 0; k < sanZhongPaiIndex[i][j]; k++)
+				{
+					byCardCount[i] = byCardCount[i] + 1;
+					byCard[i][byCardCount[i]] = j;
+				}
+			}
+			m_AndroidAI.SetEnjoinOutCard(0, 0);
+			m_AndroidAI.SetCardData(byCard[i], byCardCount[i], 0, 0);
+			m_AndroidAI.Think();
+			sanZhongPaiScore[i] = m_AndroidAI.GetMaxScore();
+		}
+		else
+		{
+			return i;
+		}
+	}
+
+	int minScore = INT_MAX;
+	int tempSelectIndex = 0;
+	for (int i = 0; i < 3; i++)
+	{
+		if ((minScore > sanZhongPaiScore[i] || (tempColorCount[tempSelectIndex] - tempColorCount[i]) >= 2) && bExistSiNum[i] != 1)
+		{
+			minScore = sanZhongPaiScore[i];
+			tempSelectIndex = i;
+		}
+	}
+	return tempSelectIndex;
+}
 int _tmain(int argc, _TCHAR* argv[])
 {
 	TestGameLogic(); 

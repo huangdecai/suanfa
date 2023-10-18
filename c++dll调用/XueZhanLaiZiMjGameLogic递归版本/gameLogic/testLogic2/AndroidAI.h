@@ -123,6 +123,26 @@ public:
 	void GetTingData(const BYTE cbCardIndex[MAX_INDEX], const BYTE cbShengYuCardIndex[MAX_INDEX], const tagWeaveItem WeaveItem[], BYTE cbWeaveCount, CMD_S_TING_DATA &TingData);
 	void GetRemainingCount(tagWeaveItem WeaveItemArray[GAME_PLAYER][MAX_WEAVE], BYTE cbWeaveCount[], const BYTE cbCardIndex[MAX_INDEX], BYTE cbShengYuIndex[MAX_INDEX], BYTE cbDiscardCard[], BYTE cbDiscardCount);
 	int SearchTingTotalCount(WORD wMeChairId, BYTE cbCardIndex[], BYTE cbShengYuIndex[MAX_INDEX], tagWeaveItem WeaveItemArray[MAX_WEAVE], BYTE cbWeaveCount, BYTE cbDiscardCard[], BYTE cbDiscardCount);
+	int SearchTingErXiangTingTotalCount(WORD wMeChairId, BYTE cbCardIndex[], BYTE cbShengYuIndex[MAX_INDEX], tagWeaveItem WeaveItemArray[MAX_WEAVE], BYTE cbWeaveCount, BYTE cbDiscardCard[], BYTE cbDiscardCount)
+	{
+		//复制数据
+		BYTE cbCardIndexTemp[MAX_INDEX];
+		CopyMemory(cbCardIndexTemp, cbCardIndex, sizeof(cbCardIndexTemp));
+
+		BYTE cbCardCount = m_GameLogic.GetCardCount(cbCardIndexTemp);
+		if (((cbCardCount + 1) % 3 != 0)|| cbCardCount==1)
+		{
+			return 0;
+		}
+		int totalNum = 0;
+		BYTE cbRes = m_GameLogic.AnalyseTingCard(cbCardIndex, WeaveItemArray, cbWeaveCount);
+		if (cbRes == WIK_LISTEN)
+		{
+			return 0;
+		}
+		
+		return totalNum;
+	}
 protected:
 	BYTE m_byEnjoinOutCard[MAX_COUNT];				//禁止出的牌
 	BYTE m_byEnjoinOutCount;						//禁止出的牌数

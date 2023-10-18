@@ -2068,8 +2068,11 @@ bool CGameLogic::IsShouShuangYou(const tagAnalyseItem *pAnalyseItem, const BYTE 
 
 BYTE CGameLogic::GetCallCard(const BYTE cardIndex[MAX_INDEX], BYTE callCard)
 {
+	if (callCard==0)
+	{
+		return 0;
+	}
 	BYTE tempCard[MAX_COUNT] = { 0 };
-
 	SwitchToCardData(cardIndex, tempCard);
 	BYTE tempCardData = 0;
 	for (int i = 0; i < MAX_COUNT; i++)
