@@ -1880,7 +1880,30 @@ VOID CGameLogicNew::SortOutCardList(BYTE cbCardData[], BYTE cbCardCount)
 			}
 		}
 	}
+	else if (cbCardType == CT_THREE)
+	{
+		//·ÖÎöÅÆ
+		tagAnalyseResultNew AnalyseResult = {};
+		AnalysebCardData(cbCardData, cbCardCount, AnalyseResult);
 
+		BYTE tmpCardCount = AnalyseResult.cbBlockCount[2] * 3;
+		CopyMemory(cbCardData, AnalyseResult.cbCardData[2], sizeof(BYTE)*tmpCardCount);
+		for (int i = CountArray(AnalyseResult.cbBlockCount) - 1; i >= 0; i--)
+		{
+			if (i == 2) continue;
+
+			if (AnalyseResult.cbBlockCount[i] > 0)
+			{
+				CopyMemory(&cbCardData[tmpCardCount], AnalyseResult.cbCardData[i],
+					sizeof(BYTE)*(i + 1)*AnalyseResult.cbBlockCount[i]);
+				tmpCardCount += (i + 1)*AnalyseResult.cbBlockCount[i];
+			}
+		}
+		if (cbCardCount >= 5)
+		{
+			SortCardList(&cbCardData[3], cbCardCount - 3, ST_ORDER);
+		}
+	}
 	return;
 }
 
@@ -6730,7 +6753,7 @@ void CGameLogicNew::ShiSanZhangOutCardCeLue(const BYTE cbHandCardData[], BYTE cb
 					{
 						SwitchArray(&Array[0][i], &Array[1][j], 1);
 						SortCardList(Array[0], DOU_HAND_COUNT, ST_ASCENDING);
-						SortCardList(Array[1], DOU_HAND_COUNT, ST_ASCENDING);
+						SortOutCardList(Array[1], DOU_HAND_COUNT);
 						bExist = true;
 						break;
 					}

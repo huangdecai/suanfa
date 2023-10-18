@@ -350,7 +350,7 @@ public:
 
 	int TrunCheck(BYTE  ArrayTurn[DOU_NUM][DOU_HAND_COUNT], BYTE  ArrayFirst[DOU_NUM][DOU_HAND_COUNT], int &resultFirst, tagOutCardResultNew &FirstOutCardResult);
 
-	void JiaoYanWuLong(BYTE Array[DOU_NUM][DOU_HAND_COUNT]);
+	bool JiaoYanWuLong(BYTE Array[DOU_NUM][DOU_HAND_COUNT]);
 
 	VOID shengChengSanDou(vector<tagOutCardResultNew> &vecMinTypeCardResult, BYTE  Array[DOU_NUM][DOU_HAND_COUNT]);
 

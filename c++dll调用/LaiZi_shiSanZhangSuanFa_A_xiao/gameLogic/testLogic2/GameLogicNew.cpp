@@ -556,6 +556,10 @@ float  CGameLogicNew::GetCardTypeScore(tagOutCardResultNew& CardTypeResult)
 		{
 			spaceScore += 28;
 		}
+	/*	else if (i == CT_THREE)
+		{
+			spaceScore += 14;
+		}*/
 		else if (i == CT_FIVE_THREE_DEOUBLE)
 		{
 			spaceScore += 80;
@@ -1857,6 +1861,30 @@ VOID CGameLogicNew::SortOutCardList(BYTE cbCardData[], BYTE cbCardCount)
 					sizeof(BYTE)*(i + 1)*AnalyseResult.cbBlockCount[i]);
 				tmpCardCount += (i + 1)*AnalyseResult.cbBlockCount[i];
 			}
+		}
+	}
+	else if (cbCardType == CT_THREE)
+	{
+		//·ÖÎöÅÆ
+		tagAnalyseResultNew AnalyseResult = {};
+		AnalysebCardData(cbCardData, cbCardCount, AnalyseResult);
+
+		BYTE tmpCardCount = AnalyseResult.cbBlockCount[2] * 3;
+		CopyMemory(cbCardData, AnalyseResult.cbCardData[2], sizeof(BYTE)*tmpCardCount);
+		for (int i = CountArray(AnalyseResult.cbBlockCount) - 1; i >= 0; i--)
+		{
+			if (i == 2) continue;
+
+			if (AnalyseResult.cbBlockCount[i] > 0)
+			{
+				CopyMemory(&cbCardData[tmpCardCount], AnalyseResult.cbCardData[i],
+					sizeof(BYTE)*(i + 1)*AnalyseResult.cbBlockCount[i]);
+				tmpCardCount += (i + 1)*AnalyseResult.cbBlockCount[i];
+			}
+		}
+		if (cbCardCount>=5)
+		{
+			SortCardList(&cbCardData[3], cbCardCount-3, ST_ORDER);
 		}
 	}
 
@@ -4544,7 +4572,8 @@ VOID CGameLogicNew::SearchOutCardShiSanZhangTurn(const BYTE cbHandCardData[], BY
 		}
 	}
 	float maxSaoFen = 0.0f;
-
+	bool bDaQiang = false;
+	bool bHave = false;
 	for (int i = 0; i < vecMinTypeCardResultShao.size(); i++)
 	{
 		if (vecMinTypeCardResultShao[i].size() > 0)
@@ -4562,49 +4591,57 @@ VOID CGameLogicNew::SearchOutCardShiSanZhangTurn(const BYTE cbHandCardData[], BY
 				int  ArrayCount2[DOU_NUM] = { 0 };
 				shengChengSanDou(vecMinTypeCardResultShao[i], Array2);
 				ShiSanZhangOutCardCeLue(cbHandCardData, cbHandCardCount, Array2, CardTypeResult);
-				if (i==107)
+				if (i==18)
 				{
 					int a = 4;
 				}
 				//Ð£ÑéÎÚÁú
 				JiaoYanWuLong(Array2);
-				JiaoYanWuLong(Array2);
+				if (JiaoYanWuLong(Array2)==false)
+				{
+					continue;
+				}
 				int resultCompare = 0;
 				for (int j = 0; j < DOU_NUM; j++)
 				{
 					resultCompare += CompareCard(Array[j], Array2[j], douNum[j], douNum[j], true, true);
 				}
 
-				if (resultCompare>resultFirst&&resultCompare >= 3)
+				if ((resultCompare>resultFirst)&&(resultCompare >= 3) && (maxSaoFen < tempMinTypeScoreShao[i]))
 				{
-					
+					bDaQiang = true;
 					int num = 0;
-					for (int i = 0; i < DOU_NUM; i++)
+					for (int j = 0; j < DOU_NUM; j++)
 					{
-						CopyMemory(OutCardResult.cbResultCard + num, Array2[2 - i], douNum[2 - i]);
-						num += douNum[2 - i];
+						CopyMemory(OutCardResult.cbResultCard + num, Array2[2 - j], douNum[2 - j]);
+						num += douNum[2 - j];
 					}
 					OutCardResult.cbCardType = 1;
-					return;
+					maxSaoFen = tempMinTypeScoreShao[i];
+					bHave = true;
+					//return;
 				}
-				else if (resultCompare>resultFirst&&maxSaoFen<tempMinTypeScoreShao[i])
+				else if ((resultCompare>resultFirst&&maxSaoFen<tempMinTypeScoreShao[i])&& bDaQiang==false)
 				{
 					int num = 0;
-					for (int i = 0; i < DOU_NUM; i++)
+					for (int j = 0; j < DOU_NUM; j++)
 					{
-						CopyMemory(FirstOutCardResult.cbResultCard + num, Array2[2 - i], douNum[2 - i]);
-						num += douNum[2 - i];
+						CopyMemory(OutCardResult.cbResultCard + num, Array2[2 - j], douNum[2 - j]);
+						num += douNum[2 - j];
 					}
 					FirstOutCardResult.cbCardType = 1;
 					maxSaoFen = tempMinTypeScoreShao[i];
+					bHave = true;
 				}
 
 			}
 		}
 	}
-
-	CopyMemory(&OutCardResult, &FirstOutCardResult, sizeof(tagOutCardResultNew));
-
+	if (bHave==false)
+	{
+		CopyMemory(&OutCardResult, &FirstOutCardResult, sizeof(tagOutCardResultNew));
+	}
+	
 	return;
 }
 
@@ -4630,7 +4667,7 @@ int CGameLogicNew::TrunCheck(BYTE  ArrayTurn[DOU_NUM][DOU_HAND_COUNT], BYTE  Arr
 	return 0;
 }
 
-void CGameLogicNew::JiaoYanWuLong(BYTE Array[DOU_NUM][DOU_HAND_COUNT])
+bool CGameLogicNew::JiaoYanWuLong(BYTE Array[DOU_NUM][DOU_HAND_COUNT])
 {
 	int resultCompare1 = CompareCard(Array[2], Array[1], 3, DOU_HAND_COUNT, true, true);
 	if (resultCompare1 < 1)
@@ -4675,8 +4712,10 @@ void CGameLogicNew::JiaoYanWuLong(BYTE Array[DOU_NUM][DOU_HAND_COUNT])
 	if (resultCompare1 < 1 || resultCompare2 < 1)
 	{
 		int a = 4;
+		return false;
 	}
 	CheckSingleCardOrder(Array);
+	return true;
 }
 
 VOID CGameLogicNew::shengChengSanDou(vector<tagOutCardResultNew> &vecMinTypeCardResult, BYTE  Array[DOU_NUM][DOU_HAND_COUNT])
@@ -7195,7 +7234,7 @@ void CGameLogicNew::ShiSanZhangOutCardCeLue(const BYTE cbHandCardData[], BYTE cb
 					{
 						SwitchArray(&Array[0][i], &Array[1][j], 1);
 						SortCardList(Array[0], DOU_HAND_COUNT, ST_ASCENDING);
-						SortCardList(Array[1], DOU_HAND_COUNT, ST_ASCENDING);
+						SortOutCardList(Array[1], DOU_HAND_COUNT);
 						bExist = true;
 						break;
 					}
@@ -8009,10 +8048,10 @@ int CGameLogicNew::CheckSingleCardOrder(BYTE Array[DOU_NUM][DOU_HAND_COUNT])
 	}
 	sort(singleVec.begin(), singleVec.end(), [this](BYTE  first, BYTE second)
 	{
-		return GetCardLogicValue(first) < GetCardLogicValue(second);
+		return GetCardLogicValue(first) > GetCardLogicValue(second);
 	});
 	int num = 0;
-	for (int i = 0;i < DOU_NUM;i++)
+	for (int i = DOU_NUM-1;i >0;i--)
 	{
 		BYTE cbMaxCard = 0;
 		int type = GetCardType(Array[i], douNum[i], cbMaxCard);
