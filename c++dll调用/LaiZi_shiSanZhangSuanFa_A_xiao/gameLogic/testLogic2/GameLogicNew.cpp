@@ -4456,7 +4456,11 @@ VOID CGameLogicNew::SearchOutCardShiSanZhang(const BYTE cbHandCardData[], BYTE c
 			SwitchArray(&Array[2][0], &Array[1][0], 3);
 		}
 		else{
+			SortCardList(Array[2], douNum[2],ST_ASCENDING);
+			SortCardList(Array[1], douNum[1], ST_ASCENDING);
 			SwitchArray(&Array[2][2], &Array[1][4], 1);
+			SortCardList(Array[2], douNum[2], ST_ASCENDING);
+			SortCardList(Array[1], douNum[1], ST_ASCENDING);
 		}
 		
 
@@ -8048,10 +8052,10 @@ int CGameLogicNew::CheckSingleCardOrder(BYTE Array[DOU_NUM][DOU_HAND_COUNT])
 	}
 	sort(singleVec.begin(), singleVec.end(), [this](BYTE  first, BYTE second)
 	{
-		return GetCardLogicValue(first) > GetCardLogicValue(second);
+		return GetCardLogicValue(first) < GetCardLogicValue(second);
 	});
 	int num = 0;
-	for (int i = DOU_NUM-1;i >0;i--)
+	for (int i = 0;i < DOU_NUM;i++)
 	{
 		BYTE cbMaxCard = 0;
 		int type = GetCardType(Array[i], douNum[i], cbMaxCard);
