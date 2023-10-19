@@ -108,6 +108,20 @@ struct CMD_S_TING_DATA
 	//胡牌翻数
 	BYTE							cbHuFan[MAX_COUNT][HEAP_FULL_COUNT];
 };
+//听牌辅助信息
+struct CMD_S_ER_XING_TING_DATA
+{
+	//出哪几张能听
+	BYTE							cbOutCardCount;
+	BYTE							cbOutCardData[200];
+	//听后能胡哪几张牌
+	BYTE							cbHuCardCount[200];
+	BYTE							cbHuCardData[200][HEAP_FULL_COUNT];
+	//胡牌剩余数
+	BYTE							cbHuCardRemainingCount[200][HEAP_FULL_COUNT];
+	//胡牌翻数
+	BYTE							cbHuFan[200][HEAP_FULL_COUNT];
+};
 //////////////////////////////////////////////////////////////////////////
 //出牌结果
 struct tagInPyhonNew

@@ -45,7 +45,7 @@ void TestGameLogic()
 	start = clock();*/
 
 	
-	tagOutCardResult OutCardResult = {};
+	
 	
 	tagWeaveItem WeaveItemArray[GAME_PLAYER][MAX_WEAVE] = {};
 	byte tmpCardData[] = { 49, 49, 49, 0 };
@@ -75,8 +75,12 @@ void TestGameLogic()
 	CopyMemory(WeaveItemArray[0][3].cbCardData, tmpCardData4, sizeof(tmpCardData4));
 	BYTE cbWeaveCount[MAX_WEAVE] = { 0,0,0,0 };
 	BYTE cbCardIndex[MAX_INDEX] = { 0 };	//手中扑克
-	BYTE    tempCard[] = { 0x22,0x23,0x23,0x27,0x02,0x03,0x04,0x11,0x11,0x11,0x15,0x16,0x16,0x17 };
-	BYTE cbActionCard = 0x16;
+	//二项听测试手牌
+	//BYTE    tempCard[] = { 0x22,0x23,0x23,0x27,0x02,0x03,0x04,0x11,0x11,0x11,0x15,0x16,0x16,0x17 };
+
+
+	BYTE    tempCard[] = { 0x19,0x19,0x18,0x14,0x13,0x11,0x11,0x11,0x09,0x09,0x07,0x06,0x04,0x03 };
+	BYTE cbActionCard = 0x18;
 	BYTE cbActionMask = 0;// 0;// WIK_CHI_HU;
 		//BYTE    tempCard[] = { 4, 38, 8, 56, 10, 9, 11, 43, 12, 44, 60, 1, 33 };
 
@@ -88,7 +92,7 @@ void TestGameLogic()
 	int cbRangCardCount = 0;
 	int cbOthreRangCardCount = 0;
 	BYTE cbCardDataEx[] = { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
-	BYTE cbDiscardCard[] = { 49, 34 };
+	BYTE cbDiscardCard[] = { 0 };
 	m_GameLogic.SwitchToCardIndex(cbHandCardData, sizeof(tempCard), cbCardIndex);
 	int que = SelectCallCard(cbCardIndex);
 	CChiHuRight chr;
@@ -100,26 +104,26 @@ void TestGameLogic()
 		start = clock();
 		BYTE bCardData[MAX_REPERTORY] = { 0 };
 		m_GameLogic.RandCardList(bCardData, MAX_REPERTORY);
-		//BYTE    tempCard[] = { 0x2d, 0x0d, 0x1b, 0x0b, 0x2a, 0x0a, 0x19, 0x37, 0x17, 0x36, 0x26, 0x33, 0x03, };
-		CopyMemory(tempCard, bCardData, sizeof(tempCard));
-		ZeroMemory(cbCardIndex, sizeof(cbCardIndex));
-		m_GameLogic.SwitchToCardIndex(cbHandCardData, sizeof(tempCard), cbCardIndex);
-		//BYTE	cbCardIndex[MAX_INDEX] = { 0, 1, 1, 0, 2, 0, 0, 0, 0, 1, 1, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0 };
-		//m_GameLogic.SwitchToCardData(cbCardIndex,cbHandCardData );
+		/*	CopyMemory(cbHandCardData, bCardData, sizeof(cbHandCardData));
+			ZeroMemory(cbCardIndex, sizeof(cbCardIndex));
+			m_GameLogic.SwitchToCardIndex(cbHandCardData, sizeof(cbHandCardData), cbCardIndex);
+			cbActionCard = cbHandCardData[MAX_COUNT - 1];*/
 		//胡牌判断
+		tagOutCardResult OutCardResult = {};
 		bool reulst = m_AndroidAI.SearchOutCard(OutCardResult, 0, 0, cbCardDataEx, cbActionMask, cbActionCard, cbCardIndex, WeaveItemArray, cbWeaveCount, cbDiscardCard, sizeof(cbDiscardCard));
 		if (OutCardResult.cbOperateCard==0)
 		{
 			int a = 4;
 		}
+		
 
 		fihst = clock();
 		double duration = (double)(fihst - start);
-		cout << duration << endl;
+		cout << duration << ":" << i << endl;
 		if (duration>2000)
 		{
 			int a=4;
-			cout << duration << endl;
+			cout << duration <<":"<<i<< endl;
 		}
 	}
 	

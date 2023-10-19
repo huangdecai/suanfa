@@ -1046,6 +1046,53 @@ BYTE CGameLogic::GetTingDataEx(const BYTE cbCardIndex[MAX_INDEX], const tagWeave
 	return cbOutCount;
 }
 
+BYTE CGameLogic::GetErXiangTingDataEx(const BYTE cbCardIndex[MAX_INDEX], const tagWeaveItem WeaveItem[], BYTE cbWeaveCount, BYTE& cbOutCardCount, BYTE cbOutCardData[], BYTE cbHuCardCount[], BYTE cbHuCardData[][HEAP_FULL_COUNT], BYTE cbHuFan[][HEAP_FULL_COUNT])
+{
+	//复制数据
+	BYTE cbOutCount = 0;
+	BYTE cbCardIndexTemp[MAX_INDEX];
+	CopyMemory(cbCardIndexTemp, cbCardIndex, sizeof(cbCardIndexTemp));
+
+	BYTE cbCardCount = GetCardCount(cbCardIndexTemp);
+
+	if ((cbCardCount - 2) % 3 == 0)
+	{
+		for (BYTE i = 0; i < MAX_INDEX - MAX_HUA_COUNT; i++)
+		{
+			if (cbCardIndexTemp[i] == 0) continue;
+			cbCardIndexTemp[i]--;
+			BYTE nCount = 0;
+			bool bAdd = false;
+				for (BYTE j = 0; j < MAX_INDEX - MAX_HUA_COUNT; j++)
+				{
+					if (i==j)
+					{
+						continue;
+					}
+					BYTE cbCurrentCard = SwitchToCardData(j);
+					cbCardIndexTemp[SwitchToCardIndex(cbCurrentCard)]++;
+					BYTE cbRes = AnalyseTingCard(cbCardIndexTemp, WeaveItem, cbWeaveCount);
+					if (cbRes == WIK_LISTEN)
+					{
+						if (bAdd == FALSE)
+						{
+							bAdd = true;
+							cbOutCardData[cbOutCount++] = SwitchToCardData(i);
+						}
+						cbHuCardData[cbOutCount - 1][nCount] = SwitchToCardData(j);
+						nCount++;
+					}
+					cbCardIndexTemp[SwitchToCardIndex(cbCurrentCard)]--;
+				}
+				if (bAdd)
+					cbHuCardCount[cbOutCount - 1] = nCount;
+			cbCardIndexTemp[i]++;
+		}
+	}
+	cbOutCardCount = cbOutCount;
+	return cbOutCount;
+}
+
 BYTE CGameLogic::GetHuCard(const BYTE cbCardIndex[MAX_INDEX], const tagWeaveItem WeaveItem[], BYTE cbWeaveCount,BYTE cbHuCardData[])
 {
 	//复制数据

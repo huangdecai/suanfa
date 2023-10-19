@@ -958,6 +958,43 @@ bool CAndroidAI::SearchOutCard(tagOutCardResult &OutCardResult, WORD wMeChairId,
 			OutCardResult.cbOperateCode = WIK_LISTEN;
 			OutCardResult.cbOperateCard = tingData.cbOutCardData[huPaiIndex];
 		}
+		else 
+		{
+			CMD_S_ER_XING_TING_DATA tingData;
+			int resultCount = GetErXiangTingData(cbCardIndex, cbShengYuIndex, WeaveItemArray[wMeChairId], cbWeaveCount[wMeChairId], tingData);
+			if (resultCount > 0)
+			{
+				int huPaiIndex = 0;
+				int maxRemainingCount = 0;
+				int maxFanCount = 0;
+				int cardScore[MAX_COUNT] = { 0 };
+				int nOrgScore = 0;
+				for (int i = 0; i < MAX_COUNT; i++)
+				{
+					if (i == tingData.cbOutCardCount)
+					{
+						break;;
+					}
+					int cbHuCardRemainingCount = 0;
+					for (int j = 0; j < tingData.cbHuCardCount[i]; j++)
+					{
+						cbHuCardRemainingCount =
+							tingData.cbHuCardRemainingCount[i][j] + cbHuCardRemainingCount;
+					}
+
+					if (cbHuCardRemainingCount > maxRemainingCount)
+					{
+						maxRemainingCount = cbHuCardRemainingCount;
+						huPaiIndex = i;
+					}
+				}
+
+				OutCardResult.cbOperateCode = 0;
+				OutCardResult.cbOperateCard = tingData.cbOutCardData[huPaiIndex];
+				return true;
+			}
+			
+		}
 	}
 			
 	/*BYTE cbActionCard = cbActionCard;*/
@@ -1174,6 +1211,27 @@ void CAndroidAI::GetTingData(const BYTE cbCardIndex[MAX_INDEX], const BYTE cbShe
 		else
 			break;
 	}
+}
+
+int CAndroidAI::GetErXiangTingData(const BYTE cbCardIndex[MAX_INDEX], const BYTE cbShengYuCardIndex[MAX_INDEX], const tagWeaveItem WeaveItem[], BYTE cbWeaveCount, CMD_S_ER_XING_TING_DATA &TingData)
+{
+	ZeroMemory(&TingData, sizeof(TingData));
+
+	m_GameLogic.GetErXiangTingDataEx(cbCardIndex, WeaveItem, cbWeaveCount, TingData.cbOutCardCount, TingData.cbOutCardData, TingData.cbHuCardCount, TingData.cbHuCardData, TingData.cbHuFan);
+	for (int i = 0; i < MAX_COUNT; i++)
+	{
+		if (TingData.cbHuCardCount[i] > 0)
+		{
+			for (int j = 0; j < TingData.cbHuCardCount[i]; j++)
+			{
+				int index = m_GameLogic.SwitchToCardIndex(TingData.cbHuCardData[i][j]);
+				TingData.cbHuCardRemainingCount[i][j] = cbShengYuCardIndex[index];
+			}
+		}
+		else
+			break;
+	}
+	return TingData.cbOutCardCount;
 }
 
 void CAndroidAI::GetRemainingCount(tagWeaveItem WeaveItemArray[GAME_PLAYER][MAX_WEAVE], BYTE cbWeaveCount[], const BYTE cbCardIndex[MAX_INDEX], BYTE cbShengYuIndex[MAX_INDEX], BYTE cbDiscardCard[], BYTE cbDiscardCount)

@@ -121,6 +121,7 @@ public:
 	int ActionAfterScore(WORD wMeChairId, BYTE * cbCardIndex, BYTE * cbShengYuIndex, tagWeaveItem * WeaveItemArray, BYTE  cbWeaveCount, BYTE * cbDiscardCard, BYTE cbDiscardCount, BYTE cbActionCard, int  actionType,bool bJianAction);
 
 	void GetTingData(const BYTE cbCardIndex[MAX_INDEX], const BYTE cbShengYuCardIndex[MAX_INDEX], const tagWeaveItem WeaveItem[], BYTE cbWeaveCount, CMD_S_TING_DATA &TingData);
+	int GetErXiangTingData(const BYTE cbCardIndex[MAX_INDEX], const BYTE cbShengYuCardIndex[MAX_INDEX], const tagWeaveItem WeaveItem[], BYTE cbWeaveCount, CMD_S_ER_XING_TING_DATA &TingData);
 	void GetRemainingCount(tagWeaveItem WeaveItemArray[GAME_PLAYER][MAX_WEAVE], BYTE cbWeaveCount[], const BYTE cbCardIndex[MAX_INDEX], BYTE cbShengYuIndex[MAX_INDEX], BYTE cbDiscardCard[], BYTE cbDiscardCount);
 	int SearchTingTotalCount(WORD wMeChairId, BYTE cbCardIndex[], BYTE cbShengYuIndex[MAX_INDEX], tagWeaveItem WeaveItemArray[MAX_WEAVE], BYTE cbWeaveCount, BYTE cbDiscardCard[], BYTE cbDiscardCount);
 	int SearchTingErXiangTingTotalCount(WORD wMeChairId, BYTE cbCardIndex[], BYTE cbShengYuIndex[MAX_INDEX], tagWeaveItem WeaveItemArray[MAX_WEAVE], BYTE cbWeaveCount, BYTE cbDiscardCard[], BYTE cbDiscardCount)
@@ -130,7 +131,7 @@ public:
 		CopyMemory(cbCardIndexTemp, cbCardIndex, sizeof(cbCardIndexTemp));
 
 		BYTE cbCardCount = m_GameLogic.GetCardCount(cbCardIndexTemp);
-		if (((cbCardCount + 1) % 3 != 0)|| cbCardCount==1)
+		if (((cbCardCount - 2) % 3 != 0) || cbCardCount==1)
 		{
 			return 0;
 		}
@@ -140,7 +141,9 @@ public:
 		{
 			return 0;
 		}
-		
+
+		CMD_S_TING_DATA tingData;
+		GetTingData(cbCardIndex, cbShengYuIndex, WeaveItemArray, cbWeaveCount, tingData);
 		return totalNum;
 	}
 protected:
