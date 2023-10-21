@@ -181,6 +181,7 @@ class GameHelper:
                 self.Pics.update({info[0]: tmpImage})
                 self.PicsCV.update({info[0]: imgCv})
         self.duokaiStr = "test001"
+        self.duokaiStr = "雷电模拟器"
     def setFindStr(self,findStr):
         if findStr!='0':
             self.duokaiStr = "test00"
