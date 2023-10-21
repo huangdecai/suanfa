@@ -102,9 +102,9 @@ void TestGameLogic()
 	{
 		clock_t start, fihst;
 		start = clock();
-		BYTE bCardData[MAX_REPERTORY] = { 0 };
+		/*BYTE bCardData[MAX_REPERTORY] = { 0 };
 		m_GameLogic.RandCardList(bCardData, MAX_REPERTORY);
-		/*	CopyMemory(cbHandCardData, bCardData, sizeof(cbHandCardData));
+			CopyMemory(cbHandCardData, bCardData, sizeof(cbHandCardData));
 			ZeroMemory(cbCardIndex, sizeof(cbCardIndex));
 			m_GameLogic.SwitchToCardIndex(cbHandCardData, sizeof(cbHandCardData), cbCardIndex);
 			cbActionCard = cbHandCardData[MAX_COUNT - 1];*/

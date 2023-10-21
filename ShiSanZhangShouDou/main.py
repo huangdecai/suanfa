@@ -82,16 +82,24 @@ class MyPyQT_Form(QtWidgets.QWidget, Ui_Form):
         #carddata=[0x01,0x02,0x03,0x04,0x05,0x06,0x07,0x08,0x09,0x0A,0x0B,0x0C,0x0D]
         #self.ShowPlayerCardEx(2,carddata)
 
+    def switchPushIndex(self,data):
+        for i in range(0, len(AllCardList)):
+            if AllCardList[i]==data:
+                return i
+
+        return -1
+    def clearUI(self):
+        self.initQianPoker()
+        self.initHouPoker()
     def initHouPoker(self):
         spaceX = 10
         spaceY = 530
         self.pokerHouPush = []
-        self.houPushData = []
         for i in range(0, len(AllCardList)):
-            self.houPushData.append(AllCardList[i])
             self.pokerHouPush.append(QtWidgets.QPushButton(self))
             self.pokerHouPush[i].setGeometry(QtCore.QRect(0, 360, 127, 175))
             self.pokerHouPush[i].setStyleSheet("QPushButton{border-image: url(./pics/" + str(AllCardList[i]) + ".png)}")
+            self.pokerHouPush[i].setStyleSheet("background-color: white;")
             self.pokerHouPush[i].move(spaceX, spaceY)
             self.pokerHouPush[i].clicked.connect(lambda checked, arg=i: self.HouBtOnEvent(arg))
             #btn.clicked.connect(lambda checked, arg=filepath: self.launch(arg))
@@ -101,12 +109,24 @@ class MyPyQT_Form(QtWidgets.QWidget, Ui_Form):
                 spaceY += 200
     def HouBtOnEvent(self,index):
         self.houCurrentIndex=index
+        #self.pokerHouPush[index].setVisible(False)
+        self.pokerHouPush[index].setStyleSheet("background-color: gray;")
         intdex=0
     def QianBtOnEvent(self,index):
         self.qianCurrentIndex = index
-        if self.bQianPush[index]:
+        if self.qianPushData[index]>0:
+            PushIndex=self.switchPushIndex(self.qianPushData[index])
+            self.pokerHouPush[PushIndex].setVisible(True)
+            self.pokerHouPush[PushIndex].setStyleSheet("background-color: white;")
+            self.pokerQianPush[index].setStyleSheet("QPushButton{border-image: url(./pics/0x00.png)}")
+            self.qianPushData[index]=0
+            self.houCurrentIndex=PushIndex
+        else:
+            self.pokerHouPush[self.houCurrentIndex].setVisible(False)
+            self.pokerQianPush[index].setStyleSheet("QPushButton{border-image: url(./pics/" + str(AllCardList[self.houCurrentIndex]) + ".png)}")
+            self.qianPushData[index] = AllCardList[self.houCurrentIndex]
 
-        intdex=0
+        index=0
     def initQianPoker(self):
         spaceX = 300
         spaceY = 0
@@ -123,6 +143,29 @@ class MyPyQT_Form(QtWidgets.QWidget, Ui_Form):
             if  i == 2 or i == 7 :
                 spaceX = 300
                 spaceY += 175
+
+    def start(self):
+        print("开始出牌\n")
+        count=0
+        for i in range(0, len(self.qianPushData)):
+            if self.qianPushData[i]>0:
+                count+=1
+        if count!=MAX_CARD_COUNT:
+            print("当前手牌不够13张")
+            return
+        self.turnCardReal, self.turnCard_colors = self.changeDataIn(self.qianPushData)
+        action_message, colors, duoZhongBaiFa, returnCardData = self.dllCall(self.turnCardReal, self.turnCard_colors,
+                                                                             '',
+                                                                             self.allDisCardData, self.bHavePass)
+        for i in range(0, MAX_CARD_COUNT):
+            self.pokerQianPush[i].setStyleSheet(
+                "QPushButton{border-image: url(./pics/" + str(returnCardData[i]) + ".png)}")
+            self.qianPushData[i]=returnCardData[i]
+        print("{}胜，本局结束!\n")
+        # QMessageBox.information(self, "本局结束", "{}胜！".format("农民" if self.env.winner == "farmer" else "地主"),
+        #                         QMessageBox.Yes, QMessageBox.Yes)
+        # self.detect_start_btn()
+
     def init_display(self):
         #self.WinRate.setText("评分")
         self.InitCard.setText("开始")
@@ -141,101 +184,8 @@ class MyPyQT_Form(QtWidgets.QWidget, Ui_Form):
             if carddata==self.otherPlayerData[0][i]:
                 return  True
         return  False
-    def handCardMsgHelpEx(self,data):
-        #if data.wChairID!=self.fenFaQi.GetChaiID():
-        if True:
-            tmpdata = []
-            self.lock.acquire()
-            if len(self.otherPlayerData) >1:
-                self.otherPlayerData.pop()
-            if len(self.otherPlayerData) >1:
-                self.otherPlayerData.pop()
-            for i in range(0, 39):
-                if data.cbCardDataEx[i]>0 and self.isInMyHandata(data.cbCardDataEx[i])==False:
-                    tmpdata.append(data.cbCardDataEx[i])
-                if len(tmpdata)==13:
-                    self.ShowPlayerCard(len(self.otherPlayerData) - 1, tmpdata)
-                    self.otherPlayerData.append(tmpdata)
-                    tmpdata = []
 
-            if len(self.otherPlayerData[0])>0 and len(self.otherPlayerData)==3:
-                tmpDict = dict.fromkeys(AllCardList, 1)
-                for i in range(0, len(self.otherPlayerData)):
-                    for j in range(0, len(self.otherPlayerData[i])):
-                        if self.otherPlayerData[i][j]==15:
-                            a=4
-                        tmpDict[self.otherPlayerData[i][j]] -= 1
-                tmpHandData = []
-                for i in range(0, len(AllCardList)):
-                    if tmpDict[AllCardList[i]] == 1:
-                        tmpHandData.append(AllCardList[i])
-                        if len(tmpHandData) >= 13:
-                            break
-                self.ShowPlayerCardEx(len(self.otherPlayerData)-1, tmpHandData)
-                tmpStr = '最后一家的牌：'
-                for i in range(0, len(tmpHandData)):
-                    tmpStr = tmpStr + str(tmpHandData[i]) + ','
-                print(tmpStr)
-                self.bSanDayiStart = True
-            self.lock.release()
-    def ShowPlayerCard(self,id,data):
-        print("ShowPlayerCard",id)
-        if id>=0 and id<5 :
-            self.otherPlayerText[id].setText("...")
-            tempData=data.copy()
-            self.turnCardReal, self.turnCard_colors = self.changeDataIn(tempData)
-            action_message, colors,duoZhongBaiFa,returnCardData = self.dllCall(self.turnCardReal, self.turnCard_colors, '',
-                                                  self.allDisCardData, self.bHavePass)
-            tmpCardstr = ""
-            for i in range(0, len(action_message)):
-                tmpCardstr += COLOR_LIST[colors[i]] + action_message[i]
-                if i == 2 or i == 7:
-                    tmpCardstr += "\n "
-            self.otherPlayerText[id].setText(tmpCardstr if (len(tmpCardstr) > 0) else "算法异常")
-    def ShowPlayerCardEx(self,id,data):
-        print("ShowPlayerCard",id)
-        if id>=0 and id<5 :
-            self.otherPlayerText[id].setText("...")
-            tempData=data.copy()
-            self.turnCardReal, self.turnCard_colors = self.changeDataIn(tempData)
-            action_message, colors,duoZhongBaiFa,returnCardData = self.dllCall(self.turnCardReal, self.turnCard_colors, '',
-                                                  self.allDisCardData, self.bHavePass)
-            spaceX=20
-            spaceY=20
-            for i in range(0, len(action_message)):
-                spaceX += 50
-                self.show_img(returnCardData[i],i)
-                if i == 2 or i == 7:
-                    spaceX=20
-                    spaceY+=50
-            #self.MPlayedCard.deleteLater()
 
-    def initMPlayedCard(self):
-        spaceX = 20
-        spaceY = 20
-        for i in range(0, 13):
-            spaceX += 50
-            self.detect_image.append(QLabel(self.MPlayedCard))
-            self.detect_image[i].resize(100, 100)
-            self.detect_image[i].move(spaceX, spaceY)
-            if i == 2 or i == 7:
-                spaceX = 20
-                spaceY += 50
-
-    def show_img(self,data,index):
-        pix = QPixmap("./pics/"+str(data)+".png")  # 需额外添加"\\"否则输出为C:\123\picture093056.jpg
-        self.detect_image[index].setPixmap(pix)
-        self.detect_image[index].setScaledContents(True)
-
-    def startLoginGame(self):
-        self.fenFaQi.start()
-    def reSetTableStatus(self):
-        self.fenFaQi.ReSetTable()
-    def startGameEx(self):
-        self.fenFaQi.userReady()
-    def switch_mode(self):
-        self.AutoPlay = not self.AutoPlay
-        self.SwitchMode.setText("自动下一局" if self.AutoPlay else "单局")
     def IsSameCard(self):
         tmpCardstr = ""
         for i in range(0, len(self.user_hand_cards_real)):
@@ -247,52 +197,6 @@ class MyPyQT_Form(QtWidgets.QWidget, Ui_Form):
                     return True
                 ci += 1
         return False
-    def OhterSearchCard(self):
-        for j in range(2, 4):
-            helper.setFindStr(str(j))
-            print("OhterSearchCard",j)
-            testCount = 0
-            other_played_cards_real,other_hand_colors = self.find_my_cards(self.MyHandCardsPos)  # '2AKQQJJT99877753'
-            while len(other_hand_colors) != MAX_CARD_COUNT or len(
-                    other_played_cards_real) != MAX_CARD_COUNT or self.IsSameCard():
-                testCount += 1
-                dence = 0.95
-                if testCount >= 2:
-                    dence = 0.94
-                other_played_cards_real, other_hand_colors = self.find_my_cards(self.MyHandCardsPos, dence)
-                self.sleep(1000)
-                print("OhterSearchCard-ShiBieWenTi", len(other_played_cards_real))
-            action_message, colors, duoZhongBaiFa, returnCardData = self.dllCall(other_played_cards_real,
-                                                                                 other_hand_colors, '',
-                                                                                 self.allDisCardData, self.bHavePass)
-            self.otherPlayerData[j-1] = self.changeDataOut(other_played_cards_real, other_hand_colors)
-            tmpCardstr = ""
-            for i in range(0, len(action_message)):
-                tmpCardstr += COLOR_LIST[colors[i]] + action_message[i]
-                if i == 2 or i == 7:
-                    tmpCardstr += "\n "
-            self.otherPlayerText[j-2].setText(tmpCardstr if (len(tmpCardstr) > 0) else "算法异常")
-        #处理剩下牌
-        if len(self.otherPlayerData[0]) > 0 and len(self.otherPlayerData) == 3:
-            tmpDict = dict.fromkeys(AllCardList, 1)
-            for i in range(0, len(self.otherPlayerData)):
-                for j in range(0, len(self.otherPlayerData[i])):
-                    if self.otherPlayerData[i][j] == 15:
-                        a = 4
-                    tmpDict[self.otherPlayerData[i][j]] -= 1
-            tmpHandData = []
-            for i in range(0, len(AllCardList)):
-                if tmpDict[AllCardList[i]] == 1:
-                    tmpHandData.append(AllCardList[i])
-                    if len(tmpHandData) >= 13:
-                        break
-            self.ShowPlayerCardEx(len(self.otherPlayerData) - 1, tmpHandData)
-            tmpStr = '最后一家的牌：'
-            for i in range(0, len(tmpHandData)):
-                tmpStr = tmpStr + str(tmpHandData[i]) + ','
-            print(tmpStr)
-            self.bSanDayiStart = True
-        helper.setFindStr(str(1))
     def gameInit(self):
         self.InitCard.setEnabled(False)
         self.RunGame = True
@@ -311,72 +215,11 @@ class MyPyQT_Form(QtWidgets.QWidget, Ui_Form):
         self.handCardCount = [MAX_CARD_COUNT, MAX_CARD_COUNT, MAX_CARD_COUNT]
         self.bHavePass = False
         self.env = None
-        if self.connected==False:
-            print("你的账号没有登陆，请联系Q：460000713，进行购买")
-            self.sleep(1000)
-            return
         self.game_over = False
-        self.shengYuPaiShow(self.allDisCardData)
 
         helper.bTest = False
         # 识别玩家手牌
-        # temp=self.have_white(self.RPlayedCardsPos)
-        # self.turnCardReal = self.find_other_cards(self.RPlayedCardsPos)
-        # tmpHandCard = self.changeDataOut('2AKQQJJT99877753')
-        # tmpHandCardStr = self.changeDataIn(tmpHandCard)
-        # if self.bReSortCard==False :
-        #     image, windowPos = helper.Screenshot()
-        #     handCardsInfo, states, _ = helper.GetCards(image, MAX_CARD_COUNT,0.94)
-        #     testCount = 0
-        #     while (len(handCardsInfo) > 0):
-        #         randnum1 = random.randint(0, len(handCardsInfo) - 1)
-        #         randnum2 = random.randint(0, len(handCardsInfo) - 1)
-        #         randnum = random.randint(1, 3)
-        #         print("随机切换牌:", )
-        #         if randnum1 != randnum2:
-        #             helper.LeftClickEX(handCardsInfo[randnum1][1], handCardsInfo[randnum2][1])
-        #         self.sleep(500 * randnum)
-        #         testCount += 1
-        #         if testCount >= 3:
-        #             break
         testCount = 0
-        self.user_hand_cards_real, self.user_hand_colors = self.find_my_cards(self.MyHandCardsPos)  # '2AKQQJJT99877753'
-        while len(self.user_hand_colors) != MAX_CARD_COUNT or len(self.user_hand_cards_real) != MAX_CARD_COUNT or self.IsSameCard():
-            testCount += 1
-            dence=0.95
-            if testCount>=2:
-                dence=0.94
-            self.user_hand_cards_real, self.user_hand_colors = self.find_my_cards(self.MyHandCardsPos,dence)
-            self.sleep(1000)
-            print("hangCountShiBieWenTi", len(self.user_hand_cards_real))
-        # self.user_hand_cards_real =  'AKKKKQJJT9988'
-        # self.user_hand_colors=[0,1,2,3,0,1,0,1,3,2,1,2,0]
-        # self.turnCardReal='665544'
-        # self.allDisCardData='665544'
-        tmpCardstr = ""
-        for i in range(0, len(self.user_hand_cards_real)):
-            tmpCardstr += COLOR_LIST[self.user_hand_colors[i]] + self.user_hand_cards_real[i]
-
-        self.UserHandCards.setText(tmpCardstr)
-        # 识别玩家的角色
-        if self.sandayi==1 and self.bReSortCard==False:
-            self.otherPlayerData[0] = self.changeDataOut(self.user_hand_cards_real, self.user_hand_colors)
-            while self.bSanDayiStart==False:
-                print("等待其他个玩家上传手牌")
-                self.OhterSearchCard()
-                if self.RunGame==False:
-                    print("游戏已经停止")
-                    print("请按开始按钮")
-                    return False
-                break
-                self.sleep(2000)
-        print("开始对局")
-        print("手牌:", self.user_hand_cards_real)
-
-        print("开始对局")
-        print("手牌花色:", tmpCardstr)
-        print("手牌:", self.user_hand_cards_real)
-        # 生成手牌结束，校验手牌数量
         # 得到出牌顺序
         self.play_order = 0  # self.find_landlord()
         return  True
@@ -392,137 +235,6 @@ class MyPyQT_Form(QtWidgets.QWidget, Ui_Form):
             self.stop()
             self.sleep(2000)
             #self.init_cards()
-    def start(self):
-        print("开始出牌\n")
-        while not self.game_over:
-            # 玩家出牌时就通过智能体获取action，否则通过识别获取其他玩家出牌
-            if self.gameInit()==False:
-                break
-            if self.play_order == 0:
-                self.shengYuPaiShow(self.user_hand_cards_real)
-                self.PredictedCard.setText("...")
-                action_message,colors ,duoZhongBaiFa,returnCardData= self.dllCall(self.user_hand_cards_real,self.user_hand_colors,self.turnCardReal,self.allDisCardData,self.bHavePass)
-                tmpCardstr = ""
-                for i in range(0,len(action_message)):
-                    tmpCardstr +=COLOR_LIST[colors[i]]+action_message[i]
-                    if i==2 or i==7 :
-                       tmpCardstr += "\n "
-                self.PredictedCard.setText(tmpCardstr if (len(tmpCardstr) > 0) else "不出")
-                #self.WinRate.setText("评分：" + '0')
-                print(self.play_order,"\nuser_hand_cards_real：", self.user_hand_cards_real)
-                print(self.play_order,"\nturnCardReal：", self.turnCardReal)
-                print(self.play_order,"\nallDisCardData：", self.allDisCardData)
-                print(self.play_order,"\n出牌：", action_message)
-                hand_cards_str = self.user_hand_cards_real
-                tempOutCardPos=self.OutCardBtnPos
-                if len(action_message) == 0:
-                    #helper.ClickOnImage("pass_btn", region=self.PassBtnPos)
-                    self.sleep(2000)
-                    print(self.play_order,"pass_btn")
-                else:
-                    #if self.onlyTip :
-                        #a=4
-                    #else:
-                        outCardStr=""
-                        tempColors=[]
-                        image, windowPos = helper.Screenshot()
-                        handCardsInfo, states, _ = helper.GetCards(image, MAX_CARD_COUNT)
-                        tmpCardArray=[]
-                        randnum1 = random.randint(1, 6)
-                        for c in self.user_hand_cards_real:
-                            tmpCardArray.append(c[0])
-                        for i in range(0,len(action_message)):
-                            outCardStr+=action_message[i]
-                            tempColors.append(colors[i])
-                            for j  in range(0,len(tmpCardArray)):
-                                if action_message[i]==tmpCardArray[j] and self.user_hand_colors[j]==colors[i] and i!=j:
-                                    randnum = random.randint(2, 4)
-                                    #if randnum1>=3 :
-                                        #randnum = random.randint(2, 4)
-                                    if self.bFastEnable or duoZhongBaiFa==1 :
-                                        randnum=random.randint(1, 2)
-                                    self.sleep(1000 * randnum)
-                                    print("切换牌:",colors[i], action_message[i],)
-                                    helper.LeftClickEX(handCardsInfo[i][1], handCardsInfo[j][1])
-                                    tmpCard= tmpCardArray[j]
-                                    tmpCardArray[j]=tmpCardArray[i]
-                                    tmpCardArray[i]=tmpCard
-
-                                    tmpColor=self.user_hand_colors[j]
-                                    self.user_hand_colors[j]=self.user_hand_colors[i]
-                                    self.user_hand_colors[i] =tmpColor
-                                    break
-                            if i==7:
-                                break
-                self.sleep(1000 * 2)
-                bBreakGame=False
-                tmpuser_hand_cards_real, tmpuser_hand_colors = self.find_my_cards(self.MyHandCardsPos)
-                for j  in range(0,8):
-                    if action_message[j]!=tmpuser_hand_cards_real[j]:
-                        self.bReSortCard=True
-                        bBreakGame=True
-                        break
-                if bBreakGame==False:
-                    # pygame.mixer.music.load('win.mp3')
-                    # pygame.mixer.music.play()
-                    randnum = random.randint(1, 2)
-                    if self.bReSortCard == True:
-                        randnum=0.5
-                    self.sleep(1000 * randnum)
-                    if self.onlyTip:
-                        a = 4
-                    else:
-                         helper.ClickOnImage("go_btn", region=tempOutCardPos, confidence=0.80)
-                    # 更新界面
-
-                    self.allDisCardData=self.allDisCardData+action_message
-                    #self.user_hand_cards_real = self.DeleteCard(self.user_hand_cards_real, action_message)
-                    print(self.play_order,"handcount0：", self.handCardCount[0])
-                    print(self.play_order,"handcount1：", self.handCardCount[1])
-                    self.sleep(300 )
-                    result = helper.LocateOnScreen("go_btn", region=tempOutCardPos, confidence=0.80)
-                    while result is not None :
-                        result2 = helper.LocateOnScreen("change_player_btn", region=self.changePlayerBtnPos, confidence=0.80)
-                        if result2 is not None:
-                            pygame.mixer.music.load('common_alert.wav')
-                            pygame.mixer.music.play()
-                            bZhengBi=False
-                            if action_message[8]==action_message[9]and action_message[8]==action_message[10]and action_message[8]==action_message[11]:
-                                bZhengBi = True
-                            if action_message[8]=="A" and action_message[9]=="K"and action_message[10]=="Q"and action_message[11]=="J"and action_message[12]=="T" and colors[8] ==colors[9]and colors[8] ==colors[10]and colors[8] ==colors[11]and colors[8] ==colors[12]:
-                                bZhengBi = True
-                            if bZhengBi:
-                                    helper.ClickOnImage("zhengChangBi", region=self.zhengChangBiPaiBtnPos, confidence=0.80)
-                            else:
-                                helper.ClickOnImage("change_player_btn", region=self.changePlayerBtnPos, confidence=0.80)
-
-                            self.sleep(500)
-                            break
-                        result3 = helper.LocateOnScreen("reSort_btn", region=self.changePlayerBtnPos, confidence=0.80)
-                        if result3 is not None:
-                            helper.ClickOnImage("reSort_btn", region=self.changePlayerBtnPos, confidence=0.80)
-                            self.sleep(500)
-                            self.bReSortCard = True
-                            break
-                        else:
-                            self.bReSortCard = False
-                        result = helper.LocateOnScreen("go_btn", region=tempOutCardPos, confidence=0.80)
-                        self.sleep(50)
-                #self.play_order = 2
-                #self.sleep(200)
-                self.detect_start_btn()
-            elif self.play_order == 2:
-                self.play_order = 0
-                self.detect_start_btn()
-
-            else:
-                pass
-            self.sleep(50)
-
-        print("{}胜，本局结束!\n")
-        # QMessageBox.information(self, "本局结束", "{}胜！".format("农民" if self.env.winner == "farmer" else "地主"),
-        #                         QMessageBox.Yes, QMessageBox.Yes)
-        #self.detect_start_btn()
 
     def sleep(self, ms):
         self.counter.restart()
