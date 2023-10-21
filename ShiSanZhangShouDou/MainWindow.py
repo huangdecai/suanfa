@@ -48,6 +48,7 @@ class Ui_Form(object):
 
         self.retranslateUi(Form)
         self.start.clicked.connect(Form.init_cards) # type: ignore
+        self.clear.clicked.connect(Form.clearUI)
         QtCore.QMetaObject.connectSlotsByName(Form)
 
     def retranslateUi(self, Form):

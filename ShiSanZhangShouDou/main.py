@@ -74,7 +74,7 @@ class MyPyQT_Form(QtWidgets.QWidget, Ui_Form):
         self.counter = QTime()
         pygame.mixer.init()
         self.qianCurrentIndex = 0
-        self.houCurrentIndex = 0
+        self.houCurrentIndex = -1
         # 参数
         self.initQianPoker()
         self.initHouPoker()
@@ -89,9 +89,15 @@ class MyPyQT_Form(QtWidgets.QWidget, Ui_Form):
 
         return -1
     def clearUI(self):
-        self.initQianPoker()
-        self.initHouPoker()
+        self.houCurrentIndex = -1
+        for i in range(0, MAX_CARD_COUNT):
+            self.qianPushData[i] = 0
+            self.pokerQianPush[i].setStyleSheet("QPushButton{border-image: url(./pics/0x00.png)}")
+        for i in range(0, len(AllCardList)):
+            self.pokerHouPush[i].setVisible(True)
+            self.pokerHouPush[i].setStyleSheet("QPushButton{border-image: url(./pics/" + str(AllCardList[i]) + ".png)}")
     def initHouPoker(self):
+        self.houCurrentIndex = -1
         spaceX = 10
         spaceY = 530
         self.pokerHouPush = []
@@ -99,7 +105,7 @@ class MyPyQT_Form(QtWidgets.QWidget, Ui_Form):
             self.pokerHouPush.append(QtWidgets.QPushButton(self))
             self.pokerHouPush[i].setGeometry(QtCore.QRect(0, 360, 127, 175))
             self.pokerHouPush[i].setStyleSheet("QPushButton{border-image: url(./pics/" + str(AllCardList[i]) + ".png)}")
-            self.pokerHouPush[i].setStyleSheet("background-color: white;")
+            #self.pokerHouPush[i].setStyleSheet("background-color: white;")
             self.pokerHouPush[i].move(spaceX, spaceY)
             self.pokerHouPush[i].clicked.connect(lambda checked, arg=i: self.HouBtOnEvent(arg))
             #btn.clicked.connect(lambda checked, arg=filepath: self.launch(arg))
@@ -109,23 +115,24 @@ class MyPyQT_Form(QtWidgets.QWidget, Ui_Form):
                 spaceY += 200
     def HouBtOnEvent(self,index):
         self.houCurrentIndex=index
-        #self.pokerHouPush[index].setVisible(False)
-        self.pokerHouPush[index].setStyleSheet("background-color: gray;")
+        #self.pokerHouPush[index].setStyleSheet("background-color: transparent;")
+        #self.pokerHouPush[index].setStyleSheet("background-color: gray;")
         intdex=0
     def QianBtOnEvent(self,index):
         self.qianCurrentIndex = index
         if self.qianPushData[index]>0:
             PushIndex=self.switchPushIndex(self.qianPushData[index])
             self.pokerHouPush[PushIndex].setVisible(True)
-            self.pokerHouPush[PushIndex].setStyleSheet("background-color: white;")
+            #self.pokerHouPush[PushIndex].setStyleSheet("background-color: white;")
             self.pokerQianPush[index].setStyleSheet("QPushButton{border-image: url(./pics/0x00.png)}")
             self.qianPushData[index]=0
             self.houCurrentIndex=PushIndex
         else:
-            self.pokerHouPush[self.houCurrentIndex].setVisible(False)
-            self.pokerQianPush[index].setStyleSheet("QPushButton{border-image: url(./pics/" + str(AllCardList[self.houCurrentIndex]) + ".png)}")
-            self.qianPushData[index] = AllCardList[self.houCurrentIndex]
-
+            if self.houCurrentIndex !=-1:
+                self.pokerHouPush[self.houCurrentIndex].setVisible(False)
+                self.pokerQianPush[index].setStyleSheet("QPushButton{border-image: url(./pics/" + str(AllCardList[self.houCurrentIndex]) + ".png)}")
+                self.qianPushData[index] = AllCardList[self.houCurrentIndex]
+                self.houCurrentIndex=-1
         index=0
     def initQianPoker(self):
         spaceX = 300
@@ -138,13 +145,13 @@ class MyPyQT_Form(QtWidgets.QWidget, Ui_Form):
             self.pokerQianPush[i].setGeometry(QtCore.QRect(0, 360, 127, 175))
             self.pokerQianPush[i].setStyleSheet("QPushButton{border-image: url(./pics/0x00.png)}")
             self.pokerQianPush[i].move(spaceX, spaceY)
-            self.pokerHouPush[i].clicked.connect(lambda checked, arg=i: self.QianBtOnEvent(arg))
+            self.pokerQianPush[i].clicked.connect(lambda checked, arg=i: self.QianBtOnEvent(arg))
             spaceX += 127
             if  i == 2 or i == 7 :
                 spaceX = 300
                 spaceY += 175
 
-    def start(self):
+    def gameStart(self):
         print("开始出牌\n")
         count=0
         for i in range(0, len(self.qianPushData)):
@@ -168,7 +175,7 @@ class MyPyQT_Form(QtWidgets.QWidget, Ui_Form):
 
     def init_display(self):
         #self.WinRate.setText("评分")
-        self.InitCard.setText("开始")
+        a=4
     def readJson(self):
         with open("data_file.json", "r") as read_file:
             self.configData = json.load(read_file)
@@ -198,7 +205,6 @@ class MyPyQT_Form(QtWidgets.QWidget, Ui_Form):
                 ci += 1
         return False
     def gameInit(self):
-        self.InitCard.setEnabled(False)
         self.RunGame = True
         GameHelper.Interrupt = False
         self.bReSortCard=False
@@ -225,14 +231,14 @@ class MyPyQT_Form(QtWidgets.QWidget, Ui_Form):
         return  True
     def init_cards(self):
         self.game_over=False
+        self.gameInit()
         try:
-            self.start()
+            self.gameStart()
         except Exception as e:
             exc_type, exc_obj, exc_tb = sys.exc_info()
             print(e)
             traceback.print_tb(exc_tb)
             print("游戏出现异常请重新开始")
-            self.stop()
             self.sleep(2000)
             #self.init_cards()
 
@@ -435,7 +441,6 @@ class MyPyQT_Form(QtWidgets.QWidget, Ui_Form):
         try:
             self.RunGame = False
             self.game_over = True
-            self.InitCard.setEnabled(True)
             #self.env.reset()
             self.init_display()
             self.PreWinrate.setText("局前预估胜率：")
