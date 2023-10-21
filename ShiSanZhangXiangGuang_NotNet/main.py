@@ -663,7 +663,16 @@ class MyPyQT_Form(QtWidgets.QWidget, Ui_Form):
         tmpCardstr="".join([card[0] for card in tmpCard])
         return tmpCardstr,colors
     def dllCall(self,HandCardData,colors,TurnCardData,DiscardData,bPass):
-
+        print(".........")
+        tmpCardstr = ""
+        for i in range(0, len(self.user_hand_cards_real)):
+            tmpCardstr += COLOR_LIST[self.user_hand_colors[i]] + self.user_hand_cards_real[i]
+        print("手牌：",tmpCardstr)
+        tmpCardstr = ""
+        for i in range(0, len(TurnCardData)):
+            tmpCardstr += COLOR_LIST[self.turnCard_colors[i]] + TurnCardData[i]
+        print("turn牌：", tmpCardstr)
+        print(".........")
         class tagInPyhonNew(Structure):
             _fields_ = [("cbHandCardData", c_ubyte* 20),
                         ("cbHandCardCount", c_ubyte),
