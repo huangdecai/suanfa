@@ -181,7 +181,6 @@ class GameHelper:
                 self.Pics.update({info[0]: tmpImage})
                 self.PicsCV.update({info[0]: imgCv})
         self.duokaiStr = "test001"
-        self.duokaiStr = "雷电模拟器"
     def setFindStr(self,findStr):
         if findStr!='0':
             self.duokaiStr = "test00"
@@ -272,17 +271,17 @@ class GameHelper:
         imgCv = cv2.cvtColor(np.asarray(image), cv2.COLOR_RGB2BGR)
         tryCount = 100
         cardStartPos = pyautogui.locate(needleImage=self.Pics["card_edge"], haystackImage=image,
-                                        region=(76, 615, SCREEN_WIDTH-100, 110), confidence=0.80)
+                                        region=(70, 615, 50, 110), confidence=0.80)
         while cardStartPos is None and tryCount > 0:
             cardStartPos = pyautogui.locate(needleImage=self.Pics["card_edge"], haystackImage=image,
-                                            region=(76, 615, SCREEN_WIDTH-100, 110), confidence=0.80)
+                                            region=(70, 615, 50, 110), confidence=0.80)
             print("找不到手牌起始位置")
             tryCount -= 1
             #time.sleep(150)
         print("start pos", cardStartPos)
         if cardStartPos is None:
             return [],[],[]
-        sx = cardStartPos[0]+7 #+ 23
+        sx =95# cardStartPos[0]+7 #+ 23
         AllCardsNC = ['rD', 'bX', 'A', 'K', 'Q', 'J', 'T', '9', '8', '7', '6', '5', '4', '3','2']
         hand_cards = []
         select_map = []

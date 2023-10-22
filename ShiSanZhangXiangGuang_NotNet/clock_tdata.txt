@@ -20914,3 +20914,952 @@ bTurnCardCount:13
 
  cbOthreRangCardCount:0,
 ,52,6,1,8,57,26,59,60,27,22,21,19,18End
+
+cbHandCardCount:13
+
+testCount:1
+,6,54,52,1,12,10,9,38,13,28,27,20,51
+bTurnCardCount:0
+
+ cbDiscardCardCount:0,
+
+ cbRangCardCount:0,
+
+ cbOthreRangCardCount:0,
+,28,12,27,52,20,54,38,51,1,13,10,9,6End
+
+cbHandCardCount:13
+
+testCount:2
+,61,57,19,8,24,33,55,50,29,43,22,36,34
+bTurnCardCount:0
+
+ cbDiscardCardCount:0,
+
+ cbRangCardCount:0,
+
+ cbOthreRangCardCount:0,
+,50,34,33,24,8,55,57,43,61,29,19,36,22End
+
+cbHandCardCount:13
+
+testCount:3
+,2,3,4,5,17,18,25,35,44,49,56,58,60
+bTurnCardCount:0
+
+ cbDiscardCardCount:0,
+
+ cbRangCardCount:0,
+
+ cbOthreRangCardCount:0,
+,60,44,58,49,17,5,56,25,35,3,18,2,4End
+
+cbHandCardCount:13
+
+testCount:4
+,11,40,37,26,42,23,39,45,21,53,59,41,7
+bTurnCardCount:13
+,2,3,4,5,17,18,25,35,44,49,56,58,60
+ cbDiscardCardCount:0,
+
+ cbRangCardCount:0,
+
+ cbOthreRangCardCount:0,
+,59,11,26,45,42,41,40,37,39,23,7,53,21End
+
+cbHandCardCount:13
+
+testCount:5
+,17,1,43,45,29,13,50,41,53,36,7,51,54
+bTurnCardCount:0
+
+ cbDiscardCardCount:0,
+
+ cbRangCardCount:0,
+
+ cbOthreRangCardCount:0,
+,17,1,43,45,29,13,50,41,51,36,53,54,7End
+
+cbHandCardCount:13
+
+testCount:1
+,1,54,18,28,26,41,37,19,11,43,9,40,6
+bTurnCardCount:0
+
+ cbDiscardCardCount:0,
+
+ cbRangCardCount:0,
+
+ cbOthreRangCardCount:0,
+,9,11,1,54,6,18,19,37,40,41,26,43,28End
+
+cbHandCardCount:13
+
+testCount:2
+,50,4,21,7,23,39,10,44,61,59,57,22,38
+bTurnCardCount:0
+
+ cbDiscardCardCount:0,
+
+ cbRangCardCount:0,
+
+ cbOthreRangCardCount:0,
+,50,4,21,57,10,59,44,61,39,23,7,38,22End
+
+cbHandCardCount:13
+
+testCount:3
+,13,24,29,33,35,36,42,45,52,53,55,58,60
+bTurnCardCount:0
+
+ cbDiscardCardCount:0,
+
+ cbRangCardCount:0,
+
+ cbOthreRangCardCount:0,
+,29,13,24,60,58,55,53,52,33,45,42,36,35End
+
+cbHandCardCount:13
+
+testCount:4
+,49,25,20,12,27,56,5,51,2,34,17,8,3
+bTurnCardCount:13
+,13,24,29,33,35,36,42,45,52,53,55,58,60
+ cbDiscardCardCount:0,
+
+ cbRangCardCount:0,
+
+ cbOthreRangCardCount:0,
+,56,8,12,49,17,5,25,27,51,3,34,2,20End
+
+cbHandCardCount:13
+
+testCount:5
+,61,24,23,33,55,6,35,18,28,26,39,53,3
+bTurnCardCount:0
+
+ cbDiscardCardCount:0,
+
+ cbRangCardCount:0,
+
+ cbOthreRangCardCount:0,
+,6,61,33,55,39,35,3,53,28,26,24,23,18End
+
+cbHandCardCount:13
+
+testCount:6
+,40,56,60,1,29,7,54,19,2,34,25,38,4
+bTurnCardCount:0
+
+ cbDiscardCardCount:0,
+
+ cbRangCardCount:0,
+
+ cbOthreRangCardCount:0,
+,34,2,1,54,38,25,60,29,56,40,19,4,7End
+
+cbHandCardCount:13
+
+testCount:7
+,5,8,9,13,17,21,22,36,41,42,43,49,59
+bTurnCardCount:0
+
+ cbDiscardCardCount:0,
+
+ cbRangCardCount:0,
+
+ cbOthreRangCardCount:0,
+,59,43,13,49,17,22,8,42,41,9,21,5,36End
+
+cbHandCardCount:13
+
+testCount:8
+,11,20,51,12,10,57,37,50,45,44,27,58,52
+bTurnCardCount:13
+,5,8,9,13,17,21,22,36,41,42,43,49,59
+ cbDiscardCardCount:0,
+
+ cbRangCardCount:0,
+
+ cbOthreRangCardCount:0,
+,37,10,45,44,12,27,11,20,58,57,52,51,50End
+
+cbHandCardCount:13
+
+testCount:1
+,1,57,40,19,35,44,25,18,8,24,12,42,23
+bTurnCardCount:0
+
+ cbDiscardCardCount:0,
+
+ cbRangCardCount:0,
+
+ cbOthreRangCardCount:0,
+,57,25,1,44,12,18,23,42,40,24,8,35,19End
+
+cbHandCardCount:13
+
+testCount:2
+,22,51,2,49,60,11,53,3,10,26,9,38,36
+bTurnCardCount:0
+
+ cbDiscardCardCount:0,
+
+ cbRangCardCount:0,
+
+ cbOthreRangCardCount:0,
+,38,22,60,26,10,3,9,11,49,2,51,36,53End
+
+cbHandCardCount:13
+
+testCount:3
+,5,6,13,17,20,28,37,43,45,52,58,59,61
+bTurnCardCount:0
+
+ cbDiscardCardCount:0,
+
+ cbRangCardCount:0,
+
+ cbOthreRangCardCount:0,
+,45,13,43,37,5,52,20,6,58,59,28,61,17End
+
+cbHandCardCount:13
+
+testCount:4
+,29,27,7,33,41,39,54,34,56,55,21,4,50
+bTurnCardCount:13
+,5,6,13,17,20,28,37,43,45,52,58,59,61
+ cbDiscardCardCount:0,
+
+ cbRangCardCount:0,
+
+ cbOthreRangCardCount:0,
+,41,27,29,4,21,54,56,33,55,39,7,50,34End
+
+cbHandCardCount:13
+
+testCount:5
+,25,54,4,34,50,29,37,19,45,11,8,6,20
+bTurnCardCount:0
+
+ cbDiscardCardCount:0,
+
+ cbRangCardCount:0,
+
+ cbOthreRangCardCount:0,
+,54,6,11,45,29,37,8,25,20,4,50,34,19End
+
+cbHandCardCount:13
+
+testCount:6
+,1,44,24,33,59,7,5,52,61,60,27,36,51
+bTurnCardCount:0
+
+ cbDiscardCardCount:0,
+
+ cbRangCardCount:0,
+
+ cbOthreRangCardCount:0,
+,60,44,61,33,1,5,7,24,59,27,52,36,51End
+
+cbHandCardCount:13
+
+testCount:7
+,2,3,10,13,17,21,22,23,26,38,40,41,42
+bTurnCardCount:0
+
+ cbDiscardCardCount:0,
+
+ cbRangCardCount:0,
+
+ cbOthreRangCardCount:0,
+,40,41,13,2,3,21,23,17,42,26,10,38,22End
+
+cbHandCardCount:13
+
+testCount:8
+,49,57,53,12,43,9,56,55,28,58,39,35,18
+bTurnCardCount:13
+,2,3,10,13,17,21,22,23,26,38,40,41,42
+ cbDiscardCardCount:0,
+
+ cbRangCardCount:0,
+
+ cbOthreRangCardCount:0,
+,57,9,43,28,12,18,35,39,49,58,56,55,53End
+
+cbHandCardCount:13
+
+testCount:9
+,11,38,53,33,49,22,54,8,17,42,24,51,2
+bTurnCardCount:0
+
+ cbDiscardCardCount:0,
+
+ cbRangCardCount:0,
+
+ cbOthreRangCardCount:0,
+,53,42,11,54,38,22,2,51,49,33,17,24,8End
+
+cbHandCardCount:13
+
+testCount:10
+,60,59,4,45,5,52,3,50,10,58,12,6,18
+bTurnCardCount:0
+
+ cbDiscardCardCount:0,
+
+ cbRangCardCount:0,
+
+ cbOthreRangCardCount:0,
+,18,12,45,3,4,5,6,10,60,59,58,52,50End
+
+cbHandCardCount:13
+
+testCount:11
+,1,19,20,21,29,34,35,37,39,43,44,56,57
+bTurnCardCount:0
+
+ cbDiscardCardCount:0,
+
+ cbRangCardCount:0,
+
+ cbOthreRangCardCount:0,
+,56,57,29,1,34,19,20,21,44,43,39,37,35End
+
+cbHandCardCount:13
+
+testCount:12
+,26,23,36,7,55,61,9,40,25,41,13,28,27
+bTurnCardCount:13
+,1,19,20,21,29,34,35,37,39,43,44,56,57
+ cbDiscardCardCount:0,
+
+ cbRangCardCount:0,
+
+ cbOthreRangCardCount:0,
+,61,13,36,40,9,26,27,28,55,23,7,41,25End
+
+cbHandCardCount:13
+
+testCount:13
+,43,59,45,11,40,4,35,50,9,41,56,39,22
+bTurnCardCount:0
+
+ cbDiscardCardCount:0,
+
+ cbRangCardCount:0,
+
+ cbOthreRangCardCount:0,
+,22,39,45,41,9,50,35,4,59,43,11,56,40End
+
+cbHandCardCount:13
+
+testCount:14
+,17,57,23,33,27,26,55,20,19,51,13,28,42
+bTurnCardCount:0
+
+ cbDiscardCardCount:0,
+
+ cbRangCardCount:0,
+
+ cbOthreRangCardCount:0,
+,33,17,26,55,23,51,19,20,57,42,27,28,13End
+
+cbHandCardCount:13
+
+testCount:15
+,2,5,8,10,21,24,34,36,38,44,53,54,58
+bTurnCardCount:0
+
+ cbDiscardCardCount:0,
+
+ cbRangCardCount:0,
+
+ cbOthreRangCardCount:0,
+,58,10,44,24,8,54,38,36,53,21,5,34,2End
+
+cbHandCardCount:13
+
+testCount:16
+,29,6,3,12,60,25,37,52,1,49,61,7,18
+bTurnCardCount:13
+,2,5,8,10,21,24,34,36,38,44,53,54,58
+ cbDiscardCardCount:0,
+
+ cbRangCardCount:0,
+
+ cbOthreRangCardCount:0,
+,49,1,25,61,29,60,12,18,3,52,37,6,7End
+
+cbHandCardCount:13
+
+testCount:17
+,33,11,41,8,56,58,38,51,12,59,40,37,52
+bTurnCardCount:0
+
+ cbDiscardCardCount:0,
+
+ cbRangCardCount:0,
+
+ cbOthreRangCardCount:0,
+,12,11,8,59,58,56,52,51,33,41,40,38,37End
+
+cbHandCardCount:13
+
+testCount:18
+,60,26,36,7,23,44,22,2,45,28,10,3,34
+bTurnCardCount:0
+
+ cbDiscardCardCount:0,
+
+ cbRangCardCount:0,
+
+ cbOthreRangCardCount:0,
+,23,7,45,26,10,3,36,22,60,44,28,34,2End
+
+cbHandCardCount:13
+
+testCount:19
+,4,5,6,9,18,19,21,24,35,39,50,54,55
+bTurnCardCount:0
+
+ cbDiscardCardCount:0,
+
+ cbRangCardCount:0,
+
+ cbOthreRangCardCount:0,
+,50,18,19,35,4,21,54,55,5,6,39,24,9End
+
+cbHandCardCount:13
+
+testCount:20
+,13,29,49,1,27,42,25,53,17,61,43,57,20
+bTurnCardCount:13
+,4,5,6,9,18,19,21,24,35,39,50,54,55
+ cbDiscardCardCount:0,
+
+ cbRangCardCount:0,
+
+ cbOthreRangCardCount:0,
+,43,27,42,61,29,13,20,53,49,17,1,57,25End
+
+cbHandCardCount:13
+
+testCount:21
+,45,60,24,29,42,7,54,52,28,44,49,8,22
+bTurnCardCount:0
+
+ cbDiscardCardCount:0,
+
+ cbRangCardCount:0,
+
+ cbOthreRangCardCount:0,
+,24,8,49,45,29,52,7,42,60,44,28,54,22End
+
+cbHandCardCount:13
+
+testCount:22
+,59,9,35,12,57,56,5,19,27,55,38,21,2
+bTurnCardCount:0
+
+ cbDiscardCardCount:0,
+
+ cbRangCardCount:0,
+
+ cbOthreRangCardCount:0,
+,35,19,12,59,27,2,5,9,21,38,55,56,57End
+
+cbHandCardCount:13
+
+testCount:23
+,4,6,10,11,17,18,20,23,25,34,40,41,61
+bTurnCardCount:0
+
+ cbDiscardCardCount:0,
+
+ cbRangCardCount:0,
+
+ cbOthreRangCardCount:0,
+,34,18,17,20,4,6,25,61,23,40,41,10,11End
+
+cbHandCardCount:13
+
+testCount:24
+,1,3,50,43,58,53,36,51,33,13,26,39,37
+bTurnCardCount:13
+,4,6,10,11,17,18,20,23,25,34,40,41,61
+ cbDiscardCardCount:0,
+
+ cbRangCardCount:0,
+
+ cbOthreRangCardCount:0,
+,51,3,1,58,26,50,53,13,33,43,39,37,36End
+
+cbHandCardCount:13
+
+testCount:25
+,12,59,19,24,40,29,57,3,2,34,43,23,21
+bTurnCardCount:0
+
+ cbDiscardCardCount:0,
+
+ cbRangCardCount:0,
+
+ cbOthreRangCardCount:0,
+,34,2,12,59,43,3,40,57,29,24,23,21,19End
+
+cbHandCardCount:13
+
+testCount:26
+,6,37,20,33,49,9,55,22,35,51,61,44,4
+bTurnCardCount:0
+
+ cbDiscardCardCount:0,
+
+ cbRangCardCount:0,
+
+ cbOthreRangCardCount:0,
+,22,6,61,49,33,55,9,44,20,4,51,35,37End
+
+cbHandCardCount:13
+
+testCount:27
+,5,8,11,17,18,26,28,36,39,52,53,58,60
+bTurnCardCount:0
+
+ cbDiscardCardCount:0,
+
+ cbRangCardCount:0,
+
+ cbOthreRangCardCount:0,
+,58,26,17,60,28,39,8,11,53,5,52,36,18End
+
+cbHandCardCount:13
+
+testCount:28
+,10,42,1,13,27,7,54,50,25,41,45,56,38
+bTurnCardCount:13
+,5,8,11,17,18,26,28,36,39,52,53,58,60
+ cbDiscardCardCount:0,
+
+ cbRangCardCount:0,
+
+ cbOthreRangCardCount:0,
+,42,10,1,45,13,7,56,27,41,25,54,38,50End
+
+cbHandCardCount:13
+
+testCount:29
+,44,6,2,27,43,12,8,34,25,41,17,40,50
+bTurnCardCount:0
+
+ cbDiscardCardCount:0,
+
+ cbRangCardCount:0,
+
+ cbOthreRangCardCount:0,
+,44,12,17,43,27,41,25,6,50,34,2,40,8End
+
+cbHandCardCount:13
+
+testCount:30
+,13,45,49,38,54,9,56,18,19,35,58,37,20
+bTurnCardCount:0
+
+ cbDiscardCardCount:0,
+
+ cbRangCardCount:0,
+
+ cbOthreRangCardCount:0,
+,54,38,58,45,13,19,56,9,49,18,35,20,37End
+
+cbHandCardCount:13
+
+testCount:31
+,3,5,7,23,29,33,36,42,52,53,55,57,59
+bTurnCardCount:0
+
+ cbDiscardCardCount:0,
+
+ cbRangCardCount:0,
+
+ cbOthreRangCardCount:0,
+,59,29,33,53,5,3,57,42,55,23,7,52,36End
+
+cbHandCardCount:13
+
+testCount:32
+,26,24,39,1,61,60,11,21,28,10,22,4,51
+bTurnCardCount:13
+,3,5,7,23,29,33,36,42,52,53,55,57,59
+ cbDiscardCardCount:0,
+
+ cbRangCardCount:0,
+
+ cbOthreRangCardCount:0,
+,26,10,1,60,28,51,11,61,4,21,22,39,24End
+
+cbHandCardCount:13
+
+testCount:33
+,13,43,6,23,39,1,56,34,3,19,17,42,24
+bTurnCardCount:0
+
+ cbDiscardCardCount:0,
+
+ cbRangCardCount:0,
+
+ cbOthreRangCardCount:0,
+,56,24,13,17,1,6,42,43,39,23,19,3,34End
+
+cbHandCardCount:13
+
+testCount:34
+,33,54,53,26,58,12,41,52,44,25,5,51,18
+bTurnCardCount:0
+
+ cbDiscardCardCount:0,
+
+ cbRangCardCount:0,
+
+ cbOthreRangCardCount:0,
+,44,12,33,58,26,41,25,5,18,51,52,53,54End
+
+cbHandCardCount:13
+
+testCount:35
+,2,7,10,21,27,28,29,37,38,49,57,59,61
+bTurnCardCount:0
+
+ cbDiscardCardCount:0,
+
+ cbRangCardCount:0,
+
+ cbOthreRangCardCount:0,
+,27,29,49,37,21,2,38,7,57,10,59,28,61End
+
+cbHandCardCount:13
+
+testCount:36
+,9,40,50,4,36,60,55,35,45,11,8,22,20
+bTurnCardCount:13
+,2,7,10,21,27,28,29,37,38,49,57,59,61
+ cbDiscardCardCount:0,
+
+ cbRangCardCount:0,
+
+ cbOthreRangCardCount:0,
+,9,11,60,50,35,22,55,45,36,20,4,40,8End
+
+cbHandCardCount:13
+
+testCount:37
+,36,35,2,8,24,11,9,53,3,51,13,26,52
+bTurnCardCount:0
+
+ cbDiscardCardCount:0,
+
+ cbRangCardCount:0,
+
+ cbOthreRangCardCount:0,
+,24,8,26,52,36,51,35,53,13,11,9,3,2End
+
+cbHandCardCount:13
+
+testCount:38
+,45,44,43,49,60,23,38,19,10,58,61,55,5
+bTurnCardCount:0
+
+ cbDiscardCardCount:0,
+
+ cbRangCardCount:0,
+
+ cbOthreRangCardCount:0,
+,60,44,49,61,45,5,38,43,58,10,55,23,19End
+
+cbHandCardCount:13
+
+testCount:39
+,1,6,7,21,22,27,33,37,39,41,54,56,57
+bTurnCardCount:0
+
+ cbDiscardCardCount:0,
+
+ cbRangCardCount:0,
+
+ cbOthreRangCardCount:0,
+,33,1,27,57,41,39,7,56,54,22,6,37,21End
+
+cbHandCardCount:13
+
+testCount:40
+,28,42,25,4,20,18,34,12,17,29,59,40,50
+bTurnCardCount:13
+,1,6,7,21,22,27,33,37,39,41,54,56,57
+ cbDiscardCardCount:0,
+
+ cbRangCardCount:0,
+
+ cbOthreRangCardCount:0,
+,50,34,4,40,25,42,59,12,17,29,28,20,18End
+
+cbHandCardCount:13
+
+testCount:1
+,11,56,37,17,57,55,38,36,43,41,24,4,19
+bTurnCardCount:0
+
+ cbDiscardCardCount:0,
+
+ cbRangCardCount:0,
+
+ cbOthreRangCardCount:0,
+,43,11,17,57,41,56,24,4,19,36,37,38,55End
+
+cbHandCardCount:13
+
+testCount:2
+,10,42,39,26,58,29,53,2,49,12,9,8,6
+bTurnCardCount:0
+
+ cbDiscardCardCount:0,
+
+ cbRangCardCount:0,
+
+ cbOthreRangCardCount:0,
+,39,29,49,12,9,8,6,2,58,42,26,10,53End
+
+cbHandCardCount:13
+
+testCount:3
+,1,7,20,21,22,23,28,34,40,45,51,52,61
+bTurnCardCount:0
+
+ cbDiscardCardCount:0,
+
+ cbRangCardCount:0,
+
+ cbOthreRangCardCount:0,
+,23,7,1,61,45,20,40,28,34,51,52,21,22End
+
+cbHandCardCount:13
+
+testCount:4
+,3,35,44,13,27,25,54,18,33,60,59,5,50
+bTurnCardCount:13
+,1,7,20,21,22,23,28,34,40,45,51,52,61
+ cbDiscardCardCount:0,
+
+ cbRangCardCount:0,
+
+ cbOthreRangCardCount:0,
+,59,27,33,60,44,54,25,13,35,3,50,18,5End
+
+cbHandCardCount:13
+
+testCount:5
+,6,53,51,49,40,22,52,35,12,23,37,36,50
+bTurnCardCount:0
+
+ cbDiscardCardCount:0,
+
+ cbRangCardCount:0,
+
+ cbOthreRangCardCount:0,
+,6,40,12,35,36,37,22,23,49,50,51,52,53End
+
+cbHandCardCount:13
+
+testCount:6
+,29,10,18,11,27,56,7,38,13,44,26,5,3
+bTurnCardCount:0
+
+ cbDiscardCardCount:0,
+
+ cbRangCardCount:0,
+
+ cbOthreRangCardCount:0,
+,26,44,29,27,11,18,38,56,13,10,7,5,3End
+
+cbHandCardCount:13
+
+testCount:7
+,2,17,19,20,21,24,25,33,39,54,55,58,61
+bTurnCardCount:0
+
+ cbDiscardCardCount:0,
+
+ cbRangCardCount:0,
+
+ cbOthreRangCardCount:0,
+,55,39,61,33,17,2,54,58,25,24,21,20,19End
+
+cbHandCardCount:13
+
+testCount:8
+,45,59,34,9,57,1,60,4,28,43,42,41,8
+bTurnCardCount:13
+,2,17,19,20,21,24,25,33,39,54,55,58,61
+ cbDiscardCardCount:0,
+
+ cbRangCardCount:0,
+
+ cbOthreRangCardCount:0,
+,8,59,1,57,9,60,28,4,45,43,42,41,34End
+
+cbHandCardCount:13
+
+testCount:9
+,45,12,59,49,11,26,8,18,35,51,42,4,50
+bTurnCardCount:0
+
+ cbDiscardCardCount:0,
+
+ cbRangCardCount:0,
+
+ cbOthreRangCardCount:0,
+,50,18,11,51,35,4,8,26,42,59,12,45,49End
+
+cbHandCardCount:13
+
+testCount:10
+,17,22,36,21,37,9,7,52,5,53,41,23,3
+bTurnCardCount:0
+
+ cbDiscardCardCount:0,
+
+ cbRangCardCount:0,
+
+ cbOthreRangCardCount:0,
+,41,9,17,23,7,52,36,22,53,37,21,5,3End
+
+cbHandCardCount:13
+
+testCount:11
+,1,2,6,10,13,24,33,34,38,40,54,58,61
+bTurnCardCount:0
+
+ cbDiscardCardCount:0,
+
+ cbRangCardCount:0,
+
+ cbOthreRangCardCount:0,
+,33,1,38,34,2,40,24,6,58,10,61,13,54End
+
+cbHandCardCount:13
+
+testCount:12
+,28,44,43,60,27,25,39,20,29,57,56,55,19
+bTurnCardCount:13
+,1,2,6,10,13,24,33,34,38,40,54,58,61
+ cbDiscardCardCount:0,
+
+ cbRangCardCount:0,
+
+ cbOthreRangCardCount:0,
+,60,44,57,43,27,55,39,56,29,28,25,20,19End
+
+cbHandCardCount:13
+
+testCount:13
+,49,21,36,10,42,44,43,39,28,26,7,19,2
+bTurnCardCount:0
+
+ cbDiscardCardCount:0,
+
+ cbRangCardCount:0,
+
+ cbOthreRangCardCount:0,
+,44,28,43,49,2,19,36,21,42,26,10,39,7End
+
+cbHandCardCount:13
+
+testCount:14
+,25,40,22,9,41,57,55,52,29,45,34,50,33
+bTurnCardCount:0
+
+ cbDiscardCardCount:0,
+
+ cbRangCardCount:0,
+
+ cbOthreRangCardCount:0,
+,55,40,33,45,29,50,34,22,57,41,25,9,52End
+
+cbHandCardCount:13
+
+testCount:15
+,1,4,5,6,8,11,17,18,23,35,37,53,61
+bTurnCardCount:0
+
+ cbDiscardCardCount:0,
+
+ cbRangCardCount:0,
+
+ cbOthreRangCardCount:0,
+,37,23,61,17,18,35,4,53,1,11,8,6,5End
+
+cbHandCardCount:13
+
+testCount:16
+,3,51,56,27,59,13,58,20,12,60,38,54,24
+bTurnCardCount:13
+,1,4,5,6,8,11,17,18,23,35,37,53,61
+ cbDiscardCardCount:0,
+
+ cbRangCardCount:0,
+
+ cbOthreRangCardCount:0,
+,60,12,13,56,24,54,38,58,59,27,51,3,20End
+
+cbHandCardCount:13
+
+testCount:17
+,60,20,2,3,35,29,44,7,13,25,38,4,50
+bTurnCardCount:0
+
+ cbDiscardCardCount:0,
+
+ cbRangCardCount:0,
+
+ cbOthreRangCardCount:0,
+,29,13,25,20,4,35,3,7,60,44,50,2,38End
+
+cbHandCardCount:13
+
+testCount:18
+,59,40,36,1,45,23,54,5,9,57,18,34,39
+bTurnCardCount:0
+
+ cbDiscardCardCount:0,
+
+ cbRangCardCount:0,
+
+ cbOthreRangCardCount:0,
+,34,18,1,57,9,23,59,45,36,5,54,39,40End
+
+cbHandCardCount:13
+
+testCount:19
+,6,11,17,19,21,22,33,37,43,51,53,56,61
+bTurnCardCount:0
+
+ cbDiscardCardCount:0,
+
+ cbRangCardCount:0,
+
+ cbOthreRangCardCount:0,
+,33,17,61,43,11,22,6,56,53,37,21,51,19End
+
+cbHandCardCount:13
+
+testCount:20
+,28,55,52,10,58,8,24,41,26,42,49,12,27
+bTurnCardCount:13
+,6,11,17,19,21,22,33,37,43,51,53,56,61
+ cbDiscardCardCount:0,
+
+ cbRangCardCount:0,
+
+ cbOthreRangCardCount:0,
+,41,27,49,28,12,24,8,55,58,42,26,10,52End

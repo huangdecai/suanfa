@@ -6430,7 +6430,7 @@ void CGameLogicNew::ShiSanZhangOutCardCeLue(const BYTE cbHandCardData[], BYTE cb
 		BYTE cbReserveCardData[MAX_COUNT] = { 0 };
 		int cbReserveCardCount = cbHandCardCount;
 		CopyMemory(cbReserveCardData, cbHandCardData, cbHandCardCount);
-		RemoveTypeCard(CardTypeResult[CT_ONE_DOUBLE], cbReserveCardData, cbReserveCardCount);
+		RemoveTypeCard(NoReDoubleCardTypeResult, cbReserveCardData, cbReserveCardCount);
 		SortCardList(cbReserveCardData, cbReserveCardCount, ST_ASCENDING);
 
 		//ËÑË÷±ßÅÆ

@@ -32,7 +32,7 @@ void TestGameLogic()
 	//BYTE    tempCard[] = { 0x09 };
 	//BYTE    tempCard[] = { };
 	//BYTE    tempCard[] = { 0x2B, 0x0B, 0x05, 0x1D, 0x0D, 0x2D, 0x32, 0x33, 0x26, 0x16, 0x34, 0x14, 0x04 };
-	BYTE    tempCard[] = { 0x38, 0x0d, 0x23, 0x0c, 0x1c, 0x01, 0x1d, 0x16, 0x21, 0x2b, 0x37, 0x14, 0x33 };
+	BYTE    tempCard[] = { 49,1,28,11,40,7,22,53,52,36,4,35,34 };
 
 	//BYTE    tempCard[] = { 0x3c,0x0d,0x2b,0x35,0x26,0x07,0x38,0x01,0x32,0x22,0x12,0x14,0x04};
 
@@ -45,7 +45,7 @@ void TestGameLogic()
 	CopyMemory(cbHandCardData, tempCard, sizeof(tempCard));
 	tagOutCardResultNew  OutCardResult;
 
-	BYTE cbTurnCardData[] = { 0x3d, 0x09, 0x26, 0x34, 0x35, 0x36, 0x07, 0x18, 0x11, 0x1b, 0x19, 0x17, 0x15 };
+	BYTE cbTurnCardData[] = { 7,9,17,21,23,24,25,27,38,52,53,54,61 };
 
 	int cbTurnCardCount = 13;
 	int cbRangCardCount = 0;
@@ -54,12 +54,6 @@ void TestGameLogic()
 	WORD wBankerUser = 0;
 	WORD wUndersideUser = (wBankerUser + 1) % GAME_PLAYER;
 	WORD wUpsideUser = (wUndersideUser + 1) % GAME_PLAYER;
-	m_GameLogicNew.SetDiscardCard(cbDiscardCard, sizeof(cbDiscardCard));
-	m_GameLogicNew.SetBanker(wBankerUser);
-
-	m_GameLogicNew.SetUserCard(wBankerUser, tempCard, sizeof(tempCard));
-	m_GameLogicNew.SetUserCard(wUndersideUser, tempCard, sizeof(tempCard));
-	m_GameLogicNew.SetUserCard(wUpsideUser, tempCard, sizeof(tempCard));
 
 	tagOutCardResultNew CardTypeResult1;
 	CardTypeResult1.cbCardCount = 5;
@@ -77,6 +71,16 @@ void TestGameLogic()
 	start = clock();*/
 	BYTE maxCard = 0;
 	int tmpType= m_GameLogicNew.GetCardType(tempCard1, 5, maxCard);
+	//BYTE    tempCardArray[3][13] = { 
+	//	{ 42,19,2,60,10,57,4,50,49,44,39,6,34 },
+	//	{ 45,11,37,26,58,41,5,18,8,40,59,36,3 },
+	//	{ 7,9,17,21,23,24,25,27,38,52,53,54,61 }
+	//};
+	//for (int i=0;i<3;i++)
+	//{
+	//	m_GameLogicNew.SearchOutCardErRen(tempCardArray[i], sizeof(tempCard), cbTurnCardData, cbTurnCardCount, cbDiscardCard, 0, cbRangCardCount, cbOthreRangCardCount, OutCardResult);
+	//}
+	
 
 	for (int i = 0; i < 500;i++)
 	{
@@ -85,14 +89,14 @@ void TestGameLogic()
 		BYTE bCardData[DISPATCH_COUNT] = { 0 };
 		m_GameLogicNew.RandCardList(bCardData, DISPATCH_COUNT);
 		////BYTE    tempCard[] = { 0x2d, 0x0d, 0x1b, 0x0b, 0x2a, 0x0a, 0x19, 0x37, 0x17, 0x36, 0x26, 0x33, 0x03, };
-		//CopyMemory(tempCard, bCardData, sizeof(tempCard));
+		CopyMemory(tempCard, bCardData, sizeof(tempCard));
 		string str;
 		for (int j=0;j<sizeof(tempCard);j++)
 		{
 			str += to_string(tempCard[j])+",";
 		}
 		cout << str<< endl;
-		m_GameLogicNew.SearchOutCardErRen(tempCard, sizeof(tempCard), cbTurnCardData, cbTurnCardCount, cbDiscardCard, sizeof(cbDiscardCard), cbRangCardCount, cbOthreRangCardCount, OutCardResult);
+		m_GameLogicNew.SearchOutCardErRen(tempCard, sizeof(tempCard), cbTurnCardData, cbTurnCardCount, cbDiscardCard, 0, cbRangCardCount, cbOthreRangCardCount, OutCardResult);
 		int count = 0;
 		for (int j = 0; j < NORMAL_COUNT;j++)
 		{

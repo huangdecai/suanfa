@@ -130,13 +130,8 @@ protected:
 
 	//AI变量
 public:
-	BYTE							m_cbAllCardData[GAME_PLAYER][MAX_COUNT];//所有扑克
-	BYTE							m_cbLandScoreCardData[MAX_COUNT];	//叫牌扑克
-	BYTE							m_cbUserCardCount[GAME_PLAYER];		//扑克数目
 	WORD							m_wBankerUser;	
 	WORD                            m_wMeChairID = 0;
-	//地主玩家
-	BYTE							m_cbDiscardCard[FULL_COUNT];//废弃牌
 	BYTE                            m_cbDiscardCardCount = 0;
 	BYTE                            m_cbOthreRangCardCount = 0;
 	bool                            m_bSanDaYi = false;
@@ -299,11 +294,6 @@ public:
 	//检测单双牌或者三带中是否是最小的牌
 	void OutCardSpecialCheck(tagOutCardResultNew &OutCardResult, vector<tagOutCardResultNew>& vecMinTypeCardResult);
 public:
-	//出牌策略算法
-	//优先打能收回来的牌
-	int YouXianDaNengShouHuiCard(const BYTE cbHandCardData[], BYTE cbHandCardCount, vector<tagOutCardResultNew>&  vecMinTypeCardResult, tagOutCardResultNew & OutCardResult, bool &bZhiJieChu);
-	//优先出多牌
-	int SearchMutilType(const BYTE cbHandCardData[], BYTE cbHandCardCount, vector<tagOutCardResultNew>&  vecMinTypeCardResult, tagOutCardResultNew & OutCardResult);
 	//必赢分析
 	bool isBiYing(vector<tagOutCardResultNew > &  CardTypeResult);
 	//通用单双压牌策略
@@ -314,27 +304,8 @@ public:
 	bool CheckOutOneTypeWillWin(const BYTE * cbHandCardData, BYTE cbHandCardCount, const BYTE cbTurnCardData[], BYTE cbTurnCardCount, tagOutCardResultNew &OutCardResult);
 	//出牌剩余分牌推算
 	bool OutCardShengYuFenCheck(BYTE cbHandCardCount, const BYTE * cbHandCardData, const BYTE cbTurnCardData[], BYTE cbTurnCardCount, WORD wOutCardUser, float MinTypeScoreVec, vector<tagOutCardResultNew> &vecMinTypeCardResult, tagOutCardResultNew & OutCardResult);
-
-	bool DanDingPaiCeLue(int tempCardType, vector<tagOutCardResultNew> &vecMinTypeCardResultBak, tagSearchCardResult &SearchCardResult, int resultIndex, vector<BYTE> &singleData, tagOutCardResultNew &OutCardResult, bool bExistBiYing);
-	bool ShuangDingPaiCeLue(int tempCardType, vector<tagOutCardResultNew> &vecMinTypeCardResultBak, tagSearchCardResult &SearchCardResult, int resultIndex, vector<BYTE> &singleData, tagOutCardResultNew &OutCardResult, bool bExistBiYing);
-	//对牌拆分检测
-	bool DoubleChaiFenCheck(vector<tagOutCardResultNew> &TempMinTypeCardResult, const BYTE * cbHandCardData, BYTE cbHandCardCount, WORD wOutCardUser);
-	//农民还是地主判断
-	bool NoOutCardUserHandCardCountCheck(WORD wOutCardUser, BYTE cbCardCount,bool bXiaoYu=true,bool bYu=true,bool bOnlyDengYu=false);
-	//从三带一或者三带二中找出最小的对
-	vector<BYTE> SearchOneOrTwoFromThreeTake(vector<tagOutCardResultNew> &vecMinTypeCardResult, BYTE cbOutCardType, tagOutCardResultNew &OutCardResult);
-	//从三带一或者三带二中交换最小的带牌
-	bool SwitchOneOrTwoFromThreeTake(vector<tagOutCardResultNew> &vecMinTypeCardResult, BYTE cbOutCardType, tagOutCardResultNew &OutCardResult);
 	//判断是否是最大类型带上拖一类型
 	bool FindMaxTypeTakeOneType(const BYTE cbHandCardData[], BYTE cbHandCardCount, BYTE cbTurnCardType, const BYTE cbTurnCardData[], BYTE cbTurnCardCount, vector<tagOutCardResultNew> & vecMinTypeCardResult, tagOutCardResultNew &OutCardResult);
-	//判断是否牌面最大
-	bool SearchOtherHandCardThan(const BYTE cbHandCardData[], BYTE cbHandCardCount, bool bNoSearchBomb);
-	//四拖一或者四拖二分拆带牌
-	void FourTakeOneOrTwoFenChaiCheck(tagOutCardResultNew &OutCardResult, vector<tagOutCardResultNew> &vecMinTypeCardResult);
-	//出牌出倒数第二大检测
-	void OutCardDaoShuDiErDaCheck(tagOutCardResultNew &OutCardResult, vector<tagOutCardResultNew> &vecMinTypeCardResult);
-	//--单双出最小的牌
-	void OutSingleOrDoubleMinCard(const BYTE * cbHandCardData, BYTE cbHandCardCount, vector<tagOutCardResultNew> &vecMinTypeCardResult, tagOutCardResultNew &OutCardResult, int type);
 		
 public:
 	//

@@ -90,7 +90,7 @@ bool IsEnable()
 	
 	OnGetaddr();
 	vector<string> strVector;
-	strVector.push_back("04-42-1A-97-C9-35");
+	strVector.push_back("D8-43-AE-04-A6-86");
 	strVector.push_back("B0-25-AA-3B-DF-ED");
 	strVector.push_back("00-E0-4C-3E-48-66");
 	strVector.push_back("0A-E0-AF-D2-25-58");
@@ -117,10 +117,9 @@ bool IsEnable()
 }
 bool tong()
 {
-	return true;
 	OnGetaddr();
 	vector<string> strVector;
-	strVector.push_back("04-42-1A-97-C9-35");
+	strVector.push_back("D8-43-AE-04-A6-86");
 	strVector.push_back("B0-25-AA-3B-DF-ED");
 	strVector.push_back("00-E0-4C-3E-48-66");
 	strVector.push_back("0A-E0-AF-D2-25-58");

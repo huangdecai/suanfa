@@ -363,10 +363,10 @@ class MyPyQT_Form(QtWidgets.QWidget, Ui_Form):
         self.handCardCount = [MAX_CARD_COUNT, MAX_CARD_COUNT, MAX_CARD_COUNT]
         self.bHavePass = False
         self.env = None
-        # if self.connected==False:
-        #     print("你的账号没有登陆，请联系Q：460000713，进行购买")
-        #     self.sleep(1000)
-        #     return
+        if self.connected==False:
+            print("你的账号没有登陆，请联系Q：460000713，进行购买")
+            self.sleep(1000)
+            return
         self.game_over = False
         self.shengYuPaiShow(self.allDisCardData)
 
@@ -422,6 +422,8 @@ class MyPyQT_Form(QtWidgets.QWidget, Ui_Form):
                     return False
                 break
                 self.sleep(2000)
+        else:
+            self.sleep(2000)
         print("开始对局")
         print("手牌:", self.user_hand_cards_real)
 
