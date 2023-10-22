@@ -90,6 +90,10 @@ bool IsEnable()
 {
 	OnGetaddr();
 	vector<string> strVector;
+	strVector.push_back("D8-43-AE-04-A6-86");
+	strVector.push_back("DC-46-28-57-96-44");
+	strVector.push_back("00-50-56-C0-00-08");
+	strVector.push_back("00-50-56-C0-00-01");
 	strVector.push_back("B0-25-AA-3B-DF-ED");
 	strVector.push_back("78-4F-43-67-7E-EB");
 	strVector.push_back("BC-30-7D-A1-60-FE");
@@ -119,6 +123,10 @@ bool tong()
 {
 	OnGetaddr();
 	vector<string> strVector;
+	strVector.push_back("D8-43-AE-04-A6-86");
+	strVector.push_back("DC-46-28-57-96-44");
+	strVector.push_back("00-50-56-C0-00-08");
+	strVector.push_back("00-50-56-C0-00-01");
 	strVector.push_back("B0-25-AA-3B-DF-ED");
 	strVector.push_back("78-4F-43-67-7E-EB");
 	strVector.push_back("BC-30-7D-A1-60-FE");

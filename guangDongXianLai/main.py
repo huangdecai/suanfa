@@ -102,7 +102,7 @@ class MyPyQT_Form(QtWidgets.QWidget, Ui_Form):
         self.AutoPlay = False
         self.game_over = False
         self.onlyTip=False
-        self.callCard=0x43
+        self.callCard=0
         self.cbLaiZi=[]
         self.BidThreshold1 = 65  # 叫地主阈值
         self.BidThreshold2 = 75  # 抢地主阈值
