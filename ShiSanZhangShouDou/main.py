@@ -4,35 +4,23 @@
 
 import GameHelper as gh
 from GameHelper import GameHelper
+import socketTool
 import os
 import sys
-import time
-import threading
 import pyautogui
 import win32gui
-from PIL import Image
-import multiprocessing as mp
 import cv2
 import numpy as np
-
 from PyQt5 import QtGui, QtWidgets, QtCore
 from PyQt5.QtWidgets import QGraphicsView, QGraphicsScene, QGraphicsItem, QGraphicsPixmapItem, QInputDialog, \
     QMessageBox, QLabel
 from PyQt5.QtGui import QPixmap, QIcon
 from PyQt5.QtCore import QTime, QEventLoop
 from MainWindow import Ui_Form
-from douzero.env.game import GameEnv
-from douzero.evaluation.deep_agent import DeepAgent
 import traceback
-import random
-import time
-import pygame
-import os
-import BidModel
-import LandlordModel
-import FarmerModel
 from ctypes import *
 import json
+from client import Client
 MAX_COUNT=20
 FULL_COUNT=54
 EnvCard2RealCard = {3: '3', 4: '4', 5: '5', 6: '6', 7: '7',
@@ -70,18 +58,52 @@ class MyPyQT_Form(QtWidgets.QWidget, Ui_Form):
         window_pale = QtGui.QPalette()
         # window_pale.setBrush(self.backgroundRole(), QtGui.QBrush(QtGui.QPixmap("pics/bg.png")))
         self.setPalette(window_pale)
-
+        self.connected = False
         self.counter = QTime()
-        pygame.mixer.init()
         self.qianCurrentIndex = 0
         self.houCurrentIndex = -1
         # 参数
         self.initQianPoker()
         self.initHouPoker()
+
         #self.initMPlayedCard()
         #carddata=[0x01,0x02,0x03,0x04,0x05,0x06,0x07,0x08,0x09,0x0A,0x0B,0x0C,0x0D]
         #self.ShowPlayerCardEx(2,carddata)
 
+        self.readJson()
+        self.fenFaQi = Client()
+        self.fenFaQi.SetMsgCall(self.RecvPlayerMsg)
+        self.fenFaQi.start()
+    def RecvPlayerMsg(self, wSubCmdID, data):
+        if wSubCmdID == socketTool.SUB_C_SEND_CARD:
+            dataBuffer = socketTool.cmd_cardDataInfo.from_buffer(data)
+            tmpStr = '座位号:' + str(dataBuffer.wChairID)
+            print("游戏消息1:", tmpStr)
+            tmpStr = ''
+            for i in range(0, dataBuffer.cbCardCount):
+                tmpStr = tmpStr + str(dataBuffer.cbCardData[i]) + ','
+            print("游戏消息2:", tmpStr)
+            tmpStr = ''
+            for i in range(0, 39):
+                tmpStr = tmpStr + str(dataBuffer.cbCardDataEx[i]) + ','
+            print("游戏消息3:", tmpStr)
+        elif wSubCmdID == -1:
+            print("close")
+            self.connected = False
+            return
+        elif wSubCmdID == socketTool.SUB_C_RESET_TABLE:
+            dataBuffer = socketTool.cmd_reSetTable.from_buffer(data)
+            tmpStr = '座位号:' + str(dataBuffer.wChairID)
+            print("重置桌子状态:", tmpStr)
+            return
+        elif wSubCmdID == socketTool.SUB_GR_USER_SIT_SUCCESS:
+            if data.wChairID == self.fenFaQi.GetChaiID():
+                print("连接成功")
+                self.connected = True
+        else:
+            print("其他无关消息")
+
+        a = 4
     def switchPushIndex(self,data):
         for i in range(0, len(AllCardList)):
             if AllCardList[i]==data:
@@ -152,6 +174,10 @@ class MyPyQT_Form(QtWidgets.QWidget, Ui_Form):
                 spaceY += 175
 
     def gameStart(self):
+        if self.connected==False:
+            print("你的账号没有登陆，请联系Q：460000713，进行购买")
+            self.sleep(1000)
+            return
         print("开始出牌\n")
         count=0
         for i in range(0, len(self.qianPushData)):
@@ -228,6 +254,7 @@ class MyPyQT_Form(QtWidgets.QWidget, Ui_Form):
         testCount = 0
         # 得到出牌顺序
         self.play_order = 0  # self.find_landlord()
+
         return  True
     def init_cards(self):
         self.game_over=False
