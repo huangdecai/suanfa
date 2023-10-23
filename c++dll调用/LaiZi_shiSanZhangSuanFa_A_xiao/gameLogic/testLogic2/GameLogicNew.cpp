@@ -3431,13 +3431,22 @@ VOID CGameLogicNew::SearchOutCardShiSanZhang(const BYTE cbHandCardData[], BYTE c
 					resultCompare += CompareCard(Array[j], Array2[j], douNum[j], douNum[j], true, true);
 				}
 
-				if (resultCompare >= 1&& vecMinTypeCardResultShao[i].size() >4)
+				BYTE cbMaxCard = 0;
+				if (resultCompare >= 1)
 				{
-					swap(vecMinTypeCardResult, vecMinTypeCardResultShao[i]);
+					int type2 = GetCardType(Array[2], 3, cbMaxCard);
+					if (type2 == CT_THREE && vecMinTypeCardResult.size() == 3)
+					{
+					}
+					else {
+						if (tempMinTypeScore - tempMinTypeScoreShao[i]<30)
+						{
+							swap(vecMinTypeCardResult, vecMinTypeCardResultShao[i]);
+						}
+					}
 				}
 				else if (vecMinTypeCardResultShao[i].size() == 4){
 
-					BYTE cbMaxCard = 0;
 					int type1_2 = GetCardType(Array[2], 3, cbMaxCard);
 					int type2_2 = GetCardType(Array2[2], 3, cbMaxCard);
 

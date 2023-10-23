@@ -1,5 +1,5 @@
 "D:\test\suanfa\c++dll调用\LaiZi_shiSanZhangSuanFa_A_xiao\ShiSanZhang_dll\testC++.sln" 
-17:37
+18:52
 1>------ 已启动生成:  项目: testC++, 配置: Release x64 ------
 1>  GameLogicNew.cpp
 1>d:\test\suanfa\c++dll调用\laizi_shisanzhangsuanfa_a_xiao\gamelogic\testlogic2\GameLogicNew.h(18): warning C4005: “CT_FIVE_MIXED_FLUSH_NO_A”: 宏重定义
@@ -16,26 +16,19 @@
 1>..\..\gameLogic\testLogic2\GameLogicNew.cpp(3353): warning C4244: “return”: 从“float”转换到“int”，可能丢失数据
 1>..\..\gameLogic\testLogic2\GameLogicNew.cpp(3410): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
 1>..\..\gameLogic\testLogic2\GameLogicNew.cpp(3411): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
-1>..\..\gameLogic\testLogic2\GameLogicNew.cpp(3609): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
-1>..\..\gameLogic\testLogic2\GameLogicNew.cpp(3610): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
-1>..\..\gameLogic\testLogic2\GameLogicNew.cpp(3796): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
-1>..\..\gameLogic\testLogic2\GameLogicNew.cpp(3933): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
-1>..\..\gameLogic\testLogic2\GameLogicNew.cpp(3944): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
-1>..\..\gameLogic\testLogic2\GameLogicNew.cpp(3990): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
-1>..\..\gameLogic\testLogic2\GameLogicNew.cpp(4063): warning C4267: “=”: 从“size_t”转换到“int”，可能丢失数据
-1>..\..\gameLogic\testLogic2\GameLogicNew.cpp(5239): warning C4267: “=”: 从“size_t”转换到“BYTE”，可能丢失数据
-1>..\..\gameLogic\testLogic2\GameLogicNew.cpp(5280): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
-1>  testC++.cpp
-1>d:\test\suanfa\c++dll调用\laizi_shisanzhangsuanfa_a_xiao\shisanzhang_dll\testc++\../../gameLogic/./testLogic2/GameLogicNew.h(18): warning C4005: “CT_FIVE_MIXED_FLUSH_NO_A”: 宏重定义
-1>          d:\test\suanfa\c++dll调用\laizi_shisanzhangsuanfa_a_xiao\shisanzhang_dll\testc++\../../gameLogic/./testLogic2/CMD_Game.h(44) : 参见“CT_FIVE_MIXED_FLUSH_NO_A”的前一个定义
-1>d:\test\suanfa\c++dll调用\laizi_shisanzhangsuanfa_a_xiao\shisanzhang_dll\testc++\../../gameLogic/./testLogic2/GameLogicNew.h(19): warning C4005: “CT_FIVE_MIXED_FLUSH_FIRST_A”: 宏重定义
-1>          d:\test\suanfa\c++dll调用\laizi_shisanzhangsuanfa_a_xiao\shisanzhang_dll\testc++\../../gameLogic/./testLogic2/CMD_Game.h(45) : 参见“CT_FIVE_MIXED_FLUSH_FIRST_A”的前一个定义
-1>testC++.cpp(213): warning C4244: “初始化”: 从“int”转换到“float”，可能丢失数据
-1>testC++.cpp(220): warning C4244: “return”: 从“float”转换到“int”，可能丢失数据
+1>..\..\gameLogic\testLogic2\GameLogicNew.cpp(3618): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
+1>..\..\gameLogic\testLogic2\GameLogicNew.cpp(3619): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
+1>..\..\gameLogic\testLogic2\GameLogicNew.cpp(3805): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
+1>..\..\gameLogic\testLogic2\GameLogicNew.cpp(3942): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
+1>..\..\gameLogic\testLogic2\GameLogicNew.cpp(3953): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
+1>..\..\gameLogic\testLogic2\GameLogicNew.cpp(3999): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
+1>..\..\gameLogic\testLogic2\GameLogicNew.cpp(4072): warning C4267: “=”: 从“size_t”转换到“int”，可能丢失数据
+1>..\..\gameLogic\testLogic2\GameLogicNew.cpp(5248): warning C4267: “=”: 从“size_t”转换到“BYTE”，可能丢失数据
+1>..\..\gameLogic\testLogic2\GameLogicNew.cpp(5289): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
 1>     正在创建库 D:\test\suanfa\c++dll调用\LaiZi_shiSanZhangSuanFa_A_xiao\ShiSanZhang_dll\x64\Release\testC++.lib 和对象 D:\test\suanfa\c++dll调用\LaiZi_shiSanZhangSuanFa_A_xiao\ShiSanZhang_dll\x64\Release\testC++.exp
 1>  正在生成代码
 1>  已完成代码的生成
 1>  testC++.vcxproj -> D:\test\suanfa\c++dll调用\LaiZi_shiSanZhangSuanFa_A_xiao\ShiSanZhang_dll\x64\Release\testC++.dll
 ========== 生成:  成功 1 个，失败 0 个，最新 0 个，跳过 0 个 ==========
 
-17:37
+18:52
