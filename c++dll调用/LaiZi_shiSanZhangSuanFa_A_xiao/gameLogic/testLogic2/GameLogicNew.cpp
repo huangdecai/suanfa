@@ -3431,7 +3431,7 @@ VOID CGameLogicNew::SearchOutCardShiSanZhang(const BYTE cbHandCardData[], BYTE c
 					resultCompare += CompareCard(Array[j], Array2[j], douNum[j], douNum[j], true, true);
 				}
 
-				if (resultCompare >= 1)
+				if (resultCompare >= 1&& vecMinTypeCardResultShao[i].size() >4)
 				{
 					swap(vecMinTypeCardResult, vecMinTypeCardResultShao[i]);
 				}
@@ -3613,14 +3613,19 @@ VOID CGameLogicNew::SearchOutCardShiSanZhangTurn(const BYTE cbHandCardData[], BY
 				CopyMemory(Array[2], TurnOutCardResult.cbResultCard, douNum[2]);
 				CopyMemory(Array[1], TurnOutCardResult.cbResultCard + 3, douNum[1]);
 				CopyMemory(Array[0], TurnOutCardResult.cbResultCard + 8, douNum[0]);
-
+				if (i == 45)
+				{
+					int a = 4;
+				}
 				BYTE Array2[DOU_NUM][DOU_HAND_COUNT] = { 0 };
 				int  ArrayCount2[DOU_NUM] = { 0 };
 				shengChengSanDou(vecMinTypeCardResultShao[i], Array2);
+				
+				
 				ShiSanZhangOutCardCeLue(cbHandCardData, cbHandCardCount, Array2, CardTypeResult);
-				if (i==18)
+				for (int j = 0;j < DOU_NUM;j++)
 				{
-					int a = 4;
+					SortOutCardList(Array2[j], douNum[j]);
 				}
 				//Ð£ÑéÎÚÁú
 				JiaoYanWuLong(Array2);
