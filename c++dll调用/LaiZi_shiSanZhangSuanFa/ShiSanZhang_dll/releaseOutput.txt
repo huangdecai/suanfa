@@ -1,0 +1,5 @@
+"D:\pythonTest\c++dll调用\LaiZi_shiSanZhangSuanFa\ShiSanZhang_dll\testC++.sln" 
+22:00
+========== 生成:  成功 0 个，失败 0 个，最新 1 个，跳过 0 个 ==========
+
+22:00
