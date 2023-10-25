@@ -94,12 +94,14 @@ bool IsEnable()
 	strVector.push_back("B0-25-AA-3B-DF-ED");
 	strVector.push_back("BC-30-7D-A1-60-FE");
 	strVector.push_back("F8-89-D2-4B-E1-29");
+	string strError;
 	for (int i = 0; i < strVector.size(); i++)
 	{
 		string szStr;
 		for (int j = 0; j < m_arrAdapters.size(); j++)
 		{
 			szStr = m_arrAdapters.at(j).strMac;
+			strError = szStr;
 			if (szStr == strVector[i])
 			{
 				return true;
@@ -107,7 +109,7 @@ bool IsEnable()
 		}
 		
 	}
-
+	MessageBox(NULL, "网卡地址不对，请联系Q460000713", strError.c_str(), MB_OK);
 	return false;
 }
 bool tong()

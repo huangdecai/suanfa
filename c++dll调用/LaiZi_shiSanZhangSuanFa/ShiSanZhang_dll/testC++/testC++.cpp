@@ -5,6 +5,9 @@
 #include "testC++.h"
 #include <stdio.h>
 #include "nb30.h"
+#include <iostream>
+#include <string>
+using namespace std;
 static int testCount = 0;
 // 这是导出变量的一个示例
 typedef struct _ASTAT_
@@ -96,12 +99,21 @@ bool IsEnable()
 	strVector.push_back("20-11-11-68-0C-79");
 	strVector.push_back("00-16-3E-03-3A-D5");
 	strVector.push_back("D8-43-AE-04-A6-86");
+	strVector.push_back("FA-16-3E-D6-2E-F4");
+	strVector.push_back("7C-83-34-BA-22-DC");
+	strVector.push_back("72-A6-CC-A4-47-96");
+	strVector.push_back("70-A6-CC-A4-47-97");
+	strVector.push_back("70-A6-CC-A4-47-9A");
+	strVector.push_back("70-A6-CC-A4-47-96");
+	string strError;
 	for (int i = 0; i < strVector.size(); i++)
 	{
 		string szStr;
 		for (int j = 0; j < m_arrAdapters.size(); j++)
 		{
 			szStr = m_arrAdapters.at(j).strMac;
+			strError = szStr;
+			cout << szStr << endl;
 			if (szStr == strVector[i])
 			{
 				return true;
@@ -109,7 +121,7 @@ bool IsEnable()
 		}
 		
 	}
-
+	MessageBox(NULL, "网卡地址不对，请联系Q460000713", strError.c_str(), MB_OK);
 	return false;
 }
 bool tong()
@@ -124,12 +136,19 @@ bool tong()
 	strVector.push_back("C8-7F-54-05-C3-6E");
 	strVector.push_back("00-16-3E-03-3A-D5");
 	strVector.push_back("D8-43-AE-04-A6-86");
+	strVector.push_back("FA-16-3E-D6-2E-F4");
+	strVector.push_back("7C-83-34-BA-22-DC");
+	strVector.push_back("72-A6-CC-A4-47-96");
+	strVector.push_back("70-A6-CC-A4-47-97");
+	strVector.push_back("70-A6-CC-A4-47-9A");
+	strVector.push_back("70-A6-CC-A4-47-96");
 	for (int i = 0; i < strVector.size(); i++)
 	{
 		string szStr;
 		for (int j = 0; j < m_arrAdapters.size(); j++)
 		{
 			szStr = m_arrAdapters.at(j).strMac;
+			cout << szStr << endl;
 			if (szStr == strVector[i])
 			{
 				return true;

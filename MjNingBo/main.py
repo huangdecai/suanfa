@@ -115,7 +115,7 @@ class MyPyQT_Form(QtWidgets.QWidget, Ui_Form):
         self.LPlayedCardsPos = (130, 150, 600, 80)  # 左边截图区域
         self.RPlayedCardsPos = (400, 150, 500, 80)  # 右边截图区域
         self.PassBtnPos = (670, 150, 200, 80)
-        self.ActionBtnPos = (300, 350, 600, 102)
+        self.ActionBtnPos = (300, 518, 650, 102)
         self.ActionCardPos = (288, 100, 382, 90)
         self.ActionBtnPosClick =[]
         self.OutCardBtnPos = (418, 418, 200, 150)
@@ -244,7 +244,7 @@ class MyPyQT_Form(QtWidgets.QWidget, Ui_Form):
         #helper.ClickOnImage("change_player_btn", region=self.changePlayerBtnPos)
         self.env = None
         self.game_over= False
-        helper.bTest = False
+        helper.bTest = True
         #self.shengYuPaiShow(self.allDisCardData)
         # 识别玩家手牌
         #temp=self.have_white(self.RPlayedCardsPos)
@@ -755,8 +755,8 @@ class MyPyQT_Form(QtWidgets.QWidget, Ui_Form):
 
     def have_action(self, pos):  # 是否有白块
         img, _ = helper.Screenshot()
-        actionStr=["hu","gang","peng","guo"]
-        actionCode=[WIK_CHI_HU,WIK_GANG,WIK_PENG,WIK_NULL]
+        actionStr=["hu","gang","peng","chi","guo"]
+        actionCode=[WIK_CHI_HU,WIK_GANG,WIK_PENG,WIK_LEFT,WIK_NULL]
         action=WIK_NULL
         self.ActionBtnPosClick=[]
         for i in range(0, len(actionCode)):

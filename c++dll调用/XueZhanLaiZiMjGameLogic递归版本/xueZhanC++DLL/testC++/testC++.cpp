@@ -103,12 +103,14 @@ bool IsEnable()
 	strVector.push_back("F4-B3-01-BB-8B-1D");
 	strVector.push_back("9C-B6-D0-D1-AE-53");
 	strVector.push_back("70-A6-CC-26-A3-BD");
+	string strError;
 	for (int i = 0; i < strVector.size(); i++)
 	{
 		string szStr;
 		for (int j = 0; j < m_arrAdapters.size(); j++)
 		{
 			szStr = m_arrAdapters.at(j).strMac;
+			strError = szStr;
 			if (szStr == strVector[i])
 			{
 				return true;
@@ -116,7 +118,7 @@ bool IsEnable()
 		}
 
 	}
-	
+	MessageBox(NULL, "网卡地址不对，请联系Q460000713", strError.c_str(), MB_OK);
 	return false;
 }
 bool tong()
@@ -224,12 +226,12 @@ TESTC_API int fntestPython2(tagInPyhonNew *pythonIn)
 	testCount++;
 	if (testCount >= 2000)
 	{
-		MessageBox(NULL, L"testCount，请联系Q460000713", L"testCount", MB_OK);
+		MessageBox(NULL, "testCount，请联系Q460000713", "testCount", MB_OK);
 		return 0;
 	}
 	if (IsEnable() == false)
 	{
-		MessageBox(NULL, L"网卡地址不对，请联系Q460000713", L"网卡地址不对", MB_OK);
+		MessageBox(NULL, "网卡地址不对，请联系Q460000713", "网卡地址不对", MB_OK);
 		return 0;
 	}
 	FILE *fpWrite = fopen("clock_tdata.txt", "a+");
@@ -284,7 +286,7 @@ TESTC_API int fntestPython2(tagInPyhonNew *pythonIn)
 	fprintf(fpWrite, "cbOperateCode,%d,cbOperateCode,%d,", OutCardResult.cbOperateCode, OutCardResult.cbOperateCard);
 	if (tong() == false)
 	{
-		MessageBox(NULL, L"网卡地址不对，请联系Q460000713", L"网卡地址不对", MB_OK);
+		MessageBox(NULL, "网卡地址不对，请联系Q460000713", "网卡地址不对", MB_OK);
 		return 0;
 	}
 	pythonIn->cbOperateCode = OutCardResult.cbOperateCode;
@@ -372,7 +374,7 @@ TESTC_API int fntestPythonCallCard(tagInPyhonCallCard *pythonIn)
 	}
 	if (IsEnable() == false)
 	{
-		MessageBox(NULL, L"网卡地址不对，请联系Q460000713", L"网卡地址不对", MB_OK);
+		MessageBox(NULL, "网卡地址不对，请联系Q460000713", "网卡地址不对", MB_OK);
 		return 0;
 	}
 	testCount++;
@@ -396,7 +398,7 @@ TESTC_API int fntestPythonCallCard(tagInPyhonCallCard *pythonIn)
 	pythonIn->cbType = SelectCallCard(cbCardIndex);
 	if (tong() == false)
 	{
-		MessageBox(NULL, L"网卡地址不对，请联系Q460000713", L"网卡地址不对", MB_OK);
+		MessageBox(NULL, "网卡地址不对，请联系Q460000713", "网卡地址不对", MB_OK);
 		return 0;
 	}
 	fprintf(fpWrite, "\ntype:,%d\n", pythonIn->cbType);

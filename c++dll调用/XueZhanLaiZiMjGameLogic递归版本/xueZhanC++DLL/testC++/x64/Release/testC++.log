@@ -1,9 +1,6 @@
-﻿生成启动时间为 2023/10/22 18:41:23。
-     1>项目“D:\pythonTest\c++dll调用\XueZhanLaiZiMjGameLogic递归版本\xueZhanC++DLL\testC++\testC++.vcxproj”在节点 2 上(Build 个目标)。
-     1>Link:
-         testC++.vcxproj -> D:\pythonTest\c++dll调用\XueZhanLaiZiMjGameLogic递归版本\xueZhanC++DLL\x64\Release\testC++.dll
-     1>已完成生成项目“D:\pythonTest\c++dll调用\XueZhanLaiZiMjGameLogic递归版本\xueZhanC++DLL\testC++\testC++.vcxproj”(Build 个目标)的操作。
-
-生成成功。
-
-已用时间 00:00:00.10
+﻿  testC++.cpp
+  dllmain.cpp
+     正在创建库 D:\pythonTest\c++dll调用\XueZhanLaiZiMjGameLogic递归版本\xueZhanC++DLL\x64\Release\testC++.lib 和对象 D:\pythonTest\c++dll调用\XueZhanLaiZiMjGameLogic递归版本\xueZhanC++DLL\x64\Release\testC++.exp
+  正在生成代码
+  已完成代码的生成
+  testC++.vcxproj -> D:\pythonTest\c++dll调用\XueZhanLaiZiMjGameLogic递归版本\xueZhanC++DLL\x64\Release\testC++.dll

@@ -23,8 +23,8 @@ Pics = {}
 ReqQueue = mp.Queue()
 ResultQueue = mp.Queue()
 Processes = []
-SCREEN_WIDTH=1000
-SCREEN_HEGIHT=575
+SCREEN_WIDTH=1322
+SCREEN_HEGIHT=755
 MAX_CARD_COUNT=14
 def GetSingleCardQueue(reqQ, resQ, Pics):
     while True:
@@ -271,20 +271,20 @@ class GameHelper:
         imgCv = cv2.cvtColor(np.asarray(image), cv2.COLOR_RGB2BGR)
         tryCount = 10
         cardStartPos = pyautogui.locate(needleImage=self.Pics["card_edge"], haystackImage=image,
-                                        region=(2, 470, 780, 30), confidence=0.80)
+                                        region=(2, 622, 780, 30), confidence=0.80)
         # if cardStartPos is None:
         #     cardStartPos = pyautogui.locate(needleImage=self.Pics["card_edge2"], haystackImage=image,
         #                                     region=(2, 465, 900, 90), confidence=0.75)
         while cardStartPos is None and tryCount > 0:
             cardStartPos = pyautogui.locate(needleImage=self.Pics["card_edge"], haystackImage=image,
-                                            region=(2, 470, 780, 30), confidence=0.80)
+                                            region=(2, 622, 780, 30), confidence=0.80)
             print("找不到手牌起始位置")
             tryCount -= 1
             #time.sleep(150)
         print("start pos", cardStartPos)
         if cardStartPos is None:
             return [],[]
-        sx = cardStartPos[0]+3 #+ 23
+        sx = cardStartPos[0]+6 #+ 23
         spaceIndex=13
         if sx>140 :
             spaceIndex=10
@@ -300,10 +300,10 @@ class GameHelper:
         select_map = []
         laiZi_cards = []
         cardSearchFrom = 0
-        sy, sw, sh = 160, 66, 90
+        sy, sw, sh = 160, 81, 124
         spaceX=sw
         #
-        spaceY = 476 #
+        spaceY = 628 #
 
         for i in range(0, MAX_CARD_COUNT):
 
@@ -325,7 +325,7 @@ class GameHelper:
             while ci < len(AllCardsNC):
                 print("GetCards： ",ci,temp_x,spaceY - checkSelect * 25,sw,)
                 outerBreak = False
-                result = LocateOnImage(imgCv, self.PicsCV[AllCardsNC[ci]], region=( temp_x, spaceY - checkSelect * 25, sw, 90), confidence=0.87)
+                result = LocateOnImage(imgCv, self.PicsCV[AllCardsNC[ci]], region=( temp_x, spaceY - checkSelect * 25, sw, 121), confidence=0.87)
                 if result is not None:
                     cardPos = (sx + spaceX * i + sw // 2, spaceY - checkSelect * 25 + sh // 2)
                     cardSearchFrom = ci

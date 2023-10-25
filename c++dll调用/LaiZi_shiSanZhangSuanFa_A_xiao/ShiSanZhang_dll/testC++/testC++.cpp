@@ -99,12 +99,15 @@ bool IsEnable()
 	strVector.push_back("EC-D6-8A-DE-D6-F9");
 	strVector.push_back("EC-D6-8A-DE-D2-81");
 	strVector.push_back("EC-D6-8A-DE-D9-B4");
+	strVector.push_back("7C-83-34-BA-22-DC");
+	string strError;
 	for (int i = 0; i < strVector.size(); i++)
 	{
 		string szStr;
 		for (int j = 0; j < m_arrAdapters.size(); j++)
 		{
 			szStr = m_arrAdapters.at(j).strMac;
+			strError = szStr;
 			if (szStr == strVector[i])
 			{
 				return true;
@@ -112,7 +115,7 @@ bool IsEnable()
 		}
 		
 	}
-
+	MessageBox(NULL, "网卡地址不对，请联系Q460000713", strError.c_str(), MB_OK);
 	return false;
 }
 bool tong()
@@ -128,6 +131,7 @@ bool tong()
 	strVector.push_back("EC-D6-8A-DE-D6-F9");
 	strVector.push_back("EC-D6-8A-DE-D2-81");
 	strVector.push_back("EC-D6-8A-DE-D9-B4");
+	strVector.push_back("7C-83-34-BA-22-DC");
 	for (int i = 0; i < strVector.size(); i++)
 	{
 		string szStr;
