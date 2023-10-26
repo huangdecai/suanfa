@@ -2157,6 +2157,168 @@ bool CGameLogic::IsShuangAnKe(const tagAnalyseItem *pAnalyseItem, const tagWeave
 	return false;
 }
 
+bool CGameLogic::IsBianZhang(const tagAnalyseItem *pAnalyseItem, const tagWeaveItem WeaveItem[], BYTE cbWeaveCount, BYTE cbCurrentCard)
+{
+	//--边张：单胡123中3、789的7，或1233胡3、7789胡7；手中有12345胡3，56789胡7则不算边张
+	if (cbCurrentCard > 0x40)
+	{
+		return false;
+	}
+	BYTE currentCardVule = GetCardValue(cbCurrentCard);
+	if (currentCardVule == 3 || currentCardVule == 7)
+	{
+		bool bExist[] = { 0, 0, 0, 0, 0, 0, 0, 0, 0 };
+		//--索引1代表123是否存在, 2代表234是否存在, 3代表....类推
+		for (BYTE i = 0; i < CountArray(pAnalyseItem->cbWeaveKind); i++)
+		{
+			//--手牌上拿过来的组成的顺子只有DEF.WIK_LEFT类型
+			if (pAnalyseItem->cbWeaveKind[i] & (WIK_LEFT | WIK_CENTER | WIK_RIGHT) != 0)
+			{
+				BYTE tempVaule = GetCardValue(pAnalyseItem->cbCardData[i][0]);
+				bExist[tempVaule] = bExist[tempVaule] + 1;
+			}
+
+		}
+		for (BYTE i = 0; i < cbWeaveCount;i++)
+		{
+			if (WeaveItem[i].cbWeaveKind & (WIK_LEFT | WIK_CENTER | WIK_RIGHT) != 0)
+			{
+				BYTE tempVaule = GetCardValue(WeaveItem[i].cbCardData[0]);
+				bExist[tempVaule] = bExist[tempVaule] - 1;
+			}
+		}
+
+		if (currentCardVule == 3 && bExist[currentCardVule - 2] >= 1 && bExist[currentCardVule] <= 0 &&
+			bExist[currentCardVule - 1] <= 0)
+		{
+			if (pAnalyseItem->cbCardEye == cbCurrentCard && bExist[currentCardVule + 1] > 0)
+			{
+				return false;
+			}
+			return true;
+		}
+		else if
+			(currentCardVule == 7 && bExist[currentCardVule] >= 1 && bExist[currentCardVule - 1] <= 0 &&
+				bExist[currentCardVule - 2] <= 0)
+		{
+			if (pAnalyseItem->cbCardEye == cbCurrentCard && bExist[currentCardVule - 3] > 0)
+			{
+				return false;
+			}
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+
+	}
+
+	return false;
+}
+
+bool CGameLogic::IsKanZhang(const tagAnalyseItem *pAnalyseItem, const BYTE cbCardIndex[MAX_INDEX], const tagWeaveItem WeaveItem[], BYTE cbWeaveCount, BYTE cbCurrentCard)
+{
+	//--坎张：胡两张牌中间的一张牌；4556胡5也是坎张，手中有45567胡6不算坎张
+	if (cbCurrentCard > 0x40)
+	{
+		return false;
+	}
+	BYTE currentCardVule = GetCardValue(cbCurrentCard);
+	if (currentCardVule >= 2 && currentCardVule <= 8)
+	{
+		bool bExist[] = { 0, 0, 0, 0, 0, 0, 0, 0, 0 };
+		//--索引1代表123是否存在, 2代表234是否存在, 3代表....类推
+		if (currentCardVule >= 3 && currentCardVule <= 7)
+		{
+			BYTE cbCurrentCardIndex = SwitchToCardIndex(cbCurrentCard);
+			if
+				((cbCardIndex[cbCurrentCardIndex - 1] > 0) && (cbCardIndex[cbCurrentCardIndex - 2] > 0) &&
+					currentCardVule != 3 &&
+					cbCardIndex[cbCurrentCardIndex] != 1)
+			{
+				return false;
+			}
+			if
+				((cbCardIndex[cbCurrentCardIndex + 1] > 0) && (cbCardIndex[cbCurrentCardIndex + 2] > 0) &&
+					currentCardVule != 7 &&
+					cbCardIndex[cbCurrentCardIndex] != 1)
+			{
+				return false;
+			}
+			for (BYTE i = 0; i < CountArray(pAnalyseItem->cbWeaveKind); i++)
+			{
+				//--手牌上拿过来的组成的顺子只有DEF.WIK_LEFT类型
+				if (pAnalyseItem->cbWeaveKind[i] & (WIK_LEFT | WIK_CENTER | WIK_RIGHT) != 0)
+				{
+					//--判断cbCurrentCard <= 0x12防止数组越界)
+					if
+						((pAnalyseItem->cbCardData[i][0] == cbCurrentCard) || (pAnalyseItem->cbCardData[i][1] == cbCurrentCard) ||
+						(pAnalyseItem->cbCardData[i][2] == cbCurrentCard))
+					{
+						BYTE tempVaule = GetCardValue(pAnalyseItem->cbCardData[i][0]);
+						bExist[tempVaule] = bExist[tempVaule] + 1;
+					}
+
+				}
+
+			}
+
+			for (BYTE i = 0; i < cbWeaveCount;i++)
+			{
+				if (WeaveItem[i].cbWeaveKind & (WIK_LEFT | WIK_CENTER | WIK_RIGHT) != 0)
+				{
+					BYTE tempVaule = GetCardValue(WeaveItem[i].cbCardData[0]);
+					bExist[tempVaule] = bExist[tempVaule] - 1;
+				}
+			}
+
+
+			bool bSpeical1 = true;
+			if ((currentCardVule > 2) && (bExist[currentCardVule - 2] > 0))
+			{
+				bSpeical1 = false;
+			}
+			bool bSpeical2 = true;
+			if ((currentCardVule > 2) && (bExist[currentCardVule - 2] <= 0))
+			{
+				bSpeical2 = false;
+			}
+			if
+				(bExist[currentCardVule - 1] >= 1 && bExist[currentCardVule] <= 0 && bSpeical1 &&
+					cbCardIndex[currentCardVule] <= 3)
+			{
+				//--456, 吃5情况
+				return true;
+			}
+
+			else if (bExist[currentCardVule - 1] >= 1 && bExist[currentCardVule] <= 0 && bSpeical2)
+			{
+				//--123, 234, 吃3情况
+				if (currentCardVule == 3)
+					return true;
+				else
+					return false;
+			}
+
+			else if (bExist[currentCardVule - 1] >= 1 && bExist[currentCardVule] >= 1 && bSpeical1)
+			{
+				//--678, 789, 吃7情况
+				if (currentCardVule == 7)
+					return true;
+				else
+					return false;
+			}
+			else
+				return false;
+
+
+		}
+
+	}
+	return false;
+}
+
 BYTE CGameLogic::GetCallCard(const BYTE cardIndex[MAX_INDEX], BYTE callCard)
 {
 	if (callCard==0)

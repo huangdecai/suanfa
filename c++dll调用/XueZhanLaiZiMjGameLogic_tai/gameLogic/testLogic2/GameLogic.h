@@ -330,56 +330,8 @@ protected://胡法分析
 	//是否是双暗刻
 	bool IsShuangAnKe(const tagAnalyseItem *pAnalyseItem, const tagWeaveItem WeaveItem[], BYTE cbWeaveCount, BYTE cbCurrentCard, bool bZiMo);
 	//是否是边张
-	//bool IsBianZhang(const tagAnalyseItem *pAnalyseItem, const tagWeaveItem WeaveItem[], BYTE cbWeaveCount, BYTE cbCurrentCard)
-	//{
-	//	//--边张：单胡123中3、789的7，或1233胡3、7789胡7；手中有12345胡3，56789胡7则不算边张
-	//	if (cbCurrentCard > 0x40)
-	//	{
-	//		return false;
-	//	}
-	//	BYTE currentCardVule = GetCardValue(cbCurrentCard);
-	//		if (currentCardVule == 3 || currentCardVule == 7)
-	//		{
-	//			bool bExist[] = { 0, 0, 0, 0, 0, 0, 0, 0, 0 }; 
-	//				//--索引1代表123是否存在, 2代表234是否存在, 3代表....类推
-	//				for i = 1, #pAnalyseItem.cbWeaveKind do
-	//					--手牌上拿过来的组成的顺子只有DEF.WIK_LEFT类型
-	//					if (pAnalyseItem.cbWeaveKind[i] & (DEF.WIK_LEFT | DEF.WIK_CENTER | DEF.WIK_RIGHT) ~= 0) then
-	//						local tempVaule = self:GetCardValue(pAnalyseItem.cbCardData[i][1])
-	//						bExist[tempVaule] = bExist[tempVaule] + 1
-	//						end
-	//						end
-	//						for i = 1, cbWeaveCount do
-	//							if (WeaveItem[i].cbWeaveKind & (DEF.WIK_LEFT | DEF.WIK_CENTER | DEF.WIK_RIGHT) ~= 0) then
-	//								local tempVaule = self:GetCardValue(WeaveItem[i].cbCardData[1])
-	//								bExist[tempVaule] = bExist[tempVaule] - 1
-	//								end
-	//								end
-
-	//								if
-	//									currentCardVule == 3 and bExist[currentCardVule - 2] >= 1 and bExist[currentCardVule] <= 0 and
-	//									bExist[currentCardVule - 1] <= 0
-	//									then
-	//									if pAnalyseItem.cbCardEye == cbCurrentCard and bExist[currentCardVule + 1] > 0 then
-	//										return false
-	//										end
-	//										return true
-	//										elseif
-	//										currentCardVule == 7 and bExist[currentCardVule] >= 1 and bExist[currentCardVule - 1] <= 0 and
-	//										bExist[currentCardVule - 2] <= 0
-	//										then
-	//										if pAnalyseItem.cbCardEye == cbCurrentCard and bExist[currentCardVule - 3] > 0 then
-	//											return false
-	//											end
-	//											return true
-	//										else
-	//											return false
-	//											end
-	//											end
-	//		}
-	//			
-	//		return false;
-	//}
+	bool IsBianZhang(const tagAnalyseItem *pAnalyseItem, const tagWeaveItem WeaveItem[], BYTE cbWeaveCount, BYTE cbCurrentCard);
+	bool IsKanZhang(const tagAnalyseItem *pAnalyseItem, const BYTE cbCardIndex[MAX_INDEX], const tagWeaveItem WeaveItem[], BYTE cbWeaveCount, BYTE cbCurrentCard);
 		
 	public:
 	BYTE GetCallCard(const  BYTE cardIndex[MAX_INDEX], BYTE callCard);
