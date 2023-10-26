@@ -137,6 +137,16 @@ class MyPyQT_Form(QtWidgets.QWidget, Ui_Form):
                 spaceY += 200
     def HouBtOnEvent(self,index):
         self.houCurrentIndex=index
+        for i in range(0, MAX_CARD_COUNT):
+            if self.qianPushData[i] > 0:
+                continue
+            self.pokerHouPush[self.houCurrentIndex].setVisible(False)
+            self.pokerQianPush[i].setStyleSheet(
+                "QPushButton{border-image: url(./pics/" + str(AllCardList[self.houCurrentIndex]) + ".png)}")
+            self.qianPushData[i] = AllCardList[self.houCurrentIndex]
+            self.houCurrentIndex = -1
+            self.qianCurrentIndex = i
+            break
         #self.pokerHouPush[index].setStyleSheet("background-color: transparent;")
         #self.pokerHouPush[index].setStyleSheet("background-color: gray;")
         intdex=0

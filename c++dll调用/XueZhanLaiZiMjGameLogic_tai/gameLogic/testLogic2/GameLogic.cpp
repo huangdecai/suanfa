@@ -2113,6 +2113,50 @@ bool CGameLogic::IsShouShuangYou(const tagAnalyseItem *pAnalyseItem, const BYTE 
 	return false;
 }
 
+bool CGameLogic::IsShuangAnKe(const tagAnalyseItem *pAnalyseItem, const tagWeaveItem WeaveItem[], BYTE cbWeaveCount, BYTE cbCurrentCard, bool bZiMo)
+{
+	//--双暗刻：牌里有2个暗刻
+	int count = 0;
+	for (BYTE i = 0; i < CountArray(pAnalyseItem->cbWeaveKind); i++)
+	{
+		if ((pAnalyseItem->cbWeaveKind[i] & (WIK_PENG | WIK_GANG)) != 0)
+		{
+			bool bExist = false;
+			for (int j = 0; j < cbWeaveCount;j++)
+			{
+				if ((WeaveItem[j].cbWeaveKind & (WIK_PENG) != 0) &&
+					pAnalyseItem->cbCardData[i][0] == WeaveItem[j].cbCardData[0])
+				{
+					bExist = true;
+				}
+
+				if ((WeaveItem[j].cbWeaveKind & (WIK_GANG) != 0) &&
+					pAnalyseItem->cbCardData[i][0] == WeaveItem[j].cbCardData[0])
+				{
+					bExist = true;
+				}
+				////--放炮上来那张不算暗刻
+				//if (pAnalyseItem->cbCardData[i][0] == cbCurrentCard&& bZiMo != true)
+				//{
+				//	bExist = true;
+				//}
+
+				if (bExist == false)
+				{
+					count = count + 1;
+				}
+			}
+		}
+
+
+	}
+	if (count == 2)
+	{
+		return true;
+	}
+	return false;
+}
+
 BYTE CGameLogic::GetCallCard(const BYTE cardIndex[MAX_INDEX], BYTE callCard)
 {
 	if (callCard==0)

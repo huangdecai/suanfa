@@ -239,26 +239,26 @@ public:
 public:
 	//吃牌判断
 	BYTE EstimateEatCard(const BYTE cbCardIndex[MAX_INDEX], BYTE cbCurrentCard);
-	//碰牌判断
-	BYTE EstimatePengCard(const BYTE cbCardIndex[MAX_INDEX], BYTE cbCurrentCard);
-	//杠牌判断
-	BYTE EstimateGangCard(const BYTE cbCardIndex[MAX_INDEX], BYTE cbCurrentCard);
+//碰牌判断
+BYTE EstimatePengCard(const BYTE cbCardIndex[MAX_INDEX], BYTE cbCurrentCard);
+//杠牌判断
+BYTE EstimateGangCard(const BYTE cbCardIndex[MAX_INDEX], BYTE cbCurrentCard);
 
 public://动作判断
-	//杠牌分析
-	BYTE AnalyseGangCard(const BYTE cbCardIndex[MAX_INDEX], const tagWeaveItem WeaveItem[], BYTE cbWeaveCount, tagGangCardResult & GangCardResult, BYTE cbCurrentCard, BYTE cbCallCard);
-	//吃胡分析
-	BYTE AnalyseChiHuCard(const BYTE cbCardIndex[MAX_INDEX], const tagWeaveItem WeaveItem[], BYTE cbWeaveCount, BYTE cbCurrentCard, CChiHuRight &ChiHuRight);
-	//听牌分析
-	BYTE AnalyseTingCard(const BYTE cbCardIndex[MAX_INDEX], const tagWeaveItem WeaveItem[], BYTE cbWeaveCount, bool bNoCheckMagic=false);
-	//获取胡牌数据，听牌后调用
-	BYTE GetHuCard( const BYTE cbCardIndex[MAX_INDEX], const tagWeaveItem WeaveItem[], BYTE cbWeaveCount,BYTE cbHuCardData[]);
-	//获取听牌数据,打哪些牌能听
-	BYTE GetTingData(const BYTE cbCardIndex[MAX_INDEX], const tagWeaveItem WeaveItem[], BYTE cbWeaveCount,BYTE& cbOutCardCount, BYTE cbOutCardData[]);
-	//获取辅助数据，打哪些牌能听，以及能胡哪些牌
-	BYTE GetTingDataEx(const BYTE cbCardIndex[MAX_INDEX], const tagWeaveItem WeaveItem[], BYTE cbWeaveCount, BYTE& cbOutCardCount,BYTE cbOutCardData[],BYTE cbHuCardCount[],BYTE cbHuCardData[][HEAP_FULL_COUNT],BYTE cbHuFan[][HEAP_FULL_COUNT]);
-	//二向听
-	BYTE GetErXiangTingDataEx(const BYTE cbCardIndex[MAX_INDEX], const tagWeaveItem WeaveItem[], BYTE cbWeaveCount, BYTE& cbOutCardCount, BYTE cbOutCardData[], BYTE cbHuCardCount[], BYTE cbHuCardData[][HEAP_FULL_COUNT], BYTE cbHuFan[][HEAP_FULL_COUNT]);
+//杠牌分析
+BYTE AnalyseGangCard(const BYTE cbCardIndex[MAX_INDEX], const tagWeaveItem WeaveItem[], BYTE cbWeaveCount, tagGangCardResult & GangCardResult, BYTE cbCurrentCard, BYTE cbCallCard);
+//吃胡分析
+BYTE AnalyseChiHuCard(const BYTE cbCardIndex[MAX_INDEX], const tagWeaveItem WeaveItem[], BYTE cbWeaveCount, BYTE cbCurrentCard, CChiHuRight &ChiHuRight);
+//听牌分析
+BYTE AnalyseTingCard(const BYTE cbCardIndex[MAX_INDEX], const tagWeaveItem WeaveItem[], BYTE cbWeaveCount, bool bNoCheckMagic = false);
+//获取胡牌数据，听牌后调用
+BYTE GetHuCard(const BYTE cbCardIndex[MAX_INDEX], const tagWeaveItem WeaveItem[], BYTE cbWeaveCount, BYTE cbHuCardData[]);
+//获取听牌数据,打哪些牌能听
+BYTE GetTingData(const BYTE cbCardIndex[MAX_INDEX], const tagWeaveItem WeaveItem[], BYTE cbWeaveCount, BYTE& cbOutCardCount, BYTE cbOutCardData[]);
+//获取辅助数据，打哪些牌能听，以及能胡哪些牌
+BYTE GetTingDataEx(const BYTE cbCardIndex[MAX_INDEX], const tagWeaveItem WeaveItem[], BYTE cbWeaveCount, BYTE& cbOutCardCount, BYTE cbOutCardData[], BYTE cbHuCardCount[], BYTE cbHuCardData[][HEAP_FULL_COUNT], BYTE cbHuFan[][HEAP_FULL_COUNT]);
+//二向听
+BYTE GetErXiangTingDataEx(const BYTE cbCardIndex[MAX_INDEX], const tagWeaveItem WeaveItem[], BYTE cbWeaveCount, BYTE& cbOutCardCount, BYTE cbOutCardData[], BYTE cbHuCardCount[], BYTE cbHuCardData[][HEAP_FULL_COUNT], BYTE cbHuFan[][HEAP_FULL_COUNT]);
 public://转换函数
 	//扑克转换
 	BYTE SwitchToCardData(BYTE cbCardIndex);
@@ -268,18 +268,18 @@ public://转换函数
 	BYTE SwitchToCardData(const BYTE cbCardIndex[MAX_INDEX], BYTE cbCardData[MAX_COUNT]);
 	//扑克转换
 	BYTE SwitchToCardIndex(const BYTE cbCardData[], BYTE cbCardCount, BYTE cbCardIndex[MAX_INDEX]);
-	
+
 public://辅助函数
 	//有效判断
 	bool IsValidCard(BYTE cbCardData);
 	//扑克数目
-	BYTE GetCardCount(const BYTE cbCardIndex[MAX_INDEX]);	
+	BYTE GetCardCount(const BYTE cbCardIndex[MAX_INDEX]);
 	//组合扑克
 	BYTE GetWeaveCard(BYTE cbWeaveKind, BYTE cbCenterCard, BYTE cbCardBuffer[4]);
 	//江西麻将要用
-	bool IsCanHuPai(int beiShu,const BYTE cbCardIndex[MAX_INDEX], bool fangPao=false);
+	bool IsCanHuPai(int beiShu, const BYTE cbCardIndex[MAX_INDEX], bool fangPao = false);
 	//生成相隔的牌
-	BYTE GenerateShunZi(BYTE cbCardData,bool bAdd,int space);
+	BYTE GenerateShunZi(BYTE cbCardData, bool bAdd, int space);
 	//冲关算法
 	int ChouGuanCount(int score);
 	int GetHuaCardCount(const BYTE cbCardIndex[MAX_INDEX]);
@@ -306,27 +306,81 @@ protected://胡法分析
 	//大三元
 	bool IsDaSanYuan(tagAnalyseItem * pAnalyseItem);
 	//小三元
-	bool IsXiaoSanYuan(const BYTE cbCardIndex[MAX_INDEX],tagAnalyseItem * pAnalyseItem);
+	bool IsXiaoSanYuan(const BYTE cbCardIndex[MAX_INDEX], tagAnalyseItem * pAnalyseItem);
 	//大四喜
 	bool IsDaSiXi(tagAnalyseItem * pAnalyseItem);
 	//小四喜
 	bool IsXiaoSiXi(tagAnalyseItem * pAnalyseItem);
 	//十三幺
-	bool IsShiSanYao( const BYTE cbCardIndex[MAX_INDEX], BYTE cbWeaveCount);
+	bool IsShiSanYao(const BYTE cbCardIndex[MAX_INDEX], BYTE cbWeaveCount);
 	//碰碰和
 	bool IsPengPeng(const tagAnalyseItem *pAnalyseItem);
 	//七对系列
 	bool IsQiDui(const BYTE cbCardIndex[MAX_INDEX], BYTE cbWeaveCount);
 	//七大对
-	bool IsQiDaDui(const BYTE cbCardIndex[MAX_INDEX],BYTE cbWeaveCount);
+	bool IsQiDaDui(const BYTE cbCardIndex[MAX_INDEX], BYTE cbWeaveCount);
 	//十三烂系列
-	bool IsShiSanLan(const BYTE cbCardIndex[MAX_INDEX],BYTE cbWeaveCount);
+	bool IsShiSanLan(const BYTE cbCardIndex[MAX_INDEX], BYTE cbWeaveCount);
 	//七星
-	bool IsQiXing(const BYTE cbCardIndex[MAX_INDEX],BYTE cbWeaveCount);
+	bool IsQiXing(const BYTE cbCardIndex[MAX_INDEX], BYTE cbWeaveCount);
 	//精钓将
-	bool IsJingDiaoJiang(const BYTE cbCardIndex[MAX_INDEX],BYTE cbWeaveCount);
+	bool IsJingDiaoJiang(const BYTE cbCardIndex[MAX_INDEX], BYTE cbWeaveCount);
 	//是否双游金
 	bool IsShouShuangYou(const tagAnalyseItem *pAnalyseItem, const BYTE cbCardIndex[MAX_INDEX]);
+	//是否是双暗刻
+	bool IsShuangAnKe(const tagAnalyseItem *pAnalyseItem, const tagWeaveItem WeaveItem[], BYTE cbWeaveCount, BYTE cbCurrentCard, bool bZiMo);
+	//是否是边张
+	//bool IsBianZhang(const tagAnalyseItem *pAnalyseItem, const tagWeaveItem WeaveItem[], BYTE cbWeaveCount, BYTE cbCurrentCard)
+	//{
+	//	//--边张：单胡123中3、789的7，或1233胡3、7789胡7；手中有12345胡3，56789胡7则不算边张
+	//	if (cbCurrentCard > 0x40)
+	//	{
+	//		return false;
+	//	}
+	//	BYTE currentCardVule = GetCardValue(cbCurrentCard);
+	//		if (currentCardVule == 3 || currentCardVule == 7)
+	//		{
+	//			bool bExist[] = { 0, 0, 0, 0, 0, 0, 0, 0, 0 }; 
+	//				//--索引1代表123是否存在, 2代表234是否存在, 3代表....类推
+	//				for i = 1, #pAnalyseItem.cbWeaveKind do
+	//					--手牌上拿过来的组成的顺子只有DEF.WIK_LEFT类型
+	//					if (pAnalyseItem.cbWeaveKind[i] & (DEF.WIK_LEFT | DEF.WIK_CENTER | DEF.WIK_RIGHT) ~= 0) then
+	//						local tempVaule = self:GetCardValue(pAnalyseItem.cbCardData[i][1])
+	//						bExist[tempVaule] = bExist[tempVaule] + 1
+	//						end
+	//						end
+	//						for i = 1, cbWeaveCount do
+	//							if (WeaveItem[i].cbWeaveKind & (DEF.WIK_LEFT | DEF.WIK_CENTER | DEF.WIK_RIGHT) ~= 0) then
+	//								local tempVaule = self:GetCardValue(WeaveItem[i].cbCardData[1])
+	//								bExist[tempVaule] = bExist[tempVaule] - 1
+	//								end
+	//								end
+
+	//								if
+	//									currentCardVule == 3 and bExist[currentCardVule - 2] >= 1 and bExist[currentCardVule] <= 0 and
+	//									bExist[currentCardVule - 1] <= 0
+	//									then
+	//									if pAnalyseItem.cbCardEye == cbCurrentCard and bExist[currentCardVule + 1] > 0 then
+	//										return false
+	//										end
+	//										return true
+	//										elseif
+	//										currentCardVule == 7 and bExist[currentCardVule] >= 1 and bExist[currentCardVule - 1] <= 0 and
+	//										bExist[currentCardVule - 2] <= 0
+	//										then
+	//										if pAnalyseItem.cbCardEye == cbCurrentCard and bExist[currentCardVule - 3] > 0 then
+	//											return false
+	//											end
+	//											return true
+	//										else
+	//											return false
+	//											end
+	//											end
+	//		}
+	//			
+	//		return false;
+	//}
+		
 	public:
 	BYTE GetCallCard(const  BYTE cardIndex[MAX_INDEX], BYTE callCard);
 	void GetACardShengYuCount(BYTE cbDiscardCard[], BYTE cbDiscardCount, BYTE cbCardIndex[]);
@@ -339,6 +393,8 @@ protected://胡法分析
 	int GetCommonFan(CChiHuRight chr, int lianGang = 0);
 
 	int GetColorCount(const  BYTE cbCardIndex[MAX_INDEX],  int color);
+	
+		
 };
 
 //////////////////////////////////////////////////////////////////////////////////

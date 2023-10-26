@@ -529,6 +529,11 @@ float CGameLogicNew::GetHandScore(vector<tagOutCardResultNew> &CardTypeResult, i
 	{
 		score += 100.0;
 	}
+	float scoreEX = 0.0;
+	if (bIsChongSanModel(CardTypeResult, scoreEX))
+	{
+		score += scoreEX;
+	}
 	//如果最小牌型数小于10的话,应该适当加分
 	//score = score - CardTypeResult.size() * 7;
 	
@@ -566,7 +571,7 @@ float  CGameLogicNew::GetCardTypeScore(tagOutCardResultNew& CardTypeResult)
 		}
 		else if (i == CT_FIVE_STRAIGHT_FLUSH)
 		{
-			spaceScore += 50;
+			spaceScore += 150;
 		}
 		else if (i == CT_FIVE_TONG)
 		{
@@ -6194,7 +6199,7 @@ void CGameLogicNew::ShiSanZhangOutCardCeLue(const BYTE cbHandCardData[], BYTE cb
 		if (GetCardLogicValue(Array[0][0]) > fenJieZhi && (GetCardLogicValue(Array[0][0]) > GetCardLogicValue(Array[0][3])))
 		{
 		}
-		else if (GetCardLogicValue(Array[0][3]) > fenJieZhi && (GetCardLogicValue(Array[2][2]) < 14))
+		else if (GetCardLogicValue(Array[0][3]) > 10 && (GetCardLogicValue(Array[2][2]) < 14))
 		{
 			SwitchArray(&Array[0][3], &Array[2][0], 2);
 			SwitchArray(&Array[0][3], &Array[1][2], 2);
@@ -7790,6 +7795,40 @@ int CGameLogicNew::CheckSingleCardOrder(BYTE Array[DOU_NUM][DOU_HAND_COUNT])
 		}
 	}
 	return 0;
+}
+
+bool CGameLogicNew::bIsChongSanModel(vector<tagOutCardResultNew> &vecMinTypeCardResult, float& score)
+{
+	bool bIsChongSan = false;
+	int threeCount = 0;
+	int typeCount = 0;
+	for (int i = 0; i < vecMinTypeCardResult.size(); i++)
+	{
+		if (vecMinTypeCardResult[i].cbCardType == CT_THREE)
+		{
+			threeCount++;
+		}
+		if (vecMinTypeCardResult[i].cbCardType > CT_THREE)
+		{
+			typeCount++;
+		}
+	}
+	if (threeCount >= 3)
+	{
+		score = 1200;
+		bIsChongSan = true;
+	}
+	if (typeCount >= 2 && vecMinTypeCardResult.size() == 3 && threeCount >= 1)
+	{
+		score = 2000;
+		bIsChongSan = true;
+	}
+	if (typeCount >= 1 && threeCount == 2)
+	{
+		score = 1500;
+		bIsChongSan = true;
+	}
+	return bIsChongSan;
 }
 
 //////////////////////////////////////////////////////////////////////////

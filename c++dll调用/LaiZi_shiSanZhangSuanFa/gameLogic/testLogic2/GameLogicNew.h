@@ -401,6 +401,8 @@ public:
 	int SearchAllLineCardTypeTurnCount(const BYTE cbHandCardData[], BYTE cbHandCardCount, BYTE cbLineCount, BYTE cbReferCard, int type);
 
 	int CheckSingleCardOrder(BYTE Array[DOU_NUM][DOU_HAND_COUNT]);
+
+	bool  bIsChongSanModel(vector<tagOutCardResultNew> &vecMinTypeCardResult, float& score);
 };
 
 //////////////////////////////////////////////////////////////////////////

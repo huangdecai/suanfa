@@ -39,8 +39,8 @@ void TestGameLogic()
 	//BYTE    tempCard[] = { 0x1C, 0x12, 0x02, 0x38, 0x27, 0x05, 0x23, 0x03, 0x19, 0x28, 0x37, 0x26, 0x25 };
 
 	
-	
-
+	TCHAR			                szXML[30][400];			//	配置信息 ;		//机器信息
+	int a = CountArray(szXML);
 	/*clock_t start, fihst;
 	start = clock();*/
 
