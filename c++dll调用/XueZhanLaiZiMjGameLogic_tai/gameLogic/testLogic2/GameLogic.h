@@ -60,9 +60,15 @@ using namespace std;
 #define CHR_HUN_YI_SE                     0x0000000000000080							//混一色
 #define CHR_ZI_YI_SE                      0x0000000000000100						    //字一色
 #define CHR_SHI_BA_LUO_HAN                0x0000000000000200						    //十八罗汉
-#define CHR_YAO_JIU_HU                     0x0000000000000400						    //幺九胡
+#define CHR_YAO_JIU_HU                    0x0000000000000400						    //幺九胡
 #define CHR_QING_YAO_JIU                  0x0000000000000800						    //清幺九
 #define CHR_SHI_SAN_YAO                   0x0000000000001000						    //十三幺
+#define CHR_BIAN_ZHANG                    0x0000000000002000						    //边张
+#define CHR_KAN_ZHANG                     0x0000000000004000						    //坎张
+#define CHR_SHUANG_AN_KE                  0x0000000000008000						    //双暗刻
+#define CHR_DAN_DIAO_JIANG                0x0000000000010000							//单钓将
+#define CHR_DA_SAN_YUAN                   0x0000000000020000							//大三元
+#define CHR_DA_SI_XI                      0x0000000000040000							//大四喜
 //--特殊牌型
 #define CHR_TIAN_HU                       0x0000000000100000							//天胡
 #define CHR_DI_HU                         0x0000000000200000							//地胡
@@ -332,6 +338,7 @@ protected://胡法分析
 	//是否是边张
 	bool IsBianZhang(const tagAnalyseItem *pAnalyseItem, const tagWeaveItem WeaveItem[], BYTE cbWeaveCount, BYTE cbCurrentCard);
 	bool IsKanZhang(const tagAnalyseItem *pAnalyseItem, const BYTE cbCardIndex[MAX_INDEX], const tagWeaveItem WeaveItem[], BYTE cbWeaveCount, BYTE cbCurrentCard);
+	bool IsDanDiaoJiang(const tagAnalyseItem *pAnalyseItem, const BYTE cbCardIndex[MAX_INDEX], BYTE cbCurrentCard);
 		
 	public:
 	BYTE GetCallCard(const  BYTE cardIndex[MAX_INDEX], BYTE callCard);

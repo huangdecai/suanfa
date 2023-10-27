@@ -858,6 +858,30 @@ BYTE CGameLogic::AnalyseChiHuCard(const BYTE cbCardIndex[MAX_INDEX], const tagWe
 			{
 				chr = chr | CHR_YAO_JIU_HU;
 			}
+
+			if (IsShuangAnKe(pAnalyseItem, WeaveItem, cbWeaveCount, cbCurrentCard, false) == true)
+			{
+				chr = chr | CHR_SHUANG_AN_KE;
+			}
+			if (IsBianZhang(pAnalyseItem, WeaveItem, cbWeaveCount, cbCurrentCard) == true)
+			{
+				chr = chr | CHR_BIAN_ZHANG;
+			}
+			if (IsKanZhang(pAnalyseItem, cbCardIndexTemp, WeaveItem, cbWeaveCount, cbCurrentCard) == true)
+			{
+				chr = chr | CHR_KAN_ZHANG;
+			}
+			if (IsDanDiaoJiang(pAnalyseItem, cbCardIndexTemp, cbCurrentCard) == true)
+			{
+				chr = chr | CHR_DAN_DIAO_JIANG;
+			}
+			-- 88番
+				if (self:IsDaSiXi(pAnalyseItem) == true) then
+					chr = chr | DEF.CHR_DA_SI_XI
+					end
+					if (self:IsDaSanYuan(pAnalyseItem) == true) then
+						chr = chr | DEF.CHR_DA_SAN_YUAN
+						end
 			//chr = ClearRepeateFan(chr);
 			int fan = GetUserHuFan(chr);
 			if (fan > Maxfan)
@@ -2167,7 +2191,7 @@ bool CGameLogic::IsBianZhang(const tagAnalyseItem *pAnalyseItem, const tagWeaveI
 	BYTE currentCardVule = GetCardValue(cbCurrentCard);
 	if (currentCardVule == 3 || currentCardVule == 7)
 	{
-		bool bExist[] = { 0, 0, 0, 0, 0, 0, 0, 0, 0 };
+		bool bExist[10] = {  0 };
 		//--索引1代表123是否存在, 2代表234是否存在, 3代表....类推
 		for (BYTE i = 0; i < CountArray(pAnalyseItem->cbWeaveKind); i++)
 		{
@@ -2227,7 +2251,7 @@ bool CGameLogic::IsKanZhang(const tagAnalyseItem *pAnalyseItem, const BYTE cbCar
 	BYTE currentCardVule = GetCardValue(cbCurrentCard);
 	if (currentCardVule >= 2 && currentCardVule <= 8)
 	{
-		bool bExist[] = { 0, 0, 0, 0, 0, 0, 0, 0, 0 };
+		bool bExist[10] = { 0 };
 		//--索引1代表123是否存在, 2代表234是否存在, 3代表....类推
 		if (currentCardVule >= 3 && currentCardVule <= 7)
 		{
@@ -2315,6 +2339,39 @@ bool CGameLogic::IsKanZhang(const tagAnalyseItem *pAnalyseItem, const BYTE cbCar
 
 		}
 
+	}
+	return false;
+}
+
+bool CGameLogic::IsDanDiaoJiang(const tagAnalyseItem *pAnalyseItem, const BYTE cbCardIndex[MAX_INDEX], BYTE cbCurrentCard)
+{
+	//--单钓将：钓单张牌作将成胡
+	BYTE cbCurrentCardIndex = SwitchToCardIndex(cbCurrentCard);
+	if (pAnalyseItem->cbCardEye == cbCurrentCard && cbCardIndex[SwitchToCardIndex(cbCurrentCard)] == 2)
+	{
+		if (cbCurrentCard < 0x40)
+		{
+			BYTE currentCardVule = GetCardValue(cbCurrentCard);
+			if (cbCardIndex[cbCurrentCardIndex] != 2)
+			{
+				return false;
+			}
+			if
+				(currentCardVule >= 4 && cbCardIndex[cbCurrentCardIndex - 3] > 0 &&
+					cbCardIndex[cbCurrentCardIndex - 2] > 0 &&
+					cbCardIndex[cbCurrentCardIndex - 1] > 0)
+			{
+				return false;
+			}
+			if
+				(currentCardVule <= 6 && cbCardIndex[cbCurrentCardIndex + 3] > 0 &&
+					cbCardIndex[cbCurrentCardIndex + 2] > 0 &&
+					cbCardIndex[cbCurrentCardIndex + 1] > 0)
+			{
+				return false;
+			}
+		}
+		return true;
 	}
 	return false;
 }
@@ -2459,7 +2516,7 @@ int CGameLogic::GetCommonFan(CChiHuRight chr, int lianGang)
 	}
 	if ((chr & CHR_PENG_PENG) != 0)
 	{
-		fan *= 2;
+		fan = 10;
 	}
 	if ( (chr & CHR_HUN_YI_SE) != 0)
 	{
@@ -2674,6 +2731,9 @@ bool CGameLogic::IsDaSanYuan(tagAnalyseItem * pAnalyseItem)
 
 	return false;
 }
+
+
+
 bool CGameLogic::IsXiaoSanYuan(const BYTE cbCardIndex[MAX_INDEX],tagAnalyseItem * pAnalyseItem)
 {
 	if(cbCardIndex[31]>=2 && cbCardIndex[32]>=2 && cbCardIndex[33]>=2)
@@ -2724,6 +2784,8 @@ bool CGameLogic::IsDaSiXi(tagAnalyseItem * pAnalyseItem)
 
 	return false;
 }
+
+
 //小四喜
 bool CGameLogic::IsXiaoSiXi(tagAnalyseItem * pAnalyseItem)
 {
