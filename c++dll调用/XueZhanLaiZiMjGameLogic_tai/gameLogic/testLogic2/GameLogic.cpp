@@ -875,13 +875,17 @@ BYTE CGameLogic::AnalyseChiHuCard(const BYTE cbCardIndex[MAX_INDEX], const tagWe
 			{
 				chr = chr | CHR_DAN_DIAO_JIANG;
 			}
-			-- 88·¬
-				if (self:IsDaSiXi(pAnalyseItem) == true) then
-					chr = chr | DEF.CHR_DA_SI_XI
-					end
-					if (self:IsDaSanYuan(pAnalyseItem) == true) then
-						chr = chr | DEF.CHR_DA_SAN_YUAN
-						end
+			
+			if (IsDaSiXi(pAnalyseItem) == true)
+			{
+				chr = chr | CHR_DA_SI_XI;
+			}
+					
+			if (IsDaSanYuan(pAnalyseItem) == true)
+			{
+				chr = chr | CHR_DA_SAN_YUAN;
+			}
+						
 			//chr = ClearRepeateFan(chr);
 			int fan = GetUserHuFan(chr);
 			if (fan > Maxfan)

@@ -64,6 +64,7 @@ WIK_GANG=					0x10								#//杠牌类型
 WIK_LISTEN	=				0x20								#//吃牌类型
 WIK_CHI_HU	=				0x40								#//吃胡类型
 WIK_ZI_MO	=				0x80								#//自摸
+WIK_CHI_XUAN	=			0x100								#//吃选
 
 class WeaveItem:
     def __init__(self):
@@ -115,12 +116,12 @@ class MyPyQT_Form(QtWidgets.QWidget, Ui_Form):
         self.LPlayedCardsPos = (130, 150, 600, 80)  # 左边截图区域
         self.RPlayedCardsPos = (400, 150, 500, 80)  # 右边截图区域
         self.PassBtnPos = (670, 150, 200, 80)
-        self.ActionBtnPos = (300, 518, 650, 102)
+        self.ActionBtnPos = (300, 515, 750, 112)
         self.ActionCardPos = (288, 100, 382, 90)
         self.ActionBtnPosClick =[]
         self.OutCardBtnPos = (418, 418, 200, 150)
         self.FirstOutCardBtnPos = (460, 320, 200, 150)
-        self.changePlayerBtnPos = (674, 500, 190, 50)
+        self.changePlayerBtnPos = (695, 587, 190, 50)
 
         self.dingThreeCardBtnPos = (389, 294, 190, 55)#三张牌
         self.dingQueBtnPos = [(310, 308, 130, 140),(430, 308, 130, 140),(540, 308, 130, 140)]#定缺
@@ -129,7 +130,7 @@ class MyPyQT_Form(QtWidgets.QWidget, Ui_Form):
         self.shouldExit = 0  # 通知上一轮记牌结束
         self.canRecord = threading.Lock()  # 开始记牌
         self.m_WeaveItem=[[],[],[],[]]
-
+        self.waiteChiAction=WIK_NULL
 
         a=4
     def init_display(self):
@@ -244,7 +245,7 @@ class MyPyQT_Form(QtWidgets.QWidget, Ui_Form):
         #helper.ClickOnImage("change_player_btn", region=self.changePlayerBtnPos)
         self.env = None
         self.game_over= False
-        helper.bTest = True
+        helper.bTest = False
         #self.shengYuPaiShow(self.allDisCardData)
         # 识别玩家手牌
         #temp=self.have_white(self.RPlayedCardsPos)
@@ -355,15 +356,27 @@ class MyPyQT_Form(QtWidgets.QWidget, Ui_Form):
                 tmpLen=len(self.user_hand_cards_real)
                 currentUser=0
                 bEnable = False
+                cardIndex = self.SwitchIndex(self.user_hand_cards_real)
                 if (tmpLen%3)==2 :
                    cbActionCard=self.user_hand_cards_real[tmpLen-1]
                 elif cbActionMask>0:
                     currentUser=1
                     img, _ = helper.Screenshot()
-                    cardIndex = self.SwitchIndex(self.user_hand_cards_real)
                     actionSearchPos = ()
 
-                    if (cbActionMask & WIK_PENG)!=0:
+                    if (cbActionMask & (WIK_CHI_XUAN)) != 0:
+                        tmpPos = self.ActionBtnPosClick[3]
+                        bEnable = False
+                    elif (cbActionMask & (WIK_LEFT))!=0:
+                        tmpPos = self.ActionBtnPosClick[3]
+                        bEnable = False
+                    elif (cbActionMask & (WIK_CENTER))!=0:
+                        tmpPos = self.ActionBtnPosClick[3]
+                        bEnable = False
+                    elif (cbActionMask & (WIK_RIGHT))!=0:
+                        tmpPos = self.ActionBtnPosClick[3]
+                        bEnable = False
+                    elif (cbActionMask & WIK_PENG)!=0:
                         tmpPos = self.ActionBtnPosClick[2]
                         actionSearchPos = (tmpPos[0] + 72, tmpPos[1]-7, tmpPos[2]+10, tmpPos[3]+10)
                         bEnable = False
@@ -379,13 +392,26 @@ class MyPyQT_Form(QtWidgets.QWidget, Ui_Form):
                             tmpCount=2
                             if cbActionMask&WIK_GANG!=0:
                                 tmpCount=3
+                            elif cbActionMask&WIK_LEFT!=0:
+                                tmpCount=1
                             bExist=False
-                            for j in range(0,34):
-                                if cardIndex[j]>=tmpCount:
+                            for j in range(33,-1,-1,):
+                                if cardIndex[j]>=tmpCount or ((cbActionMask & (WIK_CHI_XUAN|WIK_LEFT)) != 0):
                                     for i in range(0, 3):
-                                        result = pyautogui.locate(needleImage=helper.Pics["action_"+str(j)], haystackImage=img,
-                                                                  region=actionSearchPos,
-                                                                  confidence=0.70)
+                                        # result = pyautogui.locate(needleImage=helper.Pics["action_"+str(j)], haystackImage=img,
+                                        #                           region=(160, 332, 95, 130),
+                                        #                           confidence=0.70)
+                                        tempConfidence=0.77
+                                        if j==26 or j==33 or j==18:
+                                            tempConfidence=0.67
+                                        result = pyautogui.locate(needleImage=helper.Pics[str(j)], haystackImage=img,
+                                                                   region=(160, 332, 95, 130),
+                                                                   confidence=tempConfidence)
+                                        if result is None:
+                                            result = pyautogui.locate(needleImage=helper.Pics[str(j)],
+                                                                      haystackImage=img,
+                                                                      region=(919, 332, 95, 130),
+                                                                      confidence=tempConfidence)
                                         if result is not None:
                                             cbActionCard=str(j)
                                             bExist=True
@@ -396,8 +422,20 @@ class MyPyQT_Form(QtWidgets.QWidget, Ui_Form):
                 action_message=[]
                 cbOperateCode=0
                 if bEnable == False:
-                    print(self.play_order, "\n.dllCall：", action_message,self.callCard,cbActionMask,cbActionCard,self.cbLaiZi)
-                    action_message,cbOperateCode = self.dllCall(self.user_hand_cards_real,self.allDisCardData,0,currentUser,self.callCard,cbActionMask,cbActionCard,self.cbLaiZi)
+                    if (cbActionMask & (WIK_CHI_XUAN)) != 0:
+                        posAction=[]
+                        posChiArray=[]
+                        #self.waiteChiAction=1
+                        posCount=self.GetChiData(cardIndex,cbActionCard,posAction,posChiArray)
+                        for i in range(0,len(posAction)):
+                            if posAction[i]==self.waiteChiAction:
+                                print("chi-leftClick:",(posChiArray[i][0] + 30, posChiArray[i][1] + 30))
+                                helper.LeftClick((posChiArray[i][0] + 30, posChiArray[i][1] + 30))
+                                break
+
+                    else:
+                        print(self.play_order, "\n.dllCall：", action_message,self.callCard,cbActionMask,cbActionCard,self.cbLaiZi)
+                        action_message,cbOperateCode = self.dllCall(self.user_hand_cards_real,self.allDisCardData,0,currentUser,self.callCard,cbActionMask,cbActionCard,self.cbLaiZi)
                 else:
                     cbOperateCode=WIK_CHI_HU
                 tmpCardstr = self.GetStrOperateCode(cbOperateCode)
@@ -417,9 +455,34 @@ class MyPyQT_Form(QtWidgets.QWidget, Ui_Form):
                     #helper.ClickOnImage("pass_btn", region=self.PassBtnPos)
                     self.sleep(100)
                     print(self.play_order,"action:",cbOperateCode)
-                    tmpPos=self.ActionBtnPosClick[2]
-                    if cbOperateCode==WIK_PENG:
-                         tmpPos = self.ActionBtnPosClick[2]
+                    if cbOperateCode==WIK_LEFT or cbOperateCode==WIK_CENTER or cbOperateCode==WIK_RIGHT:
+                         helper.ClickOnImage("chi", region=tmpPos, confidence=0.75)
+                         self.bHaveAction=True
+                         print("bHaveAction-WIK_CHI:",self.bHaveAction)
+                         posAction = []
+                         posChiArray = []
+                         posCount = self.GetChiData(cardIndex, cbActionCard, posAction, posChiArray)
+                         if posCount==1:
+                             item = WeaveItem()
+                             item.cbWeaveKind = posAction[0]
+                             item.cbCenterCard = cbActionCard
+                             item.cbPublicCard = cbActionCard
+                             item.wProvideUser = 1
+                             self.m_WeaveItem[0].append(item)
+                         else:
+                             self.waiteChiAction = cbOperateCode
+                    elif self.waiteChiAction!=0:
+                        print("chi——xuan", tmpPos)
+                        item = WeaveItem()
+                        item.cbWeaveKind = self.waiteChiAction
+                        item.cbCenterCard = cbActionCard
+                        item.cbPublicCard = cbActionCard
+                        item.wProvideUser = 1
+                        self.m_WeaveItem[0].append(item)
+                        self.waiteChiAction=0
+                        print("bHaveAction-WIK_CHI_XUAN:", self.bHaveAction)
+                    elif cbOperateCode==WIK_PENG:
+                         print("peng", tmpPos)
                          helper.ClickOnImage("peng", region=tmpPos, confidence=0.75)
                          item = WeaveItem()
                          item.cbWeaveKind = WIK_PENG
@@ -427,34 +490,34 @@ class MyPyQT_Form(QtWidgets.QWidget, Ui_Form):
                          item.cbPublicCard = cbActionCard
                          item.wProvideUser = 1
                          self.m_WeaveItem[0].append(item)
-                         self.allDisCardData.append(action_message[0])
-                         self.allDisCardData.append(action_message[0])
+                         #self.allDisCardData.append(action_message[0])
+                         #self.allDisCardData.append(action_message[0])
                          self.bHaveAction=True
                          print("bHaveAction-WIK_PENG:",self.bHaveAction)
                     elif cbOperateCode == WIK_GANG:
-                         tmpPos = self.ActionBtnPosClick[1]
+                         print("gang",tmpPos)
                          helper.ClickOnImage("gang", region=tmpPos, confidence= 0.75)
                          item = WeaveItem()
                          item.cbWeaveKind = WIK_GANG
                          item.cbCenterCard = cbActionCard
                          item.cbPublicCard = cbActionCard
                          item.wProvideUser = 1
-                         self.allDisCardData.append(action_message[0])
+                         #self.allDisCardData.append(action_message[0])
                          gangCardCount=0
                          for j in range(0,len(self.user_hand_cards_real)):
                              if action_message[0]==self.user_hand_cards_real[j]:
                                  gangCardCount=gangCardCount+1
                          if gangCardCount>1:
                             item.wProvideUser = 0
-                            self.allDisCardData.append(action_message[0])
-                            self.allDisCardData.append(action_message[0])
+                            #self.allDisCardData.append(action_message[0])
+                            #self.allDisCardData.append(action_message[0])
                          self.m_WeaveItem[0].append(item)
                     elif cbOperateCode == WIK_CHI_HU:
                          tmpPos = self.ActionBtnPosClick[0]
                          helper.ClickOnImage("hu", region=tmpPos, confidence= 0.72)
                          bGameOver=True
                     else:
-                         helper.ClickOnImage("guo", region=self.ActionBtnPosClick[3], confidence= 0.75)
+                         helper.ClickOnImage("guo", region=self.ActionBtnPosClick[5], confidence= 0.75)
                 elif cbOperateCode==0:
                     if self.onlyTip :
                         a=4
@@ -560,7 +623,28 @@ class MyPyQT_Form(QtWidgets.QWidget, Ui_Form):
         # QMessageBox.information(self, "本局结束", "{}胜！".format("农民" if self.env.winner == "farmer" else "地主"),
         #                         QMessageBox.Yes, QMessageBox.Yes)
         #self.detect_start_btn()
+    def GetChiData(self,cardIndex,cbActionCard,posAction,posChiArray):
+        tempIndex = int(cbActionCard)
+        posCount = 0
+        chiPos = [(250, 518, 189, 101), (443, 518, 189, 101), (637, 518, 189, 101)]
+        if cardIndex[tempIndex + 1] and cardIndex[tempIndex + 1] > 0 and cardIndex[tempIndex + 2] and cardIndex[
+            tempIndex + 2] > 0:
+            posAction.append(WIK_LEFT)
+            posChiArray.append(chiPos[2 - posCount])
+            posCount += 1
+        if cardIndex[tempIndex + 1] and cardIndex[tempIndex + 1] > 0 and cardIndex[tempIndex - 1] and cardIndex[
+            tempIndex - 1] > 0:
+            posAction.append(WIK_CENTER)
+            posChiArray.append(chiPos[2 - posCount])
+            posCount += 1
+        if cardIndex[tempIndex - 1] and cardIndex[tempIndex - 1] > 0 and cardIndex[tempIndex - 2] and cardIndex[
+            tempIndex - 2] > 0:
+            posAction.append(WIK_RIGHT)
+            posChiArray.append(chiPos[2 - posCount])
+            posCount += 1
 
+
+        return posCount
     def find_landlord(self):
             result = helper.LocateOnScreen("play_card", region=self.FirstOutCardBtnPos,
                                            confidence=self.LandlordFlagConfidence)
@@ -755,15 +839,15 @@ class MyPyQT_Form(QtWidgets.QWidget, Ui_Form):
 
     def have_action(self, pos):  # 是否有白块
         img, _ = helper.Screenshot()
-        actionStr=["hu","gang","peng","chi","guo"]
-        actionCode=[WIK_CHI_HU,WIK_GANG,WIK_PENG,WIK_LEFT,WIK_NULL]
+        actionStr=["hu","gang","peng","chi","chi2","guo"]
+        actionCode=[WIK_CHI_HU,WIK_GANG,WIK_PENG,WIK_LEFT,WIK_CHI_XUAN,WIK_NULL]
         action=WIK_NULL
         self.ActionBtnPosClick=[]
         for i in range(0, len(actionCode)):
             result = pyautogui.locate(needleImage=helper.Pics[actionStr[i]], haystackImage=img,
-                                  region=pos, confidence=0.90)
+                                  region=pos, confidence=0.85)
             if result is not None:
-                if i<3:
+                if i<(len(actionStr)-1):
                     action|=actionCode[i]
                 self.ActionBtnPosClick.append((result.left,result.top,result.width,result.height))
             else:

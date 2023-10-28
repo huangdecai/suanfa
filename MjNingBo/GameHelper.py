@@ -311,7 +311,7 @@ class GameHelper:
             if i==10 :
                 a=4
             if i==spaceIndex :
-                temp_x+=19
+                temp_x+=14
             if temp_x >= (SCREEN_WIDTH - 80):
                 break
             checkSelect = 0
