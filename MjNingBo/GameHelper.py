@@ -271,28 +271,42 @@ class GameHelper:
         imgCv = cv2.cvtColor(np.asarray(image), cv2.COLOR_RGB2BGR)
         tryCount = 10
         cardStartPos = pyautogui.locate(needleImage=self.Pics["card_edge"], haystackImage=image,
-                                        region=(2, 622, 780, 30), confidence=0.80)
-        # if cardStartPos is None:
-        #     cardStartPos = pyautogui.locate(needleImage=self.Pics["card_edge2"], haystackImage=image,
-        #                                     region=(2, 465, 900, 90), confidence=0.75)
+                                        region=(2, 622, 1061, 32), confidence=0.80)
+        cardStartPos2=None
+        if cardStartPos and cardStartPos[0]>100:
+            cardStartPos2 = pyautogui.locate(needleImage=self.Pics["card_edge2"], haystackImage=image,
+                                        region=(2, 622, cardStartPos[0], 32), confidence=0.80)
+        if cardStartPos2 and cardStartPos:
+            if cardStartPos2[0]<cardStartPos[0]:
+                cardStartPos = cardStartPos2
         while cardStartPos is None and tryCount > 0:
             cardStartPos = pyautogui.locate(needleImage=self.Pics["card_edge"], haystackImage=image,
-                                            region=(2, 622, 780, 30), confidence=0.80)
+                                            region=(2, 622, 1061, 32), confidence=0.80)
             print("找不到手牌起始位置")
             tryCount -= 1
             #time.sleep(150)
         print("start pos", cardStartPos)
         if cardStartPos is None:
             return [],[]
-        sx = cardStartPos[0]+6 #+ 23
+        sx = cardStartPos[0]+9 #+ 23
         spaceIndex=13
-        if sx>140 :
+        if sx>0 and sx<30:
+            sx=10
+        elif sx>150 and sx<210:
+            sx=171
+        elif sx>390 and sx<433:
+            sx=413
+        elif sx>714 and sx<754:
+            sx=734
+        elif sx>958 and sx<998:
+            sx=978
+        if sx>171 :
             spaceIndex=10
-        if sx>355 :
+        if sx>413 :
             spaceIndex = 7
-        if sx > 525:
+        if sx > 734:
             spaceIndex = 4
-        if sx > 690:
+        if sx > 978:
             spaceIndex = 1
         AllCardsNC = ['33','32','31','30','29','28','27','26','25','24','23','22','21','20','19','18','17','16','15','14','13','12', '11', '10', '9', '8', '7', '6', '5', '4', '3', '2', '1','0']
         #AllCardsNC=AllCardsNC[::-1]

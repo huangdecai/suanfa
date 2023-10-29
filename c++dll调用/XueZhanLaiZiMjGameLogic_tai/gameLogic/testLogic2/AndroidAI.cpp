@@ -414,7 +414,7 @@ bool CAndroidAI::SetAction(BYTE byActionMask, BYTE byActionCard, int GangKind )
 		}
 	case WIK_LEFT:
 	{
-			m_nActionScore = 300;
+			m_nActionScore = 149;
 			if (RemoveCardData(byActionCard + 1)==false)
 			{
 				return false;
@@ -427,7 +427,7 @@ bool CAndroidAI::SetAction(BYTE byActionMask, BYTE byActionCard, int GangKind )
 	}
 	case WIK_CENTER:
 	{
-			m_nActionScore = 300;
+			m_nActionScore = 149;
 			if (RemoveCardData(byActionCard - 1) == false)
 			{
 				return false;
@@ -441,7 +441,7 @@ bool CAndroidAI::SetAction(BYTE byActionMask, BYTE byActionCard, int GangKind )
 	}
 	case WIK_RIGHT:
 	{
-			m_nActionScore = 300;
+			m_nActionScore = 149;
 			if (RemoveCardData(byActionCard - 2) == false)
 			{
 				return false;
@@ -873,9 +873,9 @@ bool CAndroidAI::SearchOutCard(tagOutCardResult &OutCardResult, WORD wMeChairId,
 				}
 				maxRemainingCount += cbHuCardRemainingCount;
 			}
-			int Percent[] = { 100, 100, 100, 100, 50, 40, 20, 10 };
+			int Percent[] = { 100, 100, 100, 100, 50, 45, 40, 35,30, 20, 10, 5 };
 			bool bHu = false;
-			 if (maxRemainingCount >= sizeof(Percent))
+			 if (maxRemainingCount >= CountArray(Percent))
 			{
 			}
 			else
@@ -885,6 +885,10 @@ bool CAndroidAI::SearchOutCard(tagOutCardResult &OutCardResult, WORD wMeChairId,
 					bHu = true;
 				}
 			}
+			 if (cbDiscardCount>=10)
+			 {
+				 bHu = true;
+			 }
 			if (bHu)
 			{
 				OutCardResult.cbOperateCode = WIK_CHI_HU;
@@ -963,46 +967,49 @@ bool CAndroidAI::SearchOutCard(tagOutCardResult &OutCardResult, WORD wMeChairId,
 		}
 		else 
 		{
-			CMD_S_ER_XING_TING_DATA tingData;
-			int resultCount = GetErXiangTingData(cbCardIndex, cbShengYuIndex, WeaveItemArray[wMeChairId], cbWeaveCount[wMeChairId], tingData);
-			if (resultCount > 0)
+			if (cbActionMask==0)
 			{
-				int huPaiIndex = 0;
-				int maxRemainingCount = 0;
-				int maxFanCount = 0;
-				int cardScore[MAX_COUNT] = { 0 };
-				int nOrgScore = 0;
-				for (int i = 0; i < MAX_COUNT; i++)
+				CMD_S_ER_XING_TING_DATA tingData;
+				int resultCount = GetErXiangTingData(cbCardIndex, cbShengYuIndex, WeaveItemArray[wMeChairId], cbWeaveCount[wMeChairId], tingData);
+				if (resultCount > 0)
 				{
-					if (i == tingData.cbOutCardCount)
+					int huPaiIndex = 0;
+					int maxRemainingCount = 0;
+					int maxFanCount = 0;
+					int cardScore[MAX_COUNT] = { 0 };
+					int nOrgScore = 0;
+					for (int i = 0; i < MAX_COUNT; i++)
 					{
-						break;;
-					}
-					int cbHuCardRemainingCount = 0;
-					for (int j = 0; j < tingData.cbHuCardCount[i]; j++)
-					{
-						cbHuCardRemainingCount =
-							tingData.cbHuCardRemainingCount[i][j] + cbHuCardRemainingCount;
-					}
+						if (i == tingData.cbOutCardCount)
+						{
+							break;;
+						}
+						int cbHuCardRemainingCount = 0;
+						for (int j = 0; j < tingData.cbHuCardCount[i]; j++)
+						{
+							cbHuCardRemainingCount =
+								tingData.cbHuCardRemainingCount[i][j] + cbHuCardRemainingCount;
+						}
 
-					if (cbHuCardRemainingCount > maxRemainingCount)
-					{
-						maxRemainingCount = cbHuCardRemainingCount;
-						huPaiIndex = i;
-					}
-					else if (cbHuCardRemainingCount == maxRemainingCount)
-					{
-						if (tingData.cbOutCardData[i]>0x30)
+						if (cbHuCardRemainingCount > maxRemainingCount)
 						{
 							maxRemainingCount = cbHuCardRemainingCount;
 							huPaiIndex = i;
 						}
+						else if (cbHuCardRemainingCount == maxRemainingCount)
+						{
+							if (tingData.cbOutCardData[i] > 0x30)
+							{
+								maxRemainingCount = cbHuCardRemainingCount;
+								huPaiIndex = i;
+							}
+						}
 					}
-				}
 
-				OutCardResult.cbOperateCode = 0;
-				OutCardResult.cbOperateCard = tingData.cbOutCardData[huPaiIndex];
-				return true;
+					OutCardResult.cbOperateCode = 0;
+					OutCardResult.cbOperateCard = tingData.cbOutCardData[huPaiIndex];
+					return true;
+				}
 			}
 			
 		}
@@ -1121,7 +1128,13 @@ bool CAndroidAI::SearchOutCard(tagOutCardResult &OutCardResult, WORD wMeChairId,
 				AndroidAi.Think();
 				nOperateScore[2+i] = AndroidAi.GetMaxScore() - nOrgScore;
 			}
-			int score = ActionAfterScore(wMeChairId, cbCardIndex, cbShengYuIndex, WeaveItemArray[wMeChairId], cbWeaveCount[wMeChairId], cbDiscardCard, cbDiscardCount, cbActionCard, tmpOperate[i], false);
+			int score = 0;
+			bool noCheckErXiangTing = false;
+			if (nOperateScore[2 + i]<=-1)
+			{
+				noCheckErXiangTing = true;
+			}
+			ActionAfterScore(wMeChairId, cbCardIndex, cbShengYuIndex, WeaveItemArray[wMeChairId], cbWeaveCount[wMeChairId], cbDiscardCard, cbDiscardCount, cbActionCard, tmpOperate[i], false, noCheckErXiangTing);
 			nOperateScore[2 + i] += score;
 		}
 		
@@ -1193,7 +1206,7 @@ bool CAndroidAI::SearchOutCard(tagOutCardResult &OutCardResult, WORD wMeChairId,
 	return false;
 }
 
-int  CAndroidAI::ActionAfterScore(WORD wMeChairId, BYTE * cbCardIndex, BYTE * cbShengYuIndex, tagWeaveItem * WeaveItemArray, BYTE  cbWeaveCount, BYTE * cbDiscardCard, BYTE cbDiscardCount, BYTE cbActionCard, int  actionType,  bool bJianAction)
+int  CAndroidAI::ActionAfterScore(WORD wMeChairId, BYTE * cbCardIndex, BYTE * cbShengYuIndex, tagWeaveItem * WeaveItemArray, BYTE  cbWeaveCount, BYTE * cbDiscardCard, BYTE cbDiscardCount, BYTE cbActionCard, int  actionType,  bool bJianAction, bool noCheckErXinagTing)
 {
 	if (bJianAction)
 	{
@@ -1247,7 +1260,12 @@ int  CAndroidAI::ActionAfterScore(WORD wMeChairId, BYTE * cbCardIndex, BYTE * cb
 	tmpWeaveItemArray[tmpWeaveCount].wProvideUser = 1;
 	tmpWeaveCount++;
 	ErXiangCount = 0;
-	int totalNum2 = SearchTingTotalCount(wMeChairId, cbTmpCardIndex, cbShengYuIndex, tmpWeaveItemArray, tmpWeaveCount, cbDiscardCard, cbDiscardCount, totalNum==0, ErXiangCount);
+	bool bCheckErXiang = false;
+	if (noCheckErXinagTing==false&&totalNum == 0)
+	{
+		bCheckErXiang = true;
+	}
+	int totalNum2 = SearchTingTotalCount(wMeChairId, cbTmpCardIndex, cbShengYuIndex, tmpWeaveItemArray, tmpWeaveCount, cbDiscardCard, cbDiscardCount, bCheckErXiang, ErXiangCount);
 	if (ErXiangCount)
 	{
 		score = totalNum2*5;

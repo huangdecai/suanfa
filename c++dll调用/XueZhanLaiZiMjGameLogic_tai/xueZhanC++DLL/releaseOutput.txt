@@ -1,5 +1,5 @@
 "D:\pythonTest\c++dll调用\XueZhanLaiZiMjGameLogic_tai\xueZhanC++DLL\testC++.sln" 
-16:58
+20:25
 1>------ 已启动生成: 项目: testC++, 配置: Release x64 ------
 1>  AndroidAI.cpp
 1>  testC++.cpp
@@ -9,4 +9,4 @@
 1>  testC++.vcxproj -> D:\pythonTest\c++dll调用\XueZhanLaiZiMjGameLogic_tai\xueZhanC++DLL\x64\Release\testC++.dll
 ========== 生成: 成功 1 个，失败 0 个，最新 0 个，跳过 0 个 ==========
 
-16:58
+20:25

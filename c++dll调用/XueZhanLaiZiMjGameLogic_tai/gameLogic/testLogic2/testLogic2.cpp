@@ -47,7 +47,7 @@ void TestGameLogic()
 	
 	
 	tagWeaveItem WeaveItemArray[GAME_PLAYER][MAX_WEAVE] = {};
-	byte tmpCardData[] = { 55,55,55, 0 };
+	byte tmpCardData[] = { 33,33,33, 0 };
 	WeaveItemArray[0][0].cbCenterCard = tmpCardData[0];
 	WeaveItemArray[0][0].cbPublicCard = tmpCardData[0];
 	WeaveItemArray[0][0].cbWeaveKind = WIK_PENG ;
@@ -72,15 +72,15 @@ void TestGameLogic()
 	WeaveItemArray[0][3].cbWeaveKind = WIK_PENG;
 	WeaveItemArray[0][3].wProvideUser = 1;
 	CopyMemory(WeaveItemArray[0][3].cbCardData, tmpCardData4, sizeof(tmpCardData4));
-	BYTE cbWeaveCount[MAX_WEAVE] = { 1,0,0,0 };
+	BYTE cbWeaveCount[MAX_WEAVE] = { 0,0,0,0 };
 	BYTE cbCardIndex[MAX_INDEX] = { 0 };	//手中扑克
 	//二项听测试手牌
 	//BYTE    tempCard[] = { 0x22,0x23,0x23,0x27,0x02,0x03,0x04,0x11,0x11,0x11,0x15,0x16,0x16,0x17 };
 
 
-	BYTE    tempCard[] = { 37,38,39,18,19,20,21,21,22,23 };
-	BYTE cbActionCard = 21;
-	BYTE cbActionMask = 73;// 0;// WIK_CHI_HU;
+	BYTE    tempCard[] = { 33,34,35,36,37,38,38,39,40,41,20,20,22 };
+	BYTE cbActionCard = 41;
+	BYTE cbActionMask = 1;// 0;// WIK_CHI_HU;
 		//BYTE    tempCard[] = { 4, 38, 8, 56, 10, 9, 11, 43, 12, 44, 60, 1, 33 };
 
 		//BYTE    tempCard[] = { 0x09 };
@@ -91,7 +91,7 @@ void TestGameLogic()
 	int cbRangCardCount = 0;
 	int cbOthreRangCardCount = 0;
 	BYTE cbCardDataEx[] = { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
-	BYTE cbDiscardCard[] = { 49 };
+	BYTE cbDiscardCard[] = { 51,53,54,55,25,35 };
 	m_GameLogic.SwitchToCardIndex(cbHandCardData, sizeof(tempCard), cbCardIndex);
 	int que = SelectCallCard(cbCardIndex);
 	CChiHuRight chr;
@@ -109,7 +109,7 @@ void TestGameLogic()
 			cbActionCard = cbHandCardData[MAX_COUNT - 1];*/
 		//胡牌判断
 		tagOutCardResult OutCardResult = {};
-		bool reulst = m_AndroidAI.SearchOutCard(OutCardResult, 0, 1, cbCardDataEx, cbActionMask, cbActionCard, cbCardIndex, WeaveItemArray, cbWeaveCount, cbDiscardCard, sizeof(cbDiscardCard));
+		bool reulst = m_AndroidAI.SearchOutCard(OutCardResult, 0,1, cbCardDataEx, cbActionMask, cbActionCard, cbCardIndex, WeaveItemArray, cbWeaveCount, cbDiscardCard, sizeof(cbDiscardCard));
 		if (OutCardResult.cbOperateCard==0)
 		{
 			int a = 4;

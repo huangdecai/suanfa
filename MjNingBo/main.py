@@ -333,17 +333,23 @@ class MyPyQT_Form(QtWidgets.QWidget, Ui_Form):
         self.user_hand_cards_real, self.cbLaiZi = self.find_my_cards(
             self.MyHandCardsPos, self.bHaveAction)  # '2AKQQJJT99877753'
         cbActionMask = 0
+        tryCount=0
         while ((len(self.user_hand_cards_real) % 3) != 2 and cbActionMask == 0) or bGameOver == True:
             cbActionMask = self.have_action(self.ActionBtnPos)
             self.sleep(300)
             self.user_hand_cards_real, self.user_hand_colors = self.find_my_cards(self.MyHandCardsPos, self.bHaveAction)
             result = helper.LocateOnScreen("change_player_btn", region=self.changePlayerBtnPos, confidence=0.75)
+            tryCount+=1
             if (result is not None):
                 helper.ClickOnImage("change_player_btn", region=self.changePlayerBtnPos, confidence=0.75)
                 print("gameover-clear")
                 self.m_WeaveItem = [[], [], [], []]
                 self.allDisCardData = []
                 bGameOver = False
+            if tryCount>=3:
+                result = helper.LocateOnScreen("zuoshengyi", region=(398, 480, 150, 50), confidence=0.75)
+                if (result is not None):
+                    helper.ClickOnImage("zuoshengyi", region=(398, 480, 150, 50), confidence=0.75)
             print("waitNex-start", len(self.user_hand_cards_real))
     def start(self):
         print("开始出牌\n")
@@ -402,7 +408,7 @@ class MyPyQT_Form(QtWidgets.QWidget, Ui_Form):
                                         #                           region=(160, 332, 95, 130),
                                         #                           confidence=0.70)
                                         tempConfidence=0.77
-                                        if j==26 or j==33 or j==18:
+                                        if j==26 or j==33 or j==18 or j==25 or j==23:
                                             tempConfidence=0.67
                                         result = pyautogui.locate(needleImage=helper.Pics[str(j)], haystackImage=img,
                                                                    region=(160, 332, 95, 130),
