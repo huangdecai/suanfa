@@ -4,9 +4,27 @@
 
 //////////////////////////////////////////////////////////////////////////
 
+map<uint64, string> FanString =
+{
+	{CHR_YI_BAN_GAO ,"一般高 1番"},{CHR_LIAN_LIU ,"连六 1番"},{CHR_LAO_SHAO_FU ,"老少副 1番"},
+	{CHR_YAO_JIU_KE ,"幺九刻 1番"},{CHR_SHI_SAN_YAO ,"十三幺 1番"},{CHR_BIAN_ZHANG ,"边张 1番"},{CHR_KAN_ZHANG ,"坎张 1番"},{CHR_DAN_DIAO_JIANG ,"单钓将 1番"},
+	{CHR_ZI_MO ,"自摸 1番"},{CHR_ER_WU_BA_JIANG ,"二五八将 1番"},{CHR_YAO_JIU_TOU ,"幺九头 1番"},
+	{CHR_JIAN_KE ,"箭刻 2番"},{CHR_MEN_QIANG_QING ,"门前清 2番"},{CHR_PING_HU ,"平胡 2番"},{CHR_SI_GUI_YI ,"四归一 2番"},{CHR_SHUANG_AN_KE ,"双暗刻 2番"},
+	{CHR_AN_GANG,"暗杠 2番"},{CHR_DUAN_YAO ,"断幺 2番"},{CHR_TING_PAI ,"听牌 2番"},
+	{CHR_QUANG_DAI_YAO ,"全带幺 4番"},{CHR_BU_QIU_REN ,"不求人 4番"},{CHR_SHUANG_MING_GANG ,"双明杠 4番"},{CHR_HU_JUE_ZHANG ,"胡绝张 4番"},
+	{CHR_PENG_PENG ,"碰碰胡 6番"},{CHR_HUN_YI_SE ,"混一色 6番"},{CHR_QUAN_QIU_REN ,"全求人 6番"},{CHR_SHUANG_AN_GANG ,"双暗杠 6番"},{CHR_SHUANG_JIAN_KE ,"双箭刻 6番"},
+	{CHR_MIAO_SHOU_HUI_CHUN ,"妙手回春 8番"},{CHR_HAI_DI_LAO_YUE ,"海底捞月 8番"},{CHR_GANG_SHANG_HUA ,"杠上开花 8番"},{CHR_QIANG_GANG_HU ,"抢杠胡 8番"},
+	{CHR_QI_DA_DUI ,"七大对 12番"},{CHR_SHUANG_QI_DA_DUI ,"双七大对 12番"},{CHR_SAN_FENG_KE ,"三风刻 12番"},
+	{CHR_TIAN_TING,"天听 16番"},{CHR_QING_LONG ,"清龙 16番"},{CHR_YI_SE_SAN_BU_GAO ,"一色三步高 16番"},{CHR_SAN_AN_KE ,"三暗刻 16番"},
+	{CHR_QI_DUI ,"七对 24番"},{CHR_QING_YI_SE ,"清一色 24番"},{CHR_YI_SE_SAN_TONG_SHUN ,"一色三同顺 24番"},{CHR_YI_SE_SAN_JIE_GAO ,"一色三节高 24番"},{CHR_SAN_QI_DA_DUI ,"三七大对 24番"},
+	{CHR_YI_SE_SI_BU_GAO ,"一色四步高 32番"},{CHR_SAN_GANG ,"三杠 32番"},{CHR_HUN_YAO_JIU ,"混幺九 32番"},{CHR_DI_HU ,"地胡 32番"},
+	{CHR_TIAN_HU,"天胡 48番"},{CHR_YI_SE_SI_TONG_SHUN ,"一色四同顺 48番"},{CHR_YI_SE_SI_JIE_GAO ,"一色四节高 48番"},
+	{CHR_XIAO_SI_XI ,"小四喜 64番"},{CHR_XIAO_SAN_YUAN ,"小三元 64番"},{CHR_ZI_YI_SE ,"字一色 64番"},{CHR_YI_SS_LONG_HUI ,"一色双龙会 64番"},{CHR_SI_AN_KE ,"四暗刻 64番"},
+	{CHR_DA_SI_XI ,"大四喜 88番"},{CHR_DA_SAN_YUAN ,"大三元 88番"},{CHR_JIU_LIAN_BAO_DENG ,"九连宝灯 88番"},{CHR_SI_GANG ,"四杠 88番"},{CHR_QI_LIAN_DUI ,"连七对 88番"}
+};
 //静态变量
 bool		CChiHuRight::m_bInit = false;
-DWORD		CChiHuRight::m_dwRightMask[MAX_RIGHT_COUNT];
+uint64		CChiHuRight::m_dwRightMask[MAX_RIGHT_COUNT];
 
 //构造函数
 CChiHuRight::CChiHuRight()
@@ -21,15 +39,15 @@ CChiHuRight::CChiHuRight()
 			if(0 == i)
 				m_dwRightMask[i] = 0;
 			else
-				m_dwRightMask[i] = (DWORD(pow(2,i-1)))<<28;
+				m_dwRightMask[i] = (uint64(pow(2,i-1)))<<28;
 		}
 	}
 }
 
 //赋值符重载
-CChiHuRight & CChiHuRight::operator = (DWORD dwRight)
+CChiHuRight & CChiHuRight::operator = (uint64 dwRight)
 {
-	DWORD dwOtherRight = 0;
+	uint64 dwOtherRight = 0;
 	//验证权位
 	if(!IsValidRight(dwRight))
 	{
@@ -42,7 +60,7 @@ CChiHuRight & CChiHuRight::operator = (DWORD dwRight)
 
 	for(BYTE i = 0; i < CountArray(m_dwRightMask); i++)
 	{
-		if((dwRight&m_dwRightMask[i]) || (i==0&&dwRight<0x10000000))
+		if((dwRight&m_dwRightMask[i]) || (i==0&&dwRight<= 0x8000000000000000))
 			m_dwRight[i] = dwRight&MASK_CHI_HU_RIGHT;
 		else m_dwRight[i] = dwOtherRight;
 	}
@@ -51,7 +69,7 @@ CChiHuRight & CChiHuRight::operator = (DWORD dwRight)
 }
 
 //与等于
-CChiHuRight & CChiHuRight::operator &= (DWORD dwRight)
+CChiHuRight & CChiHuRight::operator &= (uint64 dwRight)
 {
 	bool bNavigate = false;
 	//验证权位
@@ -60,16 +78,16 @@ CChiHuRight & CChiHuRight::operator &= (DWORD dwRight)
 		//验证取反权位
 		ASSERT(IsValidRight(~dwRight));
 		if(!IsValidRight(~dwRight)) return *this;
-		//调整权位
-		DWORD dwHeadRight = (~dwRight)&0xF0000000;
-		DWORD dwTailRight = dwRight&MASK_CHI_HU_RIGHT;
+		//调整权位                        0x1000000000000000
+		uint64 dwHeadRight = (~dwRight)&0xF000000000000000;
+		uint64 dwTailRight = dwRight&MASK_CHI_HU_RIGHT;
 		dwRight = dwHeadRight|dwTailRight;
 		bNavigate = true;
 	}
 
 	for(BYTE i = 0; i < CountArray(m_dwRightMask); i++)
-	{
-		if((dwRight&m_dwRightMask[i]) || (i==0&&dwRight<0x10000000))
+	{              //                                    0x1000000000000000
+		if((dwRight&m_dwRightMask[i]) || (i==0&&dwRight<= 0x8000000000000000))
 		{
 			m_dwRight[i] &= (dwRight&MASK_CHI_HU_RIGHT);
 		}
@@ -81,14 +99,14 @@ CChiHuRight & CChiHuRight::operator &= (DWORD dwRight)
 }
 
 //或等于
-CChiHuRight & CChiHuRight::operator |= (DWORD dwRight)
+CChiHuRight & CChiHuRight::operator |= (uint64 dwRight)
 {
 	//验证权位
 	if(!IsValidRight(dwRight)) return *this;
 
 	for(BYTE i = 0; i < CountArray(m_dwRightMask); i++)
 	{
-		if((dwRight&m_dwRightMask[i]) || (i==0&&dwRight<0x10000000))
+		if((dwRight&m_dwRightMask[i]) || (i==0&&dwRight<= 0x8000000000000000))
 		{
 			m_dwRight[i] |= (dwRight&MASK_CHI_HU_RIGHT);
 			break;
@@ -99,35 +117,35 @@ CChiHuRight & CChiHuRight::operator |= (DWORD dwRight)
 }
 
 //与
-CChiHuRight CChiHuRight::operator & (DWORD dwRight)
+CChiHuRight CChiHuRight::operator & (uint64 dwRight)
 {
 	CChiHuRight chr = *this;
 	return (chr &= dwRight);
 }
 
 //与
-CChiHuRight CChiHuRight::operator & (DWORD dwRight) const
+CChiHuRight CChiHuRight::operator & (uint64 dwRight) const
 {
 	CChiHuRight chr = *this;
 	return (chr &= dwRight);
 }
 
 //或
-CChiHuRight CChiHuRight::operator | (DWORD dwRight)
+CChiHuRight CChiHuRight::operator | (uint64 dwRight)
 {
 	CChiHuRight chr = *this;
 	return chr |= dwRight;
 }
 
 //或
-CChiHuRight CChiHuRight::operator | (DWORD dwRight) const
+CChiHuRight CChiHuRight::operator | (uint64 dwRight) const
 {
 	CChiHuRight chr = *this;
 	return chr |= dwRight;
 }
 
 //相等
-bool CChiHuRight::operator == (DWORD dwRight) const
+bool CChiHuRight::operator == (uint64 dwRight) const
 {
 	CChiHuRight chr;
 	chr = dwRight;
@@ -145,7 +163,7 @@ bool CChiHuRight::operator == (const CChiHuRight chr) const
 }
 
 //不相等
-bool CChiHuRight::operator != (DWORD dwRight) const
+bool CChiHuRight::operator != (uint64 dwRight) const
 {
 	CChiHuRight chr;
 	chr = dwRight;
@@ -174,31 +192,31 @@ void CChiHuRight::SetEmpty()
 }
 
 //获取权位数值
-BYTE CChiHuRight::GetRightData(DWORD dwRight[], BYTE cbMaxCount)
+int CChiHuRight::GetRightData(uint64 dwRight[], BYTE cbMaxCount)
 {
 	ASSERT(cbMaxCount >= CountArray(m_dwRight));
 	if(cbMaxCount < CountArray(m_dwRight)) return 0;
 
-	CopyMemory(dwRight,m_dwRight,sizeof(DWORD)*CountArray(m_dwRight));
+	CopyMemory(dwRight,m_dwRight,sizeof(uint64)*CountArray(m_dwRight));
 	return CountArray(m_dwRight);
 }
 
 //设置权位数值
-bool CChiHuRight::SetRightData(const DWORD dwRight[], BYTE cbRightCount)
+bool CChiHuRight::SetRightData(const uint64 dwRight[], BYTE cbRightCount)
 {
 	ASSERT(cbRightCount <= CountArray(m_dwRight));
 	if(cbRightCount > CountArray(m_dwRight)) return false;
 
 	ZeroMemory(m_dwRight,sizeof(m_dwRight));
-	CopyMemory(m_dwRight,dwRight,sizeof(DWORD)*cbRightCount);
+	CopyMemory(m_dwRight,dwRight,sizeof(uint64)*cbRightCount);
 
 	return true;
 }
 
 //检查仅位是否正确
-bool CChiHuRight::IsValidRight(DWORD dwRight)
+bool CChiHuRight::IsValidRight(uint64 dwRight)
 {
-	DWORD dwRightHead = dwRight & 0xF0000000;
+	uint64 dwRightHead = dwRight & 0x0000000000000000;
 	for(BYTE i = 0; i < CountArray(m_dwRightMask); i++)
 		if(m_dwRightMask[i] == dwRightHead) return true;
 	return false;
@@ -833,6 +851,10 @@ BYTE CGameLogic::AnalyseChiHuCard(const BYTE cbCardIndex[MAX_INDEX], const tagWe
 				if(cbWeaveKind == WIK_GANG) cbGangCount++;
 			}
 			chr |= CHR_PING_HU;
+			if (IsYiBanGao(pAnalyseItem) == true)
+			{
+				chr = chr | CHR_YI_BAN_GAO;
+			}
 			//-- 2番
 			if (IsPengPeng(pAnalyseItem) == true)
 			{
@@ -850,13 +872,9 @@ BYTE CGameLogic::AnalyseChiHuCard(const BYTE cbCardIndex[MAX_INDEX], const tagWe
 			{
 				chr = chr | CHR_ZI_YI_SE;
 			}
-			if (IsQingYaoJiu(pAnalyseItem) == true)
+			 if (IsYaoJiu(pAnalyseItem) == true)
 			{
-				chr = chr | CHR_QING_YAO_JIU;
-			}
-			else if (IsYaoJiu(pAnalyseItem) == true)
-			{
-				chr = chr | CHR_YAO_JIU_HU;
+				chr = chr | CHR_HUN_YAO_JIU;
 			}
 
 			if (IsShuangAnKe(pAnalyseItem, WeaveItem, cbWeaveCount, cbCurrentCard, false) == true)
@@ -885,9 +903,14 @@ BYTE CGameLogic::AnalyseChiHuCard(const BYTE cbCardIndex[MAX_INDEX], const tagWe
 			{
 				chr = chr | CHR_DA_SAN_YUAN;
 			}
-						
+			if (IsDuanYao(pAnalyseItem) == true)
+			{
+				chr = chr | CHR_DUAN_YAO;
+			}
 			//chr = ClearRepeateFan(chr);
 			int fan = GetUserHuFan(chr);
+
+			string tempStr = GetFanString(chr);
 			if (fan > Maxfan)
 			{
 				MaxChr = chr;
@@ -2163,22 +2186,22 @@ bool CGameLogic::IsShuangAnKe(const tagAnalyseItem *pAnalyseItem, const tagWeave
 				{
 					bExist = true;
 				}
-				////--放炮上来那张不算暗刻
+			}
+			////--放炮上来那张不算暗刻
 				//if (pAnalyseItem->cbCardData[i][0] == cbCurrentCard&& bZiMo != true)
 				//{
 				//	bExist = true;
 				//}
 
-				if (bExist == false)
-				{
-					count = count + 1;
-				}
+			if (bExist == false)
+			{
+				count = count + 1;
 			}
 		}
 
 
 	}
-	if (count == 2)
+	if (count == 1)
 	{
 		return true;
 	}
@@ -2188,7 +2211,7 @@ bool CGameLogic::IsShuangAnKe(const tagAnalyseItem *pAnalyseItem, const tagWeave
 bool CGameLogic::IsBianZhang(const tagAnalyseItem *pAnalyseItem, const tagWeaveItem WeaveItem[], BYTE cbWeaveCount, BYTE cbCurrentCard)
 {
 	//--边张：单胡123中3、789的7，或1233胡3、7789胡7；手中有12345胡3，56789胡7则不算边张
-	if (cbCurrentCard > 0x40)
+	if (cbCurrentCard > 0x30)
 	{
 		return false;
 	}
@@ -2248,7 +2271,7 @@ bool CGameLogic::IsBianZhang(const tagAnalyseItem *pAnalyseItem, const tagWeaveI
 bool CGameLogic::IsKanZhang(const tagAnalyseItem *pAnalyseItem, const BYTE cbCardIndex[MAX_INDEX], const tagWeaveItem WeaveItem[], BYTE cbWeaveCount, BYTE cbCurrentCard)
 {
 	//--坎张：胡两张牌中间的一张牌；4556胡5也是坎张，手中有45567胡6不算坎张
-	if (cbCurrentCard > 0x40)
+	if (cbCurrentCard > 0x30)
 	{
 		return false;
 	}
@@ -2274,74 +2297,73 @@ bool CGameLogic::IsKanZhang(const tagAnalyseItem *pAnalyseItem, const BYTE cbCar
 			{
 				return false;
 			}
-			for (BYTE i = 0; i < CountArray(pAnalyseItem->cbWeaveKind); i++)
-			{
-				//--手牌上拿过来的组成的顺子只有DEF.WIK_LEFT类型
-				if (pAnalyseItem->cbWeaveKind[i] & (WIK_LEFT | WIK_CENTER | WIK_RIGHT) != 0)
-				{
-					//--判断cbCurrentCard <= 0x12防止数组越界)
-					if
-						((pAnalyseItem->cbCardData[i][0] == cbCurrentCard) || (pAnalyseItem->cbCardData[i][1] == cbCurrentCard) ||
-						(pAnalyseItem->cbCardData[i][2] == cbCurrentCard))
-					{
-						BYTE tempVaule = GetCardValue(pAnalyseItem->cbCardData[i][0]);
-						bExist[tempVaule] = bExist[tempVaule] + 1;
-					}
-
-				}
-
-			}
-
-			for (BYTE i = 0; i < cbWeaveCount;i++)
-			{
-				if (WeaveItem[i].cbWeaveKind & (WIK_LEFT | WIK_CENTER | WIK_RIGHT) != 0)
-				{
-					BYTE tempVaule = GetCardValue(WeaveItem[i].cbCardData[0]);
-					bExist[tempVaule] = bExist[tempVaule] - 1;
-				}
-			}
-
-
-			bool bSpeical1 = true;
-			if ((currentCardVule > 2) && (bExist[currentCardVule - 2] > 0))
-			{
-				bSpeical1 = false;
-			}
-			bool bSpeical2 = true;
-			if ((currentCardVule > 2) && (bExist[currentCardVule - 2] <= 0))
-			{
-				bSpeical2 = false;
-			}
-			if
-				(bExist[currentCardVule - 1] >= 1 && bExist[currentCardVule] <= 0 && bSpeical1 &&
-					cbCardIndex[currentCardVule] <= 3)
-			{
-				//--456, 吃5情况
-				return true;
-			}
-
-			else if (bExist[currentCardVule - 1] >= 1 && bExist[currentCardVule] <= 0 && bSpeical2)
-			{
-				//--123, 234, 吃3情况
-				if (currentCardVule == 3)
-					return true;
-				else
-					return false;
-			}
-
-			else if (bExist[currentCardVule - 1] >= 1 && bExist[currentCardVule] >= 1 && bSpeical1)
-			{
-				//--678, 789, 吃7情况
-				if (currentCardVule == 7)
-					return true;
-				else
-					return false;
-			}
-			else
-				return false;
-
 
 		}
+		for (BYTE i = 0; i < CountArray(pAnalyseItem->cbWeaveKind); i++)
+		{
+			//--手牌上拿过来的组成的顺子只有DEF.WIK_LEFT类型
+			if (pAnalyseItem->cbWeaveKind[i] & (WIK_LEFT | WIK_CENTER | WIK_RIGHT) != 0)
+			{
+				//--判断cbCurrentCard <= 0x12防止数组越界)
+				if
+					((pAnalyseItem->cbCardData[i][0] == cbCurrentCard) || (pAnalyseItem->cbCardData[i][1] == cbCurrentCard) ||
+					(pAnalyseItem->cbCardData[i][2] == cbCurrentCard))
+				{
+					BYTE tempVaule = GetCardValue(pAnalyseItem->cbCardData[i][0]);
+					bExist[tempVaule] = bExist[tempVaule] + 1;
+				}
+
+			}
+
+		}
+
+		for (BYTE i = 0; i < cbWeaveCount;i++)
+		{
+			if (WeaveItem[i].cbWeaveKind & (WIK_LEFT | WIK_CENTER | WIK_RIGHT) != 0)
+			{
+				BYTE tempVaule = GetCardValue(WeaveItem[i].cbCardData[0]);
+				bExist[tempVaule] = bExist[tempVaule] - 1;
+			}
+		}
+
+
+		bool bSpeical1 = true;
+		if ((currentCardVule > 2) && (bExist[currentCardVule - 2] > 0))
+		{
+			bSpeical1 = false;
+		}
+		bool bSpeical2 = true;
+		if ((currentCardVule > 2) && (bExist[currentCardVule - 2] <= 0))
+		{
+			bSpeical2 = false;
+		}
+		if
+			(bExist[currentCardVule - 1] >= 1 && bExist[currentCardVule] <= 0 && bSpeical1 &&
+				cbCardIndex[currentCardVule] <= 3)
+		{
+			//--456, 吃5情况
+			return true;
+		}
+
+		else if (bExist[currentCardVule - 1] >= 1 && bExist[currentCardVule] <= 0 && bSpeical2)
+		{
+			//--123, 234, 吃3情况
+			if (currentCardVule == 3)
+				return true;
+			else
+				return false;
+		}
+
+		else if (bExist[currentCardVule - 1] >= 1 && bExist[currentCardVule] >= 1 && bSpeical1)
+		{
+			//--678, 789, 吃7情况
+			if (currentCardVule == 7)
+				return true;
+			else
+				return false;
+		}
+		else
+			return false;
 
 	}
 	return false;
@@ -2353,7 +2375,7 @@ bool CGameLogic::IsDanDiaoJiang(const tagAnalyseItem *pAnalyseItem, const BYTE c
 	BYTE cbCurrentCardIndex = SwitchToCardIndex(cbCurrentCard);
 	if (pAnalyseItem->cbCardEye == cbCurrentCard && cbCardIndex[SwitchToCardIndex(cbCurrentCard)] == 2)
 	{
-		if (cbCurrentCard < 0x40)
+		if (cbCurrentCard < 0x30)
 		{
 			BYTE currentCardVule = GetCardValue(cbCurrentCard);
 			if (cbCardIndex[cbCurrentCardIndex] != 2)
@@ -2376,6 +2398,77 @@ bool CGameLogic::IsDanDiaoJiang(const tagAnalyseItem *pAnalyseItem, const BYTE c
 			}
 		}
 		return true;
+	}
+	return false;
+}
+
+bool CGameLogic::IsDuanYao(const tagAnalyseItem *pAnalyseItem)
+{
+	//--断幺：牌里没有一、九及字牌
+	if (pAnalyseItem->cbCardEye > 0x30 || GetCardValue(pAnalyseItem->cbCardEye) == 9 || GetCardValue(pAnalyseItem->cbCardEye) == 1)
+	{
+		return false;
+	}
+	for (BYTE i = 0; i < CountArray(pAnalyseItem->cbWeaveKind); i++)
+	{
+		for (BYTE j = 0; j < CountArray(pAnalyseItem->cbCardData[i]); j++)
+		{
+			if (pAnalyseItem->cbCardData[i][j] > 0x30 || GetCardValue(pAnalyseItem->cbCardData[i][j]) == 1 ||
+				GetCardValue(pAnalyseItem->cbCardData[i][j]) == 9)
+			{
+				return false;
+			}
+		}
+
+	}
+
+	return true;
+}
+
+bool CGameLogic::IsYiSeSanTongShun(const tagAnalyseItem *pAnalyseItem)
+{
+	//--一色三同顺：牌里有一种花色且序数相同的3副顺子（包括吃牌）；（不计算一色三节高，一般高的番数）例：123 123 123
+	for (BYTE i = 0; i < CountArray(pAnalyseItem->cbWeaveKind); i++)
+	{
+		int ShunCount = 0;
+		if ((pAnalyseItem->cbWeaveKind[i] & (WIK_LEFT | WIK_CENTER | WIK_RIGHT)) != 0)
+		{
+			for (BYTE j = 0; j < CountArray(pAnalyseItem->cbWeaveKind); j++)
+			{
+				if ((i != j) && (pAnalyseItem->cbWeaveKind[j] & (WIK_LEFT | WIK_CENTER | WIK_RIGHT)) != 0)
+				{
+					if ((pAnalyseItem->cbCardData[i][0]) == pAnalyseItem->cbCardData[j][0])
+					{
+						ShunCount = ShunCount + 1;
+					}
+				}
+			}
+
+		}
+		if (ShunCount == 2)
+			return true;
+	}
+	return false;
+}
+
+bool CGameLogic::IsYiBanGao(const tagAnalyseItem *pAnalyseItem)
+{
+	//--一般高：由一种花色，2副相同的顺子组成的牌，如：112233或223344
+	for (BYTE i = 0; i < CountArray(pAnalyseItem->cbWeaveKind); i++)
+	{
+		if ((pAnalyseItem->cbWeaveKind[i] & (WIK_LEFT | WIK_CENTER | WIK_RIGHT)) != 0)
+		{
+			for (BYTE j = 0; j < CountArray(pAnalyseItem->cbWeaveKind); j++)
+			{
+				if ((i != j) && (pAnalyseItem->cbWeaveKind[j] & (WIK_LEFT | WIK_CENTER | WIK_RIGHT)) != 0)
+				{
+					if (pAnalyseItem->cbCardData[i][0] == pAnalyseItem->cbCardData[j][0])
+						return true;
+				}
+
+			}
+
+		}
 	}
 	return false;
 }
@@ -2496,7 +2589,7 @@ CChiHuRight CGameLogic::ClearRepeateFan(CChiHuRight chrAll)
 	{
 		chrAll = chrAll & (~CHR_QI_DUI);
 	}
-	DWORD		dwChiHuRight[MAX_RIGHT_COUNT];
+	uint64		dwChiHuRight[MAX_RIGHT_COUNT];
 	chrAll.GetRightData(dwChiHuRight, MAX_RIGHT_COUNT);
 	if (((dwChiHuRight[0] > CHR_PING_HU) && (dwChiHuRight[0] < CHR_TIAN_HU)) || ((chrAll & (CHR_QUAN_QIU_REN | CHR_QI_DUI)) != 0))
 	{
@@ -2516,58 +2609,67 @@ int CGameLogic::GetCommonFan(CChiHuRight chr, int lianGang)
 
 	if ((chr & CHR_PING_HU) != 0)
 	{
-		fan = 1;
+		fan += 1;
+	}
+	if ((chr & CHR_DUAN_YAO) != 0)
+	{
+		fan += 2;
+	}
+	if ((chr & CHR_DAN_DIAO_JIANG) != 0)
+	{
+		fan += 1;
+	}
+	
+	if ((chr & CHR_YI_BAN_GAO) != 0)
+	{
+		fan += 6;
 	}
 	if ((chr & CHR_PENG_PENG) != 0)
 	{
-		fan = 10;
+		fan += 10;
 	}
 	if ( (chr & CHR_HUN_YI_SE) != 0)
 	{
-		fan *= 2;
+		fan += 10;
 	}
 	if ((chr & CHR_QI_DUI) != 0 || (chr & CHR_QING_YI_SE) != 0)
 	{
-		fan = 4;
+		fan += 12;
 	}
-	if ((chr & CHR_QI_DA_DUI) != 0 || (chr & CHR_YAO_JIU_HU) != 0)
+	if ((chr & CHR_QI_DA_DUI) != 0 || (chr & CHR_HUN_YAO_JIU) != 0)
 	{
-		fan = 6;
+		fan += 6;
 	}
 	if ((chr & CHR_SHUANG_QI_DA_DUI) != 0 || (chr & CHR_ZI_YI_SE) != 0)
 	{
-		fan = 8;
+		fan += 20;
 	}
-	if ((chr & CHR_SHI_SAN_YAO) != 0)
+	if ((chr & CHR_DA_SAN_YUAN) != 0)
 	{
-		fan = 26;
+		fan += 25;
 	}
-	if ((chr & CHR_SAN_QI_DA_DUI) != 0)
+	if ((chr & CHR_DA_SI_XI) != 0)
 	{
-		fan = 30;
-	}
-	if ((chr & CHR_SHI_BA_LUO_HAN) != 0)
-	{
-		fan = 36;
+		fan += 50;
 	}
 
 	///特殊胡
 
 	if ((chr & (CHR_QIANG_GANG_HU)) != 0 || (chr & CHR_GANG_SHANG_HUA) != 0)
 	{
-		fan = fan * 2;
+		fan += 1;
 	}
 	if ((chr & CHR_HAI_DI_LAO_YUE) != 0)
 	{
-		fan = fan * 2;
+		fan += 1;
 	}
 	if ((chr & CHR_TIAN_HU) != 0)
 	{
-		fan = fan * 20;
+		fan += 24;
 	}
 	if ((chr & CHR_DI_HU) != 0)
 	{
-		fan = fan * 10;
+		fan += 12;
 	}
 
 	return fan;
@@ -2588,6 +2690,26 @@ int CGameLogic::GetColorCount(const BYTE cbCardIndex[MAX_INDEX], int color)
 }
 
 
+
+std::string CGameLogic::GetFanString(CChiHuRight chr)
+{
+	uint64 tempCount = 0;
+	uint64 di = 2;
+	uint64 tempFanType = pow(di, 0);
+	string str;
+	while (tempFanType <= CHR_QI_LIAN_DUI)
+	{
+		//uint64 tempV = (chr & tempFanType);
+		if ((chr & tempFanType) != 0)
+		{
+			str = str += FanString[tempFanType]+",";
+		}
+			
+		tempCount = tempCount + 1;
+		tempFanType = pow(di,tempCount);
+	}
+	return str;
+}
 
 //鸡胡
 bool CGameLogic::IsJiHu(const tagAnalyseItem *pAnalyseItem)

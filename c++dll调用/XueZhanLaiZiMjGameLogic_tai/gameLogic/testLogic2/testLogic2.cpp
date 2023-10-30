@@ -78,9 +78,9 @@ void TestGameLogic()
 	//BYTE    tempCard[] = { 0x22,0x23,0x23,0x27,0x02,0x03,0x04,0x11,0x11,0x11,0x15,0x16,0x16,0x17 };
 
 
-	BYTE    tempCard[] = { 33,34,35,36,37,38,38,39,40,41,20,20,22 };
-	BYTE cbActionCard = 41;
-	BYTE cbActionMask = 1;// 0;// WIK_CHI_HU;
+	BYTE    tempCard[] = { 0x04,0x05,0x06,0x11,0x12,0x13,0x11,0x12,0x13,0x33,0x33,0x03,0x03 };
+	BYTE cbActionCard = 0x03;
+	BYTE cbActionMask = WIK_CHI_HU;// 0;// WIK_CHI_HU;
 		//BYTE    tempCard[] = { 4, 38, 8, 56, 10, 9, 11, 43, 12, 44, 60, 1, 33 };
 
 		//BYTE    tempCard[] = { 0x09 };
@@ -95,21 +95,21 @@ void TestGameLogic()
 	m_GameLogic.SwitchToCardIndex(cbHandCardData, sizeof(tempCard), cbCardIndex);
 	int que = SelectCallCard(cbCardIndex);
 	CChiHuRight chr;
-	//int m_cbUserAction = m_GameLogic.AnalyseChiHuCard(cbCardIndex, WeaveItemArray[0], cbWeaveCount[0], cbActionCard, chr);
-
+	int m_cbUserAction = m_GameLogic.AnalyseChiHuCard(cbCardIndex, WeaveItemArray[0], cbWeaveCount[0], cbActionCard, chr);
+	string tempStr = m_GameLogic.GetFanString(chr);
 	for (int i = 0; i < 1000;i++)
 	{
 		clock_t start, fihst;
 		start = clock();
-	/*	BYTE bCardData[MAX_REPERTORY] = { 0 };
+		BYTE bCardData[MAX_REPERTORY] = { 0 };
 		m_GameLogic.RandCardList(bCardData, MAX_REPERTORY);
-			CopyMemory(cbHandCardData, bCardData, sizeof(cbHandCardData));
-			ZeroMemory(cbCardIndex, sizeof(cbCardIndex));
-			m_GameLogic.SwitchToCardIndex(cbHandCardData, sizeof(cbHandCardData), cbCardIndex);
-			cbActionCard = cbHandCardData[MAX_COUNT - 1];*/
+		CopyMemory(cbHandCardData, bCardData, sizeof(cbHandCardData));
+		ZeroMemory(cbCardIndex, sizeof(cbCardIndex));
+		m_GameLogic.SwitchToCardIndex(cbHandCardData, sizeof(cbHandCardData), cbCardIndex);
+		cbActionCard = cbHandCardData[MAX_COUNT - 1];
 		//ºúÅÆÅÐ¶Ï
 		tagOutCardResult OutCardResult = {};
-		bool reulst = m_AndroidAI.SearchOutCard(OutCardResult, 0,1, cbCardDataEx, cbActionMask, cbActionCard, cbCardIndex, WeaveItemArray, cbWeaveCount, cbDiscardCard, sizeof(cbDiscardCard));
+		bool reulst = m_AndroidAI.SearchOutCard(OutCardResult, 0,0, cbCardDataEx, cbActionMask, cbActionCard, cbCardIndex, WeaveItemArray, cbWeaveCount, cbDiscardCard, sizeof(cbDiscardCard));
 		if (OutCardResult.cbOperateCard==0)
 		{
 			int a = 4;

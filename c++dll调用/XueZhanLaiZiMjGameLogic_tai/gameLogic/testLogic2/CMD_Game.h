@@ -1,6 +1,6 @@
 #ifndef CMD_SPARROW_HEAD_FILE
 #define CMD_SPARROW_HEAD_FILE
-
+typedef	unsigned	__int64		uint64;
 ///////////////////////功能开关
 #define G_SHOW_TING_DATA	  TRUE		//听牌辅助信息
 

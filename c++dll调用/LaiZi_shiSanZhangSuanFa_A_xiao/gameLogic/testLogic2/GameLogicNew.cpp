@@ -3622,7 +3622,7 @@ VOID CGameLogicNew::SearchOutCardShiSanZhangTurn(const BYTE cbHandCardData[], BY
 				CopyMemory(Array[2], TurnOutCardResult.cbResultCard, douNum[2]);
 				CopyMemory(Array[1], TurnOutCardResult.cbResultCard + 3, douNum[1]);
 				CopyMemory(Array[0], TurnOutCardResult.cbResultCard + 8, douNum[0]);
-				if (i == 45)
+				if (i == 96)
 				{
 					int a = 4;
 				}
@@ -3639,6 +3639,10 @@ VOID CGameLogicNew::SearchOutCardShiSanZhangTurn(const BYTE cbHandCardData[], BY
 				//Ð£ÑéÎÚÁú
 				JiaoYanWuLong(Array2);
 				if (JiaoYanWuLong(Array2)==false)
+				{
+					continue;
+				}
+				if (JiaoYanWuLong(Array2) == false)
 				{
 					continue;
 				}

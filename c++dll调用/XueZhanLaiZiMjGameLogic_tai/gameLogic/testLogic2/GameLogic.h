@@ -4,9 +4,11 @@
 #pragma once
 #include "Stdafx.h"
 #include <vector>
+#include <map>
 using namespace std;
 //////////////////////////////////////////////////////////////////////////
 #include "fastHu.h"
+
 //用于财神的转换，如果有牌可以代替财神本身牌使用，则设为该牌索引，否则设为MAX_INDEX. 注:如果替换牌是序数牌,将出错.
 #define	INDEX_REPLACE_CARD					MAX_INDEX//33 (有些地方是白板变金的就是33
    
@@ -49,38 +51,79 @@ using namespace std;
 
 //大胡牌型
 
-//小胡牌型
-#define CHR_PING_HU                       0x0000000000000001							//平胡
-#define CHR_PENG_PENG                     0x0000000000000002						//碰碰胡	
-#define CHR_QI_DUI                        0x0000000000000004							//七对
-#define CHR_QI_DA_DUI                     0x0000000000000008							//七大对
-#define CHR_SHUANG_QI_DA_DUI              0x0000000000000010							//双七大对
-#define CHR_SAN_QI_DA_DUI                 0x0000000000000020							//三七大对
-#define CHR_QING_YI_SE                    0x0000000000000040							//清一色
-#define CHR_HUN_YI_SE                     0x0000000000000080							//混一色
-#define CHR_ZI_YI_SE                      0x0000000000000100						    //字一色
-#define CHR_SHI_BA_LUO_HAN                0x0000000000000200						    //十八罗汉
-#define CHR_YAO_JIU_HU                    0x0000000000000400						    //幺九胡
-#define CHR_QING_YAO_JIU                  0x0000000000000800						    //清幺九
-#define CHR_SHI_SAN_YAO                   0x0000000000001000						    //十三幺
-#define CHR_BIAN_ZHANG                    0x0000000000002000						    //边张
-#define CHR_KAN_ZHANG                     0x0000000000004000						    //坎张
-#define CHR_SHUANG_AN_KE                  0x0000000000008000						    //双暗刻
-#define CHR_DAN_DIAO_JIANG                0x0000000000010000							//单钓将
-#define CHR_DA_SAN_YUAN                   0x0000000000020000							//大三元
-#define CHR_DA_SI_XI                      0x0000000000040000							//大四喜
-//--特殊牌型
-#define CHR_TIAN_HU                       0x0000000000100000							//天胡
-#define CHR_DI_HU                         0x0000000000200000							//地胡
-#define CHR_HAI_DI_PAO                    0x0000000000400000						    //--海底炮
-#define CHR_HAI_DI_LAO_YUE                0x0000000000800000						   // --海底捞月
-#define CHR_QUAN_QIU_REN                  0x0000000001000000							//全求人
-#define CHR_QIANG_GANG_HU                 0x0000000002000000							//抢杠胡
-#define CHR_GANG_SHANG_HUA                0x0000000004000000							//杠上开花
-#define CHR_GANG_SHANG_PAO				  0x0000000008000000							//杠上炮
-#define CHR_MEN_QIANG_QING				  0x0000000010000000							//门前清
-#define CHR_QUAN_QIU_PAO				  0x0000000020000000						    //--全求炮
-#define CHR_ZI_MO						  0x0000000040000000						        ////自摸
+//1番牌型
+#define CHR_YI_BAN_GAO  0x0000000000000001					//		--//一般高
+#define CHR_LIAN_LIU  0x0000000000000002					//		--//连六
+#define CHR_LAO_SHAO_FU  0x0000000000000004				//		    --//老少副
+#define CHR_YAO_JIU_KE  0x0000000000000008					//		--幺九刻
+#define CHR_SHI_SAN_YAO  0x0000000000000010					//		--//明杠
+#define CHR_BIAN_ZHANG  0x0000000000000020					//		--//边张
+#define CHR_KAN_ZHANG  0x0000000000000040					//		--//坎张
+#define CHR_DAN_DIAO_JIANG  0x0000000000000080				//			--//单钓将
+#define CHR_ZI_MO  0x0000000000000100						//	    --//自摸
+#define CHR_ER_WU_BA_JIANG  0x0000000000000200				//			--//二五八将	
+#define CHR_YAO_JIU_TOU  0x0000000000000400				//			--//幺九头
+//2番牌型													 //
+#define CHR_JIAN_KE  0x0000000000000800					//		--//箭刻
+#define CHR_MEN_QIANG_QING  0x0000000000001000				//			--//门前清
+#define CHR_PING_HU  0x0000000000002000					//		--//平胡
+#define CHR_SI_GUI_YI  0x0000000000004000					//		--//四归一
+#define CHR_SHUANG_AN_KE  0x0000000000008000				//			--//双暗刻
+#define CHR_AN_GANG  0x0000000000010000					//		--//暗杠
+#define CHR_DUAN_YAO  0x0000000000020000					//		--//断幺
+#define CHR_TING_PAI  0x0000000000040000					//		--//听牌
+//--4番牌型												 //
+#define CHR_QUANG_DAI_YAO  0x0000000000080000				//			--//全带幺
+#define CHR_BU_QIU_REN  0x0000000000100000					//		--//不求人
+#define CHR_SHUANG_MING_GANG  0x0000000000200000			//				--//双明杠
+#define CHR_HU_JUE_ZHANG  0x0000000000400000				//			--//胡绝张
+//--6番牌型												 //
+#define CHR_PENG_PENG  0x0000000000800000					//		--//碰碰胡
+#define CHR_HUN_YI_SE  0x0000000001000000					//		--//混一色
+#define CHR_QUAN_QIU_REN  0x0000000002000000				//			--//全求人
+#define CHR_SHUANG_AN_GANG  0x0000000004000000				//			--//双暗杠
+#define CHR_SHUANG_JIAN_KE  0x0000000008000000				//			--//双箭刻
+//--8番牌型												 //
+#define CHR_MIAO_SHOU_HUI_CHUN  0x0000000010000000			//				--//妙手回春
+#define CHR_HAI_DI_LAO_YUE  0x0000000020000000				//			--//海底捞月
+#define CHR_GANG_SHANG_HUA  0x0000000040000000				//			--//杠上开花
+#define CHR_QIANG_GANG_HU  0x0000000080000000				//			--//抢杠胡
+//--12番牌型												 //
+#define CHR_QI_DA_DUI  0x0000000100000000					//		--//大于五
+#define CHR_SHUANG_QI_DA_DUI  0x0000000200000000					//		--//小于五
+#define CHR_SAN_FENG_KE  0x0000000400000000				//			--//三风刻
+//--16番牌型												 //
+#define CHR_TIAN_TING  0x0000000800000000					//		--//天听
+#define CHR_QING_LONG  0x0000001000000000					//		--//清龙
+#define CHR_YI_SE_SAN_BU_GAO  0x0000002000000000			//				--//一色三步高
+#define CHR_SAN_AN_KE  0x0000004000000000					//		--//三暗刻
+//--24番牌型												 //
+#define CHR_QI_DUI  0x0000008000000000						//	   --//七对
+#define CHR_QING_YI_SE  0x0000010000000000					//		--//清一色
+#define CHR_YI_SE_SAN_TONG_SHUN  0x0000020000000000		//					--//一色三同顺
+#define CHR_YI_SE_SAN_JIE_GAO  0x0000040000000000			//				--//一色三节高
+#define CHR_SAN_QI_DA_DUI  0x0000080000000000						//	--//人胡
+//--32番牌型												 //
+#define CHR_YI_SE_SI_BU_GAO  0x0000100000000000			//				--//一色四步高
+#define CHR_SAN_GANG  0x0000200000000000					//		--//三杠
+#define CHR_HUN_YAO_JIU  0x0000400000000000				//			--//混幺九
+#define CHR_DI_HU  0x0000800000000000						//	--//地胡
+//--48番牌型												 //
+#define CHR_TIAN_HU  0x0001000000000000					//		--//天胡
+#define CHR_YI_SE_SI_TONG_SHUN  0x0002000000000000			//				--//一色四同顺
+#define CHR_YI_SE_SI_JIE_GAO  0x0004000000000000			//				--//一色四节高
+//--64番牌型												 //
+#define CHR_XIAO_SI_XI  0x0008000000000000					//		--//小四喜
+#define CHR_XIAO_SAN_YUAN  0x0010000000000000				//			--//小三元
+#define CHR_ZI_YI_SE  0x0020000000000000					//		--//字一色
+#define CHR_YI_SS_LONG_HUI  0x0040000000000000				//			--//一色双龙会
+#define CHR_SI_AN_KE  0x0080000000000000					//		--//四暗刻
+//--88番牌型												 //
+#define CHR_DA_SI_XI  0x0100000000000000					//		--//大四喜
+#define CHR_DA_SAN_YUAN  0x0200000000000000				//			--//大三元
+#define CHR_JIU_LIAN_BAO_DENG  0x0400000000000000			//				--//九连宝灯
+#define CHR_SI_GANG  0x0800000000000000					//		--//四杠
+#define CHR_QI_LIAN_DUI  0x1000000000000000				//			--//七连对
 //未使用
 
 //
@@ -99,12 +142,11 @@ struct tagKindItem
 };
 
 
-
-
 //////////////////////////////////////////////////////////////////////////
 
 
-#define MASK_CHI_HU_RIGHT			0x0fffffff
+//#define MASK_CHI_HU_RIGHT			0x0fffffff
+#define MASK_CHI_HU_RIGHT			0xffffffffffffffff
 
 /*
 //	权位类。
@@ -120,11 +162,11 @@ class CChiHuRight
 	//静态变量
 private:
 	static bool						m_bInit;
-	static DWORD					m_dwRightMask[MAX_RIGHT_COUNT];
+	static uint64					m_dwRightMask[MAX_RIGHT_COUNT];
 
 	//权位变量
 private:
-	DWORD							m_dwRight[MAX_RIGHT_COUNT];
+	uint64							m_dwRight[MAX_RIGHT_COUNT];
 
 public:
 	//构造函数
@@ -133,27 +175,27 @@ public:
 	//运算符重载
 public:
 	//赋值符
-	CChiHuRight & operator = (DWORD dwRight);
+	CChiHuRight & operator = (uint64 dwRight);
 
 	//与等于
-	CChiHuRight & operator &= (DWORD dwRight);
+	CChiHuRight & operator &= (uint64 dwRight);
 	//或等于
-	CChiHuRight & operator |= (DWORD dwRight);
+	CChiHuRight & operator |= (uint64 dwRight);
 
 	//与
-	CChiHuRight operator & (DWORD dwRight);
-	CChiHuRight operator & (DWORD dwRight) const;
+	CChiHuRight operator & (uint64 dwRight);
+	CChiHuRight operator & (uint64 dwRight) const;
 
 	//或
-	CChiHuRight operator | (DWORD dwRight);
-	CChiHuRight operator | (DWORD dwRight) const;
+	CChiHuRight operator | (uint64 dwRight);
+	CChiHuRight operator | (uint64 dwRight) const;
 
 	//相等
-	bool operator == (DWORD dwRight) const;
+	bool operator == (uint64 dwRight) const;
 	bool operator == (const CChiHuRight chr) const;
 
 	//不相等
-	bool operator != (DWORD dwRight) const;
+	bool operator != (uint64 dwRight) const;
 	bool operator != (const CChiHuRight chr) const;
 
 	//功能函数
@@ -165,14 +207,14 @@ public:
 	void SetEmpty();
 
 	//获取权位数值
-	BYTE GetRightData(DWORD dwRight[], BYTE cbMaxCount);
+	int GetRightData(uint64 dwRight[], BYTE cbMaxCount);
 
 	//设置权位数值
-	bool SetRightData(const DWORD dwRight[], BYTE cbRightCount);
+	bool SetRightData(const uint64 dwRight[], BYTE cbRightCount);
 
 private:
 	//检查权位是否正确
-	bool IsValidRight(DWORD dwRight);
+	bool IsValidRight(uint64 dwRight);
 };
 
 //////////////////////////////////////////////////////////////////////////////////
@@ -339,6 +381,9 @@ protected://胡法分析
 	bool IsBianZhang(const tagAnalyseItem *pAnalyseItem, const tagWeaveItem WeaveItem[], BYTE cbWeaveCount, BYTE cbCurrentCard);
 	bool IsKanZhang(const tagAnalyseItem *pAnalyseItem, const BYTE cbCardIndex[MAX_INDEX], const tagWeaveItem WeaveItem[], BYTE cbWeaveCount, BYTE cbCurrentCard);
 	bool IsDanDiaoJiang(const tagAnalyseItem *pAnalyseItem, const BYTE cbCardIndex[MAX_INDEX], BYTE cbCurrentCard);
+	bool IsDuanYao(const tagAnalyseItem *pAnalyseItem);
+	bool IsYiSeSanTongShun(const tagAnalyseItem *pAnalyseItem);
+	bool IsYiBanGao(const tagAnalyseItem *pAnalyseItem);
 		
 	public:
 	BYTE GetCallCard(const  BYTE cardIndex[MAX_INDEX], BYTE callCard);
@@ -352,7 +397,8 @@ protected://胡法分析
 	int GetCommonFan(CChiHuRight chr, int lianGang = 0);
 
 	int GetColorCount(const  BYTE cbCardIndex[MAX_INDEX],  int color);
-	
+	string GetFanString(CChiHuRight chr);
+		
 		
 };
 
