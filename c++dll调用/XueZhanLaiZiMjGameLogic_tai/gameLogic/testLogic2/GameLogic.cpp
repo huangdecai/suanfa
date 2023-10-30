@@ -922,24 +922,24 @@ BYTE CGameLogic::AnalyseChiHuCard(const BYTE cbCardIndex[MAX_INDEX], const tagWe
 	}
 	
 	chr = MaxChr;
-	if (m_bHuQiDui && IsQiDui(cbCardIndexTemp, cbWeaveCount))
-	{
-		chr |= CHR_QI_DUI;
-		if (IsQingYiSe(cbCardIndexTemp, WeaveItem, cbWeaveCount) == true)
-		{
-			chr = chr | CHR_QING_YI_SE;
-		}
-		
-		 if (IsQiDaDui(cbCardIndexTemp, cbWeaveCount))
-		{
-			chr = chr | CHR_QI_DA_DUI;
-		}
+	//if (m_bHuQiDui && IsQiDui(cbCardIndexTemp, cbWeaveCount))
+	//{
+	//	chr |= CHR_QI_DUI;
+	//	if (IsQingYiSe(cbCardIndexTemp, WeaveItem, cbWeaveCount) == true)
+	//	{
+	//		chr = chr | CHR_QING_YI_SE;
+	//	}
+	//	
+	//	 if (IsQiDaDui(cbCardIndexTemp, cbWeaveCount))
+	//	{
+	//		chr = chr | CHR_QI_DA_DUI;
+	//	}
 
-	}
+	//}
 
-	////十三幺
-	if (IsShiSanYao(cbCardIndexTemp, cbWeaveCount))
-		chr |= CHR_SHI_SAN_YAO;
+	//////十三幺
+	//if (IsShiSanYao(cbCardIndexTemp, cbWeaveCount))
+	//	chr |= CHR_SHI_SAN_YAO;
 
 	if (!chr.IsEmpty())
 	{
