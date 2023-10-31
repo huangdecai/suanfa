@@ -563,7 +563,7 @@ float  CGameLogicNew::GetCardTypeScore(tagOutCardResultNew& CardTypeResult)
 		}
 		else if (i == CT_FIVE_STRAIGHT_FLUSH)
 		{
-			spaceScore += 50;
+			spaceScore += 150;
 		}
 		else if (i == CT_FIVE_TONG)
 		{
@@ -3559,13 +3559,15 @@ VOID CGameLogicNew::SearchOutCardShiSanZhangTurn(const BYTE cbHandCardData[], BY
 	CopyMemory(ArrayFirst[2], FirstOutCardResult.cbResultCard, douNum[2]);
 	CopyMemory(ArrayFirst[1], FirstOutCardResult.cbResultCard + 3, douNum[1]);
 	CopyMemory(ArrayFirst[0], FirstOutCardResult.cbResultCard + 8, douNum[0]);
+	BYTE maxCard = 0;
+	int firstType = GetCardType(ArrayFirst[0], douNum[0], maxCard);
 	BYTE cbMaxCard = 0;
 	int resultFirst = 0;
 	for (int j = 0; j < DOU_NUM; j++)
 	{
 		resultFirst += CompareCard(ArrayTurn[j], ArrayFirst[j], douNum[j], douNum[j], true, true);
 	}
-	if (resultFirst>=3)
+	if (resultFirst>=3|| firstType>= CT_FIVE_STRAIGHT_FLUSH)
 	{
 		CopyMemory(&OutCardResult, &FirstOutCardResult, sizeof(tagOutCardResultNew));
 		return;
