@@ -371,16 +371,12 @@ class MyPyQT_Form(QtWidgets.QWidget, Ui_Form):
                     actionSearchPos = ()
 
                     if (cbActionMask & (WIK_CHI_XUAN)) != 0:
-                        tmpPos = self.ActionBtnPosClick[3]
                         bEnable = False
                     elif (cbActionMask & (WIK_LEFT))!=0:
-                        tmpPos = self.ActionBtnPosClick[3]
                         bEnable = False
                     elif (cbActionMask & (WIK_CENTER))!=0:
-                        tmpPos = self.ActionBtnPosClick[3]
                         bEnable = False
                     elif (cbActionMask & (WIK_RIGHT))!=0:
-                        tmpPos = self.ActionBtnPosClick[3]
                         bEnable = False
                     elif (cbActionMask & WIK_PENG)!=0:
                         tmpPos = self.ActionBtnPosClick[2]
@@ -462,6 +458,7 @@ class MyPyQT_Form(QtWidgets.QWidget, Ui_Form):
                     self.sleep(100)
                     print(self.play_order,"action:",cbOperateCode)
                     if cbOperateCode==WIK_LEFT or cbOperateCode==WIK_CENTER or cbOperateCode==WIK_RIGHT:
+                         tmpPos = self.ActionBtnPosClick[3]
                          helper.ClickOnImage("chi", region=tmpPos, confidence=0.75)
                          self.bHaveAction=True
                          print("bHaveAction-WIK_CHI:",self.bHaveAction)
@@ -488,6 +485,7 @@ class MyPyQT_Form(QtWidgets.QWidget, Ui_Form):
                         self.waiteChiAction=0
                         print("bHaveAction-WIK_CHI_XUAN:", self.bHaveAction)
                     elif cbOperateCode==WIK_PENG:
+                         tmpPos = self.ActionBtnPosClick[2]
                          print("peng", tmpPos)
                          helper.ClickOnImage("peng", region=tmpPos, confidence=0.75)
                          item = WeaveItem()
@@ -501,6 +499,7 @@ class MyPyQT_Form(QtWidgets.QWidget, Ui_Form):
                          self.bHaveAction=True
                          print("bHaveAction-WIK_PENG:",self.bHaveAction)
                     elif cbOperateCode == WIK_GANG:
+                         tmpPos = self.ActionBtnPosClick[1]
                          print("gang",tmpPos)
                          helper.ClickOnImage("gang", region=tmpPos, confidence= 0.75)
                          item = WeaveItem()

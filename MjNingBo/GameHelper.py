@@ -170,6 +170,7 @@ class GameHelper:
         self.Pics = {}
         self.PicsCV = {}
         self.Handle = win32gui.FindWindow("LDPlayerMainFrame", "雷电模拟器")
+        #self.Handle = win32gui.FindWindow("LDPlayerMainFrame", "test001")
         self.Interrupt = False
         self.RealRate = (SCREEN_WIDTH, SCREEN_HEGIHT)
         for file in os.listdir("./pics"):
@@ -182,6 +183,7 @@ class GameHelper:
 
     def Screenshot(self, region=None):  # -> (im, (left, top))
         self.Handle = win32gui.FindWindow("LDPlayerMainFrame", "雷电模拟器")
+        #self.Handle = win32gui.FindWindow("LDPlayerMainFrame", "test001")
         hwnd = self.Handle
         if self.bTest == True:
             im = Image.open(r"testRunFast2.png")
