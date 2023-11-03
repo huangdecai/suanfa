@@ -104,6 +104,8 @@ class MyPyQT_Form(QtWidgets.QWidget, Ui_Form):
         self.game_over = False
         self.onlyTip=False
         self.callCard=0
+        self.allDisCardData = []
+        self.playerDisCardData=[[],[],[],[]]
         self.cbLaiZi=[]
         self.BidThreshold1 = 65  # 叫地主阈值
         self.BidThreshold2 = 75  # 抢地主阈值
@@ -237,6 +239,7 @@ class MyPyQT_Form(QtWidgets.QWidget, Ui_Form):
         self.turnCardReal=''
         self.other_played_cards_real=''
         self.allDisCardData=[]
+        self.playerDisCardData = [[], [], [], []]
         self.m_WeaveItem = [[], [], [], []]
         self.handCardCount=[MAX_CARD_COUNT,MAX_CARD_COUNT,MAX_CARD_COUNT,MAX_CARD_COUNT]
         self.bHavePass=False
@@ -333,6 +336,28 @@ class MyPyQT_Form(QtWidgets.QWidget, Ui_Form):
         self.user_hand_cards_real, self.cbLaiZi = self.find_my_cards(
             self.MyHandCardsPos, self.bHaveAction)  # '2AKQQJJT99877753'
         cbActionMask = 0
+        if self.waiteChiAction==0:
+            img, _ = helper.Screenshot()
+            playerPos=[(292,160,61,41),(0,0,10,10),(807,160,61,41),]
+            for i in range(0, 3):
+                if i==1 :
+                    continue
+                tempSizeX=(len(self.playerDisCardData[i])-1)/10
+                tempSizeY = (len(self.playerDisCardData[i])-tempSizeX*10)
+                tmpTpos=(playerPos[i][0]-tempSizeX*playerPos[i][2],playerPos[i][1]+tempSizeY*playerPos[i][3],playerPos[i][2],playerPos[i][3])
+                result = helper.LocateOnScreen("outWhite", region=tmpTpos, confidence=0.75)
+                if result:
+                    for j in range(0, 34):
+                        tmpStr = "out" + str(i) + str(j)
+                        result = pyautogui.locate(needleImage=helper.Pics[tmpStr], haystackImage=img,
+                                                  region=tmpTpos,
+                                                  confidence=0.70)
+                        if result is not None:
+                            cbActionCard = str(j)
+                            self.playerDisCardData[i].append(0)
+                            bExist = True
+                            break
+
         tryCount=0
         while ((len(self.user_hand_cards_real) % 3) != 2 and cbActionMask == 0) or bGameOver == True:
             cbActionMask = self.have_action(self.ActionBtnPos)
