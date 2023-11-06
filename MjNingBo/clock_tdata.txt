@@ -15107,3 +15107,2731 @@ testCount:2
 cbCenterCard,38,cbWeaveKind,8,
 cbOperateCode,0,cbOperateCode,55,,55
 End
+
+cbHandCardCount:14
+
+testCount:1
+,34,34,36,37,38,41,18,18,24,25,52,53,55,24
+ wMeChairId:0,
+
+ wCurrentUser:0,
+
+ cbActionMask:0,
+
+ cbActionCard:24,
+
+ cbCardDataEx:20,
+,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+ cbDiscardCardCount:0,
+cbOperateCode,0,cbOperateCode,52,,52
+End
+
+cbHandCardCount:14
+
+testCount:2
+,34,34,36,37,38,41,18,18,24,24,25,53,55,51
+ wMeChairId:0,
+
+ wCurrentUser:0,
+
+ cbActionMask:0,
+
+ cbActionCard:51,
+
+ cbCardDataEx:20,
+,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+ cbDiscardCardCount:3,
+,52,51,51cbOperateCode,0,cbOperateCode,51,,51
+End
+
+cbHandCardCount:14
+
+testCount:3
+,34,34,36,37,38,41,18,18,24,24,25,53,55,51
+ wMeChairId:0,
+
+ wCurrentUser:0,
+
+ cbActionMask:0,
+
+ cbActionCard:51,
+
+ cbCardDataEx:20,
+,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+ cbDiscardCardCount:6,
+,52,51,51,51,49,50cbOperateCode,0,cbOperateCode,51,,51
+End
+
+cbHandCardCount:14
+
+testCount:4
+,34,34,36,37,38,41,18,18,24,24,25,53,55,21
+ wMeChairId:0,
+
+ wCurrentUser:0,
+
+ cbActionMask:0,
+
+ cbActionCard:21,
+
+ cbCardDataEx:20,
+,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+ cbDiscardCardCount:7,
+,52,51,51,51,49,50,51cbOperateCode,0,cbOperateCode,53,,53
+End
+
+cbHandCardCount:14
+
+testCount:5
+,34,34,36,37,38,41,18,18,21,24,24,25,55,23
+ wMeChairId:0,
+
+ wCurrentUser:0,
+
+ cbActionMask:0,
+
+ cbActionCard:23,
+
+ cbCardDataEx:20,
+,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+ cbDiscardCardCount:9,
+,52,51,51,51,49,50,51,53,53cbOperateCode,0,cbOperateCode,55,,55
+End
+
+cbHandCardCount:13
+
+testCount:6
+,34,34,36,37,38,41,18,18,21,23,24,24,25
+ wMeChairId:0,
+
+ wCurrentUser:1,
+
+ cbActionMask:9,
+
+ cbActionCard:24,
+
+ cbCardDataEx:20,
+,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+ cbDiscardCardCount:12,
+,52,51,51,51,49,50,51,53,53,55,17,50cbOperateCode,8,cbOperateCode,24,,24
+End
+
+cbHandCardCount:11
+
+testCount:7
+,34,34,37,37,38,41,18,18,21,23,25
+ wMeChairId:0,
+
+ wCurrentUser:0,
+
+ cbActionMask:0,
+
+ cbActionCard:25,
+
+ cbCardDataEx:20,
+,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+ cbDiscardCardCount:12,
+,52,51,51,51,49,50,51,53,53,55,17,50cbCenterCard,24,cbWeaveKind,8,
+cbOperateCode,0,cbOperateCode,41,,41
+End
+
+cbHandCardCount:10
+
+testCount:8
+,34,34,36,37,38,18,18,21,23,25
+ wMeChairId:0,
+
+ wCurrentUser:1,
+
+ cbActionMask:8,
+
+ cbActionCard:18,
+
+ cbCardDataEx:20,
+,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+ cbDiscardCardCount:14,
+,52,51,51,51,49,50,51,53,53,55,17,50,41,17cbCenterCard,24,cbWeaveKind,8,
+cbOperateCode,8,cbOperateCode,18,,18
+End
+
+cbHandCardCount:8
+
+testCount:9
+,34,34,36,37,38,21,23,25
+ wMeChairId:0,
+
+ wCurrentUser:0,
+
+ cbActionMask:0,
+
+ cbActionCard:25,
+
+ cbCardDataEx:20,
+,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+ cbDiscardCardCount:14,
+,52,51,51,51,49,50,51,53,53,55,17,50,41,17cbCenterCard,24,cbWeaveKind,8,
+cbCenterCard,18,cbWeaveKind,8,
+cbOperateCode,0,cbOperateCode,25,,25
+End
+
+cbHandCardCount:8
+
+testCount:10
+,34,34,37,37,38,21,23,17
+ wMeChairId:0,
+
+ wCurrentUser:0,
+
+ cbActionMask:0,
+
+ cbActionCard:17,
+
+ cbCardDataEx:20,
+,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+ cbDiscardCardCount:15,
+,52,51,51,51,49,50,51,53,53,55,17,50,41,17,25cbCenterCard,24,cbWeaveKind,8,
+cbCenterCard,18,cbWeaveKind,8,
+cbOperateCode,0,cbOperateCode,17,,17
+End
+
+cbHandCardCount:7
+
+testCount:11
+,34,34,37,37,38,21,23
+ wMeChairId:0,
+
+ wCurrentUser:1,
+
+ cbActionMask:1,
+
+ cbActionCard:35,
+
+ cbCardDataEx:20,
+,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+ cbDiscardCardCount:19,
+,52,51,51,51,49,50,51,53,53,55,17,50,41,17,25,17,49,53,38cbCenterCard,24,cbWeaveKind,8,
+cbCenterCard,18,cbWeaveKind,8,
+cbOperateCode,0,cbOperateCode,0,,0
+End
+
+cbHandCardCount:8
+
+testCount:12
+,34,34,37,37,38,21,23,22
+ wMeChairId:0,
+
+ wCurrentUser:0,
+
+ cbActionMask:64,
+
+ cbActionCard:22,
+
+ cbCardDataEx:20,
+,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+ cbDiscardCardCount:19,
+,52,51,51,51,49,50,51,53,53,55,17,50,41,17,25,17,49,53,38cbCenterCard,24,cbWeaveKind,8,
+cbCenterCard,18,cbWeaveKind,8,
+cbOperateCode,64,cbOperateCode,22,,22
+End
+
+cbHandCardCount:14
+
+testCount:13
+,36,17,18,19,20,21,24,24,50,50,51,52,54,18
+ wMeChairId:0,
+
+ wCurrentUser:0,
+
+ cbActionMask:0,
+
+ cbActionCard:18,
+
+ cbCardDataEx:20,
+,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+ cbDiscardCardCount:0,
+cbOperateCode,0,cbOperateCode,51,,51
+End
+
+cbHandCardCount:13
+
+testCount:14
+,36,17,18,18,19,20,21,24,24,50,50,52,54
+ wMeChairId:0,
+
+ wCurrentUser:1,
+
+ cbActionMask:8,
+
+ cbActionCard:50,
+
+ cbCardDataEx:20,
+,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+ cbDiscardCardCount:1,
+,51cbOperateCode,8,cbOperateCode,50,,50
+End
+
+cbHandCardCount:11
+
+testCount:15
+,36,17,18,18,19,20,21,24,24,52,54
+ wMeChairId:0,
+
+ wCurrentUser:0,
+
+ cbActionMask:0,
+
+ cbActionCard:54,
+
+ cbCardDataEx:20,
+,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+ cbDiscardCardCount:1,
+,51cbCenterCard,50,cbWeaveKind,8,
+cbOperateCode,0,cbOperateCode,52,,52
+End
+
+cbHandCardCount:11
+
+testCount:16
+,36,17,18,18,19,20,21,24,24,54,34
+ wMeChairId:0,
+
+ wCurrentUser:0,
+
+ cbActionMask:0,
+
+ cbActionCard:34,
+
+ cbCardDataEx:20,
+,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+ cbDiscardCardCount:2,
+,51,52cbCenterCard,50,cbWeaveKind,8,
+cbOperateCode,0,cbOperateCode,54,,54
+End
+
+cbHandCardCount:11
+
+testCount:17
+,34,37,17,18,18,19,20,21,24,24,34
+ wMeChairId:0,
+
+ wCurrentUser:0,
+
+ cbActionMask:0,
+
+ cbActionCard:34,
+
+ cbCardDataEx:20,
+,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+ cbDiscardCardCount:3,
+,51,52,54cbCenterCard,50,cbWeaveKind,8,
+cbOperateCode,0,cbOperateCode,37,,37
+End
+
+cbHandCardCount:11
+
+testCount:18
+,34,34,17,18,18,19,20,21,24,24,18
+ wMeChairId:0,
+
+ wCurrentUser:0,
+
+ cbActionMask:0,
+
+ cbActionCard:18,
+
+ cbCardDataEx:20,
+,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+ cbDiscardCardCount:4,
+,51,52,54,37cbCenterCard,50,cbWeaveKind,8,
+cbOperateCode,0,cbOperateCode,17,,17
+End
+
+cbHandCardCount:11
+
+testCount:19
+,34,34,18,18,18,19,20,21,24,24,24
+ wMeChairId:0,
+
+ wCurrentUser:0,
+
+ cbActionMask:64,
+
+ cbActionCard:24,
+
+ cbCardDataEx:20,
+,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+ cbDiscardCardCount:5,
+,51,52,54,37,17cbCenterCard,50,cbWeaveKind,8,
+cbOperateCode,64,cbOperateCode,24,,24
+End
+
+cbHandCardCount:14
+
+testCount:20
+,33,37,37,37,38,39,41,17,19,20,21,49,53,55
+ wMeChairId:0,
+
+ wCurrentUser:0,
+
+ cbActionMask:0,
+
+ cbActionCard:55,
+
+ cbCardDataEx:20,
+,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+ cbDiscardCardCount:0,
+cbOperateCode,0,cbOperateCode,49,,49
+End
+
+cbHandCardCount:14
+
+testCount:21
+,33,37,37,37,38,39,41,17,19,20,21,53,55,53
+ wMeChairId:0,
+
+ wCurrentUser:0,
+
+ cbActionMask:0,
+
+ cbActionCard:53,
+
+ cbCardDataEx:20,
+,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+ cbDiscardCardCount:1,
+,49cbOperateCode,0,cbOperateCode,55,,55
+End
+
+cbHandCardCount:14
+
+testCount:22
+,33,37,37,37,38,39,41,17,19,20,21,53,53,33
+ wMeChairId:0,
+
+ wCurrentUser:0,
+
+ cbActionMask:0,
+
+ cbActionCard:33,
+
+ cbCardDataEx:20,
+,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+ cbDiscardCardCount:2,
+,49,55cbOperateCode,0,cbOperateCode,17,,17
+End
+
+cbHandCardCount:13
+
+testCount:23
+,33,33,36,37,37,38,39,41,19,20,21,53,53
+ wMeChairId:0,
+
+ wCurrentUser:1,
+
+ cbActionMask:8,
+
+ cbActionCard:33,
+
+ cbCardDataEx:20,
+,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+ cbDiscardCardCount:3,
+,49,55,17cbOperateCode,8,cbOperateCode,33,,33
+End
+
+cbHandCardCount:11
+
+testCount:24
+,36,37,37,38,39,41,19,20,21,53,53
+ wMeChairId:0,
+
+ wCurrentUser:0,
+
+ cbActionMask:0,
+
+ cbActionCard:53,
+
+ cbCardDataEx:20,
+,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+ cbDiscardCardCount:3,
+,49,55,17cbCenterCard,33,cbWeaveKind,8,
+cbOperateCode,0,cbOperateCode,41,,41
+End
+
+cbHandCardCount:11
+
+testCount:25
+,36,37,37,38,39,19,20,21,53,53,24
+ wMeChairId:0,
+
+ wCurrentUser:0,
+
+ cbActionMask:0,
+
+ cbActionCard:24,
+
+ cbCardDataEx:20,
+,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+ cbDiscardCardCount:4,
+,49,55,17,41cbCenterCard,33,cbWeaveKind,8,
+cbOperateCode,0,cbOperateCode,24,,24
+End
+
+cbHandCardCount:11
+
+testCount:26
+,36,37,37,38,39,19,20,21,53,53,21
+ wMeChairId:0,
+
+ wCurrentUser:0,
+
+ cbActionMask:0,
+
+ cbActionCard:21,
+
+ cbCardDataEx:20,
+,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+ cbDiscardCardCount:5,
+,49,55,17,41,24cbCenterCard,33,cbWeaveKind,8,
+cbOperateCode,0,cbOperateCode,21,,21
+End
+
+cbHandCardCount:11
+
+testCount:27
+,36,37,37,38,39,19,20,21,53,53,20
+ wMeChairId:0,
+
+ wCurrentUser:0,
+
+ cbActionMask:0,
+
+ cbActionCard:20,
+
+ cbCardDataEx:20,
+,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+ cbDiscardCardCount:6,
+,49,55,17,41,24,21cbCenterCard,33,cbWeaveKind,8,
+cbOperateCode,0,cbOperateCode,20,,20
+End
+
+cbHandCardCount:11
+
+testCount:28
+,36,37,37,38,39,19,20,21,53,53,49
+ wMeChairId:0,
+
+ wCurrentUser:0,
+
+ cbActionMask:0,
+
+ cbActionCard:49,
+
+ cbCardDataEx:20,
+,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+ cbDiscardCardCount:7,
+,49,55,17,41,24,21,20cbCenterCard,33,cbWeaveKind,8,
+cbOperateCode,0,cbOperateCode,49,,49
+End
+
+cbHandCardCount:11
+
+testCount:29
+,36,37,37,38,39,19,20,21,53,53,52
+ wMeChairId:0,
+
+ wCurrentUser:0,
+
+ cbActionMask:0,
+
+ cbActionCard:52,
+
+ cbCardDataEx:20,
+,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+ cbDiscardCardCount:9,
+,49,55,17,41,24,21,20,49,55cbCenterCard,33,cbWeaveKind,8,
+cbOperateCode,0,cbOperateCode,52,,52
+End
+
+cbHandCardCount:11
+
+testCount:30
+,36,37,37,38,39,19,20,21,53,53,40
+ wMeChairId:0,
+
+ wCurrentUser:0,
+
+ cbActionMask:0,
+
+ cbActionCard:40,
+
+ cbCardDataEx:20,
+,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+ cbDiscardCardCount:11,
+,49,55,17,41,24,21,20,49,55,52,50cbCenterCard,33,cbWeaveKind,8,
+cbOperateCode,0,cbOperateCode,37,,37
+End
+
+cbHandCardCount:11
+
+testCount:31
+,36,37,38,39,40,19,20,21,53,53,23
+ wMeChairId:0,
+
+ wCurrentUser:0,
+
+ cbActionMask:0,
+
+ cbActionCard:23,
+
+ cbCardDataEx:20,
+,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+ cbDiscardCardCount:13,
+,49,55,17,41,24,21,20,49,55,52,50,37,17cbCenterCard,33,cbWeaveKind,8,
+cbOperateCode,0,cbOperateCode,23,,23
+End
+
+cbHandCardCount:14
+
+testCount:1
+,33,37,38,41,41,19,19,19,20,22,24,25,49,49
+ wMeChairId:0,
+
+ wCurrentUser:0,
+
+ cbActionMask:0,
+
+ cbActionCard:49,
+
+ cbCardDataEx:20,
+,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+ cbDiscardCardCount:0,
+cbOperateCode,0,cbOperateCode,33,,33
+End
+
+cbHandCardCount:14
+
+testCount:2
+,37,38,41,41,19,19,19,20,22,24,25,49,49,18
+ wMeChairId:0,
+
+ wCurrentUser:0,
+
+ cbActionMask:0,
+
+ cbActionCard:18,
+
+ cbCardDataEx:20,
+,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+ cbDiscardCardCount:1,
+,33cbOperateCode,0,cbOperateCode,22,,22
+End
+
+cbHandCardCount:14
+
+testCount:3
+,37,38,41,41,18,19,19,19,20,24,25,49,49,24
+ wMeChairId:0,
+
+ wCurrentUser:0,
+
+ cbActionMask:0,
+
+ cbActionCard:24,
+
+ cbCardDataEx:20,
+,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+ cbDiscardCardCount:4,
+,33,22,50,55cbOperateCode,0,cbOperateCode,25,,25
+End
+
+cbHandCardCount:14
+
+testCount:4
+,37,38,41,41,18,19,19,19,20,24,24,49,49,54
+ wMeChairId:0,
+
+ wCurrentUser:0,
+
+ cbActionMask:0,
+
+ cbActionCard:54,
+
+ cbCardDataEx:20,
+,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+ cbDiscardCardCount:7,
+,33,22,50,55,25,55,54cbOperateCode,0,cbOperateCode,54,,54
+End
+
+cbHandCardCount:13
+
+testCount:5
+,37,38,41,41,18,19,19,19,20,24,24,49,49
+ wMeChairId:0,
+
+ wCurrentUser:1,
+
+ cbActionMask:1,
+
+ cbActionCard:20,
+
+ cbCardDataEx:20,
+,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+ cbDiscardCardCount:10,
+,33,22,50,55,25,55,54,54,52,52cbOperateCode,4,cbOperateCode,20,,20
+End
+
+cbHandCardCount:11
+
+testCount:6
+,37,38,41,41,19,19,20,24,24,49,49
+ wMeChairId:0,
+
+ wCurrentUser:0,
+
+ cbActionMask:0,
+
+ cbActionCard:49,
+
+ cbCardDataEx:20,
+,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+ cbDiscardCardCount:10,
+,33,22,50,55,25,55,54,54,52,52cbCenterCard,20,cbWeaveKind,4,
+cbOperateCode,0,cbOperateCode,20,,20
+End
+
+cbHandCardCount:11
+
+testCount:7
+,37,38,41,41,19,19,20,24,24,49,49
+ wMeChairId:0,
+
+ wCurrentUser:0,
+
+ cbActionMask:0,
+
+ cbActionCard:49,
+
+ cbCardDataEx:20,
+,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+ cbDiscardCardCount:12,
+,33,22,50,55,25,55,54,54,52,52,20,50cbCenterCard,20,cbWeaveKind,4,
+cbOperateCode,0,cbOperateCode,20,,20
+End
+
+cbHandCardCount:11
+
+testCount:8
+,37,38,41,41,19,19,20,24,24,49,49
+ wMeChairId:0,
+
+ wCurrentUser:0,
+
+ cbActionMask:0,
+
+ cbActionCard:49,
+
+ cbCardDataEx:20,
+,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+ cbDiscardCardCount:13,
+,33,22,50,55,25,55,54,54,52,52,20,50,20cbCenterCard,20,cbWeaveKind,4,
+cbOperateCode,0,cbOperateCode,20,,20
+End
+
+cbHandCardCount:11
+
+testCount:9
+,37,38,41,41,19,19,20,24,24,49,49
+ wMeChairId:0,
+
+ wCurrentUser:0,
+
+ cbActionMask:0,
+
+ cbActionCard:49,
+
+ cbCardDataEx:20,
+,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+ cbDiscardCardCount:14,
+,33,22,50,55,25,55,54,54,52,52,20,50,20,20cbCenterCard,20,cbWeaveKind,4,
+cbOperateCode,0,cbOperateCode,20,,20
+End
+
+cbHandCardCount:13
+
+testCount:1
+,35,35,36,40,41,20,22,23,49,52,52,54,54
+ wMeChairId:0,
+
+ wCurrentUser:1,
+
+ cbActionMask:8,
+
+ cbActionCard:52,
+
+ cbCardDataEx:20,
+,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+ cbDiscardCardCount:0,
+cbOperateCode,8,cbOperateCode,52,,52
+End
+
+cbHandCardCount:11
+
+testCount:2
+,35,35,37,40,41,20,22,23,49,54,54
+ wMeChairId:0,
+
+ wCurrentUser:0,
+
+ cbActionMask:0,
+
+ cbActionCard:54,
+
+ cbCardDataEx:20,
+,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+ cbDiscardCardCount:0,
+cbCenterCard,52,cbWeaveKind,8,
+cbOperateCode,0,cbOperateCode,49,,49
+End
+
+cbHandCardCount:11
+
+testCount:3
+,35,35,36,40,41,20,22,23,54,54,37
+ wMeChairId:0,
+
+ wCurrentUser:0,
+
+ cbActionMask:0,
+
+ cbActionCard:37,
+
+ cbCardDataEx:20,
+,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+ cbDiscardCardCount:1,
+,49cbCenterCard,52,cbWeaveKind,8,
+cbOperateCode,0,cbOperateCode,20,,20
+End
+
+cbHandCardCount:11
+
+testCount:4
+,35,35,36,37,40,41,22,23,54,54,24
+ wMeChairId:0,
+
+ wCurrentUser:0,
+
+ cbActionMask:0,
+
+ cbActionCard:24,
+
+ cbCardDataEx:20,
+,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+ cbDiscardCardCount:5,
+,49,20,55,50,55cbCenterCard,52,cbWeaveKind,8,
+cbOperateCode,0,cbOperateCode,35,,35
+End
+
+cbHandCardCount:11
+
+testCount:5
+,35,37,37,40,41,22,23,24,54,54,17
+ wMeChairId:0,
+
+ wCurrentUser:0,
+
+ cbActionMask:0,
+
+ cbActionCard:17,
+
+ cbCardDataEx:20,
+,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+ cbDiscardCardCount:7,
+,49,20,55,50,55,35,53cbCenterCard,52,cbWeaveKind,8,
+cbOperateCode,0,cbOperateCode,17,,17
+End
+
+cbHandCardCount:11
+
+testCount:6
+,35,37,37,40,41,22,23,24,54,54,20
+ wMeChairId:0,
+
+ wCurrentUser:0,
+
+ cbActionMask:0,
+
+ cbActionCard:20,
+
+ cbCardDataEx:20,
+,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+ cbDiscardCardCount:10,
+,49,20,55,50,55,35,53,17,50,53cbCenterCard,52,cbWeaveKind,8,
+cbOperateCode,0,cbOperateCode,20,,20
+End
+
+cbHandCardCount:11
+
+testCount:7
+,35,37,37,40,41,22,23,24,54,54,34
+ wMeChairId:0,
+
+ wCurrentUser:0,
+
+ cbActionMask:0,
+
+ cbActionCard:34,
+
+ cbCardDataEx:20,
+,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+ cbDiscardCardCount:12,
+,49,20,55,50,55,35,53,17,50,53,20,19cbCenterCard,52,cbWeaveKind,8,
+cbOperateCode,0,cbOperateCode,54,,54
+End
+
+cbHandCardCount:10
+
+testCount:8
+,34,35,36,37,40,41,22,23,24,54
+ wMeChairId:0,
+
+ wCurrentUser:1,
+
+ cbActionMask:1,
+
+ cbActionCard:37,
+
+ cbCardDataEx:20,
+,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+ cbDiscardCardCount:15,
+,49,20,55,50,55,35,53,17,50,53,20,19,54,50,25cbCenterCard,52,cbWeaveKind,8,
+cbOperateCode,0,cbOperateCode,0,,0
+End
+
+cbHandCardCount:11
+
+testCount:9
+,34,35,36,37,40,41,22,23,24,54,38
+ wMeChairId:0,
+
+ wCurrentUser:0,
+
+ cbActionMask:0,
+
+ cbActionCard:38,
+
+ cbCardDataEx:20,
+,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+ cbDiscardCardCount:15,
+,49,20,55,50,55,35,53,17,50,53,20,19,54,50,25cbCenterCard,52,cbWeaveKind,8,
+cbOperateCode,0,cbOperateCode,54,,54
+End
+
+cbHandCardCount:11
+
+testCount:10
+,34,35,36,37,38,40,41,22,23,24,37
+ wMeChairId:0,
+
+ wCurrentUser:0,
+
+ cbActionMask:0,
+
+ cbActionCard:37,
+
+ cbCardDataEx:20,
+,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+ cbDiscardCardCount:18,
+,49,20,55,50,55,35,53,17,50,53,20,19,54,50,25,54,37,54cbCenterCard,52,cbWeaveKind,8,
+cbOperateCode,0,cbOperateCode,41,,41
+End
+
+cbHandCardCount:14
+
+testCount:11
+,33,35,37,38,39,17,19,19,21,25,51,53,54,36
+ wMeChairId:0,
+
+ wCurrentUser:0,
+
+ cbActionMask:0,
+
+ cbActionCard:36,
+
+ cbCardDataEx:20,
+,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+ cbDiscardCardCount:0,
+cbOperateCode,0,cbOperateCode,51,,51
+End
+
+cbHandCardCount:13
+
+testCount:12
+,33,35,36,37,38,39,17,19,19,21,25,53,54
+ wMeChairId:0,
+
+ wCurrentUser:1,
+
+ cbActionMask:1,
+
+ cbActionCard:34,
+
+ cbCardDataEx:20,
+,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+ cbDiscardCardCount:1,
+,51cbOperateCode,4,cbOperateCode,34,,34
+End
+
+cbHandCardCount:13
+
+testCount:1
+,33,35,36,37,38,39,17,19,19,21,25,53,54
+ wMeChairId:0,
+
+ wCurrentUser:1,
+
+ cbActionMask:1,
+
+ cbActionCard:34,
+
+ cbCardDataEx:20,
+,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+ cbDiscardCardCount:1,
+,54cbOperateCode,2,cbOperateCode,34,,34
+End
+
+cbHandCardCount:11
+
+testCount:2
+,36,37,38,39,17,19,19,21,25,53,54
+ wMeChairId:0,
+
+ wCurrentUser:0,
+
+ cbActionMask:0,
+
+ cbActionCard:54,
+
+ cbCardDataEx:20,
+,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+ cbDiscardCardCount:1,
+,54cbCenterCard,34,cbWeaveKind,2,
+cbOperateCode,0,cbOperateCode,53,,53
+End
+
+cbHandCardCount:10
+
+testCount:3
+,36,37,38,39,17,19,19,21,25,54
+ wMeChairId:0,
+
+ wCurrentUser:1,
+
+ cbActionMask:1,
+
+ cbActionCard:18,
+
+ cbCardDataEx:20,
+,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+ cbDiscardCardCount:3,
+,54,53,52cbCenterCard,34,cbWeaveKind,2,
+cbOperateCode,2,cbOperateCode,18,,18
+End
+
+cbHandCardCount:8
+
+testCount:4
+,36,37,38,39,19,21,25,54
+ wMeChairId:0,
+
+ wCurrentUser:0,
+
+ cbActionMask:0,
+
+ cbActionCard:54,
+
+ cbCardDataEx:20,
+,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+ cbDiscardCardCount:3,
+,54,53,52cbCenterCard,34,cbWeaveKind,2,
+cbCenterCard,18,cbWeaveKind,2,
+cbOperateCode,0,cbOperateCode,54,,54
+End
+
+cbHandCardCount:8
+
+testCount:5
+,36,37,38,39,19,21,25,50
+ wMeChairId:0,
+
+ wCurrentUser:0,
+
+ cbActionMask:0,
+
+ cbActionCard:50,
+
+ cbCardDataEx:20,
+,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+ cbDiscardCardCount:5,
+,54,53,52,54,53cbCenterCard,34,cbWeaveKind,2,
+cbCenterCard,18,cbWeaveKind,2,
+cbOperateCode,0,cbOperateCode,50,,50
+End
+
+cbHandCardCount:8
+
+testCount:6
+,36,37,38,39,19,21,25,36
+ wMeChairId:0,
+
+ wCurrentUser:0,
+
+ cbActionMask:0,
+
+ cbActionCard:36,
+
+ cbCardDataEx:20,
+,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+ cbDiscardCardCount:8,
+,54,53,52,54,53,50,25,50cbCenterCard,34,cbWeaveKind,2,
+cbCenterCard,18,cbWeaveKind,2,
+cbOperateCode,0,cbOperateCode,25,,25
+End
+
+cbHandCardCount:8
+
+testCount:7
+,36,36,37,38,39,19,21,50
+ wMeChairId:0,
+
+ wCurrentUser:0,
+
+ cbActionMask:0,
+
+ cbActionCard:50,
+
+ cbCardDataEx:20,
+,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+ cbDiscardCardCount:11,
+,54,53,52,54,53,50,25,50,25,24,52cbCenterCard,34,cbWeaveKind,2,
+cbCenterCard,18,cbWeaveKind,2,
+cbOperateCode,0,cbOperateCode,50,,50
+End
+
+cbHandCardCount:8
+
+testCount:8
+,36,36,37,38,39,19,21,20
+ wMeChairId:0,
+
+ wCurrentUser:0,
+
+ cbActionMask:64,
+
+ cbActionCard:20,
+
+ cbCardDataEx:20,
+,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+ cbDiscardCardCount:15,
+,54,53,52,54,53,50,25,50,25,24,52,50,52,54,50cbCenterCard,34,cbWeaveKind,2,
+cbCenterCard,18,cbWeaveKind,2,
+cbOperateCode,64,cbOperateCode,20,,20
+End
+
+cbHandCardCount:14
+
+testCount:9
+,37,41,41,17,20,20,20,22,23,24,24,49,52,54
+ wMeChairId:0,
+
+ wCurrentUser:0,
+
+ cbActionMask:0,
+
+ cbActionCard:54,
+
+ cbCardDataEx:20,
+,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+ cbDiscardCardCount:0,
+cbOperateCode,0,cbOperateCode,49,,49
+End
+
+cbHandCardCount:14
+
+testCount:10
+,37,41,41,17,20,20,20,22,23,24,24,52,54,21
+ wMeChairId:0,
+
+ wCurrentUser:0,
+
+ cbActionMask:0,
+
+ cbActionCard:21,
+
+ cbCardDataEx:20,
+,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+ cbDiscardCardCount:1,
+,49cbOperateCode,0,cbOperateCode,52,,52
+End
+
+cbHandCardCount:14
+
+testCount:11
+,37,41,41,17,20,20,20,21,22,23,24,24,54,50
+ wMeChairId:0,
+
+ wCurrentUser:0,
+
+ cbActionMask:0,
+
+ cbActionCard:50,
+
+ cbCardDataEx:20,
+,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+ cbDiscardCardCount:2,
+,49,52cbOperateCode,0,cbOperateCode,50,,50
+End
+
+cbHandCardCount:14
+
+testCount:12
+,37,41,41,17,20,20,20,21,22,23,24,24,54,19
+ wMeChairId:0,
+
+ wCurrentUser:0,
+
+ cbActionMask:0,
+
+ cbActionCard:19,
+
+ cbCardDataEx:20,
+,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+ cbDiscardCardCount:3,
+,49,52,50cbOperateCode,0,cbOperateCode,54,,54
+End
+
+cbHandCardCount:14
+
+testCount:13
+,37,41,41,17,19,20,20,20,21,22,23,24,24,38
+ wMeChairId:0,
+
+ wCurrentUser:0,
+
+ cbActionMask:0,
+
+ cbActionCard:38,
+
+ cbCardDataEx:20,
+,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+ cbDiscardCardCount:4,
+,49,52,50,54cbOperateCode,0,cbOperateCode,24,,24
+End
+
+cbHandCardCount:14
+
+testCount:14
+,37,38,41,41,17,19,20,20,20,21,22,23,24,34
+ wMeChairId:0,
+
+ wCurrentUser:0,
+
+ cbActionMask:0,
+
+ cbActionCard:34,
+
+ cbCardDataEx:20,
+,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+ cbDiscardCardCount:5,
+,49,52,50,54,24cbOperateCode,0,cbOperateCode,34,,34
+End
+
+cbHandCardCount:13
+
+testCount:15
+,37,38,41,41,17,19,20,20,20,21,22,23,24
+ wMeChairId:0,
+
+ wCurrentUser:1,
+
+ cbActionMask:1,
+
+ cbActionCard:22,
+
+ cbCardDataEx:20,
+,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+ cbDiscardCardCount:7,
+,49,52,50,54,24,34,50cbOperateCode,1,cbOperateCode,22,,22
+End
+
+cbHandCardCount:11
+
+testCount:16
+,37,38,41,41,17,19,20,20,20,21,22
+ wMeChairId:0,
+
+ wCurrentUser:0,
+
+ cbActionMask:0,
+
+ cbActionCard:22,
+
+ cbCardDataEx:20,
+,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+ cbDiscardCardCount:7,
+,49,52,50,54,24,34,50cbCenterCard,22,cbWeaveKind,1,
+cbOperateCode,0,cbOperateCode,17,,17
+End
+
+cbHandCardCount:10
+
+testCount:17
+,37,38,41,41,19,20,20,20,21,22
+ wMeChairId:0,
+
+ wCurrentUser:1,
+
+ cbActionMask:1,
+
+ cbActionCard:18,
+
+ cbCardDataEx:20,
+,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+ cbDiscardCardCount:8,
+,49,52,50,54,24,34,50,17cbCenterCard,22,cbWeaveKind,1,
+cbOperateCode,1,cbOperateCode,18,,18
+End
+
+cbHandCardCount:11
+
+testCount:18
+,37,38,41,41,19,20,20,20,21,22,40
+ wMeChairId:0,
+
+ wCurrentUser:0,
+
+ cbActionMask:0,
+
+ cbActionCard:40,
+
+ cbCardDataEx:20,
+,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+ cbDiscardCardCount:8,
+,49,52,50,54,24,34,50,17cbCenterCard,22,cbWeaveKind,1,
+cbCenterCard,18,cbWeaveKind,1,
+cbOperateCode,0,cbOperateCode,40,,40
+End
+
+cbHandCardCount:11
+
+testCount:19
+,37,38,41,41,19,20,20,20,21,22,36
+ wMeChairId:0,
+
+ wCurrentUser:0,
+
+ cbActionMask:0,
+
+ cbActionCard:36,
+
+ cbCardDataEx:20,
+,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+ cbDiscardCardCount:10,
+,49,52,50,54,24,34,50,17,40,24cbCenterCard,22,cbWeaveKind,1,
+cbCenterCard,18,cbWeaveKind,1,
+cbOperateCode,0,cbOperateCode,20,,20
+End
+
+cbHandCardCount:10
+
+testCount:20
+,36,37,38,41,41,19,20,20,21,22
+ wMeChairId:0,
+
+ wCurrentUser:1,
+
+ cbActionMask:8,
+
+ cbActionCard:20,
+
+ cbCardDataEx:20,
+,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+ cbDiscardCardCount:13,
+,49,52,50,54,24,34,50,17,40,24,20,35,19cbCenterCard,22,cbWeaveKind,1,
+cbCenterCard,18,cbWeaveKind,1,
+cbOperateCode,0,cbOperateCode,0,,0
+End
+
+cbHandCardCount:11
+
+testCount:21
+,36,37,38,41,41,19,20,20,21,22,53
+ wMeChairId:0,
+
+ wCurrentUser:0,
+
+ cbActionMask:0,
+
+ cbActionCard:53,
+
+ cbCardDataEx:20,
+,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+ cbDiscardCardCount:13,
+,49,52,50,54,24,34,50,17,40,24,20,35,19cbCenterCard,22,cbWeaveKind,1,
+cbCenterCard,18,cbWeaveKind,1,
+cbOperateCode,0,cbOperateCode,53,,53
+End
+
+cbHandCardCount:11
+
+testCount:22
+,36,37,38,41,41,19,20,20,21,22,51
+ wMeChairId:0,
+
+ wCurrentUser:0,
+
+ cbActionMask:0,
+
+ cbActionCard:51,
+
+ cbCardDataEx:20,
+,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+ cbDiscardCardCount:16,
+,49,52,50,54,24,34,50,17,40,24,20,35,19,53,20,52cbCenterCard,22,cbWeaveKind,1,
+cbCenterCard,18,cbWeaveKind,1,
+cbOperateCode,0,cbOperateCode,51,,51
+End
+
+cbHandCardCount:11
+
+testCount:23
+,36,37,38,41,41,19,20,20,21,22,33
+ wMeChairId:0,
+
+ wCurrentUser:0,
+
+ cbActionMask:0,
+
+ cbActionCard:33,
+
+ cbCardDataEx:20,
+,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+ cbDiscardCardCount:19,
+,49,52,50,54,24,34,50,17,40,24,20,35,19,53,20,52,51,34,23cbCenterCard,22,cbWeaveKind,1,
+cbCenterCard,18,cbWeaveKind,1,
+cbOperateCode,0,cbOperateCode,33,,33
+End
+
+cbHandCardCount:10
+
+testCount:24
+,36,37,38,41,41,19,20,20,21,22
+ wMeChairId:0,
+
+ wCurrentUser:1,
+
+ cbActionMask:1,
+
+ cbActionCard:37,
+
+ cbCardDataEx:20,
+,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+ cbDiscardCardCount:22,
+,49,52,50,54,24,34,50,17,40,24,20,35,19,53,20,52,51,34,23,33,25,51cbCenterCard,22,cbWeaveKind,1,
+cbCenterCard,18,cbWeaveKind,1,
+cbOperateCode,0,cbOperateCode,0,,0
+End
+
+cbHandCardCount:11
+
+testCount:25
+,36,37,38,41,41,19,20,20,21,22,25
+ wMeChairId:0,
+
+ wCurrentUser:0,
+
+ cbActionMask:0,
+
+ cbActionCard:25,
+
+ cbCardDataEx:20,
+,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+ cbDiscardCardCount:22,
+,49,52,50,54,24,34,50,17,40,24,20,35,19,53,20,52,51,34,23,33,25,51cbCenterCard,22,cbWeaveKind,1,
+cbCenterCard,18,cbWeaveKind,1,
+cbOperateCode,0,cbOperateCode,25,,25
+End
+
+cbHandCardCount:10
+
+testCount:26
+,36,37,38,41,41,19,20,20,21,22
+ wMeChairId:0,
+
+ wCurrentUser:1,
+
+ cbActionMask:1,
+
+ cbActionCard:22,
+
+ cbCardDataEx:20,
+,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+ cbDiscardCardCount:25,
+,49,52,50,54,24,34,50,17,40,24,20,35,19,53,20,52,51,34,23,33,25,51,25,37,23cbCenterCard,22,cbWeaveKind,1,
+cbCenterCard,18,cbWeaveKind,1,
+cbOperateCode,0,cbOperateCode,0,,0
+End
+
+cbHandCardCount:11
+
+testCount:27
+,36,37,38,41,41,19,20,20,21,22,49
+ wMeChairId:0,
+
+ wCurrentUser:0,
+
+ cbActionMask:0,
+
+ cbActionCard:49,
+
+ cbCardDataEx:20,
+,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+ cbDiscardCardCount:25,
+,49,52,50,54,24,34,50,17,40,24,20,35,19,53,20,52,51,34,23,33,25,51,25,37,23cbCenterCard,22,cbWeaveKind,1,
+cbCenterCard,18,cbWeaveKind,1,
+cbOperateCode,0,cbOperateCode,49,,49
+End
+
+cbHandCardCount:10
+
+testCount:28
+,36,37,38,41,41,19,20,20,21,22
+ wMeChairId:0,
+
+ wCurrentUser:1,
+
+ cbActionMask:8,
+
+ cbActionCard:41,
+
+ cbCardDataEx:20,
+,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+ cbDiscardCardCount:28,
+,49,52,50,54,24,34,50,17,40,24,20,35,19,53,20,52,51,34,23,33,25,51,25,37,23,49,22,35cbCenterCard,22,cbWeaveKind,1,
+cbCenterCard,18,cbWeaveKind,1,
+cbOperateCode,0,cbOperateCode,0,,0
+End
+
+cbHandCardCount:11
+
+testCount:29
+,36,37,38,41,41,19,20,20,21,22,37
+ wMeChairId:0,
+
+ wCurrentUser:0,
+
+ cbActionMask:0,
+
+ cbActionCard:37,
+
+ cbCardDataEx:20,
+,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+ cbDiscardCardCount:28,
+,49,52,50,54,24,34,50,17,40,24,20,35,19,53,20,52,51,34,23,33,25,51,25,37,23,49,22,35cbCenterCard,22,cbWeaveKind,1,
+cbCenterCard,18,cbWeaveKind,1,
+cbOperateCode,0,cbOperateCode,37,,37
+End
+
+cbHandCardCount:14
+
+testCount:1
+,33,34,35,36,17,21,21,22,25,49,49,54,54,54
+ wMeChairId:0,
+
+ wCurrentUser:0,
+
+ cbActionMask:0,
+
+ cbActionCard:54,
+
+ cbCardDataEx:20,
+,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+ cbDiscardCardCount:0,
+cbOperateCode,0,cbOperateCode,17,,17
+End
+
+cbHandCardCount:14
+
+testCount:2
+,33,34,35,36,21,21,22,25,49,49,54,54,54,25
+ wMeChairId:0,
+
+ wCurrentUser:0,
+
+ cbActionMask:0,
+
+ cbActionCard:25,
+
+ cbCardDataEx:20,
+,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+ cbDiscardCardCount:1,
+,17cbOperateCode,0,cbOperateCode,33,,33
+End
+
+cbHandCardCount:14
+
+testCount:3
+,33,34,35,36,21,21,22,25,49,49,54,54,54,25
+ wMeChairId:0,
+
+ wCurrentUser:0,
+
+ cbActionMask:0,
+
+ cbActionCard:25,
+
+ cbCardDataEx:20,
+,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+ cbDiscardCardCount:4,
+,17,33,50,52cbOperateCode,0,cbOperateCode,33,,33
+End
+
+cbHandCardCount:13
+
+testCount:4
+,34,35,36,21,21,22,25,25,49,49,54,54,54
+ wMeChairId:0,
+
+ wCurrentUser:1,
+
+ cbActionMask:1,
+
+ cbActionCard:37,
+
+ cbCardDataEx:20,
+,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+ cbDiscardCardCount:5,
+,17,33,50,52,33cbOperateCode,0,cbOperateCode,0,,0
+End
+
+cbHandCardCount:14
+
+testCount:5
+,34,35,36,21,21,22,25,25,49,49,54,54,54,18
+ wMeChairId:0,
+
+ wCurrentUser:0,
+
+ cbActionMask:0,
+
+ cbActionCard:18,
+
+ cbCardDataEx:20,
+,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+ cbDiscardCardCount:5,
+,17,33,50,52,33cbOperateCode,0,cbOperateCode,18,,18
+End
+
+cbHandCardCount:14
+
+testCount:6
+,34,35,36,21,21,22,25,25,49,49,54,54,54,22
+ wMeChairId:0,
+
+ wCurrentUser:0,
+
+ cbActionMask:0,
+
+ cbActionCard:22,
+
+ cbCardDataEx:20,
+,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+ cbDiscardCardCount:7,
+,17,33,50,52,33,18,37cbOperateCode,0,cbOperateCode,49,,49
+End
+
+cbHandCardCount:13
+
+testCount:7
+,34,35,36,21,21,22,22,25,25,49,54,54,54
+ wMeChairId:0,
+
+ wCurrentUser:1,
+
+ cbActionMask:8,
+
+ cbActionCard:25,
+
+ cbCardDataEx:20,
+,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+ cbDiscardCardCount:10,
+,17,33,50,52,33,18,37,49,53,41cbOperateCode,8,cbOperateCode,25,,25
+End
+
+cbHandCardCount:11
+
+testCount:8
+,34,35,37,21,21,22,22,49,54,54,54
+ wMeChairId:0,
+
+ wCurrentUser:0,
+
+ cbActionMask:0,
+
+ cbActionCard:54,
+
+ cbCardDataEx:20,
+,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+ cbDiscardCardCount:10,
+,17,33,50,52,33,18,37,49,53,41cbCenterCard,25,cbWeaveKind,8,
+cbOperateCode,0,cbOperateCode,49,,49
+End
+
+cbHandCardCount:10
+
+testCount:9
+,34,35,36,21,21,22,22,54,54,54
+ wMeChairId:0,
+
+ wCurrentUser:1,
+
+ cbActionMask:72,
+
+ cbActionCard:22,
+
+ cbCardDataEx:20,
+,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+ cbDiscardCardCount:11,
+,17,33,50,52,33,18,37,49,53,41,49cbCenterCard,25,cbWeaveKind,8,
+cbOperateCode,64,cbOperateCode,22,,22
+End
+
+cbHandCardCount:14
+
+testCount:1
+,33,34,35,41,18,19,21,22,23,24,24,51,52,49
+ wMeChairId:0,
+
+ wCurrentUser:0,
+
+ cbActionMask:0,
+
+ cbActionCard:49,
+
+ cbCardDataEx:20,
+,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+ cbDiscardCardCount:0,
+cbOperateCode,0,cbOperateCode,49,,49
+End
+
+cbHandCardCount:14
+
+testCount:1
+,33,34,35,41,18,19,21,22,23,24,24,51,52,23
+ wMeChairId:0,
+
+ wCurrentUser:0,
+
+ cbActionMask:0,
+
+ cbActionCard:23,
+
+ cbCardDataEx:20,
+,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+ cbDiscardCardCount:4,
+,53,54,49,52cbOperateCode,0,cbOperateCode,51,,51
+End
+
+cbHandCardCount:13
+
+testCount:2
+,33,34,35,41,18,19,21,22,23,23,24,24,52
+ wMeChairId:0,
+
+ wCurrentUser:1,
+
+ cbActionMask:1,
+
+ cbActionCard:17,
+
+ cbCardDataEx:20,
+,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+ cbDiscardCardCount:5,
+,53,54,49,52,51cbOperateCode,1,cbOperateCode,17,,17
+End
+
+cbHandCardCount:11
+
+testCount:3
+,33,34,35,41,21,22,23,23,24,24,52
+ wMeChairId:0,
+
+ wCurrentUser:0,
+
+ cbActionMask:0,
+
+ cbActionCard:52,
+
+ cbCardDataEx:20,
+,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+ cbDiscardCardCount:5,
+,53,54,49,52,51cbCenterCard,17,cbWeaveKind,1,
+cbOperateCode,0,cbOperateCode,52,,52
+End
+
+cbHandCardCount:10
+
+testCount:4
+,33,34,35,41,21,22,23,23,24,24
+ wMeChairId:0,
+
+ wCurrentUser:1,
+
+ cbActionMask:1,
+
+ cbActionCard:33,
+
+ cbCardDataEx:20,
+,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+ cbDiscardCardCount:7,
+,53,54,49,52,51,52,41cbCenterCard,17,cbWeaveKind,1,
+cbOperateCode,0,cbOperateCode,0,,0
+End
+
+cbHandCardCount:11
+
+testCount:5
+,33,34,35,41,21,22,23,23,24,24,53
+ wMeChairId:0,
+
+ wCurrentUser:0,
+
+ cbActionMask:0,
+
+ cbActionCard:53,
+
+ cbCardDataEx:20,
+,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+ cbDiscardCardCount:7,
+,53,54,49,52,51,52,41cbCenterCard,17,cbWeaveKind,1,
+cbOperateCode,0,cbOperateCode,53,,53
+End
+
+cbHandCardCount:11
+
+testCount:6
+,33,34,35,41,21,22,23,23,24,24,38
+ wMeChairId:0,
+
+ wCurrentUser:0,
+
+ cbActionMask:0,
+
+ cbActionCard:38,
+
+ cbCardDataEx:20,
+,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+ cbDiscardCardCount:10,
+,53,54,49,52,51,52,41,53,33,50cbCenterCard,17,cbWeaveKind,1,
+cbOperateCode,0,cbOperateCode,41,,41
+End
+
+cbHandCardCount:11
+
+testCount:7
+,33,34,35,38,21,22,23,23,24,24,38
+ wMeChairId:0,
+
+ wCurrentUser:0,
+
+ cbActionMask:0,
+
+ cbActionCard:38,
+
+ cbCardDataEx:20,
+,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+ cbDiscardCardCount:13,
+,53,54,49,52,51,52,41,53,33,50,41,41,22cbCenterCard,17,cbWeaveKind,1,
+cbOperateCode,0,cbOperateCode,21,,21
+End
+
+cbHandCardCount:10
+
+testCount:8
+,33,34,35,38,38,22,23,23,24,24
+ wMeChairId:0,
+
+ wCurrentUser:1,
+
+ cbActionMask:1,
+
+ cbActionCard:34,
+
+ cbCardDataEx:20,
+,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+ cbDiscardCardCount:16,
+,53,54,49,52,51,52,41,53,33,50,41,41,22,21,18,39cbCenterCard,17,cbWeaveKind,1,
+cbOperateCode,0,cbOperateCode,0,,0
+End
+
+cbHandCardCount:11
+
+testCount:9
+,33,34,35,38,38,22,23,23,24,24,20
+ wMeChairId:0,
+
+ wCurrentUser:0,
+
+ cbActionMask:0,
+
+ cbActionCard:20,
+
+ cbCardDataEx:20,
+,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+ cbDiscardCardCount:16,
+,53,54,49,52,51,52,41,53,33,50,41,41,22,21,18,39cbCenterCard,17,cbWeaveKind,1,
+cbOperateCode,0,cbOperateCode,20,,20
+End
+
+cbHandCardCount:14
+
+testCount:10
+,34,37,40,18,18,22,22,24,50,51,51,52,54,55
+ wMeChairId:0,
+
+ wCurrentUser:0,
+
+ cbActionMask:0,
+
+ cbActionCard:55,
+
+ cbCardDataEx:20,
+,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+ cbDiscardCardCount:0,
+cbOperateCode,0,cbOperateCode,50,,50
+End
+
+cbHandCardCount:13
+
+testCount:11
+,34,37,40,18,18,22,22,24,51,51,52,54,55
+ wMeChairId:0,
+
+ wCurrentUser:1,
+
+ cbActionMask:8,
+
+ cbActionCard:51,
+
+ cbCardDataEx:20,
+,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+ cbDiscardCardCount:1,
+,50cbOperateCode,8,cbOperateCode,51,,51
+End
+
+cbHandCardCount:11
+
+testCount:12
+,34,36,40,18,18,22,22,24,52,54,55
+ wMeChairId:0,
+
+ wCurrentUser:0,
+
+ cbActionMask:0,
+
+ cbActionCard:55,
+
+ cbCardDataEx:20,
+,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+ cbDiscardCardCount:1,
+,50cbCenterCard,51,cbWeaveKind,8,
+cbOperateCode,0,cbOperateCode,52,,52
+End
+
+cbHandCardCount:11
+
+testCount:13
+,34,37,40,18,18,22,22,24,54,55,49
+ wMeChairId:0,
+
+ wCurrentUser:0,
+
+ cbActionMask:0,
+
+ cbActionCard:49,
+
+ cbCardDataEx:20,
+,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+ cbDiscardCardCount:2,
+,50,52cbCenterCard,51,cbWeaveKind,8,
+cbOperateCode,0,cbOperateCode,49,,49
+End
+
+cbHandCardCount:2
+
+testCount:14
+,18,18
+ wMeChairId:0,
+
+ wCurrentUser:0,
+
+ cbActionMask:0,
+
+ cbActionCard:18,
+
+ cbCardDataEx:20,
+,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+ cbDiscardCardCount:3,
+,50,52,49cbCenterCard,51,cbWeaveKind,8,
+cbOperateCode,0,cbOperateCode,18,,18
+End
+
+cbHandCardCount:14
+
+testCount:15
+,33,35,38,40,20,21,21,23,23,25,49,53,55,50
+ wMeChairId:0,
+
+ wCurrentUser:0,
+
+ cbActionMask:0,
+
+ cbActionCard:50,
+
+ cbCardDataEx:20,
+,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+ cbDiscardCardCount:0,
+cbOperateCode,0,cbOperateCode,49,,49
+End
+
+cbHandCardCount:14
+
+testCount:16
+,33,35,38,40,20,21,21,23,23,25,50,53,55,24
+ wMeChairId:0,
+
+ wCurrentUser:0,
+
+ cbActionMask:0,
+
+ cbActionCard:24,
+
+ cbCardDataEx:20,
+,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+ cbDiscardCardCount:1,
+,49cbOperateCode,0,cbOperateCode,50,,50
+End
+
+cbHandCardCount:14
+
+testCount:17
+,33,35,38,40,20,21,21,23,23,24,25,53,55,17
+ wMeChairId:0,
+
+ wCurrentUser:0,
+
+ cbActionMask:0,
+
+ cbActionCard:17,
+
+ cbCardDataEx:20,
+,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+ cbDiscardCardCount:2,
+,49,50cbOperateCode,0,cbOperateCode,53,,53
+End
+
+cbHandCardCount:13
+
+testCount:18
+,33,35,38,40,17,20,21,21,23,23,24,25,55
+ wMeChairId:0,
+
+ wCurrentUser:1,
+
+ cbActionMask:1,
+
+ cbActionCard:22,
+
+ cbCardDataEx:20,
+,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+ cbDiscardCardCount:3,
+,49,50,53cbOperateCode,2,cbOperateCode,22,,22
+End
+
+cbHandCardCount:11
+
+testCount:19
+,33,35,38,40,17,20,21,23,24,25,55
+ wMeChairId:0,
+
+ wCurrentUser:0,
+
+ cbActionMask:0,
+
+ cbActionCard:55,
+
+ cbCardDataEx:20,
+,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+ cbDiscardCardCount:3,
+,49,50,53cbCenterCard,22,cbWeaveKind,2,
+cbOperateCode,0,cbOperateCode,55,,55
+End
+
+cbHandCardCount:11
+
+testCount:20
+,33,35,38,40,17,20,21,23,24,25,22
+ wMeChairId:0,
+
+ wCurrentUser:0,
+
+ cbActionMask:0,
+
+ cbActionCard:22,
+
+ cbCardDataEx:20,
+,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+ cbDiscardCardCount:4,
+,49,50,53,55cbCenterCard,22,cbWeaveKind,2,
+cbOperateCode,0,cbOperateCode,17,,17
+End
+
+cbHandCardCount:11
+
+testCount:21
+,33,35,38,40,20,21,22,23,24,25,25
+ wMeChairId:0,
+
+ wCurrentUser:0,
+
+ cbActionMask:0,
+
+ cbActionCard:25,
+
+ cbCardDataEx:20,
+,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+ cbDiscardCardCount:5,
+,49,50,53,55,17cbCenterCard,22,cbWeaveKind,2,
+cbOperateCode,0,cbOperateCode,25,,25
+End
+
+cbHandCardCount:11
+
+testCount:22
+,33,35,38,40,20,21,22,23,24,25,18
+ wMeChairId:0,
+
+ wCurrentUser:0,
+
+ cbActionMask:0,
+
+ cbActionCard:18,
+
+ cbCardDataEx:20,
+,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+ cbDiscardCardCount:6,
+,49,50,53,55,17,25cbCenterCard,22,cbWeaveKind,2,
+cbOperateCode,0,cbOperateCode,18,,18
+End
+
+cbHandCardCount:14
+
+testCount:23
+,34,34,37,37,39,40,40,17,18,20,25,51,51,52
+ wMeChairId:0,
+
+ wCurrentUser:0,
+
+ cbActionMask:0,
+
+ cbActionCard:52,
+
+ cbCardDataEx:20,
+,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+ cbDiscardCardCount:0,
+cbOperateCode,0,cbOperateCode,52,,52
+End
+
+cbHandCardCount:13
+
+testCount:24
+,34,34,37,37,39,40,40,17,18,20,25,51,51
+ wMeChairId:0,
+
+ wCurrentUser:1,
+
+ cbActionMask:8,
+
+ cbActionCard:34,
+
+ cbCardDataEx:20,
+,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+ cbDiscardCardCount:1,
+,52cbOperateCode,8,cbOperateCode,34,,34
+End
+
+cbHandCardCount:11
+
+testCount:25
+,37,37,39,40,40,17,18,20,25,51,51
+ wMeChairId:0,
+
+ wCurrentUser:0,
+
+ cbActionMask:0,
+
+ cbActionCard:51,
+
+ cbCardDataEx:20,
+,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+ cbDiscardCardCount:1,
+,52cbCenterCard,34,cbWeaveKind,8,
+cbOperateCode,0,cbOperateCode,25,,25
+End
+
+cbHandCardCount:11
+
+testCount:26
+,37,37,39,40,40,17,18,20,51,51,25
+ wMeChairId:0,
+
+ wCurrentUser:0,
+
+ cbActionMask:0,
+
+ cbActionCard:25,
+
+ cbCardDataEx:20,
+,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+ cbDiscardCardCount:2,
+,52,25cbCenterCard,34,cbWeaveKind,8,
+cbOperateCode,0,cbOperateCode,25,,25
+End
+
+cbHandCardCount:11
+
+testCount:27
+,37,37,39,40,40,17,18,20,51,51,39
+ wMeChairId:0,
+
+ wCurrentUser:0,
+
+ cbActionMask:0,
+
+ cbActionCard:39,
+
+ cbCardDataEx:20,
+,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+ cbDiscardCardCount:3,
+,52,25,25cbCenterCard,34,cbWeaveKind,8,
+cbOperateCode,0,cbOperateCode,20,,20
+End
+
+cbHandCardCount:11
+
+testCount:28
+,37,37,39,39,40,40,17,18,51,51,54
+ wMeChairId:0,
+
+ wCurrentUser:0,
+
+ cbActionMask:0,
+
+ cbActionCard:54,
+
+ cbCardDataEx:20,
+,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+ cbDiscardCardCount:4,
+,52,25,25,20cbCenterCard,34,cbWeaveKind,8,
+cbOperateCode,0,cbOperateCode,54,,54
+End
+
+cbHandCardCount:11
+
+testCount:29
+,37,37,39,39,40,40,17,18,51,51,22
+ wMeChairId:0,
+
+ wCurrentUser:0,
+
+ cbActionMask:0,
+
+ cbActionCard:22,
+
+ cbCardDataEx:20,
+,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+ cbDiscardCardCount:5,
+,52,25,25,20,54cbCenterCard,34,cbWeaveKind,8,
+cbOperateCode,0,cbOperateCode,22,,22
+End
+
+cbHandCardCount:10
+
+testCount:30
+,37,37,39,39,40,40,17,18,51,51
+ wMeChairId:0,
+
+ wCurrentUser:1,
+
+ cbActionMask:1,
+
+ cbActionCard:38,
+
+ cbCardDataEx:20,
+,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+ cbDiscardCardCount:6,
+,52,25,25,20,54,22cbCenterCard,34,cbWeaveKind,8,
+cbOperateCode,0,cbOperateCode,0,,0
+End
+
+cbHandCardCount:11
+
+testCount:31
+,37,37,39,39,40,40,17,18,51,51,17
+ wMeChairId:0,
+
+ wCurrentUser:0,
+
+ cbActionMask:0,
+
+ cbActionCard:17,
+
+ cbCardDataEx:20,
+,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+ cbDiscardCardCount:6,
+,52,25,25,20,54,22cbCenterCard,34,cbWeaveKind,8,
+cbOperateCode,0,cbOperateCode,18,,18
+End
+
+cbHandCardCount:11
+
+testCount:32
+,37,37,39,39,40,40,17,17,51,51,37
+ wMeChairId:0,
+
+ wCurrentUser:0,
+
+ cbActionMask:0,
+
+ cbActionCard:37,
+
+ cbCardDataEx:20,
+,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+ cbDiscardCardCount:7,
+,52,25,25,20,54,22,18cbCenterCard,34,cbWeaveKind,8,
+cbOperateCode,0,cbOperateCode,51,,51
+End
+
+cbHandCardCount:11
+
+testCount:33
+,37,37,37,39,39,40,40,17,17,51,38
+ wMeChairId:0,
+
+ wCurrentUser:0,
+
+ cbActionMask:0,
+
+ cbActionCard:38,
+
+ cbCardDataEx:20,
+,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+ cbDiscardCardCount:10,
+,52,25,25,20,54,22,18,51,33,33cbCenterCard,34,cbWeaveKind,8,
+cbOperateCode,0,cbOperateCode,51,,51
+End
+
+cbHandCardCount:11
+
+testCount:34
+,37,37,37,38,39,39,40,40,17,17,24
+ wMeChairId:0,
+
+ wCurrentUser:0,
+
+ cbActionMask:0,
+
+ cbActionCard:24,
+
+ cbCardDataEx:20,
+,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+ cbDiscardCardCount:13,
+,52,25,25,20,54,22,18,51,33,33,51,23,50cbCenterCard,34,cbWeaveKind,8,
+cbOperateCode,0,cbOperateCode,24,,24
+End
+
+cbHandCardCount:10
+
+testCount:35
+,37,37,37,38,39,39,40,40,17,17
+ wMeChairId:0,
+
+ wCurrentUser:1,
+
+ cbActionMask:8,
+
+ cbActionCard:17,
+
+ cbCardDataEx:20,
+,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+ cbDiscardCardCount:16,
+,52,25,25,20,54,22,18,51,33,33,51,23,50,24,53,50cbCenterCard,34,cbWeaveKind,8,
+cbOperateCode,8,cbOperateCode,17,,17
+End
+
+cbHandCardCount:8
+
+testCount:36
+,37,37,37,38,39,39,40,40
+ wMeChairId:0,
+
+ wCurrentUser:0,
+
+ cbActionMask:0,
+
+ cbActionCard:40,
+
+ cbCardDataEx:20,
+,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+ cbDiscardCardCount:16,
+,52,25,25,20,54,22,18,51,33,33,51,23,50,24,53,50cbCenterCard,34,cbWeaveKind,8,
+cbCenterCard,17,cbWeaveKind,8,
+cbOperateCode,0,cbOperateCode,40,,40
+End
+
+cbHandCardCount:14
+
+testCount:1
+,33,34,37,39,41,19,22,24,25,49,50,52,52,54
+ wMeChairId:0,
+
+ wCurrentUser:0,
+
+ cbActionMask:0,
+
+ cbActionCard:54,
+
+ cbCardDataEx:20,
+,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+ cbDiscardCardCount:0,
+cbOperateCode,0,cbOperateCode,49,,49
+End
+
+cbHandCardCount:14
+
+testCount:2
+,33,34,37,39,41,19,22,24,25,50,52,52,54,17
+ wMeChairId:0,
+
+ wCurrentUser:0,
+
+ cbActionMask:0,
+
+ cbActionCard:17,
+
+ cbCardDataEx:20,
+,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+ cbDiscardCardCount:2,
+,49,55cbOperateCode,0,cbOperateCode,50,,50
+End
+
+cbHandCardCount:14
+
+testCount:3
+,33,34,37,39,41,19,22,24,25,50,52,52,54,17
+ wMeChairId:0,
+
+ wCurrentUser:0,
+
+ cbActionMask:0,
+
+ cbActionCard:17,
+
+ cbCardDataEx:20,
+,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+ cbDiscardCardCount:4,
+,49,55,50,49cbOperateCode,0,cbOperateCode,50,,50
+End
+
+cbHandCardCount:14
+
+testCount:4
+,33,34,37,39,41,17,19,22,24,25,52,52,54,50
+ wMeChairId:0,
+
+ wCurrentUser:0,
+
+ cbActionMask:0,
+
+ cbActionCard:50,
+
+ cbCardDataEx:20,
+,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+ cbDiscardCardCount:5,
+,49,55,50,49,50cbOperateCode,0,cbOperateCode,50,,50
+End
+
+cbHandCardCount:13
+
+testCount:5
+,33,34,37,39,41,17,19,22,24,25,52,52,54
+ wMeChairId:0,
+
+ wCurrentUser:1,
+
+ cbActionMask:1,
+
+ cbActionCard:18,
+
+ cbCardDataEx:20,
+,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+ cbDiscardCardCount:8,
+,49,55,50,49,50,50,55,54cbOperateCode,2,cbOperateCode,18,,18
+End
+
+cbHandCardCount:11
+
+testCount:6
+,33,34,37,39,41,22,24,25,52,52,54
+ wMeChairId:0,
+
+ wCurrentUser:0,
+
+ cbActionMask:0,
+
+ cbActionCard:54,
+
+ cbCardDataEx:20,
+,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+ cbDiscardCardCount:8,
+,49,55,50,49,50,50,55,54cbCenterCard,18,cbWeaveKind,2,
+cbOperateCode,0,cbOperateCode,54,,54
+End
+
+cbHandCardCount:11
+
+testCount:7
+,33,34,37,39,41,22,24,25,52,52,18
+ wMeChairId:0,
+
+ wCurrentUser:0,
+
+ cbActionMask:0,
+
+ cbActionCard:18,
+
+ cbCardDataEx:20,
+,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+ cbDiscardCardCount:10,
+,49,55,50,49,50,50,55,54,54,25cbCenterCard,18,cbWeaveKind,2,
+cbOperateCode,0,cbOperateCode,41,,41
+End
+
+cbHandCardCount:11
+
+testCount:8
+,33,34,37,39,18,22,24,25,52,52,39
+ wMeChairId:0,
+
+ wCurrentUser:0,
+
+ cbActionMask:0,
+
+ cbActionCard:39,
+
+ cbCardDataEx:20,
+,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+ cbDiscardCardCount:13,
+,49,55,50,49,50,50,55,54,54,25,41,33,36cbCenterCard,18,cbWeaveKind,2,
+cbOperateCode,0,cbOperateCode,18,,18
+End
+
+cbHandCardCount:11
+
+testCount:9
+,33,34,37,39,39,22,24,25,52,52,41
+ wMeChairId:0,
+
+ wCurrentUser:0,
+
+ cbActionMask:0,
+
+ cbActionCard:41,
+
+ cbCardDataEx:20,
+,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+ cbDiscardCardCount:16,
+,49,55,50,49,50,50,55,54,54,25,41,33,36,18,41,41cbCenterCard,18,cbWeaveKind,2,
+cbOperateCode,0,cbOperateCode,22,,22
+End
+
+cbHandCardCount:11
+
+testCount:10
+,33,34,37,39,39,41,24,25,52,52,34
+ wMeChairId:0,
+
+ wCurrentUser:0,
+
+ cbActionMask:0,
+
+ cbActionCard:34,
+
+ cbCardDataEx:20,
+,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+ cbDiscardCardCount:19,
+,49,55,50,49,50,50,55,54,54,25,41,33,36,18,41,41,22,24,40cbCenterCard,18,cbWeaveKind,2,
+cbOperateCode,0,cbOperateCode,33,,33
+End
+
+cbHandCardCount:11
+
+testCount:11
+,34,34,37,39,39,41,24,25,52,52,37
+ wMeChairId:0,
+
+ wCurrentUser:0,
+
+ cbActionMask:0,
+
+ cbActionCard:37,
+
+ cbCardDataEx:20,
+,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+ cbDiscardCardCount:22,
+,49,55,50,49,50,50,55,54,54,25,41,33,36,18,41,41,22,24,40,33,55,38cbCenterCard,18,cbWeaveKind,2,
+cbOperateCode,0,cbOperateCode,41,,41
+End
+
+cbHandCardCount:11
+
+testCount:12
+,34,34,37,37,39,39,24,25,52,52,17
+ wMeChairId:0,
+
+ wCurrentUser:0,
+
+ cbActionMask:0,
+
+ cbActionCard:17,
+
+ cbCardDataEx:20,
+,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+ cbDiscardCardCount:25,
+,49,55,50,49,50,50,55,54,54,25,41,33,36,18,41,41,22,24,40,33,55,38,41,35,36cbCenterCard,18,cbWeaveKind,2,
+cbOperateCode,0,cbOperateCode,17,,17
+End
+
+cbHandCardCount:10
+
+testCount:13
+,34,34,37,37,39,39,24,25,52,52
+ wMeChairId:0,
+
+ wCurrentUser:1,
+
+ cbActionMask:8,
+
+ cbActionCard:39,
+
+ cbCardDataEx:20,
+,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+ cbDiscardCardCount:28,
+,49,55,50,49,50,50,55,54,54,25,41,33,36,18,41,41,22,24,40,33,55,38,41,35,36,17,24,25cbCenterCard,18,cbWeaveKind,2,
+cbOperateCode,8,cbOperateCode,39,,39
+End
+
+cbHandCardCount:8
+
+testCount:14
+,34,34,37,37,24,25,52,52
+ wMeChairId:0,
+
+ wCurrentUser:0,
+
+ cbActionMask:0,
+
+ cbActionCard:52,
+
+ cbCardDataEx:20,
+,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+ cbDiscardCardCount:28,
+,49,55,50,49,50,50,55,54,54,25,41,33,36,18,41,41,22,24,40,33,55,38,41,35,36,17,24,25cbCenterCard,18,cbWeaveKind,2,
+cbCenterCard,39,cbWeaveKind,8,
+cbOperateCode,0,cbOperateCode,52,,52
+End
+
+cbHandCardCount:8
+
+testCount:15
+,34,34,37,37,24,25,52,53
+ wMeChairId:0,
+
+ wCurrentUser:0,
+
+ cbActionMask:0,
+
+ cbActionCard:53,
+
+ cbCardDataEx:20,
+,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+ cbDiscardCardCount:30,
+,49,55,50,49,50,50,55,54,54,25,41,33,36,18,41,41,22,24,40,33,55,38,41,35,36,17,24,25,52,54cbCenterCard,18,cbWeaveKind,2,
+cbCenterCard,39,cbWeaveKind,8,
+cbOperateCode,0,cbOperateCode,53,,53
+End
+
+cbHandCardCount:7
+
+testCount:16
+,34,34,37,37,24,25,52
+ wMeChairId:0,
+
+ wCurrentUser:1,
+
+ cbActionMask:8,
+
+ cbActionCard:37,
+
+ cbCardDataEx:20,
+,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+ cbDiscardCardCount:33,
+,49,55,50,49,50,50,55,54,54,25,41,33,36,18,41,41,22,24,40,33,55,38,41,35,36,17,24,25,52,54,53,33,40cbCenterCard,18,cbWeaveKind,2,
+cbCenterCard,39,cbWeaveKind,8,
+cbOperateCode,8,cbOperateCode,37,,37
+End
+
+cbHandCardCount:13
+
+testCount:17
+,35,17,19,22,23,24,25,49,51,51,53,55,55
+ wMeChairId:0,
+
+ wCurrentUser:1,
+
+ cbActionMask:8,
+
+ cbActionCard:55,
+
+ cbCardDataEx:20,
+,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+ cbDiscardCardCount:0,
+cbOperateCode,8,cbOperateCode,55,,55
+End
+
+cbHandCardCount:11
+
+testCount:18
+,35,17,19,22,23,24,25,49,51,51,53
+ wMeChairId:0,
+
+ wCurrentUser:0,
+
+ cbActionMask:0,
+
+ cbActionCard:53,
+
+ cbCardDataEx:20,
+,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+ cbDiscardCardCount:0,
+cbCenterCard,55,cbWeaveKind,8,
+cbOperateCode,0,cbOperateCode,49,,49
+End

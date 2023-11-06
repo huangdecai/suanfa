@@ -374,7 +374,7 @@ bool CAndroidAI::SetAction(BYTE byActionMask, BYTE byActionCard, int GangKind )
 	//ÑéÖ¤
 	ASSERT( byActionCard >=0 && byActionCard < 34 );
 	if( byActionCard >= 34 ) return false;
-
+	BYTE cbExcursion[3] = { 0,1,2 };
 	//Ã¶¾Ù
 	switch( byActionMask )
 	{
@@ -414,8 +414,11 @@ bool CAndroidAI::SetAction(BYTE byActionMask, BYTE byActionCard, int GangKind )
 		}
 	case WIK_LEFT:
 	{
+		BYTE cbValueIndex = byActionCard % 9;
+		if ((cbValueIndex >= cbExcursion[0]) && ((cbValueIndex - cbExcursion[0]) <= 6))
+		{
 			m_nActionScore = 149;
-			if (RemoveCardData(byActionCard + 1)==false)
+			if (RemoveCardData(byActionCard + 1) == false)
 			{
 				return false;
 			}
@@ -423,10 +426,17 @@ bool CAndroidAI::SetAction(BYTE byActionMask, BYTE byActionCard, int GangKind )
 			{
 				return false;
 			}
+		}
+		else {
+			return false;
+		}
 		break;
 	}
 	case WIK_CENTER:
 	{
+		BYTE cbValueIndex = byActionCard % 9;
+		if ((cbValueIndex >= cbExcursion[1]) && ((cbValueIndex - cbExcursion[1]) <= 6))
+		{
 			m_nActionScore = 149;
 			if (RemoveCardData(byActionCard - 1) == false)
 			{
@@ -436,11 +446,18 @@ bool CAndroidAI::SetAction(BYTE byActionMask, BYTE byActionCard, int GangKind )
 			{
 				return false;
 			}
+		}
+		else {
+			return false;
+		}
 			
 		break;
 	}
 	case WIK_RIGHT:
 	{
+		BYTE cbValueIndex = byActionCard % 9;
+		if ((cbValueIndex >= cbExcursion[2]) && ((cbValueIndex - cbExcursion[2]) <= 6))
+		{
 			m_nActionScore = 149;
 			if (RemoveCardData(byActionCard - 2) == false)
 			{
@@ -450,6 +467,10 @@ bool CAndroidAI::SetAction(BYTE byActionMask, BYTE byActionCard, int GangKind )
 			{
 				return false;
 			}
+		}
+		else {
+			return false;
+		}
 		break;
 	}
 	default:
@@ -1160,6 +1181,10 @@ bool CAndroidAI::SearchOutCard(tagOutCardResult &OutCardResult, WORD wMeChairId,
 			}
 			ActionAfterScore(wMeChairId, cbCardIndex, cbShengYuIndex, WeaveItemArray[wMeChairId], cbWeaveCount[wMeChairId], cbDiscardCard, cbDiscardCount, cbActionCard, tmpOperate[i], false, noCheckErXiangTing);
 			nOperateScore[2 + i] += score;
+			if (byBadlyIndex==m_GameLogic.SwitchToCardIndex(cbActionCard))
+			{
+				nOperateScore[2 + i] -= 600;
+			}
 		}
 		
 	}

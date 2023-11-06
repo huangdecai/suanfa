@@ -78,9 +78,9 @@ void TestGameLogic()
 	//BYTE    tempCard[] = { 0x22,0x23,0x23,0x27,0x02,0x03,0x04,0x11,0x11,0x11,0x15,0x16,0x16,0x17 };
 
 
-	BYTE    tempCard[] = { 0x22,0x24,0x25,0x26,0x27,0x28,0x29,0x14,0x15,0x11,0x16,0x16,0x16,0x24 };
-	BYTE cbActionCard = 0x16;
-	BYTE cbActionMask = 0;// 0;// WIK_CHI_HU;
+	BYTE    tempCard[] = { 33,35,36,37,38,39,17,19,19,21,25,53,54 };
+	BYTE cbActionCard = 34;
+	BYTE cbActionMask = 1;// 0;// WIK_CHI_HU;
 		//BYTE    tempCard[] = { 4, 38, 8, 56, 10, 9, 11, 43, 12, 44, 60, 1, 33 };
 
 		//BYTE    tempCard[] = { 0x09 };
@@ -109,7 +109,7 @@ void TestGameLogic()
 		cbActionCard = cbHandCardData[MAX_COUNT - 1];*/
 		//ºúÅÆÅÐ¶Ï
 		tagOutCardResult OutCardResult = {};
-		bool reulst = m_AndroidAI.SearchOutCard(OutCardResult, 0,0, cbCardDataEx, cbActionMask, cbActionCard, cbCardIndex, WeaveItemArray, cbWeaveCount, cbDiscardCard, sizeof(cbDiscardCard));
+		bool reulst = m_AndroidAI.SearchOutCard(OutCardResult, 0,1, cbCardDataEx, cbActionMask, cbActionCard, cbCardIndex, WeaveItemArray, cbWeaveCount, cbDiscardCard, sizeof(cbDiscardCard));
 		if (OutCardResult.cbOperateCard==0)
 		{
 			int a = 4;

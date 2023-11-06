@@ -134,7 +134,7 @@ class MyPyQT_Form(QtWidgets.QWidget, Ui_Form):
         self.canRecord = threading.Lock()  # 开始记牌
         self.m_WeaveItem=[[],[],[],[]]
         self.waiteChiAction=WIK_NULL
-        self.init_cards()
+        #self.init_cards()
         a=4
     def init_display(self):
         self.WinRate.setText("评分")
@@ -250,7 +250,7 @@ class MyPyQT_Form(QtWidgets.QWidget, Ui_Form):
         #helper.ClickOnImage("change_player_btn", region=self.changePlayerBtnPos)
         self.env = None
         self.game_over= False
-        helper.bTest = True
+        helper.bTest = False
         #self.shengYuPaiShow(self.allDisCardData)
         # 识别玩家手牌
         #temp=self.have_white(self.RPlayedCardsPos)
@@ -366,14 +366,14 @@ class MyPyQT_Form(QtWidgets.QWidget, Ui_Form):
                                 playerPos[i][1] + tempSizeY * playerPos[i][3] - ySpace, playerPos[i][2],
                                 playerPos[i][3] + 6)
                      result = helper.LocateOnScreen("outWhite", region=tmpTpos, confidence=0.75)
-                     if arraySize == 10 and i == 0:
+                     if arraySize == 6 and i == 2:
                          a = 3
                      print('WaitForOtherOperate', i, arraySize, result)
                      if result:
                          for j in range(33, -1, -1, ):
                              if j < 9:
                                  continue
-                             tempConfidence = 0.80
+                             tempConfidence = 0.77
                              if j == 26 or j == 33 or j == 18 or j == 25 or j == 23:
                                  tempConfidence = 0.67
                              elif j == 22:
@@ -387,6 +387,7 @@ class MyPyQT_Form(QtWidgets.QWidget, Ui_Form):
                                  TempActionCard = str(j)
                                  self.playerDisCardData[i].append(TempActionCard)
                                  self.allDisCardData.append(TempActionCard)
+                                 print(" self.allDisCardData.append", TempActionCard)
                                  oldarraySize = len(self.playerDisCardData[i])
                                  tryCount=0
                                  bExist = True
@@ -458,6 +459,7 @@ class MyPyQT_Form(QtWidgets.QWidget, Ui_Form):
                         bEnable = True
                     if bEnable==False:
                         while cbActionCard=="":
+                            print("寻找操作牌...")
                             tmpCount=2
                             if cbActionMask&WIK_GANG!=0:
                                 tmpCount=3
@@ -471,7 +473,9 @@ class MyPyQT_Form(QtWidgets.QWidget, Ui_Form):
                                         #                           region=(160, 332, 95, 130),
                                         #                           confidence=0.70)
                                         tempConfidence=0.77
-                                        if j==26 or j==33 or j==18 or j==25 or j==23:
+                                        if j==26 or j==33 or j==18 or j==25 :
+                                            tempConfidence=0.67
+                                        elif  j==23:
                                             tempConfidence=0.67
                                         result = pyautogui.locate(needleImage=helper.Pics[str(j)], haystackImage=img,
                                                                    region=(160, 332, 95, 130),
@@ -562,8 +566,6 @@ class MyPyQT_Form(QtWidgets.QWidget, Ui_Form):
                          item.cbPublicCard = cbActionCard
                          item.wProvideUser = 1
                          self.m_WeaveItem[0].append(item)
-                         #self.allDisCardData.append(action_message[0])
-                         #self.allDisCardData.append(action_message[0])
                          self.bHaveAction=True
                          print("bHaveAction-WIK_PENG:",self.bHaveAction)
                     elif cbOperateCode == WIK_GANG:
@@ -575,15 +577,12 @@ class MyPyQT_Form(QtWidgets.QWidget, Ui_Form):
                          item.cbCenterCard = cbActionCard
                          item.cbPublicCard = cbActionCard
                          item.wProvideUser = 1
-                         #self.allDisCardData.append(action_message[0])
                          gangCardCount=0
                          for j in range(0,len(self.user_hand_cards_real)):
                              if action_message[0]==self.user_hand_cards_real[j]:
                                  gangCardCount=gangCardCount+1
                          if gangCardCount>1:
                             item.wProvideUser = 0
-                            #self.allDisCardData.append(action_message[0])
-                            #self.allDisCardData.append(action_message[0])
                          self.m_WeaveItem[0].append(item)
                     elif cbOperateCode == WIK_CHI_HU:
                          tmpPos = self.ActionBtnPosClick[0]
@@ -603,7 +602,9 @@ class MyPyQT_Form(QtWidgets.QWidget, Ui_Form):
                         self.sleep(1000)
                         # 更新界面
                         if (len(action_message) > 0):
-                            self.allDisCardData.append(action_message[0])
+                            tempCardStr=action_message[0]
+                            self.allDisCardData.append(tempCardStr)
+                            print(" self.allDisCardData.append",tempCardStr)
                             self.DeleteCard(self.user_hand_cards_real, action_message)
                             print(self.play_order, "handcount0：", self.handCardCount[0])
                             print(self.play_order, "handcount1：", self.handCardCount[1])
