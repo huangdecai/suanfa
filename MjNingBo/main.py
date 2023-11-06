@@ -103,6 +103,7 @@ class MyPyQT_Form(QtWidgets.QWidget, Ui_Form):
         self.AutoPlay = False
         self.game_over = False
         self.onlyTip=False
+        self.waitOtherOutCard=False
         self.callCard=0
         self.allDisCardData = []
         self.playerDisCardData=[[],[],[],[]]
@@ -133,7 +134,7 @@ class MyPyQT_Form(QtWidgets.QWidget, Ui_Form):
         self.canRecord = threading.Lock()  # 开始记牌
         self.m_WeaveItem=[[],[],[],[]]
         self.waiteChiAction=WIK_NULL
-
+        self.init_cards()
         a=4
     def init_display(self):
         self.WinRate.setText("评分")
@@ -244,11 +245,12 @@ class MyPyQT_Form(QtWidgets.QWidget, Ui_Form):
         self.handCardCount=[MAX_CARD_COUNT,MAX_CARD_COUNT,MAX_CARD_COUNT,MAX_CARD_COUNT]
         self.bHavePass=False
         self.bHaveAction = False
+        self.waitOtherOutCard = True
         #self.detect_start_btn()
         #helper.ClickOnImage("change_player_btn", region=self.changePlayerBtnPos)
         self.env = None
         self.game_over= False
-        helper.bTest = False
+        helper.bTest = True
         #self.shengYuPaiShow(self.allDisCardData)
         # 识别玩家手牌
         #temp=self.have_white(self.RPlayedCardsPos)
@@ -260,6 +262,7 @@ class MyPyQT_Form(QtWidgets.QWidget, Ui_Form):
         # action_message, cbOperateCode = self.dllCall(self.user_hand_cards_real, self.allDisCardData, 0, 0,
         #                                              self.callCard, 0, '33', self.cbLaiZi)
         #result = helper.LocateOnScreen("change_player_btn", region=self.changePlayerBtnPos, confidence=0.75)
+        #self.WaitForOtherOperate(False)
         self.user_hand_cards_real,self.cbLaiZi = self.find_my_cards(self.MyHandCardsPos) #'2AKQQJJT99877753'
         while (len(self.user_hand_cards_real) <MAX_CARD_COUNT-1):
             self.user_hand_cards_real,self.cbLaiZi = self.find_my_cards(self.MyHandCardsPos)
@@ -332,32 +335,71 @@ class MyPyQT_Form(QtWidgets.QWidget, Ui_Form):
             actionCardS[int(cardStr[i])] += 1
         return actionCardS
 
+    def WaitForOtherOut(self):
+         print("WaitForOtherOperate")
+         if self.waitOtherOutCard == True:
+             img, _ = helper.Screenshot()
+             playerPos = [(291, 160, 60, 40), (0, 0, 10, 10), (807, 160, 60, 40), ]
+             TempActionCard = 0
+             iFlag = 1
+             for i in range(0, 3):
+                 if i == 1:
+                     continue
+                 elif i == 2:
+                     iFlag = -1
+                 oldarraySize=len(self.playerDisCardData[i])
+                 tryCount=0
+                 while True:
+                     arraySize = len(self.playerDisCardData[i])
+                     tryCount+=1
+                     if tryCount>2 and oldarraySize==arraySize:
+                         break
+                     tempSizeX = int((arraySize) / 10)
+                     if tempSizeX < 0:
+                         tempSizeX = 0
+
+                     tempSizeY = (arraySize - tempSizeX * 10)
+                     if i == 2 :
+                         tempSizeY = 10-(arraySize - tempSizeX * 10)-1
+                     ySpace = 0
+                     tmpTpos = (playerPos[i][0] - tempSizeX * playerPos[i][2] * iFlag,
+                                playerPos[i][1] + tempSizeY * playerPos[i][3] - ySpace, playerPos[i][2],
+                                playerPos[i][3] + 6)
+                     result = helper.LocateOnScreen("outWhite", region=tmpTpos, confidence=0.75)
+                     if arraySize == 10 and i == 0:
+                         a = 3
+                     print('WaitForOtherOperate', i, arraySize, result)
+                     if result:
+                         for j in range(33, -1, -1, ):
+                             if j < 9:
+                                 continue
+                             tempConfidence = 0.80
+                             if j == 26 or j == 33 or j == 18 or j == 25 or j == 23:
+                                 tempConfidence = 0.67
+                             elif j == 22:
+                                 tempConfidence = 0.87
+                             tmpStr = "out" + str(i) + str(j)
+
+                             result2 = pyautogui.locate(needleImage=helper.Pics[tmpStr], haystackImage=img,
+                                                        region=tmpTpos,
+                                                        confidence=tempConfidence)
+                             if result2 is not None:
+                                 TempActionCard = str(j)
+                                 self.playerDisCardData[i].append(TempActionCard)
+                                 self.allDisCardData.append(TempActionCard)
+                                 oldarraySize = len(self.playerDisCardData[i])
+                                 tryCount=0
+                                 bExist = True
+                                 break
+                     else:
+                         break
+
+         print("WaitForOtherOperate")
     def WaitForOtherOperate(self,bGameOver):
         self.user_hand_cards_real, self.cbLaiZi = self.find_my_cards(
             self.MyHandCardsPos, self.bHaveAction)  # '2AKQQJJT99877753'
+        self.WaitForOtherOut()
         cbActionMask = 0
-        if self.waiteChiAction==0:
-            img, _ = helper.Screenshot()
-            playerPos=[(292,160,61,41),(0,0,10,10),(807,160,61,41),]
-            for i in range(0, 3):
-                if i==1 :
-                    continue
-                tempSizeX=(len(self.playerDisCardData[i])-1)/10
-                tempSizeY = (len(self.playerDisCardData[i])-tempSizeX*10)
-                tmpTpos=(playerPos[i][0]-tempSizeX*playerPos[i][2],playerPos[i][1]+tempSizeY*playerPos[i][3],playerPos[i][2],playerPos[i][3])
-                result = helper.LocateOnScreen("outWhite", region=tmpTpos, confidence=0.75)
-                if result:
-                    for j in range(0, 34):
-                        tmpStr = "out" + str(i) + str(j)
-                        result = pyautogui.locate(needleImage=helper.Pics[tmpStr], haystackImage=img,
-                                                  region=tmpTpos,
-                                                  confidence=0.70)
-                        if result is not None:
-                            cbActionCard = str(j)
-                            self.playerDisCardData[i].append(0)
-                            bExist = True
-                            break
-
         tryCount=0
         while ((len(self.user_hand_cards_real) % 3) != 2 and cbActionMask == 0) or bGameOver == True:
             cbActionMask = self.have_action(self.ActionBtnPos)
@@ -481,6 +523,7 @@ class MyPyQT_Form(QtWidgets.QWidget, Ui_Form):
                 if len(action_message) == 0 or cbActionMask>0:
                     #helper.ClickOnImage("pass_btn", region=self.PassBtnPos)
                     self.sleep(100)
+                    self.waitOtherOutCard = False
                     print(self.play_order,"action:",cbOperateCode)
                     if cbOperateCode==WIK_LEFT or cbOperateCode==WIK_CENTER or cbOperateCode==WIK_RIGHT:
                          tmpPos = self.ActionBtnPosClick[3]
@@ -549,6 +592,7 @@ class MyPyQT_Form(QtWidgets.QWidget, Ui_Form):
                     else:
                          helper.ClickOnImage("guo", region=self.ActionBtnPosClick[5], confidence= 0.75)
                 elif cbOperateCode==0:
+                    self.waitOtherOutCard = True
                     if self.onlyTip :
                         a=4
                     else:
