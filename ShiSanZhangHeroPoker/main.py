@@ -112,9 +112,11 @@ class MyPyQT_Form(QtWidgets.QWidget, Ui_Form):
         self.RPlayedCardsPos = (400, 150, 500, 80)  # 右边截图区域
         self.PassBtnPos = (670, 150, 200, 80)
         self.GeneralBtnPos = (447, 464, 576, 137)
-        self.OutCardBtnPos = (234, 924, 200, 60)
+        self.OutCardBtnPos = (234, 858, 200, 60)
         self.FirstOutCardBtnPos = (460, 320, 200, 150)
-        self.changePlayerBtnPos = (353, 671, 160, 70)
+        self.changePlayerBtnPos = (353, 735, 160, 70)
+        self.readyBtnPos = (353, 735, 160, 70)
+        self.resortBtnPos = (340, 647, 160, 70)
         self.zhengChangBiPaiBtnPos = (96, 660, 160, 70)
         self.tipBtnPos = (454, 321, 200, 100)
         # 信号量
@@ -552,9 +554,9 @@ class MyPyQT_Form(QtWidgets.QWidget, Ui_Form):
 
                             self.sleep(500)
                             break
-                        result3 = helper.LocateOnScreen("reSort_btn", region=self.changePlayerBtnPos, confidence=0.80)
+                        result3 = helper.LocateOnScreen("reSort_btn", region=self.resortBtnPos, confidence=0.80)
                         if result3 is not None:
-                            helper.ClickOnImage("reSort_btn", region=self.changePlayerBtnPos, confidence=0.80)
+                            helper.ClickOnImage("reSort_btn", region=self.resortBtnPos, confidence=0.80)
                             self.sleep(500)
                             self.bReSortCard = True
                             break

@@ -281,7 +281,7 @@ class GameHelper:
         print("start pos", cardStartPos)
         if cardStartPos is None:
             return [],[],[]
-        sx =95# cardStartPos[0]+7 #+ 23
+        sx =89# cardStartPos[0]+7 #+ 23
         AllCardsNC = ['rD', 'bX', 'A', 'K', 'Q', 'J', 'T', '9', '8', '7', '6', '5', '4', '3','2']
         hand_cards = []
         select_map = []
@@ -289,9 +289,9 @@ class GameHelper:
             sx=103
         color_cards = []
         cardSearchFrom = 0
-        sy, sw, sh = 160, 67, 90
-        spaceX=71
-        spaceY = 621
+        sy, sw, sh = 160, 67, 96
+        spaceX=74
+        spaceY = 491
         for i in range(0, MAX_CARD_COUNT):
 
             temp_x = sx+6 + spaceX *( i)
@@ -307,7 +307,7 @@ class GameHelper:
             #if temp_x >= (SCREEN_WIDTH - 50):
             #    break
             checkSelect = 0
-            totalSpaceY=totalSpaceY*96
+            totalSpaceY=totalSpaceY*115
             #result = LocateOnImage(imgCv, self.PicsCV["card_overlap"], region=(temp_x, spaceY-40, spaceX, 30), confidence=0.85)
             #result2 = LocateOnImage(imgCv, self.PicsCV["card_overlap2"], region=(temp_x, spaceY-15, spaceX, 40), confidence=0.85)
             #if (result is not None) and (result2 is  None):
@@ -332,9 +332,11 @@ class GameHelper:
                         break
                 else:
                     for card_type in ["r", "b"]:
-                        tmpdence=0.83
+                        tmpdence=0.85
                         if AllCardsNC[ci]=='T':
                             tmpdence=0.82
+                        elif AllCardsNC[ci]=='8' or AllCardsNC[ci]=='6':
+                            tmpdence=0.90
                         result = LocateOnImage(imgCv, self.PicsCV["m" + card_type + AllCardsNC[ci]], region=(sx + totalSpaceX, spaceY+totalSpaceY - checkSelect * 25, sw, 68), confidence=tmpdence)
                         if result is not None:
                             cardPos = (sx + totalSpaceX + sw // 2, spaceY+totalSpaceY - checkSelect * 25 + sh // 2)
@@ -346,7 +348,7 @@ class GameHelper:
                             bExist=False
                             for card_color in ["0","1","2","3"]:
                                 result = LocateOnImage(imgCv, self.PicsCV["color" + card_color],
-                                                       region=(sx + totalSpaceX, spaceY+totalSpaceY - checkSelect * 25+27, 35, 35),
+                                                       region=(sx + totalSpaceX, spaceY+totalSpaceY - checkSelect * 25+27, 35, 55),
                                                        confidence=dence)
                                 if result :
                                     color_cards.append(int(card_color))
