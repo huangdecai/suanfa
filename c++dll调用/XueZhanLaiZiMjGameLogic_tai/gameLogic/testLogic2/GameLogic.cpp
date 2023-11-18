@@ -2218,7 +2218,7 @@ bool CGameLogic::IsBianZhang(const tagAnalyseItem *pAnalyseItem, const tagWeaveI
 	BYTE currentCardVule = GetCardValue(cbCurrentCard);
 	if (currentCardVule == 3 || currentCardVule == 7)
 	{
-		bool bExist[10] = {  0 };
+		int bExist[10] = {  0 };
 		//--索引1代表123是否存在, 2代表234是否存在, 3代表....类推
 		for (BYTE i = 0; i < CountArray(pAnalyseItem->cbWeaveKind); i++)
 		{
@@ -2239,7 +2239,7 @@ bool CGameLogic::IsBianZhang(const tagAnalyseItem *pAnalyseItem, const tagWeaveI
 			}
 		}
 
-		if (currentCardVule == 3 && bExist[currentCardVule - 2] >= 1 && bExist[currentCardVule] <= 0 &&
+		if (currentCardVule == 3 && (bExist[currentCardVule - 2] >= 1) && (bExist[currentCardVule] <= 0) &&
 			bExist[currentCardVule - 1] <= 0)
 		{
 			if (pAnalyseItem->cbCardEye == cbCurrentCard && bExist[currentCardVule + 1] > 0)
@@ -2249,7 +2249,7 @@ bool CGameLogic::IsBianZhang(const tagAnalyseItem *pAnalyseItem, const tagWeaveI
 			return true;
 		}
 		else if
-			(currentCardVule == 7 && bExist[currentCardVule] >= 1 && bExist[currentCardVule - 1] <= 0 &&
+			(currentCardVule == 7 && (bExist[currentCardVule] >= 1) && (bExist[currentCardVule - 1] <= 0) &&
 				bExist[currentCardVule - 2] <= 0)
 		{
 			if (pAnalyseItem->cbCardEye == cbCurrentCard && bExist[currentCardVule - 3] > 0)
@@ -2278,7 +2278,7 @@ bool CGameLogic::IsKanZhang(const tagAnalyseItem *pAnalyseItem, const BYTE cbCar
 	BYTE currentCardVule = GetCardValue(cbCurrentCard);
 	if (currentCardVule >= 2 && currentCardVule <= 8)
 	{
-		bool bExist[10] = { 0 };
+		int bExist[10] = { 0 };
 		//--索引1代表123是否存在, 2代表234是否存在, 3代表....类推
 		if (currentCardVule >= 3 && currentCardVule <= 7)
 		{

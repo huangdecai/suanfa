@@ -13,7 +13,7 @@
 
 
 
-extern "C" TESTC_API int __cdecl fntestC(BYTE cbHandCardData[], BYTE cbHandCardCount, BYTE cbTurnCardData[], BYTE cbTurnCardCount, BYTE	DiscardCard[], BYTE cbDiscardCardCount, BYTE cbOtherCardData[], BYTE cbOtherCardCount, BYTE cbCardDataEx[], BYTE cbMaxCard[], BYTE &cbCardCount, BYTE cbResultCard[]);
+extern "C" TESTC_API int __cdecl fntestC(BYTE cbHandCardData[], BYTE cbHandCardCount, BYTE cbTurnCardData[], BYTE cbTurnCardCount, BYTE	cbDiscardCard[], BYTE cbDiscardCardCount, BYTE cbOtherDiscardCard[], BYTE cbOtherDiscardCardCount, BYTE cbCardDataEx[], BYTE cbMaxCard[], BYTE &cbCardCount, BYTE cbResultCard[]);
 extern "C" TESTC_API int __cdecl countScore(BYTE cbHandCardData[], BYTE cbHandCardCount, int &cbCardScore);
 extern "C" TESTC_API int fntestPython2(tagInPyhonNew *pythonIn);
 extern "C" TESTC_API int fntestPythonType(tagInPyhonCardType *pythonIn);

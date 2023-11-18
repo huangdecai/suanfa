@@ -128,7 +128,7 @@ struct tagInPyhonNew
 {
 	BYTE							cbHandCardData[20];
 	BYTE							cbHandCardCount;
-	BYTE							DiscardCard[144];
+	BYTE							cbDiscardCard[144];
 	BYTE                            cbDiscardCardCount;
 	BYTE							cbWeaveKind[GAME_PLAYER*MAX_WEAVE];						//组合类型
 	BYTE							cbCenterCard[GAME_PLAYER*MAX_WEAVE];						//中心扑克

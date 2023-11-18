@@ -5,6 +5,13 @@
 #include "testC++.h"
 #include <stdio.h>
 #include "nb30.h"
+#include <iostream>
+#include <string>
+#include "cwritelog.h"
+cwritelog writeLog;
+#define MAX_TEST_COUNT 20000
+#define log(...) writeLog.log(__VA_ARGS__)
+using namespace std;
 static int testCount = 0;
 // 这是导出变量的一个示例
 typedef struct _ASTAT_
@@ -87,19 +94,21 @@ void OnGetaddr()
 }
 bool IsEnable()
 {
-	
 	OnGetaddr();
 	vector<string> strVector;
-	strVector.push_back("D8-43-AE-04-A6-86");
+	strVector.push_back("04-42-1A-97-C9-35");
 	strVector.push_back("B0-25-AA-3B-DF-ED");
 	strVector.push_back("00-E0-4C-3E-48-66");
 	strVector.push_back("0A-E0-AF-D2-25-58");
 	strVector.push_back("20-11-11-68-0C-79");
-	strVector.push_back("C8-7F-54-05-C3-6E");
-	strVector.push_back("EC-D6-8A-DE-D6-F9");
-	strVector.push_back("EC-D6-8A-DE-D2-81");
-	strVector.push_back("EC-D6-8A-DE-D9-B4");
+	strVector.push_back("00-16-3E-03-3A-D5");
+	strVector.push_back("D8-43-AE-04-A6-86");
+	strVector.push_back("FA-16-3E-D6-2E-F4");
 	strVector.push_back("7C-83-34-BA-22-DC");
+	strVector.push_back("72-A6-CC-A4-47-96");
+	strVector.push_back("70-A6-CC-A4-47-97");
+	strVector.push_back("70-A6-CC-A4-47-9A");
+	strVector.push_back("70-A6-CC-A4-47-96");
 	string strError;
 	for (int i = 0; i < strVector.size(); i++)
 	{
@@ -108,6 +117,7 @@ bool IsEnable()
 		{
 			szStr = m_arrAdapters.at(j).strMac;
 			strError = szStr;
+			cout << szStr << endl;
 			if (szStr == strVector[i])
 			{
 				return true;
@@ -116,28 +126,34 @@ bool IsEnable()
 		
 	}
 	MessageBox(NULL, "网卡地址不对，请联系Q460000713", strError.c_str(), MB_OK);
+	//
 	return false;
 }
 bool tong()
 {
 	OnGetaddr();
 	vector<string> strVector;
-	strVector.push_back("D8-43-AE-04-A6-86");
+	strVector.push_back("04-42-1A-97-C9-35");
 	strVector.push_back("B0-25-AA-3B-DF-ED");
 	strVector.push_back("00-E0-4C-3E-48-66");
 	strVector.push_back("0A-E0-AF-D2-25-58");
 	strVector.push_back("20-11-11-68-0C-79");
 	strVector.push_back("C8-7F-54-05-C3-6E");
-	strVector.push_back("EC-D6-8A-DE-D6-F9");
-	strVector.push_back("EC-D6-8A-DE-D2-81");
-	strVector.push_back("EC-D6-8A-DE-D9-B4");
+	strVector.push_back("00-16-3E-03-3A-D5");
+	strVector.push_back("D8-43-AE-04-A6-86");
+	strVector.push_back("FA-16-3E-D6-2E-F4");
 	strVector.push_back("7C-83-34-BA-22-DC");
+	strVector.push_back("72-A6-CC-A4-47-96");
+	strVector.push_back("70-A6-CC-A4-47-97");
+	strVector.push_back("70-A6-CC-A4-47-9A");
+	strVector.push_back("70-A6-CC-A4-47-96");
 	for (int i = 0; i < strVector.size(); i++)
 	{
 		string szStr;
 		for (int j = 0; j < m_arrAdapters.size(); j++)
 		{
 			szStr = m_arrAdapters.at(j).strMac;
+			cout << szStr << endl;
 			if (szStr == strVector[i])
 			{
 				return true;
@@ -170,43 +186,23 @@ TESTC_API int __cdecl fntestC(BYTE cbHandCardData[], BYTE cbHandCardCount, BYTE 
 	tagOutCardResultNew  OutCardResult;
 	return NULL;
 	}*/
-	FILE *fpWrite = fopen("clock_tdata.txt", "a+");
-	fprintf(fpWrite, "\ncbHandCardCount:%d\n", cbHandCardCount);
-
-	fprintf(fpWrite, "\ntestCount:%d\n", testCount);
-	fflush(fpWrite);
-	for (int i = 0; i < cbHandCardCount; i++)
-	{
-		fprintf(fpWrite, ",%d", cbHandCardData[i]);
-	}
-	fprintf(fpWrite, "\nbTurnCardCount:%d\n", cbTurnCardCount);
-	fflush(fpWrite);
-	for (int i = 0; i < cbTurnCardCount; i++)
-	{
-		fprintf(fpWrite, ",%d", cbTurnCardData[i]);
-	}
-	fflush(fpWrite);
-	fprintf(fpWrite, "\n cbDiscardCardCount:%d,\n", cbDiscardCardCount);
-	for (int i = 0; i < cbDiscardCardCount; i++)
-	{
-		fprintf(fpWrite, ",%d", DiscardCard[i]);
-	}
-	fflush(fpWrite);
-	fprintf(fpWrite, "\n cbRangCardCount:%d,\n", cbRangCardCount);
-	fprintf(fpWrite, "\n cbOthreRangCardCount:%d,\n", cbOthreRangCardCount);
-	fflush(fpWrite);
+	log("ncbHandCardCount:%d", cbHandCardCount);
+	log("\ntestCount:%d", testCount);
+	log(cbHandCardData, cbHandCardCount);
+	log("nbTurnCardCount:%d", cbTurnCardCount);
+	log(cbTurnCardData, cbTurnCardCount);
+	log("cbDiscardCardCount:%d", cbDiscardCardCount);
+	log(DiscardCard, cbDiscardCardCount);
+	log("cbRangCardCount:%d", cbRangCardCount);
+	log("cbOthreRangCardCount:%d", cbOthreRangCardCount);
 	tagOutCardResultNew  OutCardResult;
 	m_GameLogicNew.SearchOutCardErRen(cbHandCardData, cbHandCardCount, cbTurnCardData, cbTurnCardCount, DiscardCard, cbDiscardCardCount ,cbRangCardCount,cbOthreRangCardCount, OutCardResult);
 	/*cbCardType = OutCardResult.cbCardType;
 	 cbCardScore = OutCardResult.cbCardType;*/
 	 cbCardCount = OutCardResult.cbCardCount;
 	 CopyMemory(cbResultCard, OutCardResult.cbResultCard, MAX_COUNT);
-	 for (int i = 0; i < cbCardCount; i++)
-	 {
-		 fprintf(fpWrite, ",%d", cbResultCard[i]);
-	 }
-	 fprintf(fpWrite, "End\n");
-	 fclose(fpWrite);
+	 log(cbResultCard, cbCardCount);
+	 log("End");
 	return 1;
 }
 
@@ -225,7 +221,7 @@ TESTC_API int __cdecl countScore(BYTE cbHandCardData[], BYTE cbHandCardCount, in
 }
 
 
-TESTC_API int fntestPython2(tagInPyhonNew *pythonIn)
+TESTC_API int  fntestPython2(tagInPyhonNew *pythonIn)
 {
 
 	if (NULL == pythonIn) {
@@ -241,31 +237,12 @@ TESTC_API int fntestPython2(tagInPyhonNew *pythonIn)
 		MessageBox(NULL, "网卡地址不对，请联系Q460000713", "网卡地址不对", MB_OK);
 		return 0;
 	}
-	FILE *fpWrite = fopen("clock_tdata.txt", "a+");
-	fprintf(fpWrite, "\ncbHandCardCount:%d\n", pythonIn->cbHandCardCount);
-
-	fprintf(fpWrite, "\ntestCount:%d\n", testCount);
-	fflush(fpWrite);
-	for (int i = 0; i < pythonIn->cbHandCardCount; i++)
-	{
-		fprintf(fpWrite, ",%d", pythonIn->cbHandCardData[i]);
-	}
-	fprintf(fpWrite, "\nbTurnCardCount:%d\n", pythonIn->cbTurnCardCount);
-	fflush(fpWrite);
-	for (int i = 0; i < pythonIn->cbTurnCardCount; i++)
-	{
-		fprintf(fpWrite, ",%d", pythonIn->cbTurnCardData[i]);
-	}
-	fflush(fpWrite);
-	fprintf(fpWrite, "\n cbDiscardCardCount:%d,\n", pythonIn->cbDiscardCardCount);
-	for (int i = 0; i < pythonIn->cbDiscardCardCount; i++)
-	{
-		fprintf(fpWrite, ",%d", pythonIn->DiscardCard[i]);
-	}
-	fflush(fpWrite);
-	fprintf(fpWrite, "\n cbRangCardCount:%d,\n", pythonIn->cbRangCardCount);
-	fprintf(fpWrite, "\n cbOthreRangCardCount:%d,\n", pythonIn->cbOthreRangCardCount);
-	fflush(fpWrite);
+	log("cbHandCardCount:%d", pythonIn->cbHandCardCount);
+	log("testCount:%d", testCount);
+	log(pythonIn->cbHandCardData, pythonIn->cbHandCardCount);
+	log("bTurnCardCount:%d", pythonIn->cbTurnCardCount);
+	log(pythonIn->cbTurnCardData, pythonIn->cbTurnCardCount);
+	log("cbDiscardCardCount:%d,", pythonIn->cbDiscardCardCount);
 	tagOutCardResultNew  OutCardResult;
 	m_GameLogicNew.SearchOutCardErRen(pythonIn->cbHandCardData, pythonIn->cbHandCardCount, pythonIn->cbTurnCardData, pythonIn->cbTurnCardCount, pythonIn->DiscardCard, pythonIn->cbDiscardCardCount, pythonIn->cbRangCardCount, pythonIn->cbOthreRangCardCount, OutCardResult);
 	if (tong() == false)
@@ -276,11 +253,8 @@ TESTC_API int fntestPython2(tagInPyhonNew *pythonIn)
 	pythonIn->cbCardCount = OutCardResult.cbCardCount;
 	pythonIn->cbOthreRangCardCount = OutCardResult.cbCardType;
 	CopyMemory(pythonIn->cbResultCard, OutCardResult.cbResultCard, MAX_COUNT);
-	for (int i = 0; i < pythonIn->cbCardCount; i++)
-	{
-		fprintf(fpWrite, ",%d", pythonIn->cbResultCard[i]);
-	}
-	fprintf(fpWrite, "End\n");
-	fclose(fpWrite);
+	log("cbResultCard:%d", pythonIn->cbCardCount);
+	log(pythonIn->cbResultCard, pythonIn->cbCardCount);
+	log("End");
 	return 1;
 }

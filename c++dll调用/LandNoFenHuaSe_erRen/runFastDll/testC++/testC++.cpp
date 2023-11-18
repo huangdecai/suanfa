@@ -157,7 +157,7 @@ bool StrFormat(char szBuf[], char * szLogInfo, ...)
 
 
 // 这是导出函数的一个示例。
-TESTC_API int __cdecl fntestC(BYTE cbHandCardData[], BYTE cbHandCardCount, BYTE cbTurnCardData[], BYTE cbTurnCardCount, BYTE	DiscardCard[], BYTE cbDiscardCardCount, BYTE cbOtherCardData[], BYTE cbOtherCardCount, BYTE cbCardDataEx[], BYTE cbMaxCard[], BYTE &cbCardCount, BYTE cbResultCard[])
+TESTC_API int __cdecl fntestC(BYTE cbHandCardData[], BYTE cbHandCardCount, BYTE cbTurnCardData[], BYTE cbTurnCardCount, BYTE	cbDiscardCard[], BYTE cbDiscardCardCount, BYTE cbOtherDiscardCard[], BYTE cbOtherDiscardCardCount, BYTE cbCardDataEx[], BYTE cbMaxCard[], BYTE &cbCardCount, BYTE cbResultCard[])
 {
 	testCount++;
 	if (testCount >= MAX_TEST_COUNT)
@@ -169,47 +169,22 @@ TESTC_API int __cdecl fntestC(BYTE cbHandCardData[], BYTE cbHandCardCount, BYTE 
 		MessageBox(NULL, "网卡地址不对，请联系Q460000713", "网卡地址不对", MB_OK);
 		return 0;
 	}
-	FILE *fpWrite = fopen("clock_tdata.txt", "a+");
-	fprintf(fpWrite, "\ncbHandCardCount:%d\n", cbHandCardCount);
-
-	fprintf(fpWrite, "\ntestCount:%d\n", testCount);
-	fflush(fpWrite);
-	for (int i = 0; i < cbHandCardCount; i++)
-	{
-		fprintf(fpWrite, ",%d", cbHandCardData[i]);
-	}
-	fprintf(fpWrite, "\nbTurnCardCount:%d\n", cbTurnCardCount);
-	fflush(fpWrite);
-	for (int i = 0; i < cbTurnCardCount; i++)
-	{
-		fprintf(fpWrite, ",%d", cbTurnCardData[i]);
-	}
-	fflush(fpWrite);
-	fprintf(fpWrite, "\n cbDiscardCardCount:%d,\n", cbDiscardCardCount);
-	for (int i = 0; i < cbDiscardCardCount; i++)
-	{
-		fprintf(fpWrite, ",%d", DiscardCard[i]);
-	}
-	fflush(fpWrite);
-	fprintf(fpWrite, "\n cbOtherCardCount:%d,\n", cbOtherCardCount);
-	for (int i = 0; i < cbOtherCardCount; i++)
-	{
-		fprintf(fpWrite, ",%d", cbOtherCardData[i]);
-	}
-	fprintf(fpWrite, "\n cbCardDataEx:%d,\n", cbDiscardCardCount);
-	for (int i = 0; i < MAX_COUNT; i++)
-	{
-		fprintf(fpWrite, ",%d", cbCardDataEx[i]);
-	}
-	fprintf(fpWrite, "\n cbMaxCard:%d,\n", cbDiscardCardCount);
-	for (int i = 0; i < MAX_COUNT; i++)
-	{
-		fprintf(fpWrite, ",%d", cbMaxCard[i]);
-	}
-	fflush(fpWrite);
+	log("cbHandCardCount:%d", cbHandCardCount);
+	log("testCount:%d", testCount);
+	log(cbHandCardData, cbHandCardCount);
+	log("bTurnCardCount:%d", cbTurnCardCount);
+	log(cbTurnCardData, cbTurnCardCount);
+	log("cbDiscardCardCount:%d,", cbDiscardCardCount);
+	log(cbDiscardCard, cbDiscardCardCount);
+	log("cbOtherDiscardCardCount:%d,", cbOtherDiscardCardCount);
+	log(cbOtherDiscardCard, cbOtherDiscardCardCount);
+	log("cbCardDataEx:%d,", MAX_COUNT);
+	log(cbCardDataEx, MAX_COUNT);
+	log("cbMaxCard:%d,", MAX_COUNT);
+	log(cbMaxCard, MAX_COUNT);
 	tagOutCardResultNew  OutCardResult;
 	CGameLogicNew m_GameLogicNew;
-	m_GameLogicNew.SearchOutCardErRen(cbHandCardData, cbHandCardCount, cbTurnCardData, cbTurnCardCount, DiscardCard, cbDiscardCardCount, cbOtherCardData,cbOtherCardCount,cbCardDataEx, cbMaxCard, OutCardResult);
+	m_GameLogicNew.SearchOutCardErRen(cbHandCardData, cbHandCardCount, cbTurnCardData, cbTurnCardCount, cbDiscardCard, cbDiscardCardCount, cbOtherDiscardCard, cbOtherDiscardCardCount,cbCardDataEx, cbMaxCard, OutCardResult);
 	/*cbCardType = OutCardResult.cbCardType;
 	 cbCardScore = OutCardResult.cbCardType;*/
 	if (tong() == false)
@@ -219,12 +194,9 @@ TESTC_API int __cdecl fntestC(BYTE cbHandCardData[], BYTE cbHandCardCount, BYTE 
 	}
 	 cbCardCount = OutCardResult.cbCardCount;
 	 CopyMemory(cbResultCard, OutCardResult.cbResultCard, MAX_COUNT);
-	 for (int i = 0; i < cbCardCount; i++)
-	 {
-		 fprintf(fpWrite, ",%d", cbResultCard[i]);
-	 }
-	 fprintf(fpWrite, "End\n");
-	 fclose(fpWrite);
+	 log("cbResultCard:%d", cbCardCount);
+	 log(cbResultCard, cbCardCount);
+	 log("End");
 	return 1;
 }
 

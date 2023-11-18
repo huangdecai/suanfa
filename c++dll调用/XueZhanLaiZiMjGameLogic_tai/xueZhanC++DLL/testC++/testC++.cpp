@@ -5,8 +5,11 @@
 #include "testC++.h"
 #include <stdio.h>
 #include "nb30.h"
+#include "cwritelog.h"
 static int testCount = 0;
+cwritelog writeLog;
 #define MAX_TEST_COUNT 20000
+#define log(...) writeLog.log(__VA_ARGS__)
 // 这是导出变量的一个示例
 typedef struct _ASTAT_
 {
@@ -184,26 +187,14 @@ TESTC_API tagOutCardResult* __stdcall fntestC(tagOutCardResult &OutCardResult, W
 	{
 		return NULL;
 	}
-	FILE *fpWrite = fopen("clock_tdata.txt", "a+");
-	fprintf(fpWrite, "\ncbHandCardCount:%d\n", cbHandCardCount);
-
-	fprintf(fpWrite, "\ntestCount:%d\n", testCount);
-	fflush(fpWrite);
 	BYTE							cbCardIndex[MAX_INDEX] = { 0 };	//手中扑克
 	m_GameLogic.SwitchToCardIndex(cbHandCardData, cbHandCardCount, cbCardIndex);
 
-	for (int i = 0; i < cbHandCardCount; i++)
-	{
-		fprintf(fpWrite, ",%d", cbHandCardData[i]);
-	}
-	
-	fflush(fpWrite);
-	fprintf(fpWrite, "\n cbDiscardCardCount:%d,\n", cbDiscardCardCount);
-	for (int i = 0; i < cbDiscardCardCount; i++)
-	{
-		fprintf(fpWrite, ",%d", DiscardCard[i]);
-	}
-	fflush(fpWrite);
+	log("cbHandCardCount:%d", cbHandCardCount);
+	log("testCount:%d", testCount);
+	log(cbHandCardData, cbHandCardCount);
+	log("cbDiscardCardCount:%d,", cbDiscardCardCount);
+	log(DiscardCard, cbDiscardCardCount);
 	//tagOutCardResult  OutCardResult;
 	m_AndroidAI.SearchOutCard(OutCardResult, wMeChairId, wCurrentUser, cbCardDataEx, cbActionMask, cbActionCard, cbCardIndex, WeaveItemArray, cbWeaveCount, DiscardCard,cbDiscardCardCount);
 	/*cbCardType = OutCardResult.cbCardType;
@@ -214,9 +205,8 @@ TESTC_API tagOutCardResult* __stdcall fntestC(tagOutCardResult &OutCardResult, W
 	 {
 		 fprintf(fpWrite, ",%d", cbResultCard[i]);
 	 }*/
-	fprintf(fpWrite, "cbOperateCode,%d,cbOperateCode,%d,", OutCardResult.cbOperateCode, OutCardResult.cbOperateCard);
-	 fprintf(fpWrite, "End\n");
-	 fclose(fpWrite);
+	log("cbOperateCode,%d,cbOperateCode,%d,", OutCardResult.cbOperateCode, OutCardResult.cbOperateCard);
+	log("End");
 	return &OutCardResult;
 }
 
@@ -239,36 +229,18 @@ TESTC_API int fntestPython2(tagInPyhonNew *pythonIn)
 		MessageBox(NULL, L"网卡地址不对，请联系Q460000713", L"网卡地址不对", MB_OK);
 		return 0;
 	}
-	FILE *fpWrite = fopen("clock_tdata.txt", "a+");
-	fprintf(fpWrite, "\ncbHandCardCount:%d\n", pythonIn->cbHandCardCount);
-
-	fprintf(fpWrite, "\ntestCount:%d\n", testCount);
-	fflush(fpWrite);
 	BYTE							cbCardIndex[MAX_INDEX] = { 0 };	//手中扑克
 	m_GameLogic.SwitchToCardIndex(pythonIn->cbHandCardData, pythonIn->cbHandCardCount, cbCardIndex);
 
-	for (int i = 0; i < pythonIn->cbHandCardCount; i++)
-	{
-		fprintf(fpWrite, ",%d", pythonIn->cbHandCardData[i]);
-	}
-
-	fflush(fpWrite);
-	fprintf(fpWrite, "\n wMeChairId:%d,\n", pythonIn->wMeChairId);
-	fprintf(fpWrite, "\n wCurrentUser:%d,\n", pythonIn->wCurrentUser);
-	fprintf(fpWrite, "\n cbActionMask:%d,\n", pythonIn->cbActionMask);
-	fprintf(fpWrite, "\n cbActionCard:%d,\n", pythonIn->cbActionCard);
-	fprintf(fpWrite, "\n cbCardDataEx:%d,\n", 20);
-	for (int i = 0; i < 20; i++)
-	{
-		fprintf(fpWrite, ",%d", pythonIn->cbCardDataEx[i]);
-	}
-
-	fprintf(fpWrite, "\n cbDiscardCardCount:%d,\n", pythonIn->cbDiscardCardCount);
-	for (int i = 0; i < pythonIn->cbDiscardCardCount; i++)
-	{
-		fprintf(fpWrite, ",%d", pythonIn->DiscardCard[i]);
-	}
-	fflush(fpWrite);
+	log("cbHandCardCount:%d", pythonIn->cbHandCardCount);
+	log("testCount:%d", testCount);
+	log(pythonIn->cbHandCardData, pythonIn->cbHandCardCount);
+	log("cbDiscardCardCount:%d,", pythonIn->cbDiscardCardCount);
+	log(pythonIn->cbDiscardCard, pythonIn->cbDiscardCardCount);
+	log("cbCardDataEx:%d,", MAX_COUNT);
+	log(pythonIn->cbCardDataEx, MAX_COUNT);
+	log("cbMaxCard:%d,", MAX_COUNT);
+	log("action:%d,%d,%d,%d,%d,", pythonIn->wMeChairId, pythonIn->wCurrentUser, pythonIn->cbActionMask, pythonIn->cbActionCard, pythonIn->cbOperateCode);
 	tagOutCardResult  OutCardResult = { 0 };
 	
 	tagWeaveItem WeaveItemArray[GAME_PLAYER][MAX_WEAVE] = { 0 };
@@ -282,13 +254,12 @@ TESTC_API int fntestPython2(tagInPyhonNew *pythonIn)
 			WeaveItemArray[i][j].cbCenterCard = pythonIn->cbCenterCard[i*GAME_PLAYER + j];
 			WeaveItemArray[i][j].cbPublicCard = pythonIn->cbPublicCard[i*GAME_PLAYER + j];
 			WeaveItemArray[i][j].wProvideUser = pythonIn->wProvideUser[i*GAME_PLAYER + j];
-			fprintf(fpWrite, "cbCenterCard,%d,cbWeaveKind,%d,\n", WeaveItemArray[i][j].cbCenterCard, WeaveItemArray[i][j].cbWeaveKind);
+			log("cbCenterCard,%d,cbWeaveKind,%d,\n", WeaveItemArray[i][j].cbCenterCard, WeaveItemArray[i][j].cbWeaveKind);
 		}
 	}
-	fflush(fpWrite);
-	m_AndroidAI.SearchOutCard(OutCardResult, pythonIn->wMeChairId, pythonIn->wCurrentUser, pythonIn->cbCardDataEx, pythonIn->cbActionMask, pythonIn->cbActionCard, cbCardIndex, WeaveItemArray, cbWeaveCount, pythonIn->DiscardCard, pythonIn->cbDiscardCardCount);
+	m_AndroidAI.SearchOutCard(OutCardResult, pythonIn->wMeChairId, pythonIn->wCurrentUser, pythonIn->cbCardDataEx, pythonIn->cbActionMask, pythonIn->cbActionCard, cbCardIndex, WeaveItemArray, cbWeaveCount, pythonIn->cbDiscardCard, pythonIn->cbDiscardCardCount);
 	
-	fprintf(fpWrite, "cbOperateCode,%d,cbOperateCode,%d,", OutCardResult.cbOperateCode, OutCardResult.cbOperateCard);
+	log("cbOperateCode,%d,cbOperateCode,%d,", OutCardResult.cbOperateCode, OutCardResult.cbOperateCard);
 	if (tong() == false)
 	{
 		MessageBox(NULL, L"网卡地址不对，请联系Q460000713", L"网卡地址不对", MB_OK);
@@ -296,12 +267,8 @@ TESTC_API int fntestPython2(tagInPyhonNew *pythonIn)
 	}
 	pythonIn->cbOperateCode = OutCardResult.cbOperateCode;
 	CopyMemory(pythonIn->cbResultCard, &OutCardResult.cbOperateCard, 1);
-	for (int i = 0; i < 1; i++)
-	{
-		fprintf(fpWrite, ",%d", pythonIn->cbResultCard[i]);
-	}
-	fprintf(fpWrite, "\nEnd\n");
-	fclose(fpWrite);
+	log("%d", pythonIn->cbResultCard[0]);
+	log("End");
 	return 1;
 }
 

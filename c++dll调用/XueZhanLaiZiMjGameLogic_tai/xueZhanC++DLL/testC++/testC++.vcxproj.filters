@@ -39,6 +39,9 @@
     <ClInclude Include="..\..\gameLogic\testLogic2\GameLogic.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="cwritelog.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -57,6 +60,9 @@
       <Filter>头文件</Filter>
     </ClCompile>
     <ClCompile Include="..\..\gameLogic\testLogic2\GameLogic.cpp">
+      <Filter>头文件</Filter>
+    </ClCompile>
+    <ClCompile Include="cwritelog.cpp">
       <Filter>头文件</Filter>
     </ClCompile>
   </ItemGroup>
