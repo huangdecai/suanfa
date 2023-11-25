@@ -335,8 +335,10 @@ class GameHelper:
                         tmpdence=0.85
                         if AllCardsNC[ci]=='T':
                             tmpdence=0.82
-                        elif AllCardsNC[ci]=='8' or AllCardsNC[ci]=='6':
-                            tmpdence=0.90
+                        elif AllCardsNC[ci]=='8':
+                            tmpdence = 0.90
+                        elif AllCardsNC[ci]=='6':
+                            tmpdence=0.88
                         result = LocateOnImage(imgCv, self.PicsCV["m" + card_type + AllCardsNC[ci]], region=(sx + totalSpaceX, spaceY+totalSpaceY - checkSelect * 25, sw, 68), confidence=tmpdence)
                         if result is not None:
                             cardPos = (sx + totalSpaceX + sw // 2, spaceY+totalSpaceY - checkSelect * 25 + sh // 2)
