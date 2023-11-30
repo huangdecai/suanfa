@@ -4238,9 +4238,11 @@ float CGameLogicNew::calCardScoreEx(vector<tagOutCardResultNew> &vecMinTypeCardR
 
 bool CGameLogicNew::SearchOutCardErRen(BYTE cbHandCardData[], BYTE cbHandCardCount, BYTE cbTurnCardData[], BYTE cbTurnCardCount, BYTE	DiscardCard[], BYTE cbDiscardCardCount, BYTE cbRangCardCount, BYTE cbOthreRangCardCount, tagOutCardResultNew & OutCardResult)
 {
+	BYTE cbTempCardData[MAX_COUNT] = { 0 };
+	CopyMemory(cbTempCardData, cbHandCardData, cbHandCardCount);
 	SetDiscardCard(DiscardCard, cbDiscardCardCount);
 
-	SetUserCard(0, cbHandCardData, cbHandCardCount);
+	SetUserCard(0, cbTempCardData, cbHandCardCount);
 	
 	m_cbUserCardCount[1] =  (FULL_COUNT - cbHandCardCount - cbDiscardCardCount-16);
 	if (cbRangCardCount>0)
@@ -4258,21 +4260,21 @@ bool CGameLogicNew::SearchOutCardErRen(BYTE cbHandCardData[], BYTE cbHandCardCou
 
 	//初始变量
 	ZeroMemory(&OutCardResult, sizeof(OutCardResult));
-	SortCardList(cbHandCardData, cbHandCardCount, ST_ORDER);
+	SortCardList(cbTempCardData, cbHandCardCount, ST_ORDER);
 	SortCardList(cbTurnCardData, cbTurnCardCount, ST_ORDER);
 	vector<BYTE> tmpWang;
 	for (int i=0;i<cbHandCardCount;i++)
 	{
-		if (cbHandCardData[i]==0x4F)
+		if (cbTempCardData[i]==0x4F)
 		{
-			tmpWang.push_back(cbHandCardData[i]);
-			cbHandCardData[i] = 0x4E;
+			tmpWang.push_back(cbTempCardData[i]);
+			cbTempCardData[i] = 0x4E;
 		}
 	}
 	//先出牌
 	if (cbTurnCardCount == 0)
 	{
-		SearchOutCardShiSanZhang(cbHandCardData, cbHandCardCount, OutCardResult);
+		SearchOutCardShiSanZhang(cbTempCardData, cbHandCardCount, OutCardResult);
 	}
 	int count = 0;
 	if (tmpWang.size()>0)

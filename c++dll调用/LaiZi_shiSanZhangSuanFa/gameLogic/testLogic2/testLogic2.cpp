@@ -33,7 +33,7 @@ void TestGameLogic()
 	//BYTE    tempCard[] = { };
 	//BYTE    tempCard[] = { 0x2B, 0x0B, 0x05, 0x1D, 0x0D, 0x2D, 0x32, 0x33, 0x26, 0x16, 0x34, 0x14, 0x04 };
 	//BYTE    tempCard[] = { 0x3C, 0x32, 0x02, 0x3A, 0x09, 0x04, 0x24, 0x03, 0x1D, 0x1B, 0x1A, 0x17, 0x13 };
-	BYTE    tempCard[] = { 0x2a,0x2c,0x2d,0x39,0x17,0x22,0x32,0x02,0x05,0x03,0x0a,0x0d,0x06 };
+	BYTE    tempCard[] = { 9, 1, 21, 8, 25, 54, 33, 7, 44, 39, 38, 59, 28 };
 	//BYTE    tempCard[] = { 0x18, 0x15, 0x12, 0x21, 0x2A, 0x26, 0x24, 0x22, 0x11, 0x1D, 0x1C, 0x1B, 0x1A };
 
 	//BYTE    tempCard[] = { 4, 38, 8, 56, 10, 9, 11, 43, 12, 44, 60, 1, 33 };
@@ -120,9 +120,46 @@ void TestGameLogic()
 	//CTraceService::TraceString(str, TraceLevel_Exception);
 
 }
+void testGameLogic2()
+{
+	HINSTANCE							m_hLogicInst;
+	typedef int(_cdecl* dllCall)(tagInPyhonNew *pythonIn);
+	dllCall						m_pLogicControl;
+	m_hLogicInst = LoadLibrary(TEXT("testC++.dll"));
+	if (m_hLogicInst)
+	{
 
+		m_pLogicControl = (dllCall)GetProcAddress(m_hLogicInst, "fntestPython2");
+		if (m_pLogicControl == NULL)
+		{
+			FreeLibrary(m_hLogicInst);
+			m_pLogicControl = NULL;
+		}
+	}
+	BYTE    tempCard[] = { 9, 1, 21, 8, 25, 54, 33, 7, 44, 39, 38, 59, 28, };
+	for (int i = 0; i < 5000;i++)
+	{
+		clock_t start, fihst;
+		start = clock();
+		BYTE bCardData[DISPATCH_COUNT] = { 0 };
+		m_GameLogicNew.RandCardList(bCardData, DISPATCH_COUNT);
+		CopyMemory(tempCard, bCardData, sizeof(tempCard));
+		tagInPyhonNew pythonData = {};
+		CopyMemory(pythonData.cbHandCardData, tempCard, sizeof(tempCard));
+		pythonData.cbHandCardCount = sizeof(tempCard);
+		int b = m_pLogicControl(&pythonData);
+		CopyMemory(tempCard, pythonData.cbResultCard, NORMAL_COUNT);
+		if (pythonData.cbResultCard[0]==0)
+		{
+			int a = 0;
+		}
+		
+	}
+	
+}
 int _tmain(int argc, _TCHAR* argv[])
 {
+	testGameLogic2();
 	TestGameLogic(); 
 	return 0;
 }
