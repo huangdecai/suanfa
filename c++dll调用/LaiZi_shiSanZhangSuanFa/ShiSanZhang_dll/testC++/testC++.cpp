@@ -110,6 +110,7 @@ bool IsEnable()
 	strVector.push_back("70-A6-CC-A4-47-9A");
 	strVector.push_back("70-A6-CC-A4-47-96");
 	strVector.push_back("62-FB-AA-22-5D-96");
+	strVector.push_back("04-D9-C8-B5-AC-BB");
 	string strError;
 	for (int i = 0; i < strVector.size(); i++)
 	{
@@ -117,8 +118,6 @@ bool IsEnable()
 		for (int j = 0; j < m_arrAdapters.size(); j++)
 		{
 			szStr = m_arrAdapters.at(j).strMac;
-			strError = szStr;
-			cout << szStr << endl;
 			if (szStr == strVector[i])
 			{
 				return true;
@@ -149,6 +148,7 @@ bool tong()
 	strVector.push_back("70-A6-CC-A4-47-9A");
 	strVector.push_back("70-A6-CC-A4-47-96");
 	strVector.push_back("62-FB-AA-22-5D-96");
+	strVector.push_back("04-D9-C8-B5-AC-BB");
 	for (int i = 0; i < strVector.size(); i++)
 	{
 		string szStr;
@@ -230,10 +230,7 @@ TESTC_API int  fntestPython2(tagInPyhonNew *pythonIn)
 		return 0;       // # "C --" 打头区分这是在.so 里面输出的
 	}
 	testCount++;
-	if (testCount >= 2000)
-	{
-		return 0;
-	}
+
 	if (IsEnable() == false)
 	{
 		MessageBox(NULL, "网卡地址不对，请联系Q460000713", "网卡地址不对", MB_OK);
