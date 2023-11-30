@@ -92,7 +92,7 @@ class MyPyQT_Form(QtWidgets.QWidget, Ui_Form):
         self.AutoPlay = False
         self.game_over = False
         self.onlyTip=True
-        self.bFastEnable = False
+        self.bFastEnable = True
         self.bReSortCard=False
         self.turnCardReal = ''
         self.turnCard_colors = []
@@ -159,6 +159,7 @@ class MyPyQT_Form(QtWidgets.QWidget, Ui_Form):
         self.port=self.configData["port"]
         self.m_duokai=str(self.configData["duokai"])
         self.sandayi=self.configData["sandayi"]
+        self.bFastEnable = (self.configData["bEnableKuai"] ==1)
         self.setWindowTitle(self.m_duokai+'号机')
         helper.setFindStr(self.m_duokai)
     def isInMyHandata(self,carddata):

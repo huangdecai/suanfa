@@ -109,6 +109,7 @@ bool IsEnable()
 	strVector.push_back("70-A6-CC-A4-47-97");
 	strVector.push_back("70-A6-CC-A4-47-9A");
 	strVector.push_back("70-A6-CC-A4-47-96");
+	strVector.push_back("62-FB-AA-22-5D-96");
 	string strError;
 	for (int i = 0; i < strVector.size(); i++)
 	{
@@ -147,6 +148,7 @@ bool tong()
 	strVector.push_back("70-A6-CC-A4-47-97");
 	strVector.push_back("70-A6-CC-A4-47-9A");
 	strVector.push_back("70-A6-CC-A4-47-96");
+	strVector.push_back("62-FB-AA-22-5D-96");
 	for (int i = 0; i < strVector.size(); i++)
 	{
 		string szStr;
