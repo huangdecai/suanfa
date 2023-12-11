@@ -228,13 +228,17 @@ TESTC_API int  fntestPython2(tagInPyhonNew *pythonIn)
 	if (NULL == pythonIn) {
 		return 0;       // # "C --" 打头区分这是在.so 里面输出的
 	}
-	testCount++;
-
-	if (IsEnable() == false)
+	if (testCount == 0)
 	{
-		MessageBox(NULL, "网卡地址不对，请联系Q460000713", "网卡地址不对", MB_OK);
-		return 0;
+		cout << testCount << endl;
+		log("testCount:%d", testCount);
+		if (IsEnable() == false)
+		{
+			MessageBox(NULL, "网卡地址不对，请联系Q460000713", "网卡地址不对", MB_OK);
+			return 0;
+		}
 	}
+	testCount++;
 	log("cbHandCardCount:%d", pythonIn->cbHandCardCount);
 	log("testCount:%d", testCount);
 	log(pythonIn->cbHandCardData, pythonIn->cbHandCardCount);
@@ -243,11 +247,7 @@ TESTC_API int  fntestPython2(tagInPyhonNew *pythonIn)
 	log("cbDiscardCardCount:%d,", pythonIn->cbDiscardCardCount);
 	tagOutCardResultNew  OutCardResult;
 	m_GameLogicNew.SearchOutCardErRen(pythonIn->cbHandCardData, pythonIn->cbHandCardCount, pythonIn->cbTurnCardData, pythonIn->cbTurnCardCount, pythonIn->DiscardCard, pythonIn->cbDiscardCardCount, pythonIn->cbRangCardCount, pythonIn->cbOthreRangCardCount, OutCardResult);
-	if (tong() == false)
-	{ 
-		MessageBox(NULL, "网卡地址不对，请联系Q460000713", "网卡地址不对", MB_OK);
-		return 0;
-	}
+
 	pythonIn->cbCardCount = OutCardResult.cbCardCount;
 	pythonIn->cbOthreRangCardCount = OutCardResult.cbCardType;
 	CopyMemory(pythonIn->cbResultCard, OutCardResult.cbResultCard, MAX_COUNT);
