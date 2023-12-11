@@ -1403,16 +1403,14 @@ void com(vector<int> &candidates, int start, int sum, int target, int path[], in
 		return;
 	if (pathCount >= 2)
 	{
-		bool tableRe[100] = { 0 };
+		int tableRe[100] = { 0 };
 		for (int j = 0; j < pathCount; j++)
 		{
 			for (int i = 0; i < resultVec[path[j]].cbCardCount; i++)
 			{
-				if (tableRe[resultVec[path[j]].cbResultCard[i]] != true)
-				{
-					tableRe[resultVec[path[j]].cbResultCard[i]] = true;
-				}
-				else
+				BYTE tempIndex = resultVec[path[j]].cbResultCard[i];
+				tableRe[tempIndex] ++;
+				if (tableRe[tempIndex] > tableRe2[tempIndex])
 				{
 					return;
 				}
@@ -1627,7 +1625,7 @@ int CGameLogicNew::FindCardKindMinNum(BYTE const cbHandCardData[], BYTE const cb
 	
 	//////////////////////////////////////非多线程版本
 	#define NO_CONDITION_THREAD 1
-#ifdef NO_CONDITION_THREAD0
+#ifdef NO_CONDITION_THREAD
 	int   vecTempIndex[MAX_COUNT] = { 0 };
 	int   pathCount = 0;
 	int MinTypeCount = INT_MAX;

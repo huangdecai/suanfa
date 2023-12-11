@@ -1,23 +1,24 @@
-"D:\test\suanfa\c++dll调用\LaiZi_shiSanZhangSuanFa\ShiSanZhang_dll\testC++.sln" 
-10:40
-D:\test\suanfa\c++dll调用\LaiZi_shiSanZhangSuanFa\ShiSanZhang_dll\testC++\testC++.vcxproj : warning  : 无法找到 v141 的生成工具。安装 v141 可使用 v141 生成工具进行生成。
-
+"D:\pythonTest\c++dll调用\LaiZi_shiSanZhangSuanFa\ShiSanZhang_dll\testC++.sln" 
+09:32
 1>------ 已启动生成: 项目: testC++, 配置: Release x64 ------
 1>  stdafx.cpp
 1>  GameLogicNew.cpp
-1>..\..\gameLogic\testLogic2\GameLogicNew.cpp(1504): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
-1>..\..\gameLogic\testLogic2\GameLogicNew.cpp(1532): warning C4267: “=”: 从“size_t”转换到“int”，可能丢失数据
-1>..\..\gameLogic\testLogic2\GameLogicNew.cpp(1700): warning C4267: “=”: 从“size_t”转换到“int”，可能丢失数据
-1>..\..\gameLogic\testLogic2\GameLogicNew.cpp(1762): warning C4244: “初始化”: 从“__int64”转换到“int”，可能丢失数据
-1>..\..\gameLogic\testLogic2\GameLogicNew.cpp(2353): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
-1>..\..\gameLogic\testLogic2\GameLogicNew.cpp(2486): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
-1>..\..\gameLogic\testLogic2\GameLogicNew.cpp(2499): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
-1>..\..\gameLogic\testLogic2\GameLogicNew.cpp(2514): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
-1>..\..\gameLogic\testLogic2\GameLogicNew.cpp(2653): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
-1>..\..\gameLogic\testLogic2\GameLogicNew.cpp(2679): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
-1>..\..\gameLogic\testLogic2\GameLogicNew.cpp(3793): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
-1>..\..\gameLogic\testLogic2\GameLogicNew.cpp(4160): warning C4244: “=”: 从“float”转换到“int”，可能丢失数据
-1>..\..\gameLogic\testLogic2\GameLogicNew.cpp(4163): warning C4244: “return”: 从“float”转换到“int”，可能丢失数据
+1>..\..\gameLogic\testLogic2\GameLogicNew.cpp(1502): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
+1>..\..\gameLogic\testLogic2\GameLogicNew.cpp(1530): warning C4267: “=”: 从“size_t”转换到“int”，可能丢失数据
+1>..\..\gameLogic\testLogic2\GameLogicNew.cpp(1637): warning C4244: “初始化”: 从“float”转换到“int”，可能丢失数据
+1>..\..\gameLogic\testLogic2\GameLogicNew.cpp(1642): warning C4267: “=”: 从“size_t”转换到“int”，可能丢失数据
+1>..\..\gameLogic\testLogic2\GameLogicNew.cpp(1649): warning C4244: “=”: 从“int”转换到“float”，可能丢失数据
+1>..\..\gameLogic\testLogic2\GameLogicNew.cpp(1651): warning C4267: “=”: 从“size_t”转换到“int”，可能丢失数据
+1>..\..\gameLogic\testLogic2\GameLogicNew.cpp(1760): warning C4244: “初始化”: 从“__int64”转换到“int”，可能丢失数据
+1>..\..\gameLogic\testLogic2\GameLogicNew.cpp(2351): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
+1>..\..\gameLogic\testLogic2\GameLogicNew.cpp(2484): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
+1>..\..\gameLogic\testLogic2\GameLogicNew.cpp(2497): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
+1>..\..\gameLogic\testLogic2\GameLogicNew.cpp(2512): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
+1>..\..\gameLogic\testLogic2\GameLogicNew.cpp(2651): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
+1>..\..\gameLogic\testLogic2\GameLogicNew.cpp(2677): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
+1>..\..\gameLogic\testLogic2\GameLogicNew.cpp(3791): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
+1>..\..\gameLogic\testLogic2\GameLogicNew.cpp(4158): warning C4244: “=”: 从“float”转换到“int”，可能丢失数据
+1>..\..\gameLogic\testLogic2\GameLogicNew.cpp(4161): warning C4244: “return”: 从“float”转换到“int”，可能丢失数据
 1>..\..\gameLogic\testLogic2\GameLogicNew.cpp(4312): warning C4244: “=”: 从“float”转换到“int”，可能丢失数据
 1>..\..\gameLogic\testLogic2\GameLogicNew.cpp(4315): warning C4244: “return”: 从“float”转换到“int”，可能丢失数据
 1>..\..\gameLogic\testLogic2\GameLogicNew.cpp(4372): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
@@ -34,12 +35,13 @@ D:\test\suanfa\c++dll调用\LaiZi_shiSanZhangSuanFa\ShiSanZhang_dll\testC++\testC+
 1>testC++.cpp(215): warning C4244: “初始化”: 从“int”转换到“float”，可能丢失数据
 1>testC++.cpp(222): warning C4244: “return”: 从“float”转换到“int”，可能丢失数据
 1>  dllmain.cpp
-1>    正在创建库 D:\test\suanfa\c++dll调用\LaiZi_shiSanZhangSuanFa\ShiSanZhang_dll\x64\Release\testC++.lib 和对象 D:\test\suanfa\c++dll调用\LaiZi_shiSanZhangSuanFa\ShiSanZhang_dll\x64\Release\testC++.exp
+1>    正在创建库 D:\pythonTest\c++dll调用\LaiZi_shiSanZhangSuanFa\ShiSanZhang_dll\x64\Release\testC++.lib 和对象 D:\pythonTest\c++dll调用\LaiZi_shiSanZhangSuanFa\ShiSanZhang_dll\x64\Release\testC++.exp
 1>  正在生成代码
-1>  All 1200 functions were compiled because no usable IPDB/IOBJ from previous compilation was found.
+1>  63 of 995 functions ( 6.3%) were compiled, the rest were copied from previous compilation.
+1>    18 functions were new in current compilation
+1>    37 functions had inline decision re-evaluated but remain unchanged
 1>  已完成代码的生成
-1>  testC++.vcxproj -> D:\test\suanfa\c++dll调用\LaiZi_shiSanZhangSuanFa\ShiSanZhang_dll\x64\Release\testC++.dll
-1>  testC++.vcxproj -> D:\test\suanfa\c++dll调用\LaiZi_shiSanZhangSuanFa\ShiSanZhang_dll\x64\Release\testC++.pdb (Full PDB)
+1>  testC++.vcxproj -> D:\pythonTest\c++dll调用\LaiZi_shiSanZhangSuanFa\ShiSanZhang_dll\x64\Release\testC++.dll
 ========== 生成: 成功 1 个，失败 0 个，最新 0 个，跳过 0 个 ==========
 
-10:40
+09:37
