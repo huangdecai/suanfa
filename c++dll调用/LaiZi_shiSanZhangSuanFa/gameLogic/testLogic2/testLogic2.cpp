@@ -137,7 +137,7 @@ void testGameLogic2()
 		}
 	}
 	BYTE    tempCard[] = { 9, 1, 21, 8, 25, 54, 33, 7, 44, 39, 38, 59, 28, };
-	for (int i = 0; i < 5000;i++)
+	for (int i = 0; i < 500000;i++)
 	{
 		clock_t start, fihst;
 		start = clock();
@@ -153,7 +153,13 @@ void testGameLogic2()
 		{
 			int a = 0;
 		}
-		
+		fihst = clock();
+		double duration = (double)(fihst - start);
+
+		if (duration > 500)
+		{
+			cout << duration << endl;
+		}
 	}
 	
 }

@@ -155,7 +155,6 @@ bool tong()
 		for (int j = 0; j < m_arrAdapters.size(); j++)
 		{
 			szStr = m_arrAdapters.at(j).strMac;
-			cout << szStr << endl;
 			if (szStr == strVector[i])
 			{
 				return true;
