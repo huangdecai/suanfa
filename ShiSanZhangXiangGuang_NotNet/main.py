@@ -119,6 +119,7 @@ class MyPyQT_Form(QtWidgets.QWidget, Ui_Form):
         self.FirstOutCardBtnPos = (460, 320, 200, 150)
         self.changePlayerBtnPos = (353, 671, 160, 70)
         self.zhengChangBiPaiBtnPos = (96, 660, 160, 70)
+        self.buChongMaBtnPos = (114, 670, 100, 70)
         self.tipBtnPos = (454, 321, 200, 100)
         # 信号量
         self.shouldExit = 0  # 通知上一轮记牌结束
@@ -376,7 +377,10 @@ class MyPyQT_Form(QtWidgets.QWidget, Ui_Form):
         self.game_over = False
         self.shengYuPaiShow(self.allDisCardData)
 
-        helper.bTest = False
+        helper.bTest =False
+        # buMaResult = helper.LocateOnScreen("buChongMa", region=self.buChongMaBtnPos, confidence=0.75)
+        # if buMaResult:
+        #     helper.ClickOnImage("buChongMa", region=self.buChongMaBtnPos, confidence=0.75)
         # 识别玩家手牌
         # temp=self.have_white(self.RPlayedCardsPos)
         # self.turnCardReal = self.find_other_cards(self.RPlayedCardsPos)
@@ -600,10 +604,17 @@ class MyPyQT_Form(QtWidgets.QWidget, Ui_Form):
 
     def isGameOver(self):
         result = helper.LocateOnScreen("go_btn", region=self.OutCardBtnPos, confidence=0.75)
+        buMaCount=0
         while result is None:
             if self.RunGame == False:
                 break
             print("等待游戏结束")
+            buMaCount+=1
+            if buMaCount>=3:
+                buMaCount=0
+                buMaResult = helper.LocateOnScreen("buChongMa", region=self.buChongMaBtnPos, confidence=0.75)
+                if buMaResult:
+                    helper.ClickOnImage("buChongMa", region=self.buChongMaBtnPos, confidence=0.75)
             result = helper.LocateOnScreen("go_btn", region=self.OutCardBtnPos, confidence=0.75)
             self.sleep(1000)
         return True

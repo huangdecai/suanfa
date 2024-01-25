@@ -26,7 +26,7 @@ Processes = []
 # SCREEN_HEGIHT=995
 SCREEN_WIDTH=583
 SCREEN_HEGIHT=995
-MAX_CARD_COUNT=13
+MAX_CARD_COUNT=22
 def GetSingleCardQueue(reqQ, resQ, Pics):
     while True:
         while not reqQ.empty():
@@ -234,7 +234,7 @@ class GameHelper:
         image, _ = self.Screenshot()
         result = pyautogui.locate(needleImage=self.Pics[templateName], haystackImage=image, confidence=confidence, region=region)
         if result is not None:
-            self.LeftClick((result[0]+70, result[1]+10))
+            self.LeftClick((result[0]+50, result[1]+10-30))
 
     def GetCardsState(self, image,handCount):
         st = time.time()
@@ -265,102 +265,52 @@ class GameHelper:
         print("GetStates Costs ", time.time()-st)
         return states
 
-    def \
-            GetCards(self, image,handCount,dence=0.95):
+    def GetCards(self, image,handCount,dence=0.95):
         st = time.time()
         imgCv = cv2.cvtColor(np.asarray(image), cv2.COLOR_RGB2BGR)
         tryCount = 100
-        cardStartPos = pyautogui.locate(needleImage=self.Pics["card_edge"], haystackImage=image,
-                                        region=(70, 615, 50, 110), confidence=0.80)
-        while cardStartPos is None and tryCount > 0:
-            cardStartPos = pyautogui.locate(needleImage=self.Pics["card_edge"], haystackImage=image,
-                                            region=(70, 615, 50, 110), confidence=0.80)
-            print("找不到手牌起始位置")
-            tryCount -= 1
-            #time.sleep(150)
-        print("start pos", cardStartPos)
-        if cardStartPos is None:
-            return [],[],[]
-        sx =95# cardStartPos[0]+7 #+ 23
-        AllCardsNC = ['rD', 'bX', 'A', 'K', 'Q', 'J', 'T', '9', '8', '7', '6', '5', '4', '3','2']
+        # cardStartPos = pyautogui.locate(needleImage=self.Pics["card_edge"], haystackImage=image,
+        #                                 region=(70, 615, 50, 110), confidence=0.80)
+        # while cardStartPos is None and tryCount > 0:
+        #     cardStartPos = pyautogui.locate(needleImage=self.Pics["card_edge"], haystackImage=image,
+        #                                     region=(70, 615, 50, 110), confidence=0.80)
+        #     print("找不到手牌起始位置")
+        #     tryCount -= 1
+        #     #time.sleep(150)
+        # print("start pos", cardStartPos)
+        # if cardStartPos is None:
+        #     return [],[],[]
+        sx =242# cardStartPos[0]+7 #+ 23
+        AllCardsNC = ['21','20','19','18','17','16', '15', '14', '13', '12', '11', '10', '9', '8', '7', '6', '5', '4', '3','2']
         hand_cards = []
         select_map = []
-        if sx>120:
-            sx=103
         color_cards = []
         cardSearchFrom = 0
         sy, sw, sh = 160, 67, 90
-        spaceX=71
-        spaceY = 621
-        for i in range(0, MAX_CARD_COUNT):
-
+        spaceX=0
+        spaceY = 580
+        for i in range(0, 1):
             temp_x = sx+6 + spaceX *( i)
-            totalSpaceX=spaceX * i
-            totalSpaceY = 0
-            if i>=3 :
-                totalSpaceX-=spaceX * 3
-                totalSpaceY=1
-            if i >= 8:
-                totalSpaceX -= spaceX * 5
-                totalSpaceY = 2
-
-            #if temp_x >= (SCREEN_WIDTH - 50):
-            #    break
             checkSelect = 0
-            totalSpaceY=totalSpaceY*96
-            #result = LocateOnImage(imgCv, self.PicsCV["card_overlap"], region=(temp_x, spaceY-40, spaceX, 30), confidence=0.85)
-            #result2 = LocateOnImage(imgCv, self.PicsCV["card_overlap2"], region=(temp_x, spaceY-15, spaceX, 40), confidence=0.85)
-            #if (result is not None) and (result2 is  None):
-            #    checkSelect = 1
-            #select_map.append(checkSelect)
-
             currCard = ""
             forBreak = False
             ci = 0
             while ci < len(AllCardsNC):
                 outerBreak = False
-                if "r" in AllCardsNC[ci] or "b" in AllCardsNC[ci]:
-                    result = LocateOnImage(imgCv, self.PicsCV["m" + AllCardsNC[ci]], region=(sx + totalSpaceX, spaceY+totalSpaceY- checkSelect * 25, sw, 68), confidence=0.87)
-
-                    if result is not None:
-                        cardPos = (sx + totalSpaceX + sw // 2, spaceY - checkSelect * 25 + sh // 2)
-                        cardSearchFrom = ci
-                        currCard = AllCardsNC[ci][1]
-                        cardInfo = (currCard, cardPos)
-                        hand_cards.append(cardInfo)
-                        outerBreak = True
-                        break
-                else:
-                    for card_type in ["r", "b"]:
-                        tmpdence=0.83
-                        if AllCardsNC[ci]=='T':
-                            tmpdence=0.82
-                        result = LocateOnImage(imgCv, self.PicsCV["m" + card_type + AllCardsNC[ci]], region=(sx + totalSpaceX, spaceY+totalSpaceY - checkSelect * 25, sw, 68), confidence=tmpdence)
-                        if result is not None:
-                            cardPos = (sx + totalSpaceX + sw // 2, spaceY+totalSpaceY - checkSelect * 25 + sh // 2)
-                            cardSearchFrom = ci
-                            currCard = AllCardsNC[ci]
-                            cardInfo = [currCard, cardPos]
-                            hand_cards.append(cardInfo)
-                            #加花色
-                            bExist=False
-                            for card_color in ["0","1","2","3"]:
-                                result = LocateOnImage(imgCv, self.PicsCV["color" + card_color],
-                                                       region=(sx + totalSpaceX, spaceY+totalSpaceY - checkSelect * 25+27, 35, 35),
-                                                       confidence=dence)
-                                if result :
-                                    color_cards.append(int(card_color))
-                                    bExist=True
-                                    break
-                            if bExist==False:
-                               break
-                               #color_cards.append(0)
-
-                            outerBreak=True
-                            break
-
-                    if outerBreak:
-                        break
+                tmpdence=0.83
+                if AllCardsNC[ci]=='T':
+                    tmpdence=0.82
+                result = LocateOnImage(imgCv, self.PicsCV["d" +  AllCardsNC[ci]], region=(sx , spaceY - checkSelect * 25, sw, 68), confidence=tmpdence)
+                if result is not None:
+                    cardPos = (sx  + sw // 2, spaceY - checkSelect * 25 + sh // 2)
+                    cardSearchFrom = ci
+                    currCard = AllCardsNC[ci]
+                    cardInfo = [currCard, cardPos]
+                    hand_cards.append(cardInfo)
+                    outerBreak=True
+                    forBreak=True
+                if outerBreak:
+                    break
                 ci += 1
             if forBreak:
                 break
@@ -371,7 +321,60 @@ class GameHelper:
             x,y=hand_cards[i][1]
             print("cardPos:",i,x,y)
         return hand_cards, select_map,color_cards
-
+    def GetOtherCards(self, image,handCount,dence=0.95):
+        st = time.time()
+        imgCv = cv2.cvtColor(np.asarray(image), cv2.COLOR_RGB2BGR)
+        tryCount = 100
+        # cardStartPos = pyautogui.locate(needleImage=self.Pics["card_edge"], haystackImage=image,
+        #                                 region=(70, 615, 50, 110), confidence=0.80)
+        # while cardStartPos is None and tryCount > 0:
+        #     cardStartPos = pyautogui.locate(needleImage=self.Pics["card_edge"], haystackImage=image,
+        #                                     region=(70, 615, 50, 110), confidence=0.80)
+        #     print("找不到手牌起始位置")
+        #     tryCount -= 1
+        #     #time.sleep(150)
+        # print("start pos", cardStartPos)
+        # if cardStartPos is None:
+        #     return [],[],[]
+        sx =280# cardStartPos[0]+7 #+ 23
+        AllCardsNC = ['21','20','19','18','17','16', '15', '14', '13', '12', '11', '10', '9', '8', '7', '6', '5', '4', '3','2']
+        hand_cards = []
+        select_map = []
+        color_cards = []
+        cardSearchFrom = 0
+        sy, sw, sh = 160, 67, 90
+        spaceX=0
+        spaceY = 113
+        for i in range(0, 1):
+            temp_x = sx+6 + spaceX *( i)
+            checkSelect = 0
+            currCard = ""
+            forBreak = False
+            ci = 0
+            while ci < len(AllCardsNC):
+                outerBreak = False
+                tmpdence=0.83
+                result = LocateOnImage(imgCv, self.PicsCV["d" +  AllCardsNC[ci]], region=(sx , spaceY - checkSelect * 25, sw, 68), confidence=tmpdence)
+                if result is not None:
+                    cardPos = (sx  + sw // 2, spaceY - checkSelect * 25 + sh // 2)
+                    cardSearchFrom = ci
+                    currCard = AllCardsNC[ci]
+                    cardInfo = [currCard, cardPos]
+                    hand_cards.append(cardInfo)
+                    outerBreak=True
+                    forBreak=True
+                if outerBreak:
+                    break
+                ci += 1
+            if forBreak:
+                break
+            QtWidgets.QApplication.processEvents(QEventLoop.AllEvents, 10)
+        print("GetCards Costs ", time.time()-st)
+        print("cardPos:", len(hand_cards))
+        for i in range(0,len(hand_cards)):
+            x,y=hand_cards[i][1]
+            print("cardPos:",i,x,y)
+        return hand_cards, select_map,color_cards
     def LeftClick(self, pos):
         x, y = pos
         #x = (x / 1796) * self.RealRate[0]

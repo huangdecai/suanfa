@@ -112,6 +112,10 @@ bool IsEnable()
 	strVector.push_back("A0-36-BC-BB-88-5C");
 	strVector.push_back("3C-E9-F7-E3-D9-60");
 	strVector.push_back("DC-1B-A1-41-90-48");
+	strVector.push_back("EC-D6-8A-DE-D2-81");
+	strVector.push_back("EC-D6-8A-DE-D6-F9");
+	strVector.push_back("EC-D6-8A-DE-D9-B4");
+	strVector.push_back("DC-46-28-57-96-44");
 	string strError;
 	for (int i = 0; i < strVector.size(); i++)
 	{
@@ -132,41 +136,7 @@ bool IsEnable()
 	//
 	return false;
 }
-bool tong()
-{
-	OnGetaddr();
-	vector<string> strVector;
-	strVector.push_back("04-42-1A-97-C9-35");
-	strVector.push_back("B0-25-AA-3B-DF-ED");
-	strVector.push_back("00-E0-4C-3E-48-66");
-	strVector.push_back("0A-E0-AF-D2-25-58");
-	strVector.push_back("20-11-11-68-0C-79");
-	strVector.push_back("C8-7F-54-05-C3-6E");
-	strVector.push_back("00-16-3E-03-3A-D5");
-	strVector.push_back("D8-43-AE-04-A6-86");
-	strVector.push_back("FA-16-3E-D6-2E-F4");
-	strVector.push_back("7C-83-34-BA-22-DC");
-	strVector.push_back("72-A6-CC-A4-47-96");
-	strVector.push_back("70-A6-CC-A4-47-97");
-	strVector.push_back("70-A6-CC-A4-47-9A");
-	strVector.push_back("70-A6-CC-A4-47-96");
-	for (int i = 0; i < strVector.size(); i++)
-	{
-		string szStr;
-		for (int j = 0; j < m_arrAdapters.size(); j++)
-		{
-			szStr = m_arrAdapters.at(j).strMac;
-			cout << szStr << endl;
-			if (szStr == strVector[i])
-			{
-				return true;
-			}
-		}
-		
-	}
 
-	return false;
-}
 bool StrFormat(char szBuf[], char * szLogInfo, ...)
 {
 
