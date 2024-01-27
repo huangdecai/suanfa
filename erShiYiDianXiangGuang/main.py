@@ -153,10 +153,10 @@ class MyPyQT_Form(QtWidgets.QWidget, Ui_Form):
         self.beforeStart()
         self.switch_mode()
         self.startgame.setVisible(False)
-        self.lock = threading.Lock()
-        self.startLoginGame()
-        self.detect_image=[]
-        self.initMPlayedCard()
+        #self.lock = threading.Lock()
+        #self.startLoginGame()
+        #self.detect_image=[]
+        #self.initMPlayedCard()
         #carddata=[0x01,0x02,0x03,0x04,0x05,0x06,0x07,0x08,0x09,0x0A,0x0B,0x0C,0x0D]
         #self.ShowPlayerCardEx(2,carddata)
     def init_display(self):
@@ -332,10 +332,10 @@ class MyPyQT_Form(QtWidgets.QWidget, Ui_Form):
         self.handCardCount = [MAX_CARD_COUNT, MAX_CARD_COUNT, MAX_CARD_COUNT]
         self.bHavePass = False
         self.env = None
-        if self.connected==0:
-            print("你的账号没有登陆，请联系Q：460000713，进行购买")
-            self.sleep(1000)
-            return
+        # if self.connected==0:
+        #     print("你的账号没有登陆，请联系Q：460000713，进行购买")
+        #     self.sleep(1000)
+        #     return
         self.game_over = False
         self.shengYuPaiShow(self.allDisCardData)
 
@@ -388,34 +388,49 @@ class MyPyQT_Form(QtWidgets.QWidget, Ui_Form):
                             break
                 if bRestart:
                     continue
-                dence=0.94
-                self.user_hand_cards_real, self.user_hand_colors = self.find_my_cards(self.MyHandCardsPos,dence)
-                self.other_hand_cards_real,self.user_hand_colors= self.find_other_cards(self.MyHandCardsPos, dence)
+                yaoBtnReuslt = helper.LocateOnScreen("yaopai", region=self.yaoPaiBtnPos, confidence=0.80)
+                yaoCount2=0
+                while yaoBtnReuslt :
+                    dence=0.94
+                    self.user_hand_cards_real, self.user_hand_colors = self.find_my_cards(self.MyHandCardsPos,dence)
+                    self.other_hand_cards_real,self.user_hand_colors= self.find_other_cards(self.MyHandCardsPos, dence)
 
-                print('自己点数：',self.user_hand_cards_real)
-                if self.user_hand_cards_real == '':
-                    self.user_hand_cards_real = '11'
-                print('庄点数：', self.other_hand_cards_real)
-                myRsult=int(self.user_hand_cards_real)
-                otherResult=int(self.other_hand_cards_real)
-                actionIndex=17-myRsult
-                actStr=actionList[actionIndex]
-                if myRsult>=17 or actStr=='s' :
-                    helper.ClickOnImage("tingpai", region=self.tingPaiBtnPos, confidence=0.80)
-                    print('myRsult1....',actionIndex,myRsult,actStr)
-                elif actStr=='h':
-                    helper.ClickOnImage("yaopai", region=self.yaoPaiBtnPos, confidence=0.80)
-                    print('myRsult2....', actionIndex, myRsult, actStr)
-                elif actStr == 'd':
-                    jiabeiBtnReuslt = helper.LocateOnScreen("jiabeixiazhu", region=self.jiaBeiXiaZhuBtnPos, confidence=0.80)
-                    if jiabeiBtnReuslt:
-                       helper.ClickOnImage("jiabeixiazhu", region=self.jiaBeiXiaZhuBtnPos, confidence=0.80)
-                    else:
+                    print('自己点数：',self.user_hand_cards_real)
+                    if self.user_hand_cards_real == '':
+                        self.user_hand_cards_real = '11'
+                    print('庄点数：', self.other_hand_cards_real)
+                    if self.other_hand_cards_real == '':
+                        self.other_hand_cards_real = '11'
+                    myRsult = int(self.user_hand_cards_real)
+                    otherResult=int(self.other_hand_cards_real)
+                    tempNum=17-myRsult
+                    if tempNum<0:
+                        tempNum=0
+                    actionIndex=(tempNum)*10+(otherResult-2)
+                    if actionIndex>=len(actionList):
+                        print('actionIndex_error')
+                        actionIndex=0
+                    actStr=actionList[actionIndex]
+                    print('actStr：',myRsult,otherResult,actionIndex,actStr)
+                    if myRsult>=17 or actStr=='s' :
+                        helper.ClickOnImage("tingpai", region=self.tingPaiBtnPos, confidence=0.80)
+                        print('myRsult1....',actionIndex,myRsult,actStr)
+                    elif actStr=='h':
                         helper.ClickOnImage("yaopai", region=self.yaoPaiBtnPos, confidence=0.80)
-                    print('myRsult3....', actionIndex, myRsult, actStr)
-                else:
-                     helper.ClickOnImage("tingpai", region=self.tingPaiBtnPos, confidence=0.80)
-                     print('myRsult4....', actionIndex, myRsult, actStr)
+                        print('myRsult2....', actionIndex, myRsult, actStr)
+                    elif actStr == 'd':
+                        jiabeiBtnReuslt = helper.LocateOnScreen("jiabeixiazhu", region=self.jiaBeiXiaZhuBtnPos, confidence=0.80)
+                        if jiabeiBtnReuslt and yaoCount2==0:
+                           helper.ClickOnImage("jiabeixiazhu", region=self.jiaBeiXiaZhuBtnPos, confidence=0.80)
+                        else:
+                            helper.ClickOnImage("tingpai", region=self.tingPaiBtnPos, confidence=0.80)
+                        print('myRsult3....', actionIndex, myRsult, actStr)
+                    else:
+                         helper.ClickOnImage("tingpai", region=self.tingPaiBtnPos, confidence=0.80)
+                         print('myRsult4....', actionIndex, myRsult, actStr)
+                    self.sleep(2000)
+                    yaoCount2+=1
+                    yaoBtnReuslt = helper.LocateOnScreen("yaopai", region=self.yaoPaiBtnPos, confidence=0.80)
                 self.detect_start_btn()
             elif self.play_order == 2:
                 self.play_order = 0

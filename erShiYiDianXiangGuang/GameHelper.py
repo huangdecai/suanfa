@@ -297,9 +297,7 @@ class GameHelper:
             ci = 0
             while ci < len(AllCardsNC):
                 outerBreak = False
-                tmpdence=0.83
-                if AllCardsNC[ci]=='T':
-                    tmpdence=0.82
+                tmpdence=0.90
                 result = LocateOnImage(imgCv, self.PicsCV["d" +  AllCardsNC[ci]], region=(sx , spaceY - checkSelect * 25, sw, 68), confidence=tmpdence)
                 if result is not None:
                     cardPos = (sx  + sw // 2, spaceY - checkSelect * 25 + sh // 2)
@@ -353,7 +351,7 @@ class GameHelper:
             ci = 0
             while ci < len(AllCardsNC):
                 outerBreak = False
-                tmpdence=0.83
+                tmpdence=0.90
                 result = LocateOnImage(imgCv, self.PicsCV["d" +  AllCardsNC[ci]], region=(sx , spaceY - checkSelect * 25, sw, 68), confidence=tmpdence)
                 if result is not None:
                     cardPos = (sx  + sw // 2, spaceY - checkSelect * 25 + sh // 2)
