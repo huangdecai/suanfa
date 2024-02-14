@@ -397,10 +397,10 @@ class MyPyQT_Form(QtWidgets.QWidget, Ui_Form):
 
                     print('自己点数：',self.user_hand_cards_real)
                     if self.user_hand_cards_real == '':
-                        self.user_hand_cards_real = '11'
+                        self.user_hand_cards_real = '16'
                     print('庄点数：', self.other_hand_cards_real)
                     if self.other_hand_cards_real == '':
-                        self.other_hand_cards_real = '11'
+                        self.other_hand_cards_real = '8'
                     myRsult = int(self.user_hand_cards_real)
                     otherResult=int(self.other_hand_cards_real)
                     tempNum=17-myRsult
@@ -408,28 +408,38 @@ class MyPyQT_Form(QtWidgets.QWidget, Ui_Form):
                         tempNum=0
                     actionIndex=(tempNum)*10+(otherResult-2)
                     if actionIndex>=len(actionList):
-                        print('actionIndex_error')
+                        print('actionIndex_error',actionIndex,len(actionList),tempNum)
                         actionIndex=0
                     actStr=actionList[actionIndex]
                     print('actStr：',myRsult,otherResult,actionIndex,actStr)
                     if myRsult>=17 or actStr=='s' :
                         helper.ClickOnImage("tingpai", region=self.tingPaiBtnPos, confidence=0.80)
                         print('myRsult1....',actionIndex,myRsult,actStr)
+                    elif myRsult<11:
+                        helper.ClickOnImage("yaopai", region=self.yaoPaiBtnPos, confidence=0.80)
+                        print('myRsult1111....', actionIndex, myRsult, actStr)
                     elif actStr=='h':
                         helper.ClickOnImage("yaopai", region=self.yaoPaiBtnPos, confidence=0.80)
                         print('myRsult2....', actionIndex, myRsult, actStr)
                     elif actStr == 'd':
-                        jiabeiBtnReuslt = helper.LocateOnScreen("jiabeixiazhu", region=self.jiaBeiXiaZhuBtnPos, confidence=0.80)
-                        if jiabeiBtnReuslt and yaoCount2==0:
-                           helper.ClickOnImage("jiabeixiazhu", region=self.jiaBeiXiaZhuBtnPos, confidence=0.80)
-                        else:
-                            helper.ClickOnImage("tingpai", region=self.tingPaiBtnPos, confidence=0.80)
+                        helper.ClickOnImage("yaopai", region=self.yaoPaiBtnPos, confidence=0.80)
+                        # jiabeiBtnReuslt = helper.LocateOnScreen("jiabeixiazhu", region=self.jiaBeiXiaZhuBtnPos, confidence=0.80)
+                        # if jiabeiBtnReuslt and yaoCount2==0:
+                        #    helper.ClickOnImage("jiabeixiazhu", region=self.jiaBeiXiaZhuBtnPos, confidence=0.80)
+                        # else:
+                        #     helper.ClickOnImage("tingpai", region=self.tingPaiBtnPos, confidence=0.80)
                         print('myRsult3....', actionIndex, myRsult, actStr)
                     else:
                          helper.ClickOnImage("tingpai", region=self.tingPaiBtnPos, confidence=0.80)
                          print('myRsult4....', actionIndex, myRsult, actStr)
                     self.sleep(2000)
                     yaoCount2+=1
+                    if yaoCount2>=2:
+                        print('yaoCount2....',yaoCount2, actionIndex, myRsult, actStr)
+                        helper.LeftClick((495, 315))
+                        self.sleep(1000)
+                        helper.ClickOnImage("tingpai", region=self.tingPaiBtnPos, confidence=0.80)
+                        print('myRsult5....', actionIndex, myRsult, actStr)
                     yaoBtnReuslt = helper.LocateOnScreen("yaopai", region=self.yaoPaiBtnPos, confidence=0.80)
                 self.detect_start_btn()
             elif self.play_order == 2:
@@ -472,10 +482,14 @@ class MyPyQT_Form(QtWidgets.QWidget, Ui_Form):
 
     def isGameOver(self):
         result = helper.LocateOnScreen("queRenXianZhu2", region=self.queRenXiaZhuBtnPos, confidence=0.75)
+        count=0
         while result is None:
             if self.RunGame == False:
                 break
-            print("等待游戏结束....")
+            print("等待游戏结束....",count)
+            count+=1
+            if count>=9:
+                helper.LeftClick((143, 682))
             result = helper.LocateOnScreen("queRenXianZhu2", region=self.queRenXiaZhuBtnPos, confidence=0.75)
             self.sleep(1000)
         return True
