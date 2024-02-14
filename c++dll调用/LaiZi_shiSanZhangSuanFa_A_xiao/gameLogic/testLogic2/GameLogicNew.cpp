@@ -7134,6 +7134,24 @@ int CGameLogicNew::CheckSingleCardOrder(BYTE Array[DOU_NUM][DOU_HAND_COUNT])
 			}
 		}
 	}
+	BYTE cbMaxCard = 0;
+	int type0 = GetCardType(Array[0], douNum[0], cbMaxCard);
+	int type1 = GetCardType(Array[1], douNum[1], cbMaxCard);
+	int type2 = GetCardType(Array[2], douNum[2], cbMaxCard);
+	if (type1== CT_FIVE_THREE_DEOUBLE&& type2==CT_THREE)
+	{
+		if (GetCardLogicValue(Array[2][0])> GetCardLogicValue(Array[1][0]))
+		{
+			SwitchArray(&Array[2][0], &Array[1][0], 3);
+		}
+	}
+	else if (type0 == CT_FIVE_THREE_DEOUBLE && type2 == CT_THREE)
+	{
+		if (GetCardLogicValue(Array[2][0]) > GetCardLogicValue(Array[0][0]))
+		{
+			SwitchArray(&Array[2][0], &Array[0][0], 3);
+		}
+	}
 	return 0;
 }
 
