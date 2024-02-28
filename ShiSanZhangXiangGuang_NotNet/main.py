@@ -164,6 +164,7 @@ class MyPyQT_Form(QtWidgets.QWidget, Ui_Form):
         self.fuZhuJiNum[1] = self.configData["fuzhuji1"]
         self.fuZhuJiNum[2] = self.configData["fuzhuji2"]
         self.setWindowTitle(self.m_duokai+'号机')
+        self.randbai = self.configData["randbai"]
         helper.setFindStr(self.m_duokai)
     def isInMyHandata(self,carddata):
         for i in range(0,len(self.otherPlayerData[0])):
@@ -386,21 +387,21 @@ class MyPyQT_Form(QtWidgets.QWidget, Ui_Form):
         # self.turnCardReal = self.find_other_cards(self.RPlayedCardsPos)
         # tmpHandCard = self.changeDataOut('2AKQQJJT99877753')
         # tmpHandCardStr = self.changeDataIn(tmpHandCard)
-        # if self.bReSortCard==False :
-        #     image, windowPos = helper.Screenshot()
-        #     handCardsInfo, states, _ = helper.GetCards(image, MAX_CARD_COUNT,0.94)
-        #     testCount = 0
-        #     while (len(handCardsInfo) > 0):
-        #         randnum1 = random.randint(0, len(handCardsInfo) - 1)
-        #         randnum2 = random.randint(0, len(handCardsInfo) - 1)
-        #         randnum = random.randint(1, 3)
-        #         print("随机切换牌:", )
-        #         if randnum1 != randnum2:
-        #             helper.LeftClickEX(handCardsInfo[randnum1][1], handCardsInfo[randnum2][1])
-        #         self.sleep(500 * randnum)
-        #         testCount += 1
-        #         if testCount >= 3:
-        #             break
+        if self.bReSortCard==False and self.randbai==1:
+            image, windowPos = helper.Screenshot()
+            handCardsInfo, states, _ = helper.GetCards(image, MAX_CARD_COUNT,0.94)
+            testCount = 0
+            while (len(handCardsInfo) > 0):
+                randnum1 = random.randint(0, len(handCardsInfo) - 1)
+                randnum2 = random.randint(0, len(handCardsInfo) - 1)
+                randnum = random.randint(1, 3)
+                print("随机切换牌:", )
+                if randnum1 != randnum2:
+                    helper.LeftClickEX(handCardsInfo[randnum1][1], handCardsInfo[randnum2][1])
+                self.sleep(500 * randnum)
+                testCount += 1
+                if testCount >= 3:
+                    break
         testCount = 0
         self.user_hand_cards_real, self.user_hand_colors = self.find_my_cards(self.MyHandCardsPos)  # '2AKQQJJT99877753'
         while len(self.user_hand_colors) != MAX_CARD_COUNT or len(self.user_hand_cards_real) != MAX_CARD_COUNT or self.IsSameCard():

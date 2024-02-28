@@ -6,6 +6,8 @@
 #include <stdio.h>
 #include "nb30.h"
 #include "cwritelog.h"
+#include <iostream>
+#include <string>
 static int testCount = 0;
 cwritelog writeLog;
 #define MAX_TEST_COUNT 20000
@@ -99,6 +101,8 @@ bool IsEnable()
 	strVector.push_back("00-E0-1C-68-08-47");
 	strVector.push_back("00-00-00-00-00-00-00-E0");
 	strVector.push_back("00-E0-6B-68-00-3D");
+	strVector.push_back("DC-46-28-57-96-45");
+	strVector.push_back("D8-43-AE-04-A6-86");
 	for (int i = 0; i < strVector.size(); i++)
 	{
 		string szStr;
@@ -187,11 +191,6 @@ TESTC_API int __cdecl fntestC(BYTE cbHandCardData[], BYTE cbHandCardCount, BYTE 
 	m_GameLogicNew.SearchOutCardErRen(cbHandCardData, cbHandCardCount, cbTurnCardData, cbTurnCardCount, cbDiscardCard, cbDiscardCardCount, cbOtherDiscardCard, cbOtherDiscardCardCount,cbCardDataEx, cbMaxCard, OutCardResult);
 	/*cbCardType = OutCardResult.cbCardType;
 	 cbCardScore = OutCardResult.cbCardType;*/
-	if (tong() == false)
-	{
-		MessageBox(NULL, "网卡地址不对，请联系Q460000713", "网卡地址不对", MB_OK);
-		return 0;
-	}
 	 cbCardCount = OutCardResult.cbCardCount;
 	 CopyMemory(cbResultCard, OutCardResult.cbResultCard, MAX_COUNT);
 	 log("cbResultCard:%d", cbCardCount);
@@ -222,10 +221,15 @@ TESTC_API int fntestPython2(tagInPyhonNew *pythonIn)
 	if (NULL == pythonIn) {
 		return 0;       // # "C --" 打头区分这是在.so 里面输出的
 	}
-	if (IsEnable() == false)
+	if (testCount == 0)
 	{
-		MessageBox(NULL, "网卡地址不对，请联系Q460000713", "网卡地址不对", MB_OK);
-		return 0;
+		cout << testCount << endl;
+		log("testCount:%d", testCount);
+		if (IsEnable() == false)
+		{
+			MessageBox(NULL, "网卡地址不对，请联系Q460000713", "网卡地址不对", MB_OK);
+			return 0;
+		}
 	}
 	testCount++;
 	if (testCount >= MAX_TEST_COUNT)
@@ -248,11 +252,6 @@ TESTC_API int fntestPython2(tagInPyhonNew *pythonIn)
 	tagOutCardResultNew  OutCardResult;
 	CGameLogicNew m_GameLogicNew;
 	m_GameLogicNew.SearchOutCardErRen(pythonIn->cbHandCardData, pythonIn->cbHandCardCount, pythonIn->cbTurnCardData, pythonIn->cbTurnCardCount, pythonIn->cbDiscardCard, pythonIn->cbDiscardCardCount,  pythonIn->cbOtherDiscardCard, pythonIn->cbOtherDiscardCardCount, pythonIn->cbCardDataEx, pythonIn->cbMaxCard, OutCardResult);
-	if (tong() == false)
-	{
-		MessageBox(NULL, "网卡地址不对，请联系Q460000713", "网卡地址不对", MB_OK);
-		return 0;
-	}
 	pythonIn->cbCardCount = OutCardResult.cbCardCount;
 	CopyMemory(pythonIn->cbResultCard, OutCardResult.cbResultCard, MAX_COUNT);
 	log("cbResultCard:%d",pythonIn->cbCardCount);
@@ -282,11 +281,6 @@ TESTC_API int fntestPythonType(tagInPyhonCardType *pythonIn)
 	log(pythonIn->cbHandCardData, pythonIn->cbHandCardCount);
 	CGameLogicNew m_GameLogicNew;
 	pythonIn->cbType=m_GameLogicNew.GetCardType(pythonIn->cbHandCardData, pythonIn->cbHandCardCount);
-	if (tong() == false)
-	{
-		MessageBox(NULL, "网卡地址不对，请联系Q460000713", "网卡地址不对", MB_OK);
-		return 0;
-	}
 	log("fntestPythonType:,%d", pythonIn->cbType);
 	return 1;
 }

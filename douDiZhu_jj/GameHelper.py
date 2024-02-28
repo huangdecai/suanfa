@@ -378,6 +378,9 @@ class GameHelper:
         while cardStartPos is None and tryCount > 0:
             cardStartPos = pyautogui.locate(needleImage=self.Pics["card_edge2"], haystackImage=image,
                                             region=pos, confidence=0.83)
+            if cardStartPos is None:
+                cardStartPos = pyautogui.locate(needleImage=self.Pics["card_edge3"], haystackImage=image,
+                                                region=pos, confidence=0.83)
             print("找不到对方手牌起始位置")
             tryCount -= 1
             if tryCount==0:

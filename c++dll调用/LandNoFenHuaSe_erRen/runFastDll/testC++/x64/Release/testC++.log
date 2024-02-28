@@ -1,8 +1,10 @@
 ﻿  testC++.cpp
-testC++.cpp(208): warning C4244: “初始化”: 从“int”转换到“float”，可能丢失数据
-testC++.cpp(215): warning C4244: “return”: 从“float”转换到“int”，可能丢失数据
-  dllmain.cpp
-     正在创建库 D:\pythonTest\c++dll调用\LandNoFenHuaSe_erRen\runFastDll\x64\Release\testC++.lib 和对象 D:\pythonTest\c++dll调用\LandNoFenHuaSe_erRen\runFastDll\x64\Release\testC++.exp
+testC++.cpp(207): warning C4244: “初始化”: 从“int”转换到“float”，可能丢失数据
+testC++.cpp(214): warning C4244: “return”: 从“float”转换到“int”，可能丢失数据
+    正在创建库 D:\pythonTest\c++dll调用\LandNoFenHuaSe_erRen\runFastDll\x64\Release\testC++.lib 和对象 D:\pythonTest\c++dll调用\LandNoFenHuaSe_erRen\runFastDll\x64\Release\testC++.exp
   正在生成代码
+  1 of 1256 functions ( 0.1%) were compiled, the rest were copied from previous compilation.
+    0 functions were new in current compilation
+    0 functions had inline decision re-evaluated but remain unchanged
   已完成代码的生成
   testC++.vcxproj -> D:\pythonTest\c++dll调用\LandNoFenHuaSe_erRen\runFastDll\x64\Release\testC++.dll
