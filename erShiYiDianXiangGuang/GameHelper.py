@@ -319,6 +319,105 @@ class GameHelper:
             x,y=hand_cards[i][1]
             print("cardPos:",i,x,y)
         return hand_cards, select_map,color_cards
+    def GetCards(self, image,handCount,dence=0.95):
+        st = time.time()
+        imgCv = cv2.cvtColor(np.asarray(image), cv2.COLOR_RGB2BGR)
+        tryCount = 100
+        # cardStartPos = pyautogui.locate(needleImage=self.Pics["card_edge"], haystackImage=image,
+        #                                 region=(70, 615, 50, 110), confidence=0.80)
+        # while cardStartPos is None and tryCount > 0:
+        #     cardStartPos = pyautogui.locate(needleImage=self.Pics["card_edge"], haystackImage=image,
+        #                                     region=(70, 615, 50, 110), confidence=0.80)
+        #     print("找不到手牌起始位置")
+        #     tryCount -= 1
+        #     #time.sleep(150)
+        # print("start pos", cardStartPos)
+        # if cardStartPos is None:
+        #     return [],[],[]
+        sx =242# cardStartPos[0]+7 #+ 23
+        AllCardsNC = ['21','20','19','18','17','16', '15', '14', '13', '12', '11', '10', '9', '8', '7', '6', '5', '4', '3','2']
+        hand_cards = []
+        select_map = []
+        color_cards = []
+        cardSearchFrom = 0
+        sy, sw, sh = 160, 67, 90
+        spaceX=0
+        spaceY = 580
+        for i in range(0, 1):
+            temp_x = sx+6 + spaceX *( i)
+            checkSelect = 0
+            currCard = ""
+            forBreak = False
+            ci = 0
+            while ci < len(AllCardsNC):
+                outerBreak = False
+                tmpdence=0.88
+                result = LocateOnImage(imgCv, self.PicsCV["d" +  AllCardsNC[ci]], region=(sx , spaceY - checkSelect * 25, sw, 68), confidence=tmpdence)
+                if result is not None:
+                    cardPos = (sx  + sw // 2, spaceY - checkSelect * 25 + sh // 2)
+                    cardSearchFrom = ci
+                    currCard = AllCardsNC[ci]
+                    cardInfo = [currCard, cardPos]
+                    hand_cards.append(cardInfo)
+                    outerBreak=True
+                    forBreak=True
+                if outerBreak:
+                    break
+                ci += 1
+            if forBreak:
+                break
+            QtWidgets.QApplication.processEvents(QEventLoop.AllEvents, 10)
+        print("GetCards Costs ", time.time()-st)
+        print("cardPos:", len(hand_cards))
+        for i in range(0,len(hand_cards)):
+            x,y=hand_cards[i][1]
+            print("cardPos:",i,x,y)
+        return hand_cards, select_map,color_cards
+
+    def GetCards_A(self, image, handCount, dence=0.95):
+        st = time.time()
+        imgCv = cv2.cvtColor(np.asarray(image), cv2.COLOR_RGB2BGR)
+        sx = 230  # cardStartPos[0]+7 #+ 23
+        AllCardsNC = [ '9', '8', '7', '6', '5',
+                      '4', '3', '2']
+        hand_cards = []
+        select_map = []
+        color_cards = []
+        cardSearchFrom = 0
+        sy, sw, sh = 160, 70, 90
+        spaceX = 0
+        spaceY = 580
+        for i in range(0, 1):
+            temp_x = sx + 6 + spaceX * (i)
+            checkSelect = 0
+            currCard = ""
+            forBreak = False
+            ci = 0
+            while ci < len(AllCardsNC):
+                outerBreak = False
+                tmpdence = 0.90
+                result = LocateOnImage(imgCv, self.PicsCV["a" + AllCardsNC[ci]],
+                                       region=(sx, spaceY - checkSelect * 25, sw, 68), confidence=tmpdence)
+                if result is not None:
+                    cardPos = (sx + sw // 2, spaceY - checkSelect * 25 + sh // 2)
+                    cardSearchFrom = ci
+                    currCard = AllCardsNC[ci]
+                    cardInfo = [currCard, cardPos]
+                    hand_cards.append(cardInfo)
+                    outerBreak = True
+                    forBreak = True
+                if outerBreak:
+                    break
+                ci += 1
+            if forBreak:
+                break
+            QtWidgets.QApplication.processEvents(QEventLoop.AllEvents, 10)
+        print("GetCards Costs ", time.time() - st)
+        print("cardPos:", len(hand_cards))
+        for i in range(0, len(hand_cards)):
+            x, y = hand_cards[i][1]
+            print("cardPos:", i, x, y)
+        return hand_cards, select_map, color_cards
     def GetOtherCards(self, image,handCount,dence=0.95):
         st = time.time()
         imgCv = cv2.cvtColor(np.asarray(image), cv2.COLOR_RGB2BGR)

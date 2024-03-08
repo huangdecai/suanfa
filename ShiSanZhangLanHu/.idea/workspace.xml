@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="69fa8f9b-4a11-469f-9abf-c731833928a1" name="更改" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="GitSEFilterConfiguration">
+    <file-type-list>
+      <filtered-out-file-type name="LOCAL_BRANCH" />
+      <filtered-out-file-type name="REMOTE_BRANCH" />
+      <filtered-out-file-type name="TAG" />
+      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
+    </file-type-list>
+  </component>
+  <component name="ProjectId" id="1yCa0xJNJyzpOdI1cgJe4k8XbCR" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
+    <property name="restartRequiresConfirmation" value="false" />
+    <property name="settings.editor.selected.configurable" value="preferences.keymap" />
+  </component>
+  <component name="RunManager" selected="Python.main">
+    <configuration name="deep_agent" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="DouZero_For_HappyDouDiZhu-master" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/douzero/evaluation" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/douzero/evaluation/deep_agent.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="main" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="DouZero_For_HappyDouDiZhu-master" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/main.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Python.main" />
+        <item itemvalue="Python.deep_agent" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="应用程序级" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="默认任务">
+      <changelist id="69fa8f9b-4a11-469f-9abf-c731833928a1" name="更改" comment="" />
+      <created>1631757816456</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1631757816456</updated>
+      <workItem from="1631757834884" duration="2308000" />
+      <workItem from="1631760191059" duration="281000" />
+      <workItem from="1631760491676" duration="109000" />
+      <workItem from="1631760618811" duration="1878000" />
+      <workItem from="1631762537220" duration="255000" />
+      <workItem from="1631762894322" duration="306000" />
+      <workItem from="1631763227327" duration="1095000" />
+      <workItem from="1631764364570" duration="575000" />
+      <workItem from="1631764965908" duration="274000" />
+      <workItem from="1631765259318" duration="712000" />
+      <workItem from="1631766339423" duration="19000" />
+      <workItem from="1631766467565" duration="1187000" />
+      <workItem from="1631773050127" duration="828000" />
+      <workItem from="1631773901391" duration="1176000" />
+      <workItem from="1631775105709" duration="15481000" />
+      <workItem from="1631859109850" duration="17652000" />
+      <workItem from="1632291397015" duration="7884000" />
+      <workItem from="1632302691980" duration="16512000" />
+      <workItem from="1632383525531" duration="26232000" />
+      <workItem from="1632623444291" duration="14718000" />
+      <workItem from="1632647444931" duration="32800000" />
+      <workItem from="1632810613482" duration="891000" />
+      <workItem from="1632817063670" duration="3114000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state width="1431" height="466" key="DebuggerActiveHint" timestamp="1655997572123">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1431" height="466" key="DebuggerActiveHint/0.0.1920.1040@0.0.1920.1040" timestamp="1655997572123" />
+    <state width="1682" height="247" key="GridCell.Tab.0.bottom" timestamp="1657212778421">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1682" height="247" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1657212778421" />
+    <state width="1682" height="247" key="GridCell.Tab.0.center" timestamp="1657212778421">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1682" height="247" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1657212778421" />
+    <state width="1682" height="247" key="GridCell.Tab.0.left" timestamp="1657212778421">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1682" height="247" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1657212778421" />
+    <state width="1682" height="247" key="GridCell.Tab.0.right" timestamp="1657212778421">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1682" height="247" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1657212778421" />
+    <state width="1682" height="247" key="GridCell.Tab.1.bottom" timestamp="1657212778422">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1682" height="247" key="GridCell.Tab.1.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1657212778422" />
+    <state width="1682" height="247" key="GridCell.Tab.1.center" timestamp="1657212778421">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1682" height="247" key="GridCell.Tab.1.center/0.0.1920.1040@0.0.1920.1040" timestamp="1657212778421" />
+    <state width="1682" height="247" key="GridCell.Tab.1.left" timestamp="1657212778421">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1682" height="247" key="GridCell.Tab.1.left/0.0.1920.1040@0.0.1920.1040" timestamp="1657212778421" />
+    <state width="1682" height="247" key="GridCell.Tab.1.right" timestamp="1657212778422">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1682" height="247" key="GridCell.Tab.1.right/0.0.1920.1040@0.0.1920.1040" timestamp="1657212778422" />
+    <state x="227" y="384" width="597" height="536" key="find.popup" timestamp="1651405526526">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="227" y="384" width="597" height="536" key="find.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1651405526526" />
+    <state x="89" y="149" width="672" height="678" key="search.everywhere.popup" timestamp="1650371829797">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="89" y="149" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1650371829797" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/douzero/evaluation/rlcard_agent.py</url>
+          <line>24</line>
+          <option name="timeStamp" value="145" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/douzero/evaluation/deep_agent.py</url>
+          <line>59</line>
+          <option name="timeStamp" value="204" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/main.py</url>
+          <line>356</line>
+          <option name="timeStamp" value="288" />
+        </line-breakpoint>
+      </breakpoints>
+      <default-breakpoints>
+        <breakpoint type="python-exception">
+          <properties notifyOnTerminate="true" exception="BaseException">
+            <option name="notifyOnTerminate" value="true" />
+          </properties>
+        </breakpoint>
+      </default-breakpoints>
+    </breakpoint-manager>
+  </component>
+</project>

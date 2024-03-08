@@ -75,6 +75,15 @@ actionList=['s','s','s','s','s','s','s','s','s','s',
             'h','h','h','h','h','h','h','h','h','h',
             'h','h','h','h','h','h','h','h','h','h'
             ]
+actionList_A=['s','s','s','s','s','s','s','s','s','s',
+            's','s','s','s','s','s','s','s','s','s',
+            's','s','s','s','s','s','s','h','h','h',
+            'h','s','s','s','s','h','h','h','h','h',
+            'h','h','s','s','s','h','h','h','h','h',
+            'h','h','s','s','s','h','h','h','h','h',
+            'h','h','h','s','s','h','h','h','h','h',
+            'h','h','h','s','s','h','h','h','h','h'
+            ]
 COLOR_LIST = ["♦", "♣", "♥", "♠"]
 helper = GameHelper()
 helper.ScreenZoomRate = 1.0  # 请修改屏幕缩放比
@@ -343,6 +352,8 @@ class MyPyQT_Form(QtWidgets.QWidget, Ui_Form):
         # 识别玩家手牌
         # temp=self.have_white(self.RPlayedCardsPos)
         # self.turnCardReal = self.find_other_cards(self.RPlayedCardsPos)
+        if helper.bTest:
+             self.user_hand_cards_real, self.user_hand_colors = self.find_a_cards(self.MyHandCardsPos, 0.95)
         result = helper.LocateOnScreen("queRenXianZhu2", region=self.queRenXiaZhuBtnPos, confidence=0.80)
         whileCount=0
         while result :
@@ -392,7 +403,13 @@ class MyPyQT_Form(QtWidgets.QWidget, Ui_Form):
                 yaoCount2=0
                 while yaoBtnReuslt :
                     dence=0.94
-                    self.user_hand_cards_real, self.user_hand_colors = self.find_my_cards(self.MyHandCardsPos,dence)
+                    bAS=False
+                    self.user_hand_cards_real, self.user_hand_colors = self.find_a_cards(self.MyHandCardsPos, dence)
+                    if self.user_hand_cards_real=='':
+                        self.user_hand_cards_real, self.user_hand_colors = self.find_my_cards(self.MyHandCardsPos,dence)
+                    else:
+                        print('aaaaa:',self.user_hand_cards_real)
+                        bAS=True
                     self.other_hand_cards_real,self.user_hand_colors= self.find_other_cards(self.MyHandCardsPos, dence)
 
                     print('自己点数：',self.user_hand_cards_real)
@@ -401,37 +418,59 @@ class MyPyQT_Form(QtWidgets.QWidget, Ui_Form):
                     print('庄点数：', self.other_hand_cards_real)
                     if self.other_hand_cards_real == '':
                         self.other_hand_cards_real = '8'
-                    myRsult = int(self.user_hand_cards_real)
-                    otherResult=int(self.other_hand_cards_real)
-                    tempNum=17-myRsult
-                    if tempNum<0:
-                        tempNum=0
-                    actionIndex=(tempNum)*10+(otherResult-2)
-                    if actionIndex>=len(actionList):
-                        print('actionIndex_error',actionIndex,len(actionList),tempNum)
-                        actionIndex=0
-                    actStr=actionList[actionIndex]
-                    print('actStr：',myRsult,otherResult,actionIndex,actStr)
-                    if myRsult>=17 or actStr=='s' :
-                        helper.ClickOnImage("tingpai", region=self.tingPaiBtnPos, confidence=0.80)
-                        print('myRsult1....',actionIndex,myRsult,actStr)
-                    elif myRsult<11:
-                        helper.ClickOnImage("yaopai", region=self.yaoPaiBtnPos, confidence=0.80)
-                        print('myRsult1111....', actionIndex, myRsult, actStr)
-                    elif actStr=='h':
-                        helper.ClickOnImage("yaopai", region=self.yaoPaiBtnPos, confidence=0.80)
-                        print('myRsult2....', actionIndex, myRsult, actStr)
-                    elif actStr == 'd':
-                        helper.ClickOnImage("yaopai", region=self.yaoPaiBtnPos, confidence=0.80)
-                        # jiabeiBtnReuslt = helper.LocateOnScreen("jiabeixiazhu", region=self.jiaBeiXiaZhuBtnPos, confidence=0.80)
-                        # if jiabeiBtnReuslt and yaoCount2==0:
-                        #    helper.ClickOnImage("jiabeixiazhu", region=self.jiaBeiXiaZhuBtnPos, confidence=0.80)
-                        # else:
-                        #     helper.ClickOnImage("tingpai", region=self.tingPaiBtnPos, confidence=0.80)
-                        print('myRsult3....', actionIndex, myRsult, actStr)
+                    if bAS:
+                        myRsult = int(self.user_hand_cards_real)
+                        otherResult = int(self.other_hand_cards_real)
+                        tempNum = 9 - myRsult
+                        if tempNum < 0:
+                            tempNum = 0
+                        actionIndex = (tempNum) * 10 + (otherResult - 2)
+                        if actionIndex >= len(actionList):
+                            print('actionIndex_A_error', actionIndex, len(actionList), tempNum)
+                            actionIndex = 0
+                        actStr = actionList[actionIndex]
+                        if  actStr=='s' :
+                            helper.ClickOnImage("tingpai", region=self.tingPaiBtnPos, confidence=0.80)
+                            print('myRsult_A1....',actionIndex,myRsult,actStr)
+                        elif actStr=='h':
+                            helper.ClickOnImage("yaopai", region=self.yaoPaiBtnPos, confidence=0.80)
+                            print('myRsult_A2....', actionIndex, myRsult, actStr)
+                        else:
+                            helper.ClickOnImage("tingpai", region=self.tingPaiBtnPos, confidence=0.80)
+                            print('myRsult_A3....', actionIndex, myRsult, actStr)
                     else:
-                         helper.ClickOnImage("tingpai", region=self.tingPaiBtnPos, confidence=0.80)
-                         print('myRsult4....', actionIndex, myRsult, actStr)
+                        myRsult = int(self.user_hand_cards_real)
+                        otherResult=int(self.other_hand_cards_real)
+                        tempNum=17-myRsult
+                        if tempNum<0:
+                            tempNum=0
+                        actionIndex=(tempNum)*10+(otherResult-2)
+                        if actionIndex>=len(actionList):
+                            print('actionIndex_error',actionIndex,len(actionList),tempNum)
+                            actionIndex=0
+                        actStr = actionList[actionIndex]
+
+                        print('actStr：',myRsult,otherResult,actionIndex,actStr)
+                        if myRsult>=17 or actStr=='s' :
+                            helper.ClickOnImage("tingpai", region=self.tingPaiBtnPos, confidence=0.80)
+                            print('myRsult1....',actionIndex,myRsult,actStr)
+                        elif myRsult<11:
+                            helper.ClickOnImage("yaopai", region=self.yaoPaiBtnPos, confidence=0.80)
+                            print('myRsult1111....', actionIndex, myRsult, actStr)
+                        elif actStr=='h':
+                            helper.ClickOnImage("yaopai", region=self.yaoPaiBtnPos, confidence=0.80)
+                            print('myRsult2....', actionIndex, myRsult, actStr)
+                        elif actStr == 'd':
+                            helper.ClickOnImage("yaopai", region=self.yaoPaiBtnPos, confidence=0.80)
+                            # jiabeiBtnReuslt = helper.LocateOnScreen("jiabeixiazhu", region=self.jiaBeiXiaZhuBtnPos, confidence=0.80)
+                            # if jiabeiBtnReuslt and yaoCount2==0:
+                            #    helper.ClickOnImage("jiabeixiazhu", region=self.jiaBeiXiaZhuBtnPos, confidence=0.80)
+                            # else:
+                            #     helper.ClickOnImage("tingpai", region=self.tingPaiBtnPos, confidence=0.80)
+                            print('myRsult3....', actionIndex, myRsult, actStr)
+                        else:
+                             helper.ClickOnImage("tingpai", region=self.tingPaiBtnPos, confidence=0.80)
+                             print('myRsult4....', actionIndex, myRsult, actStr)
                     self.sleep(2000)
                     yaoCount2+=1
                     if yaoCount2>=2:
@@ -636,7 +675,13 @@ class MyPyQT_Form(QtWidgets.QWidget, Ui_Form):
         for c in cards:
             user_hand_cards_real += c[0]
         return user_hand_cards_real,colors
-
+    def find_a_cards(self, pos,dence=0.95):
+        user_hand_cards_real = ""
+        img, _ = helper.Screenshot()
+        cards, states,colors = helper.GetCards_A(img,self.handCardCount[0],dence)
+        for c in cards:
+            user_hand_cards_real += c[0]
+        return user_hand_cards_real,colors
     def find_other_cards(self, pos,dence=0.95):
         user_hand_cards_real = ""
         img, _ = helper.Screenshot()
