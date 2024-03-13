@@ -29,6 +29,7 @@ import BidModel
 import LandlordModel
 import FarmerModel
 from ctypes import *
+import json
 MAX_COUNT=20
 FULL_COUNT=144
 GAME_PLAYER=4
@@ -114,17 +115,19 @@ class MyPyQT_Form(QtWidgets.QWidget, Ui_Form):
             (80, 65),  # 叫地主 超级加倍 加倍 阈值
             (85, 70)   # 叫地主 超级加倍 加倍 阈值  (在地主是抢来的情况下)
         )
+        self.fuZhuJiNum = [1, 2, 3]
+        self.readJson()
         # 坐标
         self.MyHandCardsPos = (10, 380, 900, 100)  # 我的截图区域
         self.LPlayedCardsPos = (130, 150, 600, 80)  # 左边截图区域
         self.RPlayedCardsPos = (400, 150, 500, 80)  # 右边截图区域
         self.PassBtnPos = (670, 150, 200, 80)
-        self.ActionBtnPos = (300, 515, 750, 112)
+        self.ActionBtnPos = (300, 512, 850, 122)
         self.ActionCardPos = (288, 100, 382, 90)
         self.ActionBtnPosClick =[]
         self.OutCardBtnPos = (418, 418, 200, 150)
         self.FirstOutCardBtnPos = (460, 320, 200, 150)
-        self.changePlayerBtnPos = (695, 587, 190, 50)
+        self.changePlayerBtnPos = (1110, 677, 150, 50)
 
         self.dingThreeCardBtnPos = (389, 294, 190, 55)#三张牌
         self.dingQueBtnPos = [(310, 308, 130, 140),(430, 308, 130, 140),(540, 308, 130, 140)]#定缺
@@ -147,7 +150,20 @@ class MyPyQT_Form(QtWidgets.QWidget, Ui_Form):
         self.SwitchMode.setText("自动" if self.AutoPlay else "单局")
         for player in self.Players:
             player.setStyleSheet('background-color: rgba(255, 0, 0, 0);')
-
+    def readJson(self):
+        with open("data_file.json", "r") as read_file:
+            self.configData = json.load(read_file)
+        self.userid = self.configData["userid"]
+        self.tableid=self.configData["tableid"]
+        self.port=self.configData["port"]
+        self.m_duokai=str(self.configData["duokai"])
+        self.sandayi=self.configData["sandayi"]
+        self.fuZhuJiNum[0]=self.configData["duokai"]
+        self.fuZhuJiNum[1] = self.configData["fuzhuji1"]
+        self.fuZhuJiNum[2] = self.configData["fuzhuji2"]
+        self.setWindowTitle(self.m_duokai+'号机')
+        self.randbai = self.configData["randbai"]
+        helper.setFindStr(self.m_duokai)
     def switch_mode(self):
         self.AutoPlay = not self.AutoPlay
         self.SwitchMode.setText("自动" if self.AutoPlay else "单局")
@@ -262,7 +278,8 @@ class MyPyQT_Form(QtWidgets.QWidget, Ui_Form):
         # action_message, cbOperateCode = self.dllCall(self.user_hand_cards_real, self.allDisCardData, 0, 0,
         #                                              self.callCard, 0, '33', self.cbLaiZi)
         #result = helper.LocateOnScreen("change_player_btn", region=self.changePlayerBtnPos, confidence=0.75)
-        #self.WaitForOtherOperate(False)
+        self.WaitForOtherOut()
+
         self.user_hand_cards_real,self.cbLaiZi = self.find_my_cards(self.MyHandCardsPos) #'2AKQQJJT99877753'
         while (len(self.user_hand_cards_real) <MAX_CARD_COUNT-1):
             self.user_hand_cards_real,self.cbLaiZi = self.find_my_cards(self.MyHandCardsPos)
@@ -339,11 +356,11 @@ class MyPyQT_Form(QtWidgets.QWidget, Ui_Form):
          print("WaitForOtherOperate")
          if self.waitOtherOutCard == True:
              img, _ = helper.Screenshot()
-             playerPos = [(291, 160, 60, 40), (0, 0, 10, 10), (807, 160, 60, 40), ]
+             playerPos = [(291, 160, 60, 40), (1048, 263, 45, 68), (807, 160, 60, 40), ]
              TempActionCard = 0
              iFlag = 1
              for i in range(0, 3):
-                 if i == 1:
+                 if i == 0 or i==2:
                      continue
                  elif i == 2:
                      iFlag = -1
@@ -351,34 +368,50 @@ class MyPyQT_Form(QtWidgets.QWidget, Ui_Form):
                  tryCount=0
                  while True:
                      arraySize = len(self.playerDisCardData[i])
+                     if arraySize == 20 :
+                         a = 4
                      tryCount+=1
                      if tryCount>2 and oldarraySize==arraySize:
                          break
-                     tempSizeX = int((arraySize) / 10)
+                     tempSizeX = int((arraySize) / 20)
+                     if i==1:
+                            tempSizeX= (arraySize - tempSizeX * 20)
                      if tempSizeX < 0:
                          tempSizeX = 0
 
-                     tempSizeY = (arraySize - tempSizeX * 10)
+                     tempSizeY = (arraySize - tempSizeX * 20)
+                     if i == 1:
+                         tempSizeY= int((arraySize) / 20)
                      if i == 2 :
                          tempSizeY = 10-(arraySize - tempSizeX * 10)-1
                      ySpace = 0
-                     tmpTpos = (playerPos[i][0] - tempSizeX * playerPos[i][2] * iFlag,
-                                playerPos[i][1] + tempSizeY * playerPos[i][3] - ySpace, playerPos[i][2],
-                                playerPos[i][3] + 6)
-                     result = helper.LocateOnScreen("outWhite", region=tmpTpos, confidence=0.75)
-                     if arraySize == 6 and i == 2:
+                     tmpTpos=0
+                     if i==1:
+                         tmpTpos = (playerPos[i][0] - tempSizeX * playerPos[i][2] * iFlag,
+                                    playerPos[i][1] - tempSizeY * playerPos[i][3] - ySpace, playerPos[i][2],
+                                    playerPos[i][3] + 6)
+                     else:
+                         tmpTpos = (playerPos[i][0] - tempSizeX * playerPos[i][2] * iFlag,
+                                    playerPos[i][1] + tempSizeY * playerPos[i][3] - ySpace, playerPos[i][2],
+                                    playerPos[i][3] + 6)
+                     result = helper.LocateOnScreen("outWhite", region=tmpTpos, confidence=0.60)
+                     if result is None:
+                        result = helper.LocateOnScreen("outWhite2", region=tmpTpos, confidence=0.60)
+                     if arraySize == 4 :
                          a = 3
                      print('WaitForOtherOperate', i, arraySize, result)
                      if result:
                          for j in range(33, -1, -1, ):
-                             if j < 9:
-                                 continue
+                             # if j < 9:
+                             #     continue
                              tempConfidence = 0.77
                              if j == 26 or j == 33 or j == 18 or j == 25 or j == 23:
                                  tempConfidence = 0.67
-                             elif j == 22:
+                             elif j == 22 or j == 13:
                                  tempConfidence = 0.87
                              tmpStr = "out" + str(i) + str(j)
+                             if i==1:
+                                 tmpStr = "action_" +  str(j)
 
                              result2 = pyautogui.locate(needleImage=helper.Pics[tmpStr], haystackImage=img,
                                                         region=tmpTpos,
@@ -399,11 +432,12 @@ class MyPyQT_Form(QtWidgets.QWidget, Ui_Form):
     def WaitForOtherOperate(self,bGameOver):
         self.user_hand_cards_real, self.cbLaiZi = self.find_my_cards(
             self.MyHandCardsPos, self.bHaveAction)  # '2AKQQJJT99877753'
-        self.WaitForOtherOut()
+        #self.WaitForOtherOut()
         cbActionMask = 0
         tryCount=0
         while ((len(self.user_hand_cards_real) % 3) != 2 and cbActionMask == 0) or bGameOver == True:
             cbActionMask = self.have_action(self.ActionBtnPos)
+
             self.sleep(300)
             self.user_hand_cards_real, self.user_hand_colors = self.find_my_cards(self.MyHandCardsPos, self.bHaveAction)
             result = helper.LocateOnScreen("change_player_btn", region=self.changePlayerBtnPos, confidence=0.75)
@@ -414,11 +448,8 @@ class MyPyQT_Form(QtWidgets.QWidget, Ui_Form):
                 self.m_WeaveItem = [[], [], [], []]
                 self.allDisCardData = []
                 bGameOver = False
-            if tryCount>=3:
-                result = helper.LocateOnScreen("zuoshengyi", region=(398, 480, 150, 50), confidence=0.75)
-                if (result is not None):
-                    helper.ClickOnImage("zuoshengyi", region=(398, 480, 150, 50), confidence=0.75)
             print("waitNex-start", len(self.user_hand_cards_real))
+        self.WaitForOtherOut()
     def start(self):
         print("开始出牌\n")
         while not self.game_over:
@@ -458,6 +489,7 @@ class MyPyQT_Form(QtWidgets.QWidget, Ui_Form):
                     elif (cbActionMask & WIK_CHI_HU)!=0:
                         bEnable = True
                     if bEnable==False:
+                        tempAllLen = len(self.allDisCardData)
                         while cbActionCard=="":
                             print("寻找操作牌...")
                             tmpCount=2
@@ -472,20 +504,21 @@ class MyPyQT_Form(QtWidgets.QWidget, Ui_Form):
                                         # result = pyautogui.locate(needleImage=helper.Pics["action_"+str(j)], haystackImage=img,
                                         #                           region=(160, 332, 95, 130),
                                         #                           confidence=0.70)
-                                        tempConfidence=0.77
-                                        if j==26 or j==33 or j==18 or j==25 :
-                                            tempConfidence=0.67
-                                        elif  j==23:
-                                            tempConfidence=0.67
-                                        result = pyautogui.locate(needleImage=helper.Pics[str(j)], haystackImage=img,
-                                                                   region=(160, 332, 95, 130),
-                                                                   confidence=tempConfidence)
-                                        if result is None:
-                                            result = pyautogui.locate(needleImage=helper.Pics[str(j)],
-                                                                      haystackImage=img,
-                                                                      region=(919, 332, 95, 130),
-                                                                      confidence=tempConfidence)
-                                        if result is not None:
+                                        # tempConfidence=0.77
+                                        # if j==26 or j==33 or j==18 or j==25 :
+                                        #     tempConfidence=0.67
+                                        # elif  j==23:
+                                        #     tempConfidence=0.67
+                                        # result = pyautogui.locate(needleImage=helper.Pics[str(j)], haystackImage=img,
+                                        #                            region=(160, 332, 95, 130),
+                                        #                            confidence=tempConfidence)
+                                        # if result is None:
+                                        #     result = pyautogui.locate(needleImage=helper.Pics[str(j)],
+                                        #                               haystackImage=img,
+                                        #                               region=(919, 332, 95, 130),
+                                        #                               confidence=tempConfidence)
+                                        tempCard=self.allDisCardData[tempAllLen-1]
+                                        if tempCard==str(j):
                                             cbActionCard=str(j)
                                             bExist=True
                                             break
@@ -819,6 +852,8 @@ class MyPyQT_Form(QtWidgets.QWidget, Ui_Form):
         arg1.cbWeaveCount = tmparray3()
         arg1.cbCardDataEx = tmparray()
         arg1.cbCardDataEx[0]=cbCallCard
+        #红中固定癞子
+        cblaiZi=['31']
         for i in range(0,len(cblaiZi)):
             arg1.cbCardDataEx[1+i] = AllCardOut[cblaiZi[i]]
         for i in range(0, GAME_PLAYER):

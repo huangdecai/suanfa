@@ -169,7 +169,7 @@ class GameHelper:
         self.ScreenZoomRate = 1.0
         self.Pics = {}
         self.PicsCV = {}
-        self.Handle = win32gui.FindWindow("LDPlayerMainFrame", "雷电模拟器")
+        self.Handle = win32gui.FindWindow("LDPlayerMainFrame", "test001")
         #self.Handle = win32gui.FindWindow("LDPlayerMainFrame", "test001")
         self.Interrupt = False
         self.RealRate = (SCREEN_WIDTH, SCREEN_HEGIHT)
@@ -181,8 +181,15 @@ class GameHelper:
                 self.Pics.update({info[0]: tmpImage})
                 self.PicsCV.update({info[0]: imgCv})
 
+        self.duokaiStr = "test001"
+
+    def setFindStr(self, findStr):
+        if findStr != '0':
+            self.duokaiStr = "test00"
+            self.duokaiStr = self.duokaiStr + (findStr)
+            tmp = 4
     def Screenshot(self, region=None):  # -> (im, (left, top))
-        self.Handle = win32gui.FindWindow("LDPlayerMainFrame", "雷电模拟器")
+        self.Handle = win32gui.FindWindow("LDPlayerMainFrame", self.duokaiStr)
         #self.Handle = win32gui.FindWindow("LDPlayerMainFrame", "test001")
         hwnd = self.Handle
         if self.bTest == True:
@@ -273,17 +280,17 @@ class GameHelper:
         imgCv = cv2.cvtColor(np.asarray(image), cv2.COLOR_RGB2BGR)
         tryCount = 10
         cardStartPos = pyautogui.locate(needleImage=self.Pics["card_edge"], haystackImage=image,
-                                        region=(2, 622, 1061, 32), confidence=0.80)
-        cardStartPos2=None
-        if cardStartPos and cardStartPos[0]>100:
-            cardStartPos2 = pyautogui.locate(needleImage=self.Pics["card_edge2"], haystackImage=image,
-                                        region=(2, 622, cardStartPos[0], 32), confidence=0.80)
-        if cardStartPos2 and cardStartPos:
-            if cardStartPos2[0]<cardStartPos[0]:
-                cardStartPos = cardStartPos2
+                                        region=(2, 616, 1061, 32), confidence=0.80)
+        # cardStartPos2=None
+        # if cardStartPos and cardStartPos[0]>100:
+        #     cardStartPos2 = pyautogui.locate(needleImage=self.Pics["card_edge2"], haystackImage=image,
+        #                                 region=(2, 616, cardStartPos[0], 32), confidence=0.80)
+        # if cardStartPos2 and cardStartPos:
+        #     if cardStartPos2[0]<cardStartPos[0]:
+        #         cardStartPos = cardStartPos2
         while cardStartPos is None and tryCount > 0:
             cardStartPos = pyautogui.locate(needleImage=self.Pics["card_edge"], haystackImage=image,
-                                            region=(2, 622, 1061, 32), confidence=0.80)
+                                            region=(2, 616, 1061, 32), confidence=0.80)
             print("找不到手牌起始位置")
             tryCount -= 1
             #time.sleep(150)
@@ -293,22 +300,22 @@ class GameHelper:
         sx = cardStartPos[0]+9 #+ 23
         spaceIndex=13
         if sx>0 and sx<30:
-            sx=10
+            sx=21
         elif sx>150 and sx<210:
-            sx=171
-        elif sx>390 and sx<433:
-            sx=413
-        elif sx>714 and sx<754:
-            sx=734
-        elif sx>958 and sx<998:
-            sx=978
+            sx=204
+        elif sx>350 and sx<433:
+            sx=384
+        elif sx>550 and sx<600:
+            sx=564
+        elif sx>730 and sx<800:
+            sx=745
         if sx>171 :
             spaceIndex=10
-        if sx>413 :
+        if sx>380 :
             spaceIndex = 7
-        if sx > 734:
+        if sx > 550:
             spaceIndex = 4
-        if sx > 978:
+        if sx > 730:
             spaceIndex = 1
         AllCardsNC = ['33','32','31','30','29','28','27','26','25','24','23','22','21','20','19','18','17','16','15','14','13','12', '11', '10', '9', '8', '7', '6', '5', '4', '3', '2', '1','0']
         #AllCardsNC=AllCardsNC[::-1]
@@ -316,14 +323,16 @@ class GameHelper:
         select_map = []
         laiZi_cards = []
         cardSearchFrom = 0
-        sy, sw, sh = 160, 81, 124
+        sy, sw, sh = 160, 88, 130
         spaceX=sw
         #
-        spaceY = 628 #
+        spaceY = 618 #
 
         for i in range(0, MAX_CARD_COUNT):
 
             temp_x = sx + (spaceX-1) *( i)
+            if i==7 :
+                a=4
             if i==10 :
                 a=4
             if i==spaceIndex :
@@ -341,7 +350,7 @@ class GameHelper:
             while ci < len(AllCardsNC):
                 print("GetCards： ",ci,temp_x,spaceY - checkSelect * 25,sw,)
                 outerBreak = False
-                result = LocateOnImage(imgCv, self.PicsCV[AllCardsNC[ci]], region=( temp_x, spaceY - checkSelect * 25, sw, 121), confidence=0.87)
+                result = LocateOnImage(imgCv, self.PicsCV[AllCardsNC[ci]], region=( temp_x, spaceY - checkSelect * 25, sw, 130), confidence=0.87)
                 if result is not None:
                     cardPos = (sx + spaceX * i + sw // 2, spaceY - checkSelect * 25 + sh // 2)
                     cardSearchFrom = ci
@@ -349,8 +358,8 @@ class GameHelper:
                     cardInfo = (currCard, cardPos)
                     hand_cards.append(cardInfo)
                     if i<=1 or  i==spaceIndex :
-                        laiZiresult = LocateOnImage(imgCv, self.PicsCV["laizi"], region=(temp_x, spaceY, 73, 50),
-                                               confidence=0.75)
+                        laiZiresult = LocateOnImage(imgCv, self.PicsCV["laizi"], region=(temp_x, spaceY, sw, 60),
+                                               confidence=0.87)
                         if laiZiresult:
                             if len(laiZi_cards)>0:
                                 if laiZi_cards[0]!=currCard:
