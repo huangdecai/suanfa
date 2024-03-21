@@ -229,7 +229,7 @@ class CGameLogic
 protected:
 	static const BYTE				m_cbCardDataArray[MAX_REPERTORY];	//扑克数据
 	BYTE									m_cbMagicIndex[2];						//钻牌索引
-	BOOL								m_bHuQiDui;									//能否胡七对
+	bool								m_userRule[20];									//,9是用来表示是否有大胡，5十三幺，6碰碰胡，7清一色 8胡七对
 	fastHu                              m_fastHu;
 	//函数定义
 public:
@@ -270,9 +270,9 @@ public:
 	//花牌判断
 	BYTE IsHuaCard(BYTE cbCardIndex[MAX_INDEX]);
 	//设置自定义规则
-	VOID SetUserRule(BOOL bHuQiDui);
-	VOID SetBanZiMO(BOOL bBanZiMo);
-	VOID SetYouJinBiYou(BOOL bEanble);
+	VOID SetUserRule(BYTE bRule[]);
+	VOID SetBanZiMO(bool bBanZiMo);
+	VOID SetYouJinBiYou(bool bEanble);
 	//等级函数
 public:
 	//动作等级

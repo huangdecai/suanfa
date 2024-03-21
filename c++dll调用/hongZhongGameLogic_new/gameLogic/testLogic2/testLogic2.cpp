@@ -78,8 +78,9 @@ void TestGameLogic()
 	//BYTE    tempCard[] = { 0x22,0x23,0x23,0x27,0x02,0x03,0x04,0x11,0x11,0x11,0x15,0x16,0x16,0x17 };
 
 
-	BYTE    tempCard[] = { 2,2,3,4,5,6,6,7,21,23,25,41,41,38 };
-	BYTE cbActionCard = 38;
+	BYTE    tempCard[] = { 6,9,34,34,35,37,39,40,41,19,19,22,24,36 };
+	//BYTE    tempCard[] = { 53,6,6,9,9,34,34,36,20,20,21,23,23,6 };
+	BYTE cbActionCard = 36;
 	BYTE cbActionMask = 0;// 0;// WIK_CHI_HU;
 		//BYTE    tempCard[] = { 4, 38, 8, 56, 10, 9, 11, 43, 12, 44, 60, 1, 33 };
 
@@ -90,10 +91,10 @@ void TestGameLogic()
 	int cbTurnCardCount = 0;
 	int cbRangCardCount = 0;
 	int cbOthreRangCardCount = 0;
-	BYTE cbCardDataEx[] = { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
-	BYTE cbDiscardCard[] = { 0 };
+	BYTE cbCardDataEx[] = { 0, 53, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
+	BYTE cbDiscardCard[] = { 17,1,41 };
 	m_GameLogic.SwitchToCardIndex(cbHandCardData, sizeof(tempCard), cbCardIndex);
-	int que = SelectCallCard(cbCardIndex);
+	//int que = SelectCallCard(cbCardIndex);
 	CChiHuRight chr;
 	/*int m_cbUserAction = m_GameLogic.AnalyseChiHuCard(cbCardIndex, WeaveItemArray[0], cbWeaveCount[0], cbActionCard, chr);
 	string tempStr = m_GameLogic.GetFanString(chr);*/

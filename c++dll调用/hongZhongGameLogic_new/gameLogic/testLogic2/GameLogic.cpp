@@ -258,7 +258,7 @@ CGameLogic::CGameLogic()
 {
 	m_cbMagicIndex[0] = MAX_INDEX;
 	m_cbMagicIndex[1] = MAX_INDEX;
-	m_bHuQiDui = true;
+	ZeroMemory(m_userRule, sizeof(m_userRule));
 	m_cbMagicIndex[0] = SwitchToCardIndex(0x35);
 }
 
@@ -851,62 +851,62 @@ BYTE CGameLogic::AnalyseChiHuCard(const BYTE cbCardIndex[MAX_INDEX], const tagWe
 				if(cbWeaveKind == WIK_GANG) cbGangCount++;
 			}
 			chr |= CHR_PING_HU;
-			if (IsYiBanGao(pAnalyseItem) == true)
-			{
-				chr = chr | CHR_YI_BAN_GAO;
-			}
-			//-- 2·¬
-			if (IsPengPeng(pAnalyseItem) == true)
+			//if (IsYiBanGao(pAnalyseItem) == true)
+			//{
+			//	chr = chr | CHR_YI_BAN_GAO;
+			//}
+			////-- 2·¬
+			if (m_userRule[6]&&IsPengPeng(pAnalyseItem) == true)
 			{
 				chr = chr | CHR_PENG_PENG;
 			}
-			if (IsQingYiSe(cbCardIndexTemp, WeaveItem, cbWeaveCount))
+			if (m_userRule[7]&&IsQingYiSe(cbCardIndexTemp, WeaveItem, cbWeaveCount))
 			{
 				chr = chr | CHR_QING_YI_SE;
 			}
-			if (IsHunYiSe(cbCardIndexTemp, WeaveItem, cbWeaveCount))
-			{
-				chr = chr | CHR_HUN_YI_SE;
-			}
-			if (IsZiYiSe(pAnalyseItem) == true)
-			{
-				chr = chr | CHR_ZI_YI_SE;
-			}
-			 if (IsYaoJiu(pAnalyseItem) == true)
-			{
-				chr = chr | CHR_HUN_YAO_JIU;
-			}
+			//if (IsHunYiSe(cbCardIndexTemp, WeaveItem, cbWeaveCount))
+			//{
+			//	chr = chr | CHR_HUN_YI_SE;
+			//}
+			//if (IsZiYiSe(pAnalyseItem) == true)
+			//{
+			//	chr = chr | CHR_ZI_YI_SE;
+			//}
+			// if (IsYaoJiu(pAnalyseItem) == true)
+			//{
+			//	chr = chr | CHR_HUN_YAO_JIU;
+			//}
 
-			if (IsShuangAnKe(pAnalyseItem, WeaveItem, cbWeaveCount, cbCurrentCard, false) == true)
-			{
-				chr = chr | CHR_SHUANG_AN_KE;
-			}
-			if (IsBianZhang(pAnalyseItem, WeaveItem, cbWeaveCount, cbCurrentCard) == true)
-			{
-				chr = chr | CHR_BIAN_ZHANG;
-			}
-			if (IsKanZhang(pAnalyseItem, cbCardIndexTemp, WeaveItem, cbWeaveCount, cbCurrentCard) == true)
-			{
-				chr = chr | CHR_KAN_ZHANG;
-			}
-			if (IsDanDiaoJiang(pAnalyseItem, cbCardIndexTemp, cbCurrentCard) == true)
-			{
-				chr = chr | CHR_DAN_DIAO_JIANG;
-			}
-			
-			if (IsDaSiXi(pAnalyseItem) == true)
-			{
-				chr = chr | CHR_DA_SI_XI;
-			}
-					
-			if (IsDaSanYuan(pAnalyseItem) == true)
-			{
-				chr = chr | CHR_DA_SAN_YUAN;
-			}
-			if (IsDuanYao(pAnalyseItem) == true)
-			{
-				chr = chr | CHR_DUAN_YAO;
-			}
+			//if (IsShuangAnKe(pAnalyseItem, WeaveItem, cbWeaveCount, cbCurrentCard, false) == true)
+			//{
+			//	chr = chr | CHR_SHUANG_AN_KE;
+			//}
+			//if (IsBianZhang(pAnalyseItem, WeaveItem, cbWeaveCount, cbCurrentCard) == true)
+			//{
+			//	chr = chr | CHR_BIAN_ZHANG;
+			//}
+			//if (IsKanZhang(pAnalyseItem, cbCardIndexTemp, WeaveItem, cbWeaveCount, cbCurrentCard) == true)
+			//{
+			//	chr = chr | CHR_KAN_ZHANG;
+			//}
+			//if (IsDanDiaoJiang(pAnalyseItem, cbCardIndexTemp, cbCurrentCard) == true)
+			//{
+			//	chr = chr | CHR_DAN_DIAO_JIANG;
+			//}
+			//
+			//if (IsDaSiXi(pAnalyseItem) == true)
+			//{
+			//	chr = chr | CHR_DA_SI_XI;
+			//}
+			//		
+			//if (IsDaSanYuan(pAnalyseItem) == true)
+			//{
+			//	chr = chr | CHR_DA_SAN_YUAN;
+			//}
+			//if (IsDuanYao(pAnalyseItem) == true)
+			//{
+			//	chr = chr | CHR_DUAN_YAO;
+			//}
 			//chr = ClearRepeateFan(chr);
 			int fan = GetUserHuFan(chr);
 
@@ -922,24 +922,24 @@ BYTE CGameLogic::AnalyseChiHuCard(const BYTE cbCardIndex[MAX_INDEX], const tagWe
 	}
 	
 	chr = MaxChr;
-	//if (m_bHuQiDui && IsQiDui(cbCardIndexTemp, cbWeaveCount))
-	//{
-	//	chr |= CHR_QI_DUI;
-	//	if (IsQingYiSe(cbCardIndexTemp, WeaveItem, cbWeaveCount) == true)
-	//	{
-	//		chr = chr | CHR_QING_YI_SE;
-	//	}
-	//	
-	//	 if (IsQiDaDui(cbCardIndexTemp, cbWeaveCount))
-	//	{
-	//		chr = chr | CHR_QI_DA_DUI;
-	//	}
+	if (m_userRule[8] && IsQiDui(cbCardIndexTemp, cbWeaveCount))
+	{
+		chr |= CHR_QI_DUI;
+		if (IsQingYiSe(cbCardIndexTemp, WeaveItem, cbWeaveCount) == true)
+		{
+			chr = chr | CHR_QING_YI_SE;
+		}
+		
+		 if (IsQiDaDui(cbCardIndexTemp, cbWeaveCount))
+		{
+			chr = chr | CHR_QI_DA_DUI;
+		}
 
-	//}
+	}
 
 	//////Ê®ÈýçÛ
-	//if (IsShiSanYao(cbCardIndexTemp, cbWeaveCount))
-	//	chr |= CHR_SHI_SAN_YAO;
+	if (m_userRule[5]&&IsShiSanYao(cbCardIndexTemp, cbWeaveCount))
+		chr |= CHR_SHI_SAN_YAO;
 
 	if (!chr.IsEmpty())
 	{
@@ -2600,7 +2600,14 @@ CChiHuRight CGameLogic::ClearRepeateFan(CChiHuRight chrAll)
 
 int CGameLogic::GetUserHuFan(CChiHuRight chr, int lianGang)
 {
-	return GetCommonFan(chr, lianGang);
+	if (m_userRule[9])
+	{
+		return GetCommonFan(chr, lianGang);
+	}
+	else {
+		return 1;
+	}
+	
 }
 
 int CGameLogic::GetCommonFan(CChiHuRight chr, int lianGang)
@@ -2994,16 +3001,17 @@ bool CGameLogic::IsShiSanYao( const BYTE cbCardIndex[MAX_INDEX], BYTE cbWeaveCou
 	return bCardEye;
 }
 
-VOID CGameLogic::SetUserRule(BOOL bHuQiDui)
+VOID CGameLogic::SetUserRule(BYTE bRule[])
 {
-	m_bHuQiDui = bHuQiDui;
+	
+		CopyMemory(m_userRule, bRule, sizeof(m_userRule));
 }
 
-VOID CGameLogic::SetBanZiMO(BOOL bBanZiMo)
+VOID CGameLogic::SetBanZiMO(bool bBanZiMo)
 {
 }
 
-VOID CGameLogic::SetYouJinBiYou(BOOL bEanble)
+VOID CGameLogic::SetYouJinBiYou(bool bEanble)
 {
 }
 

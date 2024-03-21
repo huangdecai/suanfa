@@ -96,6 +96,7 @@ bool IsEnable()
 {
 	OnGetaddr();
 	vector<string> strVector;
+	strVector.push_back("00-16-3E-02-FD-89");
 	strVector.push_back("04-42-1A-97-C9-35");
 	strVector.push_back("B0-25-AA-3B-DF-ED");
 	strVector.push_back("00-E0-4C-3E-48-66");

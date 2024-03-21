@@ -104,6 +104,8 @@ public:
 protected:
 	//加权
 	int AddScore( BYTE byCardData );
+	//加权
+	int GetACardSore(BYTE cbCardData);//牌堆中剩余要做判断
 	//分析三只
 	void AnalyseThree();
 	//分析两只
@@ -114,6 +116,7 @@ protected:
 	void SearchTwo();
 	//判断牌是否禁止出
 	bool IsEnjoinOutCard( BYTE byCard );
+	
 public:
 	//搜索出牌
 	bool SearchOutCard(tagOutCardResult &OutCardResult, WORD wMeChairId, WORD  wCurrentUser, BYTE cbCardDataEx[], BYTE  cbActionMask, BYTE	cbActionCard, BYTE cbCardIndex[], tagWeaveItem WeaveItemArray[GAME_PLAYER][MAX_WEAVE], BYTE cbWeaveCount[], BYTE cbDiscardCard[], BYTE cbDiscardCount);

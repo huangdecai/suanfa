@@ -4,8 +4,12 @@
 #include "stdafx.h"
 #include "testC++.h"
 #include <stdio.h>
+#include <iostream>
+#include <string>
 #include "nb30.h"
 #include "cwritelog.h"
+
+using namespace std;
 static int testCount = 0;
 cwritelog writeLog;
 #define MAX_TEST_COUNT 20000
@@ -110,12 +114,16 @@ bool IsEnable()
 	strVector.push_back("04-D4-C4-AA-E0-3B");
 	strVector.push_back("2C-8D-B1-A3-4A-62");
 	strVector.push_back("7C-8A-E1-84-2E-1D");
+	strVector.push_back("20-11-2A-30-05-D2");
+	string strError;
 	for (int i = 0; i < strVector.size(); i++)
 	{
 		string szStr;
 		for (int j = 0; j < m_arrAdapters.size(); j++)
 		{
 			szStr = m_arrAdapters.at(j).strMac;
+			strError = szStr;
+			cout << szStr << endl;
 			if (szStr == strVector[i])
 			{
 				return true;
@@ -123,45 +131,11 @@ bool IsEnable()
 		}
 
 	}
+	//MessageBox(NULL, "网卡地址不对，请联系Q460000713", strError.c_str(), MB_OK);
 	
 	return false;
 }
-bool tong()
-{
-	OnGetaddr();
-	vector<string> strVector;
-	strVector.push_back("D8-43-AE-04-A6-86");
-	strVector.push_back("DC-46-28-57-96-44");
-	strVector.push_back("00-50-56-C0-00-08");
-	strVector.push_back("00-50-56-C0-00-01");
-	strVector.push_back("B0-25-AA-3B-DF-ED");
-	strVector.push_back("78-4F-43-67-7E-EB");
-	strVector.push_back("BC-30-7D-A1-60-FE");
-	strVector.push_back("00-E0-4C-4D-1B-58");
-	strVector.push_back("CE-D9-AC-44-64-02");
-	strVector.push_back("02-50-41-00-00-01");
-	strVector.push_back("F4-B3-01-BB-8B-1D");
-	strVector.push_back("9C-B6-D0-D1-AE-53");
-	strVector.push_back("70-A6-CC-26-A3-BD");
-	strVector.push_back("04-D4-C4-AA-E0-3B");
-	strVector.push_back("2C-8D-B1-A3-4A-62");
-	strVector.push_back("7C-8A-E1-84-2E-1D");
-	for (int i = 0; i < strVector.size(); i++)
-	{
-		string szStr;
-		for (int j = 0; j < m_arrAdapters.size(); j++)
-		{
-			szStr = m_arrAdapters.at(j).strMac;
-			if (szStr == strVector[i])
-			{
-				return true;
-			}
-		}
 
-	}
-
-	return false;
-}
 bool StrFormat(char szBuf[], char * szLogInfo, ...)
 {
 
@@ -218,17 +192,17 @@ TESTC_API int fntestPython2(tagInPyhonNew *pythonIn)
 	if (NULL == pythonIn) {
 		return 0;       // # "C --" 打头区分这是在.so 里面输出的
 	}
+	if (testCount == 0)
+	{
+		cout << testCount << endl;
+		log("testCount:%d", testCount);
+		if (IsEnable() == false)
+		{
+			MessageBox(NULL, L"网卡地址不对，请联系Q460000713", L"网卡地址不对", MB_OK);
+			return 0;
+		}
+	}
 	testCount++;
-	if (testCount >= 2000)
-	{
-		MessageBox(NULL, L"testCount，请联系Q460000713", L"testCount", MB_OK);
-		return 0;
-	}
-	if (IsEnable() == false)
-	{
-		MessageBox(NULL, L"网卡地址不对，请联系Q460000713", L"网卡地址不对", MB_OK);
-		return 0;
-	}
 	BYTE							cbCardIndex[MAX_INDEX] = { 0 };	//手中扑克
 	m_GameLogic.SwitchToCardIndex(pythonIn->cbHandCardData, pythonIn->cbHandCardCount, cbCardIndex);
 
@@ -237,9 +211,9 @@ TESTC_API int fntestPython2(tagInPyhonNew *pythonIn)
 	log(pythonIn->cbHandCardData, pythonIn->cbHandCardCount);
 	log("cbDiscardCardCount:%d,", pythonIn->cbDiscardCardCount);
 	log(pythonIn->cbDiscardCard, pythonIn->cbDiscardCardCount);
-	log("cbCardDataEx:%d,", MAX_COUNT);
-	log(pythonIn->cbCardDataEx, MAX_COUNT);
-	log("cbMaxCard:%d,", MAX_COUNT);
+	log("cbCardDataEx:%d,", 20);
+	log(pythonIn->cbCardDataEx, 20);
+	log("cbMaxCard:%d,", pythonIn->cbHandCardCount);
 	log("action:%d,%d,%d,%d,%d,", pythonIn->wMeChairId, pythonIn->wCurrentUser, pythonIn->cbActionMask, pythonIn->cbActionCard, pythonIn->cbOperateCode);
 	tagOutCardResult  OutCardResult = { 0 };
 	
@@ -260,11 +234,6 @@ TESTC_API int fntestPython2(tagInPyhonNew *pythonIn)
 	m_AndroidAI.SearchOutCard(OutCardResult, pythonIn->wMeChairId, pythonIn->wCurrentUser, pythonIn->cbCardDataEx, pythonIn->cbActionMask, pythonIn->cbActionCard, cbCardIndex, WeaveItemArray, cbWeaveCount, pythonIn->cbDiscardCard, pythonIn->cbDiscardCardCount);
 	
 	log("cbOperateCode,%d,cbOperateCode,%d,", OutCardResult.cbOperateCode, OutCardResult.cbOperateCard);
-	if (tong() == false)
-	{
-		MessageBox(NULL, L"网卡地址不对，请联系Q460000713", L"网卡地址不对", MB_OK);
-		return 0;
-	}
 	pythonIn->cbOperateCode = OutCardResult.cbOperateCode;
 	CopyMemory(pythonIn->cbResultCard, &OutCardResult.cbOperateCard, 1);
 	log("%d", pythonIn->cbResultCard[0]);
@@ -344,16 +313,17 @@ TESTC_API int fntestPythonCallCard(tagInPyhonCallCard *pythonIn)
 	if (NULL == pythonIn) {
 		return 0;       // # "C --" 打头区分这是在.so 里面输出的
 	}
-	if (IsEnable() == false)
+	if (testCount == 0)
 	{
-		MessageBox(NULL, L"网卡地址不对，请联系Q460000713", L"网卡地址不对", MB_OK);
-		return 0;
+		cout << testCount << endl;
+		log("testCount:%d", testCount);
+		if (IsEnable() == false)
+		{
+			MessageBox(NULL, L"网卡地址不对，请联系Q460000713", L"网卡地址不对", MB_OK);
+			return 0;
+		}
 	}
 	testCount++;
-	if (testCount >= MAX_TEST_COUNT)
-	{
-		return 0;
-	}
 	FILE *fpWrite = fopen("clock_tdata.txt", "a+");
 	fprintf(fpWrite, "\nfntestPythonCallCard\n");
 	fprintf(fpWrite, "\ncbHandCardCount:%d\n", pythonIn->cbHandCardCount);
@@ -368,11 +338,6 @@ TESTC_API int fntestPythonCallCard(tagInPyhonCallCard *pythonIn)
 	BYTE							cbCardIndex[MAX_INDEX] = { 0 };	//手中扑克
 	m_GameLogic.SwitchToCardIndex(pythonIn->cbHandCardData, pythonIn->cbHandCardCount, cbCardIndex);
 	pythonIn->cbType = SelectCallCard(cbCardIndex);
-	if (tong() == false)
-	{
-		MessageBox(NULL, L"网卡地址不对，请联系Q460000713", L"网卡地址不对", MB_OK);
-		return 0;
-	}
 	fprintf(fpWrite, "\ntype:,%d\n", pythonIn->cbType);
 	fprintf(fpWrite, "End\n");
 	fclose(fpWrite);

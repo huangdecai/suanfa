@@ -528,6 +528,29 @@ int CAndroidAI::AddScore( BYTE byCardData )
 	return nScore;
 }
 
+int CAndroidAI::GetACardSore(BYTE cbCardData) //牌堆中剩余要做判断
+{
+	int nScore = 0;
+	if (cbCardData >= 0x30)
+	{
+		return 0;
+	}
+	int value = m_GameLogic.GetCardValue(cbCardData);
+	if (value > 2 && value < 8)
+	{
+		return 10;
+	}
+	else if (value == 2 || value == 8)
+	{
+		return 7;
+	}
+	else {
+		return 3;
+	}
+
+	return nScore;
+}
+
 //分析三只
 void CAndroidAI::AnalyseThree()
 {
@@ -640,7 +663,7 @@ void CAndroidAI::AnalyseTwo()
 				m_byTwoCount++;
 				int nGoodLink;
 				if( IsEdge(m_byRemainThree[i],m_byRemainThree[byIndex]) )
-					nGoodLink = 80;
+					nGoodLink = 70;
 				else nGoodLink = 90;
 				//递归
 				m_nScoreTwo += nGoodLink;
@@ -662,7 +685,7 @@ void CAndroidAI::AnalyseTwo()
 				int nGoodLink;
 				if( IsEdge(m_byRemainThree[i],m_byRemainThree[byIndex]) )
 					nGoodLink = 60;
-				else nGoodLink = 70;
+				else nGoodLink = 80;
 				//递归
 				m_nScoreTwo += nGoodLink;
 				m_bSelect[byIndex] = true;
@@ -700,7 +723,7 @@ void CAndroidAI::AnalyseOne()
 	for(int i = 0;i < m_byRemainTwoCount;i++ )	//找出最差的一张牌
 	{
 		byCard = m_byRemainTwo[i];
-
+		bool bDan = false;
 		if( IsEnjoinOutCard(byCard) ) continue;
 
 		if( byCard >= 27 )						//如果是字
@@ -714,10 +737,15 @@ void CAndroidAI::AnalyseOne()
 		else 
 		{
 			nScore = 10;
+			bDan = true;
 		}
 
 		nScore += AddScore(byCard);
-
+		
+		if (bDan&&nScore==10)
+		{
+			nScore -= 3;
+		}
 		//去除一种花色
 		/*	if( m_cbColorCount == 3 && m_cbColor[(byCard/9)] == m_cbMinColorCount )
 				nScore -= 10;*/
@@ -858,6 +886,7 @@ bool CAndroidAI::SearchOutCard(tagOutCardResult &OutCardResult, WORD wMeChairId,
 		BYTE MagicIndex[2] = { cbLaiZi1, cbLaiZi2 };
 		m_GameLogic.SetMagicIndex(MagicIndex);
 	}
+	m_GameLogic.SetUserRule(cbCardDataEx);
 
 	//转换索引
 	BYTE byCard[MAX_COUNT], byCardCount = 0;
@@ -877,7 +906,7 @@ bool CAndroidAI::SearchOutCard(tagOutCardResult &OutCardResult, WORD wMeChairId,
 	if ((cbActionMask & WIK_CHI_HU) != 0 )
 	{
 		
-		/*if (wCurrentUser != wMeChairId)
+		if (cbCardDataEx[3]==0&&(wCurrentUser != wMeChairId))
 		{
 			CMD_S_TING_DATA tingData;
 
@@ -921,7 +950,7 @@ bool CAndroidAI::SearchOutCard(tagOutCardResult &OutCardResult, WORD wMeChairId,
 				OutCardResult.cbOperateCard = 0;
 			}
 		}
-		else*/
+		else
 		{
 			OutCardResult.cbOperateCode = WIK_CHI_HU;
 			OutCardResult.cbOperateCard = cbActionCard;
@@ -976,11 +1005,21 @@ bool CAndroidAI::SearchOutCard(tagOutCardResult &OutCardResult, WORD wMeChairId,
 					huPaiIndex = i;
 					nOrgScore = cardScore[i];
 				}
-				if (FanCount>maxFanCount&&cbHuCardRemainingCount>=1)
+				else if (FanCount>maxFanCount&&cbHuCardRemainingCount>=1)
 				{
 					maxFanCount = FanCount;
 					huPaiIndex = i;
 					nOrgScore = -1;
+				}
+				else if (FanCount == maxFanCount&&cbHuCardRemainingCount== maxRemainingCount&& cardScore[i]== nOrgScore)
+				{
+					if (cbShengYuIndex[m_GameLogic.SwitchToCardIndex(tingData.cbOutCardData[i])] < cbShengYuIndex[m_GameLogic.SwitchToCardIndex(tingData.cbOutCardData[huPaiIndex])])
+					{
+						maxFanCount = FanCount;
+						huPaiIndex = i;
+						nOrgScore = -1;
+					}
+				
 				}
 			}
 			
@@ -1024,6 +1063,20 @@ bool CAndroidAI::SearchOutCard(tagOutCardResult &OutCardResult, WORD wMeChairId,
 							{
 								maxRemainingCount = cbHuCardRemainingCount;
 								huPaiIndex = i;
+							}
+							else if (cbShengYuIndex[m_GameLogic.SwitchToCardIndex(tingData.cbOutCardData[i])] < cbShengYuIndex[m_GameLogic.SwitchToCardIndex(tingData.cbOutCardData[huPaiIndex])])
+							{
+								maxRemainingCount = cbHuCardRemainingCount;
+								huPaiIndex = i;
+							}
+							else if (cbShengYuIndex[m_GameLogic.SwitchToCardIndex(tingData.cbOutCardData[i])] == cbShengYuIndex[m_GameLogic.SwitchToCardIndex(tingData.cbOutCardData[huPaiIndex])])
+							{
+								if (GetACardSore(tingData.cbOutCardData[i])< GetACardSore(tingData.cbOutCardData[huPaiIndex]))
+								{
+									maxRemainingCount = cbHuCardRemainingCount;
+									huPaiIndex = i;
+								}
+								
 							}
 						}
 					}
@@ -1100,6 +1153,10 @@ bool CAndroidAI::SearchOutCard(tagOutCardResult &OutCardResult, WORD wMeChairId,
 			}
 			int score = ActionAfterScore(wMeChairId, cbCardIndex, cbShengYuIndex, WeaveItemArray[wMeChairId], cbWeaveCount[wMeChairId], cbDiscardCard, cbDiscardCount, cbActionCard, WIK_GANG,true);
 			nOperateScore[0] += score;
+			{
+				//防止碰得分后大于杠，
+				nOperateScore[0] +=40;
+			}
 		}
 		if (cbTingRes==WIK_LISTEN)
 		{
@@ -1147,6 +1204,7 @@ bool CAndroidAI::SearchOutCard(tagOutCardResult &OutCardResult, WORD wMeChairId,
 		}
 		int score = ActionAfterScore(wMeChairId, cbCardIndex, cbShengYuIndex, WeaveItemArray[wMeChairId], cbWeaveCount[wMeChairId], cbDiscardCard, cbDiscardCount, cbActionCard, WIK_PENG,false);
 		nOperateScore[1] += score;
+
 	}
 	//判断吃
 	if ((cbActionMask & (WIK_LEFT|WIK_CENTER|WIK_RIGHT))&&wMeChairId != wCurrentUser)
