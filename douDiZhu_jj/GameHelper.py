@@ -168,7 +168,7 @@ class GameHelper:
         self.ScreenZoomRate = 1.0
         self.Pics = {}
         self.PicsCV = {}
-        self.Handle = win32gui.FindWindow("LDPlayerMainFrame", "雷电模拟器")
+        self.Handle = win32gui.FindWindow("LDPlayerMainFrame", "test001")
         self.Interrupt = False
         self.RealRate = (SCREEN_WIDTH, SCREEN_HEGIHT)
         for file in os.listdir("./pics"):
@@ -178,10 +178,10 @@ class GameHelper:
                 imgCv = cv2.imread("./pics/" + file)
                 self.Pics.update({info[0]: tmpImage})
                 self.PicsCV.update({info[0]: imgCv})
-        self.duokaiStr = "雷电模拟器"
+        self.duokaiStr = "test001"
     def setFindStr(self,findStr):
         if findStr!='0':
-            self.duokaiStr = "雷电模拟器"
+            self.duokaiStr = "test00"
             self.duokaiStr=self.duokaiStr+(findStr)
             tmp=4
     def Screenshot(self, region=None):  # -> (im, (left, top))

@@ -3,6 +3,6 @@
 "userid":666602,
   "password":777888,
   "tableid": 1,
-  "port": 4555,
-  "duokai": 0
+  "duokai": 8,
+  "port": 4555
 }

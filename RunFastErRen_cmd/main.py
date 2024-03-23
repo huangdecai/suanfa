@@ -153,6 +153,7 @@ class MyPyQT_Form(QtWidgets.QWidget, Ui_Form):
         elif wSubCmdID == -1:
             print("close")
             # 暂时只做一次校验
+            self.connected=0
             # self.connected=False
             return
         elif wSubCmdID == socketTool.SUB_C_RESET_TABLE:

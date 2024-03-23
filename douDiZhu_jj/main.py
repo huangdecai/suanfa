@@ -232,9 +232,14 @@ class MyPyQT_Form(QtWidgets.QWidget, Ui_Form):
            c = 0
         #self.play_order = self.find_landlord()
         self.user_hand_cards_real = self.find_my_cards(self.MyHandCardsPos) #'2AKQQJJT99877753'
+        tryCount=0
         while len(self.user_hand_cards_real)<NORMAL_COUNT :
+            if tryCount >= 6:
+                helper.ClickOnImage("change_player_btn", region=self.changePlayerBtnPos, confidence=0.70)
             self.user_hand_cards_real = self.find_my_cards(self.MyHandCardsPos)
             self.sleep(500)
+            tryCount+=1
+
             print("hangCountShiBieWenTi",len(self.user_hand_cards_real))
         #self.user_hand_cards_real =  'AKKKKQJJT9988744'
         #self.turnCardReal='665544'
@@ -320,13 +325,13 @@ class MyPyQT_Form(QtWidgets.QWidget, Ui_Form):
 
                 bPass=False
                 if len(action_message) == 0:
-                    result = helper.LocateOnScreen("pass_btn", region=self.buChuBtnPos, confidence=0.85)
+                    result = helper.LocateOnScreen("pass_btn", region=self.buChuBtnPos, confidence=0.90)
                     if result:
                         helper.ClickOnImage("pass_btn", region=self.buChuBtnPos)
-                        print(self.play_order, "pass_btn")
+                        print(self.play_order, "pass_btn..1")
                     else:
                         helper.ClickOnImage("yaobuqi", region=self.yaoBuQiBtnPos)
-                        print(self.play_order, "yaobuqi")
+                        print(self.play_order, "yaobuqi..1")
                     bPass=True
                 else:
                     if self.onlyTip :
@@ -457,7 +462,7 @@ class MyPyQT_Form(QtWidgets.QWidget, Ui_Form):
             resultJ = helper.LocateOnScreen("jiaodizhu", region=self.jiaoDiZhuBtnPos,
                                             confidence=self.LandlordFlagConfidence)
             resultQ = helper.LocateOnScreen("qiangdizhu", region=self.jiaoDiZhuBtnPos,
-                                           confidence=self.LandlordFlagConfidence)
+                                           confidence=0.90)
             print("jiaoDiZhuCheck...")
             if resultJ :
                 score=self.getCardScore(self.user_hand_cards_real)

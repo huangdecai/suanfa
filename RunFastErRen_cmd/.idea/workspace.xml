@@ -5,50 +5,347 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="69fa8f9b-4a11-469f-9abf-c731833928a1" name="更改" comment="更改">
-      <change afterPath="$PROJECT_DIR$/../RunFastErRen_baobao/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../LanHuHongZhong/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../LanHuHongZhong/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../RunFastErRen_baobao/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../RunFastErRen_baobao/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../RunFastErRen_baobao/GameHelper.py" beforeDir="false" afterPath="$PROJECT_DIR$/../RunFastErRen_baobao/GameHelper.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../RunFastErRen_baobao/clock_tdata.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../RunFastErRen_baobao/clock_tdata.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../RunFastErRen_baobao/file2/card_edge.png" beforeDir="false" afterPath="$PROJECT_DIR$/../RunFastErRen_baobao/file2/card_edge.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../RunFastErRen_baobao/file2/white.png" beforeDir="false" afterPath="$PROJECT_DIR$/../RunFastErRen_baobao/file2/white.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../RunFastErRen_baobao/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/../RunFastErRen_baobao/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../RunFastErRen_baobao/main.spec" beforeDir="false" afterPath="$PROJECT_DIR$/../RunFastErRen_baobao/main.spec" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../RunFastErRen_baobao/pics/card_edge.png" beforeDir="false" afterPath="$PROJECT_DIR$/../RunFastErRen_baobao/pics/card_edge.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../RunFastErRen_baobao/pics/card_edge2.png" beforeDir="false" afterPath="$PROJECT_DIR$/../RunFastErRen_baobao/pics/card_edge2.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../RunFastErRen_baobao/pics/white.png" beforeDir="false" afterPath="$PROJECT_DIR$/../RunFastErRen_baobao/pics/white.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../RunFastErRen_baobao/testC++.dll" beforeDir="false" afterPath="$PROJECT_DIR$/../RunFastErRen_baobao/testC++.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../RunFastErRen_baobao/testRunFast.png" beforeDir="false" afterPath="$PROJECT_DIR$/../RunFastErRen_baobao/testRunFast.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../RunFastErRen_baobao/使用说明.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../RunFastErRen_baobao/使用说明.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../RunFastErRen_baobao/配置1.png" beforeDir="false" afterPath="$PROJECT_DIR$/../RunFastErRen_baobao/配置1.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../RunFastErRen_jiulong/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../RunFastErRen_jiulong/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../RunFastErRen_jiulong/file2/go_btn.png" beforeDir="false" afterPath="$PROJECT_DIR$/../RunFastErRen_jiulong/file2/go_btn.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../RunFastErRen_jiulong/file2/play_card.png" beforeDir="false" afterPath="$PROJECT_DIR$/../RunFastErRen_jiulong/file2/play_card.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../RunFastErRen_jiulong/file2/tip_btn.png" beforeDir="false" afterPath="$PROJECT_DIR$/../RunFastErRen_jiulong/file2/tip_btn.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../RunFastErRen_jiulong/file2/white.png" beforeDir="false" afterPath="$PROJECT_DIR$/../RunFastErRen_jiulong/file2/white.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../RunFastErRen_jiulong/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/../RunFastErRen_jiulong/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../RunFastErRen_jiulong/pics/white.png" beforeDir="false" afterPath="$PROJECT_DIR$/../RunFastErRen_jiulong/pics/white.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../RunFastErRen_jiulong/testC++.dll" beforeDir="false" afterPath="$PROJECT_DIR$/../RunFastErRen_jiulong/testC++.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../RunFastErRen_jiulong/testRunFast.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../RunFastErRen_jiulong/testRunFast2.png" beforeDir="false" afterPath="$PROJECT_DIR$/../RunFastErRen_jiulong/testRunFast2.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ShiSanZhangXiangGuang_NotNet/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../ShiSanZhangXiangGuang_NotNet/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../c++dll调用/RunFastNoFenHuaSe_erRen/runFastDll/testC++/testC++.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/../c++dll调用/RunFastNoFenHuaSe_erRen/runFastDll/testC++/testC++.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../c++dll调用/RunFastNoFenHuaSe_erRen/runFastDll/testC++/testC++.vcxproj" beforeDir="false" afterPath="$PROJECT_DIR$/../c++dll调用/RunFastNoFenHuaSe_erRen/runFastDll/testC++/testC++.vcxproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../c++dll调用/XueZhanLaiZiMjGameLogic_tai/xueZhanC++DLL/testC++/testC++.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/../c++dll调用/XueZhanLaiZiMjGameLogic_tai/xueZhanC++DLL/testC++/testC++.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../c++dll调用/hongZhongGameLogic_new/gameLogic/testLogic2/AndroidAI.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/../c++dll调用/hongZhongGameLogic_new/gameLogic/testLogic2/AndroidAI.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../c++dll调用/hongZhongGameLogic_new/gameLogic/testLogic2/testLogic2.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/../c++dll调用/hongZhongGameLogic_new/gameLogic/testLogic2/testLogic2.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../c++dll调用/hongZhongGameLogic_new/xueZhanC++DLL/releaseOutput.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../c++dll调用/hongZhongGameLogic_new/xueZhanC++DLL/releaseOutput.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../c++dll调用/hongZhongGameLogic_new/xueZhanC++DLL/testC++/testC++.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/../c++dll调用/hongZhongGameLogic_new/xueZhanC++DLL/testC++/testC++.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../BaiJiaLe/baselines/douzero_ADP/landlord.ckpt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../BaiJiaLe/baselines/douzero_ADP/landlord_down.ckpt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../BaiJiaLe/baselines/douzero_ADP/landlord_up.ckpt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../BaiJiaLe/baselines/douzero_WP/landlord.ckpt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../BaiJiaLe/baselines/douzero_WP/landlord_down.ckpt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../BaiJiaLe/baselines/douzero_WP/landlord_up.ckpt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../BaiJiaLe/baselines/put_pretrained_models_here" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../BaiJiaLe/baselines/resnet/把Resnet新模型放在这里" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../BaiJiaLe/baselines/sl/landlord.ckpt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../BaiJiaLe/baselines/sl/landlord_down.ckpt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../BaiJiaLe/baselines/sl/landlord_up.ckpt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LanHuHongZhong/baselines/douzero_ADP/landlord.ckpt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LanHuHongZhong/baselines/douzero_ADP/landlord_down.ckpt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LanHuHongZhong/baselines/douzero_ADP/landlord_up.ckpt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LanHuHongZhong/baselines/douzero_WP/landlord.ckpt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LanHuHongZhong/baselines/douzero_WP/landlord_down.ckpt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LanHuHongZhong/baselines/douzero_WP/landlord_up.ckpt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LanHuHongZhong/baselines/put_pretrained_models_here" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LanHuHongZhong/baselines/resnet/把Resnet新模型放在这里" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LanHuHongZhong/baselines/sl/landlord.ckpt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LanHuHongZhong/baselines/sl/landlord_down.ckpt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LanHuHongZhong/baselines/sl/landlord_up.ckpt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LandErRen91/baselines/douzero_ADP/landlord.ckpt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LandErRen91/baselines/douzero_ADP/landlord_down.ckpt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LandErRen91/baselines/douzero_ADP/landlord_up.ckpt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LandErRen91/baselines/douzero_WP/landlord.ckpt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LandErRen91/baselines/douzero_WP/landlord_down.ckpt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LandErRen91/baselines/douzero_WP/landlord_up.ckpt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LandErRen91/baselines/put_pretrained_models_here" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LandErRen91/baselines/resnet/把Resnet新模型放在这里" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LandErRen91/baselines/sl/landlord.ckpt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LandErRen91/baselines/sl/landlord_down.ckpt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LandErRen91/baselines/sl/landlord_up.ckpt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MjNingBo/baselines/douzero_ADP/landlord.ckpt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MjNingBo/baselines/douzero_ADP/landlord_down.ckpt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MjNingBo/baselines/douzero_ADP/landlord_up.ckpt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MjNingBo/baselines/douzero_WP/landlord.ckpt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MjNingBo/baselines/douzero_WP/landlord_down.ckpt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MjNingBo/baselines/douzero_WP/landlord_up.ckpt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MjNingBo/baselines/put_pretrained_models_here" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MjNingBo/baselines/resnet/把Resnet新模型放在这里" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MjNingBo/baselines/sl/landlord.ckpt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MjNingBo/baselines/sl/landlord_down.ckpt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MjNingBo/baselines/sl/landlord_up.ckpt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../RUNFAST_FullAuto/baselines/douzero_ADP/landlord.ckpt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../RUNFAST_FullAuto/baselines/douzero_ADP/landlord_down.ckpt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../RUNFAST_FullAuto/baselines/douzero_ADP/landlord_up.ckpt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../RUNFAST_FullAuto/baselines/douzero_WP/landlord.ckpt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../RUNFAST_FullAuto/baselines/douzero_WP/landlord_down.ckpt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../RUNFAST_FullAuto/baselines/douzero_WP/landlord_up.ckpt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../RUNFAST_FullAuto/baselines/put_pretrained_models_here" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../RUNFAST_FullAuto/baselines/resnet/把Resnet新模型放在这里" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../RUNFAST_FullAuto/baselines/sl/landlord.ckpt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../RUNFAST_FullAuto/baselines/sl/landlord_down.ckpt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../RUNFAST_FullAuto/baselines/sl/landlord_up.ckpt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../RUNFAST_FullAuto_jj/baselines/douzero_ADP/landlord.ckpt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../RUNFAST_FullAuto_jj/baselines/douzero_ADP/landlord_down.ckpt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../RUNFAST_FullAuto_jj/baselines/douzero_ADP/landlord_up.ckpt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../RUNFAST_FullAuto_jj/baselines/douzero_WP/landlord.ckpt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../RUNFAST_FullAuto_jj/baselines/douzero_WP/landlord_down.ckpt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../RUNFAST_FullAuto_jj/baselines/douzero_WP/landlord_up.ckpt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../RUNFAST_FullAuto_jj/baselines/put_pretrained_models_here" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../RUNFAST_FullAuto_jj/baselines/resnet/把Resnet新模型放在这里" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../RUNFAST_FullAuto_jj/baselines/sl/landlord.ckpt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../RUNFAST_FullAuto_jj/baselines/sl/landlord_down.ckpt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../RUNFAST_FullAuto_jj/baselines/sl/landlord_up.ckpt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../RunFastErRen_baobao/baselines/douzero_ADP/landlord.ckpt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../RunFastErRen_baobao/baselines/douzero_ADP/landlord_down.ckpt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../RunFastErRen_baobao/baselines/douzero_ADP/landlord_up.ckpt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../RunFastErRen_baobao/baselines/douzero_WP/landlord.ckpt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../RunFastErRen_baobao/baselines/douzero_WP/landlord_down.ckpt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../RunFastErRen_baobao/baselines/douzero_WP/landlord_up.ckpt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../RunFastErRen_baobao/baselines/put_pretrained_models_here" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../RunFastErRen_baobao/baselines/resnet/把Resnet新模型放在这里" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../RunFastErRen_baobao/baselines/sl/landlord.ckpt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../RunFastErRen_baobao/baselines/sl/landlord_down.ckpt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../RunFastErRen_baobao/baselines/sl/landlord_up.ckpt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../RunFastErRen_jiulong/baselines/douzero_ADP/landlord.ckpt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../RunFastErRen_jiulong/baselines/douzero_ADP/landlord_down.ckpt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../RunFastErRen_jiulong/baselines/douzero_ADP/landlord_up.ckpt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../RunFastErRen_jiulong/baselines/douzero_WP/landlord.ckpt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../RunFastErRen_jiulong/baselines/douzero_WP/landlord_down.ckpt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../RunFastErRen_jiulong/baselines/douzero_WP/landlord_up.ckpt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../RunFastErRen_jiulong/baselines/put_pretrained_models_here" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../RunFastErRen_jiulong/baselines/resnet/把Resnet新模型放在这里" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../RunFastErRen_jiulong/baselines/sl/landlord.ckpt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../RunFastErRen_jiulong/baselines/sl/landlord_down.ckpt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../RunFastErRen_jiulong/baselines/sl/landlord_up.ckpt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../RunFastErRen_qianshou/baselines/douzero_ADP/landlord.ckpt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../RunFastErRen_qianshou/baselines/douzero_ADP/landlord_down.ckpt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../RunFastErRen_qianshou/baselines/douzero_ADP/landlord_up.ckpt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../RunFastErRen_qianshou/baselines/douzero_WP/landlord.ckpt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../RunFastErRen_qianshou/baselines/douzero_WP/landlord_down.ckpt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../RunFastErRen_qianshou/baselines/douzero_WP/landlord_up.ckpt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../RunFastErRen_qianshou/baselines/put_pretrained_models_here" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../RunFastErRen_qianshou/baselines/resnet/把Resnet新模型放在这里" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../RunFastErRen_qianshou/baselines/sl/landlord.ckpt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../RunFastErRen_qianshou/baselines/sl/landlord_down.ckpt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../RunFastErRen_qianshou/baselines/sl/landlord_up.ckpt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ShiSanZhangFangPian/baselines/douzero_ADP/landlord.ckpt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ShiSanZhangFangPian/baselines/douzero_ADP/landlord_down.ckpt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ShiSanZhangFangPian/baselines/douzero_ADP/landlord_up.ckpt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ShiSanZhangFangPian/baselines/douzero_WP/landlord.ckpt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ShiSanZhangFangPian/baselines/douzero_WP/landlord_down.ckpt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ShiSanZhangFangPian/baselines/douzero_WP/landlord_up.ckpt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ShiSanZhangFangPian/baselines/put_pretrained_models_here" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ShiSanZhangFangPian/baselines/resnet/把Resnet新模型放在这里" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ShiSanZhangFangPian/baselines/sl/landlord.ckpt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ShiSanZhangFangPian/baselines/sl/landlord_down.ckpt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ShiSanZhangFangPian/baselines/sl/landlord_up.ckpt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ShiSanZhangHeroPoker/baselines/douzero_ADP/landlord.ckpt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ShiSanZhangHeroPoker/baselines/douzero_ADP/landlord_down.ckpt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ShiSanZhangHeroPoker/baselines/douzero_ADP/landlord_up.ckpt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ShiSanZhangHeroPoker/baselines/douzero_WP/landlord.ckpt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ShiSanZhangHeroPoker/baselines/douzero_WP/landlord_down.ckpt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ShiSanZhangHeroPoker/baselines/douzero_WP/landlord_up.ckpt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ShiSanZhangHeroPoker/baselines/put_pretrained_models_here" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ShiSanZhangHeroPoker/baselines/resnet/把Resnet新模型放在这里" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ShiSanZhangHeroPoker/baselines/sl/landlord.ckpt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ShiSanZhangHeroPoker/baselines/sl/landlord_down.ckpt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ShiSanZhangHeroPoker/baselines/sl/landlord_up.ckpt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ShiSanZhangJinDunLaiZi/baselines/douzero_ADP/landlord.ckpt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ShiSanZhangJinDunLaiZi/baselines/douzero_ADP/landlord_down.ckpt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ShiSanZhangJinDunLaiZi/baselines/douzero_ADP/landlord_up.ckpt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ShiSanZhangJinDunLaiZi/baselines/douzero_WP/landlord.ckpt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ShiSanZhangJinDunLaiZi/baselines/douzero_WP/landlord_down.ckpt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ShiSanZhangJinDunLaiZi/baselines/douzero_WP/landlord_up.ckpt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ShiSanZhangJinDunLaiZi/baselines/put_pretrained_models_here" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ShiSanZhangJinDunLaiZi/baselines/resnet/把Resnet新模型放在这里" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ShiSanZhangJinDunLaiZi/baselines/sl/landlord.ckpt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ShiSanZhangJinDunLaiZi/baselines/sl/landlord_down.ckpt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ShiSanZhangJinDunLaiZi/baselines/sl/landlord_up.ckpt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ShiSanZhangLanHu/baselines/douzero_ADP/landlord.ckpt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ShiSanZhangLanHu/baselines/douzero_ADP/landlord_down.ckpt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ShiSanZhangLanHu/baselines/douzero_ADP/landlord_up.ckpt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ShiSanZhangLanHu/baselines/douzero_WP/landlord.ckpt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ShiSanZhangLanHu/baselines/douzero_WP/landlord_down.ckpt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ShiSanZhangLanHu/baselines/douzero_WP/landlord_up.ckpt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ShiSanZhangLanHu/baselines/put_pretrained_models_here" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ShiSanZhangLanHu/baselines/resnet/把Resnet新模型放在这里" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ShiSanZhangLanHu/baselines/sl/landlord.ckpt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ShiSanZhangLanHu/baselines/sl/landlord_down.ckpt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ShiSanZhangLanHu/baselines/sl/landlord_up.ckpt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ShiSanZhangLanHuLaiZi/baselines/douzero_ADP/landlord.ckpt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ShiSanZhangLanHuLaiZi/baselines/douzero_ADP/landlord_down.ckpt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ShiSanZhangLanHuLaiZi/baselines/douzero_ADP/landlord_up.ckpt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ShiSanZhangLanHuLaiZi/baselines/douzero_WP/landlord.ckpt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ShiSanZhangLanHuLaiZi/baselines/douzero_WP/landlord_down.ckpt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ShiSanZhangLanHuLaiZi/baselines/douzero_WP/landlord_up.ckpt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ShiSanZhangLanHuLaiZi/baselines/put_pretrained_models_here" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ShiSanZhangLanHuLaiZi/baselines/resnet/把Resnet新模型放在这里" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ShiSanZhangLanHuLaiZi/baselines/sl/landlord.ckpt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ShiSanZhangLanHuLaiZi/baselines/sl/landlord_down.ckpt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ShiSanZhangLanHuLaiZi/baselines/sl/landlord_up.ckpt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ShiSanZhangShenMaLaiZi/baselines/douzero_ADP/landlord.ckpt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ShiSanZhangShenMaLaiZi/baselines/douzero_ADP/landlord_down.ckpt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ShiSanZhangShenMaLaiZi/baselines/douzero_ADP/landlord_up.ckpt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ShiSanZhangShenMaLaiZi/baselines/douzero_WP/landlord.ckpt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ShiSanZhangShenMaLaiZi/baselines/douzero_WP/landlord_down.ckpt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ShiSanZhangShenMaLaiZi/baselines/douzero_WP/landlord_up.ckpt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ShiSanZhangShenMaLaiZi/baselines/put_pretrained_models_here" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ShiSanZhangShenMaLaiZi/baselines/resnet/把Resnet新模型放在这里" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ShiSanZhangShenMaLaiZi/baselines/sl/landlord.ckpt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ShiSanZhangShenMaLaiZi/baselines/sl/landlord_down.ckpt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ShiSanZhangShenMaLaiZi/baselines/sl/landlord_up.ckpt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ShiSanZhangShouDou/baselines/douzero_ADP/landlord.ckpt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ShiSanZhangShouDou/baselines/douzero_ADP/landlord_down.ckpt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ShiSanZhangShouDou/baselines/douzero_ADP/landlord_up.ckpt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ShiSanZhangShouDou/baselines/douzero_WP/landlord.ckpt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ShiSanZhangShouDou/baselines/douzero_WP/landlord_down.ckpt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ShiSanZhangShouDou/baselines/douzero_WP/landlord_up.ckpt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ShiSanZhangShouDou/baselines/put_pretrained_models_here" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ShiSanZhangShouDou/baselines/resnet/把Resnet新模型放在这里" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ShiSanZhangShouDou/baselines/sl/landlord.ckpt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ShiSanZhangShouDou/baselines/sl/landlord_down.ckpt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ShiSanZhangShouDou/baselines/sl/landlord_up.ckpt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ShiSanZhangTaiWan/baselines/douzero_ADP/landlord.ckpt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ShiSanZhangTaiWan/baselines/douzero_ADP/landlord_down.ckpt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ShiSanZhangTaiWan/baselines/douzero_ADP/landlord_up.ckpt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ShiSanZhangTaiWan/baselines/douzero_WP/landlord.ckpt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ShiSanZhangTaiWan/baselines/douzero_WP/landlord_down.ckpt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ShiSanZhangTaiWan/baselines/douzero_WP/landlord_up.ckpt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ShiSanZhangTaiWan/baselines/put_pretrained_models_here" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ShiSanZhangTaiWan/baselines/resnet/把Resnet新模型放在这里" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ShiSanZhangTaiWan/baselines/sl/landlord.ckpt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ShiSanZhangTaiWan/baselines/sl/landlord_down.ckpt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ShiSanZhangTaiWan/baselines/sl/landlord_up.ckpt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ShiSanZhangXiangGuang/baselines/douzero_ADP/landlord.ckpt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ShiSanZhangXiangGuang/baselines/douzero_ADP/landlord_down.ckpt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ShiSanZhangXiangGuang/baselines/douzero_ADP/landlord_up.ckpt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ShiSanZhangXiangGuang/baselines/douzero_WP/landlord.ckpt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ShiSanZhangXiangGuang/baselines/douzero_WP/landlord_down.ckpt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ShiSanZhangXiangGuang/baselines/douzero_WP/landlord_up.ckpt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ShiSanZhangXiangGuang/baselines/put_pretrained_models_here" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ShiSanZhangXiangGuang/baselines/resnet/把Resnet新模型放在这里" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ShiSanZhangXiangGuang/baselines/sl/landlord.ckpt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ShiSanZhangXiangGuang/baselines/sl/landlord_down.ckpt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ShiSanZhangXiangGuang/baselines/sl/landlord_up.ckpt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ShiSanZhangXiangGuang_NotNet/baselines/douzero_ADP/landlord.ckpt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ShiSanZhangXiangGuang_NotNet/baselines/douzero_ADP/landlord_down.ckpt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ShiSanZhangXiangGuang_NotNet/baselines/douzero_ADP/landlord_up.ckpt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ShiSanZhangXiangGuang_NotNet/baselines/douzero_WP/landlord.ckpt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ShiSanZhangXiangGuang_NotNet/baselines/douzero_WP/landlord_down.ckpt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ShiSanZhangXiangGuang_NotNet/baselines/douzero_WP/landlord_up.ckpt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ShiSanZhangXiangGuang_NotNet/baselines/put_pretrained_models_here" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ShiSanZhangXiangGuang_NotNet/baselines/resnet/把Resnet新模型放在这里" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ShiSanZhangXiangGuang_NotNet/baselines/sl/landlord.ckpt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ShiSanZhangXiangGuang_NotNet/baselines/sl/landlord_down.ckpt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ShiSanZhangXiangGuang_NotNet/baselines/sl/landlord_up.ckpt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ShiSanZhangXiangGuang_NotNet_Multi/baselines/douzero_ADP/landlord.ckpt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ShiSanZhangXiangGuang_NotNet_Multi/baselines/douzero_ADP/landlord_down.ckpt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ShiSanZhangXiangGuang_NotNet_Multi/baselines/douzero_ADP/landlord_up.ckpt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ShiSanZhangXiangGuang_NotNet_Multi/baselines/douzero_WP/landlord.ckpt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ShiSanZhangXiangGuang_NotNet_Multi/baselines/douzero_WP/landlord_down.ckpt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ShiSanZhangXiangGuang_NotNet_Multi/baselines/douzero_WP/landlord_up.ckpt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ShiSanZhangXiangGuang_NotNet_Multi/baselines/put_pretrained_models_here" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ShiSanZhangXiangGuang_NotNet_Multi/baselines/resnet/把Resnet新模型放在这里" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ShiSanZhangXiangGuang_NotNet_Multi/baselines/sl/landlord.ckpt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ShiSanZhangXiangGuang_NotNet_Multi/baselines/sl/landlord_down.ckpt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ShiSanZhangXiangGuang_NotNet_Multi/baselines/sl/landlord_up.ckpt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ZhiJianQiPaiRuanJiuZhang/baselines/douzero_ADP/landlord.ckpt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ZhiJianQiPaiRuanJiuZhang/baselines/douzero_ADP/landlord_down.ckpt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ZhiJianQiPaiRuanJiuZhang/baselines/douzero_ADP/landlord_up.ckpt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ZhiJianQiPaiRuanJiuZhang/baselines/douzero_WP/landlord.ckpt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ZhiJianQiPaiRuanJiuZhang/baselines/douzero_WP/landlord_down.ckpt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ZhiJianQiPaiRuanJiuZhang/baselines/douzero_WP/landlord_up.ckpt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ZhiJianQiPaiRuanJiuZhang/baselines/put_pretrained_models_here" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ZhiJianQiPaiRuanJiuZhang/baselines/resnet/把Resnet新模型放在这里" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ZhiJianQiPaiRuanJiuZhang/baselines/sl/landlord.ckpt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ZhiJianQiPaiRuanJiuZhang/baselines/sl/landlord_down.ckpt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ZhiJianQiPaiRuanJiuZhang/baselines/sl/landlord_up.ckpt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../douDiZhu_jj/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../douDiZhu_jj/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../douDiZhu_jj/GameHelper.py" beforeDir="false" afterPath="$PROJECT_DIR$/../douDiZhu_jj/GameHelper.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../douDiZhu_jj/baselines/douzero_ADP/landlord.ckpt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../douDiZhu_jj/baselines/douzero_ADP/landlord_down.ckpt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../douDiZhu_jj/baselines/douzero_ADP/landlord_up.ckpt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../douDiZhu_jj/baselines/douzero_WP/landlord.ckpt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../douDiZhu_jj/baselines/douzero_WP/landlord_down.ckpt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../douDiZhu_jj/baselines/douzero_WP/landlord_up.ckpt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../douDiZhu_jj/baselines/put_pretrained_models_here" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../douDiZhu_jj/baselines/resnet/把Resnet新模型放在这里" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../douDiZhu_jj/baselines/sl/landlord.ckpt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../douDiZhu_jj/baselines/sl/landlord_down.ckpt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../douDiZhu_jj/baselines/sl/landlord_up.ckpt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../douDiZhu_jj/clock_tdata.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../douDiZhu_jj/clock_tdata.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../douDiZhu_jj/data_file.json" beforeDir="false" afterPath="$PROJECT_DIR$/../douDiZhu_jj/data_file.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../douDiZhu_jj/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/../douDiZhu_jj/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../douDiZhu_jj/main.spec" beforeDir="false" afterPath="$PROJECT_DIR$/../douDiZhu_jj/main.spec" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../douDiZhu_jj/testRunFast.png" beforeDir="false" afterPath="$PROJECT_DIR$/../douDiZhu_jj/testRunFast.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../douDiZhu_jj/testRunFast2.png" beforeDir="false" afterPath="$PROJECT_DIR$/../douDiZhu_jj/testRunFast2.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../douDiZhu_jj2/baselines/douzero_ADP/landlord.ckpt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../douDiZhu_jj2/baselines/douzero_ADP/landlord_down.ckpt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../douDiZhu_jj2/baselines/douzero_ADP/landlord_up.ckpt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../douDiZhu_jj2/baselines/douzero_WP/landlord.ckpt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../douDiZhu_jj2/baselines/douzero_WP/landlord_down.ckpt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../douDiZhu_jj2/baselines/douzero_WP/landlord_up.ckpt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../douDiZhu_jj2/baselines/put_pretrained_models_here" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../douDiZhu_jj2/baselines/resnet/把Resnet新模型放在这里" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../douDiZhu_jj2/baselines/sl/landlord.ckpt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../douDiZhu_jj2/baselines/sl/landlord_down.ckpt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../douDiZhu_jj2/baselines/sl/landlord_up.ckpt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../erShiYiDianXiangGuang/baselines/douzero_ADP/landlord.ckpt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../erShiYiDianXiangGuang/baselines/douzero_ADP/landlord_down.ckpt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../erShiYiDianXiangGuang/baselines/douzero_ADP/landlord_up.ckpt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../erShiYiDianXiangGuang/baselines/douzero_WP/landlord.ckpt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../erShiYiDianXiangGuang/baselines/douzero_WP/landlord_down.ckpt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../erShiYiDianXiangGuang/baselines/douzero_WP/landlord_up.ckpt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../erShiYiDianXiangGuang/baselines/put_pretrained_models_here" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../erShiYiDianXiangGuang/baselines/resnet/把Resnet新模型放在这里" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../erShiYiDianXiangGuang/baselines/sl/landlord.ckpt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../erShiYiDianXiangGuang/baselines/sl/landlord_down.ckpt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../erShiYiDianXiangGuang/baselines/sl/landlord_up.ckpt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../guangDongXianLai/baselines/douzero_ADP/landlord.ckpt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../guangDongXianLai/baselines/douzero_ADP/landlord_down.ckpt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../guangDongXianLai/baselines/douzero_ADP/landlord_up.ckpt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../guangDongXianLai/baselines/douzero_WP/landlord.ckpt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../guangDongXianLai/baselines/douzero_WP/landlord_down.ckpt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../guangDongXianLai/baselines/douzero_WP/landlord_up.ckpt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../guangDongXianLai/baselines/put_pretrained_models_here" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../guangDongXianLai/baselines/resnet/把Resnet新模型放在这里" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../guangDongXianLai/baselines/sl/landlord.ckpt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../guangDongXianLai/baselines/sl/landlord_down.ckpt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../guangDongXianLai/baselines/sl/landlord_up.ckpt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../hongzhong_hunan/baselines/douzero_ADP/landlord.ckpt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../hongzhong_hunan/baselines/douzero_ADP/landlord_down.ckpt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../hongzhong_hunan/baselines/douzero_ADP/landlord_up.ckpt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../hongzhong_hunan/baselines/douzero_WP/landlord.ckpt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../hongzhong_hunan/baselines/douzero_WP/landlord_down.ckpt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../hongzhong_hunan/baselines/douzero_WP/landlord_up.ckpt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../hongzhong_hunan/baselines/put_pretrained_models_here" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../hongzhong_hunan/baselines/resnet/把Resnet新模型放在这里" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../hongzhong_hunan/baselines/sl/landlord.ckpt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../hongzhong_hunan/baselines/sl/landlord_down.ckpt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../hongzhong_hunan/baselines/sl/landlord_up.ckpt" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../hongzhong_paohuzi/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../hongzhong_paohuzi/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../hongzhong_paohuzi/GameHelper.py" beforeDir="false" afterPath="$PROJECT_DIR$/../hongzhong_paohuzi/GameHelper.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../hongzhong_paohuzi/MainWindow.py" beforeDir="false" afterPath="$PROJECT_DIR$/../hongzhong_paohuzi/MainWindow.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../hongzhong_paohuzi/MainWindow.ui" beforeDir="false" afterPath="$PROJECT_DIR$/../hongzhong_paohuzi/MainWindow.ui" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../hongzhong_paohuzi/clock_tdata.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../hongzhong_paohuzi/clock_tdata.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../hongzhong_paohuzi/file2/card_edge.png.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../hongzhong_paohuzi/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/../hongzhong_paohuzi/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../hongzhong_paohuzi/pics/card_edge.png" beforeDir="false" afterPath="$PROJECT_DIR$/../hongzhong_paohuzi/pics/card_edge.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../hongzhong_paohuzi/pics/card_edge.png.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../hongzhong_paohuzi/testC++.dll" beforeDir="false" afterPath="$PROJECT_DIR$/../hongzhong_paohuzi/testC++.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../hongzhong_paohuzi/baselines/douzero_ADP/landlord.ckpt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../hongzhong_paohuzi/baselines/douzero_ADP/landlord_down.ckpt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../hongzhong_paohuzi/baselines/douzero_ADP/landlord_up.ckpt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../hongzhong_paohuzi/baselines/douzero_WP/landlord.ckpt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../hongzhong_paohuzi/baselines/douzero_WP/landlord_down.ckpt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../hongzhong_paohuzi/baselines/douzero_WP/landlord_up.ckpt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../hongzhong_paohuzi/baselines/put_pretrained_models_here" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../hongzhong_paohuzi/baselines/resnet/把Resnet新模型放在这里" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../hongzhong_paohuzi/baselines/sl/landlord.ckpt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../hongzhong_paohuzi/baselines/sl/landlord_down.ckpt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../hongzhong_paohuzi/baselines/sl/landlord_up.ckpt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../mjXueZhanShangHai/baselines/douzero_ADP/landlord.ckpt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../mjXueZhanShangHai/baselines/douzero_ADP/landlord_down.ckpt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../mjXueZhanShangHai/baselines/douzero_ADP/landlord_up.ckpt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../mjXueZhanShangHai/baselines/douzero_WP/landlord.ckpt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../mjXueZhanShangHai/baselines/douzero_WP/landlord_down.ckpt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../mjXueZhanShangHai/baselines/douzero_WP/landlord_up.ckpt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../mjXueZhanShangHai/baselines/put_pretrained_models_here" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../mjXueZhanShangHai/baselines/resnet/把Resnet新模型放在这里" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../mjXueZhanShangHai/baselines/sl/landlord.ckpt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../mjXueZhanShangHai/baselines/sl/landlord_down.ckpt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../mjXueZhanShangHai/baselines/sl/landlord_up.ckpt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../xinQinNuYouHuan/baselines/douzero_ADP/landlord.ckpt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../xinQinNuYouHuan/baselines/douzero_ADP/landlord_down.ckpt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../xinQinNuYouHuan/baselines/douzero_ADP/landlord_up.ckpt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../xinQinNuYouHuan/baselines/douzero_WP/landlord.ckpt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../xinQinNuYouHuan/baselines/douzero_WP/landlord_down.ckpt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../xinQinNuYouHuan/baselines/douzero_WP/landlord_up.ckpt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../xinQinNuYouHuan/baselines/put_pretrained_models_here" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../xinQinNuYouHuan/baselines/resnet/把Resnet新模型放在这里" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../xinQinNuYouHuan/baselines/sl/landlord.ckpt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../xinQinNuYouHuan/baselines/sl/landlord_down.ckpt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../xinQinNuYouHuan/baselines/sl/landlord_up.ckpt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../xueZhan_sichuan/baselines/douzero_ADP/landlord.ckpt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../xueZhan_sichuan/baselines/douzero_ADP/landlord_down.ckpt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../xueZhan_sichuan/baselines/douzero_ADP/landlord_up.ckpt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../xueZhan_sichuan/baselines/douzero_WP/landlord.ckpt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../xueZhan_sichuan/baselines/douzero_WP/landlord_down.ckpt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../xueZhan_sichuan/baselines/douzero_WP/landlord_up.ckpt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../xueZhan_sichuan/baselines/put_pretrained_models_here" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../xueZhan_sichuan/baselines/resnet/把Resnet新模型放在这里" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../xueZhan_sichuan/baselines/sl/landlord.ckpt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../xueZhan_sichuan/baselines/sl/landlord_down.ckpt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../xueZhan_sichuan/baselines/sl/landlord_up.ckpt" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -195,7 +492,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/main.py</url>
-          <line>193</line>
+          <line>194</line>
           <option name="timeStamp" value="209" />
         </line-breakpoint>
       </breakpoints>
