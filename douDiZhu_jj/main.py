@@ -216,7 +216,7 @@ class MyPyQT_Form(QtWidgets.QWidget, Ui_Form):
 
         # 识别玩家手牌
         if self.connected==False:
-            print("你的账号没有登陆，请联系Q：460000713，进行购买")
+            print("你的账号没有登陆，请联系Q：，进行购买")
             return
         #tmpHandCard = self.changeDataOut('2AKQQJJT99877753')
         #tmpHandCardStr = self.changeDataIn(tmpHandCard)

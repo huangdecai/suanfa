@@ -776,7 +776,7 @@ BYTE CGameLogic::AnalyseGangCard(const BYTE cbCardIndex[MAX_INDEX], const tagWea
 		if (IsMagicCard(SwitchToCardData(i))) continue;
 		if (cbCardIndex[i] == 4)
 		{
-			if (GetCardColor(SwitchToCardData(i)) != GetCardColor(cbCallCard))
+			if (GetCardColor(SwitchToCardData(i)) != GetCardColor(cbCallCard)|| cbCallCard==0)
 			{
 				cbActionMask |= WIK_GANG;
 				GangCardResult.cbCardData[GangCardResult.cbCardCount++] = SwitchToCardData(i);

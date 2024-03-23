@@ -1111,7 +1111,7 @@ bool CAndroidAI::SearchOutCard(tagOutCardResult &OutCardResult, WORD wMeChairId,
 
 			//Ñ°ÕÒ×î¸ß·Ö¸ÜÅÆ
 			BYTE cbGangCard = 0;
-			int nMaxGangScore = -1;
+			int nMaxGangScore = 1;
 			for (BYTE i = 0; i < GangCardResult.cbCardCount; i++)
 			{
 				if (cbCardIndex[m_GameLogic.SwitchToCardIndex(GangCardResult.cbCardData[i])] == 0) 
@@ -1125,6 +1125,10 @@ bool CAndroidAI::SearchOutCard(tagOutCardResult &OutCardResult, WORD wMeChairId,
 				if (nScore > nMaxGangScore)
 				{
 					nMaxGangScore = nScore;
+					if (nMaxGangScore== nOrgScore)
+					{
+						nMaxGangScore += 100;
+					}
 					cbGangCard = GangCardResult.cbCardData[i];
 				}
 			}
@@ -1132,10 +1136,12 @@ bool CAndroidAI::SearchOutCard(tagOutCardResult &OutCardResult, WORD wMeChairId,
 			{
 				cbActionCard = cbGangCard;
 			}
-			if (cbCardIndex[m_GameLogic.SwitchToCardIndex(cbActionCard)]==1)
+			
+		/*	if (cbCardIndex[m_GameLogic.SwitchToCardIndex(cbActionCard)]==1|| cbCardIndex[m_GameLogic.SwitchToCardIndex(cbActionCard)] == 4)
 			{
 				nMaxGangScore = 1200;
-			}
+			}*/
+
 			nOperateScore[0] = nMaxGangScore - nOrgScore;
 		}
 		else
