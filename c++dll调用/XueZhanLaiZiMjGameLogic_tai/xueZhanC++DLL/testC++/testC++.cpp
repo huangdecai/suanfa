@@ -6,6 +6,10 @@
 #include <stdio.h>
 #include "nb30.h"
 #include "cwritelog.h"
+#include <iostream>
+#include <string>
+
+using namespace std;
 static int testCount = 0;
 cwritelog writeLog;
 #define MAX_TEST_COUNT 20000
@@ -218,17 +222,17 @@ TESTC_API int fntestPython2(tagInPyhonNew *pythonIn)
 	if (NULL == pythonIn) {
 		return 0;       // # "C --" 打头区分这是在.so 里面输出的
 	}
+	if (testCount == 0)
+	{
+		cout << testCount << endl;
+		log("testCount:%d", testCount);
+		if (IsEnable() == false)
+		{
+			MessageBox(NULL, L"网卡地址不对，请联系Q460000713", L"网卡地址不对", MB_OK);
+			return 0;
+		}
+	}
 	testCount++;
-	if (testCount >= 2000)
-	{
-		MessageBox(NULL, L"testCount，请联系Q460000713", L"testCount", MB_OK);
-		return 0;
-	}
-	if (IsEnable() == false)
-	{
-		MessageBox(NULL, L"网卡地址不对，请联系Q460000713", L"网卡地址不对", MB_OK);
-		return 0;
-	}
 	BYTE							cbCardIndex[MAX_INDEX] = { 0 };	//手中扑克
 	m_GameLogic.SwitchToCardIndex(pythonIn->cbHandCardData, pythonIn->cbHandCardCount, cbCardIndex);
 

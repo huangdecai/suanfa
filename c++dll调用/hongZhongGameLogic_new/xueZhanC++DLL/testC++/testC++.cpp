@@ -115,6 +115,7 @@ bool IsEnable()
 	strVector.push_back("2C-8D-B1-A3-4A-62");
 	strVector.push_back("7C-8A-E1-84-2E-1D");
 	strVector.push_back("20-11-2A-30-05-D2");
+	strVector.push_back("A8-A1-59-86-D5-F6");
 	string strError;
 	for (int i = 0; i < strVector.size(); i++)
 	{

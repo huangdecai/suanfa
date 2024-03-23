@@ -2,15 +2,51 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="481a5d4a-72c4-4fff-9589-5218860eac9b" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/../MjNingBo/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../MjNingBo/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../c++dll调用/LaiZi_shiSanZhangSuanFa/ShiSanZhang_dll/testC++/testC++.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/../c++dll调用/LaiZi_shiSanZhangSuanFa/ShiSanZhang_dll/testC++/testC++.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../c++dll调用/hongZhongGameLogic_new/gameLogic/testLogic2/GameLogic.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/../c++dll调用/hongZhongGameLogic_new/gameLogic/testLogic2/GameLogic.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../RunFastErRen_baobao/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LanHuHongZhong/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../LanHuHongZhong/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../RunFastErRen_baobao/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../RunFastErRen_baobao/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../RunFastErRen_baobao/GameHelper.py" beforeDir="false" afterPath="$PROJECT_DIR$/../RunFastErRen_baobao/GameHelper.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../RunFastErRen_baobao/clock_tdata.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../RunFastErRen_baobao/clock_tdata.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../RunFastErRen_baobao/file2/card_edge.png" beforeDir="false" afterPath="$PROJECT_DIR$/../RunFastErRen_baobao/file2/card_edge.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../RunFastErRen_baobao/file2/white.png" beforeDir="false" afterPath="$PROJECT_DIR$/../RunFastErRen_baobao/file2/white.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../RunFastErRen_baobao/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/../RunFastErRen_baobao/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../RunFastErRen_baobao/main.spec" beforeDir="false" afterPath="$PROJECT_DIR$/../RunFastErRen_baobao/main.spec" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../RunFastErRen_baobao/pics/card_edge.png" beforeDir="false" afterPath="$PROJECT_DIR$/../RunFastErRen_baobao/pics/card_edge.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../RunFastErRen_baobao/pics/card_edge2.png" beforeDir="false" afterPath="$PROJECT_DIR$/../RunFastErRen_baobao/pics/card_edge2.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../RunFastErRen_baobao/pics/white.png" beforeDir="false" afterPath="$PROJECT_DIR$/../RunFastErRen_baobao/pics/white.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../RunFastErRen_baobao/testC++.dll" beforeDir="false" afterPath="$PROJECT_DIR$/../RunFastErRen_baobao/testC++.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../RunFastErRen_baobao/testRunFast.png" beforeDir="false" afterPath="$PROJECT_DIR$/../RunFastErRen_baobao/testRunFast.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../RunFastErRen_baobao/使用说明.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../RunFastErRen_baobao/使用说明.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../RunFastErRen_baobao/配置1.png" beforeDir="false" afterPath="$PROJECT_DIR$/../RunFastErRen_baobao/配置1.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../RunFastErRen_jiulong/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../RunFastErRen_jiulong/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../RunFastErRen_jiulong/file2/go_btn.png" beforeDir="false" afterPath="$PROJECT_DIR$/../RunFastErRen_jiulong/file2/go_btn.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../RunFastErRen_jiulong/file2/play_card.png" beforeDir="false" afterPath="$PROJECT_DIR$/../RunFastErRen_jiulong/file2/play_card.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../RunFastErRen_jiulong/file2/tip_btn.png" beforeDir="false" afterPath="$PROJECT_DIR$/../RunFastErRen_jiulong/file2/tip_btn.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../RunFastErRen_jiulong/file2/white.png" beforeDir="false" afterPath="$PROJECT_DIR$/../RunFastErRen_jiulong/file2/white.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../RunFastErRen_jiulong/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/../RunFastErRen_jiulong/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../RunFastErRen_jiulong/pics/white.png" beforeDir="false" afterPath="$PROJECT_DIR$/../RunFastErRen_jiulong/pics/white.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../RunFastErRen_jiulong/testC++.dll" beforeDir="false" afterPath="$PROJECT_DIR$/../RunFastErRen_jiulong/testC++.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../RunFastErRen_jiulong/testRunFast.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../RunFastErRen_jiulong/testRunFast2.png" beforeDir="false" afterPath="$PROJECT_DIR$/../RunFastErRen_jiulong/testRunFast2.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ShiSanZhangXiangGuang_NotNet/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../ShiSanZhangXiangGuang_NotNet/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../c++dll调用/RunFastNoFenHuaSe_erRen/runFastDll/testC++/testC++.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/../c++dll调用/RunFastNoFenHuaSe_erRen/runFastDll/testC++/testC++.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../c++dll调用/RunFastNoFenHuaSe_erRen/runFastDll/testC++/testC++.vcxproj" beforeDir="false" afterPath="$PROJECT_DIR$/../c++dll调用/RunFastNoFenHuaSe_erRen/runFastDll/testC++/testC++.vcxproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../c++dll调用/XueZhanLaiZiMjGameLogic_tai/xueZhanC++DLL/testC++/testC++.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/../c++dll调用/XueZhanLaiZiMjGameLogic_tai/xueZhanC++DLL/testC++/testC++.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../c++dll调用/hongZhongGameLogic_new/gameLogic/testLogic2/AndroidAI.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/../c++dll调用/hongZhongGameLogic_new/gameLogic/testLogic2/AndroidAI.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../c++dll调用/hongZhongGameLogic_new/gameLogic/testLogic2/testLogic2.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/../c++dll调用/hongZhongGameLogic_new/gameLogic/testLogic2/testLogic2.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../c++dll调用/hongZhongGameLogic_new/xueZhanC++DLL/testC++/stdafx.h" beforeDir="false" afterPath="$PROJECT_DIR$/../c++dll调用/hongZhongGameLogic_new/xueZhanC++DLL/testC++/stdafx.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../c++dll调用/hongZhongGameLogic_new/xueZhanC++DLL/releaseOutput.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../c++dll调用/hongZhongGameLogic_new/xueZhanC++DLL/releaseOutput.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../c++dll调用/hongZhongGameLogic_new/xueZhanC++DLL/testC++/testC++.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/../c++dll调用/hongZhongGameLogic_new/xueZhanC++DLL/testC++/testC++.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../c++dll调用/hongZhongGameLogic_new/xueZhanC++DLL/testC++/testC++.vcxproj" beforeDir="false" afterPath="$PROJECT_DIR$/../c++dll调用/hongZhongGameLogic_new/xueZhanC++DLL/testC++/testC++.vcxproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../hongzhong_hunan/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../hongzhong_hunan/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../hongzhong_hunan/testC++.dll" beforeDir="false" afterPath="$PROJECT_DIR$/../hongzhong_hunan/testC++.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GameHelper.py" beforeDir="false" afterPath="$PROJECT_DIR$/GameHelper.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MainWindow.py" beforeDir="false" afterPath="$PROJECT_DIR$/MainWindow.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MainWindow.ui" beforeDir="false" afterPath="$PROJECT_DIR$/MainWindow.ui" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/clock_tdata.txt" beforeDir="false" afterPath="$PROJECT_DIR$/clock_tdata.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/file2/card_edge.png.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pics/card_edge.png" beforeDir="false" afterPath="$PROJECT_DIR$/pics/card_edge.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pics/card_edge.png.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/testC++.dll" beforeDir="false" afterPath="$PROJECT_DIR$/testC++.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/testRunFast.png" beforeDir="false" afterPath="$PROJECT_DIR$/testRunFast.png" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -72,18 +108,6 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/main.py</url>
-          <line>691</line>
-          <option name="timeStamp" value="15" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/main.py</url>
-          <line>796</line>
-          <option name="timeStamp" value="16" />
-        </line-breakpoint>
-      </breakpoints>
       <default-breakpoints>
         <breakpoint type="python-exception">
           <properties notifyOnTerminate="true" exception="BaseException">

@@ -25,6 +25,7 @@ from douzero.env.game import GameEnv
 from douzero.evaluation.deep_agent import DeepAgent
 import traceback
 
+import subprocess
 import BidModel
 import LandlordModel
 import FarmerModel
@@ -572,6 +573,7 @@ class MyPyQT_Form(QtWidgets.QWidget, Ui_Form):
                 hand_cards_str = self.user_hand_cards_real
                 self.bHaveAction=False
                 bGameOver=False
+                tempAllLen = len(self.allDisCardData)
                 if len(action_message) == 0 or cbActionMask>0:
                     #helper.ClickOnImage("pass_btn", region=self.PassBtnPos)
                     self.sleep(100)
@@ -594,6 +596,8 @@ class MyPyQT_Form(QtWidgets.QWidget, Ui_Form):
                              self.m_WeaveItem[0].append(item)
                          else:
                              self.waiteChiAction = cbOperateCode
+                         if self.allDisCardData[tempAllLen - 1]==cbActionCard:
+                            del self.allDisCardData[tempAllLen - 1]
                     elif self.waiteChiAction!=0:
                         print("chi——xuan", tmpPos)
                         item = WeaveItem()
@@ -615,6 +619,8 @@ class MyPyQT_Form(QtWidgets.QWidget, Ui_Form):
                          item.wProvideUser = 1
                          self.m_WeaveItem[0].append(item)
                          self.bHaveAction=True
+                         if self.allDisCardData[tempAllLen - 1]==cbActionCard:
+                            del self.allDisCardData[tempAllLen - 1]
                          print("bHaveAction-WIK_PENG:",self.bHaveAction)
                     elif cbOperateCode == WIK_GANG:
                          tmpPos = self.ActionBtnPosClick[1]
@@ -632,6 +638,8 @@ class MyPyQT_Form(QtWidgets.QWidget, Ui_Form):
                          if gangCardCount>1:
                             item.wProvideUser = 0
                          self.m_WeaveItem[0].append(item)
+                         if self.allDisCardData[tempAllLen - 1]==cbActionCard:
+                            del self.allDisCardData[tempAllLen - 1]
                     elif cbOperateCode == WIK_CHI_HU:
                          tmpPos = self.ActionBtnPosClick[0]
                          helper.ClickOnImage("hu", region=tmpPos, confidence= 0.72)
@@ -1001,14 +1009,27 @@ class MyPyQT_Form(QtWidgets.QWidget, Ui_Form):
             self.sleep(100)
         return ActionPos
 
+    def restart_program(self):
+        python = sys.executable  # 获取当前Python解释器的路径
+        os_system = sys.platform  # 获取操作系统类型
+        script = sys.argv[0]  # 获取当前脚本的路径
+
+        if os_system == 'win32':
+            #subprocess.run([python, script, '--restart'])
+            subprocess.Popen(['python',script])
+
+        #sys.exit(0)  # 关闭当前进程
+        sys.exit(app.exec_())
     def stop(self):
         try:
             self.RunGame = False
             self.game_over = True
+            self.restart_program()
             self.env.reset()
             self.init_display()
             self.PreWinrate.setText("局前预估胜率：")
             self.BidWinrate.setText("")
+
         except AttributeError as e:
             pass
         if self.AutoPlay:

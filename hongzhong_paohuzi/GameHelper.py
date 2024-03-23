@@ -280,7 +280,7 @@ class GameHelper:
         imgCv = cv2.cvtColor(np.asarray(image), cv2.COLOR_RGB2BGR)
         tryCount = 10
         cardStartPos = pyautogui.locate(needleImage=self.Pics["card_edge"], haystackImage=image,
-                                        region=(2, 616, 1061, 32), confidence=0.80)
+                                        region=(2, 616, 1061, 40), confidence=0.83)
         # cardStartPos2=None
         # if cardStartPos and cardStartPos[0]>100:
         #     cardStartPos2 = pyautogui.locate(needleImage=self.Pics["card_edge2"], haystackImage=image,
@@ -290,7 +290,7 @@ class GameHelper:
         #         cardStartPos = cardStartPos2
         while cardStartPos is None and tryCount > 0:
             cardStartPos = pyautogui.locate(needleImage=self.Pics["card_edge"], haystackImage=image,
-                                            region=(2, 616, 1061, 32), confidence=0.80)
+                                            region=(2, 616, 1061, 40), confidence=0.83)
             print("找不到手牌起始位置")
             tryCount -= 1
             #time.sleep(150)
@@ -301,6 +301,8 @@ class GameHelper:
         spaceIndex=13
         if sx>0 and sx<35:
             sx=31
+        elif sx>35and sx<45:
+            sx=42
         elif sx>200 and sx<275:
             sx=268
             spaceIndex = 10
@@ -392,14 +394,16 @@ class GameHelper:
         """Click at pixel xy."""
         x, y = pos
         x = int(x)
-        y = int(y)
+        y = int(y-50)
         lParam = win32api.MAKELONG(x, y)
-        lParam2 = win32api.MAKELONG(x, y - 150)
+        lParam2 = win32api.MAKELONG(x, y - 200)
         tmpHandle = self.Handle
         hwndChildList = []
         win32gui.EnumChildWindows(tmpHandle, lambda hwnd, param: param.append(hwnd), hwndChildList)
         tmpHandle = hwndChildList[0]
         # MOUSEMOVE event is required for game to register clicks correctly
+
+
         win32gui.PostMessage(tmpHandle, win32con.WM_MOUSEMOVE, 0, lParam)
         time.sleep(0.1)
         win32gui.PostMessage(tmpHandle, win32con.WM_LBUTTONDOWN,
@@ -437,6 +441,7 @@ class GameHelper:
                 if c == cards[i]:
                     print("双击1", handCardsInfo[j][1])
                     self.click_drag(handCardsInfo[j][1])
+                    #self.DoubleClick(handCardsInfo[j][1])
                     #self.LeftClick(handCardsInfo[i][1])
                     #self.LeftClick(handCardsInfo[i][1])
                     tmpPos=handCardsInfo[j][1]

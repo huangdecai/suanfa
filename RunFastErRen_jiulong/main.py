@@ -88,7 +88,7 @@ class MyPyQT_Form(QtWidgets.QWidget, Ui_Form):
         # 坐标
         self.MyHandCardsPos = (180, 277, 800, 100)  # 我的截图区域
         self.LPlayedCardsPos = (130, 150, 600, 80)  # 左边截图区域
-        self.RPlayedCardsPos = (226, 60, 700, 80)  # 右边截图区域
+        self.RPlayedCardsPos = (226, 169, 700, 80)  # 右边截图区域
         self.PassBtnPos = (627, 50, 200, 80)
         self.GeneralBtnPos = (447, 464, 576, 137)
         self.OutCardBtnPos = (615, 298, 200, 150)

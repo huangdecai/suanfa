@@ -22,75 +22,18 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="69fa8f9b-4a11-469f-9abf-c731833928a1" name="更改" comment="">
-      <change beforePath="$PROJECT_DIR$/../ShiSanZhangLanHuLaiZi/clock_tdata.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../ShiSanZhangLanHuLaiZi/clock_tdata.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ShiSanZhangLanHuLaiZi/data_file.json" beforeDir="false" afterPath="$PROJECT_DIR$/../ShiSanZhangLanHuLaiZi/data_file.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ShiSanZhangLanHuLaiZi/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/../ShiSanZhangLanHuLaiZi/settings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ShiSanZhangLanHuLaiZi/testC++.dll" beforeDir="false" afterPath="$PROJECT_DIR$/../ShiSanZhangLanHuLaiZi/testC++.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ShiSanZhangLanHuLaiZi/testRunFast.png" beforeDir="false" afterPath="$PROJECT_DIR$/../ShiSanZhangLanHuLaiZi/testRunFast.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../c++dll调用/LaiZi_shiSanZhangSuanFa/ShiSanZhang_dll/Release/testC++.dll" beforeDir="false" afterPath="$PROJECT_DIR$/../c++dll调用/LaiZi_shiSanZhangSuanFa/ShiSanZhang_dll/Release/testC++.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../c++dll调用/LaiZi_shiSanZhangSuanFa/ShiSanZhang_dll/Release/testC++.exp" beforeDir="false" afterPath="$PROJECT_DIR$/../c++dll调用/LaiZi_shiSanZhangSuanFa/ShiSanZhang_dll/Release/testC++.exp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../c++dll调用/LaiZi_shiSanZhangSuanFa/ShiSanZhang_dll/Release/testC++.lib" beforeDir="false" afterPath="$PROJECT_DIR$/../c++dll调用/LaiZi_shiSanZhangSuanFa/ShiSanZhang_dll/Release/testC++.lib" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../c++dll调用/LaiZi_shiSanZhangSuanFa/ShiSanZhang_dll/testC++.v12.suo" beforeDir="false" afterPath="$PROJECT_DIR$/../c++dll调用/LaiZi_shiSanZhangSuanFa/ShiSanZhang_dll/testC++.v12.suo" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../c++dll调用/LaiZi_shiSanZhangSuanFa/ShiSanZhang_dll/testC++/Debug/testC++.log" beforeDir="false" afterPath="$PROJECT_DIR$/../c++dll调用/LaiZi_shiSanZhangSuanFa/ShiSanZhang_dll/testC++/Debug/testC++.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../c++dll调用/LaiZi_shiSanZhangSuanFa/ShiSanZhang_dll/testC++/Debug/testC++.tlog/CL.read.1.tlog" beforeDir="false" afterPath="$PROJECT_DIR$/../c++dll调用/LaiZi_shiSanZhangSuanFa/ShiSanZhang_dll/testC++/Debug/testC++.tlog/CL.read.1.tlog" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../c++dll调用/LaiZi_shiSanZhangSuanFa/ShiSanZhang_dll/testC++/Debug/testC++.tlog/CL.write.1.tlog" beforeDir="false" afterPath="$PROJECT_DIR$/../c++dll调用/LaiZi_shiSanZhangSuanFa/ShiSanZhang_dll/testC++/Debug/testC++.tlog/CL.write.1.tlog" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../c++dll调用/LaiZi_shiSanZhangSuanFa/ShiSanZhang_dll/testC++/Debug/testC++.tlog/cl.command.1.tlog" beforeDir="false" afterPath="$PROJECT_DIR$/../c++dll调用/LaiZi_shiSanZhangSuanFa/ShiSanZhang_dll/testC++/Debug/testC++.tlog/cl.command.1.tlog" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../c++dll调用/LaiZi_shiSanZhangSuanFa/ShiSanZhang_dll/testC++/Debug/testC++.tlog/testC++.lastbuildstate" beforeDir="false" afterPath="$PROJECT_DIR$/../c++dll调用/LaiZi_shiSanZhangSuanFa/ShiSanZhang_dll/testC++/Debug/testC++.tlog/testC++.lastbuildstate" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../c++dll调用/LaiZi_shiSanZhangSuanFa/ShiSanZhang_dll/testC++/Release/testC++.Build.CppClean.log" beforeDir="false" afterPath="$PROJECT_DIR$/../c++dll调用/LaiZi_shiSanZhangSuanFa/ShiSanZhang_dll/testC++/Release/testC++.Build.CppClean.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../c++dll调用/LaiZi_shiSanZhangSuanFa/ShiSanZhang_dll/testC++/Release/testC++.log" beforeDir="false" afterPath="$PROJECT_DIR$/../c++dll调用/LaiZi_shiSanZhangSuanFa/ShiSanZhang_dll/testC++/Release/testC++.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../c++dll调用/LaiZi_shiSanZhangSuanFa/ShiSanZhang_dll/testC++/Release/testC++.tlog/CL.read.1.tlog" beforeDir="false" afterPath="$PROJECT_DIR$/../c++dll调用/LaiZi_shiSanZhangSuanFa/ShiSanZhang_dll/testC++/Release/testC++.tlog/CL.read.1.tlog" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../c++dll调用/LaiZi_shiSanZhangSuanFa/ShiSanZhang_dll/testC++/Release/testC++.tlog/CL.write.1.tlog" beforeDir="false" afterPath="$PROJECT_DIR$/../c++dll调用/LaiZi_shiSanZhangSuanFa/ShiSanZhang_dll/testC++/Release/testC++.tlog/CL.write.1.tlog" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../c++dll调用/LaiZi_shiSanZhangSuanFa/ShiSanZhang_dll/testC++/Release/testC++.tlog/cl.command.1.tlog" beforeDir="false" afterPath="$PROJECT_DIR$/../c++dll调用/LaiZi_shiSanZhangSuanFa/ShiSanZhang_dll/testC++/Release/testC++.tlog/cl.command.1.tlog" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../c++dll调用/LaiZi_shiSanZhangSuanFa/ShiSanZhang_dll/testC++/Release/testC++.tlog/link.command.1.tlog" beforeDir="false" afterPath="$PROJECT_DIR$/../c++dll调用/LaiZi_shiSanZhangSuanFa/ShiSanZhang_dll/testC++/Release/testC++.tlog/link.command.1.tlog" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../c++dll调用/LaiZi_shiSanZhangSuanFa/ShiSanZhang_dll/testC++/Release/testC++.tlog/testC++.write.1u.tlog" beforeDir="false" afterPath="$PROJECT_DIR$/../c++dll调用/LaiZi_shiSanZhangSuanFa/ShiSanZhang_dll/testC++/Release/testC++.tlog/testC++.write.1u.tlog" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../c++dll调用/LaiZi_shiSanZhangSuanFa/ShiSanZhang_dll/testC++/testC++.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/../c++dll调用/LaiZi_shiSanZhangSuanFa/ShiSanZhang_dll/testC++/testC++.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../c++dll调用/LaiZi_shiSanZhangSuanFa/ShiSanZhang_dll/testC++/x64/Release/testC++.log" beforeDir="false" afterPath="$PROJECT_DIR$/../c++dll调用/LaiZi_shiSanZhangSuanFa/ShiSanZhang_dll/testC++/x64/Release/testC++.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../c++dll调用/LaiZi_shiSanZhangSuanFa/ShiSanZhang_dll/testC++/x64/Release/testC++.tlog/CL.read.1.tlog" beforeDir="false" afterPath="$PROJECT_DIR$/../c++dll调用/LaiZi_shiSanZhangSuanFa/ShiSanZhang_dll/testC++/x64/Release/testC++.tlog/CL.read.1.tlog" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../c++dll调用/LaiZi_shiSanZhangSuanFa/ShiSanZhang_dll/testC++/x64/Release/testC++.tlog/CL.write.1.tlog" beforeDir="false" afterPath="$PROJECT_DIR$/../c++dll调用/LaiZi_shiSanZhangSuanFa/ShiSanZhang_dll/testC++/x64/Release/testC++.tlog/CL.write.1.tlog" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../c++dll调用/LaiZi_shiSanZhangSuanFa/ShiSanZhang_dll/testC++/x64/Release/testC++.tlog/cl.command.1.tlog" beforeDir="false" afterPath="$PROJECT_DIR$/../c++dll调用/LaiZi_shiSanZhangSuanFa/ShiSanZhang_dll/testC++/x64/Release/testC++.tlog/cl.command.1.tlog" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../c++dll调用/LaiZi_shiSanZhangSuanFa/ShiSanZhang_dll/testC++/x64/Release/testC++.tlog/testC++.write.1u.tlog" beforeDir="false" afterPath="$PROJECT_DIR$/../c++dll调用/LaiZi_shiSanZhangSuanFa/ShiSanZhang_dll/testC++/x64/Release/testC++.tlog/testC++.write.1u.tlog" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../c++dll调用/LaiZi_shiSanZhangSuanFa/ShiSanZhang_dll/testC++/x64/Release/testC++.tlog/unsuccessfulbuild" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../c++dll调用/LaiZi_shiSanZhangSuanFa/ShiSanZhang_dll/x64/Release/testC++.dll" beforeDir="false" afterPath="$PROJECT_DIR$/../c++dll调用/LaiZi_shiSanZhangSuanFa/ShiSanZhang_dll/x64/Release/testC++.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../c++dll调用/LaiZi_shiSanZhangSuanFa/ShiSanZhang_dll/x64/Release/testC++.exp" beforeDir="false" afterPath="$PROJECT_DIR$/../c++dll调用/LaiZi_shiSanZhangSuanFa/ShiSanZhang_dll/x64/Release/testC++.exp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../c++dll调用/LaiZi_shiSanZhangSuanFa/ShiSanZhang_dll/x64/Release/testC++.lib" beforeDir="false" afterPath="$PROJECT_DIR$/../c++dll调用/LaiZi_shiSanZhangSuanFa/ShiSanZhang_dll/x64/Release/testC++.lib" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../c++dll调用/LaiZi_shiSanZhangSuanFa/testLogic2.v12.suo" beforeDir="false" afterPath="$PROJECT_DIR$/../c++dll调用/LaiZi_shiSanZhangSuanFa/testLogic2.v12.suo" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../c++dll调用/LaiZi_shiSanZhang_chongSan_108/ShiSanZhang_dll/ipch/testc++-fe0db94b/testc++-4b11f71d.ipch" beforeDir="false" afterPath="$PROJECT_DIR$/../c++dll调用/LaiZi_shiSanZhang_chongSan_108/ShiSanZhang_dll/ipch/testc++-fe0db94b/testc++-4b11f71d.ipch" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../c++dll调用/LaiZi_shiSanZhang_chongSan_108/ShiSanZhang_dll/testC++.v12.suo" beforeDir="false" afterPath="$PROJECT_DIR$/../c++dll调用/LaiZi_shiSanZhang_chongSan_108/ShiSanZhang_dll/testC++.v12.suo" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../c++dll调用/LaiZi_shiSanZhang_chongSan_108/ShiSanZhang_dll/testC++/testC++.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/../c++dll调用/LaiZi_shiSanZhang_chongSan_108/ShiSanZhang_dll/testC++/testC++.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../c++dll调用/LaiZi_shiSanZhang_chongSan_108/ShiSanZhang_dll/testC++/x64/Release/testC++.log" beforeDir="false" afterPath="$PROJECT_DIR$/../c++dll调用/LaiZi_shiSanZhang_chongSan_108/ShiSanZhang_dll/testC++/x64/Release/testC++.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../c++dll调用/LaiZi_shiSanZhang_chongSan_108/ShiSanZhang_dll/testC++/x64/Release/testC++.tlog/CL.read.1.tlog" beforeDir="false" afterPath="$PROJECT_DIR$/../c++dll调用/LaiZi_shiSanZhang_chongSan_108/ShiSanZhang_dll/testC++/x64/Release/testC++.tlog/CL.read.1.tlog" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../c++dll调用/LaiZi_shiSanZhang_chongSan_108/ShiSanZhang_dll/testC++/x64/Release/testC++.tlog/CL.write.1.tlog" beforeDir="false" afterPath="$PROJECT_DIR$/../c++dll调用/LaiZi_shiSanZhang_chongSan_108/ShiSanZhang_dll/testC++/x64/Release/testC++.tlog/CL.write.1.tlog" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../c++dll调用/LaiZi_shiSanZhang_chongSan_108/ShiSanZhang_dll/testC++/x64/Release/testC++.tlog/link.read.1.tlog" beforeDir="false" afterPath="$PROJECT_DIR$/../c++dll调用/LaiZi_shiSanZhang_chongSan_108/ShiSanZhang_dll/testC++/x64/Release/testC++.tlog/link.read.1.tlog" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../c++dll调用/LaiZi_shiSanZhang_chongSan_108/ShiSanZhang_dll/testC++/x64/Release/testC++.tlog/testC++.write.1u.tlog" beforeDir="false" afterPath="$PROJECT_DIR$/../c++dll调用/LaiZi_shiSanZhang_chongSan_108/ShiSanZhang_dll/testC++/x64/Release/testC++.tlog/testC++.write.1u.tlog" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../c++dll调用/LaiZi_shiSanZhang_chongSan_108/ShiSanZhang_dll/x64/Release/testC++.dll" beforeDir="false" afterPath="$PROJECT_DIR$/../c++dll调用/LaiZi_shiSanZhang_chongSan_108/ShiSanZhang_dll/x64/Release/testC++.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../c++dll调用/LaiZi_shiSanZhang_chongSan_108/ShiSanZhang_dll/x64/Release/testC++.exp" beforeDir="false" afterPath="$PROJECT_DIR$/../c++dll调用/LaiZi_shiSanZhang_chongSan_108/ShiSanZhang_dll/x64/Release/testC++.exp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../c++dll调用/LaiZi_shiSanZhang_chongSan_108/ShiSanZhang_dll/x64/Release/testC++.lib" beforeDir="false" afterPath="$PROJECT_DIR$/../c++dll调用/LaiZi_shiSanZhang_chongSan_108/ShiSanZhang_dll/x64/Release/testC++.lib" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../c++dll调用/LaiZi_shiSanZhang_chongSan_108/ipch/testlogic2-32e61184/testlogic2-b59dddec.ipch" beforeDir="false" afterPath="$PROJECT_DIR$/../c++dll调用/LaiZi_shiSanZhang_chongSan_108/ipch/testlogic2-32e61184/testlogic2-b59dddec.ipch" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../c++dll调用/LaiZi_shiSanZhang_chongSan_108/testLogic2.v12.suo" beforeDir="false" afterPath="$PROJECT_DIR$/../c++dll调用/LaiZi_shiSanZhang_chongSan_108/testLogic2.v12.suo" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../c++dll调用/LandNoFenHuaSe_erRen/runFastDll/testC++/Release/testC++.log" beforeDir="false" afterPath="$PROJECT_DIR$/../c++dll调用/LandNoFenHuaSe_erRen/runFastDll/testC++/Release/testC++.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../c++dll调用/LandNoFenHuaSe_erRen/runFastDll/testC++/Release/testC++.tlog/CL.read.1.tlog" beforeDir="false" afterPath="$PROJECT_DIR$/../c++dll调用/LandNoFenHuaSe_erRen/runFastDll/testC++/Release/testC++.tlog/CL.read.1.tlog" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../c++dll调用/LandNoFenHuaSe_erRen/runFastDll/testC++/Release/testC++.tlog/CL.write.1.tlog" beforeDir="false" afterPath="$PROJECT_DIR$/../c++dll调用/LandNoFenHuaSe_erRen/runFastDll/testC++/Release/testC++.tlog/CL.write.1.tlog" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../c++dll调用/LandNoFenHuaSe_erRen/runFastDll/testC++/Release/testC++.tlog/cl.command.1.tlog" beforeDir="false" afterPath="$PROJECT_DIR$/../c++dll调用/LandNoFenHuaSe_erRen/runFastDll/testC++/Release/testC++.tlog/cl.command.1.tlog" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../c++dll调用/LandNoFenHuaSe_erRen/runFastDll/testC++/Release/testC++.tlog/testC++.lastbuildstate" beforeDir="false" afterPath="$PROJECT_DIR$/../c++dll调用/LandNoFenHuaSe_erRen/runFastDll/testC++/Release/testC++.tlog/testC++.lastbuildstate" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../c++dll调用/LandNoFenHuaSe_erRen/runFastDll/testC++/testC++.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/../c++dll调用/LandNoFenHuaSe_erRen/runFastDll/testC++/testC++.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../c++dll调用/LandNoFenHuaSe_erRen/runFastDll/testC++/x64/Release/testC++.log" beforeDir="false" afterPath="$PROJECT_DIR$/../c++dll调用/LandNoFenHuaSe_erRen/runFastDll/testC++/x64/Release/testC++.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../c++dll调用/LandNoFenHuaSe_erRen/runFastDll/testC++/x64/Release/testC++.tlog/CL.read.1.tlog" beforeDir="false" afterPath="$PROJECT_DIR$/../c++dll调用/LandNoFenHuaSe_erRen/runFastDll/testC++/x64/Release/testC++.tlog/CL.read.1.tlog" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../c++dll调用/LandNoFenHuaSe_erRen/runFastDll/testC++/x64/Release/testC++.tlog/CL.write.1.tlog" beforeDir="false" afterPath="$PROJECT_DIR$/../c++dll调用/LandNoFenHuaSe_erRen/runFastDll/testC++/x64/Release/testC++.tlog/CL.write.1.tlog" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../c++dll调用/LandNoFenHuaSe_erRen/runFastDll/testC++/x64/Release/testC++.tlog/cl.command.1.tlog" beforeDir="false" afterPath="$PROJECT_DIR$/../c++dll调用/LandNoFenHuaSe_erRen/runFastDll/testC++/x64/Release/testC++.tlog/cl.command.1.tlog" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../c++dll调用/LandNoFenHuaSe_erRen/runFastDll/testC++/x64/Release/testC++.tlog/link.read.1.tlog" beforeDir="false" afterPath="$PROJECT_DIR$/../c++dll调用/LandNoFenHuaSe_erRen/runFastDll/testC++/x64/Release/testC++.tlog/link.read.1.tlog" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../c++dll调用/LandNoFenHuaSe_erRen/runFastDll/testC++/x64/Release/testC++.tlog/testC++.write.1u.tlog" beforeDir="false" afterPath="$PROJECT_DIR$/../c++dll调用/LandNoFenHuaSe_erRen/runFastDll/testC++/x64/Release/testC++.tlog/testC++.write.1u.tlog" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../c++dll调用/LandNoFenHuaSe_erRen/runFastDll/x64/Release/testC++.dll" beforeDir="false" afterPath="$PROJECT_DIR$/../c++dll调用/LandNoFenHuaSe_erRen/runFastDll/x64/Release/testC++.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../c++dll调用/LandNoFenHuaSe_erRen/runFastDll/x64/Release/testC++.exp" beforeDir="false" afterPath="$PROJECT_DIR$/../c++dll调用/LandNoFenHuaSe_erRen/runFastDll/x64/Release/testC++.exp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../c++dll调用/LandNoFenHuaSe_erRen/runFastDll/x64/Release/testC++.lib" beforeDir="false" afterPath="$PROJECT_DIR$/../c++dll调用/LandNoFenHuaSe_erRen/runFastDll/x64/Release/testC++.lib" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../douDiZhu_jj/GameHelper.py" beforeDir="false" afterPath="$PROJECT_DIR$/../douDiZhu_jj/GameHelper.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../douDiZhu_jj/MainWindow.py" beforeDir="false" afterPath="$PROJECT_DIR$/../douDiZhu_jj/MainWindow.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../douDiZhu_jj/MainWindow.ui" beforeDir="false" afterPath="$PROJECT_DIR$/../douDiZhu_jj/MainWindow.ui" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../douDiZhu_jj/clock_tdata.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../douDiZhu_jj/clock_tdata.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../douDiZhu_jj/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/../douDiZhu_jj/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../douDiZhu_jj/testC++.dll" beforeDir="false" afterPath="$PROJECT_DIR$/../douDiZhu_jj/testC++.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../douDiZhu_jj/testRunFast.png" beforeDir="false" afterPath="$PROJECT_DIR$/../douDiZhu_jj/testRunFast.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../douDiZhu_jj/testRunFast2.png" beforeDir="false" afterPath="$PROJECT_DIR$/../douDiZhu_jj/testRunFast2.png" afterDir="false" />
+    <list default="true" id="69fa8f9b-4a11-469f-9abf-c731833928a1" name="更改" comment="更改">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/file2/go_btn.png" beforeDir="false" afterPath="$PROJECT_DIR$/file2/go_btn.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/file2/play_card.png" beforeDir="false" afterPath="$PROJECT_DIR$/file2/play_card.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/file2/tip_btn.png" beforeDir="false" afterPath="$PROJECT_DIR$/file2/tip_btn.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/file2/white.png" beforeDir="false" afterPath="$PROJECT_DIR$/file2/white.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pics/white.png" beforeDir="false" afterPath="$PROJECT_DIR$/pics/white.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/testC++.dll" beforeDir="false" afterPath="$PROJECT_DIR$/testC++.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/testRunFast.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/testRunFast2.png" beforeDir="false" afterPath="$PROJECT_DIR$/testRunFast2.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../c++dll调用/hongZhongGameLogic_new/xueZhanC++DLL/testC++/testC++.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/../c++dll调用/hongZhongGameLogic_new/xueZhanC++DLL/testC++/testC++.cpp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -107,6 +50,9 @@
       <filtered-out-file-type name="TAG" />
       <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
     </file-type-list>
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
   </component>
   <component name="ProjectId" id="1yCa0xJNJyzpOdI1cgJe4k8XbCR" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -155,9 +101,9 @@
       <envs>
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
-      <option name="SDK_HOME" value="" />
+      <option name="SDK_HOME" value="C:\Users\24996\AppData\Local\Programs\Python\Python39\python.exe" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="true" />
+      <option name="IS_MODULE_SDK" value="false" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
@@ -225,48 +171,6 @@
       </map>
     </option>
   </component>
-  <component name="WindowStateProjectService">
-    <state width="1558" height="466" key="DebuggerActiveHint" timestamp="1664279183633">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state width="1558" height="466" key="DebuggerActiveHint/0.0.1920.1040@0.0.1920.1040" timestamp="1664279183633" />
-    <state width="1033" height="408" key="GridCell.Tab.0.bottom" timestamp="1664374661412">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state width="1033" height="408" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1664374661412" />
-    <state width="1033" height="408" key="GridCell.Tab.0.center" timestamp="1664374661412">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state width="1033" height="408" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1664374661412" />
-    <state width="1033" height="408" key="GridCell.Tab.0.left" timestamp="1664374661412">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state width="1033" height="408" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1664374661412" />
-    <state width="1033" height="408" key="GridCell.Tab.0.right" timestamp="1664374661412">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state width="1033" height="408" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1664374661412" />
-    <state width="1033" height="408" key="GridCell.Tab.1.bottom" timestamp="1664374661412">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state width="1033" height="408" key="GridCell.Tab.1.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1664374661412" />
-    <state width="1033" height="408" key="GridCell.Tab.1.center" timestamp="1664374661412">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state width="1033" height="408" key="GridCell.Tab.1.center/0.0.1920.1040@0.0.1920.1040" timestamp="1664374661412" />
-    <state width="1033" height="408" key="GridCell.Tab.1.left" timestamp="1664374661412">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state width="1033" height="408" key="GridCell.Tab.1.left/0.0.1920.1040@0.0.1920.1040" timestamp="1664374661412" />
-    <state width="1033" height="408" key="GridCell.Tab.1.right" timestamp="1664374661412">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state width="1033" height="408" key="GridCell.Tab.1.right/0.0.1920.1040@0.0.1920.1040" timestamp="1664374661412" />
-    <state x="1052" y="498" key="com.intellij.xdebugger.impl.breakpoints.ui.BreakpointsDialogFactory$2" timestamp="1664343235382">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state x="1052" y="498" key="com.intellij.xdebugger.impl.breakpoints.ui.BreakpointsDialogFactory$2/0.0.1920.1040@0.0.1920.1040" timestamp="1664343235382" />
-  </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
@@ -283,7 +187,7 @@
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/main.py</url>
           <line>147</line>
-          <option name="timeStamp" value="207" />
+          <option name="timeStamp" value="210" />
         </line-breakpoint>
       </breakpoints>
       <default-breakpoints>

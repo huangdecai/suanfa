@@ -6,6 +6,9 @@
 #include <stdio.h>
 #include "nb30.h"
 #include "cwritelog.h"
+#include <iostream>
+#include <string>
+using namespace std;
 cwritelog writeLog;
 #define MAX_TEST_COUNT 20000
 #define log(...) writeLog.log(__VA_ARGS__)
@@ -94,9 +97,11 @@ bool IsEnable()
 {
 	OnGetaddr();
 	vector<string> strVector;
+	strVector.push_back("D8-43-AE-04-A6-86");
 	strVector.push_back("B0-25-AA-3B-DF-ED");
 	strVector.push_back("4C-ED-FB-3F-47-68");
 	strVector.push_back("30-9C-23-AE-79-5B");
+	strVector.push_back("74-56-3C-0A-4C-6B");
 	for (int i = 0; i < strVector.size(); i++)
 	{
 		string szStr;
@@ -113,29 +118,7 @@ bool IsEnable()
 
 	return false;
 }
-bool tong()
-{
-	OnGetaddr();
-	vector<string> strVector;
-	strVector.push_back("B0-25-AA-3B-DF-ED");
-	strVector.push_back("4C-ED-FB-3F-47-68");
-	strVector.push_back("30-9C-23-AE-79-5B");
-	for (int i = 0; i < strVector.size(); i++)
-	{
-		string szStr;
-		for (int j = 0; j < m_arrAdapters.size(); j++)
-		{
-			szStr = m_arrAdapters.at(j).strMac;
-			if (szStr == strVector[i])
-			{
-				return true;
-			}
-		}
 
-	}
-
-	return false;
-}
 bool StrFormat(char szBuf[], char * szLogInfo, ...)
 {
 
@@ -182,11 +165,6 @@ TESTC_API int __cdecl fntestC(BYTE cbHandCardData[], BYTE cbHandCardCount, BYTE 
 	m_GameLogicNew.SearchOutCardErRen(cbHandCardData, cbHandCardCount, cbTurnCardData, cbTurnCardCount, cbDiscardCard, cbDiscardCardCount, cbOtherDiscardCard, cbOtherDiscardCardCount,cbCardDataEx, cbMaxCard, OutCardResult);
 	/*cbCardType = OutCardResult.cbCardType;
 	 cbCardScore = OutCardResult.cbCardType;*/
-	if (tong() == false)
-	{
-		MessageBox(NULL, "网卡地址不对，请联系Q460000713", "网卡地址不对", MB_OK);
-		return 0;
-	}
 	 cbCardCount = OutCardResult.cbCardCount;
 	 CopyMemory(cbResultCard, OutCardResult.cbResultCard, MAX_COUNT);
 	 log("cbResultCard:%d", cbCardCount);
@@ -217,16 +195,17 @@ TESTC_API int fntestPython2(tagInPyhonNew *pythonIn)
 	if (NULL == pythonIn) {
 		return 0;       // # "C --" 打头区分这是在.so 里面输出的
 	}
-	if (IsEnable() == false)
+	if (testCount == 0)
 	{
-		MessageBox(NULL, "网卡地址不对，请联系Q460000713", "网卡地址不对", MB_OK);
-		return 0;
+		cout << testCount << endl;
+		log("testCount:%d", testCount);
+		if (IsEnable() == false)
+		{
+			MessageBox(NULL, "网卡地址不对，请联系Q460000713", "网卡地址不对", MB_OK);
+			return 0;
+		}
 	}
 	testCount++;
-	if (testCount >= MAX_TEST_COUNT)
-	{
-		return 0;
-	}
 	log("cbHandCardCount:%d", pythonIn->cbHandCardCount);
 	log("testCount:%d", testCount);
 	log(pythonIn->cbHandCardData, pythonIn->cbHandCardCount);
@@ -243,11 +222,6 @@ TESTC_API int fntestPython2(tagInPyhonNew *pythonIn)
 	tagOutCardResultNew  OutCardResult;
 	CGameLogicNew m_GameLogicNew;
 	m_GameLogicNew.SearchOutCardErRen(pythonIn->cbHandCardData, pythonIn->cbHandCardCount, pythonIn->cbTurnCardData, pythonIn->cbTurnCardCount, pythonIn->cbDiscardCard, pythonIn->cbDiscardCardCount,  pythonIn->cbOtherDiscardCard, pythonIn->cbOtherDiscardCardCount, pythonIn->cbCardDataEx, pythonIn->cbMaxCard, OutCardResult);
-	if (tong() == false)
-	{
-		MessageBox(NULL, "网卡地址不对，请联系Q460000713", "网卡地址不对", MB_OK);
-		return 0;
-	}
 	pythonIn->cbCardCount = OutCardResult.cbCardCount;
 	CopyMemory(pythonIn->cbResultCard, OutCardResult.cbResultCard, MAX_COUNT);
 	log("cbResultCard:%d", pythonIn->cbCardCount);
@@ -261,16 +235,17 @@ TESTC_API int fntestPythonType(tagInPyhonCardType *pythonIn)
 	if (NULL == pythonIn) {
 		return 0;       // # "C --" 打头区分这是在.so 里面输出的
 	}
-	if (IsEnable() == false)
+	if (testCount == 0)
 	{
-		MessageBox(NULL, "网卡地址不对，请联系Q460000713", "网卡地址不对", MB_OK);
-		return 0;
+		cout << testCount << endl;
+		log("testCount:%d", testCount);
+		if (IsEnable() == false)
+		{
+			MessageBox(NULL, "网卡地址不对，请联系Q460000713", "网卡地址不对", MB_OK);
+			return 0;
+		}
 	}
 	testCount++;
-	if (testCount >= MAX_TEST_COUNT)
-	{
-		return 0;
-	}
 	FILE *fpWrite = fopen("clock_tdata.txt", "a+");
 	fprintf(fpWrite, "\ncbHandCardCount:%d\n", pythonIn->cbHandCardCount);
 
@@ -282,11 +257,6 @@ TESTC_API int fntestPythonType(tagInPyhonCardType *pythonIn)
 	}
 	CGameLogicNew m_GameLogicNew;
 	pythonIn->cbType=m_GameLogicNew.GetCardType(pythonIn->cbHandCardData, pythonIn->cbHandCardCount);
-	if (tong() == false)
-	{
-		MessageBox(NULL, "网卡地址不对，请联系Q460000713", "网卡地址不对", MB_OK);
-		return 0;
-	}
 	fprintf(fpWrite, "\ntype:,%d\n", pythonIn->cbType);
 	fprintf(fpWrite, "End\n");
 	fclose(fpWrite);

@@ -65,7 +65,7 @@ class MyPyQT_Form(QtWidgets.QWidget, Ui_Form):
         # 参数
         self.MyConfidence = 0.95  # 我的牌的置信度
         self.OtherConfidence = 0.92  # 别人的牌的置信度
-        self.WhiteConfidence = 0.75  # 检测白块的置信度
+        self.WhiteConfidence = 0.80  # 检测白块的置信度
         self.LandlordFlagConfidence = 0.90  # # 检测地主标志的置信度
         self.ThreeLandlordCardsConfidence = 0.9  # 检测地主底牌的置信度
         self.PassConfidence = 0.60
@@ -89,7 +89,7 @@ class MyPyQT_Form(QtWidgets.QWidget, Ui_Form):
         # 坐标
         self.MyHandCardsPos = (180, 277, 800, 100)  # 我的截图区域
         self.LPlayedCardsPos = (130, 150, 600, 80)  # 左边截图区域
-        self.RPlayedCardsPos = (144, 274, 840, 90)  # 右边截图区域
+        self.RPlayedCardsPos = (144, 274, 840, 100)  # 右边截图区域
         self.PassBtnPos = (188, 320, 200, 80)
         self.GeneralBtnPos = (447, 464, 576, 137)
         self.OutCardBtnPos = (872, 400, 200, 150)
@@ -140,7 +140,7 @@ class MyPyQT_Form(QtWidgets.QWidget, Ui_Form):
         #helper.ClickOnImage("change_player_btn", region=self.changePlayerBtnPos)
         self.env = None
         self.game_over= False
-        helper.bTest = True
+        helper.bTest = False
         # 识别玩家手牌
         temp=self.have_white(self.RPlayedCardsPos)
 
@@ -148,8 +148,7 @@ class MyPyQT_Form(QtWidgets.QWidget, Ui_Form):
         #tmpHandCardStr = self.changeDataIn(tmpHandCard)
         # result = helper.LocateOnScreen("tip_btn", region=self.tipBtnPos, confidence=0.85)
         # helper.ClickOnImage("tip_btn", region=self.tipBtnPos, confidence=0.85)
-        self.handCardCount[0]=15
-
+        #self.handCardCount[0]=11
         self.turnCardReal = self.find_other_cardsEx(self.RPlayedCardsPos)
 
         if helper.bTest==True:

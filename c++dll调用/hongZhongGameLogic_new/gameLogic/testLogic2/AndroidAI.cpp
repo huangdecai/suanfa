@@ -1134,7 +1134,7 @@ bool CAndroidAI::SearchOutCard(tagOutCardResult &OutCardResult, WORD wMeChairId,
 			}
 			if (cbCardIndex[m_GameLogic.SwitchToCardIndex(cbActionCard)]==1)
 			{
-				nMaxGangScore = 500;
+				nMaxGangScore = 1200;
 			}
 			nOperateScore[0] = nMaxGangScore - nOrgScore;
 		}
@@ -1168,12 +1168,16 @@ bool CAndroidAI::SearchOutCard(tagOutCardResult &OutCardResult, WORD wMeChairId,
 			int index = cbWeaveCount[wMeChairId];
 			tagWeaveItem temWeaveItemArray[MAX_WEAVE];
 			CopyMemory(temWeaveItemArray, WeaveItemArray[wMeChairId], sizeof(temWeaveItemArray));
-			temWeaveItemArray[index].cbCenterCard = tmpCardData[0];
-			temWeaveItemArray[index].cbPublicCard = tmpCardData[0];
-			temWeaveItemArray[index].cbWeaveKind = WIK_GANG;
-			temWeaveItemArray[index].wProvideUser = wCurrentUser;
-			CopyMemory(temWeaveItemArray[index].cbCardData, tmpCardData, sizeof(tmpCardData));
-			index++;
+			if (cbCardIndex[m_GameLogic.SwitchToCardIndex(cbActionCard)] != 1)
+			{
+				temWeaveItemArray[index].cbCenterCard = tmpCardData[0];
+				temWeaveItemArray[index].cbPublicCard = tmpCardData[0];
+				temWeaveItemArray[index].cbWeaveKind = WIK_GANG;
+				temWeaveItemArray[index].wProvideUser = wCurrentUser;
+				CopyMemory(temWeaveItemArray[index].cbCardData, tmpCardData, sizeof(tmpCardData));
+				index++;
+			}
+			
 			BYTE cbRes = m_GameLogic.AnalyseTingCard(cbCardIndexTemp, temWeaveItemArray, index);
 			if (cbRes != WIK_LISTEN)
 			{
