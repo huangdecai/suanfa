@@ -116,7 +116,7 @@ protected:
 	void SearchTwo();
 	//ÅÐ¶ÏÅÆÊÇ·ñ½ûÖ¹³ö
 	bool IsEnjoinOutCard( BYTE byCard );
-	
+	int GetCalThreeCardCount(BYTE cbCardData[], int cbCardCount,int cbColor[]);
 public:
 	//ËÑË÷³öÅÆ
 	bool SearchOutCard(tagOutCardResult &OutCardResult, WORD wMeChairId, WORD  wCurrentUser, BYTE cbCardDataEx[], BYTE  cbActionMask, BYTE	cbActionCard, BYTE cbCardIndex[], tagWeaveItem WeaveItemArray[GAME_PLAYER][MAX_WEAVE], BYTE cbWeaveCount[], BYTE cbDiscardCard[], BYTE cbDiscardCount);

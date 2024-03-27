@@ -72,16 +72,16 @@ void TestGameLogic()
 	WeaveItemArray[0][3].cbWeaveKind = WIK_PENG;
 	WeaveItemArray[0][3].wProvideUser = 1;
 	CopyMemory(WeaveItemArray[0][3].cbCardData, tmpCardData4, sizeof(tmpCardData4));
-	BYTE cbWeaveCount[MAX_WEAVE] = { 1,0,0,0 };
+	BYTE cbWeaveCount[MAX_WEAVE] = { 0,0,0,0 };
 	BYTE cbCardIndex[MAX_INDEX] = { 0 };	//手中扑克
 	//二项听测试手牌
 	//BYTE    tempCard[] = { 0x22,0x23,0x23,0x27,0x02,0x03,0x04,0x11,0x11,0x11,0x15,0x16,0x16,0x17 };
 
 
-	BYTE    tempCard[] = { 5,5,5,6,7,37,38,39,41,41,33 };
+	BYTE    tempCard[] = { 4,4,6,7,8,34,36,38,39,40,23,23,23 };
 	//BYTE    tempCard[] = { 53,6,6,9,9,34,34,36,20,20,21,23,23,6 };
-	BYTE cbActionCard = 33;
-	BYTE cbActionMask = 16;// 0;// WIK_CHI_HU;
+	BYTE cbActionCard = 4;
+	BYTE cbActionMask = 8;// 0;// WIK_CHI_HU;
 		//BYTE    tempCard[] = { 4, 38, 8, 56, 10, 9, 11, 43, 12, 44, 60, 1, 33 };
 
 		//BYTE    tempCard[] = { 0x09 };
@@ -92,7 +92,7 @@ void TestGameLogic()
 	int cbRangCardCount = 0;
 	int cbOthreRangCardCount = 0;
 	BYTE cbCardDataEx[] = { 0, 53, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
-	BYTE cbDiscardCard[] = { 17,25,18,24,33,34,21,36,1,6,4,36,9,8,21,36,7,3,21,38 };
+	BYTE cbDiscardCard[] = { 21,41,1,3,40,9,17,53,33,9,24,17,18,25,18,4 };
 	m_GameLogic.SwitchToCardIndex(cbHandCardData, sizeof(tempCard), cbCardIndex);
 	//int que = SelectCallCard(cbCardIndex);
 	CChiHuRight chr;
@@ -110,7 +110,7 @@ void TestGameLogic()
 		cbActionCard = cbHandCardData[MAX_COUNT - 1];*/
 		//胡牌判断
 		tagOutCardResult OutCardResult = {};
-		bool reulst = m_AndroidAI.SearchOutCard(OutCardResult, 0,0, cbCardDataEx, cbActionMask, cbActionCard, cbCardIndex, WeaveItemArray, cbWeaveCount, cbDiscardCard, sizeof(cbDiscardCard));
+		bool reulst = m_AndroidAI.SearchOutCard(OutCardResult, 0,1, cbCardDataEx, cbActionMask, cbActionCard, cbCardIndex, WeaveItemArray, cbWeaveCount, cbDiscardCard, sizeof(cbDiscardCard));
 		if (OutCardResult.cbOperateCard==0)
 		{
 			int a = 4;

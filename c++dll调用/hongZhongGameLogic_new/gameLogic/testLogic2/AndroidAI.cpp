@@ -720,6 +720,8 @@ void CAndroidAI::AnalyseOne()
 	BYTE byCard;
 	int nScore;
 	int nMin = 33;
+	int colors[4] = { 0 };
+	GetCalThreeCardCount(m_byRemainTwo, m_byRemainTwoCount, colors);
 	for(int i = 0;i < m_byRemainTwoCount;i++ )	//找出最差的一张牌
 	{
 		byCard = m_byRemainTwo[i];
@@ -734,15 +736,18 @@ void CAndroidAI::AnalyseOne()
 		{
 			nScore = 6;
 		}
+		else if (byCard % 9 == 1 || byCard % 9 == 7)	//如果是一或者九
+		{
+			nScore = 7;
+		}
 		else 
 		{
 			nScore = 10;
-			bDan = true;
 		}
 
 		nScore += AddScore(byCard);
 		
-		if (bDan&&nScore==10)
+		if (colors[byCard / 9 ]==1&&nScore==10)
 		{
 			nScore -= 3;
 		}
@@ -862,6 +867,16 @@ bool CAndroidAI::IsEnjoinOutCard(BYTE byCard)
 	return false;
 }
 
+
+int CAndroidAI::GetCalThreeCardCount(BYTE cbCardData[], int cbCardCount, int cbColor[])
+{
+	//搜索花色
+	for (BYTE i = 0; i < cbCardCount; i++)
+	{
+		cbColor[(cbCardData[i] / 9)]++;
+	}
+	return 0;
+}
 
 bool CAndroidAI::SearchOutCard(tagOutCardResult &OutCardResult, WORD wMeChairId, WORD  wCurrentUser, BYTE cbCardDataEx[], BYTE  cbActionMask, BYTE	cbActionCard, BYTE cbCardIndex[], tagWeaveItem WeaveItemArray[GAME_PLAYER][MAX_WEAVE], BYTE cbWeaveCount[], BYTE cbDiscardCard[], BYTE cbDiscardCount)
 {
@@ -1017,9 +1032,14 @@ bool CAndroidAI::SearchOutCard(tagOutCardResult &OutCardResult, WORD wMeChairId,
 					{
 						maxFanCount = FanCount;
 						huPaiIndex = i;
-						nOrgScore = -1;
 					}
 				
+				}
+				else if (FanCount == maxFanCount && cbHuCardRemainingCount == maxRemainingCount && cardScore[i] > nOrgScore)
+				{
+						maxFanCount = FanCount;
+						huPaiIndex = i;
+						nOrgScore = cardScore[i];
 				}
 			}
 			
@@ -1392,6 +1412,10 @@ int  CAndroidAI::ActionAfterScore(WORD wMeChairId, BYTE * cbCardIndex, BYTE * cb
 		score = 500;
 	}
 	else if ((actionType == WIK_GANG ) && totalNum == totalNum2)
+	{
+		score = 500;
+	}
+	else if ((actionType == WIK_PENG) && totalNum == totalNum2)
 	{
 		score = 500;
 	}

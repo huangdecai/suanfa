@@ -1,0 +1,7 @@
+2024-03-27 14:09:12.208 pydevd_xml.py[293] _get_default_var_string_representation -> Find Control Timeout(10s): {ControlType: TextControl}
+2024-03-27 14:09:14.803 pydevd_xml.py[293] _get_default_var_string_representation -> Find Control Timeout(10s): {ControlType: TextControl}
+2024-03-27 14:10:19.036 main.py[36] weiXinAuto -> 2024-03-27 14:11:18.867 main.py[36] weiXinAuto -> 2024-03-27 14:46:52.552 pydevd_xml.py[293] _get_default_var_string_representation -> Find Control Timeout(10s): {Name: '会话2', ControlType: ListControl}
+2024-03-27 14:46:54.050 pydevd_xml.py[293] _get_default_var_string_representation -> Find Control Timeout(10s): {Name: '会话2', ControlType: ListControl}
+2024-03-27 14:47:04.497 pydevd_xml.py[293] _get_default_var_string_representation -> Find Control Timeout(10s): {Name: '会话2', ControlType: ListControl}
+2024-03-27 14:47:29.318 pydevd_xml.py[293] _get_default_var_string_representation -> Find Control Timeout(10s): {Name: '会话2', ControlType: ListControl}
+2024-03-27 14:47:39.999 pydevd_xml.py[293] _get_default_var_string_representation -> 

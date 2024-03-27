@@ -442,6 +442,7 @@ class MyPyQT_Form(QtWidgets.QWidget, Ui_Form):
     def WaitForOtherOperate(self,bGameOver):
         self.user_hand_cards_real, self.cbLaiZi = self.find_my_cards(
             self.MyHandCardsPos, self.bHaveAction)  # '2AKQQJJT99877753'
+        print("WaitForOtherOperate",bGameOver)
         #self.WaitForOtherOut()
         cbActionMask = 0
         tryCount=0

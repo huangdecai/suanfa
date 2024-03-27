@@ -278,9 +278,9 @@ class GameHelper:
             GetCards(self, image,bHaveAction=False):
         st = time.time()
         imgCv = cv2.cvtColor(np.asarray(image), cv2.COLOR_RGB2BGR)
-        tryCount = 10
+        tryCount = 3
         cardStartPos = pyautogui.locate(needleImage=self.Pics["card_edge"], haystackImage=image,
-                                        region=(2, 616, 1061, 40), confidence=0.83)
+                                        region=(2, 616, 1061, 90), confidence=0.80)
         # cardStartPos2=None
         # if cardStartPos and cardStartPos[0]>100:
         #     cardStartPos2 = pyautogui.locate(needleImage=self.Pics["card_edge2"], haystackImage=image,
@@ -290,7 +290,7 @@ class GameHelper:
         #         cardStartPos = cardStartPos2
         while cardStartPos is None and tryCount > 0:
             cardStartPos = pyautogui.locate(needleImage=self.Pics["card_edge"], haystackImage=image,
-                                            region=(2, 616, 1061, 40), confidence=0.83)
+                                            region=(2, 616, 1061, 90), confidence=0.80)
             print("找不到手牌起始位置")
             tryCount -= 1
             #time.sleep(150)
